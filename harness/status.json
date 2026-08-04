@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T18:34:13+09:00",
-  "head_commit": "700baea",
+  "updated_at": "2026-08-05T08:28:59+09:00",
+  "head_commit": "310b26d",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -68,10 +68,11 @@
     "entry_allowed": true
   },
   "gate2": {
-    "status": "BLOCKED",
+    "status": "VERIFIED",
     "evidence": [
       "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
       "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
       "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
       "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
       "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
@@ -88,14 +89,14 @@
       "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
       "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb"
     ],
-    "blockers": ["One Project Owner visual comparison decision is required for Gate 2"],
+    "blockers": [],
     "entry_allowed": true
   },
   "gate3": {
     "status": "NOT_STARTED",
     "evidence": ["docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md"],
-    "blockers": ["Gate 2 must be VERIFIED; no rig or blendshape asset exists"],
-    "entry_allowed": false
+    "blockers": ["No rig or blendshape asset exists"],
+    "entry_allowed": true
   },
   "gate4": {
     "status": "NOT_STARTED",

@@ -1,5 +1,12 @@
 # Stage 8 Change Log
 
+## 2026-08-05 — Gate 2 single approval and promotion
+
+- Recorded John KIM's explicit Project Owner approval for both characters and all five visual-comparison checks.
+- Revalidated six GLBs, four previews, topology, UV0, PBR materials, LOD ratios, and immutable hashes with zero failures or blockers.
+- Promoted Gate 2 from `BLOCKED` to `VERIFIED` and enabled Gate 3 entry.
+- Kept Gate 3 `NOT_STARTED`; no rig or blendshape asset was created by the approval action.
+
 ## 2026-08-04 — Gate 2 base-mesh candidates built
 
 - Generated six actual glTF 2.0 GLB files for Chakchaki and Gongsickyi LOD0/1/2.

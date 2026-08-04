@@ -276,8 +276,8 @@ def write_outputs(result: dict) -> None:
 - Automated status: `{result['automated_status']}`
 - Models: `{result['model_pass_count']}/6 PASS`
 - Manual approval: `{result['manual_approval_count']}/1`
-- Gate 2 status change applied: `false`
-- Gate 3 allowed: `false`
+- Gate 2 status change applied: `{str(result['gate2_status_change_applied']).lower()}`
+- Gate 3 allowed: `{str(result['next_gate_allowed']).lower()}`
 
 ## Model metrics
 
@@ -297,7 +297,7 @@ LOD1 ratios are {result['lod_ratios']['Chakchaki']['lod1_to_lod0']:.4f} and {res
 
 ## Decision
 
-실제 GLB 6개와 비교 렌더를 생성했고 자동 구조·토폴로지·UV·PBR·LOD 검사를 수행했다. 프로젝트 책임자의 비교 렌더 수동 검토 전에는 Gate 2를 `VERIFIED`로 올리지 않는다.
+실제 GLB 6개와 비교 렌더를 생성했고 자동 구조·토폴로지·UV·PBR·LOD 검사를 수행했다. 프로젝트 책임자의 유효한 1인 승인과 상태 승격이 모두 확인된 경우에만 Gate 2를 `VERIFIED`로 판정한다.
 """,
         encoding="utf-8",
     )
@@ -373,7 +373,15 @@ def main() -> int:
     else:
         blockers.append("PROJECT_OWNER_VISUAL_REVIEW_REQUIRED")
     verified = automated_status == "PASS" and manual_approval_count == 1 and not failures and not blockers
-    if verified:
+    promotion_applied = (
+        verified
+        and harness.get("gate2", {}).get("status") == "VERIFIED"
+        and review.get("approval_applied") is True
+    )
+    next_gate_allowed = promotion_applied and harness.get("gate3", {}).get("entry_allowed") is True
+    if promotion_applied and next_gate_allowed:
+        status = "VERIFIED"
+    elif verified:
         status = "READY_FOR_PROMOTION"
     elif failures:
         status = "FAIL"
@@ -393,8 +401,8 @@ def main() -> int:
         "failures": failures,
         "blockers": blockers,
         "ready_for_promotion": verified,
-        "gate2_status_change_applied": False,
-        "next_gate_allowed": False,
+        "gate2_status_change_applied": promotion_applied,
+        "next_gate_allowed": next_gate_allowed,
     }
     write_outputs(result)
     print("GATE2_AUDIT_WRITTEN")

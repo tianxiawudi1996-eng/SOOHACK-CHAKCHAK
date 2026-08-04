@@ -2,12 +2,12 @@
 
 ## Outcome
 
-- Status: `BLOCKED_EXTERNAL`
+- Status: `VERIFIED`
 - Automated status: `PASS`
 - Models: `6/6 PASS`
-- Manual approval: `0/1`
-- Gate 2 status change applied: `false`
-- Gate 3 allowed: `false`
+- Manual approval: `1/1`
+- Gate 2 status change applied: `true`
+- Gate 3 allowed: `true`
 
 ## Model metrics
 
@@ -28,8 +28,8 @@ LOD1 ratios are 0.4896 and 0.4937; LOD2 ratios are 0.1658 and 0.1839.
 
 ## Blockers
 
-- PROJECT_OWNER_VISUAL_REVIEW_REQUIRED
+- 없음
 
 ## Decision
 
-실제 GLB 6개와 비교 렌더를 생성했고 자동 구조·토폴로지·UV·PBR·LOD 검사를 수행했다. 프로젝트 책임자의 비교 렌더 수동 검토 전에는 Gate 2를 `VERIFIED`로 올리지 않는다.
+실제 GLB 6개와 비교 렌더를 생성했고 자동 구조·토폴로지·UV·PBR·LOD 검사를 수행했다. 프로젝트 책임자의 유효한 1인 승인과 상태 승격이 모두 확인된 경우에만 Gate 2를 `VERIFIED`로 판정한다.

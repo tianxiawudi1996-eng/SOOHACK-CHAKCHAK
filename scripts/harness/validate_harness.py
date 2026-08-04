@@ -106,6 +106,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
@@ -714,8 +715,6 @@ def main() -> int:
                 fail(f"gate2 topology defect: {item['character']} LOD{item['lod']}")
         if gate2_audit.get("manual_approval_required") != 1:
             fail("gate2 must require one Project Owner approval")
-        if gate2_audit.get("next_gate_allowed") is not False or gate2_audit.get("gate2_status_change_applied") is not False:
-            fail("gate2 audit prematurely changed gate status")
         if gates[2].get("status") == "BLOCKED":
             if gate2_audit.get("status") != "BLOCKED_EXTERNAL" or gate2_audit.get("manual_approval_count") != 0:
                 fail("gate2 BLOCKED status disagrees with pending manual review")
@@ -724,8 +723,18 @@ def main() -> int:
             if gate2_review.get("approval_applied") is not False or gate2_review.get("next_gate_allowed") is not False:
                 fail("gate2 pending review contains premature promotion flags")
         if gates[2].get("status") == "VERIFIED":
-            if gate2_audit.get("status") != "READY_FOR_PROMOTION" or gate2_audit.get("manual_approval_count") != 1:
+            if gate2_audit.get("status") != "VERIFIED" or gate2_audit.get("manual_approval_count") != 1:
                 fail("gate2 VERIFIED without one valid manual approval")
+            if gate2_audit.get("gate2_status_change_applied") is not True or gate2_audit.get("next_gate_allowed") is not True:
+                fail("gate2 VERIFIED without applied promotion flags")
+            if gate2_review.get("status") != "APPROVED" or gate2_review.get("decision") != "APPROVE":
+                fail("gate2 VERIFIED without an approved manual-review record")
+            if gate2_review.get("approval_applied") is not True or gate2_review.get("next_gate_allowed") is not True:
+                fail("gate2 VERIFIED while manual approval is not applied")
+            if not gate2_review.get("scope_acknowledged") or not all(value is True for value in gate2_review.get("checks", {}).values()):
+                fail("gate2 VERIFIED with incomplete visual-review checks")
+            if gates[3].get("entry_allowed") is not True:
+                fail("gate2 VERIFIED without enabling Gate 3 entry")
         if gates[3].get("entry_allowed") is True and gates[2].get("status") != "VERIFIED":
             fail("gate3 entry allowed before gate2 VERIFIED")
 

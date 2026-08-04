@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T09:37:25.423237+00:00",
+  "generated_at": "2026-08-04T23:32:06.332086+00:00",
   "gate": 2,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "VERIFIED",
   "automated_status": "PASS",
   "model_pass_count": 6,
   "models": [
@@ -137,13 +137,11 @@
       "lod2_to_lod0": 0.183896
     }
   },
-  "manual_approval_count": 0,
+  "manual_approval_count": 1,
   "manual_approval_required": 1,
   "failures": [],
-  "blockers": [
-    "PROJECT_OWNER_VISUAL_REVIEW_REQUIRED"
-  ],
-  "ready_for_promotion": false,
-  "gate2_status_change_applied": false,
-  "next_gate_allowed": false
+  "blockers": [],
+  "ready_for_promotion": true,
+  "gate2_status_change_applied": true,
+  "next_gate_allowed": true
 }
