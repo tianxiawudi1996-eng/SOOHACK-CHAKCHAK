@@ -210,7 +210,7 @@ def main() -> int:
     manual_approval_count = single_approval.get("valid_approval_count", 0)
     manual_complete = (
         single_approval.get("approval_mode") == "PROJECT_OWNER_SINGLE_APPROVAL"
-        and single_approval.get("status") == "READY_FOR_PROMOTION"
+        and single_approval.get("status") in {"READY_FOR_PROMOTION", "PROMOTED"}
         and single_approval.get("ready_for_promotion") is True
         and manual_approval_count == 1
         and single_approval.get("reject_count") == 0
@@ -281,8 +281,9 @@ def main() -> int:
             f"{'PASS' if delivery['difference_annotation']['pass'] else 'FAIL'} | "
             f"`{'PASS' if delivery['pass'] else 'FAIL'}` |"
         )
-    lines += ["", "## Remaining blockers", ""] + [f"- {failure}" for failure in failures] + [""]
-    OUTPUT_MD.write_text("\n".join(lines), encoding="utf-8")
+    lines += ["", "## Remaining blockers", ""]
+    lines += [f"- {failure}" for failure in failures] or ["- 없음"]
+    OUTPUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     checksum_paths = [ROOT / result["path"] for result in results]
     checksum_paths.extend(

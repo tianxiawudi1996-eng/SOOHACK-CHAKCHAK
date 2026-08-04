@@ -1,10 +1,10 @@
 # Gate 1 Automated QA
 
-- Generated (UTC): `2026-08-04T09:04:27.134835+00:00`
+- Generated (UTC): `2026-08-04T09:16:47.440731+00:00`
 - Automated status: `PASS`
-- Gate status: `BLOCKED_EXTERNAL`
+- Gate status: `VERIFIED`
 - Scale and floor-line tolerance: `+/-3%`
-- Gate 2: `BLOCKED`
+- Gate 2: `ALLOWED`
 
 ## Candidate results
 
@@ -22,4 +22,4 @@
 
 ## Remaining blockers
 
-- single Project Owner approval is incomplete (1 accountable package approval required)
+- 없음

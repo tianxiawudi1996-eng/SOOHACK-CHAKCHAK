@@ -73,8 +73,8 @@ def write_outputs(result: dict) -> None:
 - Rejects: `{result['reject_count']}`
 - Unresolved patches: `{result['unresolved_patch_count']}`
 - Ready for promotion: `{str(result['ready_for_promotion']).lower()}`
-- Gate status change applied: `false`
-- Gate 2 allowed: `false`
+- Gate status change applied: `{str(result['gate1_status_change_applied']).lower()}`
+- Gate 2 allowed: `{str(result['next_gate_allowed']).lower()}`
 
 기존 5역할×2캐릭터 승인 정책은 `SUPERSEDED_NON_GATING`이며 이 감사의 Gate 판정에 사용하지 않는다.
 
@@ -153,6 +153,10 @@ def main() -> int:
     valid_approval_count = 0
     reject_count = 0
     unresolved_patch_count = 0
+    approval_applied = decision.get("approval_applied") is True
+    decision_allows_next = decision.get("next_gate_allowed") is True
+    if approval_applied != decision_allows_next:
+        failures.append("PROMOTION_FLAGS_INCONSISTENT")
 
     if not fields_present or decision.get("scope_acknowledged") is not True:
         blockers.append("SINGLE_PROJECT_OWNER_DECISION_MISSING")
@@ -181,7 +185,10 @@ def main() -> int:
         and not candidate_hash_drift
         and not immutable_hash_drift
     )
-    if ready:
+    promotion_recorded = ready and approval_applied and decision_allows_next
+    if promotion_recorded:
+        status = "PROMOTED"
+    elif ready:
         status = "READY_FOR_PROMOTION"
     elif failures:
         status = "FAIL"
@@ -208,12 +215,16 @@ def main() -> int:
         "failures": failures,
         "blockers": blockers,
         "ready_for_promotion": ready,
-        "gate1_status_change_applied": False,
-        "next_gate_allowed": False,
+        "gate1_status_change_applied": promotion_recorded,
+        "next_gate_allowed": promotion_recorded,
         "next_action": (
-            "별도 Gate 1 승격 트랜잭션을 실행한다."
-            if ready
-            else "권한 있는 프로젝트 책임자의 단일 결정을 입력한다."
+            "Gate 2 작업을 시작할 수 있다."
+            if promotion_recorded
+            else (
+                "별도 Gate 1 승격 트랜잭션을 실행한다."
+                if ready
+                else "권한 있는 프로젝트 책임자의 단일 결정을 입력한다."
+            )
         ),
     }
     write_outputs(result)
@@ -224,8 +235,8 @@ def main() -> int:
     print(f"automated_status={qa.get('automated_status')}")
     print(f"candidate_hash_drift={len(candidate_hash_drift)}")
     print(f"immutable_hash_drift={len(immutable_hash_drift)}")
-    print("gate1_status_change_applied=false")
-    print("next_gate_allowed=false")
+    print(f"gate1_status_change_applied={str(promotion_recorded).lower()}")
+    print(f"next_gate_allowed={str(promotion_recorded).lower()}")
     return 0 if ready else (2 if failures else 1)
 
 

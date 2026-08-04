@@ -32,6 +32,7 @@
 
 ### Gate 정책
 
-- 실제 승인자를 대신해 승인하지 않았다.
-- 승인 대장 10개 결정 셀은 비어 있으며 `PENDING`이다.
-- Gate 1은 `BLOCKED_EXTERNAL`, Gate 2는 `BLOCKED`다.
+- 기존 승인 대장 10개 결정 셀은 비어 있으며 `SUPERSEDED_NON_GATING` 이력으로 보존한다.
+- 활성 정책은 프로젝트 책임자 1인 패키지 승인이다.
+- John KIM이 `2026-08-04T18:10:59+09:00`에 두 캐릭터와 전체 패키지를 `APPROVE`했다.
+- Gate 1은 `VERIFIED`, Gate 2는 `NOT_STARTED`이며 진입이 허용된다.

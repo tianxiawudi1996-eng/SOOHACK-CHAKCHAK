@@ -2,9 +2,10 @@
 
 - Gate 0 prerequisite: `VERIFIED`
 - Automated QA: `PASS`
-- Gate 1 status: `BLOCKED`
-- External approval state: `0/10`
-- Gate 2 entry: `PROHIBITED`
+- Gate 1 status: `VERIFIED`
+- Active approval state: `1/1` — John KIM `APPROVE`
+- Legacy approval state: `0/10`, `SUPERSEDED_NON_GATING`
+- Gate 2 entry: `ALLOWED`
 
 ## Audited candidates
 
@@ -22,13 +23,13 @@
 - All 32 individual direction files decode at 2048×2048.
 - Both 2048×2048 overlay sheets and both 4096×2048 difference-annotation sheets decode successfully.
 
-## Manual evidence still required
+## Accountable approval
 
-Pixel QA does not prove true orthographic camera equivalence, production-ready anatomy, accessory-side logic, or brand/product acceptability. Character Art Lead, 3D Technical Art Lead, UX Brand System Lead, QA Lead, and Product Owner must each approve both characters in the manual approval log.
+Pixel QA does not independently prove true orthographic camera equivalence, production-ready anatomy, accessory-side logic, or brand/product acceptability. Under the active `PROJECT_OWNER_SINGLE_APPROVAL` policy, John KIM accepted these limitations for both characters and the complete frozen Gate 1 evidence package at `2026-08-04T18:10:59+09:00`.
 
 ## Decision
 
-The automated package passes, but no accountable manual approval exists. Gate 1 therefore remains `BLOCKED`; the candidates are not canonical SSOT and Gate 2 must not start.
+The automated package passes, the accountable package approval is valid 1/1, and immutable hash drift is zero. Gate 1 is `VERIFIED`; Gate 2 entry is allowed. The candidates remain Stage 8 Gate evidence and do not overwrite canonical Stage 7 originals.
 
 ## Evidence index
 

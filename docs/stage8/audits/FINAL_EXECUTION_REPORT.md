@@ -2,17 +2,17 @@
 
 ## Outcome
 
-Gate 1 자동 QA와 증거 패키지는 유지하면서 승인 정책을 프로젝트 책임자 1인 방식으로 단순화했다. 기존 5역할×2캐릭터 자료는 `SUPERSEDED_NON_GATING` 감사 이력으로 보존한다. 현재 활성 산출물은 단일 승인 정책, 결정 스키마, 단일 승인 감사와 자동 Gate 1 QA다.
+Gate 1 자동 QA와 증거 패키지는 유지하면서 승인 정책을 프로젝트 책임자 1인 방식으로 단순화했다. 기존 5역할×2캐릭터 자료는 `SUPERSEDED_NON_GATING` 감사 이력으로 보존한다. John KIM이 두 캐릭터와 전체 Gate 1 증거 패키지를 `APPROVE`했다.
 
-자동 QA는 `PASS`지만 활성 단일 승인 기록은 `0/1`이다. 따라서 Gate 1은 `BLOCKED`, 자동 보고 상태는 `BLOCKED_EXTERNAL`, Gate 2는 `NOT_STARTED`다.
+자동 QA는 `PASS`, 활성 단일 승인은 `1/1`이다. Gate 1은 `VERIFIED`로 승격됐고 Gate 2는 `NOT_STARTED`이지만 진입할 수 있다.
 
 ## Gate status
 
 | Gate | Status | Evidence |
 |---:|---|---|
 | 0 | `VERIFIED` | Stage 7 exact originals 10/10 and manual/automatic SSOT checks |
-| 1 | `BLOCKED` | Automated image and delivery QA pass; one authorized Project Owner decision missing |
-| 2 | `NOT_STARTED` | Gate 1 is not `VERIFIED`; no mesh/material work authorized |
+| 1 | `VERIFIED` | Automated QA `PASS`; John KIM package approval 1/1; hash drift 0 |
+| 2 | `NOT_STARTED` | Entry allowed; no base mesh/material asset exists yet |
 | 3–8 | `NOT_STARTED` | Sequential prerequisite gates are not satisfied |
 
 ## Gate 1 evidence summary
@@ -27,22 +27,22 @@ Gate 1 자동 QA와 증거 패키지는 유지하면서 승인 정책을 프로�
 - Frozen review inputs: 39 immutable records plus one controlled approval-ledger baseline
 - Role-specific manual review packets: 10/10 prepared
 - Active approval mode: `PROJECT_OWNER_SINGLE_APPROVAL`
-- Active approvals: 0/1
+- Active approvals: 1/1 (`John KIM`, `APPROVE`)
 - Legacy workbook/JSON approvals: 0/10, `SUPERSEDED_NON_GATING`
 - Immutable evidence hash drift: 0
 - Legacy five-role assignment/dispatch history: completed and preserved, `SUPERSEDED_NON_GATING`
-- Single Project Owner approval: 1 required, 0 recorded
+- Single Project Owner approval: 1 required, 1 valid
 
 ## Controls retained
 
 - Candidates remain outside canonical Stage 7 SSOT.
-- `next_gate_allowed` remains `false` in review and automated QA evidence.
+- `next_gate_allowed` is `true` after the controlled Gate 1 promotion.
 - The legacy approval workbook contains no pre-approved decision and has no active gating authority.
 - The Harness rejects candidate/evidence hash drift and fabricated approval-template fields.
 - Legacy intake, assignment, and dispatch audits remain available only as historical traceability checks.
 - The active single-approver audit validates one package-level decision against both candidate hashes and all immutable evidence.
 - Legacy 10-approval artifacts cannot promote or block Gate 1.
-- Gate 2 was not started.
+- Gate 2 was not started automatically; entry is now allowed.
 - The ignored, untracked `github-recovery-codes.txt` was not read or committed.
 
 ## Publishing status
@@ -51,4 +51,4 @@ The local branch is committed, but `git push -u origin codex/stage8-harness-cont
 
 ## Next authorized action
 
-권한 있는 프로젝트 책임자 한 명을 지정하고, 두 캐릭터와 전체 Gate 1 증거 패키지에 대한 결정 한 건을 `SINGLE_APPROVER_DECISION_v1.0.json`에 기록해야 한다. 단일 감사가 `READY_FOR_PROMOTION` 1/1을 반환한 뒤에만 Gate 1 승격을 실행한다.
+Gate 2 베이스 메시·머티리얼 작업 메타프롬프트를 작성하고 실행한다.

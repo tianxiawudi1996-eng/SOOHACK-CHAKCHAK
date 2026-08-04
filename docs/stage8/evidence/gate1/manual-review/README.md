@@ -8,15 +8,15 @@
 - Preparation result: `READY_FOR_HUMAN_REVIEW`
 - Automated QA: `PASS`
 - Legacy approvals: `0/10` — non-gating
-- Active single approval: `0/1`
+- Active single approval: `1/1` — John KIM `APPROVE`
 - Valid Coordinator nominations: `5/5`
 - Nomination state: `READY_FOR_ASSIGNMENT`
 - Applied assignments: `5/5`
 - Acknowledged assignments: `5/5`
 - Assignment state: `DISPATCH_CONFIRMED`
 - Dispatch performed: `true` — confirmed by the user; not sent by AI
-- Gate 1: `BLOCKED`
-- Gate 2: `NOT_STARTED`
+- Gate 1: `VERIFIED`
+- Gate 2: `NOT_STARTED`, entry allowed
 
 ## Package contents
 
@@ -36,8 +36,8 @@
 ## Workflow
 
 1. Preserve this package as non-gating audit history.
-2. Record one authorized Project Owner decision in `../single-approval/SINGLE_APPROVER_DECISION_v1.0.json`.
-3. Run `python scripts/harness/audit_gate1_single_approval.py`.
-4. Proceed to a controlled promotion only at `READY_FOR_PROMOTION` with automated QA PASS and zero hash drift.
+2. The active John KIM decision is recorded in `../single-approval/SINGLE_APPROVER_DECISION_v1.0.json`.
+3. The single-approval audit passed 1/1 with zero hash drift.
+4. Gate 1 promotion is complete; continue with Gate 2.
 
 AI preparation does not count as approval and must never populate the Project Owner identity, decision, or review time.

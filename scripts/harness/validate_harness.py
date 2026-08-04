@@ -358,7 +358,7 @@ def main() -> int:
         if gates[1].get("status") == "BLOCKED" and gate1_qa.get("status") != "BLOCKED_EXTERNAL":
             fail("gate1 is BLOCKED but automated QA does not identify the external approval blocker")
         if gates[1].get("status") == "VERIFIED":
-            if single_audit.get("status") != "READY_FOR_PROMOTION":
+            if single_audit.get("status") != "PROMOTED":
                 fail("gate1 VERIFIED without a valid single Project Owner approval")
             if single_audit.get("valid_approval_count") != 1:
                 fail("gate1 VERIFIED without exactly one package approval")
@@ -384,10 +384,11 @@ def main() -> int:
             fail("gate1 legacy approval count history is invalid")
         if single_decision.get("approval_mode") != single_policy.get("approval_mode"):
             fail("gate1 single decision and policy modes disagree")
-        if single_decision.get("next_gate_allowed") is not False:
-            fail("gate1 single decision prematurely allows Gate 2")
-        if single_decision.get("approval_applied") is not False:
-            fail("gate1 single decision applied an unauthorized promotion")
+        promotion_expected = gates[1].get("status") == "VERIFIED"
+        if single_decision.get("next_gate_allowed") is not promotion_expected:
+            fail("gate1 single decision next-gate flag disagrees with gate status")
+        if single_decision.get("approval_applied") is not promotion_expected:
+            fail("gate1 single decision promotion flag disagrees with gate status")
         if single_audit.get("policy_sha256", "").lower() != hashlib.sha256(
             (single_root / "SINGLE_APPROVER_POLICY_v1.0.json").read_bytes()
         ).hexdigest().lower():
@@ -397,17 +398,17 @@ def main() -> int:
         ).hexdigest().lower():
             fail("gate1 single-approver audit decision hash is stale")
         single_status = single_audit.get("status")
-        if single_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_PROMOTION"}:
+        if single_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_PROMOTION", "PROMOTED"}:
             fail(f"unsupported gate1 single-approver status: {single_status!r}")
         if single_audit.get("approval_required") != 1:
             fail("gate1 single-approver audit must require one approval")
         if single_audit.get("approval_mode") != single_policy.get("approval_mode"):
             fail("gate1 single-approver audit mode is invalid")
-        if single_audit.get("next_gate_allowed") is not False:
-            fail("gate1 single-approver audit prematurely allows Gate 2")
-        if single_audit.get("gate1_status_change_applied") is not False:
-            fail("gate1 single-approver audit applied an unauthorized status change")
-        if single_status == "READY_FOR_PROMOTION":
+        if single_audit.get("next_gate_allowed") is not promotion_expected:
+            fail("gate1 single-approver audit next-gate flag disagrees with gate status")
+        if single_audit.get("gate1_status_change_applied") is not promotion_expected:
+            fail("gate1 single-approver audit promotion flag disagrees with gate status")
+        if single_status in {"READY_FOR_PROMOTION", "PROMOTED"}:
             if single_audit.get("valid_approval_count") != 1 or single_audit.get("ready_for_promotion") is not True:
                 fail("gate1 single-approver audit is ready without one valid approval")
         elif single_audit.get("ready_for_promotion") is not False:

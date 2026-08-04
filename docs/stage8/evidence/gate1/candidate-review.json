@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
   "gate": 1,
-  "status": "NOT_VERIFIED",
-  "next_gate_allowed": false,
+  "status": "VERIFIED",
+  "next_gate_allowed": true,
   "generated_at": "2026-08-04T15:16:13+09:00",
-  "method": "Built-in identity-preserving image edits followed by deterministic 4096px scale and floor-line normalization; outputs remain non-canonical candidates until one authorized Project Owner approves the complete Gate 1 package.",
+  "method": "Built-in identity-preserving image edits followed by deterministic 4096px scale and floor-line normalization; John KIM accepted both candidates and the complete Gate 1 evidence package under the active single-approver policy.",
   "active_approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
   "active_approval_policy": "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_POLICY_v1.0.json",
   "active_approval_decision": "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
@@ -67,14 +67,18 @@
     "Each character has 16 individual 2048x2048 direction files plus overlay and difference-annotation sheets.",
     "Left/right directional cells remain measurably distinct rather than simple mirrored duplicates."
   ],
-  "failed_or_unverified": [
+  "accepted_limitations": [
     "True orthographic camera equivalence cannot be proven from the generated raster boards.",
-    "Cross-view anatomy, accessory-side consistency, and identity drift remain within the Project Owner's package-level acceptance scope.",
-    "The required single Project Owner package decision is absent."
+    "Cross-view anatomy, accessory-side consistency, and identity drift were accepted within the Project Owner's package-level review scope."
   ],
   "manual_approvals": [],
   "manual_approvals_status": "SUPERSEDED_NON_GATING",
-  "blockers": [
-    "One authorized Project Owner must approve both candidates and the complete frozen Gate 1 evidence package before VERIFIED."
-  ]
+  "approval_summary": {
+    "approver_name": "John KIM",
+    "decision": "APPROVE",
+    "reviewed_at": "2026-08-04T18:10:59+09:00",
+    "scope": "BOTH_CHARACTERS_AND_COMPLETE_GATE1_EVIDENCE_PACKAGE"
+  },
+  "failed_or_unverified": [],
+  "blockers": []
 }
