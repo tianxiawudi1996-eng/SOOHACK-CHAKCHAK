@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T15:30:00+09:00",
-  "head_commit": "22acf2b",
+  "updated_at": "2026-08-04T15:45:00+09:00",
+  "head_commit": "1691efc",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -24,10 +24,12 @@
     "status": "BLOCKED",
     "evidence": [
       "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md",
+      "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
       "docs/ssot/stage7/v1.0/GATE1_QA_RESULT_v5.1.1.json",
       "docs/ssot/stage7/v1.0/GATE1_CANONICAL_TURNAROUND_REMEDIATION_METAPROMPT_v5.2.0.md",
       "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
       "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
+      "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
       "docs/stage8/evidence/gate1/candidate-review.json",
       "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
       "docs/stage8/evidence/gate1/Gate1_Character_Consistency_Report_v5.2.0.md",

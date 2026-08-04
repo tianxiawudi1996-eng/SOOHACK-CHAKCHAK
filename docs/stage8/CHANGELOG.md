@@ -1,5 +1,12 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 manual review and approval metaprompt
+
+- Defined the next authorized part as accountable Gate 1 manual review rather than premature Gate 2 work.
+- Added role-specific review criteria for five roles across both characters.
+- Added hash-frozen approval records, conditional-patch handling, rejection routing, and approval invalidation after candidate changes.
+- Required ten real approvals before Gate 1 promotion and Gate 2 entry.
+
 ## 2026-08-04 — Gate 1 automated QA and approval package
 
 - Added the Gate 1 QA/approval metaprompt following goal, specification, context, harness, prompt, workflow, memory, and loop engineering.

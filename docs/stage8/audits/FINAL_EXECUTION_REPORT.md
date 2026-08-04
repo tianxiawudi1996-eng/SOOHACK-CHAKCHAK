@@ -39,4 +39,4 @@ The local branch is committed, but `git push -u origin codex/stage8-harness-cont
 
 ## Next authorized action
 
-Five named roles must review both characters and record ten decisions in the manual approval log. Any rejection or conditional patch returns the affected candidate to remediation and automated re-audit. Only a complete, accountable approval set may promote Gate 1 and allow Gate 2.
+Execute `docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md`. Five named roles must review both characters and record ten decisions in the manual approval log. Any rejection or conditional patch returns the affected candidate to remediation and automated re-audit. Only a complete, accountable approval set may promote Gate 1 and allow Gate 2.

@@ -48,6 +48,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
     "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
     "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
+    "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
     "docs/stage8/evidence/gate0/gate0-decision.json",
@@ -58,6 +59,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md",
     "docs/stage8/evidence/gate1/SHA256SUMS.txt",
     "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
