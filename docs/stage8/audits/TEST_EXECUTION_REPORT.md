@@ -17,6 +17,8 @@
 | `python scripts/harness/audit_stage8.py` (최종 재실행) | `2026-08-04T13:17:50+09:00` | `2026-08-04T13:17:51+09:00` | 0 | `required_exact=6/10`, `gate0=BLOCKED` |
 | `python scripts/harness/validate_harness.py` (최종 재실행) | `2026-08-04T13:17:51+09:00` | `2026-08-04T13:17:51+09:00` | 1 | 민감정보 파일 차단 유지 |
 | `git push -u origin codex/stage8-harness-continuation` | `2026-08-04T13:18:50+09:00` | `2026-08-04T13:18:50+09:00` | 128 | GitHub 403 권한 거부 (`visionlab-coder`) |
+| `python -m py_compile ...` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 0 | Python 구문 검사 통과 |
+| `python scripts/harness/validate_harness.py` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 1 | 민감정보 파일 차단 유지 |
 
 ## 미실행 명령
 
