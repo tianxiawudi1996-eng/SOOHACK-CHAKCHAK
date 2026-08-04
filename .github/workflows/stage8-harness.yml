@@ -1,0 +1,51 @@
+name: Stage 8 Harness
+
+on:
+  push:
+    branches: [main, "agent/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-harness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate gate order and evidence
+        run: python scripts/harness/validate_harness.py
+      - name: Validate JSON files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in Path('.').rglob('*.json'):
+              json.loads(path.read_text(encoding='utf-8'))
+              print(f'JSON_PASS {path}')
+          PY
+      - name: Reject forbidden completion claims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          forbidden = [
+              '8단계 완료·배포 성공',
+              'Gate 2 — Base Mesh: VERIFIED',
+              'Production: VERIFIED',
+          ]
+          checked = [Path('harness'), Path('docs/stage8')]
+          for root in checked:
+              for path in root.rglob('*'):
+                  if path.is_file() and path.suffix in {'.md', '.json', '.yml', '.yaml'}:
+                      text = path.read_text(encoding='utf-8')
+                      for phrase in forbidden:
+                          if phrase in text:
+                              raise SystemExit(f'FORBIDDEN_CLAIM {phrase!r} in {path}')
+          print('CLAIM_GUARD_PASS')
+          PY
