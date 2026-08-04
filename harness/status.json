@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.0.1",
   "project": "Math ChackChack",
   "stage": 8,
   "updatedAt": "2026-08-04T11:37:00+09:00",
@@ -10,20 +10,23 @@
     "BLOCKED_EXTERNAL",
     "FAIL"
   ],
-  "currentGate": 1,
+  "currentGate": 0,
   "overallStatus": "FAIL",
   "gates": [
     {
       "id": 0,
       "name": "1-7 Integrated Audit",
-      "status": "DONE_IMPLEMENTED",
+      "status": "FAIL",
       "entryAllowed": true,
       "nextGateAllowed": false,
       "evidence": [
-        "docs/stage8/00_MASTER_PLAN.md"
+        "docs/stage8/00_MASTER_PLAN.md",
+        "docs/stage8/prompts/GATE0_SSOT_AUDIT.md"
       ],
       "openItems": [
-        "Upload and hash all 10 canonical SSOT files",
+        "Upload all 10 canonical SSOT files to the repository",
+        "Calculate and record SHA-256 for all 10 files",
+        "Verify SRC-01 through SRC-06 traceability",
         "Record formal approver identities"
       ]
     },
@@ -31,12 +34,13 @@
       "id": 1,
       "name": "Canonical View",
       "status": "FAIL",
-      "entryAllowed": true,
+      "entryAllowed": false,
       "nextGateAllowed": false,
       "evidence": [
         "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md"
       ],
       "openItems": [
+        "Gate 0 must be VERIFIED",
         "Neutral front full body for both characters",
         "Complete left/right side and front/rear three-quarter views",
         "Accessory-off front/back views",
@@ -50,7 +54,7 @@
       "status": "BLOCKED_EXTERNAL",
       "entryAllowed": false,
       "nextGateAllowed": false,
-      "evidence": [],
+      "evidence": ["docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md"],
       "openItems": ["Gate 1 must be VERIFIED"]
     },
     {
@@ -59,7 +63,7 @@
       "status": "BLOCKED_EXTERNAL",
       "entryAllowed": false,
       "nextGateAllowed": false,
-      "evidence": [],
+      "evidence": ["docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md"],
       "openItems": ["Gate 2 must be VERIFIED"]
     },
     {
@@ -68,7 +72,7 @@
       "status": "BLOCKED_EXTERNAL",
       "entryAllowed": false,
       "nextGateAllowed": false,
-      "evidence": [],
+      "evidence": ["docs/stage8/prompts/GATE4_MOTION.md"],
       "openItems": ["Gate 3 must be VERIFIED"]
     },
     {
@@ -78,7 +82,7 @@
       "entryAllowed": false,
       "nextGateAllowed": false,
       "evidence": ["docs/stage8/prompts/GATE5_AI_BEHAVIOR.md"],
-      "openItems": ["Actual GLB runtime", "TTS/LipSync", "Event telemetry"]
+      "openItems": ["Gate 4 must be VERIFIED", "Actual GLB runtime", "TTS/LipSync", "Event telemetry"]
     },
     {
       "id": 6,
@@ -87,7 +91,7 @@
       "entryAllowed": false,
       "nextGateAllowed": false,
       "evidence": ["docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md"],
-      "openItems": ["P0 component implementation", "GLB lazy loading", "Fallback verification"]
+      "openItems": ["Gate 5 must be VERIFIED", "P0 component implementation", "GLB lazy loading", "Fallback verification"]
     },
     {
       "id": 7,
@@ -96,7 +100,7 @@
       "entryAllowed": false,
       "nextGateAllowed": false,
       "evidence": ["docs/stage8/prompts/GATE7_QA.md"],
-      "openItems": ["Device/browser testing", "Child safety review", "Performance budget"]
+      "openItems": ["Gate 6 must be VERIFIED", "Device/browser testing", "Child safety review", "Performance budget"]
     },
     {
       "id": 8,
@@ -105,7 +109,7 @@
       "entryAllowed": false,
       "nextGateAllowed": false,
       "evidence": ["docs/stage8/prompts/GATE8_DEPLOYMENT.md"],
-      "openItems": ["Development", "Staging", "Canary", "Production", "Rollback evidence"]
+      "openItems": ["Gate 7 must be VERIFIED", "Development", "Staging", "Canary", "Production", "Rollback evidence"]
     }
   ],
   "externalBlocks": [
