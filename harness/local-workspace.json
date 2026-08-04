@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "platform": "windows",
+  "workspaceRoot": "D:\\project\\SOOHACK CHACKCHACK",
+  "repositoryRoot": "D:\\project\\SOOHACK CHACKCHACK",
+  "documentRoot": "D:\\project\\SOOHACK CHACKCHACK\\docs",
+  "ssotRoot": "D:\\project\\SOOHACK CHACKCHACK\\ssot",
+  "stage7SsotRoot": "D:\\project\\SOOHACK CHACKCHACK\\ssot\\stage7\\v1.0",
+  "stage8Root": "D:\\project\\SOOHACK CHACKCHACK\\docs\\stage8",
+  "evidenceRoot": "D:\\project\\SOOHACK CHACKCHACK\\evidence",
+  "releaseRoot": "D:\\project\\SOOHACK CHACKCHACK\\release",
+  "rules": {
+    "saveAllProjectDocumentsUnderWorkspace": true,
+    "preserveOriginalBytesForSsot": true,
+    "doNotOverwriteReleasedVersions": true,
+    "commitAndPushEveryApprovedIncrement": true,
+    "requireHarnessPassBeforeNextGate": true
+  }
+}
