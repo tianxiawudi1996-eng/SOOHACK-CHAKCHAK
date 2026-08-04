@@ -36,6 +36,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_stage8.py",
     "scripts/harness/audit_gate1.py",
     "scripts/harness/build_gate1_evidence.py",
+    "scripts/harness/prepare_gate1_manual_review.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -48,6 +49,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
     "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
     "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
+    "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -58,11 +60,24 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/Gate1_Character_Consistency_Report_v5.2.0.md",
     "docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md",
     "docs/stage8/evidence/gate1/SHA256SUMS.txt",
+    "docs/stage8/evidence/gate1/manual-review/approval-workbook-preflight.json",
+    "docs/stage8/evidence/gate1/manual-review/FROZEN_EVIDENCE_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/gate1/manual-review/APPROVAL_INTAKE_TEMPLATE.json",
+    "docs/stage8/evidence/gate1/manual-review/README.md",
     "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
+
+MANUAL_REVIEW_ROLES = {
+    "character_art_lead": "Character Art Lead",
+    "3d_technical_art_lead": "3D Technical Art Lead",
+    "ux_brand_system_lead": "UX Brand System Lead",
+    "qa_lead": "QA Lead",
+    "product_owner": "Product Owner",
+}
+MANUAL_REVIEW_CHARACTERS = {"Chakchaki", "Gongsickyi"}
 
 CANONICAL_GATE_PROMPTS = [
     "GATE0_SSOT_AUDIT.md",
@@ -276,6 +291,10 @@ def main() -> int:
     if gates[1].get("status") != "NOT_STARTED":
         gate1_review = load_json(ROOT / "docs/stage8/evidence/gate1/candidate-review.json")
         gate1_qa = load_json(ROOT / "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json")
+        manual_root = ROOT / "docs/stage8/evidence/gate1/manual-review"
+        workbook_preflight = load_json(manual_root / "approval-workbook-preflight.json")
+        frozen_manifest = load_json(manual_root / "FROZEN_EVIDENCE_MANIFEST_v1.0.json")
+        intake_template = load_json(manual_root / "APPROVAL_INTAKE_TEMPLATE.json")
         for candidate in gate1_review.get("candidates", []):
             candidate_path = ROOT / candidate.get("path", "")
             if not candidate_path.exists():
@@ -298,6 +317,101 @@ def main() -> int:
         if gates[1].get("status") == "VERIFIED":
             if gate1_review.get("status") != "VERIFIED" or len(gate1_review.get("manual_approvals", [])) < 10:
                 fail("gate1 VERIFIED without ten accountable approvals")
+
+        if workbook_preflight.get("status") != "PASS":
+            fail("gate1 approval workbook preflight did not pass")
+        if workbook_preflight.get("pending_rows") != 10:
+            fail("gate1 approval workbook must have ten pending rows before review")
+        for field in ("decisions_blank", "reviewers_blank", "reviewed_at_blank", "role_character_matrix_complete"):
+            if workbook_preflight.get(field) is not True:
+                fail(f"gate1 approval workbook preflight field is not true: {field}")
+        workbook_path = ROOT / workbook_preflight.get("workbook", "")
+        if not workbook_path.is_file():
+            fail("gate1 approval workbook recorded by preflight is missing")
+        workbook_hash = hashlib.sha256(workbook_path.read_bytes()).hexdigest().lower()
+        if workbook_hash != workbook_preflight.get("workbook_sha256", "").lower():
+            fail("gate1 approval workbook changed after read-only preflight")
+
+        if frozen_manifest.get("status") != "FROZEN_PENDING_REVIEW":
+            fail("gate1 manual-review evidence is not frozen pending review")
+        if frozen_manifest.get("automated_status") != "PASS":
+            fail("gate1 frozen package does not record automated QA PASS")
+        if frozen_manifest.get("approval_required") != 10 or frozen_manifest.get("approval_recorded") != 0:
+            fail("gate1 frozen package approval counts must be 0/10")
+        if frozen_manifest.get("next_gate_allowed") is not False:
+            fail("gate1 frozen package allows the next gate")
+        assets = frozen_manifest.get("evidence_assets")
+        if not isinstance(assets, list) or len(assets) != 40:
+            fail("gate1 frozen package must contain exactly 40 checksum records")
+        immutable_count = 0
+        ledger_count = 0
+        for asset in assets:
+            relative = asset.get("path", "")
+            asset_path = ROOT / relative
+            if not asset_path.is_file():
+                fail(f"gate1 frozen evidence is missing: {relative}")
+            actual = hashlib.sha256(asset_path.read_bytes()).hexdigest().lower()
+            if actual != asset.get("sha256", "").lower():
+                fail(f"gate1 frozen evidence SHA-256 mismatch: {relative}")
+            policy = asset.get("freeze_policy")
+            if policy == "IMMUTABLE_REVIEW_EVIDENCE":
+                immutable_count += 1
+            elif policy == "CONTROLLED_MUTABLE_APPROVAL_LEDGER":
+                ledger_count += 1
+            else:
+                fail(f"unsupported gate1 freeze policy: {policy!r}")
+        if immutable_count != 39 or ledger_count != 1:
+            fail("gate1 package must contain 39 immutable inputs and one controlled approval ledger")
+        if frozen_manifest.get("immutable_evidence_count") != 39:
+            fail("gate1 frozen package immutable evidence count is not 39")
+        if frozen_manifest.get("controlled_mutable_ledger_count") != 1:
+            fail("gate1 frozen package controlled ledger count is not 1")
+
+        candidates_by_character = {
+            item.get("character"): item for item in frozen_manifest.get("candidates", [])
+        }
+        if set(candidates_by_character) != MANUAL_REVIEW_CHARACTERS:
+            fail("gate1 frozen package candidate set is incomplete")
+
+        if intake_template.get("status") != "TEMPLATE_ONLY_NOT_AN_APPROVAL_RECORD":
+            fail("gate1 approval intake template has an unsafe status")
+        if intake_template.get("approval_required") != 10 or intake_template.get("approval_recorded") != 0:
+            fail("gate1 intake template approval counts must be 0/10")
+        if intake_template.get("next_gate_allowed") is not False:
+            fail("gate1 intake template allows the next gate")
+        rows = intake_template.get("rows")
+        if not isinstance(rows, list) or len(rows) != 10:
+            fail("gate1 approval intake template must have exactly ten rows")
+        for character in MANUAL_REVIEW_CHARACTERS:
+            character_rows = [row for row in rows if row.get("character") == character]
+            if len(character_rows) != 5:
+                fail(f"gate1 intake template must have five rows for {character}")
+            if {row.get("role") for row in character_rows} != set(MANUAL_REVIEW_ROLES.values()):
+                fail(f"gate1 intake template role set is incomplete for {character}")
+            if {row.get("role_slug") for row in character_rows} != set(MANUAL_REVIEW_ROLES):
+                fail(f"gate1 intake template role slugs are incomplete for {character}")
+            expected_hash = candidates_by_character[character].get("sha256", "").lower()
+            for row in character_rows:
+                if any(row.get(field) not in ("", None) for field in ("reviewer", "decision", "reviewed_at", "comment", "patch_id")):
+                    fail(f"gate1 intake template contains a fabricated approval field for {character}")
+                if row.get("unresolved_patch") is not False or row.get("status") != "PENDING":
+                    fail(f"gate1 intake template row is not safely pending for {character}")
+                if row.get("evidence_hash", "").lower() != expected_hash:
+                    fail(f"gate1 intake template candidate hash mismatch for {character}")
+
+        packet_paths = list((manual_root / "packets").glob("*/*.md"))
+        if len(packet_paths) != 10:
+            fail("gate1 manual review package must contain exactly ten role packets")
+        for character in MANUAL_REVIEW_CHARACTERS:
+            for slug, role_name in MANUAL_REVIEW_ROLES.items():
+                packet = manual_root / "packets" / character / f"{slug}.md"
+                if not packet.is_file():
+                    fail(f"gate1 manual review packet is missing: {packet.relative_to(ROOT)}")
+                text = packet.read_text(encoding="utf-8")
+                expected_hash = candidates_by_character[character].get("sha256", "")
+                for required in (character, role_name, expected_hash, "Decision: PENDING"):
+                    if required not in text:
+                        fail(f"gate1 manual review packet missing required content: {packet.relative_to(ROOT)}")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))

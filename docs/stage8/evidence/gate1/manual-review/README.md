@@ -1,0 +1,27 @@
+# Gate 1 Manual Review Package
+
+## Current state
+
+- Package: `gate1-manual-review-916636d0-9c8061af`
+- Preparation result: `READY_FOR_HUMAN_REVIEW`
+- Automated QA: `PASS`
+- Actual approvals: `0/10`
+- Gate 1: `BLOCKED`
+- Gate 2: `NOT_STARTED`
+
+## Package contents
+
+- `FROZEN_EVIDENCE_MANIFEST_v1.0.json`: 40 checksum records. Of these, 39 inputs are immutable; the blank approval ledger is a controlled mutable record whose pre-review baseline hash is retained.
+- `approval-workbook-preflight.json`: read-only verification of the 10 blank `PENDING` rows.
+- `APPROVAL_INTAKE_TEMPLATE.json`: blank 5-role × 2-character intake template; it is not an approval record.
+- `packets/`: ten role-specific human review packets.
+
+## Workflow
+
+1. Assign one accountable named reviewer to each required role.
+2. Each role reviews both character packets against the frozen candidate hash.
+3. Record decisions only from the real reviewer in `Gate1_Manual_Approval_Log_v5.2.0.xlsx` and the canonical JSON approval record.
+4. On any candidate hash change, invalidate all five approvals for that character and rebuild/re-audit the package.
+5. Do not promote Gate 1 until 10 valid approvals, zero rejects, zero unresolved patches, automated QA PASS, and zero hash drift are all proven.
+
+AI preparation does not count as approval and must never populate reviewer identity, decision, or time fields.

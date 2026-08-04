@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 manual review preflight and reviewer packets
+
+- Verified the approval workbook read-only: ten role/character rows are `PENDING`, approval identity fields are blank, and formula errors are zero.
+- Verified all 40 package checksums and classified 39 immutable review inputs plus one controlled mutable approval-ledger baseline.
+- Added a frozen evidence manifest, a blank intake template, and ten role-specific review packets for five roles across both characters.
+- Extended the Harness validator to reject hash drift, fabricated approval fields, incomplete role matrices, or missing packets.
+- Retained Gate 1 `BLOCKED`, approvals `0/10`, and Gate 2 `NOT_STARTED`.
+
 ## 2026-08-04 — Gate 1 manual review and approval metaprompt
 
 - Defined the next authorized part as accountable Gate 1 manual review rather than premature Gate 2 work.
