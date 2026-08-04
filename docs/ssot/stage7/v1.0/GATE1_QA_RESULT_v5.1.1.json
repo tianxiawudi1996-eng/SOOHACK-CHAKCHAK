@@ -1,0 +1,48 @@
+{
+  "version": "5.1.1",
+  "gate": "Gate 1 — Canonical View",
+  "executedAtKST": "2026-08-04T10:19:17+09:00",
+  "method": "non-generative pixel extraction from approved reference boards",
+  "overallStatus": "FAIL",
+  "nextGateAllowed": false,
+  "statusVocabulary": [
+    "DONE_SPEC",
+    "DONE_IMPLEMENTED",
+    "VERIFIED",
+    "BLOCKED_EXTERNAL",
+    "FAIL"
+  ],
+  "sourceFiles": [
+    {
+      "id": "Chakchaki_Approved_Reference_v1.0.png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd"
+    },
+    {
+      "id": "Gongsickyi_Approved_Reference_v1.0.png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec"
+    }
+  ],
+  "completed": [
+    "approved source files copied and hashed",
+    "existing front/side/front-3q/back candidates extracted without regeneration",
+    "silhouette and 32/64/128px candidate evidence generated",
+    "character-specific evidence boards created"
+  ],
+  "failed": [
+    "neutral orthographic front missing",
+    "opposite side view missing",
+    "opposite front 3/4 view missing",
+    "rear 3/4 view missing",
+    "accessory-off full-body view missing",
+    "same-camera same-scale complete turnaround unavailable"
+  ],
+  "blockedExternal": [
+    "new missing canonical views must be produced under art-direction",
+    "Chakchaki cap/backpack S badge IP approval",
+    "manual design/3D/UX/QA lead sign-off"
+  ],
+  "gate2": {
+    "status": "FAIL",
+    "reason": "Gate 1 is not VERIFIED"
+  }
+}

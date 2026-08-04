@@ -1,0 +1,9 @@
+# Never commit credentials, recovery material, or private keys.
+**/github-recovery-codes.txt
+**/*recovery-codes*
+**/id_rsa*
+**/*private-key*
+
+# Local/generated caches.
+__pycache__/
+*.pyc
