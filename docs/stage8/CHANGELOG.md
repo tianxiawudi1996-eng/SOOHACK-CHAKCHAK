@@ -38,3 +38,13 @@
 - 민감정보 형태의 파일은 Git tracked 또는 canonical `ssot/stage7/v1.0/`에 있을 때만 Harness 실패로 처리하도록 검증기를 교정했다.
 - 현재 `github-recovery-codes.txt`는 ignore·untracked 상태이며 내용은 읽지 않았다.
 - Harness 구조 검증은 종료 코드 0으로 통과했지만, 정확한 원본 4종 누락 때문에 Gate 0은 계속 `BLOCKED`다.
+
+## 2026-08-04 — 필수 원본 엄격 검증 및 의미 연결 근거 교정
+
+- Harness가 Stage 7 지정 원본 10종의 정확 파일명과 canonical SSOT 배치를 모두 검사하도록 강화했다.
+- 정확 원본 4종이 누락된 현재 상태에서는 Harness가 종료 코드 1로 실패하며 Gate 0을 통과시키지 않는다.
+- JSON 구문, Markdown 내부 링크, Gate 프롬프트 구조, `SRC-01`~`SRC-06`, 탐색 이미지 혼입 여부도 검사한다.
+- ID 감사가 Markdown뿐 아니라 XLSX OOXML 셀 텍스트도 읽도록 수정해 `SRC-01`~`SRC-06`, `EVT-001`~`EVT-015`, Bubble ID를 실제 원본 위치에서 수집한다.
+- `Progress = Bubble Type / Happy State`, `Welcome State = Greet Clip`은 생성 산출물의 자기참조가 아니라 Stage 7 감사 원문에서 같은 행에 함께 등장하는 근거를 기록하도록 교정했다.
+- 생성되는 감사 파일 7개는 입력 인벤토리에서 제외해 재실행 시 자기 해시가 바뀌는 순환 의존을 제거했다.
+- ignored·untracked `github-recovery-codes.txt`는 내용을 읽지 않고 경고로 유지하며, tracked 또는 canonical SSOT에 들어갈 경우에만 실패시킨다.

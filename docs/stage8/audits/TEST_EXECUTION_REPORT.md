@@ -22,6 +22,10 @@
 | `python -m py_compile ...` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:22+09:00` | 0 | 교정된 감사·검증 스크립트 구문 검사 통과 |
 | `python scripts/harness/audit_stage8.py` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `required_exact=6/10`, Gate 0 `BLOCKED` |
 | `python scripts/harness/validate_harness.py` (후속 실행) | `2026-08-04T13:28:23+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `HARNESS_PASS`; ignored·untracked 민감 파일은 경고, Gate 순서·증거 검증 통과 |
+| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/validate_harness.py` (엄격 검증 교정) | `2026-08-04T13:37:44.6908750+09:00` | `2026-08-04T13:37:45.0007194+09:00` | 0 | Python 구문 검사 통과 |
+| `python scripts/harness/audit_stage8.py` (엄격 검증 교정) | `2026-08-04T13:37:49.0522938+09:00` | `2026-08-04T13:37:50.4687456+09:00` | 0 | `files=82`, `required_exact=6/10`, Gate 0 `BLOCKED` |
+| `python scripts/harness/validate_harness.py` (엄격 검증 교정) | `2026-08-04T13:37:54.2917395+09:00` | `2026-08-04T13:37:54.3580119+09:00` | 1 | 필수 Stage 7 정확 원본 4종 누락을 명시하고 차단 |
+| `py_compile` → `audit_stage8.py` → `validate_harness.py` (OOXML ID 감사 포함 최종 회귀) | `2026-08-04T13:40:52.9775524+09:00` | `2026-08-04T13:40:55.2444475+09:00` | `0 / 0 / 1` | 입력 75개, 정확 원본 `6/10`, `SRC-01`~`SRC-06` 확인 후 누락 원본 4종을 의도대로 차단 |
 
 ## 미실행 명령
 
@@ -31,4 +35,4 @@
 
 ## 해석
 
-감사 생성기·Python 구문 검사·Harness 구조 검증은 실행되었다. Harness는 종료 코드 0이지만 이는 상태 모델과 증거 경로가 유효하다는 뜻이며 Gate 0 통과를 의미하지 않는다. 정확한 원본 4종이 없어 Gate 0은 계속 `BLOCKED`다.
+감사 생성기와 Python 구문 검사는 정상 종료했다. 엄격 Harness 검증기는 구조·JSON·Markdown 링크·Gate 순서·ID와 의미 연결을 검사한 뒤 정확한 원본 4종 누락을 종료 코드 1로 차단한다. 따라서 Gate 0은 `BLOCKED`이며 Gate 1 이후 검증은 시작하지 않는다. 13:28의 종료 코드 0은 필수 원본 존재를 실패 조건에 포함하기 전의 역사적 실행 기록이다. 생성되는 감사 산출물 7개는 자기참조 방지를 위해 입력 인벤토리에서 제외한다.

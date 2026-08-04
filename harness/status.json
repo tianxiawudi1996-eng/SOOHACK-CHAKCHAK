@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T13:14:38+09:00",
-  "head_commit": "d57311d",
+  "updated_at": "2026-08-04T13:37:54+09:00",
+  "head_commit": "e4ea2c8",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {

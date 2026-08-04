@@ -6,7 +6,7 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 
 ## 2. 확인한 파일과 핵심 원본
 
-- 인벤토리 조사 파일: `82개` (감사 산출물 포함)
+- 입력 인벤토리 조사 파일: `75개` (자기참조를 막기 위해 생성되는 감사 산출물 7개 제외)
 - Stage 7 지정 원본 정확 일치: `6/10`
 - 확인된 핵심 원본: XLSX 3종, `Gongsickyi_Character_Bible_v1.0.md`, `Stage8_Handoff_Manifest_v1.0.md` 및 동일 바이트 복사본
 - 누락 정확 원본: `MathChakChak_Stage7_SSOT_v1.0.md`, `Chakchaki_Character_Bible_v1.0.md`, 승인 이미지 2종
@@ -40,7 +40,7 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 ## 5. 자동 테스트
 
 - 감사 생성기: 종료 코드 0, Gate 0 `BLOCKED` 기록
-- Harness validator: 종료 코드 0, 상태·증거·Gate 순서 검증 통과. Gate 0 판정 자체는 `BLOCKED`
+- Harness validator: 종료 코드 1. 구조·JSON·Markdown 링크·Gate 순서·ID/의미 연결을 검사하고, 정확 원본 4종 누락을 명시적으로 차단
 - pytest/npm 테스트: 프로젝트 명령 부재로 미실행
 
 ## 6. 남은 오류와 차단사항
@@ -54,7 +54,7 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 
 - 브랜치: `codex/stage8-harness-continuation`
 - 커밋: `ca5c3fb` (`chore: import local stage 1-7 source files`), `45b4e9c` (`chore: add evidence-gated stage 8 harness`), `152c49d` (`docs: record gate 0 evidence and execution results`)
-- 이전 실행 HEAD: `d57311d`
+- 엄격 검증 교정 전 HEAD: `e4ea2c8`
 - 푸시 시도: `codex/stage8-harness-continuation` → 원격 `403`, `Permission to tianxiawudi1996-eng/SOOHACK-CHAKCHAK.git denied to visionlab-coder`
 - Draft PR: 푸시 실패로 생성·갱신 불가
 

@@ -14,8 +14,40 @@ ROOT = Path(__file__).resolve().parents[2]
 STATUS = ROOT / "harness" / "status.json"
 MANIFEST = ROOT / "harness" / "ssot-manifest.json"
 ALLOWED = {"NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"}
-REQUIRED_PROMPTS = [f"GATE{i}_" for i in range(9)]
 SENSITIVE_NAME_RE = re.compile(r"(?:recovery[-_ ]?codes|id_rsa|private[-_ ]?key)", re.I)
+REQUIRED_STAGE7 = [
+    "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+    "MathChakChak_Stage7_SSOT_v1.0.md",
+    "Component_Inventory_v1.0.xlsx",
+    "Gongsickyi_Character_Bible_v1.0.md",
+    "Chakchaki_Character_Bible_v1.0.md",
+    "Character_Module_Rig_Spec_v1.0.xlsx",
+    "Expression_Motion_Bubble_Library_v1.0.xlsx",
+    "Stage8_Handoff_Manifest_v1.0.md",
+    "Chakchaki_Approved_Reference_v1.0.png",
+    "Gongsickyi_Approved_Reference_v1.0.png",
+]
+REQUIRED_STRUCTURE = [
+    ".github/workflows/stage8-harness.yml",
+    "README.md",
+    "harness/README.md",
+    "harness/status.json",
+    "harness/ssot-manifest.json",
+    "scripts/harness/audit_stage8.py",
+    "scripts/harness/validate_harness.py",
+    "docs/stage8/00_MASTER_PLAN.md",
+    "docs/stage8/CHANGELOG.md",
+    "docs/stage8/audits/WORKSPACE_BASELINE.md",
+    "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
+    "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+    "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+    "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+    "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
+    "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
+    "docs/stage8/evidence/gate0/gate0-decision.json",
+]
 
 
 def fail(message: str) -> None:
@@ -35,7 +67,27 @@ def load_json(path: Path) -> dict:
     return value
 
 
+def markdown_broken_links(path: Path) -> list[str]:
+    text = path.read_text(encoding="utf-8")
+    text = re.sub(r"```.*?```", "", text, flags=re.S)
+    broken: list[str] = []
+    for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", text):
+        target = target.strip().strip("<>")
+        if not target or target.startswith("#") or re.match(r"^[a-z][a-z0-9+.-]*://", target, re.I):
+            continue
+        target_path = target.split("#", 1)[0]
+        if not target_path:
+            continue
+        if not (path.parent / target_path).resolve().exists():
+            broken.append(target)
+    return broken
+
+
 def main() -> int:
+    missing_structure = [item for item in REQUIRED_STRUCTURE if not (ROOT / item).exists()]
+    if missing_structure:
+        fail("missing required harness files: " + ", ".join(missing_structure))
+
     data = load_json(STATUS)
     manifest = load_json(MANIFEST)
     if data.get("project") != "SOOHACK-CHAKCHAK":
@@ -68,17 +120,43 @@ def main() -> int:
     required_files = manifest.get("required_files")
     if not isinstance(required_files, list) or len(required_files) != 10:
         fail("ssot-manifest.json must contain the 10 required Stage 7 records")
+    records_by_name = {record.get("file_name"): record for record in required_files}
+    if set(records_by_name) != set(REQUIRED_STAGE7):
+        fail("ssot-manifest.json Stage 7 file names do not match the required 10")
+    missing_exact = [
+        name for name in REQUIRED_STAGE7
+        if records_by_name[name].get("status") == "MISSING_EXACT"
+    ]
+    conflicts = [
+        name for name in REQUIRED_STAGE7
+        if records_by_name[name].get("status") == "CONFLICT_MULTIPLE_EXACT"
+    ]
     for record in required_files:
-        if record.get("status", "").startswith("FOUND_EXACT"):
-            for match in record.get("exact_matches", []):
-                path = ROOT / match["path"]
-                if not path.exists():
-                    fail(f"manifest path missing: {match['path']}")
-                expected = match.get("sha256")
-                if expected:
-                    digest = hashlib.sha256(path.read_bytes()).hexdigest()
-                    if digest.lower() != expected.lower():
-                        fail(f"manifest SHA-256 mismatch: {match['path']}")
+        record_status = record.get("status", "")
+        if record_status in {"MISSING_EXACT", "CONFLICT_MULTIPLE_EXACT"}:
+            continue
+        if not record_status.startswith("FOUND_EXACT"):
+            fail(f"unsupported Stage 7 manifest status for {record.get('file_name')}: {record.get('status')}")
+        for match in record.get("exact_matches", []):
+            path = ROOT / match["path"]
+            if not path.exists():
+                fail(f"manifest path missing: {match['path']}")
+            expected = match.get("sha256")
+            if expected:
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                if digest.lower() != expected.lower():
+                    fail(f"manifest SHA-256 mismatch: {match['path']}")
+        canonical = ROOT / "ssot" / "stage7" / "v1.0" / record["file_name"]
+        if not canonical.exists():
+            fail(f"required Stage 7 original is not in canonical SSOT: {canonical.relative_to(ROOT)}")
+        canonical_hash = hashlib.sha256(canonical.read_bytes()).hexdigest().lower()
+        recorded_hashes = {
+            match.get("sha256", "").lower()
+            for match in record.get("exact_matches", [])
+            if match.get("sha256")
+        }
+        if canonical_hash not in recorded_hashes:
+            fail(f"canonical Stage 7 SHA-256 is not recorded: {canonical.relative_to(ROOT)}")
 
     tracked: set[str] = set()
     if (ROOT / ".git").exists():
@@ -113,12 +191,51 @@ def main() -> int:
             if required not in text:
                 fail(f"prompt missing required section {required!r}: {prompt.relative_to(ROOT)}")
 
+    for path in ROOT.rglob("*.json"):
+        if ".git" not in path.parts:
+            load_json(path)
+
+    broken_links: list[str] = []
+    for path in ROOT.rglob("*.md"):
+        if ".git" in path.parts:
+            continue
+        broken_links.extend(f"{path.relative_to(ROOT)} -> {target}" for target in markdown_broken_links(path))
+    if broken_links:
+        fail("broken Markdown links: " + "; ".join(broken_links[:20]))
+
+    canonical_images = list((ROOT / "ssot" / "stage7" / "v1.0").glob("*.png"))
+    unexpected_images = [
+        path.name for path in canonical_images
+        if path.name not in {
+            "Chakchaki_Approved_Reference_v1.0.png",
+            "Gongsickyi_Approved_Reference_v1.0.png",
+        }
+    ]
+    if unexpected_images:
+        fail("exploratory images mixed into canonical SSOT: " + ", ".join(unexpected_images))
+
+    id_audit = load_json(ROOT / "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json")
+    id_counts = id_audit.get("id_counts", {})
+    missing_src = [f"SRC-0{index}" for index in range(1, 7) if f"SRC-0{index}" not in id_counts]
+    if missing_src:
+        fail("missing SRC identifiers in cross-reference audit: " + ", ".join(missing_src))
+    semantics = id_audit.get("semantic_presence", {})
+    if not semantics.get("progress_bubble_type_happy_state"):
+        fail("Progress = Bubble Type / Happy State linkage is not evidenced")
+    if not semantics.get("welcome_greet_connection"):
+        fail("Welcome State = Greet Clip linkage is not evidenced")
+
     if not (ROOT / "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md").exists():
         fail("Gate 0 audit report is missing")
     if gates[0].get("status") == "VERIFIED":
         report = (ROOT / "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md").read_text(encoding="utf-8")
         if "Gate 0 상태: `VERIFIED`" not in report:
             fail("gate0 status and report disagree")
+
+    if missing_exact:
+        fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
+    if conflicts:
+        fail("conflicting exact Stage 7 originals: " + ", ".join(conflicts))
 
     print("HARNESS_PASS")
     print(f"gate0={gates[0].get('status')}")

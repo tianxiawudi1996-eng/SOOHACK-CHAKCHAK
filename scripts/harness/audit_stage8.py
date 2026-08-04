@@ -23,6 +23,15 @@ ROOT = Path(__file__).resolve().parents[2]
 AUDIT_ROOT = ROOT / "docs" / "stage8" / "audits"
 EVIDENCE_ROOT = ROOT / "docs" / "stage8" / "evidence" / "gate0"
 SSOT_TARGET = ROOT / "ssot" / "stage7" / "v1.0"
+GENERATED_OUTPUTS = {
+    "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+    "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+    "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+    "docs/stage8/evidence/gate0/gate0-decision.json",
+    "harness/ssot-manifest.json",
+}
 
 REQUIRED = [
     "MathChakChak_Stage7_SSOT_v1.0.xlsx",
@@ -76,7 +85,10 @@ def source_files() -> list[Path]:
     ignored = {".git", "node_modules", "dist", "build", "__pycache__"}
     result: list[Path] = []
     for path in ROOT.rglob("*"):
-        if not path.is_file() or any(part in ignored for part in path.relative_to(ROOT).parts):
+        relative = path.relative_to(ROOT)
+        if not path.is_file() or any(part in ignored for part in relative.parts):
+            continue
+        if relative.as_posix() in GENERATED_OUTPUTS:
             continue
         result.append(path)
     return sorted(result, key=lambda item: rel(item).lower())
@@ -206,6 +218,25 @@ def image_audit(path: Path) -> dict:
     return result
 
 
+def searchable_text(path: Path) -> str:
+    if path.name in SENSITIVE_NAMES or "recovery-code" in path.name.lower():
+        return ""
+    if path.suffix.lower() in {".md", ".json", ".txt", ".py", ".js", ".ts", ".tsx", ".jsx", ".yml", ".yaml"}:
+        return safe_text(path)[0]
+    if path.suffix.lower() != ".xlsx":
+        return ""
+    values: list[str] = []
+    try:
+        with zipfile.ZipFile(path) as archive:
+            for name in archive.namelist():
+                if name == "xl/sharedStrings.xml" or re.match(r"xl/worksheets/sheet\d+\.xml$", name):
+                    root = ET.fromstring(archive.read(name))
+                    values.extend(text for text in root.itertext() if text)
+    except (OSError, zipfile.BadZipFile, ET.ParseError):
+        return ""
+    return "\n".join(values)
+
+
 def inventory() -> tuple[list[dict], dict[str, list[dict]], dict[str, list[str]]]:
     rows: list[dict] = []
     by_name: dict[str, list[dict]] = defaultdict(list)
@@ -223,6 +254,8 @@ def inventory() -> tuple[list[dict], dict[str, list[dict]], dict[str, list[str]]
             text, decode_error = safe_text(path)
             if decode_error:
                 text = ""
+        elif path.suffix.lower() == ".xlsx":
+            text = searchable_text(path)
         row = {
             "stage": stage_for(path, text),
             "file_name": name,
@@ -301,10 +334,24 @@ def main() -> int:
             "status": record_status,
         })
     id_counts = {identifier: len(paths) for identifier, paths in sorted(id_locations.items())}
+    progress_evidence: list[str] = []
+    welcome_evidence: list[str] = []
+    for path in source_files():
+        relative = rel(path)
+        if not relative.startswith(("docs/agent/", "docs/developer/", "docs/ssot/", "ssot/")):
+            continue
+        text = searchable_text(path)
+        for line in text.splitlines():
+            if re.search(r"\bProgress\b", line, re.I) and re.search(r"\bHappy\b", line, re.I):
+                progress_evidence.append(relative)
+            if re.search(r"\bWelcome\b", line, re.I) and re.search(r"\bGreet\b", line, re.I):
+                welcome_evidence.append(relative)
     semantics = {
-        "progress_bubble_type_happy_state": any("progress" in row.get("file_name", "").lower() or "progress" in " ".join(row.get("references", [])).lower() for row in rows),
-        "welcome_greet_connection": any("greet" in json.dumps(row, ensure_ascii=False).lower() for row in rows),
-        "note": "Semantic links require human review; presence is not approval evidence.",
+        "progress_bubble_type_happy_state": bool(progress_evidence),
+        "progress_evidence": sorted(set(progress_evidence)),
+        "welcome_greet_connection": bool(welcome_evidence),
+        "welcome_evidence": sorted(set(welcome_evidence)),
+        "note": "Presence is evidenced by source lines containing both mapped terms; approval still requires all canonical originals and human review.",
     }
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -372,7 +419,7 @@ def main() -> int:
     for identifier, count in sorted(id_counts.items()):
         locations = id_locations[identifier]
         cross_lines.append(f"| `{identifier}` | {count} | {len(set(locations))} | {', '.join('`' + item + '`' for item in sorted(set(locations))[:4])} |")
-    cross_lines += ["", "## 필수 의미 연결", "", f"- `Progress = Bubble Type / Happy State`: **본문·파일에서 관련 토큰 존재 여부만 확인 = {semantics['progress_bubble_type_happy_state']}**. 실제 의미 정합성은 승인 원본 입고 후 재검토해야 한다.", f"- `Welcome State = Greet Clip`: **본문·파일에서 관련 토큰 존재 여부만 확인 = {semantics['welcome_greet_connection']}**. 실제 연결은 승인 원본 입고 후 재검토해야 한다.", "", "## 제한", "", "- 현재 로컬에는 지정된 Stage 7 원본 전체가 없으므로 정의/사용/충돌을 확정할 수 없다.", "- 파일명 후보를 ID 정의로 승격하지 않았다.", ""]
+    cross_lines += ["", "## 필수 의미 연결", "", f"- `Progress = Bubble Type / Happy State`: **동일 원문 행에서 두 용어 발견 = {semantics['progress_bubble_type_happy_state']}**. 근거: {', '.join('`' + item + '`' for item in semantics['progress_evidence']) or '없음'}", f"- `Welcome State = Greet Clip`: **동일 원문 행에서 두 용어 발견 = {semantics['welcome_greet_connection']}**. 근거: {', '.join('`' + item + '`' for item in semantics['welcome_evidence']) or '없음'}", "", "## 제한", "", "- 현재 로컬에는 지정된 Stage 7 원본 전체가 없으므로 정의/사용/충돌을 확정할 수 없다.", "- 파일명 후보를 ID 정의로 승격하지 않았다.", "- 의미 연결 토큰 발견은 승인 완료가 아니며 원본 10종과 수동 검토가 필요하다.", ""]
     (AUDIT_ROOT / "ID_CROSS_REFERENCE_AUDIT.md").write_text("\n".join(cross_lines), encoding="utf-8")
 
     report_lines = [
