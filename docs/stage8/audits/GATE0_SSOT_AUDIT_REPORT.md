@@ -1,6 +1,6 @@
 # Gate 0 SSOT 감사 보고서
 
-- 감사 시각(UTC): `2026-08-04T04:16:04.750349+00:00`
+- 감사 시각(UTC): `2026-08-04T04:17:51.733649+00:00`
 - Gate 0 상태: `BLOCKED`
 - 다음 Gate: 실행 금지 (`Gate 1`은 `NOT_STARTED` 유지)
 
@@ -8,7 +8,7 @@
 
 - Stage 7 지정 원본 정확 일치: `6/10`
 - Stage 7 SSOT 대상 경로 존재: `YES`
-- Git 메타데이터: `MISSING`
+- Git 메타데이터: `FOUND`
 - 3D 자산: `0개`
 - XLSX·Markdown·이미지 읽기 전용 감사: 인벤토리 산출물에 파일별 결과 기록
 - ID·의미 연결: 인벤토리 및 교차참조 보고서에 실제 발견 범위 기록
@@ -17,7 +17,6 @@
 
 - 정확한 Stage 7 승인 원본이 누락됨: `MathChakChak_Stage7_SSOT_v1.0.md`, `Chakchaki_Character_Bible_v1.0.md`, `Chakchaki_Approved_Reference_v1.0.png`, `Gongsickyi_Approved_Reference_v1.0.png`
 - 민감정보로 보이는 파일이 존재함(내용 미열람·미복사): `docs/ssot/stage7/v1.0/github-recovery-codes.txt`
-- 로컬 `.git`이 없어 HEAD·브랜치·미커밋 기준선을 기록할 수 없음
 - GLB/GLTF/BLEND/FBX가 없어 Gate 2~4 실제 자산 검증 불가
 
 ## 증거 경로

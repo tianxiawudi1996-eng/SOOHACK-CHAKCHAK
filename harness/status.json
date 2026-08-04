@@ -3,8 +3,8 @@
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
   "updated_at": "2026-08-04T13:14:38+09:00",
-  "head_commit": "",
-  "branch": "",
+  "head_commit": "45b4e9c",
+  "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
     "status": "BLOCKED",
@@ -18,7 +18,7 @@
     "blockers": [
       "Four of the ten exact Stage 7 originals are not in the workspace",
       "A sensitive-looking github-recovery-codes.txt exists and is not safe to commit",
-      "The workspace has no .git metadata or local HEAD baseline",
+      "The local Git baseline is new and has no upstream ancestry or Draft PR yet",
       "No 3D runtime assets exist"
     ],
     "entry_allowed": true

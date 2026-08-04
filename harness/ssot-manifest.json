@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T04:16:04.750349+00:00",
+  "generated_at": "2026-08-04T04:17:51.733649+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -838,6 +838,11 @@
       "size_bytes": 426
     },
     {
+      "path": ".gitignore",
+      "sha256": "c71e762d06fbdaab3797b9a5ec84a98f86b59b53c747f99cc924e1be27972522",
+      "size_bytes": 187
+    },
+    {
       "path": "docs/agent/6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
       "sha256": "a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa",
       "size_bytes": 22287
@@ -1074,22 +1079,22 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "020fc08b3d044ea1d9b5faf55336ccf00680110dbda0136256c6ab3a182aa47c",
-      "size_bytes": 2892
+      "sha256": "a6350702c7c4c9bd54dc3f11f5085a9db9f3b179fabddc037391d0ca2960f56d",
+      "size_bytes": 3006
     },
     {
       "path": "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
-      "sha256": "d552126c863e9c9b92956435f309b5a01fabbce03e73c63d55708f3757b14d5a",
-      "size_bytes": 1598
+      "sha256": "9131fec2c9436d0da7c82c0924e772e55c700555b3db70fa76c66b97e7dac38f",
+      "size_bytes": 1508
     },
     {
       "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
-      "sha256": "933418b2c089107e581dffad80c97aa7d9f064a43b03cd098332ee81a0d49395",
+      "sha256": "3519d7a70beb1702ea23472464fabba5220e6c7d6e3350d5b632f06b6caf9b7c",
       "size_bytes": 37363
     },
     {
       "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
-      "sha256": "d6dd623260a457a316708c3efe0c5c68354614d13817e838b8eec362466c6e55",
+      "sha256": "475239a22702db4ec403fcf76f9e8a1b3a200dc0b4a311d6c4db12fb2c8658ec",
       "size_bytes": 8850
     },
     {
@@ -1099,13 +1104,13 @@
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
-      "sha256": "835752d1295833e2c596d601f18c68be573c5d400acb707ad5002f77442693b5",
-      "size_bytes": 170008
+      "sha256": "cd9fc567d95aa2d95b879535494a929abd4d3bf72ca86c3d3d82fbc2ef1d5c89",
+      "size_bytes": 172526
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
-      "sha256": "742a29b883f3e46fc5c0fcfe9c59fb892b94fcffc9697b24ef254ddbc42f4e6e",
-      "size_bytes": 25522
+      "sha256": "6494d86b9e51f890920da238e19c96eb24445fab093dc1b982477b01fef8253d",
+      "size_bytes": 26239
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
@@ -1119,12 +1124,12 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "79752e3f77be7b430e59190eb0e4d0301ab751a29f972f2f0f00fc06980377ba",
-      "size_bytes": 917
+      "sha256": "9ed9874921ba3a9d0f496f30a4dc6af6552d88550fdd21d9589fb3ad01d437ec",
+      "size_bytes": 1238
     },
     {
       "path": "docs/stage8/evidence/gate0/gate0-decision.json",
-      "sha256": "5321788e7a62cfaef3cb21e840890c907d16d843a645894808304b02a98e7cf8",
+      "sha256": "44eeff8ff3c2d8981cbf5ba4f9617f5b2bc286ecfc112fc8234a61cfd5733a18",
       "size_bytes": 570
     },
     {
@@ -1179,13 +1184,13 @@
     },
     {
       "path": "harness/ssot-manifest.json",
-      "sha256": "19fa9978ee3c071c54dafdf32745a9eefd1559b2bca1a0b41ae3ac975a904404",
-      "size_bytes": 42514
+      "sha256": "af89aa7f03dfb4949d7e1cd94040edb6abeb834f29e44a9edd2bc65f45d22f67",
+      "size_bytes": 43046
     },
     {
       "path": "harness/status.json",
-      "sha256": "57bdde1c7aa810a228b6514a082818011922df7ca203bca87424b0cf3ed7bb8e",
-      "size_bytes": 2694
+      "sha256": "d2593bfea31b7bca8063e6dbfd870742f050b141f2bb31a9ac52efb2f6dfab4d",
+      "size_bytes": 2751
     },
     {
       "path": "README.md",

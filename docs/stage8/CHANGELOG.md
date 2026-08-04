@@ -23,3 +23,9 @@
 - 민감정보로 보이는 `docs/ssot/stage7/v1.0/github-recovery-codes.txt` 존재
 - 로컬 `.git`과 HEAD 기준선 없음
 - 3D 자산·제품 소스·배포 대상 없음
+
+### 형상관리
+
+- 로컬 `.git`을 안전하게 초기화하고 `codex/stage8-harness-continuation` 브랜치를 만들었다.
+- 원본 자료와 Harness 산출물을 두 개의 로컬 커밋으로 분리했다.
+- `github-recovery-codes.txt`는 `.gitignore`로 제외되어 어느 커밋에도 포함되지 않았다.

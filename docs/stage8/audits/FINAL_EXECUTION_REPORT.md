@@ -6,7 +6,7 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 
 ## 2. 확인한 파일과 핵심 원본
 
-- 인벤토리 조사 파일: `81개` (감사 산출물 포함)
+- 인벤토리 조사 파일: `82개` (감사 산출물 포함)
 - Stage 7 지정 원본 정확 일치: `6/10`
 - 확인된 핵심 원본: XLSX 3종, `Gongsickyi_Character_Bible_v1.0.md`, `Stage8_Handoff_Manifest_v1.0.md` 및 동일 바이트 복사본
 - 누락 정확 원본: `MathChakChak_Stage7_SSOT_v1.0.md`, `Chakchaki_Character_Bible_v1.0.md`, 승인 이미지 2종
@@ -47,13 +47,14 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 
 1. 정확한 승인 원본 4종 원본 바이트 입고 필요
 2. `github-recovery-codes.txt` 보안 조치 필요. 이 파일은 읽거나 커밋하지 않았다.
-3. Git 저장소 초기화·브랜치·사용자 인증 기준선 필요
+3. 원격 브랜치 푸시·Draft PR 인증 및 upstream ancestry 확인 필요
 4. 3D 자산·제품 코드·배포 대상·승인 권한 필요
 
 ## 7. 브랜치·커밋·푸시
 
-- 현재 로컬 `.git` 없음. HEAD·브랜치·커밋 해시는 아직 없음.
-- 원격 읽기 확인만 수행했으며, 원본 누락·민감정보 차단으로 푸시와 Draft PR 갱신은 수행하지 않았다.
+- 브랜치: `codex/stage8-harness-continuation`
+- 커밋: `ca5c3fb` (`chore: import local stage 1-7 source files`), `45b4e9c` (`chore: add evidence-gated stage 8 harness`)
+- 원격 읽기 확인은 완료했으나, 원본 누락·민감정보 차단 상태에서 푸시와 Draft PR 갱신은 아직 수행하지 않았다.
 
 ## 8. 다음 정확한 한 가지 작업
 

@@ -1,9 +1,9 @@
 # Stage 1~8 파일 인벤토리
 
-- 생성 시각(UTC): `2026-08-04T04:16:04.750349+00:00`
-- 조사 파일 수: `81`
+- 생성 시각(UTC): `2026-08-04T04:17:51.733649+00:00`
+- 조사 파일 수: `82`
 - Stage 7 지정 원본 정확 일치: `6/10`
-- Git 메타데이터: `MISSING`
+- Git 메타데이터: `FOUND`
 - 판정: `BLOCKED` — 정확한 승인 원본 누락/미입고와 보안·형상관리 차단이 존재한다.
 
 ## Stage 7 지정 원본
@@ -26,6 +26,7 @@
 | Stage | 파일 | 경로 | 크기 | 수정일(UTC) | MIME | SHA-256 | 분류 | 사용 가능 |
 |---|---|---|---:|---|---|---|---|---|
 | `Stage 8` | `stage8-harness.yml` | `.github/workflows/stage8-harness.yml` | 426 | `2026-08-04T04:12:25.803526+00:00` | `application/octet-stream` | `735c0ec81206da58676dd6e07b1e723678c58506c74a2454a3fad3a5a78abcc6` | `unclassified` | `False` |
+| `Unclassified` | `.gitignore` | `.gitignore` | 187 | `2026-08-04T04:16:37.850377+00:00` | `application/octet-stream` | `c71e762d06fbdaab3797b9a5ec84a98f86b59b53c747f99cc924e1be27972522` | `unclassified` | `False` |
 | `Stage 2` | `6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md` | `docs/agent/6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md` | 22287 | `2026-07-31T07:51:31.324479+00:00` | `text/markdown` | `a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa` | `derived-or-working` | `True` |
 | `Stage 1-7 support` | `ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png` | `docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png` | 1671646 | `2026-08-02T13:49:00.081559+00:00` | `image/png` | `ca47cc30bc6018fdea883aed29828191772030a64d9d32cca61369f7fcd2ec74` | `derived-or-working` | `True` |
 | `Stage 1-7 support` | `ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png` | `docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png` | 1743160 | `2026-08-02T13:49:00.081559+00:00` | `image/png` | `c55bacd61d81b79ec456f699d4ab21f143b62798961a2429e04bedb412f964ca` | `derived-or-working` | `True` |
@@ -74,17 +75,17 @@
 | `Stage 7` | `MathChakChak_Stage7_SSOT_v1.0.xlsx` | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` | 191386 | `2026-08-04T03:26:03.684578+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af` | `target-candidate` | `True` |
 | `Stage 8` | `Stage8_Handoff_Manifest_v1.0.md` | `docs/ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md` | 4322 | `2026-08-04T03:29:49.868843+00:00` | `text/markdown` | `129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e` | `target-candidate` | `True` |
 | `Stage 8` | `00_MASTER_PLAN.md` | `docs/stage8/00_MASTER_PLAN.md` | 1747 | `2026-08-04T04:13:09.977734+00:00` | `text/markdown` | `a160981243ef53d9404d2fec1114ad95463f10f17c3ede260efb28d5d86a019f` | `unclassified` | `True` |
-| `Stage 8` | `FINAL_EXECUTION_REPORT.md` | `docs/stage8/audits/FINAL_EXECUTION_REPORT.md` | 2892 | `2026-08-04T04:15:54.945781+00:00` | `text/markdown` | `020fc08b3d044ea1d9b5faf55336ccf00680110dbda0136256c6ab3a182aa47c` | `unclassified` | `True` |
-| `Stage 8` | `GATE0_SSOT_AUDIT_REPORT.md` | `docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md` | 1598 | `2026-08-04T04:15:08.577831+00:00` | `text/markdown` | `d552126c863e9c9b92956435f309b5a01fabbce03e73c63d55708f3757b14d5a` | `approval-candidate` | `True` |
-| `Stage 8` | `ID_CROSS_REFERENCE_AUDIT.json` | `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json` | 37363 | `2026-08-04T04:15:08.573143+00:00` | `application/json` | `933418b2c089107e581dffad80c97aa7d9f064a43b03cd098332ee81a0d49395` | `unclassified` | `True` |
-| `Stage 8` | `ID_CROSS_REFERENCE_AUDIT.md` | `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md` | 8850 | `2026-08-04T04:15:08.576814+00:00` | `text/markdown` | `d6dd623260a457a316708c3efe0c5c68354614d13817e838b8eec362466c6e55` | `unclassified` | `True` |
+| `Stage 8` | `FINAL_EXECUTION_REPORT.md` | `docs/stage8/audits/FINAL_EXECUTION_REPORT.md` | 3006 | `2026-08-04T04:17:33.240019+00:00` | `text/markdown` | `a6350702c7c4c9bd54dc3f11f5085a9db9f3b179fabddc037391d0ca2960f56d` | `unclassified` | `True` |
+| `Stage 8` | `GATE0_SSOT_AUDIT_REPORT.md` | `docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md` | 1508 | `2026-08-04T04:17:41.436198+00:00` | `text/markdown` | `9131fec2c9436d0da7c82c0924e772e55c700555b3db70fa76c66b97e7dac38f` | `approval-candidate` | `True` |
+| `Stage 8` | `ID_CROSS_REFERENCE_AUDIT.json` | `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json` | 37363 | `2026-08-04T04:17:41.431017+00:00` | `application/json` | `3519d7a70beb1702ea23472464fabba5220e6c7d6e3350d5b632f06b6caf9b7c` | `unclassified` | `True` |
+| `Stage 8` | `ID_CROSS_REFERENCE_AUDIT.md` | `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md` | 8850 | `2026-08-04T04:17:41.436198+00:00` | `text/markdown` | `475239a22702db4ec403fcf76f9e8a1b3a200dc0b4a311d6c4db12fb2c8658ec` | `unclassified` | `True` |
 | `Stage 8` | `STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | 2758 | `2026-08-04T04:13:09.979748+00:00` | `text/markdown` | `db878ab20681405887a8173eb6b56c25c23ba86bc4705ead88ae8efbb4b08a28` | `unclassified` | `True` |
-| `Stage 8` | `STAGE1_TO_STAGE8_INVENTORY.json` | `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json` | 170008 | `2026-08-04T04:15:08.572130+00:00` | `application/json` | `835752d1295833e2c596d601f18c68be573c5d400acb707ad5002f77442693b5` | `unclassified` | `True` |
-| `Stage 8` | `STAGE1_TO_STAGE8_INVENTORY.md` | `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md` | 25522 | `2026-08-04T04:15:08.576285+00:00` | `text/markdown` | `742a29b883f3e46fc5c0fcfe9c59fb892b94fcffc9697b24ef254ddbc42f4e6e` | `unclassified` | `True` |
+| `Stage 8` | `STAGE1_TO_STAGE8_INVENTORY.json` | `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json` | 172526 | `2026-08-04T04:17:41.426965+00:00` | `application/json` | `cd9fc567d95aa2d95b879535494a929abd4d3bf72ca86c3d3d82fbc2ef1d5c89` | `unclassified` | `True` |
+| `Stage 8` | `STAGE1_TO_STAGE8_INVENTORY.md` | `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md` | 26239 | `2026-08-04T04:17:41.435688+00:00` | `text/markdown` | `6494d86b9e51f890920da238e19c96eb24445fab093dc1b982477b01fef8253d` | `unclassified` | `True` |
 | `Stage 8` | `TEST_EXECUTION_REPORT.md` | `docs/stage8/audits/TEST_EXECUTION_REPORT.md` | 1330 | `2026-08-04T04:15:54.944251+00:00` | `text/markdown` | `9f55360bce1f56c81d8306d33abbb21d1703230363cc33ec5184c7306608a1d1` | `unclassified` | `True` |
 | `Stage 8` | `WORKSPACE_BASELINE.md` | `docs/stage8/audits/WORKSPACE_BASELINE.md` | 1332 | `2026-08-04T04:13:09.979748+00:00` | `text/markdown` | `f4068a8850f976c0b66aaf4c0a488bad2ae2e8a7fa7a0f3c806915ac523bc131` | `unclassified` | `True` |
-| `Stage 8` | `CHANGELOG.md` | `docs/stage8/CHANGELOG.md` | 917 | `2026-08-04T04:13:09.978749+00:00` | `text/markdown` | `79752e3f77be7b430e59190eb0e4d0301ab751a29f972f2f0f00fc06980377ba` | `unclassified` | `True` |
-| `Stage 8` | `gate0-decision.json` | `docs/stage8/evidence/gate0/gate0-decision.json` | 570 | `2026-08-04T04:15:08.577831+00:00` | `application/json` | `5321788e7a62cfaef3cb21e840890c907d16d843a645894808304b02a98e7cf8` | `unclassified` | `True` |
+| `Stage 8` | `CHANGELOG.md` | `docs/stage8/CHANGELOG.md` | 1238 | `2026-08-04T04:17:16.483445+00:00` | `text/markdown` | `9ed9874921ba3a9d0f496f30a4dc6af6552d88550fdd21d9589fb3ad01d437ec` | `unclassified` | `True` |
+| `Stage 8` | `gate0-decision.json` | `docs/stage8/evidence/gate0/gate0-decision.json` | 570 | `2026-08-04T04:17:41.436198+00:00` | `application/json` | `44eeff8ff3c2d8981cbf5ba4f9617f5b2bc286ecfc112fc8234a61cfd5733a18` | `unclassified` | `True` |
 | `Stage 8` | `GATE0_SSOT_AUDIT.md` | `docs/stage8/prompts/GATE0_SSOT_AUDIT.md` | 1560 | `2026-08-04T04:14:26.031278+00:00` | `text/markdown` | `a8334a31011a6959104656bb32b1893c22098311fbc3e26a3e094da3903a1820` | `approval-candidate` | `True` |
 | `Stage 8` | `GATE1_CANONICAL_VIEW.md` | `docs/stage8/prompts/GATE1_CANONICAL_VIEW.md` | 1409 | `2026-08-04T04:14:26.032801+00:00` | `text/markdown` | `5838cf3030b60e2225e81c87e2974ae267ffd05ea809cb5f0645bbfb8cabc679` | `unclassified` | `True` |
 | `Stage 8` | `GATE2_BASE_MESH_MATERIAL.md` | `docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md` | 1280 | `2026-08-04T04:14:26.033312+00:00` | `text/markdown` | `68ea1677264d819f1820eaf79328d0db63b60ac34c4864e2d6c1289e3710d370` | `unclassified` | `True` |
@@ -95,8 +96,8 @@
 | `Stage 8` | `GATE7_QA.md` | `docs/stage8/prompts/GATE7_QA.md` | 1344 | `2026-08-04T04:14:26.037395+00:00` | `text/markdown` | `90fd21eed771759fa960ee08f6fbc12331b244dd9061a6712211297053407ada` | `unclassified` | `True` |
 | `Stage 8` | `GATE8_DEPLOYMENT.md` | `docs/stage8/prompts/GATE8_DEPLOYMENT.md` | 1357 | `2026-08-04T04:14:26.038403+00:00` | `text/markdown` | `680d67664535c3b9142cce0e34ef65a9961de7b18985d4642c28a55ffb8755a4` | `unclassified` | `True` |
 | `Stage 8` | `README.md` | `harness/README.md` | 778 | `2026-08-04T04:12:25.796461+00:00` | `text/markdown` | `28379867944939da72aa25694e2d669ae0fb7d267a88be87f872fd392d65897e` | `unclassified` | `True` |
-| `Stage 8` | `ssot-manifest.json` | `harness/ssot-manifest.json` | 42514 | `2026-08-04T04:15:08.574661+00:00` | `application/json` | `19fa9978ee3c071c54dafdf32745a9eefd1559b2bca1a0b41ae3ac975a904404` | `approval-candidate` | `True` |
-| `Stage 7` | `status.json` | `harness/status.json` | 2694 | `2026-08-04T04:14:44.804565+00:00` | `application/json` | `57bdde1c7aa810a228b6514a082818011922df7ca203bca87424b0cf3ed7bb8e` | `unclassified` | `True` |
+| `Stage 8` | `ssot-manifest.json` | `harness/ssot-manifest.json` | 43046 | `2026-08-04T04:17:41.434678+00:00` | `application/json` | `af89aa7f03dfb4949d7e1cd94040edb6abeb834f29e44a9edd2bc65f45d22f67` | `approval-candidate` | `True` |
+| `Stage 7` | `status.json` | `harness/status.json` | 2751 | `2026-08-04T04:17:33.238869+00:00` | `application/json` | `d2593bfea31b7bca8063e6dbfd870742f050b141f2bb31a9ac52efb2f6dfab4d` | `unclassified` | `True` |
 | `Stage 8` | `README.md` | `README.md` | 466 | `2026-08-04T04:12:25.796972+00:00` | `text/markdown` | `8ad77318c947520b92cff466870bd0d89ab6b2356bd1950e63a7b2baf47aecf2` | `unclassified` | `True` |
 | `Stage 8` | `audit_stage8.py` | `scripts/harness/audit_stage8.py` | 21604 | `2026-08-04T04:11:11.344139+00:00` | `text/x-python` | `d8625e4f6b508ca8c2bee34e9391c1dc1f0b89e7a2c179833ad1b6581031a8e6` | `unclassified` | `False` |
 | `Stage 8` | `validate_harness.py` | `scripts/harness/validate_harness.py` | 4936 | `2026-08-04T04:11:50.486470+00:00` | `text/x-python` | `ce22257a931a1708bc7231ef9ac403f498679f727b430130e77125234e657b6c` | `unclassified` | `False` |
