@@ -38,6 +38,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/build_gate1_evidence.py",
     "scripts/harness/prepare_gate1_manual_review.py",
     "scripts/harness/audit_gate1_approval_intake.py",
+    "scripts/harness/audit_gate1_reviewer_assignment.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -52,6 +53,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
     "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
     "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
+    "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -67,10 +69,18 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/manual-review/FROZEN_EVIDENCE_MANIFEST_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/APPROVAL_INTAKE_TEMPLATE.json",
     "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
+    "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
+    "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/README.md",
+    "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
+    "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
+    "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
+    "docs/stage8/evidence/gate1/manual-review/dispatch/qa_lead.md",
+    "docs/stage8/evidence/gate1/manual-review/dispatch/product_owner.md",
     "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
@@ -302,6 +312,8 @@ def main() -> int:
         frozen_manifest = load_json(manual_root / "FROZEN_EVIDENCE_MANIFEST_v1.0.json")
         intake_template = load_json(manual_root / "APPROVAL_INTAKE_TEMPLATE.json")
         approval_intake_audit = load_json(manual_root / "GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json")
+        assignment_register = load_json(manual_root / "REVIEWER_ASSIGNMENT_REGISTER_v1.0.json")
+        assignment_audit = load_json(manual_root / "GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json")
         for candidate in gate1_review.get("candidates", []):
             candidate_path = ROOT / candidate.get("path", "")
             if not candidate_path.exists():
@@ -450,6 +462,60 @@ def main() -> int:
                 fail("gate1 approval intake is ready without ten valid approvals")
         elif approval_intake_audit.get("ready_for_promotion") is not False:
             fail("gate1 approval intake claims readiness while blocked or failed")
+
+        assignments = assignment_register.get("assignments")
+        if not isinstance(assignments, list) or len(assignments) != 5:
+            fail("gate1 reviewer assignment register must contain five roles")
+        if {item.get("role") for item in assignments} != set(MANUAL_REVIEW_ROLES.values()):
+            fail("gate1 reviewer assignment role matrix is incomplete")
+        if {item.get("role_slug") for item in assignments} != set(MANUAL_REVIEW_ROLES):
+            fail("gate1 reviewer assignment role slugs are incomplete")
+        if assignment_register.get("package_id") != frozen_manifest.get("package_id"):
+            fail("gate1 reviewer assignment package identifier mismatch")
+        if assignment_register.get("approvals_created") != 0:
+            fail("gate1 reviewer assignment register created approval records")
+        if assignment_register.get("next_gate_allowed") is not False:
+            fail("gate1 reviewer assignment register prematurely allows Gate 2")
+        for item in assignments:
+            packets = item.get("packets")
+            if not isinstance(packets, dict) or set(packets) != MANUAL_REVIEW_CHARACTERS:
+                fail(f"gate1 reviewer assignment packet mapping is invalid: {item.get('role')}")
+            for packet_path in packets.values():
+                if not (ROOT / packet_path).is_file():
+                    fail(f"gate1 reviewer assignment packet is missing: {packet_path}")
+            dispatch_request = item.get("dispatch_request", "")
+            if not (ROOT / dispatch_request).is_file():
+                fail(f"gate1 reviewer dispatch request is missing: {dispatch_request}")
+
+        register_hash = hashlib.sha256(
+            (manual_root / "REVIEWER_ASSIGNMENT_REGISTER_v1.0.json").read_bytes()
+        ).hexdigest().lower()
+        if assignment_audit.get("assignment_register_sha256", "").lower() != register_hash:
+            fail("gate1 reviewer assignment audit is stale")
+        assignment_status = assignment_audit.get("status")
+        if assignment_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_DISPATCH"}:
+            fail(f"unsupported gate1 reviewer assignment status: {assignment_status!r}")
+        if assignment_audit.get("assignment_required") != 5:
+            fail("gate1 reviewer assignment audit does not require five roles")
+        if assignment_audit.get("packet_mapping_count") != 10:
+            fail("gate1 reviewer assignment audit does not validate ten packet mappings")
+        if assignment_audit.get("dispatch_draft_count") != 5:
+            fail("gate1 reviewer assignment audit does not validate five dispatch drafts")
+        if assignment_audit.get("approvals_created") != 0:
+            fail("gate1 reviewer assignment audit created approvals")
+        if assignment_audit.get("next_gate_allowed") is not False:
+            fail("gate1 reviewer assignment audit prematurely allows Gate 2")
+        if assignment_audit.get("dispatch_performed") is not assignment_register.get("dispatch_performed"):
+            fail("gate1 reviewer assignment dispatch state is inconsistent")
+        if assignment_status == "READY_FOR_DISPATCH":
+            if assignment_audit.get("valid_assignment_count") != 5:
+                fail("gate1 reviewer assignment is ready without five valid assignments")
+            if assignment_audit.get("acknowledged_assignment_count") != 5:
+                fail("gate1 reviewer assignment is ready without five acknowledgments")
+            if assignment_audit.get("ready_for_dispatch") is not True:
+                fail("gate1 reviewer assignment readiness flag is false")
+        elif assignment_audit.get("ready_for_dispatch") is not False:
+            fail("gate1 reviewer assignment claims readiness while blocked or failed")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))

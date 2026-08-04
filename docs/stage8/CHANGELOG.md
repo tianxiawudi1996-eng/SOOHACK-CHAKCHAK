@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 reviewer assignment and dispatch preparation
+
+- Added the next-stage metaprompt for assigning five accountable reviewers and preparing controlled review requests.
+- Added a blank reviewer assignment register without inferred names or contact details.
+- Prepared five role-specific dispatch drafts, each covering both characters and the fixed candidate hashes.
+- Added reviewer assignment auditing for identity uniqueness, timestamps, conflict declarations, packet mappings, and acknowledgments.
+- Verified packet mappings 10/10 and dispatch drafts 5/5; retained `BLOCKED_EXTERNAL` because valid assignments remain 0/5.
+
 ## 2026-08-04 — Gate 1 approval intake validation metaprompt and audit
 
 - Added the next-stage metaprompt for Excel/JSON approval synchronization and promotion-readiness checks.
