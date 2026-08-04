@@ -3,7 +3,7 @@
 ## Environment
 
 - Workspace: `D:\project\SOOHACK CHACKCHACK`
-- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-04T17:19:21+09:00`
+- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-04T17:24:25+09:00`
 - Platform: Windows PowerShell / Python 3 / bundled Node.js
 
 ## Results
@@ -19,7 +19,8 @@
 | Gate 1 manual-review package validation | 0 | Frozen manifest, blank intake template, candidate hashes, packet matrix, and no-fabricated-approval controls passed. |
 | Artifact-tool current approval snapshot | 0 | Read-only workbook inspection found 10 rows, 10 `PENDING`, 0 populated decisions, and 0 formula errors. |
 | `python scripts/harness/audit_gate1_approval_intake.py` | 1 | Expected external-blocking exit: workbook decisions 0/10, JSON approvals 0/10, valid synchronized approvals 0/10, immutable hash drift 0. |
-| `python scripts/harness/audit_gate1_reviewer_assignment.py` | 1 | Expected external-blocking exit: assignments 0/5, acknowledgments 0/5, packet mappings 10/10, dispatch drafts 5/5, dispatch not performed. |
+| `python scripts/harness/audit_gate1_reviewer_assignment.py` | 0 | `READY_FOR_DISPATCH`: assignments 5/5, acknowledgments 5/5, packet mappings 10/10, dispatch drafts 5/5, dispatch not yet performed. |
+| Reviewer assignment application (`2026-08-04T17:24:25+09:00`) | 0 | Five user-provided assignments and acknowledgments validated; no dispatch or approval created. |
 | `python scripts/harness/audit_gate1_external_unblock.py` | 0 | `READY_FOR_ASSIGNMENT`: valid nominations 5/5, authority reference present, missing roles 0, no assignment/dispatch/approval applied. |
 | Coordinator nomination validation (`2026-08-04T17:19:21+09:00`) | 0 | `READY_FOR_ASSIGNMENT`: valid nominations 5/5, authority reference present, missing roles 0, no assignment/dispatch/approval applied. |
 | Artifact-tool formula scan | 0 errors | Both workbooks reported no `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, or `#N/A`. |

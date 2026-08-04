@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T17:19:21+09:00",
-  "head_commit": "eca9954",
+  "updated_at": "2026-08-04T17:24:25+09:00",
+  "head_commit": "2e0641e",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -61,7 +61,7 @@
     ],
     "blockers": [
       "Raster evidence cannot independently prove true orthographic camera equivalence or eliminate identity/accessory drift without accountable art and 3D review",
-      "Five reviewer nominations are validated, but assignments and acknowledgments are not yet applied",
+      "Five reviewer assignments and acknowledgments are validated, but authorized external dispatch is not yet recorded",
       "Ten accountable approvals are missing: five required roles for each of the two characters"
     ],
     "entry_allowed": true

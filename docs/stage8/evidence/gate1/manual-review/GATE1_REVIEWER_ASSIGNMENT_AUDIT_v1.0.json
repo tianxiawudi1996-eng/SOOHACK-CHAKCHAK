@@ -1,33 +1,25 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T08:01:31.407915+00:00",
+  "generated_at": "2026-08-04T08:25:07.289491+00:00",
   "gate": 1,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "READY_FOR_DISPATCH",
   "package_id": "gate1-manual-review-916636d0-9c8061af",
-  "assignment_register_sha256": "ddeb9f5c4b21b981b3c3f255a9eebe6619205b0144dd19c8701a8c7e9c32f8da",
-  "valid_assignment_count": 0,
-  "acknowledged_assignment_count": 0,
+  "assignment_register_sha256": "e03d51cc4270f07582610792642ecac44241625cb490dfaaab5152b5d3e2271e",
+  "valid_assignment_count": 5,
+  "acknowledged_assignment_count": 5,
   "assignment_required": 5,
   "packet_mapping_count": 10,
   "packet_mapping_required": 10,
   "dispatch_draft_count": 5,
   "dispatch_draft_required": 5,
-  "missing_roles": [
-    "3D Technical Art Lead",
-    "Character Art Lead",
-    "Product Owner",
-    "QA Lead",
-    "UX Brand System Lead"
-  ],
+  "missing_roles": [],
   "failures": [],
-  "blockers": [
-    "REVIEWERS_UNASSIGNED: 5"
-  ],
+  "blockers": [],
   "dispatch_performed": false,
   "approvals_created": 0,
   "approval_intake_status": "BLOCKED_EXTERNAL",
   "approval_count": 0,
-  "ready_for_dispatch": false,
+  "ready_for_dispatch": true,
   "next_gate_allowed": false,
-  "next_action": "Assign five real reviewers and record conflict declarations and acknowledgments."
+  "next_action": "Dispatch through an authorized channel and collect two decisions per reviewer."
 }

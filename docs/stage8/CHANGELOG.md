@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 reviewer assignments acknowledged
+
+- Transferred the five validated nominations into the reviewer assignment register.
+- Recorded the user-provided assigned and acknowledged timestamps for all five roles.
+- Validated unique identities, five `NO_CONFLICT` declarations, packet mappings 10/10, and dispatch drafts 5/5.
+- Changed reviewer-assignment status from `BLOCKED_EXTERNAL` to `READY_FOR_DISPATCH`.
+- Kept external dispatch false, approvals 0/10, Gate 1 `BLOCKED`, and Gate 2 `NOT_STARTED`.
+
 ## 2026-08-04 — Gate 1 Coordinator nominations validated
 
 - Recorded the Coordinator submission and authority reference supplied by the user.

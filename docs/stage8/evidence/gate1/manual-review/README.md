@@ -8,7 +8,10 @@
 - Actual approvals: `0/10`
 - Valid Coordinator nominations: `5/5`
 - Nomination state: `READY_FOR_ASSIGNMENT`
-- Applied assignments: `0/5`
+- Applied assignments: `5/5`
+- Acknowledged assignments: `5/5`
+- Assignment state: `READY_FOR_DISPATCH`
+- Dispatch performed: `false`
 - Gate 1: `BLOCKED`
 - Gate 2: `NOT_STARTED`
 

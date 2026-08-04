@@ -2,9 +2,9 @@
 
 ## Outcome
 
-- Status: `BLOCKED_EXTERNAL`
-- Valid assignments: `0/5`
-- Acknowledged assignments: `0/5`
+- Status: `READY_FOR_DISPATCH`
+- Valid assignments: `5/5`
+- Acknowledged assignments: `5/5`
 - Packet mappings: `10/10`
 - Dispatch drafts: `5/5`
 - Dispatch performed: `false`
@@ -15,11 +15,7 @@
 
 ## Missing roles
 
-- `3D Technical Art Lead`
-- `Character Art Lead`
-- `Product Owner`
-- `QA Lead`
-- `UX Brand System Lead`
+- 없음
 
 ## Failures
 
@@ -27,7 +23,7 @@
 
 ## External blockers
 
-- REVIEWERS_UNASSIGNED: 5
+- 없음
 
 ## Next action
 

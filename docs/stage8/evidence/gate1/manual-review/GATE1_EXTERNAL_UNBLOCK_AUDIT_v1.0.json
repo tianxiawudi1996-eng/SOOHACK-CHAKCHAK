@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T08:19:08.708988+00:00",
+  "generated_at": "2026-08-04T08:25:07.349486+00:00",
   "gate": 1,
   "status": "READY_FOR_ASSIGNMENT",
   "nomination_response_sha256": "59e0460e35ba5c0b1a3ade57baf1f2b5c6c9ec72583ac1792a5d2588ee002764",
@@ -11,7 +11,7 @@
   "missing_fields": [],
   "failures": [],
   "blockers": [],
-  "assignment_audit_status": "BLOCKED_EXTERNAL",
+  "assignment_audit_status": "READY_FOR_DISPATCH",
   "approval_intake_status": "BLOCKED_EXTERNAL",
   "assignment_applied": false,
   "dispatch_performed": false,
