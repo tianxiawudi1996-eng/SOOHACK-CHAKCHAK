@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T09:37:25.098418+00:00",
+  "gate": 2,
+  "status": "CANDIDATE_BUILT",
+  "format": "glTF 2.0 binary GLB",
+  "unit": "meter",
+  "up_axis": "Y",
+  "root_scale": 1.0,
+  "source_candidate_hashes": {
+    "Chakchaki": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+    "Gongsickyi": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157"
+  },
+  "files": [
+    {
+      "character": "Chakchaki",
+      "lod": 0,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "sha256": "445c71c81dcdc2eeb2f06b4c65f9db88d0e71578566695f0a3195c30692a33d1",
+      "bytes": 547476,
+      "triangles": 23372,
+      "vertices": 11768,
+      "module_count": 21,
+      "material_count": 10
+    },
+    {
+      "character": "Chakchaki",
+      "lod": 1,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "sha256": "3c945eb0db19d29e76d43d0bb28716dc367aff31a16853e676dbc879aa09717d",
+      "bytes": 285068,
+      "triangles": 11444,
+      "vertices": 5804,
+      "module_count": 21,
+      "material_count": 10
+    },
+    {
+      "character": "Chakchaki",
+      "lod": 2,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "sha256": "02964f3afbdac9a1877f7815f3e374d66a643978ee7ac6ccdfa4bca2ea51f453",
+      "bytes": 109072,
+      "triangles": 3876,
+      "vertices": 2002,
+      "module_count": 21,
+      "material_count": 8
+    },
+    {
+      "character": "Gongsickyi",
+      "lod": 0,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "sha256": "df9e476eae28f327bdc7fe82aa3625c59d5940e9c4662257563bf7a7da0a8edb",
+      "bytes": 270252,
+      "triangles": 11028,
+      "vertices": 5738,
+      "module_count": 11,
+      "material_count": 9
+    },
+    {
+      "character": "Gongsickyi",
+      "lod": 1,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "sha256": "ef88583c2a3ff818060de50e753d798e2b391d2d68e96763b7a8b8abd479c6f4",
+      "bytes": 145344,
+      "triangles": 5444,
+      "vertices": 2882,
+      "module_count": 11,
+      "material_count": 9
+    },
+    {
+      "character": "Gongsickyi",
+      "lod": 2,
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
+      "sha256": "bae9f5cdbf232218474c50d189bc485b34d0ff23baa62e83643d7b05dcdc37ef",
+      "bytes": 65928,
+      "triangles": 2028,
+      "vertices": 1150,
+      "module_count": 11,
+      "material_count": 8
+    }
+  ],
+  "lod_ratios": {
+    "Chakchaki": {
+      "lod1_to_lod0": 0.489646,
+      "lod2_to_lod0": 0.165839
+    },
+    "Gongsickyi": {
+      "lod1_to_lod0": 0.493653,
+      "lod2_to_lod0": 0.183896
+    }
+  },
+  "previews": [
+    {
+      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+      "sha256": "730155a751b6b10df792910a5e85016200a5bd77f1238154a24dff795374f2a7",
+      "type": "CANONICAL_VS_LOD0"
+    },
+    {
+      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+      "sha256": "8b82a31996aafa98faa9df7523437ea6e427fa37c9a8f52104965207fbbdd21d",
+      "type": "LOD_COMPARISON"
+    },
+    {
+      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+      "sha256": "a22cd2942306df6802e186363f71f40baad4cada754765543fa681aa92020959",
+      "type": "CANONICAL_VS_LOD0"
+    },
+    {
+      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+      "sha256": "5a8a0c06b56dce2cebfbef8f49308f039f9fba0cb55b0fa108d821edefd04a68",
+      "type": "LOD_COMPARISON"
+    }
+  ],
+  "material_strategy": "Embedded glTF PBR base-color materials; UV0 retained for later texture baking; no external texture dependency.",
+  "known_constraints": [
+    "CapBadge is a neutral replaceable placeholder pending EXT-01 IP approval.",
+    "No Blender executable is available; GLB structure and topology are generated and audited directly.",
+    "Human silhouette, proportion, color-drift and intersection review is still required."
+  ],
+  "next_gate_allowed": false
+}

@@ -1,5 +1,7 @@
 # Gate 2 — Base Mesh & Material
 
+> 활성 실행 프롬프트: `GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md`. 현재 실제 GLB 6개와 자동 QA 6/6 PASS가 준비됐으며 프로젝트 책임자 수동 비교 검토 0/1을 대기한다.
+
 ## 역할
 모델링·토폴로지·UV·LookDev 리드.
 

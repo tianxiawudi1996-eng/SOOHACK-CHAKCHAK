@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T18:11:39+09:00",
-  "head_commit": "40fda61",
+  "updated_at": "2026-08-04T18:34:13+09:00",
+  "head_commit": "700baea",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -68,9 +68,27 @@
     "entry_allowed": true
   },
   "gate2": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md"],
-    "blockers": ["No Gate 2 base mesh or material asset exists yet"],
+    "status": "BLOCKED",
+    "evidence": [
+      "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
+      "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
+      "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
+      "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+      "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+      "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+      "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb"
+    ],
+    "blockers": ["One Project Owner visual comparison decision is required for Gate 2"],
     "entry_allowed": true
   },
   "gate3": {

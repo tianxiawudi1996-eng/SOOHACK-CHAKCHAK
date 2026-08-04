@@ -1,5 +1,22 @@
 # 다음 파트 메타프롬프트 작성 보고
 
+## Gate 2 베이스 메시·머티리얼 실행 결과
+
+- 실행 프롬프트: `docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md`
+- 빌더: `scripts/harness/build_gate2_base_mesh.py`
+- 감사기: `scripts/harness/audit_gate2.py`
+- 실제 GLB: 6개
+- 비교 렌더: 4개
+- 자동 모델 검사: 6/6 PASS
+- LOD1 비율: 48.96%, 49.37%
+- LOD2 비율: 16.58%, 18.39%
+- topology·UV0·normal·PBR·해시 실패: 0
+- 프로젝트 책임자 수동 검토: 0/1
+- Gate 2: `BLOCKED_EXTERNAL`
+- Gate 3: `NOT_STARTED`
+
+다음 입력은 Gate 2 비교 렌더에 대한 프로젝트 책임자의 1인 결정이다.
+
 ## 프로젝트 책임자 1인 승인 정책 전환 결과
 
 - 활성 프롬프트: `docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md`

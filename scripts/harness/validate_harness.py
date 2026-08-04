@@ -41,6 +41,9 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate1_reviewer_assignment.py",
     "scripts/harness/audit_gate1_external_unblock.py",
     "scripts/harness/audit_gate1_single_approval.py",
+    "scripts/harness/inspect_stage7_rig_spec.mjs",
+    "scripts/harness/build_gate2_base_mesh.py",
+    "scripts/harness/audit_gate2.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -58,6 +61,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
     "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
     "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
+    "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -82,6 +86,14 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_POLICY_v1.0.json",
     "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
     "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
+    "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
+    "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+    "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+    "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+    "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
     "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
@@ -93,8 +105,15 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
 ]
 
 MANUAL_REVIEW_ROLES = {
@@ -637,6 +656,79 @@ def main() -> int:
         elif external_unblock_audit.get("ready_for_assignment") is not False:
             fail("gate1 external unblock audit claims readiness while blocked or failed")
 
+    if gates[2].get("status") != "NOT_STARTED":
+        if gates[1].get("status") != "VERIFIED":
+            fail("gate2 started before gate1 VERIFIED")
+        gate2_root = ROOT / "docs/stage8/evidence/gate2"
+        gate2_build = load_json(gate2_root / "GATE2_BUILD_MANIFEST_v1.0.json")
+        gate2_audit = load_json(gate2_root / "GATE2_AUTOMATED_QA_v1.0.json")
+        gate2_review = load_json(gate2_root / "GATE2_MANUAL_REVIEW_v1.0.json")
+        if gate2_build.get("status") != "CANDIDATE_BUILT":
+            fail("gate2 build manifest status is invalid")
+        if gate2_build.get("unit") != "meter" or gate2_build.get("up_axis") != "Y" or gate2_build.get("root_scale") != 1.0:
+            fail("gate2 build unit, axis, or root scale is invalid")
+        build_files = gate2_build.get("files", [])
+        if len(build_files) != 6:
+            fail("gate2 build manifest must contain six GLB files")
+        expected_pairs = {(character, lod) for character in ("Chakchaki", "Gongsickyi") for lod in (0, 1, 2)}
+        actual_pairs = {(item.get("character"), item.get("lod")) for item in build_files}
+        if actual_pairs != expected_pairs:
+            fail("gate2 build manifest character/LOD matrix is incomplete")
+        for item in build_files:
+            path = ROOT / item.get("path", "")
+            if not path.is_file():
+                fail(f"gate2 GLB is missing: {item.get('path')}")
+            actual = hashlib.sha256(path.read_bytes()).hexdigest().lower()
+            if actual != item.get("sha256", "").lower():
+                fail(f"gate2 GLB SHA-256 mismatch: {item.get('path')}")
+        for character, ratios in gate2_build.get("lod_ratios", {}).items():
+            if character not in {"Chakchaki", "Gongsickyi"}:
+                fail(f"unexpected gate2 LOD ratio character: {character}")
+            if not 0.45 <= ratios.get("lod1_to_lod0", -1) <= 0.60:
+                fail(f"gate2 LOD1 ratio is invalid: {character}")
+            if not 0.15 <= ratios.get("lod2_to_lod0", -1) <= 0.25:
+                fail(f"gate2 LOD2 ratio is invalid: {character}")
+        previews = gate2_build.get("previews", [])
+        if len(previews) != 4:
+            fail("gate2 build manifest must contain four comparison previews")
+        for item in previews:
+            path = ROOT / item.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                fail(f"gate2 preview is missing or stale: {item.get('path')}")
+        if gate2_build.get("next_gate_allowed") is not False:
+            fail("gate2 build manifest prematurely allows Gate 3")
+        if gate2_audit.get("automated_status") != "PASS" or gate2_audit.get("model_pass_count") != 6:
+            fail("gate2 automated model audit did not pass 6/6")
+        if gate2_audit.get("failures"):
+            fail("gate2 automated audit contains failures")
+        audited_files = {(item.get("character"), item.get("lod")): item for item in gate2_audit.get("models", [])}
+        if set(audited_files) != expected_pairs:
+            fail("gate2 automated audit model matrix is incomplete")
+        for item in build_files:
+            audited = audited_files[(item["character"], item["lod"])]
+            if audited.get("status") != "PASS":
+                fail(f"gate2 audited model is not PASS: {item['character']} LOD{item['lod']}")
+            if audited.get("sha256", "").lower() != item.get("sha256", "").lower():
+                fail(f"gate2 audit/build hash mismatch: {item['character']} LOD{item['lod']}")
+            if audited.get("degenerate_triangles") != 0 or audited.get("non_manifold_edges_welded") != 0:
+                fail(f"gate2 topology defect: {item['character']} LOD{item['lod']}")
+        if gate2_audit.get("manual_approval_required") != 1:
+            fail("gate2 must require one Project Owner approval")
+        if gate2_audit.get("next_gate_allowed") is not False or gate2_audit.get("gate2_status_change_applied") is not False:
+            fail("gate2 audit prematurely changed gate status")
+        if gates[2].get("status") == "BLOCKED":
+            if gate2_audit.get("status") != "BLOCKED_EXTERNAL" or gate2_audit.get("manual_approval_count") != 0:
+                fail("gate2 BLOCKED status disagrees with pending manual review")
+            if "PROJECT_OWNER_VISUAL_REVIEW_REQUIRED" not in gate2_audit.get("blockers", []):
+                fail("gate2 manual-review blocker is missing")
+            if gate2_review.get("approval_applied") is not False or gate2_review.get("next_gate_allowed") is not False:
+                fail("gate2 pending review contains premature promotion flags")
+        if gates[2].get("status") == "VERIFIED":
+            if gate2_audit.get("status") != "READY_FOR_PROMOTION" or gate2_audit.get("manual_approval_count") != 1:
+                fail("gate2 VERIFIED without one valid manual approval")
+        if gates[3].get("entry_allowed") is True and gates[2].get("status") != "VERIFIED":
+            fail("gate3 entry allowed before gate2 VERIFIED")
+
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
     if conflicts:
@@ -645,6 +737,7 @@ def main() -> int:
     print("HARNESS_PASS")
     print(f"gate0={gates[0].get('status')}")
     print(f"gate1={gates[1].get('status')}")
+    print(f"gate2={gates[2].get('status')}")
     print(f"manifest_status={manifest.get('status')}")
     for warning in sensitive_warnings:
         print(f"HARNESS_WARNING: ignored untracked sensitive-looking file not read: {warning}")

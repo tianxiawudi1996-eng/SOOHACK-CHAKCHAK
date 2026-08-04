@@ -14,9 +14,12 @@
 python scripts/harness/audit_stage8.py
 python scripts/harness/audit_gate1_single_approval.py
 python scripts/harness/audit_gate1.py
+python scripts/harness/audit_gate2.py
 python scripts/harness/validate_harness.py
 ```
 
 Gate 1의 활성 승인 정책은 `PROJECT_OWNER_SINGLE_APPROVAL`이다. 권한 있는 프로젝트 책임자 한 명이 두 캐릭터와 전체 증거 패키지를 한 번에 승인한다. 기존 5역할×2캐릭터 승인 자료는 감사 이력으로 보존하지만 Gate 판정에는 사용하지 않는다.
 
-현재 상태는 `harness/status.json`, `docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md`, `docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md`를 함께 확인한다.
+Gate 2는 실제 GLB 6개와 자동 QA 6/6 PASS가 준비됐으며 프로젝트 책임자 수동 비교 검토를 대기한다.
+
+현재 상태는 `harness/status.json`, `docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md`, `docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md`를 함께 확인한다.

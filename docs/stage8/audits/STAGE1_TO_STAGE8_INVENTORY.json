@@ -1,15 +1,22 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T09:16:49.687329+00:00",
+    "generated_at": "2026-08-04T09:39:02.801397+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 184,
+    "file_count": 203,
     "required_stage7_file_count": 10,
     "required_exact_found": 10,
     "required_exact_missing_or_conflicting": 0,
     "sensitive_filename_count": 1,
     "sensitive_tracked_or_canonical_count": 0,
     "git_metadata_present": true,
-    "3d_files": [],
+    "3d_files": [
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb"
+    ],
     "required_records": [
       {
         "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
@@ -3619,10 +3626,10 @@
       "stage": "Stage 8",
       "file_name": "FINAL_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 2948,
-      "modified_at": "2026-08-04T09:13:33.584563+00:00",
+      "size_bytes": 3596,
+      "modified_at": "2026-08-04T09:36:57.615111+00:00",
       "mime": "text/markdown",
-      "sha256": "4f663a21c28b2b3530b11ce822aa4b5c762e087cc8f45ac858fd74bd5a30eba7",
+      "sha256": "10b86d11896136853319b3d0dc7c9d4839fcc1645e1e205a57e384f6ef3c34cc",
       "version": null,
       "approval_status_tokens": [
         "APPROVE",
@@ -3642,12 +3649,18 @@
         "h1_count": 1,
         "version_tokens": [
           "0.1555",
-          "0.3358"
+          "0.3358",
+          "16.58",
+          "18.39",
+          "48.96",
+          "49.37"
         ],
         "status_tokens": [
+          "BLOCKED",
           "NOT_STARTED",
           "PASS",
           "VERIFIED",
+          "blocked",
           "verified",
           "승인"
         ],
@@ -3693,9 +3706,9 @@
       "file_name": "GATE1_AUTOMATED_QA.md",
       "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
       "size_bytes": 867,
-      "modified_at": "2026-08-04T09:16:47.442737+00:00",
+      "modified_at": "2026-08-04T09:37:33.186384+00:00",
       "mime": "text/markdown",
-      "sha256": "6c10881c4aeb5abac60237d646420bfb62f3f6028011a0c40c9d7d2b18f87db1",
+      "sha256": "32b57a8e6287e48e708b29c29348fa4e7b253dd6ae3fef7e5fb648c45e9e5f08",
       "version": null,
       "approval_status_tokens": [
         "PASS",
@@ -3712,7 +3725,7 @@
         "version_tokens": [
           "0.1555",
           "0.3358",
-          "47.440731"
+          "33.185381"
         ],
         "status_tokens": [
           "PASS",
@@ -3854,7 +3867,7 @@
       "file_name": "GATE1_SINGLE_APPROVER_AUDIT.md",
       "path": "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
       "size_bytes": 613,
-      "modified_at": "2026-08-04T09:16:39.932679+00:00",
+      "modified_at": "2026-08-04T09:37:25.545120+00:00",
       "mime": "text/markdown",
       "sha256": "03075fbda24557ae59e9a0c908fd6d7fa4e2f98f6ee24219671e11230cbea652",
       "version": null,
@@ -3882,12 +3895,48 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE2_BASE_MESH_MATERIAL_AUDIT.md",
+      "path": "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
+      "size_bytes": 1109,
+      "modified_at": "2026-08-04T09:37:25.423742+00:00",
+      "mime": "text/markdown",
+      "sha256": "18650d24c9adfa327d3ba38de2d17d9bc08f4cc83a71262bbc7aa3f8d1ee6082",
+      "version": null,
+      "approval_status_tokens": [
+        "PASS",
+        "VERIFIED"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.1658",
+          "0.1839",
+          "0.4896",
+          "0.4937"
+        ],
+        "status_tokens": [
+          "PASS",
+          "VERIFIED"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "NEXT_PART_METAPROMPT_REPORT.md",
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "size_bytes": 6120,
-      "modified_at": "2026-08-04T09:15:45.358485+00:00",
+      "size_bytes": 6747,
+      "modified_at": "2026-08-04T09:36:57.615111+00:00",
       "mime": "text/markdown",
-      "sha256": "7eda338319784295e14112d155b85c54329b96dd81112a7ccc86411d31c2dc79",
+      "sha256": "73186dd4ee4dcbaeb1108ddde8fd57fe1187bb43a9be0ae2844da2d3342437d9",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
@@ -3905,6 +3954,10 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
+          "16.58",
+          "18.39",
+          "48.96",
+          "49.37",
           "v5.2.0"
         ],
         "status_tokens": [
@@ -3957,10 +4010,10 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 5657,
-      "modified_at": "2026-08-04T09:13:58.353481+00:00",
+      "size_bytes": 6466,
+      "modified_at": "2026-08-04T09:37:51.076228+00:00",
       "mime": "text/markdown",
-      "sha256": "a7bef742c64aa404ee20e9e4d6275783da5f19df8520a3aea2104083b9475108",
+      "sha256": "b06fc64f4a8363c3d980b9086506492bf0efde9c71fc5e23dfa3680c2ff253da",
       "version": null,
       "approval_status_tokens": [
         "PASS",
@@ -3978,9 +4031,11 @@
         "h1_count": 1,
         "version_tokens": [
           "0.1555",
-          "0.3358"
+          "0.3358",
+          "2.0"
         ],
         "status_tokens": [
+          "BLOCKED",
           "PASS",
           "VERIFIED",
           "pass",
@@ -4028,10 +4083,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 6972,
-      "modified_at": "2026-08-04T09:13:58.359056+00:00",
+      "size_bytes": 7578,
+      "modified_at": "2026-08-04T09:36:57.616620+00:00",
       "mime": "text/markdown",
-      "sha256": "b44d1361faf00de9a2444e66c8c354a9a72ea0fc4d7ca4ac42ec7bb176566afa",
+      "sha256": "e46987906699e64f2f7c8d8835f1632032d024b1afe963eeb2be65880c18c96e",
       "version": null,
       "approval_status_tokens": [
         "APPROVE",
@@ -4051,7 +4106,12 @@
         "h1_count": 1,
         "version_tokens": [
           "0.1555",
-          "0.3358"
+          "0.3358",
+          "16.58",
+          "18.39",
+          "2.0",
+          "48.96",
+          "49.37"
         ],
         "status_tokens": [
           "BLOCKED",
@@ -4157,9 +4217,9 @@
       "file_name": "Gate1_Automated_QA_v5.2.0.json",
       "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
       "size_bytes": 30193,
-      "modified_at": "2026-08-04T09:16:47.441736+00:00",
+      "modified_at": "2026-08-04T09:37:33.186384+00:00",
       "mime": "application/json",
-      "sha256": "f3bfa6b44375c4349f317967e0cd2b8839b0f0edfb1f05e2aab04a144c078a28",
+      "sha256": "8f943ff74ea5cc0eb52bc06334090bd97baa0a2bf9dbd86360d92924063199ef",
       "version": "v5.2.0",
       "approval_status_tokens": [
         "PASS",
@@ -5053,7 +5113,7 @@
       "file_name": "SHA256SUMS.txt",
       "path": "docs/stage8/evidence/gate1/SHA256SUMS.txt",
       "size_bytes": 5329,
-      "modified_at": "2026-08-04T09:16:47.478940+00:00",
+      "modified_at": "2026-08-04T09:37:33.229905+00:00",
       "mime": "text/plain",
       "sha256": "81699b4006bda7c624a9674d1b030e970ee7089dc1a8e1db1eb4dfddccb346f6",
       "version": "v5.2.0",
@@ -5069,9 +5129,9 @@
       "file_name": "GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
       "path": "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
       "size_bytes": 836,
-      "modified_at": "2026-08-04T09:16:39.932679+00:00",
+      "modified_at": "2026-08-04T09:37:25.545120+00:00",
       "mime": "application/json",
-      "sha256": "2b830a200c27746cc43243328d6758d9b634fbe9451848f5323ecf53119588a1",
+      "sha256": "6523c4aedef20f214a3969e686bcf34aac34ae3fc60084041580786b3881cfd5",
       "version": "v1.0",
       "approval_status_tokens": [
         "PASS"
@@ -5891,6 +5951,193 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE2_AUTOMATED_QA_v1.0.json",
+      "path": "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
+      "size_bytes": 4604,
+      "modified_at": "2026-08-04T09:37:25.423742+00:00",
+      "mime": "application/json",
+      "sha256": "b36f413ce3c674adc7ebc3e75e7bdea95755bbd952647b3c02004e7eda628306",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
+      "path": "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
+      "size_bytes": 2040,
+      "modified_at": "2026-08-04T09:34:06.678625+00:00",
+      "mime": "text/markdown",
+      "sha256": "7bcc933e3c5a8f865b88b2c50048e7f868408a7771ac1929ebd233086f402ffa",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS",
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "16.58",
+          "18.39",
+          "2.0",
+          "48.96",
+          "49.37",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "NOT_STARTED",
+          "PASS",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE2_BUILD_MANIFEST_v1.0.json",
+      "path": "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
+      "size_bytes": 4324,
+      "modified_at": "2026-08-04T09:37:25.098419+00:00",
+      "mime": "application/json",
+      "sha256": "5927488626582f390d21f8c19e21fc794c7efe068a828452fe2de17b5bad92eb",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE2_MANUAL_REVIEW_v1.0.json",
+      "path": "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
+      "size_bytes": 529,
+      "modified_at": "2026-08-04T09:32:42.238614+00:00",
+      "mime": "application/json",
+      "sha256": "c68ec60963397249481aeb4d0a99f62a108dd2bd35d134f2eba02d9cabd8b407",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Chakchaki_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+      "size_bytes": 418358,
+      "modified_at": "2026-08-04T09:37:23.752826+00:00",
+      "mime": "image/png",
+      "sha256": "730155a751b6b10df792910a5e85016200a5bd77f1238154a24dff795374f2a7",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1920,
+        "height": 1440,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Chakchaki_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+      "size_bytes": 168327,
+      "modified_at": "2026-08-04T09:37:24.383626+00:00",
+      "mime": "image/png",
+      "sha256": "8b82a31996aafa98faa9df7523437ea6e427fa37c9a8f52104965207fbbdd21d",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1920,
+        "height": 2160,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Gongsickyi_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+      "size_bytes": 550348,
+      "modified_at": "2026-08-04T09:37:24.773375+00:00",
+      "mime": "image/png",
+      "sha256": "a22cd2942306df6802e186363f71f40baad4cada754765543fa681aa92020959",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1920,
+        "height": 1440,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Gongsickyi_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+      "size_bytes": 166348,
+      "modified_at": "2026-08-04T09:37:25.096381+00:00",
+      "mime": "image/png",
+      "sha256": "5a8a0c06b56dce2cebfbef8f49308f039f9fba0cb55b0fa108d821edefd04a68",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1920,
+        "height": 2160,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "GATE0_SSOT_AUDIT.md",
       "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
       "size_bytes": 1560,
@@ -6204,11 +6451,11 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL.md",
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
-      "size_bytes": 1280,
-      "modified_at": "2026-08-04T04:14:26.033312+00:00",
+      "size_bytes": 1497,
+      "modified_at": "2026-08-04T09:34:06.679129+00:00",
       "mime": "text/markdown",
-      "sha256": "68ea1677264d819f1820eaf79328d0db63b60ac34c4864e2d6c1289e3710d370",
-      "version": null,
+      "sha256": "e12bf488a232b7e0f26537d2d3ef86a8195ccc7ec439032c62677dc9b4376bc2",
+      "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED",
         "승인",
@@ -6226,6 +6473,50 @@
         "status_tokens": [
           "BLOCKED",
           "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
+      "size_bytes": 6423,
+      "modified_at": "2026-08-04T09:34:06.675544+00:00",
+      "mime": "text/markdown",
+      "sha256": "d12c08dfd8634f98ec33839f3d41210fdf4723d44b5e50917e0290df6d71c0cf",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.15",
+          "0.25",
+          "0.45",
+          "0.60",
+          "2.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "FAIL",
+          "NOT_STARTED",
+          "PASS",
           "VERIFIED",
           "승인"
         ],
@@ -6643,10 +6934,10 @@
       "stage": "Stage 8",
       "file_name": "README.md",
       "path": "harness/README.md",
-      "size_bytes": 1234,
-      "modified_at": "2026-08-04T08:56:08.547051+00:00",
+      "size_bytes": 1408,
+      "modified_at": "2026-08-04T09:36:57.617626+00:00",
       "mime": "text/markdown",
-      "sha256": "7b9c6baedb85e34cbe4ad9ef0d000aa23078f1511d38a56cd5126ad93f9f9591",
+      "sha256": "3c05252819524a90830846993043f3686578296c43c0b20fd833d50ed3377ee6",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED",
@@ -6680,10 +6971,10 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 5598,
-      "modified_at": "2026-08-04T09:12:58.316519+00:00",
+      "size_bytes": 6885,
+      "modified_at": "2026-08-04T09:34:45.269129+00:00",
       "mime": "application/json",
-      "sha256": "1da369eba46c4fe9ad45da41c821f1f87516a6f64547606c6e6cdc44edccbe22",
+      "sha256": "7fdc111135e78a28a080442b8006d35c4a39b43678c82e7d026003016a0c54de",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED"
@@ -6787,6 +7078,102 @@
         "formula_errors": [],
         "ids": []
       }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_chakchaki_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "size_bytes": 547476,
+      "modified_at": "2026-08-04T09:37:23.092136+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "445c71c81dcdc2eeb2f06b4c65f9db88d0e71578566695f0a3195c30692a33d1",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_chakchaki_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "size_bytes": 285068,
+      "modified_at": "2026-08-04T09:37:23.106372+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "3c945eb0db19d29e76d43d0bb28716dc367aff31a16853e676dbc879aa09717d",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_chakchaki_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "size_bytes": 109072,
+      "modified_at": "2026-08-04T09:37:23.110966+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "02964f3afbdac9a1877f7815f3e374d66a643978ee7ac6ccdfa4bca2ea51f453",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_gongsickyi_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "size_bytes": 270252,
+      "modified_at": "2026-08-04T09:37:23.127643+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "df9e476eae28f327bdc7fe82aa3625c59d5940e9c4662257563bf7a7da0a8edb",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_gongsickyi_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "size_bytes": 145344,
+      "modified_at": "2026-08-04T09:37:23.135466+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "ef88583c2a3ff818060de50e753d798e2b391d2d68e96763b7a8b8abd479c6f4",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "char_gongsickyi_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
+      "size_bytes": 65928,
+      "modified_at": "2026-08-04T09:37:23.140074+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "bae9f5cdbf232218474c50d189bc485b34d0ff23baa62e83643d7b05dcdc37ef",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
       "stage": "Stage 8",
@@ -6915,6 +7302,28 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "audit_gate2.py",
+      "path": "scripts/harness/audit_gate2.py",
+      "size_bytes": 17286,
+      "modified_at": "2026-08-04T09:32:42.240119+00:00",
+      "mime": "text/x-python",
+      "sha256": "b4200edab1bfa7680650b469edafd09a9dd0fd9fa2eede1418ad07d275d5fc57",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "verified"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "audit_stage8.py",
       "path": "scripts/harness/audit_stage8.py",
       "size_bytes": 28979,
@@ -6959,6 +7368,40 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
+      "stage": "Stage 8",
+      "file_name": "build_gate2_base_mesh.py",
+      "path": "scripts/harness/build_gate2_base_mesh.py",
+      "size_bytes": 32895,
+      "modified_at": "2026-08-04T09:30:33.480261+00:00",
+      "mime": "text/x-python",
+      "sha256": "23e4aa8bc2ce2ac1a0eeda2c1bc79b461800618024a10267e19bd62985f44f6f",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "inspect_stage7_rig_spec.mjs",
+      "path": "scripts/harness/inspect_stage7_rig_spec.mjs",
+      "size_bytes": 1774,
+      "modified_at": "2026-08-04T09:20:49.738216+00:00",
+      "mime": "text/javascript",
+      "sha256": "b191c6e12f72958966fdcac58d1e0cfed5f019ed10e1af9ca9b51e8697c07a65",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
       "stage": "Unclassified",
       "file_name": "prepare_gate1_manual_review.py",
       "path": "scripts/harness/prepare_gate1_manual_review.py",
@@ -6986,10 +7429,10 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 38692,
-      "modified_at": "2026-08-04T09:16:33.687995+00:00",
+      "size_bytes": 45189,
+      "modified_at": "2026-08-04T09:35:21.815526+00:00",
       "mime": "text/x-python",
-      "sha256": "1b48eed5113450acb951ddffa9ca1485b1f4faa1519902c0b33e3c28c8a25d79",
+      "sha256": "92f89ba46c2440d555a9894ca54d1a9c50ae3316550910d9323dd9c30da2aaea",
       "version": "v1.0",
       "approval_status_tokens": [
         "FAIL",

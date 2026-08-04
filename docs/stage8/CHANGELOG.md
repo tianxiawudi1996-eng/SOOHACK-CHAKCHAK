@@ -1,5 +1,14 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 2 base-mesh candidates built
+
+- Generated six actual glTF 2.0 GLB files for Chakchaki and Gongsickyi LOD0/1/2.
+- Preserved all 21 Chakchaki and 11 Gongsickyi module nodes with UV0, normals, and embedded PBR materials.
+- Validated LOD1 at 48.96%/49.37% and LOD2 at 16.58%/18.39% of LOD0 triangles.
+- Reported zero degenerate triangles, zero welded non-manifold edges, and six of six automated model passes.
+- Kept CapBadge as a replaceable `PLACEHOLDER_IP_PENDING` module.
+- Set Gate 2 to `BLOCKED` pending one Project Owner visual comparison decision; Gate 3 remains `NOT_STARTED`.
+
 ## 2026-08-04 — Gate 1 approved and promoted
 
 - Recorded John KIM's package-level `APPROVE` decision at `2026-08-04T18:10:59+09:00`.
