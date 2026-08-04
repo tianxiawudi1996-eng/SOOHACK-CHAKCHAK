@@ -18,6 +18,7 @@
 | Artifact-tool XLSX re-import | 0 | Register reopened with 4 sheets; approval log reopened with 3 sheets. |
 | Spreadsheet render review | 7/7 | Every sheet rendered and was visually inspected. |
 | Candidate and evidence image review | PASS | Both final boards, both overlays, and difference annotations were inspected. |
+| `git push -u origin codex/stage8-harness-continuation` | 1 | GitHub returned 403; `visionlab-coder` has no write permission to the target repository. |
 
 ## Quantitative Gate 1 result
 

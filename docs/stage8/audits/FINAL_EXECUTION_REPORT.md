@@ -33,6 +33,10 @@ Gate 1의 자동 QA·승인 준비 패키지를 완성했다. 두 캐릭터의 �
 - Gate 2 was not started.
 - The ignored, untracked `github-recovery-codes.txt` was not read or committed.
 
+## Publishing status
+
+The local branch is committed, but `git push -u origin codex/stage8-harness-continuation` returns HTTP 403 because the authenticated account `visionlab-coder` lacks write permission to `tianxiawudi1996-eng/SOOHACK-CHAKCHAK`. No Draft PR was created.
+
 ## Next authorized action
 
 Five named roles must review both characters and record ten decisions in the manual approval log. Any rejection or conditional patch returns the affected candidate to remediation and automated re-audit. Only a complete, accountable approval set may promote Gate 1 and allow Gate 2.
