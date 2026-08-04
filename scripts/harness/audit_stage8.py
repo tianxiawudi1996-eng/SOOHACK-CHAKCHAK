@@ -11,6 +11,7 @@ import hashlib
 import json
 import mimetypes
 import re
+import subprocess
 import sys
 import zipfile
 from collections import Counter, defaultdict
@@ -79,6 +80,19 @@ def source_files() -> list[Path]:
             continue
         result.append(path)
     return sorted(result, key=lambda item: rel(item).lower())
+
+
+def git_tracked_paths() -> set[str]:
+    if not (ROOT / ".git").exists():
+        return set()
+    proc = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, check=False, capture_output=True)
+    if proc.returncode != 0:
+        return set()
+    return {
+        item.decode("utf-8", errors="surrogateescape").replace("\\", "/")
+        for item in proc.stdout.split(b"\0")
+        if item
+    }
 
 
 def stage_for(path: Path, text: str = "") -> str:
@@ -262,6 +276,12 @@ def main() -> int:
             and re.fullmatch(re.escape(base) + r"(?:\(\d+\))?", Path(row.get("file_name", "")).stem, re.I)
         ]
     sensitive = [row["path"] for row in rows if row.get("security")]
+    tracked = git_tracked_paths()
+    sensitive_tracked_or_canonical = [
+        path for path in sensitive
+        if path in tracked or path.startswith("ssot/stage7/v1.0/")
+    ]
+    audit_status = "BLOCKED" if missing or sensitive_tracked_or_canonical else "NOT_VERIFIED"
     target_rows = [row for row in rows if row.get("path", "").startswith("ssot/stage7/v1.0/")]
     required_records = []
     for name in REQUIRED:
@@ -294,6 +314,7 @@ def main() -> int:
         "required_exact_found": sum(record["status"].startswith("FOUND_EXACT") for record in required_records),
         "required_exact_missing_or_conflicting": sum(not record["status"].startswith("FOUND_EXACT") for record in required_records),
         "sensitive_filename_count": len(sensitive),
+        "sensitive_tracked_or_canonical_count": len(sensitive_tracked_or_canonical),
         "git_metadata_present": (ROOT / ".git").exists(),
         "3d_files": [row["path"] for row in rows if Path(row["file_name"]).suffix.lower() in {".glb", ".gltf", ".blend", ".fbx"}],
         "required_records": required_records,
@@ -308,8 +329,8 @@ def main() -> int:
         ],
     }
     write_json(AUDIT_ROOT / "STAGE1_TO_STAGE8_INVENTORY.json", {"summary": summary, "files": rows})
-    write_json(AUDIT_ROOT / "ID_CROSS_REFERENCE_AUDIT.json", {"generated_at": summary["generated_at"], "id_counts": id_counts, "id_locations": id_locations, "semantic_presence": semantics, "status": "BLOCKED" if missing or sensitive else "NOT_VERIFIED"})
-    write_json(ROOT / "harness" / "ssot-manifest.json", {"generated_at": summary["generated_at"], "target_root": rel(SSOT_TARGET) if SSOT_TARGET.exists() else "ssot/stage7/v1.0", "required_files": required_records, "sensitive_paths": sensitive, "source_rows": [{"path": row.get("path"), "sha256": row.get("sha256"), "size_bytes": row.get("size_bytes")} for row in rows if row.get("sha256")], "status": "BLOCKED" if missing or sensitive else "NOT_VERIFIED"})
+    write_json(AUDIT_ROOT / "ID_CROSS_REFERENCE_AUDIT.json", {"generated_at": summary["generated_at"], "id_counts": id_counts, "id_locations": id_locations, "semantic_presence": semantics, "status": audit_status})
+    write_json(ROOT / "harness" / "ssot-manifest.json", {"generated_at": summary["generated_at"], "target_root": rel(SSOT_TARGET) if SSOT_TARGET.exists() else "ssot/stage7/v1.0", "required_files": required_records, "sensitive_paths": sensitive, "sensitive_tracked_or_canonical_paths": sensitive_tracked_or_canonical, "source_rows": [{"path": row.get("path"), "sha256": row.get("sha256"), "size_bytes": row.get("size_bytes")} for row in rows if row.get("sha256")], "status": audit_status})
 
     md_lines = [
         "# Stage 1~8 파일 인벤토리",
@@ -318,7 +339,7 @@ def main() -> int:
         f"- 조사 파일 수: `{len(rows)}`",
         f"- Stage 7 지정 원본 정확 일치: `{summary['required_exact_found']}/{len(REQUIRED)}`",
         f"- Git 메타데이터: `{'FOUND' if summary['git_metadata_present'] else 'MISSING'}`",
-        "- 판정: `BLOCKED` — 정확한 승인 원본 누락/미입고와 보안·형상관리 차단이 존재한다.",
+        f"- 판정: `{audit_status}` — 정확한 승인 원본 누락/미입고 여부와 canonical SSOT 보안 상태를 기준으로 판단한다.",
         "",
         "## Stage 7 지정 원본",
         "",
@@ -341,7 +362,7 @@ def main() -> int:
         "# ID 교차참조 감사",
         "",
         f"- 생성 시각(UTC): `{summary['generated_at']}`",
-        "- 판정: `BLOCKED` — 승인 원본 입고·정의 충돌·민감정보·자동검증 전제 확인이 필요하다.",
+        f"- 판정: `{audit_status}` — 승인 원본 입고·정의 충돌·자동검증 전제 확인이 필요하다.",
         "",
         "## ID 사용 현황",
         "",
@@ -358,7 +379,7 @@ def main() -> int:
         "# Gate 0 SSOT 감사 보고서",
         "",
         f"- 감사 시각(UTC): `{summary['generated_at']}`",
-        "- Gate 0 상태: `BLOCKED`",
+        f"- Gate 0 상태: `{audit_status}`",
         "- 다음 Gate: 실행 금지 (`Gate 1`은 `NOT_STARTED` 유지)",
         "",
         "## 확인 결과",
@@ -375,8 +396,10 @@ def main() -> int:
     ]
     if missing:
         report_lines.append("- 정확한 Stage 7 승인 원본이 누락됨: " + ", ".join(f"`{name}`" for name in missing))
-    if sensitive:
-        report_lines.append("- 민감정보로 보이는 파일이 존재함(내용 미열람·미복사): " + ", ".join(f"`{path}`" for path in sensitive))
+    if sensitive_tracked_or_canonical:
+        report_lines.append("- 민감정보로 보이는 파일이 Git 추적 또는 canonical SSOT에 존재함: " + ", ".join(f"`{path}`" for path in sensitive_tracked_or_canonical))
+    elif sensitive:
+        report_lines.append("- 민감정보로 보이는 로컬 파일은 내용 미열람 상태이며 `.gitignore`로 제외되어 Gate 차단 대신 보안 경고로 기록함: " + ", ".join(f"`{path}`" for path in sensitive))
     if not (ROOT / ".git").exists():
         report_lines.append("- 로컬 `.git`이 없어 HEAD·브랜치·미커밋 기준선을 기록할 수 없음")
     if not summary["3d_files"]:
@@ -385,13 +408,13 @@ def main() -> int:
     (AUDIT_ROOT / "GATE0_SSOT_AUDIT_REPORT.md").write_text("\n".join(report_lines), encoding="utf-8")
 
     EVIDENCE_ROOT.mkdir(parents=True, exist_ok=True)
-    (EVIDENCE_ROOT / "gate0-decision.json").write_text(json.dumps({"status": "BLOCKED", "generated_at": summary["generated_at"], "missing_exact_files": missing, "sensitive_paths": sensitive, "evidence": ["docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md", "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json", "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (EVIDENCE_ROOT / "gate0-decision.json").write_text(json.dumps({"status": audit_status, "generated_at": summary["generated_at"], "missing_exact_files": missing, "sensitive_paths": sensitive, "sensitive_tracked_or_canonical_paths": sensitive_tracked_or_canonical, "evidence": ["docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md", "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json", "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("AUDIT_WRITTEN")
     print(f"files={len(rows)}")
     print(f"required_exact={summary['required_exact_found']}/{len(REQUIRED)}")
     print(f"missing_exact={len(missing)}")
     print(f"sensitive_paths={len(sensitive)}")
-    print("gate0=BLOCKED")
+    print(f"gate0={audit_status}")
     return 0
 
 

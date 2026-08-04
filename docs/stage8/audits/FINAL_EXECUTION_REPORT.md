@@ -2,7 +2,7 @@
 
 ## 1. 최종 결과
 
-Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Harness와 Gate 메타프롬프트를 추가했다. Gate 0은 정확한 승인 원본 누락·민감정보·Git 기준선 부재로 `BLOCKED`이며 Gate 1~8 구현은 시작하지 않았다.
+Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Harness와 Gate 메타프롬프트를 추가했다. 후속 검색에서도 정확한 승인 원본 4종을 찾지 못했으므로 Gate 0은 `BLOCKED`이며 Gate 1~8 구현은 시작하지 않았다. 로컬 민감 파일은 Git에서 ignore되고 tracked되지 않아 보안 경고로 분리했다.
 
 ## 2. 확인한 파일과 핵심 원본
 
@@ -40,24 +40,24 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 ## 5. 자동 테스트
 
 - 감사 생성기: 종료 코드 0, Gate 0 `BLOCKED` 기록
-- Harness validator: 종료 코드 1, 민감정보 파일 때문에 차단
+- Harness validator: 종료 코드 0, 상태·증거·Gate 순서 검증 통과. Gate 0 판정 자체는 `BLOCKED`
 - pytest/npm 테스트: 프로젝트 명령 부재로 미실행
 
 ## 6. 남은 오류와 차단사항
 
 1. 정확한 승인 원본 4종 원본 바이트 입고 필요
-2. `github-recovery-codes.txt` 보안 조치 필요. 이 파일은 읽거나 커밋하지 않았다.
+2. `github-recovery-codes.txt`는 Git ignore·untracked 상태다. 내용을 읽거나 커밋하지 않았으며 별도 계정 보안 조치를 권고한다.
 3. 원격 브랜치 푸시·Draft PR 인증 및 upstream ancestry 확인 필요
-4. 3D 자산·제품 코드·배포 대상·승인 권한 필요
+4. Gate 2 이후에는 3D 자산·제품 코드·배포 대상·승인 권한이 필요
 
 ## 7. 브랜치·커밋·푸시
 
 - 브랜치: `codex/stage8-harness-continuation`
 - 커밋: `ca5c3fb` (`chore: import local stage 1-7 source files`), `45b4e9c` (`chore: add evidence-gated stage 8 harness`), `152c49d` (`docs: record gate 0 evidence and execution results`)
-- 현재 HEAD 확인(보고서 갱신 직전): `9e991e1`
+- 이전 실행 HEAD: `d57311d`
 - 푸시 시도: `codex/stage8-harness-continuation` → 원격 `403`, `Permission to tianxiawudi1996-eng/SOOHACK-CHAKCHAK.git denied to visionlab-coder`
 - Draft PR: 푸시 실패로 생성·갱신 불가
 
 ## 8. 다음 정확한 한 가지 작업
 
-정확히 누락된 Stage 7 승인 원본 4종을 원본 바이트 그대로 작업공간에 입고하고, 민감정보 파일을 계정 보안 절차로 격리한 뒤 `python scripts/harness/audit_stage8.py`를 재실행한다.
+정확히 누락된 Stage 7 승인 원본 4종을 원본 바이트 그대로 작업공간에 입고한 뒤 `python scripts/harness/audit_stage8.py`를 재실행한다.

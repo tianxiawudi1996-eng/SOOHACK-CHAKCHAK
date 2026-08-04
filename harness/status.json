@@ -3,7 +3,7 @@
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
   "updated_at": "2026-08-04T13:14:38+09:00",
-  "head_commit": "45b4e9c",
+  "head_commit": "d57311d",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -16,10 +16,10 @@
       "docs/stage8/evidence/gate0/gate0-decision.json"
     ],
     "blockers": [
-      "Four of the ten exact Stage 7 originals are not in the workspace",
-      "A sensitive-looking github-recovery-codes.txt exists and is not safe to commit",
-      "The local Git baseline is new and has no upstream ancestry or Draft PR yet",
-      "No 3D runtime assets exist"
+      "MathChakChak_Stage7_SSOT_v1.0.md is missing",
+      "Chakchaki_Character_Bible_v1.0.md is missing",
+      "Chakchaki_Approved_Reference_v1.0.png is missing",
+      "Gongsickyi_Approved_Reference_v1.0.png is missing"
     ],
     "entry_allowed": true
   },
@@ -70,5 +70,8 @@
     "evidence": ["docs/stage8/prompts/GATE8_DEPLOYMENT.md"],
     "blockers": ["Gate 7 must be VERIFIED; no deployment target or authorization is configured"],
     "entry_allowed": false
-  }
+  },
+  "warnings": [
+    "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "status": "BLOCKED",
-  "generated_at": "2026-08-04T04:17:51.733649+00:00",
+  "generated_at": "2026-08-04T04:28:45.952571+00:00",
   "missing_exact_files": [
     "MathChakChak_Stage7_SSOT_v1.0.md",
     "Chakchaki_Character_Bible_v1.0.md",
@@ -10,6 +10,7 @@
   "sensitive_paths": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt"
   ],
+  "sensitive_tracked_or_canonical_paths": [],
   "evidence": [
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
     "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",

@@ -1,6 +1,6 @@
 # Gate 0 SSOT 감사 보고서
 
-- 감사 시각(UTC): `2026-08-04T04:17:51.733649+00:00`
+- 감사 시각(UTC): `2026-08-04T04:28:45.952571+00:00`
 - Gate 0 상태: `BLOCKED`
 - 다음 Gate: 실행 금지 (`Gate 1`은 `NOT_STARTED` 유지)
 
@@ -16,7 +16,7 @@
 ## 차단사항
 
 - 정확한 Stage 7 승인 원본이 누락됨: `MathChakChak_Stage7_SSOT_v1.0.md`, `Chakchaki_Character_Bible_v1.0.md`, `Chakchaki_Approved_Reference_v1.0.png`, `Gongsickyi_Approved_Reference_v1.0.png`
-- 민감정보로 보이는 파일이 존재함(내용 미열람·미복사): `docs/ssot/stage7/v1.0/github-recovery-codes.txt`
+- 민감정보로 보이는 로컬 파일은 내용 미열람 상태이며 `.gitignore`로 제외되어 Gate 차단 대신 보안 경고로 기록함: `docs/ssot/stage7/v1.0/github-recovery-codes.txt`
 - GLB/GLTF/BLEND/FBX가 없어 Gate 2~4 실제 자산 검증 불가
 
 ## 증거 경로

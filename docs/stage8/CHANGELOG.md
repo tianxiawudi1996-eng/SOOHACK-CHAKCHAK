@@ -30,3 +30,11 @@
 - 원본 자료와 Harness 산출물을 두 개의 로컬 커밋으로 분리했다.
 - `github-recovery-codes.txt`는 `.gitignore`로 제외되어 어느 커밋에도 포함되지 않았다.
 - 원격 브랜치 푸시는 GitHub 403 권한 거부로 차단되었고 Draft PR은 생성하지 못했다.
+
+## 2026-08-04 — 차단 재검색 및 민감 파일 검증 교정
+
+- 누락 원본 4종을 `D:\project`, Codex 첨부 폴더, Desktop, Documents, Downloads, OneDrive, 원격 브랜치에서 다시 검색했으나 발견하지 못했다.
+- 이름에 `(1)`이 붙은 이미지 후보 2종은 승인 원본으로 승격하지 않았다.
+- 민감정보 형태의 파일은 Git tracked 또는 canonical `ssot/stage7/v1.0/`에 있을 때만 Harness 실패로 처리하도록 검증기를 교정했다.
+- 현재 `github-recovery-codes.txt`는 ignore·untracked 상태이며 내용은 읽지 않았다.
+- Harness 구조 검증은 종료 코드 0으로 통과했지만, 정확한 원본 4종 누락 때문에 Gate 0은 계속 `BLOCKED`다.

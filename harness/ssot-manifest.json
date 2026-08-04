@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T04:17:51.733649+00:00",
+  "generated_at": "2026-08-04T04:28:45.952571+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -831,6 +831,7 @@
   "sensitive_paths": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt"
   ],
+  "sensitive_tracked_or_canonical_paths": [],
   "source_rows": [
     {
       "path": ".github/workflows/stage8-harness.yml",
@@ -1074,48 +1075,48 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "a160981243ef53d9404d2fec1114ad95463f10f17c3ede260efb28d5d86a019f",
-      "size_bytes": 1747
+      "sha256": "3d04400c5fed49f74fa9abd36f99258da7efcc9c72b7493eb7762ee37ae29a10",
+      "size_bytes": 1858
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "a6350702c7c4c9bd54dc3f11f5085a9db9f3b179fabddc037391d0ca2960f56d",
-      "size_bytes": 3006
+      "sha256": "a5982f21db2dd9894dc525ca8d9095bcd75d3fab4e10994661e55fa5e5f8814f",
+      "size_bytes": 3324
     },
     {
       "path": "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
-      "sha256": "9131fec2c9436d0da7c82c0924e772e55c700555b3db70fa76c66b97e7dac38f",
-      "size_bytes": 1508
+      "sha256": "d2c238cc1d502602704c7af95be9b0bc8389d2d7f599e03080ecc66a10979a09",
+      "size_bytes": 1581
     },
     {
       "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
-      "sha256": "3519d7a70beb1702ea23472464fabba5220e6c7d6e3350d5b632f06b6caf9b7c",
+      "sha256": "1ca61b4fa8619a7aa89afc4f2cc8af36eb86eb713a6118fcef0fe65d101e6142",
       "size_bytes": 37363
     },
     {
       "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
-      "sha256": "475239a22702db4ec403fcf76f9e8a1b3a200dc0b4a311d6c4db12fb2c8658ec",
-      "size_bytes": 8850
+      "sha256": "bff6b23c4252f4db83fe395e6131e6d06e2557b73839ff95135b8eac27f6f7c4",
+      "size_bytes": 8836
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "sha256": "db878ab20681405887a8173eb6b56c25c23ba86bc4705ead88ae8efbb4b08a28",
-      "size_bytes": 2758
+      "sha256": "746ee84b5fde32f735d608eb46dee007068f39c3151087ea124ebe6dc5601171",
+      "size_bytes": 2780
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
-      "sha256": "cd9fc567d95aa2d95b879535494a929abd4d3bf72ca86c3d3d82fbc2ef1d5c89",
-      "size_bytes": 172526
+      "sha256": "532c57b754d1e4751d8da7c5c5aa407d07649e042e10cfbe4c7d375aead1782f",
+      "size_bytes": 172583
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
-      "sha256": "6494d86b9e51f890920da238e19c96eb24445fab093dc1b982477b01fef8253d",
-      "size_bytes": 26239
+      "sha256": "ff003b6e73bb8b53bfad7ce8f212162c4da8dd0d366c61ce212ce91dad0f1ae1",
+      "size_bytes": 26265
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "9f55360bce1f56c81d8306d33abbb21d1703230363cc33ec5184c7306608a1d1",
-      "size_bytes": 1330
+      "sha256": "f5f14adb2be332092dfdd8b64fa5f4120ea233cadf378008af1f971138878807",
+      "size_bytes": 2981
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1124,13 +1125,13 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "9ed9874921ba3a9d0f496f30a4dc6af6552d88550fdd21d9589fb3ad01d437ec",
-      "size_bytes": 1238
+      "sha256": "b4538c7146aa3095e42b09482a11dbb17905d6b1c75a3acf0273386067477707",
+      "size_bytes": 2080
     },
     {
       "path": "docs/stage8/evidence/gate0/gate0-decision.json",
-      "sha256": "44eeff8ff3c2d8981cbf5ba4f9617f5b2bc286ecfc112fc8234a61cfd5733a18",
-      "size_bytes": 570
+      "sha256": "a30a839d1a351a44e3d4285939dd8fa034c04b38d0567c5b2d384b7cb4230a69",
+      "size_bytes": 617
     },
     {
       "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
@@ -1184,13 +1185,13 @@
     },
     {
       "path": "harness/ssot-manifest.json",
-      "sha256": "af89aa7f03dfb4949d7e1cd94040edb6abeb834f29e44a9edd2bc65f45d22f67",
-      "size_bytes": 43046
+      "sha256": "596d4c1b528dec801dc1db3c9eb7428873422b4d00a7dd07ab772ebc6e041d48",
+      "size_bytes": 43093
     },
     {
       "path": "harness/status.json",
-      "sha256": "d2593bfea31b7bca8063e6dbfd870742f050b141f2bb31a9ac52efb2f6dfab4d",
-      "size_bytes": 2751
+      "sha256": "7300fa06a1b2e323a4f7de2bc907528bbe5ac89511999cb6c767134696abf506",
+      "size_bytes": 2819
     },
     {
       "path": "README.md",
@@ -1199,13 +1200,13 @@
     },
     {
       "path": "scripts/harness/audit_stage8.py",
-      "sha256": "d8625e4f6b508ca8c2bee34e9391c1dc1f0b89e7a2c179833ad1b6581031a8e6",
-      "size_bytes": 21604
+      "sha256": "0f8c00b8d7de5d7e0f94b02a54e0373e58d327662d3d927fafa7711728e9d8f1",
+      "size_bytes": 22783
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "ce22257a931a1708bc7231ef9ac403f498679f727b430130e77125234e657b6c",
-      "size_bytes": 4936
+      "sha256": "73f73a40b842ff361d21387edb534cd6bee3894f0b3cf91c469f7b2cd925e0ce",
+      "size_bytes": 5752
     },
     {
       "path": "ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",

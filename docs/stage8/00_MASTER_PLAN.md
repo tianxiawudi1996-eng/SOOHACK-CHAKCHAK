@@ -6,7 +6,7 @@
 
 ## 완료 정의
 
-각 Gate는 필수 증거와 자동·수동 검증이 모두 존재할 때만 `VERIFIED`가 된다. Gate 0이 `VERIFIED`가 아니면 Gate 1 이후 구현은 시작하지 않는다. 현재 Gate 0은 정확한 승인 원본 일부 누락, 민감 파일, Git 기준선 부재로 `BLOCKED`다.
+각 Gate는 필수 증거와 자동·수동 검증이 모두 존재할 때만 `VERIFIED`가 된다. Gate 0이 `VERIFIED`가 아니면 Gate 1 이후 구현은 시작하지 않는다. 현재 Gate 0은 정확한 승인 원본 4종 누락으로 `BLOCKED`다. 로컬 민감 파일은 ignore·untracked 경고로 분리되며 canonical SSOT 또는 Git 추적 상태일 때만 Gate 차단으로 취급한다.
 
 ## 고정 순서
 

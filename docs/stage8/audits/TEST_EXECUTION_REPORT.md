@@ -19,6 +19,9 @@
 | `git push -u origin codex/stage8-harness-continuation` | `2026-08-04T13:18:50+09:00` | `2026-08-04T13:18:50+09:00` | 128 | GitHub 403 권한 거부 (`visionlab-coder`) |
 | `python -m py_compile ...` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 0 | Python 구문 검사 통과 |
 | `python scripts/harness/validate_harness.py` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 1 | 민감정보 파일 차단 유지 |
+| `python -m py_compile ...` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:22+09:00` | 0 | 교정된 감사·검증 스크립트 구문 검사 통과 |
+| `python scripts/harness/audit_stage8.py` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `required_exact=6/10`, Gate 0 `BLOCKED` |
+| `python scripts/harness/validate_harness.py` (후속 실행) | `2026-08-04T13:28:23+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `HARNESS_PASS`; ignored·untracked 민감 파일은 경고, Gate 순서·증거 검증 통과 |
 
 ## 미실행 명령
 
@@ -28,4 +31,4 @@
 
 ## 해석
 
-감사 생성기와 Python 구문 검사는 실행되었지만, Gate 0 조건은 충족되지 않았다. Harness 검증 실패를 성공으로 바꾸거나 실행하지 않은 테스트를 통과로 기록하지 않았다.
+감사 생성기·Python 구문 검사·Harness 구조 검증은 실행되었다. Harness는 종료 코드 0이지만 이는 상태 모델과 증거 경로가 유효하다는 뜻이며 Gate 0 통과를 의미하지 않는다. 정확한 원본 4종이 없어 Gate 0은 계속 `BLOCKED`다.
