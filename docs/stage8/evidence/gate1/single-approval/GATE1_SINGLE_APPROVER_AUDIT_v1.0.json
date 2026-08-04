@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T08:57:58.261126+00:00",
+  "gate": 1,
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "status": "BLOCKED_EXTERNAL",
+  "policy_sha256": "8ed019c2011d255bdf99bbb0d336ae847b76cfca617172b97fb93c7e77904fe4",
+  "decision_sha256": "7a9026ff552e511022ebc733c48b9e8b7eb63657f045ac25eec78014234d76df",
+  "valid_approval_count": 0,
+  "approval_required": 1,
+  "automated_status": "PASS",
+  "candidate_hash_drift_count": 0,
+  "candidate_hash_drift": [],
+  "immutable_hash_drift_count": 0,
+  "immutable_hash_drift": [],
+  "reject_count": 0,
+  "unresolved_patch_count": 0,
+  "failures": [],
+  "blockers": [
+    "SINGLE_PROJECT_OWNER_DECISION_MISSING"
+  ],
+  "ready_for_promotion": false,
+  "gate1_status_change_applied": false,
+  "next_gate_allowed": false,
+  "next_action": "권한 있는 프로젝트 책임자의 단일 결정을 입력한다."
+}

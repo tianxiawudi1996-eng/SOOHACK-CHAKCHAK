@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 approval policy simplified to one Project Owner
+
+- Activated `PROJECT_OWNER_SINGLE_APPROVAL` with one decision covering both characters and the complete Gate 1 package.
+- Marked the previous five-role × two-character policy `SUPERSEDED_NON_GATING` while preserving its artifacts as audit history.
+- Added a single decision schema, policy-driven audit, and one-person approval metaprompt.
+- Updated automated Gate 1 QA and the Harness to require 1 approval instead of 10.
+- Current result is `BLOCKED_EXTERNAL` at 0/1 because the designated Project Owner decision has not been entered.
+
 ## 2026-08-04 — Gate 1 reviewer dispatch confirmed
 
 - Recorded the user's confirmation that all five role-specific review requests were sent through the registered contact references.

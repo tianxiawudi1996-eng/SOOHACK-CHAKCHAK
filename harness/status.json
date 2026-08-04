@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-04T17:34:20+09:00",
-  "head_commit": "19529e2",
+  "updated_at": "2026-08-04T17:56:39+09:00",
+  "head_commit": "f39ba7f",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -28,6 +28,7 @@
       "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
       "docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md",
       "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
+      "docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
       "docs/ssot/stage7/v1.0/GATE1_QA_RESULT_v5.1.1.json",
       "docs/ssot/stage7/v1.0/GATE1_CANONICAL_TURNAROUND_REMEDIATION_METAPROMPT_v5.2.0.md",
       "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
@@ -36,6 +37,7 @@
       "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
       "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
       "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
+      "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
       "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
       "docs/stage8/evidence/gate1/candidate-review.json",
       "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
@@ -49,6 +51,9 @@
       "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
       "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
       "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
+      "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_POLICY_v1.0.json",
+      "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
+      "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
       "docs/stage8/evidence/gate1/manual-review/COORDINATOR_ACTION_REQUEST.md",
       "docs/stage8/evidence/gate1/manual-review/COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json",
       "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
@@ -61,8 +66,7 @@
     ],
     "blockers": [
       "Raster evidence cannot independently prove true orthographic camera equivalence or eliminate identity/accessory drift without accountable art and 3D review",
-      "Five reviewer assignments, acknowledgments, and dispatches are confirmed, but ten accountable character decisions are not yet recorded",
-      "Ten accountable approvals are missing: five required roles for each of the two characters"
+      "One authorized Project Owner package decision is required under the active single-approver policy"
     ],
     "entry_allowed": true
   },

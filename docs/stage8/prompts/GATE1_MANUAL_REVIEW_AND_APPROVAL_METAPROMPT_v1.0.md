@@ -1,5 +1,7 @@
 # 수학착착 Stage 8 — Gate 1 수동 검토·승인 실행 메타프롬프트 v1.0
 
+> 상태: `SUPERSEDED_NON_GATING`. 현재 Gate 판정은 `GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md`의 프로젝트 책임자 1인 승인 정책을 따른다. 이 문서는 감사 이력으로만 보존한다.
+
 ## 0. 실행 선언
 
 이 프롬프트의 목적은 AI가 승인을 대신하는 것이 아니라, 실제 책임자가 같은 증거와 같은 SHA-256을 검토하고 추적 가능한 결정을 기록하도록 통제하는 것이다.

@@ -1,11 +1,14 @@
 # Gate 1 Manual Review Package
 
+> Policy status: `SUPERSEDED_NON_GATING`. 이 디렉터리의 10건 승인·배정·발송 자료는 감사 이력이다. 활성 정책은 `../single-approval/SINGLE_APPROVER_POLICY_v1.0.json`이며 프로젝트 책임자 승인 1건만 Gate 판정에 사용한다.
+
 ## Current state
 
 - Package: `gate1-manual-review-916636d0-9c8061af`
 - Preparation result: `READY_FOR_HUMAN_REVIEW`
 - Automated QA: `PASS`
-- Actual approvals: `0/10`
+- Legacy approvals: `0/10` — non-gating
+- Active single approval: `0/1`
 - Valid Coordinator nominations: `5/5`
 - Nomination state: `READY_FOR_ASSIGNMENT`
 - Applied assignments: `5/5`
@@ -32,13 +35,9 @@
 
 ## Workflow
 
-1. Assign one accountable named reviewer to each required role.
-2. Each role reviews both character packets against the frozen candidate hash.
-3. Record decisions only from the real reviewer in `Gate1_Manual_Approval_Log_v5.2.0.xlsx` and the canonical JSON approval record.
-4. On any candidate hash change, invalidate all five approvals for that character and rebuild/re-audit the package.
-5. Do not promote Gate 1 until 10 valid approvals, zero rejects, zero unresolved patches, automated QA PASS, and zero hash drift are all proven.
-6. Refresh `approval-workbook-current.json`, then run `python scripts/harness/audit_gate1_approval_intake.py` after every real reviewer submission.
-7. Run `python scripts/harness/audit_gate1_reviewer_assignment.py` after assignment or acknowledgment changes.
-8. Run `python scripts/harness/audit_gate1_external_unblock.py` after the Coordinator nomination response changes.
+1. Preserve this package as non-gating audit history.
+2. Record one authorized Project Owner decision in `../single-approval/SINGLE_APPROVER_DECISION_v1.0.json`.
+3. Run `python scripts/harness/audit_gate1_single_approval.py`.
+4. Proceed to a controlled promotion only at `READY_FOR_PROMOTION` with automated QA PASS and zero hash drift.
 
-AI preparation does not count as approval and must never populate reviewer identity, decision, or time fields.
+AI preparation does not count as approval and must never populate the Project Owner identity, decision, or review time.

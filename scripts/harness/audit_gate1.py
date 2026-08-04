@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure Gate 1 candidate boards and verify the delivery package without promoting the gate."""
+"""Measure Gate 1 candidates and combine automated QA with the active approval policy."""
 
 from __future__ import annotations
 
@@ -14,6 +14,7 @@ from PIL import Image, ImageChops, ImageStat
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW_PATH = ROOT / "docs/stage8/evidence/gate1/candidate-review.json"
+SINGLE_APPROVAL_AUDIT = ROOT / "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json"
 OUTPUT_JSON = ROOT / "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json"
 OUTPUT_MD = ROOT / "docs/stage8/audits/GATE1_AUTOMATED_QA.md"
 CHECKSUMS = ROOT / "docs/stage8/evidence/gate1/SHA256SUMS.txt"
@@ -191,6 +192,7 @@ def validate_delivery(character: str) -> dict:
 
 def main() -> int:
     review = json.loads(REVIEW_PATH.read_text(encoding="utf-8"))
+    single_approval = json.loads(SINGLE_APPROVAL_AUDIT.read_text(encoding="utf-8"))
     results = [analyze_candidate(candidate) for candidate in review.get("candidates", [])]
     deliveries = [validate_delivery(result["character"]) for result in results]
     generated_at = datetime.now(timezone.utc).isoformat()
@@ -205,13 +207,16 @@ def main() -> int:
         for delivery in deliveries
         if not delivery["pass"]
     )
-    manual_approvals = review.get("manual_approvals", [])
-    manual_complete = len(manual_approvals) >= 10 and all(
-        approval.get("reviewer")
-        and approval.get("reviewed_at")
-        and approval.get("decision") in {"APPROVE", "APPROVE_WITH_PATCH"}
-        and not approval.get("unresolved_patch", False)
-        for approval in manual_approvals
+    manual_approval_count = single_approval.get("valid_approval_count", 0)
+    manual_complete = (
+        single_approval.get("approval_mode") == "PROJECT_OWNER_SINGLE_APPROVAL"
+        and single_approval.get("status") == "READY_FOR_PROMOTION"
+        and single_approval.get("ready_for_promotion") is True
+        and manual_approval_count == 1
+        and single_approval.get("reject_count") == 0
+        and single_approval.get("unresolved_patch_count") == 0
+        and single_approval.get("candidate_hash_drift_count") == 0
+        and single_approval.get("immutable_hash_drift_count") == 0
     )
     automated_status = "PASS" if not automated_failures else "FAIL"
     if automated_status == "PASS" and manual_complete:
@@ -222,7 +227,7 @@ def main() -> int:
         status = "FAIL"
     failures = list(automated_failures)
     if not manual_complete:
-        failures.append("five-role manual approvals are incomplete (10 accountable approvals required)")
+        failures.append("single Project Owner approval is incomplete (1 accountable package approval required)")
 
     payload = {
         "schema_version": "1.0.0",
@@ -235,8 +240,9 @@ def main() -> int:
         "results": results,
         "deliveries": deliveries,
         "failures": failures,
-        "manual_approval_count": len(manual_approvals),
-        "manual_approval_required": 10,
+        "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+        "manual_approval_count": manual_approval_count,
+        "manual_approval_required": 1,
     }
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

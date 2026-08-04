@@ -1,5 +1,7 @@
 # 수학착착 Stage 8 — Gate 1 승인 입력 검증·승격 준비 실행 메타프롬프트 v1.0
 
+> 상태: `SUPERSEDED_NON_GATING`. 기존 Excel·JSON 10건 승인 흐름은 감사 이력이며 현재 Gate 판정에는 사용하지 않는다.
+
 ## 0. 실행 선언
 
 이 프롬프트는 실제 책임자가 제출한 Gate 1 결정을 Excel과 JSON에서 교차검증하고, Gate 1 승격 준비 여부를 판정한다. AI는 승인자를 대신하거나 reviewer·decision·reviewed_at·comment를 생성하지 않는다.

@@ -3,16 +3,17 @@
 ## Environment
 
 - Workspace: `D:\project\SOOHACK CHACKCHACK`
-- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-04T17:34:20+09:00`
+- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-04T17:56:39+09:00`
 - Platform: Windows PowerShell / Python 3 / bundled Node.js
 
 ## Results
 
 | Command | Exit | Result |
 |---|---:|---|
-| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/audit_gate1.py scripts/harness/build_gate1_evidence.py scripts/harness/prepare_gate1_manual_review.py scripts/harness/audit_gate1_approval_intake.py scripts/harness/audit_gate1_reviewer_assignment.py scripts/harness/audit_gate1_external_unblock.py scripts/harness/validate_harness.py` | 0 | Eight harness scripts compiled successfully. |
-| `python scripts/harness/audit_stage8.py` | 0 | 178 files audited, Stage 7 exact originals 10/10, Gate 0 `VERIFIED`. |
-| `python scripts/harness/audit_gate1.py` | 1 | Expected gate-blocking exit: automated QA `PASS`, Gate status `BLOCKED_EXTERNAL`, manual approvals 0/10. |
+| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/audit_gate1.py scripts/harness/build_gate1_evidence.py scripts/harness/prepare_gate1_manual_review.py scripts/harness/audit_gate1_approval_intake.py scripts/harness/audit_gate1_reviewer_assignment.py scripts/harness/audit_gate1_external_unblock.py scripts/harness/audit_gate1_single_approval.py scripts/harness/validate_harness.py` | 0 | Nine harness scripts compiled successfully. |
+| `python scripts/harness/audit_stage8.py` | 0 | 184 files audited, Stage 7 exact originals 10/10, Gate 0 `VERIFIED`. |
+| `python scripts/harness/audit_gate1.py` | 1 | Expected gate-blocking exit: automated QA `PASS`, active approval mode `PROJECT_OWNER_SINGLE_APPROVAL`, approvals 0/1. |
+| `python scripts/harness/audit_gate1_single_approval.py` | 1 | Expected external-blocking exit: active single approval 0/1, candidate and immutable hash drift 0. |
 | `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 0 `VERIFIED`, Gate 1 `BLOCKED`, manifest `VERIFIED`. |
 | Artifact-tool approval workbook preflight | 0 | Read-only inspection passed: 10/10 rows `PENDING`; reviewer, decision, and reviewed_at blank; formula errors 0. |
 | `python scripts/harness/prepare_gate1_manual_review.py` | 0 | 40/40 checksum records verified; 39 immutable inputs, one controlled ledger baseline, and 10/10 role packets prepared. |
@@ -44,7 +45,9 @@
 
 ## Expected non-zero result
 
-`audit_gate1.py` intentionally returns exit 1 until Gate 1 is genuinely `VERIFIED`. The only current failure is the missing 10 accountable human approvals. This is a gate-control success, not an automated image-QA failure.
+`audit_gate1.py` intentionally returns exit 1 until Gate 1 is genuinely `VERIFIED`. The only current failure is the missing single authorized Project Owner package decision. This is a gate-control success, not an automated image-QA failure.
+
+The 5-role and 10-decision rows above are retained historical test results. They are `SUPERSEDED_NON_GATING` and do not contribute to the active Gate 1 decision count.
 
 ## Not applicable
 

@@ -40,6 +40,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate1_approval_intake.py",
     "scripts/harness/audit_gate1_reviewer_assignment.py",
     "scripts/harness/audit_gate1_external_unblock.py",
+    "scripts/harness/audit_gate1_single_approval.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -56,6 +57,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
     "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
     "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
+    "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -77,6 +79,9 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/manual-review/COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/README.md",
+    "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_POLICY_v1.0.json",
+    "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
+    "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
@@ -87,6 +92,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
@@ -312,6 +318,10 @@ def main() -> int:
     if gates[1].get("status") != "NOT_STARTED":
         gate1_review = load_json(ROOT / "docs/stage8/evidence/gate1/candidate-review.json")
         gate1_qa = load_json(ROOT / "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json")
+        single_root = ROOT / "docs/stage8/evidence/gate1/single-approval"
+        single_policy = load_json(single_root / "SINGLE_APPROVER_POLICY_v1.0.json")
+        single_decision = load_json(single_root / "SINGLE_APPROVER_DECISION_v1.0.json")
+        single_audit = load_json(single_root / "GATE1_SINGLE_APPROVER_AUDIT_v1.0.json")
         manual_root = ROOT / "docs/stage8/evidence/gate1/manual-review"
         workbook_preflight = load_json(manual_root / "approval-workbook-preflight.json")
         workbook_current = load_json(manual_root / "approval-workbook-current.json")
@@ -335,6 +345,12 @@ def main() -> int:
             fail("gate1 automated QA allows next gate while gate1 is not VERIFIED")
         if gate1_qa.get("automated_status") != "PASS":
             fail("gate1 delivery package does not pass automated QA")
+        if gate1_qa.get("approval_mode") != "PROJECT_OWNER_SINGLE_APPROVAL":
+            fail("gate1 automated QA does not use the active single-approver policy")
+        if gate1_qa.get("manual_approval_required") != 1:
+            fail("gate1 automated QA must require exactly one package approval")
+        if gate1_qa.get("manual_approval_count") != single_audit.get("valid_approval_count"):
+            fail("gate1 automated QA and single-approver audit counts disagree")
         if any(result.get("status") != "PASS" for result in gate1_qa.get("results", [])):
             fail("one or more gate1 candidate boards fail automated checks")
         if any(delivery.get("pass") is not True for delivery in gate1_qa.get("deliveries", [])):
@@ -342,8 +358,60 @@ def main() -> int:
         if gates[1].get("status") == "BLOCKED" and gate1_qa.get("status") != "BLOCKED_EXTERNAL":
             fail("gate1 is BLOCKED but automated QA does not identify the external approval blocker")
         if gates[1].get("status") == "VERIFIED":
-            if gate1_review.get("status") != "VERIFIED" or len(gate1_review.get("manual_approvals", [])) < 10:
-                fail("gate1 VERIFIED without ten accountable approvals")
+            if single_audit.get("status") != "READY_FOR_PROMOTION":
+                fail("gate1 VERIFIED without a valid single Project Owner approval")
+            if single_audit.get("valid_approval_count") != 1:
+                fail("gate1 VERIFIED without exactly one package approval")
+
+        if single_policy.get("policy_status") != "ACTIVE":
+            fail("gate1 single-approver policy is not active")
+        if single_policy.get("approval_mode") != "PROJECT_OWNER_SINGLE_APPROVAL":
+            fail("gate1 single-approver policy mode is invalid")
+        if single_policy.get("approval_required") != 1:
+            fail("gate1 single-approver policy must require one approval")
+        if single_policy.get("required_decision_fields") != [
+            "approver_name",
+            "decision",
+            "reviewed_at",
+            "scope_acknowledged",
+            "candidate_hashes",
+        ]:
+            fail("gate1 single-approver policy contains unexpected decision fields")
+        legacy_policy = single_policy.get("legacy_policy", {})
+        if legacy_policy.get("status") != "SUPERSEDED_NON_GATING":
+            fail("gate1 legacy ten-approval policy is still gating")
+        if legacy_policy.get("approval_required") != 10:
+            fail("gate1 legacy approval count history is invalid")
+        if single_decision.get("approval_mode") != single_policy.get("approval_mode"):
+            fail("gate1 single decision and policy modes disagree")
+        if single_decision.get("next_gate_allowed") is not False:
+            fail("gate1 single decision prematurely allows Gate 2")
+        if single_decision.get("approval_applied") is not False:
+            fail("gate1 single decision applied an unauthorized promotion")
+        if single_audit.get("policy_sha256", "").lower() != hashlib.sha256(
+            (single_root / "SINGLE_APPROVER_POLICY_v1.0.json").read_bytes()
+        ).hexdigest().lower():
+            fail("gate1 single-approver audit policy hash is stale")
+        if single_audit.get("decision_sha256", "").lower() != hashlib.sha256(
+            (single_root / "SINGLE_APPROVER_DECISION_v1.0.json").read_bytes()
+        ).hexdigest().lower():
+            fail("gate1 single-approver audit decision hash is stale")
+        single_status = single_audit.get("status")
+        if single_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_PROMOTION"}:
+            fail(f"unsupported gate1 single-approver status: {single_status!r}")
+        if single_audit.get("approval_required") != 1:
+            fail("gate1 single-approver audit must require one approval")
+        if single_audit.get("approval_mode") != single_policy.get("approval_mode"):
+            fail("gate1 single-approver audit mode is invalid")
+        if single_audit.get("next_gate_allowed") is not False:
+            fail("gate1 single-approver audit prematurely allows Gate 2")
+        if single_audit.get("gate1_status_change_applied") is not False:
+            fail("gate1 single-approver audit applied an unauthorized status change")
+        if single_status == "READY_FOR_PROMOTION":
+            if single_audit.get("valid_approval_count") != 1 or single_audit.get("ready_for_promotion") is not True:
+                fail("gate1 single-approver audit is ready without one valid approval")
+        elif single_audit.get("ready_for_promotion") is not False:
+            fail("gate1 single-approver audit claims readiness while blocked or failed")
 
         if workbook_preflight.get("status") != "PASS":
             fail("gate1 approval workbook preflight did not pass")

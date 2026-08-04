@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T08:36:19.969347+00:00",
+  "generated_at": "2026-08-04T08:58:06.098056+00:00",
   "gate": 1,
   "status": "BLOCKED_EXTERNAL",
   "automated_status": "PASS",
@@ -1117,8 +1117,9 @@
     }
   ],
   "failures": [
-    "five-role manual approvals are incomplete (10 accountable approvals required)"
+    "single Project Owner approval is incomplete (1 accountable package approval required)"
   ],
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
   "manual_approval_count": 0,
-  "manual_approval_required": 10
+  "manual_approval_required": 1
 }

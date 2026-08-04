@@ -1,5 +1,7 @@
 # 수학착착 Stage 8 — Gate 1 외부 검토 차단 해소 인계 실행 메타프롬프트 v1.0
 
+> 상태: `SUPERSEDED_NON_GATING`. 다섯 검토자 nomination 흐름은 감사 이력이며 현재 Gate 차단 해소에는 단일 프로젝트 책임자 결정 1건만 필요하다.
+
 ## 0. 실행 선언
 
 이 프롬프트는 자동화가 해결할 수 없는 Gate 1의 실제 책임자 배정 차단을 Gate 1 Coordinator에게 명확히 인계하고, 재개에 필요한 입력을 검증 가능한 형태로 수집하기 위한 절차다. AI는 실명, identity reference, contact reference, 권한 또는 이해상충 선언을 생성하지 않는다.

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 1,
+  "policy_status": "ACTIVE",
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "approval_required": 1,
+  "approval_scope": "BOTH_CHARACTERS_AND_COMPLETE_GATE1_EVIDENCE_PACKAGE",
+  "approver_role": "Gate 1 Project Owner",
+  "required_decision_fields": [
+    "approver_name",
+    "decision",
+    "reviewed_at",
+    "scope_acknowledged",
+    "candidate_hashes"
+  ],
+  "allowed_decisions": [
+    "APPROVE",
+    "APPROVE_WITH_PATCH",
+    "REJECT"
+  ],
+  "candidate_hashes": {
+    "Chakchaki": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+    "Gongsickyi": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157"
+  },
+  "legacy_policy": {
+    "mode": "FIVE_ROLES_X_TWO_CHARACTERS",
+    "approval_required": 10,
+    "status": "SUPERSEDED_NON_GATING",
+    "artifacts_retained_for_audit_history": true
+  },
+  "promotion_conditions": {
+    "automated_qa": "PASS",
+    "single_approval": "VALID",
+    "reject_count": 0,
+    "unresolved_patch_count": 0,
+    "immutable_hash_drift_count": 0
+  },
+  "next_gate_allowed_before_promotion": false
+}

@@ -1,5 +1,19 @@
 # 다음 파트 메타프롬프트 작성 보고
 
+## 프로젝트 책임자 1인 승인 정책 전환 결과
+
+- 활성 프롬프트: `docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md`
+- 활성 정책: `PROJECT_OWNER_SINGLE_APPROVAL`
+- 필요한 승인: 1건
+- 승인 범위: Chakchaki·Gongsickyi와 전체 Gate 1 증거 패키지
+- 기존 10건 정책: `SUPERSEDED_NON_GATING`
+- 자동 QA: `PASS`
+- 현재 활성 승인: 0/1
+- 현재 판정: `BLOCKED_EXTERNAL`
+- Gate 2 허용: `false`
+
+다음 입력은 지정된 프로젝트 책임자의 이름·내부 식별 참조·권한 참조·결정·실제 검토 시각·전체 범위 확인이다.
+
 ## 외부 차단 해소 인계 단계 작성·실행 결과
 
 - 작성 파일: `docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md`
