@@ -1,23 +1,33 @@
-# Gate 1 후보 생성 기록
+# Gate 1 Candidate Generation Record
 
-- 생성 방식: built-in image generation
-- 입력 1: `ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png`
-- 입력 2: `ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png`
-- 출력 위치: `evidence/gate-1/candidates/`
-- 상태: `NOT_VERIFIED`
+- 실행일: 2026-08-04 (Asia/Seoul)
+- 이미지 편집: 내장 이미지 생성 도구
+- 결정적 후처리: `scripts/harness/build_gate1_evidence.py`
+- 자동 검사: `scripts/harness/audit_gate1.py`
+- Gate 상태: `BLOCKED`
 
-## 프롬프트 세트
+## 입력과 불변 조건
 
-각 캐릭터별 승인 레퍼런스를 단일 외형 기준으로 사용했다. 동일 축척·동일 바닥선·정면/좌우 3/4/좌우 측면/후면/액세서리 제거/실루엣/32·64·128 가독성의 16셀 보드를 요청했다. 중립 자세, 캐릭터 비율·얼굴·의상·소품·색상 보존, 좌우 방향 중복 금지, 전신 비크롭, 흰 배경, 추가 소품·워터마크 금지를 공통 제약으로 지정했다.
+Stage 7 승인 참조 이미지와 기존 Gate 1 후보를 캐릭터 정체성 기준으로 사용했다. 편집 프롬프트는 4×4/16칸 순서, 영문 라벨, 캐릭터 얼굴·체형·의상·소품·색, 좌우 방향 논리, 액세서리 제거·실루엣·가독성 셀을 고정했다. 변경 허용 범위는 첫 8개 방향의 키와 바닥선 정규화뿐이었다.
 
-착착이는 10~12세 인상, 4.4-head 비율, 파란 모자·흰 후드·파란 반바지·운동화·백팩을 고정했다. 공식이는 달걀형 병아리 실루엣, 둥근 안경·학사모·별 포인터·짧은 부리-입을 고정했다.
+## 생성 계보
+
+| 캐릭터 | 편집 입력 | 편집 출력 | 전달 후보 |
+|---|---|---|---|
+| Chakchaki | `Chakchaki_Canonical_Turnaround_Candidate_v1.png` | `Chakchaki_Canonical_Turnaround_Candidate_v2.png` | `Chakchaki_Canonical_Turnaround_Candidate_v3.png` |
+| Gongsickyi | `Gongsickyi_Canonical_Turnaround_Candidate_v2.png` | `Gongsickyi_Canonical_Turnaround_Candidate_v3.png` | `Gongsickyi_Canonical_Turnaround_Candidate_v4.png` |
+
+편집 출력은 모델 생성 결과의 출처 보존용이며, 전달 후보는 동일 검사식을 사용하는 결정적 후처리로 4096×4096 보드에 정렬했다.
+
+## 전달 산출물
+
+- 후보 보드 2개
+- 캐릭터별 16개, 총 32개 2048×2048 방향 파일
+- 8방향 실루엣 오버레이 2개
+- 차이·바닥선 주석 시트 2개
+- 자동 QA JSON·Markdown, SHA-256 목록
+- Canonical View Register와 10개 수동 승인 행을 가진 Excel 승인 대장
 
 ## 제한
 
-- 생성 이미지는 후보이며 canonical SSOT에 포함하지 않는다.
-- 생성 모델의 raster 결과만으로 정투영 카메라와 3D 치수 일치를 증명할 수 없다.
-- 사람 승인 전 `VERIFIED`, `APPROVED`, `FINAL`로 명명하지 않는다.
-
-## 공식이 v2 단일 보정
-
-v1 보드의 `SILHOUETTE-3Q` 셀만 대상으로, 약 45도 회전된 3/4 외곽선에서 몸체 깊이·날개 겹침·발 오프셋·학사모 챙·안경 림·별 포인터가 구분되도록 요청했다. 다른 15셀과 그리드·라벨·배경은 유지하도록 제한했다. 결과는 `Gongsickyi_Canonical_Turnaround_Candidate_v2.png`이며 v1은 보정 이력으로 남겼다.
+자동화는 실제 승인자가 아니다. 캐릭터·3D·브랜드 UX·QA·제품 책임자가 두 캐릭터를 각각 승인하기 전에는 후보를 canonical SSOT, `VERIFIED`, `APPROVED`, `FINAL`로 표시하지 않는다.

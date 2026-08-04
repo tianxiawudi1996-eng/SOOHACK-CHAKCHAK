@@ -1,6 +1,6 @@
 # ID 교차참조 감사
 
-- 생성 시각(UTC): `2026-08-04T05:25:53.467711+00:00`
+- 생성 시각(UTC): `2026-08-04T06:34:26.646372+00:00`
 - 판정: `VERIFIED` — 승인 원본 입고·정의 충돌·자동검증 전제 확인이 필요하다.
 
 ## ID 사용 현황
@@ -20,7 +20,7 @@
 | `BUB-RST-01` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `BUB-SRC-01` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `BUB-WEL-01` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
-| `EVT-001` | 4 | 4 | `docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/stage8/CHANGELOG.md`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
+| `EVT-001` | 3 | 3 | `docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `EVT-002` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `EVT-003` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `EVT-004` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
@@ -34,17 +34,17 @@
 | `EVT-012` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `EVT-013` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `EVT-014` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
-| `EVT-015` | 3 | 3 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/stage8/CHANGELOG.md`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
+| `EVT-015` | 2 | 2 | `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` |
 | `MOD-01` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
 | `MOD-02` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
 | `MOD-03` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
 | `MOD-04` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
-| `SRC-01` | 15 | 10 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
+| `SRC-01` | 12 | 8 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-02` | 9 | 5 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx` |
 | `SRC-03` | 8 | 4 | `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-04` | 2 | 2 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-05` | 2 | 2 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
-| `SRC-06` | 6 | 5 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `docs/stage8/CHANGELOG.md`, `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md`, `docs/stage8/audits/TEST_EXECUTION_REPORT.md` |
+| `SRC-06` | 3 | 3 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 
 ## 필수 의미 연결
 

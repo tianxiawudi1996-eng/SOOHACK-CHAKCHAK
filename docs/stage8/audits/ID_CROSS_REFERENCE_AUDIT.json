@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T05:25:53.467711+00:00",
+  "generated_at": "2026-08-04T06:34:26.646372+00:00",
   "id_counts": {
     "BUB-CHO-01": 2,
     "BUB-CMP-01": 2,
@@ -14,7 +14,7 @@
     "BUB-RST-01": 2,
     "BUB-SRC-01": 2,
     "BUB-WEL-01": 2,
-    "EVT-001": 4,
+    "EVT-001": 3,
     "EVT-002": 2,
     "EVT-003": 2,
     "EVT-004": 2,
@@ -28,23 +28,22 @@
     "EVT-012": 2,
     "EVT-013": 2,
     "EVT-014": 2,
-    "EVT-015": 3,
+    "EVT-015": 2,
     "MOD-01": 1,
     "MOD-02": 1,
     "MOD-03": 1,
     "MOD-04": 1,
-    "SRC-01": 15,
+    "SRC-01": 12,
     "SRC-02": 9,
     "SRC-03": 8,
     "SRC-04": 2,
     "SRC-05": 2,
-    "SRC-06": 6
+    "SRC-06": 3
   },
   "id_locations": {
     "EVT-001": [
       "docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
       "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "docs/stage8/CHANGELOG.md",
       "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
     ],
     "SRC-01": [
@@ -55,9 +54,6 @@
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "docs/stage8/CHANGELOG.md",
-      "docs/stage8/CHANGELOG.md",
       "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
@@ -151,7 +147,6 @@
     ],
     "EVT-015": [
       "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "docs/stage8/CHANGELOG.md",
       "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
     ],
     "BUB-GUI-01": [
@@ -217,9 +212,6 @@
     "SRC-06": [
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "docs/stage8/CHANGELOG.md",
-      "docs/stage8/CHANGELOG.md",
       "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
     ]
   },

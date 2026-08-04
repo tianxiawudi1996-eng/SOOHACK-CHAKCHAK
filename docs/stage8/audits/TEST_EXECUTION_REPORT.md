@@ -1,40 +1,36 @@
 # Test Execution Report
 
-## 실행 환경
+## Environment
 
-- 작업 루트: `D:\project\SOOHACK CHACKCHACK`
-- 실행 시각: 2026-08-04 (Asia/Seoul)
-- Python: `C:\Users\seowo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
+- Workspace: `D:\project\SOOHACK CHACKCHACK`
+- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-04T15:32:30+09:00`
+- Platform: Windows PowerShell / Python 3 / bundled Node.js
 
-## 실행 결과
+## Results
 
-| 명령 | 시작 | 종료 | 종료 코드 | 결과 |
-|---|---|---|---:|---|
-| `python scripts/harness/audit_stage8.py` | `2026-08-04T13:15:07+09:00` | `2026-08-04T13:15:08+09:00` | 0 | 감사 산출물 생성. `required_exact=6/10`, `gate0=BLOCKED` |
-| `python scripts/harness/validate_harness.py` | `2026-08-04T13:15:08+09:00` | `2026-08-04T13:15:08+09:00` | 1 | 민감정보로 보이는 `github-recovery-codes.txt` 발견으로 차단 |
-| `git status --short` | `2026-08-04T13:15:08+09:00` | `2026-08-04T13:15:08+09:00` | 128 | `.git` 없음 |
-| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/validate_harness.py` | `2026-08-04T13:17:50+09:00` | `2026-08-04T13:17:50+09:00` | 0 | Python 구문 검사 통과 |
-| `python scripts/harness/audit_stage8.py` (최종 재실행) | `2026-08-04T13:17:50+09:00` | `2026-08-04T13:17:51+09:00` | 0 | `required_exact=6/10`, `gate0=BLOCKED` |
-| `python scripts/harness/validate_harness.py` (최종 재실행) | `2026-08-04T13:17:51+09:00` | `2026-08-04T13:17:51+09:00` | 1 | 민감정보 파일 차단 유지 |
-| `git push -u origin codex/stage8-harness-continuation` | `2026-08-04T13:18:50+09:00` | `2026-08-04T13:18:50+09:00` | 128 | GitHub 403 권한 거부 (`visionlab-coder`) |
-| `python -m py_compile ...` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 0 | Python 구문 검사 통과 |
-| `python scripts/harness/validate_harness.py` (최종 확인) | `2026-08-04T13:19:29+09:00` | `2026-08-04T13:19:29+09:00` | 1 | 민감정보 파일 차단 유지 |
-| `python -m py_compile ...` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:22+09:00` | 0 | 교정된 감사·검증 스크립트 구문 검사 통과 |
-| `python scripts/harness/audit_stage8.py` (후속 실행) | `2026-08-04T13:28:22+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `required_exact=6/10`, Gate 0 `BLOCKED` |
-| `python scripts/harness/validate_harness.py` (후속 실행) | `2026-08-04T13:28:23+09:00` | `2026-08-04T13:28:23+09:00` | 0 | `HARNESS_PASS`; ignored·untracked 민감 파일은 경고, Gate 순서·증거 검증 통과 |
-| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/validate_harness.py` (엄격 검증 교정) | `2026-08-04T13:37:44.6908750+09:00` | `2026-08-04T13:37:45.0007194+09:00` | 0 | Python 구문 검사 통과 |
-| `python scripts/harness/audit_stage8.py` (엄격 검증 교정) | `2026-08-04T13:37:49.0522938+09:00` | `2026-08-04T13:37:50.4687456+09:00` | 0 | `files=82`, `required_exact=6/10`, Gate 0 `BLOCKED` |
-| `python scripts/harness/validate_harness.py` (엄격 검증 교정) | `2026-08-04T13:37:54.2917395+09:00` | `2026-08-04T13:37:54.3580119+09:00` | 1 | 필수 Stage 7 정확 원본 4종 누락을 명시하고 차단 |
-| `py_compile` → `audit_stage8.py` → `validate_harness.py` (OOXML ID 감사 포함 최종 회귀) | `2026-08-04T13:40:52.9775524+09:00` | `2026-08-04T13:40:55.2444475+09:00` | `0 / 0 / 1` | 입력 75개, 정확 원본 `6/10`, `SRC-01`~`SRC-06` 확인 후 누락 원본 4종을 의도대로 차단 |
-| `py_compile` → `audit_stage8.py` → `validate_harness.py` (원본 입고·Gate 1 후보 회귀) | `2026-08-04T14:21:01.3797409+09:00` | `2026-08-04T14:21:05.9156144+09:00` | `0 / 0 / 0` | 정확 원본 `10/10`, Gate 0 `VERIFIED`, Gate 1 `BLOCKED`, 후보 이미지 해시 검증 통과 |
-| `py_compile` → `audit_stage8.py` → `validate_harness.py` (커밋 전 최종 회귀) | `2026-08-04T14:25:32.9958571+09:00` | `2026-08-04T14:25:36.0897064+09:00` | `0 / 0 / 0` | 입력 89개, 정확 원본 `10/10`, Gate 0·수동 검토·Gate 1 v2 후보 해시 검증 통과 |
+| Command | Exit | Result |
+|---|---:|---|
+| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/audit_gate1.py scripts/harness/build_gate1_evidence.py scripts/harness/validate_harness.py` | 0 | Four harness scripts compiled successfully. |
+| `python scripts/harness/audit_stage8.py` | 0 | 139 files audited, Stage 7 exact originals 10/10, Gate 0 `VERIFIED`. |
+| `python scripts/harness/audit_gate1.py` | 1 | Expected gate-blocking exit: automated QA `PASS`, Gate status `BLOCKED_EXTERNAL`, manual approvals 0/10. |
+| `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 0 `VERIFIED`, Gate 1 `BLOCKED`, manifest `VERIFIED`. |
+| Artifact-tool formula scan | 0 errors | Both workbooks reported no `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, or `#N/A`. |
+| Artifact-tool XLSX re-import | 0 | Register reopened with 4 sheets; approval log reopened with 3 sheets. |
+| Spreadsheet render review | 7/7 | Every sheet rendered and was visually inspected. |
+| Candidate and evidence image review | PASS | Both final boards, both overlays, and difference annotations were inspected. |
 
-## 미실행 명령
+## Quantitative Gate 1 result
 
-- `pytest`: 실행 파일이 설치되어 있지 않음.
-- `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`: 루트 `package.json`이 없어 프로젝트 명령으로 확인할 수 없어 실행하지 않음.
-- 3D 검사: GLB/GLTF/BLEND/FBX가 없어 실행하지 않음.
+| Character | Resolution | Max height deviation | Baseline spread | Directions | Automated result |
+|---|---:|---:|---:|---:|---|
+| Chakchaki | 4096×4096 | 0.3358% | 2px | 16/16 at 2048×2048 | `PASS` |
+| Gongsickyi | 4096×4096 | 0.1555% | 1px | 16/16 at 2048×2048 | `PASS` |
 
-## 해석
+## Expected non-zero result
 
-최신 회귀에서 감사 생성기·Python 구문 검사·엄격 Harness 검증기가 모두 정상 종료했다. 정확 원본 10종과 Gate 0 수동 검토 해시가 일치해 Gate 0은 `VERIFIED`다. Gate 1 후보 파일도 해시가 일치하지만 정투영·방향 간 정합성과 5역할 승인이 없어 Gate 1은 `BLOCKED`다. 이전 실패 행은 원본 입고 전 역사적 실행 기록이며, 생성되는 감사 산출물 7개는 자기참조 방지를 위해 입력 인벤토리에서 제외한다.
+`audit_gate1.py` intentionally returns exit 1 until Gate 1 is genuinely `VERIFIED`. The only current failure is the missing 10 accountable human approvals. This is a gate-control success, not an automated image-QA failure.
+
+## Not applicable
+
+- No root `package.json`; npm lint/typecheck/build commands do not apply.
+- No GLB/GLTF/BLEND/FBX asset; Gate 2 mesh validation does not apply and must not start.

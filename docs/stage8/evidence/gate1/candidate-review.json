@@ -3,8 +3,8 @@
   "gate": 1,
   "status": "NOT_VERIFIED",
   "next_gate_allowed": false,
-  "generated_at": "2026-08-04T14:18:00+09:00",
-  "method": "Built-in image generation using one canonical approved reference image per character; outputs saved as non-canonical candidates.",
+  "generated_at": "2026-08-04T15:16:13+09:00",
+  "method": "Built-in identity-preserving image edits followed by deterministic 4096px scale and floor-line normalization; outputs remain non-canonical candidates until real five-role approval.",
   "source_references": {
     "Chakchaki_Approved_Reference_v1.0.png": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
     "Gongsickyi_Approved_Reference_v1.0.png": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec"
@@ -12,40 +12,61 @@
   "candidates": [
     {
       "character": "Chakchaki",
-      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png",
-      "sha256": "660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417",
-      "width": 1254,
-      "height": 1254,
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v3.png",
+      "sha256": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+      "width": 4096,
+      "height": 4096,
       "decodable": true,
       "required_cells_present": 16
     },
     {
       "character": "Gongsickyi",
-      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
-      "sha256": "c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e",
-      "width": 1254,
-      "height": 1254,
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v4.png",
+      "sha256": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157",
+      "width": 4096,
+      "height": 4096,
       "decodable": true,
       "required_cells_present": 16
     }
   ],
   "superseded_candidates": [
     {
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png",
+      "sha256": "660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417",
+      "reason": "Superseded by the scale and floor-line remediation sequence."
+    },
+    {
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v2.png",
+      "sha256": "dd748fe74040fe2c400368599096a448700a7190b5b8711085307868bfc2a08f",
+      "reason": "Image-edit source retained for provenance; superseded by the deterministic 4096px v3 delivery."
+    },
+    {
       "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
       "sha256": "eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334",
       "reason": "SILHOUETTE-3Q was too close to a front silhouette."
+    },
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
+      "sha256": "c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e",
+      "reason": "Superseded by the targeted scale and floor-line remediation sequence."
+    },
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v3.png",
+      "sha256": "0399e79958351fb1226b50d4a6519d24b30e710a57b69879e64ba4c868323ed4",
+      "reason": "Image-edit source retained for provenance; superseded by the deterministic 4096px v4 delivery."
     }
   ],
   "passed": [
     "Both candidate boards contain the requested 4x4/16-cell layout.",
     "Front, back, left/right side, left/right three-quarter, accessory-off, silhouette, and readability cells are present.",
-    "Both PNG files decode at 1254x1254 and have recorded SHA-256 hashes.",
+    "Both delivery boards decode at 4096x4096 and have recorded SHA-256 hashes.",
     "Generated candidates remain outside canonical SSOT.",
-    "Gongsickyi v2 provides a distinct three-quarter silhouette with cap, pointer, body depth, and foot offset."
+    "Each character has 16 individual 2048x2048 direction files plus overlay and difference-annotation sheets.",
+    "Left/right directional cells remain measurably distinct rather than simple mirrored duplicates."
   ],
   "failed_or_unverified": [
     "True orthographic camera equivalence cannot be proven from the generated raster boards.",
-    "Cross-view proportion, accessory-side consistency, floor-line equivalence, and identity drift require art/3D review.",
+    "Cross-view anatomy, accessory-side consistency, and identity drift still require accountable art/3D review.",
     "The five required manual approvals are absent."
   ],
   "manual_approvals": [],

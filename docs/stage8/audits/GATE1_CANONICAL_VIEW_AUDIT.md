@@ -1,31 +1,41 @@
-# Gate 1 Canonical View 감사
+# Gate 1 Canonical View Audit
 
-- 상태: `BLOCKED`
-- Gate 0 선행 조건: `VERIFIED`
-- Gate 2 진입: 금지
+- Gate 0 prerequisite: `VERIFIED`
+- Automated QA: `PASS`
+- Gate 1 status: `BLOCKED`
+- External approval state: `0/10`
+- Gate 2 entry: `PROHIBITED`
 
-## 생성 후보
+## Audited candidates
 
-| 캐릭터 | 파일 | SHA-256 | 형식 | 판정 |
-|---|---|---|---|---|
-| 착착이 | `evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png` | `660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417` | PNG 1254×1254, 16셀 | `NOT_VERIFIED` |
-| 공식이 | `evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png` | `c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e` | PNG 1254×1254, 16셀 | `NOT_VERIFIED` |
+| Character | Candidate | SHA-256 | Resolution | Automated result |
+|---|---|---|---:|---|
+| Chakchaki | `evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v3.png` | `916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480` | 4096×4096 | `PASS` |
+| Gongsickyi | `evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v4.png` | `9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157` | 4096×4096 | `PASS` |
 
-## 확인 결과
+## Automated evidence
 
-- 두 후보 모두 정면·후면·좌우 측면·좌우 3/4·액세서리 제거·실루엣·축소 가독성 셀을 포함한다.
-- 후보는 canonical SSOT와 분리된 `evidence/gate-1/candidates/`에 저장했다.
-- 공식이 v1의 `SILHOUETTE-3Q` 문제는 v2에서 3/4 외곽선으로 보정했으며 v1은 이력으로 보존했다.
-- raster 보드만으로 동일 정투영 카메라·축척·바닥선의 수학적 일치를 확정할 수 없다.
-- 방향 간 비율·소품 좌우·정체성 drift와 5역할 수동 승인이 남아 있다.
+- Both boards decode as 4×4 PNG contact sheets with all 16 required cells.
+- Main-view maximum height deviations are 0.3358% and 0.1555%, below the ±3% threshold.
+- Main-view baseline spreads are 2px and 1px, below the 30.72px board-cell limit.
+- Left/right side and front-three-quarter pairs are measurably distinct from simple mirrors.
+- All 32 individual direction files decode at 2048×2048.
+- Both 2048×2048 overlay sheets and both 4096×2048 difference-annotation sheets decode successfully.
 
-## 판정
+## Manual evidence still required
 
-필수 셀 후보는 생성됐지만 보정·방향별 QA·사람 승인이 완료되지 않았으므로 Gate 1은 `BLOCKED`다. Gate 2는 시작하지 않는다.
+Pixel QA does not prove true orthographic camera equivalence, production-ready anatomy, accessory-side logic, or brand/product acceptability. Character Art Lead, 3D Technical Art Lead, UX Brand System Lead, QA Lead, and Product Owner must each approve both characters in the manual approval log.
 
-## 증거
+## Decision
 
-- `docs/stage8/evidence/gate1/candidate-review.json`
-- `docs/stage8/evidence/gate1/GENERATION_RECORD.md`
-- `docs/ssot/stage7/v1.0/GATE1_QA_RESULT_v5.1.1.json`
-- `docs/ssot/stage7/v1.0/GATE1_CANONICAL_TURNAROUND_REMEDIATION_METAPROMPT_v5.2.0.md`
+The automated package passes, but no accountable manual approval exists. Gate 1 therefore remains `BLOCKED`; the candidates are not canonical SSOT and Gate 2 must not start.
+
+## Evidence index
+
+- `docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json`
+- `docs/stage8/audits/GATE1_AUTOMATED_QA.md`
+- `docs/stage8/evidence/gate1/Gate1_Character_Consistency_Report_v5.2.0.md`
+- `docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md`
+- `docs/stage8/evidence/gate1/SHA256SUMS.txt`
+- `outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx`
+- `outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx`

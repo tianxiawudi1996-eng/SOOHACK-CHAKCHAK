@@ -1,0 +1,1124 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T06:34:39.107060+00:00",
+  "gate": 1,
+  "status": "BLOCKED_EXTERNAL",
+  "automated_status": "PASS",
+  "next_gate_allowed": false,
+  "tolerance_percent": 3,
+  "results": [
+    {
+      "character": "Chakchaki",
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v3.png",
+      "sha256": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+      "width": 4096,
+      "height": 4096,
+      "mode": "RGB",
+      "cell_width_px": 1024.0,
+      "cell_height_px": 1024.0,
+      "median_main_subject_height_px": 744.5,
+      "max_main_height_deviation_percent": 0.3358,
+      "main_baseline_spread_px": 2,
+      "mirror_difference_side": 4.8655,
+      "mirror_difference_front_3q": 9.2986,
+      "checks": {
+        "hash_matches_review": true,
+        "png_decodable": true,
+        "square_4x4_board": true,
+        "board_minimum_2048px": true,
+        "all_cells_have_detected_subject": true,
+        "main_view_height_within_3_percent": true,
+        "main_view_baseline_within_3_percent": true,
+        "side_views_not_simple_mirrors": true,
+        "front_3q_views_not_simple_mirrors": true
+      },
+      "cells": [
+        {
+          "direction": "CV-FRONT",
+          "cell_box": [
+            0,
+            0,
+            1024,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            309,
+            52,
+            704,
+            797
+          ],
+          "subject_width_px": 395,
+          "subject_height_px": 745,
+          "baseline_px": 796,
+          "foreground_ratio": 0.145995,
+          "background_white_ratio": 0.854005
+        },
+        {
+          "direction": "CV-FRONT-3Q-L",
+          "cell_box": [
+            1024,
+            0,
+            2048,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            328,
+            52,
+            684,
+            797
+          ],
+          "subject_width_px": 356,
+          "subject_height_px": 745,
+          "baseline_px": 796,
+          "foreground_ratio": 0.15444,
+          "background_white_ratio": 0.84556
+        },
+        {
+          "direction": "CV-SIDE-L",
+          "cell_box": [
+            2048,
+            0,
+            3072,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            340,
+            52,
+            673,
+            797
+          ],
+          "subject_width_px": 333,
+          "subject_height_px": 745,
+          "baseline_px": 796,
+          "foreground_ratio": 0.138343,
+          "background_white_ratio": 0.861657
+        },
+        {
+          "direction": "CV-BACK-3Q-L",
+          "cell_box": [
+            3072,
+            0,
+            4096,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            320,
+            52,
+            693,
+            797
+          ],
+          "subject_width_px": 373,
+          "subject_height_px": 745,
+          "baseline_px": 796,
+          "foreground_ratio": 0.166533,
+          "background_white_ratio": 0.833467
+        },
+        {
+          "direction": "CV-BACK",
+          "cell_box": [
+            0,
+            1024,
+            1024,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            312,
+            53,
+            702,
+            796
+          ],
+          "subject_width_px": 390,
+          "subject_height_px": 743,
+          "baseline_px": 795,
+          "foreground_ratio": 0.15966,
+          "background_white_ratio": 0.84034
+        },
+        {
+          "direction": "CV-BACK-3Q-R",
+          "cell_box": [
+            1024,
+            1024,
+            2048,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            328,
+            53,
+            686,
+            796
+          ],
+          "subject_width_px": 358,
+          "subject_height_px": 743,
+          "baseline_px": 795,
+          "foreground_ratio": 0.161861,
+          "background_white_ratio": 0.838139
+        },
+        {
+          "direction": "CV-SIDE-R",
+          "cell_box": [
+            2048,
+            1024,
+            3072,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            346,
+            52,
+            668,
+            796
+          ],
+          "subject_width_px": 322,
+          "subject_height_px": 744,
+          "baseline_px": 795,
+          "foreground_ratio": 0.134433,
+          "background_white_ratio": 0.865567
+        },
+        {
+          "direction": "CV-FRONT-3Q-R",
+          "cell_box": [
+            3072,
+            1024,
+            4096,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            322,
+            53,
+            691,
+            795
+          ],
+          "subject_width_px": 369,
+          "subject_height_px": 742,
+          "baseline_px": 794,
+          "foreground_ratio": 0.141178,
+          "background_white_ratio": 0.858822
+        },
+        {
+          "direction": "CV-ACCESSORY-OFF-FRONT",
+          "cell_box": [
+            0,
+            2048,
+            1024,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            300,
+            2,
+            1014,
+            855
+          ],
+          "subject_width_px": 714,
+          "subject_height_px": 853,
+          "baseline_px": 854,
+          "foreground_ratio": 0.152267,
+          "background_white_ratio": 0.847733
+        },
+        {
+          "direction": "CV-ACCESSORY-OFF-BACK",
+          "cell_box": [
+            1024,
+            2048,
+            2048,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            274,
+            48,
+            665,
+            814
+          ],
+          "subject_width_px": 391,
+          "subject_height_px": 766,
+          "baseline_px": 813,
+          "foreground_ratio": 0.151001,
+          "background_white_ratio": 0.848999
+        },
+        {
+          "direction": "CV-SILHOUETTE-FRONT",
+          "cell_box": [
+            2048,
+            2048,
+            3072,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            304,
+            50,
+            679,
+            792
+          ],
+          "subject_width_px": 375,
+          "subject_height_px": 742,
+          "baseline_px": 791,
+          "foreground_ratio": 0.171958,
+          "background_white_ratio": 0.828042
+        },
+        {
+          "direction": "CV-SILHOUETTE-SIDE",
+          "cell_box": [
+            3072,
+            2048,
+            4096,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            349,
+            61,
+            610,
+            793
+          ],
+          "subject_width_px": 261,
+          "subject_height_px": 732,
+          "baseline_px": 792,
+          "foreground_ratio": 0.125753,
+          "background_white_ratio": 0.874247
+        },
+        {
+          "direction": "CV-SILHOUETTE-3Q",
+          "cell_box": [
+            0,
+            3072,
+            1024,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            3,
+            0,
+            1014,
+            855
+          ],
+          "subject_width_px": 1011,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.17184,
+          "background_white_ratio": 0.82816
+        },
+        {
+          "direction": "CV-READABILITY-32",
+          "cell_box": [
+            1024,
+            3072,
+            2048,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            8,
+            0,
+            1011,
+            855
+          ],
+          "subject_width_px": 1003,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.044706,
+          "background_white_ratio": 0.955294
+        },
+        {
+          "direction": "CV-READABILITY-64",
+          "cell_box": [
+            2048,
+            3072,
+            3072,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            2,
+            0,
+            1011,
+            855
+          ],
+          "subject_width_px": 1009,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.096177,
+          "background_white_ratio": 0.903823
+        },
+        {
+          "direction": "CV-READABILITY-128",
+          "cell_box": [
+            3072,
+            3072,
+            4096,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            0,
+            0,
+            1010,
+            810
+          ],
+          "subject_width_px": 1010,
+          "subject_height_px": 810,
+          "baseline_px": 809,
+          "foreground_ratio": 0.161754,
+          "background_white_ratio": 0.838246
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "character": "Gongsickyi",
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v4.png",
+      "sha256": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157",
+      "width": 4096,
+      "height": 4096,
+      "mode": "RGB",
+      "cell_width_px": 1024.0,
+      "cell_height_px": 1024.0,
+      "median_main_subject_height_px": 643.0,
+      "max_main_height_deviation_percent": 0.1555,
+      "main_baseline_spread_px": 1,
+      "mirror_difference_side": 6.0564,
+      "mirror_difference_front_3q": 14.6787,
+      "checks": {
+        "hash_matches_review": true,
+        "png_decodable": true,
+        "square_4x4_board": true,
+        "board_minimum_2048px": true,
+        "all_cells_have_detected_subject": true,
+        "main_view_height_within_3_percent": true,
+        "main_view_baseline_within_3_percent": true,
+        "side_views_not_simple_mirrors": true,
+        "front_3q_views_not_simple_mirrors": true
+      },
+      "cells": [
+        {
+          "direction": "CV-FRONT",
+          "cell_box": [
+            0,
+            0,
+            1024,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            129,
+            153,
+            825,
+            796
+          ],
+          "subject_width_px": 696,
+          "subject_height_px": 643,
+          "baseline_px": 795,
+          "foreground_ratio": 0.288937,
+          "background_white_ratio": 0.711063
+        },
+        {
+          "direction": "CV-FRONT-3Q-L",
+          "cell_box": [
+            1024,
+            0,
+            2048,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            116,
+            153,
+            805,
+            796
+          ],
+          "subject_width_px": 689,
+          "subject_height_px": 643,
+          "baseline_px": 795,
+          "foreground_ratio": 0.290137,
+          "background_white_ratio": 0.709863
+        },
+        {
+          "direction": "CV-SIDE-L",
+          "cell_box": [
+            2048,
+            0,
+            3072,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            200,
+            154,
+            779,
+            796
+          ],
+          "subject_width_px": 579,
+          "subject_height_px": 642,
+          "baseline_px": 795,
+          "foreground_ratio": 0.247438,
+          "background_white_ratio": 0.752562
+        },
+        {
+          "direction": "CV-BACK-3Q-L",
+          "cell_box": [
+            3072,
+            0,
+            4096,
+            1024
+          ],
+          "detected": true,
+          "bbox": [
+            100,
+            153,
+            798,
+            796
+          ],
+          "subject_width_px": 698,
+          "subject_height_px": 643,
+          "baseline_px": 795,
+          "foreground_ratio": 0.31142,
+          "background_white_ratio": 0.68858
+        },
+        {
+          "direction": "CV-BACK",
+          "cell_box": [
+            0,
+            1024,
+            1024,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            112,
+            153,
+            787,
+            795
+          ],
+          "subject_width_px": 675,
+          "subject_height_px": 642,
+          "baseline_px": 794,
+          "foreground_ratio": 0.296469,
+          "background_white_ratio": 0.703531
+        },
+        {
+          "direction": "CV-BACK-3Q-R",
+          "cell_box": [
+            1024,
+            1024,
+            2048,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            221,
+            153,
+            836,
+            795
+          ],
+          "subject_width_px": 615,
+          "subject_height_px": 642,
+          "baseline_px": 794,
+          "foreground_ratio": 0.288302,
+          "background_white_ratio": 0.711698
+        },
+        {
+          "direction": "CV-SIDE-R",
+          "cell_box": [
+            2048,
+            1024,
+            3072,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            228,
+            153,
+            795,
+            796
+          ],
+          "subject_width_px": 567,
+          "subject_height_px": 643,
+          "baseline_px": 795,
+          "foreground_ratio": 0.247887,
+          "background_white_ratio": 0.752113
+        },
+        {
+          "direction": "CV-FRONT-3Q-R",
+          "cell_box": [
+            3072,
+            1024,
+            4096,
+            2048
+          ],
+          "detected": true,
+          "bbox": [
+            200,
+            153,
+            813,
+            796
+          ],
+          "subject_width_px": 613,
+          "subject_height_px": 643,
+          "baseline_px": 795,
+          "foreground_ratio": 0.269497,
+          "background_white_ratio": 0.730503
+        },
+        {
+          "direction": "CV-ACCESSORY-OFF-FRONT",
+          "cell_box": [
+            0,
+            2048,
+            1024,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            177,
+            0,
+            1014,
+            855
+          ],
+          "subject_width_px": 837,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.227064,
+          "background_white_ratio": 0.772936
+        },
+        {
+          "direction": "CV-ACCESSORY-OFF-BACK",
+          "cell_box": [
+            1024,
+            2048,
+            2048,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            15,
+            0,
+            1014,
+            855
+          ],
+          "subject_width_px": 999,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.235246,
+          "background_white_ratio": 0.764754
+        },
+        {
+          "direction": "CV-SILHOUETTE-FRONT",
+          "cell_box": [
+            2048,
+            2048,
+            3072,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            0,
+            0,
+            1014,
+            855
+          ],
+          "subject_width_px": 1014,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.228277,
+          "background_white_ratio": 0.771723
+        },
+        {
+          "direction": "CV-SILHOUETTE-SIDE",
+          "cell_box": [
+            3072,
+            2048,
+            4096,
+            3072
+          ],
+          "detected": true,
+          "bbox": [
+            12,
+            0,
+            1010,
+            855
+          ],
+          "subject_width_px": 998,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.20217,
+          "background_white_ratio": 0.79783
+        },
+        {
+          "direction": "CV-SILHOUETTE-3Q",
+          "cell_box": [
+            0,
+            3072,
+            1024,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            193,
+            0,
+            1014,
+            855
+          ],
+          "subject_width_px": 821,
+          "subject_height_px": 855,
+          "baseline_px": 854,
+          "foreground_ratio": 0.250764,
+          "background_white_ratio": 0.749236
+        },
+        {
+          "direction": "CV-READABILITY-32",
+          "cell_box": [
+            1024,
+            3072,
+            2048,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            275,
+            354,
+            693,
+            854
+          ],
+          "subject_width_px": 418,
+          "subject_height_px": 500,
+          "baseline_px": 853,
+          "foreground_ratio": 0.04389,
+          "background_white_ratio": 0.95611
+        },
+        {
+          "direction": "CV-READABILITY-64",
+          "cell_box": [
+            2048,
+            3072,
+            3072,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            229,
+            209,
+            1014,
+            854
+          ],
+          "subject_width_px": 785,
+          "subject_height_px": 645,
+          "baseline_px": 853,
+          "foreground_ratio": 0.126185,
+          "background_white_ratio": 0.873815
+        },
+        {
+          "direction": "CV-READABILITY-128",
+          "cell_box": [
+            3072,
+            3072,
+            4096,
+            4096
+          ],
+          "detected": true,
+          "bbox": [
+            103,
+            25,
+            801,
+            855
+          ],
+          "subject_width_px": 698,
+          "subject_height_px": 830,
+          "baseline_px": 854,
+          "foreground_ratio": 0.316031,
+          "background_white_ratio": 0.683969
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "deliveries": [
+    {
+      "character": "Chakchaki",
+      "individual_view_count": 16,
+      "individual_views_pass": true,
+      "overlay": {
+        "path": "docs/stage8/evidence/gate1/overlays/Chakchaki_Main_Views_Overlay.png",
+        "exists": true,
+        "decodable": true,
+        "width": 2048,
+        "height": 2048,
+        "minimum_width": 2048,
+        "minimum_height": 2048,
+        "pass": true
+      },
+      "difference_annotation": {
+        "path": "docs/stage8/evidence/gate1/differences/Chakchaki_Main_Views_Difference_Annotations.png",
+        "exists": true,
+        "decodable": true,
+        "width": 4096,
+        "height": 2048,
+        "minimum_width": 4096,
+        "minimum_height": 2048,
+        "pass": true
+      },
+      "pass": true,
+      "views": [
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT-3Q-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SIDE-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK-3Q-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK-3Q-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SIDE-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT-3Q-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-ACCESSORY-OFF-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-ACCESSORY-OFF-BACK.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-SIDE.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-3Q.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-32.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-64.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-128.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "character": "Gongsickyi",
+      "individual_view_count": 16,
+      "individual_views_pass": true,
+      "overlay": {
+        "path": "docs/stage8/evidence/gate1/overlays/Gongsickyi_Main_Views_Overlay.png",
+        "exists": true,
+        "decodable": true,
+        "width": 2048,
+        "height": 2048,
+        "minimum_width": 2048,
+        "minimum_height": 2048,
+        "pass": true
+      },
+      "difference_annotation": {
+        "path": "docs/stage8/evidence/gate1/differences/Gongsickyi_Main_Views_Difference_Annotations.png",
+        "exists": true,
+        "decodable": true,
+        "width": 4096,
+        "height": 2048,
+        "minimum_width": 4096,
+        "minimum_height": 2048,
+        "pass": true
+      },
+      "pass": true,
+      "views": [
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT-3Q-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SIDE-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK-3Q-L.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK-3Q-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SIDE-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT-3Q-R.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-ACCESSORY-OFF-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-ACCESSORY-OFF-BACK.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-FRONT.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-SIDE.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-3Q.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-32.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-64.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        },
+        {
+          "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-128.png",
+          "exists": true,
+          "decodable": true,
+          "width": 2048,
+          "height": 2048,
+          "minimum_width": 2048,
+          "minimum_height": 2048,
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "failures": [
+    "five-role manual approvals are incomplete (10 accountable approvals required)"
+  ],
+  "manual_approval_count": 0,
+  "manual_approval_required": 10
+}

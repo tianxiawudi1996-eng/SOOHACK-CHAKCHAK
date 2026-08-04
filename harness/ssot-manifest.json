@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T05:25:53.467711+00:00",
+  "generated_at": "2026-08-04T06:34:26.646372+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1232,13 +1232,18 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "94a47427a11dc073869a49197c56985d0fca9b922c89df9a0baf81fae777de3d",
-      "size_bytes": 3798
+      "sha256": "95a1113cebb4140e70fd792c2f429045085689644685a8cd3b54384e4fc48e5e",
+      "size_bytes": 1933
+    },
+    {
+      "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
+      "sha256": "69e72ad2bd7b45181af1ef33ffd60a8c5d66d073e0d452438c7551c412df76cd",
+      "size_bytes": 946
     },
     {
       "path": "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
-      "sha256": "2afc7b6b0c07e8df0145ba1756e5e7d9f6cb50fe0d77cd7707533ec9fd1e3e78",
-      "size_bytes": 1614
+      "sha256": "c81bb333d8b273e61d78192a927bf1845add37910aa2760c10bb1113121c222b",
+      "size_bytes": 2193
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1247,8 +1252,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "f1f9f7752060c18c834839eae82f2130f0fa45bbbc1a38acd4cfb9e9ea3e7d20",
-      "size_bytes": 4735
+      "sha256": "527d724921b9653d37e3516b32ada0d83f911fa56e1230cb00e231015928587b",
+      "size_bytes": 2085
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1257,8 +1262,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "668409d7b5c6be4a975887731c539e1c456816ffacc32ba3b48a9beb6859e58f",
-      "size_bytes": 4489
+      "sha256": "40f9fbba8b3dc4e505bc321460c1cc22c797c15641872623240cb8f8f55c57c5",
+      "size_bytes": 1334
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1267,13 +1272,213 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/candidate-review.json",
-      "sha256": "daa799633f59f785c8735107925aa6de7cfff06858bb97e2bcaf2588b0ce42ec",
-      "size_bytes": 2495
+      "sha256": "7406acb2aac9afe6fbb1b553267194ae0b8c444072aea58d127fbdb2f53829ea",
+      "size_bytes": 3797
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/differences/Chakchaki_Main_Views_Difference_Annotations.png",
+      "sha256": "392f740e88ecad77ef79bc29df48c580c920f1ecf5323aea00ec83649b4bc79a",
+      "size_bytes": 1780845
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/differences/Gongsickyi_Main_Views_Difference_Annotations.png",
+      "sha256": "a19736afdedc7bcfdcf43764494a6f27fe279c193c807b1b5fa1685c90574d45",
+      "size_bytes": 2393825
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
+      "sha256": "423dd72a91a282ba1fd4a158ec595444bb0a2e5dd3dadce77e4d337221d09cd6",
+      "size_bytes": 30239
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md",
+      "sha256": "d3eac8a9d40ac03d63862a3a6c2bab5a8d21631cd4e41cc22f5b875b55167146",
+      "size_bytes": 1770
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/Gate1_Character_Consistency_Report_v5.2.0.md",
+      "sha256": "24c31711ec90ffd38d745e2bb0d2de8fb4be93eaa06447b2a232200bd8b61230",
+      "size_bytes": 2528
     },
     {
       "path": "docs/stage8/evidence/gate1/GENERATION_RECORD.md",
-      "sha256": "b05560782f685711314574d1b78fa9621b4d49c4c3642c5dbaacf511924cf952",
-      "size_bytes": 1694
+      "sha256": "6a2d8e8e3b49fd1434b5bc4d9a6a0d81bce0c99f0413a2a197bbb617cc3ab428",
+      "size_bytes": 1834
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/overlays/Chakchaki_Main_Views_Overlay.png",
+      "sha256": "09a2f65b13907c98a401e7033ce17455b9f33a3ac60c3cddd8c61f90261a87aa",
+      "size_bytes": 250446
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/overlays/Gongsickyi_Main_Views_Overlay.png",
+      "sha256": "ed7780339ead9ec2ec7d7471c6ab97aa740f09aacdc4838673ed1938c4d65ee1",
+      "size_bytes": 183726
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/SHA256SUMS.txt",
+      "sha256": "022495b55a2a8bbaa30389dd29f2a921b42f04761e85af2d915577be519f61dd",
+      "size_bytes": 5025
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-ACCESSORY-OFF-BACK.png",
+      "sha256": "70332aa78fb3e6f3aa7b4345fc4c9753ae2b361f79d2c4869c5a28ef0051b166",
+      "size_bytes": 723142
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-ACCESSORY-OFF-FRONT.png",
+      "sha256": "bdae678b8e254576319b1a50a0ded8063622aefacc7a1ff191aed9b82951c136",
+      "size_bytes": 820140
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK-3Q-L.png",
+      "sha256": "d9e8d0a813e86f75db59d4d72f9aabd91aabf8c869ee10ad0e41278284ed2e79",
+      "size_bytes": 596895
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK-3Q-R.png",
+      "sha256": "c85461c4bae370316dcba64c0683d148886df1d104a0749feabc30001ec7addb",
+      "size_bytes": 582045
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-BACK.png",
+      "sha256": "66fedbe1fde831195e89bf596fdec3c673d753f1cf46dc17539c1ceb97aa39fc",
+      "size_bytes": 557802
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT-3Q-L.png",
+      "sha256": "834cfe23022df85e4c40cea4ec8ab22c691db83f1f5fb96df7f8ef0ffce5b79e",
+      "size_bytes": 679194
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT-3Q-R.png",
+      "sha256": "6b04be10c1062a3f18c6cb16e33960b7d8a9e89c87ef25a8cbb7ad14091bbdb8",
+      "size_bytes": 662096
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-FRONT.png",
+      "sha256": "470aedb862389d7b391f7cbf95f85d132898498b2929f2c3a2e7889318799d58",
+      "size_bytes": 618756
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-128.png",
+      "sha256": "cd2d197f95a6a5c1b03c21df92a20a6061536ade8c7ee6c74c290084243a9c0b",
+      "size_bytes": 824656
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-32.png",
+      "sha256": "4815effea3dda301a6b24fbefa604ee8bf7f3596e94543911d445aac438a9303",
+      "size_bytes": 418423
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-READABILITY-64.png",
+      "sha256": "1898cfb40e3d89ff47e4d9c80fa02f9082bb851a81c72a21c399017eb3bb25b9",
+      "size_bytes": 605779
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SIDE-L.png",
+      "sha256": "669fc6b49a7a3dc69054b3291d2cf076791957cb0a21a92dde04ebacc76289b0",
+      "size_bytes": 514571
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SIDE-R.png",
+      "sha256": "b0726ecde42af128b76df8ffb3ef838130c4f21d69f76efa7e32fff055f50bfe",
+      "size_bytes": 505713
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-3Q.png",
+      "sha256": "68b51a1152425176102403b5d03b5fb4fddeaaea2fa5ae8150a53b09056433bc",
+      "size_bytes": 442474
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-FRONT.png",
+      "sha256": "4acdb3609c70fdec4f5eeaaf184c7f4000d86b2a1d46e78ffaed797f8aef921f",
+      "size_bytes": 471288
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Chakchaki/CV-SILHOUETTE-SIDE.png",
+      "sha256": "90e59542fa8818b50dbffaa1dc729f6426991e3182c2168d042ede79d8d90793",
+      "size_bytes": 364670
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-ACCESSORY-OFF-BACK.png",
+      "sha256": "b6ae3f262b68a64571a34729e40f8871d6aa70d8e693716383225cb72a328447",
+      "size_bytes": 604481
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-ACCESSORY-OFF-FRONT.png",
+      "sha256": "bdc3bec9554533048474f8eb53c238cfe07e5b2c29934850ecef206b108c2733",
+      "size_bytes": 707207
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK-3Q-L.png",
+      "sha256": "c0c07bdf90940d4fc174dbf74ae5e694c322892f30a984d90e51e6e94004ad58",
+      "size_bytes": 706182
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK-3Q-R.png",
+      "sha256": "8d890f0a94fde00d6af1b2eccf1d852f90c64b964cc7339406b95294da1027e2",
+      "size_bytes": 663803
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-BACK.png",
+      "sha256": "35f03eee951e7da1ff020e1762268320c7e387fe2fafc2c7934e43ff394e3069",
+      "size_bytes": 645113
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT-3Q-L.png",
+      "sha256": "032c92205dc9940391e201e10b0a7c811a217824fdc83b43af6839a259e24fdd",
+      "size_bytes": 881053
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT-3Q-R.png",
+      "sha256": "b12f7f0d5e65964ba88db58fd92fff8b54277b4ad2f791d1354a07decc272f7a",
+      "size_bytes": 819207
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-FRONT.png",
+      "sha256": "82d16d2b5b2f3a66f2865300fa3ce2dd99dcd6cf0898595aa718649247019aa4",
+      "size_bytes": 874416
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-128.png",
+      "sha256": "b2490e6426dd5cc9b06f4731956e2e9cadd28adbd449c89b11b63e547bbeb2c2",
+      "size_bytes": 1011818
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-32.png",
+      "sha256": "20c2513744a3b3dbf1979b023e3a733da03ef977ea0b3ec97475e067bbc16d4f",
+      "size_bytes": 370899
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-READABILITY-64.png",
+      "sha256": "43c3347ddb4ec329c3ea91ed79f628dbaa29b797d4b1bd23e3400fc5af3bb7a9",
+      "size_bytes": 608276
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SIDE-L.png",
+      "sha256": "1679d0dfd425d1922a5282092edfd4fff6323f948812ddf459aee4b7747418ee",
+      "size_bytes": 617472
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SIDE-R.png",
+      "sha256": "1fe2a0a4850e0ca2170d7f55bcf7548333d40a6207c9776c2a4582814c1ddc8d",
+      "size_bytes": 602897
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-3Q.png",
+      "sha256": "2b2e17ab2138a04781be715a2fafaf0aee4148895dcf76eb95ed4842e4226640",
+      "size_bytes": 492498
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-FRONT.png",
+      "sha256": "bc0374ac4b7d94805b072a5bf8104f7133d72aca904a814187cffef77fc77454",
+      "size_bytes": 450039
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/views/Gongsickyi/CV-SILHOUETTE-SIDE.png",
+      "sha256": "5a7a9031957f9831247bc506f71f71792ac94f0951d025bf16f82358b4eb432e",
+      "size_bytes": 397358
     },
     {
       "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
@@ -1284,6 +1489,11 @@
       "path": "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md",
       "sha256": "5838cf3030b60e2225e81c87e2974ae267ffd05ea809cb5f0645bbfb8cabc679",
       "size_bytes": 1409
+    },
+    {
+      "path": "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
+      "sha256": "abd5e27c0f41d270dee584a41520509a2c44aa1ce901ea68f3ce59229617b275",
+      "size_bytes": 3172
     },
     {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
@@ -1336,6 +1546,16 @@
       "size_bytes": 1220614
     },
     {
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v2.png",
+      "sha256": "dd748fe74040fe2c400368599096a448700a7190b5b8711085307868bfc2a08f",
+      "size_bytes": 1223803
+    },
+    {
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v3.png",
+      "sha256": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+      "size_bytes": 3892816
+    },
+    {
       "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
       "sha256": "eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334",
       "size_bytes": 1215727
@@ -1346,14 +1566,34 @@
       "size_bytes": 1504619
     },
     {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v3.png",
+      "sha256": "0399e79958351fb1226b50d4a6519d24b30e710a57b69879e64ba4c868323ed4",
+      "size_bytes": 1288147
+    },
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v4.png",
+      "sha256": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157",
+      "size_bytes": 4582674
+    },
+    {
       "path": "harness/README.md",
       "sha256": "28379867944939da72aa25694e2d669ae0fb7d267a88be87f872fd392d65897e",
       "size_bytes": 778
     },
     {
       "path": "harness/status.json",
-      "sha256": "5ace4a61dcda097451826a6a5caef38253607b6317c38d16ed257494b2feac1f",
-      "size_bytes": 3418
+      "sha256": "eb019087a4178ddf573d28810a58f35ba02e5afba84a6ec6b46d5c8fbd2b0f4a",
+      "size_bytes": 3882
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
+      "sha256": "a5ef8e9a66d8b37e089e3073e09889219e85953997658835f58a45813ac6e5f4",
+      "size_bytes": 8928
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
+      "sha256": "a62ceebe465db9c2626e0a66728b81a708cba0b378459d47d052170e486e3be0",
+      "size_bytes": 6763
     },
     {
       "path": "README.md",
@@ -1361,14 +1601,24 @@
       "size_bytes": 466
     },
     {
+      "path": "scripts/harness/audit_gate1.py",
+      "sha256": "dc404f5b419c832ec5251ccfb1b373862f2172d574a64f18875ad0e36534f650",
+      "size_bytes": 12212
+    },
+    {
       "path": "scripts/harness/audit_stage8.py",
       "sha256": "f2f7929acd6e213d44211faae4f086c017ef14f4c5bd6fa19e3a653f1f2f6315",
       "size_bytes": 28979
     },
     {
+      "path": "scripts/harness/build_gate1_evidence.py",
+      "sha256": "d66eeab38736a23f80a4385f8e9263ceaa902b752005d72dc11cbf5f0ebd8de2",
+      "size_bytes": 8875
+    },
+    {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "68bb7a1e9f6a8bc24dfdd0119c6968d77d57a5f06653b3b8c6008adaa1ea0c95",
-      "size_bytes": 13003
+      "sha256": "29265ce34c9ae87ebb63849d33cf65d5c7911db71ff1d56b9de6cb9f9db3396a",
+      "size_bytes": 14924
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

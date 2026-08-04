@@ -34,6 +34,8 @@ REQUIRED_STRUCTURE = [
     "harness/status.json",
     "harness/ssot-manifest.json",
     "scripts/harness/audit_stage8.py",
+    "scripts/harness/audit_gate1.py",
+    "scripts/harness/build_gate1_evidence.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -45,11 +47,31 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
     "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
+    "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
     "docs/stage8/evidence/gate0/gate0-decision.json",
     "docs/stage8/evidence/gate0/manual-review.json",
     "docs/stage8/evidence/gate1/candidate-review.json",
+    "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
+    "docs/stage8/evidence/gate1/Gate1_Character_Consistency_Report_v5.2.0.md",
+    "docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md",
+    "docs/stage8/evidence/gate1/SHA256SUMS.txt",
+    "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
+]
+
+CANONICAL_GATE_PROMPTS = [
+    "GATE0_SSOT_AUDIT.md",
+    "GATE1_CANONICAL_VIEW.md",
+    "GATE2_BASE_MESH_MATERIAL.md",
+    "GATE3_RIG_BLENDSHAPE.md",
+    "GATE4_MOTION.md",
+    "GATE5_AI_BEHAVIOR.md",
+    "GATE6_PRODUCT_INTEGRATION.md",
+    "GATE7_QA.md",
+    "GATE8_DEPLOYMENT.md",
 ]
 
 
@@ -185,9 +207,9 @@ def main() -> int:
             fail(f"sensitive-looking file is tracked or stored in canonical SSOT: {relative}")
         sensitive_warnings.append(relative)
 
-    prompts = list((ROOT / "docs" / "stage8" / "prompts").glob("GATE*.md"))
-    if len(prompts) != 9:
-        fail("docs/stage8/prompts must contain exactly nine Gate prompts")
+    prompts = [ROOT / "docs" / "stage8" / "prompts" / name for name in CANONICAL_GATE_PROMPTS]
+    if any(not prompt.is_file() for prompt in prompts):
+        fail("one or more canonical Gate 0-8 prompts are missing")
     for prompt in prompts:
         text = prompt.read_text(encoding="utf-8")
         for required in ("역할", "선행 조건", "필수 산출물", "자동 검증", "수동 검증", "중단 조건", "다음 Gate"):
@@ -251,6 +273,7 @@ def main() -> int:
 
     if gates[1].get("status") != "NOT_STARTED":
         gate1_review = load_json(ROOT / "docs/stage8/evidence/gate1/candidate-review.json")
+        gate1_qa = load_json(ROOT / "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json")
         for candidate in gate1_review.get("candidates", []):
             candidate_path = ROOT / candidate.get("path", "")
             if not candidate_path.exists():
@@ -260,9 +283,19 @@ def main() -> int:
                 fail(f"gate1 candidate SHA-256 mismatch: {candidate.get('path')}")
         if gate1_review.get("next_gate_allowed") is True and gates[1].get("status") != "VERIFIED":
             fail("gate1 review allows next gate while gate1 is not VERIFIED")
+        if gate1_qa.get("next_gate_allowed") is True and gates[1].get("status") != "VERIFIED":
+            fail("gate1 automated QA allows next gate while gate1 is not VERIFIED")
+        if gate1_qa.get("automated_status") != "PASS":
+            fail("gate1 delivery package does not pass automated QA")
+        if any(result.get("status") != "PASS" for result in gate1_qa.get("results", [])):
+            fail("one or more gate1 candidate boards fail automated checks")
+        if any(delivery.get("pass") is not True for delivery in gate1_qa.get("deliveries", [])):
+            fail("one or more gate1 direction delivery packages are incomplete")
+        if gates[1].get("status") == "BLOCKED" and gate1_qa.get("status") != "BLOCKED_EXTERNAL":
+            fail("gate1 is BLOCKED but automated QA does not identify the external approval blocker")
         if gates[1].get("status") == "VERIFIED":
-            if gate1_review.get("status") != "VERIFIED" or len(gate1_review.get("manual_approvals", [])) < 5:
-                fail("gate1 VERIFIED without five manual approvals")
+            if gate1_review.get("status") != "VERIFIED" or len(gate1_review.get("manual_approvals", [])) < 10:
+                fail("gate1 VERIFIED without ten accountable approvals")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
