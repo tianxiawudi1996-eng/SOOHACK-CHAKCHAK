@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T07:26:41.173995+00:00",
+  "gate": 1,
+  "status": "BLOCKED_EXTERNAL",
+  "package_id": "gate1-manual-review-916636d0-9c8061af",
+  "automated_status": "PASS",
+  "workbook_snapshot": "docs/stage8/evidence/gate1/manual-review/approval-workbook-current.json",
+  "workbook_sha256": "a62ceebe465db9c2626e0a66728b81a708cba0b378459d47d052170e486e3be0",
+  "workbook_decision_count": 0,
+  "json_approval_count": 0,
+  "valid_approval_count": 0,
+  "approval_required": 10,
+  "reject_count": 0,
+  "unresolved_patch_count": 0,
+  "immutable_hash_drift_count": 0,
+  "immutable_hash_drift": [],
+  "missing_approvals": [
+    {
+      "character": "Chakchaki",
+      "role": "3D Technical Art Lead"
+    },
+    {
+      "character": "Chakchaki",
+      "role": "Character Art Lead"
+    },
+    {
+      "character": "Chakchaki",
+      "role": "Product Owner"
+    },
+    {
+      "character": "Chakchaki",
+      "role": "QA Lead"
+    },
+    {
+      "character": "Chakchaki",
+      "role": "UX Brand System Lead"
+    },
+    {
+      "character": "Gongsickyi",
+      "role": "3D Technical Art Lead"
+    },
+    {
+      "character": "Gongsickyi",
+      "role": "Character Art Lead"
+    },
+    {
+      "character": "Gongsickyi",
+      "role": "Product Owner"
+    },
+    {
+      "character": "Gongsickyi",
+      "role": "QA Lead"
+    },
+    {
+      "character": "Gongsickyi",
+      "role": "UX Brand System Lead"
+    }
+  ],
+  "failures": [],
+  "blockers": [
+    "ACCOUNTABLE_APPROVALS_MISSING: 10"
+  ],
+  "ready_for_promotion": false,
+  "gate1_status_change_applied": false,
+  "next_gate_allowed": false,
+  "next_action": "Collect and synchronize only real accountable reviewer decisions."
+}

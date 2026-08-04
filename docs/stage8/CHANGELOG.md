@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 approval intake validation metaprompt and audit
+
+- Added the next-stage metaprompt for Excel/JSON approval synchronization and promotion-readiness checks.
+- Added a read-only current workbook snapshot and a deterministic approval-intake audit.
+- Verified current workbook decisions 0/10, JSON approvals 0/10, valid synchronized approvals 0/10, and immutable hash drift 0.
+- Classified the current state as `BLOCKED_EXTERNAL` without creating reviewer identities or decisions.
+- Updated the Harness to permit controlled approval-ledger changes only when represented by a fresh read-only snapshot, while keeping 39 review inputs immutable.
+
 ## 2026-08-04 — Gate 1 manual review preflight and reviewer packets
 
 - Verified the approval workbook read-only: ten role/character rows are `PENDING`, approval identity fields are blank, and formula errors are zero.

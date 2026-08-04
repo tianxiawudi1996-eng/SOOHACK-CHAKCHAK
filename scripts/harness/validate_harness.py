@@ -37,6 +37,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate1.py",
     "scripts/harness/build_gate1_evidence.py",
     "scripts/harness/prepare_gate1_manual_review.py",
+    "scripts/harness/audit_gate1_approval_intake.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -50,6 +51,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
     "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
     "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
+    "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -61,11 +63,14 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/Gate1_Change_Log_v5.2.0.md",
     "docs/stage8/evidence/gate1/SHA256SUMS.txt",
     "docs/stage8/evidence/gate1/manual-review/approval-workbook-preflight.json",
+    "docs/stage8/evidence/gate1/manual-review/approval-workbook-current.json",
     "docs/stage8/evidence/gate1/manual-review/FROZEN_EVIDENCE_MANIFEST_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/APPROVAL_INTAKE_TEMPLATE.json",
+    "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/README.md",
     "docs/stage8/prompts/GATE1_QA_APPROVAL_PACKAGE_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
@@ -293,8 +298,10 @@ def main() -> int:
         gate1_qa = load_json(ROOT / "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json")
         manual_root = ROOT / "docs/stage8/evidence/gate1/manual-review"
         workbook_preflight = load_json(manual_root / "approval-workbook-preflight.json")
+        workbook_current = load_json(manual_root / "approval-workbook-current.json")
         frozen_manifest = load_json(manual_root / "FROZEN_EVIDENCE_MANIFEST_v1.0.json")
         intake_template = load_json(manual_root / "APPROVAL_INTAKE_TEMPLATE.json")
+        approval_intake_audit = load_json(manual_root / "GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json")
         for candidate in gate1_review.get("candidates", []):
             candidate_path = ROOT / candidate.get("path", "")
             if not candidate_path.exists():
@@ -329,8 +336,17 @@ def main() -> int:
         if not workbook_path.is_file():
             fail("gate1 approval workbook recorded by preflight is missing")
         workbook_hash = hashlib.sha256(workbook_path.read_bytes()).hexdigest().lower()
-        if workbook_hash != workbook_preflight.get("workbook_sha256", "").lower():
-            fail("gate1 approval workbook changed after read-only preflight")
+        if workbook_current.get("mode") != "READ_ONLY_INSPECTION":
+            fail("gate1 current approval workbook snapshot is not read-only")
+        if workbook_current.get("workbook") != workbook_preflight.get("workbook"):
+            fail("gate1 workbook snapshots refer to different workbooks")
+        if workbook_hash != workbook_current.get("workbook_sha256", "").lower():
+            fail("gate1 approval workbook changed after the current snapshot")
+        if workbook_current.get("row_count") != 10 or workbook_current.get("formula_error_count") != 0:
+            fail("gate1 current approval workbook snapshot is structurally invalid")
+        if workbook_current.get("populated_decision_count") == 0:
+            if workbook_hash != workbook_preflight.get("workbook_sha256", "").lower():
+                fail("blank gate1 approval workbook changed from its preflight baseline")
 
         if frozen_manifest.get("status") != "FROZEN_PENDING_REVIEW":
             fail("gate1 manual-review evidence is not frozen pending review")
@@ -351,12 +367,14 @@ def main() -> int:
             if not asset_path.is_file():
                 fail(f"gate1 frozen evidence is missing: {relative}")
             actual = hashlib.sha256(asset_path.read_bytes()).hexdigest().lower()
-            if actual != asset.get("sha256", "").lower():
-                fail(f"gate1 frozen evidence SHA-256 mismatch: {relative}")
             policy = asset.get("freeze_policy")
             if policy == "IMMUTABLE_REVIEW_EVIDENCE":
+                if actual != asset.get("sha256", "").lower():
+                    fail(f"gate1 frozen evidence SHA-256 mismatch: {relative}")
                 immutable_count += 1
             elif policy == "CONTROLLED_MUTABLE_APPROVAL_LEDGER":
+                if actual != workbook_current.get("workbook_sha256", "").lower():
+                    fail("gate1 controlled approval ledger does not match the current workbook snapshot")
                 ledger_count += 1
             else:
                 fail(f"unsupported gate1 freeze policy: {policy!r}")
@@ -412,6 +430,26 @@ def main() -> int:
                 for required in (character, role_name, expected_hash, "Decision: PENDING"):
                     if required not in text:
                         fail(f"gate1 manual review packet missing required content: {packet.relative_to(ROOT)}")
+
+        intake_status = approval_intake_audit.get("status")
+        if intake_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_PROMOTION"}:
+            fail(f"unsupported gate1 approval intake status: {intake_status!r}")
+        if approval_intake_audit.get("approval_required") != 10:
+            fail("gate1 approval intake audit does not require ten approvals")
+        if approval_intake_audit.get("workbook_sha256", "").lower() != workbook_hash:
+            fail("gate1 approval intake audit workbook hash is stale")
+        if approval_intake_audit.get("next_gate_allowed") is not False:
+            fail("gate1 approval intake audit prematurely allows Gate 2")
+        if approval_intake_audit.get("gate1_status_change_applied") is not False:
+            fail("gate1 approval intake audit applied an unauthorized status change")
+        valid_approval_count = approval_intake_audit.get("valid_approval_count")
+        if not isinstance(valid_approval_count, int) or not 0 <= valid_approval_count <= 10:
+            fail("gate1 approval intake valid approval count is invalid")
+        if intake_status == "READY_FOR_PROMOTION":
+            if valid_approval_count != 10 or approval_intake_audit.get("ready_for_promotion") is not True:
+                fail("gate1 approval intake is ready without ten valid approvals")
+        elif approval_intake_audit.get("ready_for_promotion") is not False:
+            fail("gate1 approval intake claims readiness while blocked or failed")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))

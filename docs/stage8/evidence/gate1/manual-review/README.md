@@ -13,7 +13,9 @@
 
 - `FROZEN_EVIDENCE_MANIFEST_v1.0.json`: 40 checksum records. Of these, 39 inputs are immutable; the blank approval ledger is a controlled mutable record whose pre-review baseline hash is retained.
 - `approval-workbook-preflight.json`: read-only verification of the 10 blank `PENDING` rows.
+- `approval-workbook-current.json`: latest read-only workbook snapshot used for Excel/JSON synchronization checks.
 - `APPROVAL_INTAKE_TEMPLATE.json`: blank 5-role × 2-character intake template; it is not an approval record.
+- `GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json`: current approval completeness, synchronization, patch, rejection, and hash-drift decision.
 - `packets/`: ten role-specific human review packets.
 
 ## Workflow
@@ -23,5 +25,6 @@
 3. Record decisions only from the real reviewer in `Gate1_Manual_Approval_Log_v5.2.0.xlsx` and the canonical JSON approval record.
 4. On any candidate hash change, invalidate all five approvals for that character and rebuild/re-audit the package.
 5. Do not promote Gate 1 until 10 valid approvals, zero rejects, zero unresolved patches, automated QA PASS, and zero hash drift are all proven.
+6. Refresh `approval-workbook-current.json`, then run `python scripts/harness/audit_gate1_approval_intake.py` after every real reviewer submission.
 
 AI preparation does not count as approval and must never populate reviewer identity, decision, or time fields.

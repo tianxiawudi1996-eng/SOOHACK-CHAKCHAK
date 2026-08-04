@@ -1,8 +1,8 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T07:05:26.508545+00:00",
+    "generated_at": "2026-08-04T07:27:24.919419+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 157,
+    "file_count": 162,
     "required_stage7_file_count": 10,
     "required_exact_found": 10,
     "required_exact_missing_or_conflicting": 0,
@@ -3619,10 +3619,10 @@
       "stage": "Stage 8",
       "file_name": "FINAL_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 2905,
-      "modified_at": "2026-08-04T07:04:28.510900+00:00",
+      "size_bytes": 3379,
+      "modified_at": "2026-08-04T07:26:18.989007+00:00",
       "mime": "text/markdown",
-      "sha256": "448bf688e57077c98bf9942a8eff1557f98c311dcbde084d2f0e59bd90439001",
+      "sha256": "ae6a287fd92f05929bb1c84ba1cc5021dc037b1bb7c352efca9087f30a308a6f",
       "version": null,
       "approval_status_tokens": [
         "PASS",
@@ -3660,12 +3660,44 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE1_APPROVAL_INTAKE_AUDIT.md",
+      "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
+      "size_bytes": 1281,
+      "modified_at": "2026-08-04T07:26:41.174514+00:00",
+      "mime": "text/markdown",
+      "sha256": "d8a636bbdf46de1ab2b0ddf96b604aa20d856b5adff0c10b9b80b04d4309ff1a",
+      "version": null,
+      "approval_status_tokens": [
+        "PASS",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "PASS",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "GATE1_AUTOMATED_QA.md",
       "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
       "size_bytes": 946,
-      "modified_at": "2026-08-04T07:04:48.276469+00:00",
+      "modified_at": "2026-08-04T07:26:40.976950+00:00",
       "mime": "text/markdown",
-      "sha256": "40aea5f2b2785af2146671e27eac9fb564a3a0842cb75b73cfb228c8416aee76",
+      "sha256": "3be2d861ccb15f5fdf4e5d8baae76a95fdfb96b254864ce3479a275342610a0d",
       "version": null,
       "approval_status_tokens": [
         "PASS"
@@ -3681,7 +3713,7 @@
         "version_tokens": [
           "0.1555",
           "0.3358",
-          "48.274960"
+          "40.975950"
         ],
         "status_tokens": [
           "BLOCKED",
@@ -3769,10 +3801,10 @@
       "stage": "Stage 8",
       "file_name": "NEXT_PART_METAPROMPT_REPORT.md",
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "size_bytes": 3239,
-      "modified_at": "2026-08-04T07:04:28.511413+00:00",
+      "size_bytes": 3847,
+      "modified_at": "2026-08-04T07:26:18.989007+00:00",
       "mime": "text/markdown",
-      "sha256": "7a6d6a7688cdb3a9eb4a97c96a295c0e351208096df412a48f1aad698a8fdeae",
+      "sha256": "7f72284b21b97a3cfadf7c858774b15968127c0b1f178e472a6135f523867c7d",
       "version": "v1.0",
       "approval_status_tokens": [
         "FAIL",
@@ -3841,10 +3873,10 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 3218,
-      "modified_at": "2026-08-04T07:05:16.410681+00:00",
+      "size_bytes": 3838,
+      "modified_at": "2026-08-04T07:27:14.552838+00:00",
       "mime": "text/markdown",
-      "sha256": "f23a2b872f07019f7972d7080d8342632548b5311035f847322c79a6b770cacc",
+      "sha256": "4d6a5fa95a65065d1fadd97ca05b18049a2562021323670fd5f51df9a64ab343",
       "version": null,
       "approval_status_tokens": [
         "PASS",
@@ -3911,10 +3943,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 2481,
-      "modified_at": "2026-08-04T07:04:28.509365+00:00",
+      "size_bytes": 3145,
+      "modified_at": "2026-08-04T07:26:18.986461+00:00",
       "mime": "text/markdown",
-      "sha256": "23d11203fdf9770f143b3a3816ddc05eff99175f74768ef3d4ef7d0a07a5edb6",
+      "sha256": "62f062fd60efd8a33518ee17fb77033adf18b9363b25578d712d38b6d956f838",
       "version": null,
       "approval_status_tokens": [
         "FAIL",
@@ -4037,9 +4069,9 @@
       "file_name": "Gate1_Automated_QA_v5.2.0.json",
       "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
       "size_bytes": 30239,
-      "modified_at": "2026-08-04T07:04:48.276469+00:00",
+      "modified_at": "2026-08-04T07:26:40.976950+00:00",
       "mime": "application/json",
-      "sha256": "c9bdeda1f2ec5ed003aae906eb6df40ce12a37be38a6e1a4459036537d30fd0d",
+      "sha256": "465860ac3edad7b9c7d3737051bb234cb77f6389a968d27c8a6719bef3a32368",
       "version": "v5.2.0",
       "approval_status_tokens": [
         "PASS",
@@ -4165,6 +4197,25 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "approval-workbook-current.json",
+      "path": "docs/stage8/evidence/gate1/manual-review/approval-workbook-current.json",
+      "size_bytes": 3384,
+      "modified_at": "2026-08-04T07:21:38.382145+00:00",
+      "mime": "application/json",
+      "sha256": "05acbec64463c28bb553d6bbd98933cd37a1353e2cf40e0c3f5a6cdb01c89f9d",
+      "version": "v5.2.0",
+      "approval_status_tokens": [
+        "PASS",
+        "approved"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "approval-workbook-preflight.json",
       "path": "docs/stage8/evidence/gate1/manual-review/approval-workbook-preflight.json",
       "size_bytes": 1171,
@@ -4206,6 +4257,24 @@
       "modified_at": "2026-08-04T07:04:48.447583+00:00",
       "mime": "application/json",
       "sha256": "63e526be14fa85f734688c73c7b5734e7bfdf7157f26287a7bf70f2915d40210",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
+      "path": "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
+      "size_bytes": 1785,
+      "modified_at": "2026-08-04T07:26:41.174514+00:00",
+      "mime": "application/json",
+      "sha256": "7133aa4b2c8341a5a7cc7670519462064c511f42e22f3898dda7685c63b66180",
       "version": "v1.0",
       "approval_status_tokens": [
         "PASS"
@@ -4580,10 +4649,10 @@
       "stage": "Stage 8",
       "file_name": "README.md",
       "path": "docs/stage8/evidence/gate1/manual-review/README.md",
-      "size_bytes": 1406,
-      "modified_at": "2026-08-04T07:04:48.457868+00:00",
+      "size_bytes": 1799,
+      "modified_at": "2026-08-04T07:26:18.987994+00:00",
       "mime": "text/markdown",
-      "sha256": "e7ce91b10ac102ddab8c194bbc4851943264c37d9f615b6f1e1243f16fb5fbf3",
+      "sha256": "379ad81564c3955b47b07170ded9126fae61fc4bfc17d54fb2e38251975670ee",
       "version": "v1.0",
       "approval_status_tokens": [
         "PASS"
@@ -4662,7 +4731,7 @@
       "file_name": "SHA256SUMS.txt",
       "path": "docs/stage8/evidence/gate1/SHA256SUMS.txt",
       "size_bytes": 5329,
-      "modified_at": "2026-08-04T07:04:48.321497+00:00",
+      "modified_at": "2026-08-04T07:26:41.059533+00:00",
       "mime": "text/plain",
       "sha256": "81699b4006bda7c624a9674d1b030e970ee7089dc1a8e1db1eb4dfddccb346f6",
       "version": "v5.2.0",
@@ -5477,6 +5546,50 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
+      "size_bytes": 8124,
+      "modified_at": "2026-08-04T07:24:17.614561+00:00",
+      "mime": "text/markdown",
+      "sha256": "1bc92af20e228e038f63f0c06f1bd7f9064a97275518985e5a18753b6e5caef5",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "pass",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 2,
+        "version_tokens": [
+          "2.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "FAIL",
+          "NOT_STARTED",
+          "PASS",
+          "VERIFIED",
+          "pass",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "GATE1_CANONICAL_VIEW.md",
       "path": "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md",
       "size_bytes": 1409,
@@ -6073,10 +6186,10 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 4391,
-      "modified_at": "2026-08-04T07:03:46.720624+00:00",
+      "size_bytes": 4714,
+      "modified_at": "2026-08-04T07:25:40.240011+00:00",
       "mime": "application/json",
-      "sha256": "0cb12b5627cda0214ee9d378d4a53b3b9b172d1b7a73600cbc27e003b53a30a3",
+      "sha256": "523564d559f374d46b4318572592a6b38e8ffa42b9df45ec47500019ae0d524c",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED"
@@ -6229,6 +6342,27 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
+      "stage": "Unclassified",
+      "file_name": "audit_gate1_approval_intake.py",
+      "path": "scripts/harness/audit_gate1_approval_intake.py",
+      "size_bytes": 11298,
+      "modified_at": "2026-08-04T07:24:17.583222+00:00",
+      "mime": "text/x-python",
+      "sha256": "e10efb86044f3eb16e127de9a90bd6be5699decada19580c1a4e69ba5d28b34d",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "FAIL",
+        "PASS",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
       "stage": "Stage 8",
       "file_name": "audit_stage8.py",
       "path": "scripts/harness/audit_stage8.py",
@@ -6301,12 +6435,13 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 22299,
-      "modified_at": "2026-08-04T07:03:24.489588+00:00",
+      "size_bytes": 25269,
+      "modified_at": "2026-08-04T07:25:23.512233+00:00",
       "mime": "text/x-python",
-      "sha256": "d89f982e783be284cc4927e520d3306921a33c1951ef8055726166ccf02684d8",
+      "sha256": "b70d0602be95e7c216195b4d1520437b56d457f1f4fc6fde1d77a7bfc863648a",
       "version": "v1.0",
       "approval_status_tokens": [
+        "FAIL",
         "PASS",
         "VERIFIED",
         "fail",
