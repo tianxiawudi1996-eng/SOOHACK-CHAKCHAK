@@ -18,6 +18,9 @@
 - `GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json`: current approval completeness, synchronization, patch, rejection, and hash-drift decision.
 - `REVIEWER_ASSIGNMENT_REGISTER_v1.0.json`: five-role assignment register; identity and routing fields remain blank until provided by the coordinator.
 - `GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json`: assignment completeness, acknowledgment, conflict, packet-mapping, and dispatch-readiness decision.
+- `COORDINATOR_ACTION_REQUEST.md`: exact external action required to nominate five accountable reviewers.
+- `COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json`: blank, privacy-safe nomination response schema.
+- `GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json`: authority, role-matrix, identity-uniqueness, conflict, and resume-readiness decision.
 - `packets/`: ten role-specific human review packets.
 - `dispatch/`: five role-specific review-request drafts; all remain `NOT_SENT`.
 
@@ -30,5 +33,6 @@
 5. Do not promote Gate 1 until 10 valid approvals, zero rejects, zero unresolved patches, automated QA PASS, and zero hash drift are all proven.
 6. Refresh `approval-workbook-current.json`, then run `python scripts/harness/audit_gate1_approval_intake.py` after every real reviewer submission.
 7. Run `python scripts/harness/audit_gate1_reviewer_assignment.py` after assignment or acknowledgment changes.
+8. Run `python scripts/harness/audit_gate1_external_unblock.py` after the Coordinator nomination response changes.
 
 AI preparation does not count as approval and must never populate reviewer identity, decision, or time fields.

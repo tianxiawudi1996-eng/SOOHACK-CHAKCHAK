@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 external-review unblock handoff
+
+- Added the next-stage metaprompt that hands the reviewer-assignment blocker to the authorized Gate 1 Coordinator.
+- Added a Coordinator action request and a blank five-role nomination response schema.
+- Added an external-unblock audit for authority evidence, role completeness, identity uniqueness, and conflict declarations.
+- Verified valid nominations 0/5, authority reference absent, missing roles 5/5, and no structural failures.
+- Retained `BLOCKED_EXTERNAL`, with assignment, dispatch, approval, and Gate 2 permission all unchanged.
+
 ## 2026-08-04 — Gate 1 reviewer assignment and dispatch preparation
 
 - Added the next-stage metaprompt for assigning five accountable reviewers and preparing controlled review requests.

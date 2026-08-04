@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T07:54:37.562687+00:00",
+  "generated_at": "2026-08-04T08:02:05.975266+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1232,8 +1232,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "11317cdd7218e51971c98c75b44007562c77ebe88a3262939acacae716ad1445",
-      "size_bytes": 3621
+      "sha256": "edd52f3f074ece5b825368d90cbe21753dd440c2213797d00f7a52d375802d14",
+      "size_bytes": 3889
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1242,13 +1242,18 @@
     },
     {
       "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
-      "sha256": "9419feff7592e6b09dd7b891c4da687406c9931e14ec457d2f944d9d9800bffb",
+      "sha256": "c6d123f9462bbd2a8e2f6f088443bfdcf24b8b1ce9fe86eb689f755a2b1a3944",
       "size_bytes": 946
     },
     {
       "path": "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
       "sha256": "c81bb333d8b273e61d78192a927bf1845add37910aa2760c10bb1113121c222b",
       "size_bytes": 2193
+    },
+    {
+      "path": "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
+      "sha256": "93d9d662d1ca77bef039970a2d5b6da8b4e41b56cdf89b56257c880ee02fa78e",
+      "size_bytes": 1869
     },
     {
       "path": "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
@@ -1262,8 +1267,8 @@
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "sha256": "b4c35466af35438833d92f8384c1f9fd9093905314552752df6f1129a7230c56",
-      "size_bytes": 4491
+      "sha256": "eac8a1ad45ce8feda121235a7bd35e75450bba7e222d8783d4be8bb35696ded7",
+      "size_bytes": 5202
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1272,8 +1277,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "9289cd59beef56cc29dd6b18edaad55d3bba13f1a0b936759adfc0ee8c0ddd78",
-      "size_bytes": 4341
+      "sha256": "cc2741bf59fa74cf8c0c5f6de078e682e4726127e55eeca01b04de5232298362",
+      "size_bytes": 4805
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1282,8 +1287,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "f898a9d35937579d7f945d03386bb9ffcc82cff5418ca5ab256319a85bebeef0",
-      "size_bytes": 3790
+      "sha256": "cc9330bf265a044076fb1d4b589ca176ac8979f35e1c9c33ef52cce7d53edab1",
+      "size_bytes": 4390
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1307,7 +1312,7 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
-      "sha256": "f611bd81c2758ea997d9acd1ceac27431e460a6b64ae34842ea48d87005dee19",
+      "sha256": "f54f059b3d6f10091ccee2f9a296e17a6c9d6d31e44a154d771626539df11825",
       "size_bytes": 30239
     },
     {
@@ -1341,6 +1346,16 @@
       "size_bytes": 4249
     },
     {
+      "path": "docs/stage8/evidence/gate1/manual-review/COORDINATOR_ACTION_REQUEST.md",
+      "sha256": "74e925c036fcc2ba99835758730db1367d6c0d531223a897693f4477ddfd1fc9",
+      "size_bytes": 1358
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/manual-review/COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json",
+      "sha256": "8ab49c29dbd4d106d0fa480b9917207af2e452f9deea5f06c866d0a729dea1ba",
+      "size_bytes": 1331
+    },
+    {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
       "sha256": "e6b9e6c60b613c6ab76551dd50c669e514780a3010a79aaa2690a1120533100b",
       "size_bytes": 1243
@@ -1372,12 +1387,17 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
-      "sha256": "ed8b06aa4cc7ebfaa402535c150d248a22895d77aa62822855998ccd45bc5d8e",
+      "sha256": "b83ac7b9aa4df3af5aaf7746a15cbe83e34b135ca724e6c70ddd3db3c002a010",
       "size_bytes": 1785
     },
     {
+      "path": "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
+      "sha256": "a9a62fdb7a3a1264ea9e1b46971cf6deb8b8c2d8fb220ff6f0fe1e23939e1a69",
+      "size_bytes": 1957
+    },
+    {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
-      "sha256": "23aab5d810f9a6eb7c8ba3ce8ef14645991f95b26a2ee0b77663d69a35f0edda",
+      "sha256": "818d43ff2936a615b93137b9d55577c839950a5b53ec85dc12327a9dd6136fc5",
       "size_bytes": 1045
     },
     {
@@ -1432,8 +1452,8 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/README.md",
-      "sha256": "7b4bd27e4451b1b327839c57f6aca7862446fd0f11691037bb919ae4575f92f2",
-      "size_bytes": 2288
+      "sha256": "ded438da0bfcdbbb0d6d92c9f70cc8d85728aa2fba3a52a0ec3f3a9e276da89c",
+      "size_bytes": 2743
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
@@ -1631,6 +1651,11 @@
       "size_bytes": 1409
     },
     {
+      "path": "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
+      "sha256": "d1165df2f17261392bfae61890af83b7ab58a25eae8380023b4590b928622a6e",
+      "size_bytes": 6686
+    },
+    {
       "path": "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
       "sha256": "75ffab2a5e1b36fef8d0159f376b01453ef21bc8d1edaf2a9f00d3d1a5c87734",
       "size_bytes": 12762
@@ -1732,8 +1757,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "dd7a11aba5facb180d706163aadbf53cffb32b1b4458e5e03a7a43b3aa2b361e",
-      "size_bytes": 5045
+      "sha256": "f6487869ba8c3c0ab72fac8bc0eb0a9fc9a3efcec35f2f2d059ae99ffd88c272",
+      "size_bytes": 5461
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -1761,6 +1786,11 @@
       "size_bytes": 11298
     },
     {
+      "path": "scripts/harness/audit_gate1_external_unblock.py",
+      "sha256": "652731bd8e20d98f23dbb0c411d5d036b4f65440f9dec9a70a5975db4cbc6e42",
+      "size_bytes": 9676
+    },
+    {
       "path": "scripts/harness/audit_gate1_reviewer_assignment.py",
       "sha256": "3165457d58f62b4aaa70938dd3a66b85a9d6fbdcef07c59c779e29f491554b3c",
       "size_bytes": 10946
@@ -1782,8 +1812,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "4c70c5f548ef0d4f2651cc08eb012654c159fd146796c5b3a80331bc05573dab",
-      "size_bytes": 30003
+      "sha256": "bb0a9f4a23da0a8ee8cebf7a920456535f011f17de48385dab0c69962cdce6bb",
+      "size_bytes": 33493
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

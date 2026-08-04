@@ -39,6 +39,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/prepare_gate1_manual_review.py",
     "scripts/harness/audit_gate1_approval_intake.py",
     "scripts/harness/audit_gate1_reviewer_assignment.py",
+    "scripts/harness/audit_gate1_external_unblock.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -54,6 +55,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
     "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
     "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
+    "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -71,6 +73,9 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
+    "docs/stage8/evidence/gate1/manual-review/COORDINATOR_ACTION_REQUEST.md",
+    "docs/stage8/evidence/gate1/manual-review/COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json",
+    "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
     "docs/stage8/evidence/gate1/manual-review/README.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
@@ -81,6 +86,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE1_MANUAL_REVIEW_AND_APPROVAL_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_APPROVAL_INTAKE_VALIDATION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE1_EXTERNAL_REVIEW_UNBLOCK_HANDOFF_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
 ]
@@ -314,6 +320,8 @@ def main() -> int:
         approval_intake_audit = load_json(manual_root / "GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json")
         assignment_register = load_json(manual_root / "REVIEWER_ASSIGNMENT_REGISTER_v1.0.json")
         assignment_audit = load_json(manual_root / "GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json")
+        nomination_response = load_json(manual_root / "COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json")
+        external_unblock_audit = load_json(manual_root / "GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json")
         for candidate in gate1_review.get("candidates", []):
             candidate_path = ROOT / candidate.get("path", "")
             if not candidate_path.exists():
@@ -516,6 +524,45 @@ def main() -> int:
                 fail("gate1 reviewer assignment readiness flag is false")
         elif assignment_audit.get("ready_for_dispatch") is not False:
             fail("gate1 reviewer assignment claims readiness while blocked or failed")
+
+        nominations = nomination_response.get("nominations")
+        if not isinstance(nominations, list) or len(nominations) != 5:
+            fail("gate1 Coordinator nomination response must contain five roles")
+        if {item.get("role") for item in nominations} != set(MANUAL_REVIEW_ROLES.values()):
+            fail("gate1 Coordinator nomination role matrix is incomplete")
+        if nomination_response.get("assignment_applied") is not False:
+            fail("gate1 nomination response applied assignments")
+        if nomination_response.get("dispatch_performed") is not False:
+            fail("gate1 nomination response recorded dispatch")
+        if nomination_response.get("approvals_created") != 0:
+            fail("gate1 nomination response created approvals")
+        if nomination_response.get("next_gate_allowed") is not False:
+            fail("gate1 nomination response prematurely allows Gate 2")
+        nomination_hash = hashlib.sha256(
+            (manual_root / "COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json").read_bytes()
+        ).hexdigest().lower()
+        if external_unblock_audit.get("nomination_response_sha256", "").lower() != nomination_hash:
+            fail("gate1 external unblock audit is stale")
+        unblock_status = external_unblock_audit.get("status")
+        if unblock_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_ASSIGNMENT"}:
+            fail(f"unsupported gate1 external unblock status: {unblock_status!r}")
+        if external_unblock_audit.get("nomination_required") != 5:
+            fail("gate1 external unblock audit does not require five nominations")
+        nomination_count = external_unblock_audit.get("valid_nomination_count")
+        if not isinstance(nomination_count, int) or not 0 <= nomination_count <= 5:
+            fail("gate1 external unblock nomination count is invalid")
+        for field in ("assignment_applied", "dispatch_performed", "next_gate_allowed"):
+            if external_unblock_audit.get(field) is not False:
+                fail(f"gate1 external unblock audit has unsafe flag: {field}")
+        if external_unblock_audit.get("approvals_created") != 0:
+            fail("gate1 external unblock audit created approvals")
+        if unblock_status == "READY_FOR_ASSIGNMENT":
+            if nomination_count != 5 or external_unblock_audit.get("ready_for_assignment") is not True:
+                fail("gate1 external unblock audit is ready without five valid nominations")
+            if external_unblock_audit.get("authorization_reference_present") is not True:
+                fail("gate1 external unblock audit is ready without authority evidence")
+        elif external_unblock_audit.get("ready_for_assignment") is not False:
+            fail("gate1 external unblock audit claims readiness while blocked or failed")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))

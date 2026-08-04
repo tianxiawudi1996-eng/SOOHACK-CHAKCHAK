@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AWAITING_COORDINATOR_INPUT",
+  "submitted_by": "",
+  "submitted_at": "",
+  "authorization_reference": "",
+  "nominations": [
+    {
+      "role": "Character Art Lead",
+      "reviewer_name": "",
+      "reviewer_identity_reference": "",
+      "contact_reference": "",
+      "conflict_declaration": "",
+      "conflict_record": ""
+    },
+    {
+      "role": "3D Technical Art Lead",
+      "reviewer_name": "",
+      "reviewer_identity_reference": "",
+      "contact_reference": "",
+      "conflict_declaration": "",
+      "conflict_record": ""
+    },
+    {
+      "role": "UX Brand System Lead",
+      "reviewer_name": "",
+      "reviewer_identity_reference": "",
+      "contact_reference": "",
+      "conflict_declaration": "",
+      "conflict_record": ""
+    },
+    {
+      "role": "QA Lead",
+      "reviewer_name": "",
+      "reviewer_identity_reference": "",
+      "contact_reference": "",
+      "conflict_declaration": "",
+      "conflict_record": ""
+    },
+    {
+      "role": "Product Owner",
+      "reviewer_name": "",
+      "reviewer_identity_reference": "",
+      "contact_reference": "",
+      "conflict_declaration": "",
+      "conflict_record": ""
+    }
+  ],
+  "assignment_applied": false,
+  "dispatch_performed": false,
+  "approvals_created": 0,
+  "next_gate_allowed": false
+}
