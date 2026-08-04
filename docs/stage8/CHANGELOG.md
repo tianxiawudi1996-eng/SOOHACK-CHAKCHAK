@@ -29,3 +29,4 @@
 - 로컬 `.git`을 안전하게 초기화하고 `codex/stage8-harness-continuation` 브랜치를 만들었다.
 - 원본 자료와 Harness 산출물을 두 개의 로컬 커밋으로 분리했다.
 - `github-recovery-codes.txt`는 `.gitignore`로 제외되어 어느 커밋에도 포함되지 않았다.
+- 원격 브랜치 푸시는 GitHub 403 권한 거부로 차단되었고 Draft PR은 생성하지 못했다.

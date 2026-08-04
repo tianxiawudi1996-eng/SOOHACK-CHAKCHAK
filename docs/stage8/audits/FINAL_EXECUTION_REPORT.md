@@ -53,8 +53,10 @@ Stage 1~8 파일 조사, Stage 7 후보 원본 해시·구조 감사, Stage 8 Ha
 ## 7. 브랜치·커밋·푸시
 
 - 브랜치: `codex/stage8-harness-continuation`
-- 커밋: `ca5c3fb` (`chore: import local stage 1-7 source files`), `45b4e9c` (`chore: add evidence-gated stage 8 harness`)
-- 원격 읽기 확인은 완료했으나, 원본 누락·민감정보 차단 상태에서 푸시와 Draft PR 갱신은 아직 수행하지 않았다.
+- 커밋: `ca5c3fb` (`chore: import local stage 1-7 source files`), `45b4e9c` (`chore: add evidence-gated stage 8 harness`), `152c49d` (`docs: record gate 0 evidence and execution results`)
+- 현재 HEAD 확인: `152c49d`
+- 푸시 시도: `codex/stage8-harness-continuation` → 원격 `403`, `Permission to tianxiawudi1996-eng/SOOHACK-CHAKCHAK.git denied to visionlab-coder`
+- Draft PR: 푸시 실패로 생성·갱신 불가
 
 ## 8. 다음 정확한 한 가지 작업
 
