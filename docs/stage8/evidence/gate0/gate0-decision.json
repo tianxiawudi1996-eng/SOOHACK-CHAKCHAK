@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED",
+  "generated_at": "2026-08-04T04:16:04.750349+00:00",
+  "missing_exact_files": [
+    "MathChakChak_Stage7_SSOT_v1.0.md",
+    "Chakchaki_Character_Bible_v1.0.md",
+    "Chakchaki_Approved_Reference_v1.0.png",
+    "Gongsickyi_Approved_Reference_v1.0.png"
+  ],
+  "sensitive_paths": [
+    "docs/ssot/stage7/v1.0/github-recovery-codes.txt"
+  ],
+  "evidence": [
+    "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+    "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json"
+  ]
+}

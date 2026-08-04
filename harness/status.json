@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "project": "SOOHACK-CHAKCHAK",
+  "stage": 8,
+  "updated_at": "2026-08-04T13:14:38+09:00",
+  "head_commit": "",
+  "branch": "",
+  "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
+  "gate0": {
+    "status": "BLOCKED",
+    "evidence": [
+      "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+      "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+      "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+      "harness/ssot-manifest.json",
+      "docs/stage8/evidence/gate0/gate0-decision.json"
+    ],
+    "blockers": [
+      "Four of the ten exact Stage 7 originals are not in the workspace",
+      "A sensitive-looking github-recovery-codes.txt exists and is not safe to commit",
+      "The workspace has no .git metadata or local HEAD baseline",
+      "No 3D runtime assets exist"
+    ],
+    "entry_allowed": true
+  },
+  "gate1": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE1_CANONICAL_VIEW.md"],
+    "blockers": ["Gate 0 must be VERIFIED; approved reference images are not present under the exact required names"],
+    "entry_allowed": false
+  },
+  "gate2": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md"],
+    "blockers": ["Gate 1 must be VERIFIED; no mesh or material asset exists"],
+    "entry_allowed": false
+  },
+  "gate3": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md"],
+    "blockers": ["Gate 2 must be VERIFIED; no rig or blendshape asset exists"],
+    "entry_allowed": false
+  },
+  "gate4": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE4_MOTION.md"],
+    "blockers": ["Gate 3 must be VERIFIED; no animation clips exist"],
+    "entry_allowed": false
+  },
+  "gate5": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE5_AI_BEHAVIOR.md"],
+    "blockers": ["Gate 4 must be VERIFIED; no runtime behavior implementation exists"],
+    "entry_allowed": false
+  },
+  "gate6": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md"],
+    "blockers": ["Gate 5 must be VERIFIED; no product source code exists"],
+    "entry_allowed": false
+  },
+  "gate7": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE7_QA.md"],
+    "blockers": ["Gate 6 must be VERIFIED; no product build or QA environment exists"],
+    "entry_allowed": false
+  },
+  "gate8": {
+    "status": "NOT_STARTED",
+    "evidence": ["docs/stage8/prompts/GATE8_DEPLOYMENT.md"],
+    "blockers": ["Gate 7 must be VERIFIED; no deployment target or authorization is configured"],
+    "entry_allowed": false
+  }
+}

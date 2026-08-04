@@ -1,0 +1,5023 @@
+{
+  "summary": {
+    "generated_at": "2026-08-04T04:16:04.750349+00:00",
+    "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
+    "file_count": 81,
+    "required_stage7_file_count": 10,
+    "required_exact_found": 6,
+    "required_exact_missing_or_conflicting": 4,
+    "sensitive_filename_count": 1,
+    "git_metadata_present": false,
+    "3d_files": [],
+    "required_records": [
+      {
+        "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+            "path": "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+            "size_bytes": 191386,
+            "modified_at": "2026-08-04T03:26:03.684578+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "73ff07caeb35",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_자료감사",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_충돌결정",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_디자인토큰",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_컴포넌트마스터",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_상태접근성",
+                  "state": "visible"
+                },
+                {
+                  "name": "06_재사용성매핑",
+                  "state": "visible"
+                },
+                {
+                  "name": "07_캐릭터락",
+                  "state": "visible"
+                },
+                {
+                  "name": "08_3D사전명세",
+                  "state": "visible"
+                },
+                {
+                  "name": "09_표정행동말풍선",
+                  "state": "visible"
+                },
+                {
+                  "name": "10_EXIT체크",
+                  "state": "visible"
+                },
+                {
+                  "name": "11_소스레지스트리",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 3,
+              "merged_cells": 27,
+              "defined_names": 0,
+              "data_validations": 6,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03",
+                "SRC-04",
+                "SRC-04",
+                "SRC-05",
+                "SRC-05",
+                "SRC-06",
+                "SRC-06",
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03"
+              ]
+            }
+          },
+          {
+            "stage": "Stage 7",
+            "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+            "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+            "size_bytes": 191386,
+            "modified_at": "2026-08-04T03:26:03.684578+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "73ff07caeb35",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_자료감사",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_충돌결정",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_디자인토큰",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_컴포넌트마스터",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_상태접근성",
+                  "state": "visible"
+                },
+                {
+                  "name": "06_재사용성매핑",
+                  "state": "visible"
+                },
+                {
+                  "name": "07_캐릭터락",
+                  "state": "visible"
+                },
+                {
+                  "name": "08_3D사전명세",
+                  "state": "visible"
+                },
+                {
+                  "name": "09_표정행동말풍선",
+                  "state": "visible"
+                },
+                {
+                  "name": "10_EXIT체크",
+                  "state": "visible"
+                },
+                {
+                  "name": "11_소스레지스트리",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 3,
+              "merged_cells": 27,
+              "defined_names": 0,
+              "data_validations": 6,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03",
+                "SRC-04",
+                "SRC-04",
+                "SRC-05",
+                "SRC-05",
+                "SRC-06",
+                "SRC-06",
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03"
+              ]
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
+        "exact_matches": [],
+        "exact_match_count": 0,
+        "candidate_paths": [
+          "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+          "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
+        ],
+        "status": "MISSING_EXACT"
+      },
+      {
+        "file_name": "Component_Inventory_v1.0.xlsx",
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Component_Inventory_v1.0.xlsx",
+            "path": "docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
+            "size_bytes": 81074,
+            "modified_at": "2026-08-04T03:26:30.518726+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "e023d54d8e1b",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_마스터인벤토리",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_상태매트릭스",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_화면재사용성",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_QA체크",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 3,
+              "merged_cells": 11,
+              "defined_names": 0,
+              "data_validations": 2,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03",
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03"
+              ]
+            }
+          },
+          {
+            "stage": "Stage 7",
+            "file_name": "Component_Inventory_v1.0.xlsx",
+            "path": "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
+            "size_bytes": 81074,
+            "modified_at": "2026-08-04T03:26:30.518726+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "e023d54d8e1b",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_마스터인벤토리",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_상태매트릭스",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_화면재사용성",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_QA체크",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 3,
+              "merged_cells": 11,
+              "defined_names": 0,
+              "data_validations": 2,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03",
+                "SRC-01",
+                "SRC-01",
+                "SRC-02",
+                "SRC-02",
+                "SRC-03",
+                "SRC-03"
+              ]
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+            "path": "docs/ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
+            "size_bytes": 3320,
+            "modified_at": "2026-08-04T03:27:14.260314+00:00",
+            "mime": "text/markdown",
+            "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "승인"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "61cf588db93c",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "0.42",
+                "0.7",
+                "0.78",
+                "0.8",
+                "0.86",
+                "1.0",
+                "v1.0"
+              ],
+              "status_tokens": [
+                "승인"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          },
+          {
+            "stage": "Stage 7",
+            "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+            "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
+            "size_bytes": 3320,
+            "modified_at": "2026-08-04T03:27:14.260314+00:00",
+            "mime": "text/markdown",
+            "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "승인"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "61cf588db93c",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "0.42",
+                "0.7",
+                "0.78",
+                "0.8",
+                "0.86",
+                "1.0",
+                "v1.0"
+              ],
+              "status_tokens": [
+                "승인"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "Chakchaki_Character_Bible_v1.0.md",
+        "exact_matches": [],
+        "exact_match_count": 0,
+        "candidate_paths": [],
+        "status": "MISSING_EXACT"
+      },
+      {
+        "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+            "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
+            "size_bytes": 103244,
+            "modified_at": "2026-08-04T03:27:34.667046+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "7604c2199f3b",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_모듈명세",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_본맵",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_BlendShape",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_애니메이션클립",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_Export_LOD",
+                  "state": "visible"
+                },
+                {
+                  "name": "06_기술QA",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 0,
+              "merged_cells": 15,
+              "defined_names": 0,
+              "data_validations": 1,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": []
+            }
+          },
+          {
+            "stage": "Stage 7",
+            "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+            "path": "ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
+            "size_bytes": 103244,
+            "modified_at": "2026-08-04T03:27:34.667046+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "7604c2199f3b",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_모듈명세",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_본맵",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_BlendShape",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_애니메이션클립",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_Export_LOD",
+                  "state": "visible"
+                },
+                {
+                  "name": "06_기술QA",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 0,
+              "merged_cells": 15,
+              "defined_names": 0,
+              "data_validations": 1,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": []
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+            "path": "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+            "size_bytes": 90603,
+            "modified_at": "2026-08-04T03:27:46.276522+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "14181e5f8393",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_상태라이브러리",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_이벤트매핑",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_말풍선카피",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_전환규칙",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_QA시나리오",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 0,
+              "merged_cells": 12,
+              "defined_names": 0,
+              "data_validations": 1,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "EVT-001",
+                "EVT-002",
+                "EVT-003",
+                "EVT-004",
+                "EVT-005",
+                "EVT-006",
+                "EVT-007",
+                "EVT-008",
+                "EVT-009",
+                "EVT-010",
+                "EVT-011",
+                "EVT-012",
+                "EVT-013",
+                "EVT-014",
+                "EVT-015",
+                "BUB-GUI-01",
+                "BUB-HIN-01",
+                "BUB-PRA-01",
+                "BUB-RET-01",
+                "BUB-RET-02",
+                "SRC-01",
+                "SRC-01",
+                "BUB-SRC-01",
+                "BUB-EMP-01",
+                "BUB-CMP-01",
+                "BUB-ERR-01",
+                "BUB-WEL-01",
+                "BUB-CHO-01",
+                "BUB-PRG-01",
+                "BUB-RST-01"
+              ]
+            }
+          },
+          {
+            "stage": "Stage 7",
+            "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+            "path": "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+            "size_bytes": 90603,
+            "modified_at": "2026-08-04T03:27:46.276522+00:00",
+            "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "14181e5f8393",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "xlsx_audit": {
+              "openable": true,
+              "sheets": [
+                {
+                  "name": "00_1페이지요약",
+                  "state": "visible"
+                },
+                {
+                  "name": "01_상태라이브러리",
+                  "state": "visible"
+                },
+                {
+                  "name": "02_이벤트매핑",
+                  "state": "visible"
+                },
+                {
+                  "name": "03_말풍선카피",
+                  "state": "visible"
+                },
+                {
+                  "name": "04_전환규칙",
+                  "state": "visible"
+                },
+                {
+                  "name": "05_QA시나리오",
+                  "state": "visible"
+                }
+              ],
+              "formula_count": 0,
+              "merged_cells": 12,
+              "defined_names": 0,
+              "data_validations": 1,
+              "external_links": 0,
+              "formula_errors": [],
+              "ids": [
+                "EVT-001",
+                "EVT-002",
+                "EVT-003",
+                "EVT-004",
+                "EVT-005",
+                "EVT-006",
+                "EVT-007",
+                "EVT-008",
+                "EVT-009",
+                "EVT-010",
+                "EVT-011",
+                "EVT-012",
+                "EVT-013",
+                "EVT-014",
+                "EVT-015",
+                "BUB-GUI-01",
+                "BUB-HIN-01",
+                "BUB-PRA-01",
+                "BUB-RET-01",
+                "BUB-RET-02",
+                "SRC-01",
+                "SRC-01",
+                "BUB-SRC-01",
+                "BUB-EMP-01",
+                "BUB-CMP-01",
+                "BUB-ERR-01",
+                "BUB-WEL-01",
+                "BUB-CHO-01",
+                "BUB-PRG-01",
+                "BUB-RST-01"
+              ]
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+        "exact_matches": [
+          {
+            "stage": "Stage 8",
+            "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+            "path": "docs/ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md",
+            "size_bytes": 4322,
+            "modified_at": "2026-08-04T03:29:49.868843+00:00",
+            "mime": "text/markdown",
+            "sha256": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "미결정",
+              "미제작",
+              "승인",
+              "조건부 PASS"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "129342039bef",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "v1.0",
+                "v1.0.1",
+                "v1.1"
+              ],
+              "status_tokens": [
+                "미결정",
+                "미제작",
+                "승인",
+                "조건부 PASS"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          },
+          {
+            "stage": "Stage 8",
+            "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+            "path": "ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md",
+            "size_bytes": 4322,
+            "modified_at": "2026-08-04T03:29:49.868843+00:00",
+            "mime": "text/markdown",
+            "sha256": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "미결정",
+              "미제작",
+              "승인",
+              "조건부 PASS"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "129342039bef",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "v1.0",
+                "v1.0.1",
+                "v1.1"
+              ],
+              "status_tokens": [
+                "미결정",
+                "미제작",
+                "승인",
+                "조건부 PASS"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          }
+        ],
+        "exact_match_count": 2,
+        "candidate_paths": [],
+        "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
+      },
+      {
+        "file_name": "Chakchaki_Approved_Reference_v1.0.png",
+        "exact_matches": [],
+        "exact_match_count": 0,
+        "candidate_paths": [
+          "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png"
+        ],
+        "status": "MISSING_EXACT"
+      },
+      {
+        "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
+        "exact_matches": [],
+        "exact_match_count": 0,
+        "candidate_paths": [
+          "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png"
+        ],
+        "status": "MISSING_EXACT"
+      }
+    ],
+    "ssot_target_rows": [
+      {
+        "stage": "Stage 7",
+        "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+        "path": "ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
+        "size_bytes": 103244,
+        "modified_at": "2026-08-04T03:27:34.667046+00:00",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "sha256": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "7604c2199f3b",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "xlsx_audit": {
+          "openable": true,
+          "sheets": [
+            {
+              "name": "00_1페이지요약",
+              "state": "visible"
+            },
+            {
+              "name": "01_모듈명세",
+              "state": "visible"
+            },
+            {
+              "name": "02_본맵",
+              "state": "visible"
+            },
+            {
+              "name": "03_BlendShape",
+              "state": "visible"
+            },
+            {
+              "name": "04_애니메이션클립",
+              "state": "visible"
+            },
+            {
+              "name": "05_Export_LOD",
+              "state": "visible"
+            },
+            {
+              "name": "06_기술QA",
+              "state": "visible"
+            }
+          ],
+          "formula_count": 0,
+          "merged_cells": 15,
+          "defined_names": 0,
+          "data_validations": 1,
+          "external_links": 0,
+          "formula_errors": [],
+          "ids": []
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "Component_Inventory_v1.0.xlsx",
+        "path": "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
+        "size_bytes": 81074,
+        "modified_at": "2026-08-04T03:26:30.518726+00:00",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "sha256": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "e023d54d8e1b",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "xlsx_audit": {
+          "openable": true,
+          "sheets": [
+            {
+              "name": "00_요약",
+              "state": "visible"
+            },
+            {
+              "name": "01_마스터인벤토리",
+              "state": "visible"
+            },
+            {
+              "name": "02_상태매트릭스",
+              "state": "visible"
+            },
+            {
+              "name": "03_화면재사용성",
+              "state": "visible"
+            },
+            {
+              "name": "04_QA체크",
+              "state": "visible"
+            }
+          ],
+          "formula_count": 3,
+          "merged_cells": 11,
+          "defined_names": 0,
+          "data_validations": 2,
+          "external_links": 0,
+          "formula_errors": [],
+          "ids": [
+            "SRC-01",
+            "SRC-01",
+            "SRC-02",
+            "SRC-02",
+            "SRC-03",
+            "SRC-03",
+            "SRC-01",
+            "SRC-01",
+            "SRC-02",
+            "SRC-02",
+            "SRC-03",
+            "SRC-03"
+          ]
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+        "path": "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+        "size_bytes": 90603,
+        "modified_at": "2026-08-04T03:27:46.276522+00:00",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "14181e5f8393",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "xlsx_audit": {
+          "openable": true,
+          "sheets": [
+            {
+              "name": "00_1페이지요약",
+              "state": "visible"
+            },
+            {
+              "name": "01_상태라이브러리",
+              "state": "visible"
+            },
+            {
+              "name": "02_이벤트매핑",
+              "state": "visible"
+            },
+            {
+              "name": "03_말풍선카피",
+              "state": "visible"
+            },
+            {
+              "name": "04_전환규칙",
+              "state": "visible"
+            },
+            {
+              "name": "05_QA시나리오",
+              "state": "visible"
+            }
+          ],
+          "formula_count": 0,
+          "merged_cells": 12,
+          "defined_names": 0,
+          "data_validations": 1,
+          "external_links": 0,
+          "formula_errors": [],
+          "ids": [
+            "EVT-001",
+            "EVT-002",
+            "EVT-003",
+            "EVT-004",
+            "EVT-005",
+            "EVT-006",
+            "EVT-007",
+            "EVT-008",
+            "EVT-009",
+            "EVT-010",
+            "EVT-011",
+            "EVT-012",
+            "EVT-013",
+            "EVT-014",
+            "EVT-015",
+            "BUB-GUI-01",
+            "BUB-HIN-01",
+            "BUB-PRA-01",
+            "BUB-RET-01",
+            "BUB-RET-02",
+            "SRC-01",
+            "SRC-01",
+            "BUB-SRC-01",
+            "BUB-EMP-01",
+            "BUB-CMP-01",
+            "BUB-ERR-01",
+            "BUB-WEL-01",
+            "BUB-CHO-01",
+            "BUB-PRG-01",
+            "BUB-RST-01"
+          ]
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+        "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
+        "size_bytes": 3320,
+        "modified_at": "2026-08-04T03:27:14.260314+00:00",
+        "mime": "text/markdown",
+        "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+        "version": "v1.0",
+        "approval_status_tokens": [
+          "승인"
+        ],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "61cf588db93c",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "markdown_audit": {
+          "utf8": true,
+          "h1_count": 1,
+          "version_tokens": [
+            "0.42",
+            "0.7",
+            "0.78",
+            "0.8",
+            "0.86",
+            "1.0",
+            "v1.0"
+          ],
+          "status_tokens": [
+            "승인"
+          ],
+          "links": [],
+          "broken_links": [],
+          "image_links": []
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+        "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+        "size_bytes": 191386,
+        "modified_at": "2026-08-04T03:26:03.684578+00:00",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "sha256": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "73ff07caeb35",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "xlsx_audit": {
+          "openable": true,
+          "sheets": [
+            {
+              "name": "00_1페이지요약",
+              "state": "visible"
+            },
+            {
+              "name": "01_자료감사",
+              "state": "visible"
+            },
+            {
+              "name": "02_충돌결정",
+              "state": "visible"
+            },
+            {
+              "name": "03_디자인토큰",
+              "state": "visible"
+            },
+            {
+              "name": "04_컴포넌트마스터",
+              "state": "visible"
+            },
+            {
+              "name": "05_상태접근성",
+              "state": "visible"
+            },
+            {
+              "name": "06_재사용성매핑",
+              "state": "visible"
+            },
+            {
+              "name": "07_캐릭터락",
+              "state": "visible"
+            },
+            {
+              "name": "08_3D사전명세",
+              "state": "visible"
+            },
+            {
+              "name": "09_표정행동말풍선",
+              "state": "visible"
+            },
+            {
+              "name": "10_EXIT체크",
+              "state": "visible"
+            },
+            {
+              "name": "11_소스레지스트리",
+              "state": "visible"
+            }
+          ],
+          "formula_count": 3,
+          "merged_cells": 27,
+          "defined_names": 0,
+          "data_validations": 6,
+          "external_links": 0,
+          "formula_errors": [],
+          "ids": [
+            "SRC-01",
+            "SRC-01",
+            "SRC-02",
+            "SRC-02",
+            "SRC-03",
+            "SRC-03",
+            "SRC-04",
+            "SRC-04",
+            "SRC-05",
+            "SRC-05",
+            "SRC-06",
+            "SRC-06",
+            "SRC-01",
+            "SRC-01",
+            "SRC-02",
+            "SRC-02",
+            "SRC-03",
+            "SRC-03"
+          ]
+        }
+      },
+      {
+        "stage": "Stage 8",
+        "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+        "path": "ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md",
+        "size_bytes": 4322,
+        "modified_at": "2026-08-04T03:29:49.868843+00:00",
+        "mime": "text/markdown",
+        "sha256": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+        "version": "v1.0",
+        "approval_status_tokens": [
+          "미결정",
+          "미제작",
+          "승인",
+          "조건부 PASS"
+        ],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "129342039bef",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "markdown_audit": {
+          "utf8": true,
+          "h1_count": 1,
+          "version_tokens": [
+            "v1.0",
+            "v1.0.1",
+            "v1.1"
+          ],
+          "status_tokens": [
+            "미결정",
+            "미제작",
+            "승인",
+            "조건부 PASS"
+          ],
+          "links": [],
+          "broken_links": [],
+          "image_links": []
+        }
+      }
+    ],
+    "semantic_presence": {
+      "progress_bubble_type_happy_state": false,
+      "welcome_greet_connection": false,
+      "note": "Semantic links require human review; presence is not approval evidence."
+    },
+    "id_counts": {
+      "BUB-CHO-01": 12,
+      "BUB-CMP-01": 12,
+      "BUB-EMP-01": 12,
+      "BUB-ERR-01": 12,
+      "BUB-GUI-01": 12,
+      "BUB-HIN-01": 12,
+      "BUB-PRA-01": 12,
+      "BUB-PRG-01": 12,
+      "BUB-RET-01": 12,
+      "BUB-RET-02": 12,
+      "BUB-RST-01": 12,
+      "BUB-SRC-01": 12,
+      "BUB-WEL-01": 12,
+      "EVT-001": 13,
+      "EVT-002": 12,
+      "EVT-003": 12,
+      "EVT-004": 12,
+      "EVT-005": 12,
+      "EVT-006": 12,
+      "EVT-007": 12,
+      "EVT-008": 12,
+      "EVT-009": 12,
+      "EVT-010": 12,
+      "EVT-011": 12,
+      "EVT-012": 12,
+      "EVT-013": 12,
+      "EVT-014": 12,
+      "EVT-015": 12,
+      "MOD-01": 6,
+      "MOD-02": 6,
+      "MOD-03": 6,
+      "MOD-04": 6,
+      "SRC-01": 89,
+      "SRC-02": 63,
+      "SRC-03": 61,
+      "SRC-04": 19,
+      "SRC-05": 19,
+      "SRC-06": 19
+    },
+    "id_locations": {
+      "EVT-001": [
+        "docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-02": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-03": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-04": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-05": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "SRC-06": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "MOD-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json"
+      ],
+      "MOD-02": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json"
+      ],
+      "MOD-03": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json"
+      ],
+      "MOD-04": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json"
+      ],
+      "EVT-002": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-003": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-004": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-005": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-006": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-007": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-008": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-009": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-010": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-011": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-012": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-013": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-014": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "EVT-015": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-CHO-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-CMP-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-EMP-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-ERR-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-GUI-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-HIN-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-PRA-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-PRG-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-RET-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-RET-02": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-RST-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-SRC-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ],
+      "BUB-WEL-01": [
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+        "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+        "harness/ssot-manifest.json",
+        "harness/ssot-manifest.json"
+      ]
+    },
+    "notes": [
+      "Exact filenames are not inferred from suffix candidates.",
+      "Sensitive filename content was not read or copied.",
+      "No source asset is rewritten by this audit."
+    ]
+  },
+  "files": [
+    {
+      "stage": "Stage 8",
+      "file_name": "stage8-harness.yml",
+      "path": ".github/workflows/stage8-harness.yml",
+      "size_bytes": 426,
+      "modified_at": "2026-08-04T04:12:25.803526+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "735c0ec81206da58676dd6e07b1e723678c58506c74a2454a3fad3a5a78abcc6",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 2",
+      "file_name": "6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
+      "path": "docs/agent/6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
+      "size_bytes": 22287,
+      "modified_at": "2026-07-31T07:51:31.324479+00:00",
+      "mime": "text/markdown",
+      "sha256": "a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "a2bd14d6069f",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "1.1",
+          "1.2",
+          "1.5",
+          "2.0",
+          "2.1",
+          "2.2",
+          "2.5",
+          "2.8",
+          "3.0",
+          "3.2",
+          "3.5",
+          "3.6",
+          "3.8",
+          "4.0",
+          "4.2",
+          "4.3",
+          "4.4",
+          "4.5",
+          "4.6",
+          "4.7",
+          "5.0",
+          "6.1",
+          "7.1",
+          "7.2",
+          "7.3",
+          "7.4",
+          "7.5",
+          "7.6",
+          "7.7",
+          "7.8",
+          "7.9"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png",
+      "path": "docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png",
+      "size_bytes": 1671646,
+      "modified_at": "2026-08-02T13:49:00.081559+00:00",
+      "mime": "image/png",
+      "sha256": "ca47cc30bc6018fdea883aed29828191772030a64d9d32cca61369f7fcd2ec74",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "ca47cc30bc60",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png",
+      "path": "docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png",
+      "size_bytes": 1743160,
+      "modified_at": "2026-08-02T13:49:00.081559+00:00",
+      "mime": "image/png",
+      "sha256": "c55bacd61d81b79ec456f699d4ab21f143b62798961a2429e04bedb412f964ca",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "c55bacd61d81",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_49_05.png",
+      "path": "docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_49_05.png",
+      "size_bytes": 1689528,
+      "modified_at": "2026-08-02T13:49:07.029969+00:00",
+      "mime": "image/png",
+      "sha256": "bca2198e1e0024fc7f966be296d2290008ca956ca20a813c6d56b457e5346a9d",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "bca2198e1e00",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1055,
+        "height": 1491,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_49_19.png",
+      "path": "docs/agent/ChatGPT Image 2026년 8월 2일 오후 10_49_19.png",
+      "size_bytes": 1558878,
+      "modified_at": "2026-08-02T13:49:20.448944+00:00",
+      "mime": "image/png",
+      "sha256": "2da5053e8839524f6232a21f7aee76f184114ab40cee09b78e3f6128ed03c021",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "2da5053e8839",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
+      "path": "docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
+      "size_bytes": 3885,
+      "modified_at": "2026-08-04T03:55:37.225316+00:00",
+      "mime": "text/markdown",
+      "sha256": "20a1fd103913e63b678ee68b1cb782e32491ac6ee93da57040362760a3910925",
+      "version": "v1.0.1",
+      "approval_status_tokens": [
+        "미제작",
+        "승인",
+        "조건부 PASS"
+      ],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0",
+          "v1.0.1"
+        ],
+        "status_tokens": [
+          "미제작",
+          "승인",
+          "조건부 PASS"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 4",
+      "file_name": "Mathcraft_랜딩페이지_4단계_색상팔레트.md",
+      "path": "docs/agent/Mathcraft_랜딩페이지_4단계_색상팔레트.md",
+      "size_bytes": 12537,
+      "modified_at": "2026-08-04T03:54:48.600572+00:00",
+      "mime": "text/markdown",
+      "sha256": "ff1fe409d1abea779a1e2c505cc77f615e7e01499d139376b163763a8adfb138",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.5",
+          "1.1",
+          "1.2",
+          "1.5",
+          "2.1",
+          "3.1",
+          "4.1",
+          "5.1",
+          "6.1",
+          "6.2",
+          "6.3",
+          "6.4",
+          "6.5",
+          "6.6",
+          "6.7"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 3",
+      "file_name": "랜딩페이지_03단계_디자인선정_요약.md",
+      "path": "docs/agent/랜딩페이지_03단계_디자인선정_요약.md",
+      "size_bytes": 5842,
+      "modified_at": "2026-08-04T03:54:33.181089+00:00",
+      "mime": "text/markdown",
+      "sha256": "4dee8d6f583b0db891ff0a9b8aa0a9fc915b41b34b0ede0ee442614be53567f9",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "5.1",
+          "5.2",
+          "5.3",
+          "5.4",
+          "5.5",
+          "6.1",
+          "6.2",
+          "6.3"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 2",
+      "file_name": "랜딩페이지_2단계_사용자와제품_1페이지요약.md",
+      "path": "docs/agent/랜딩페이지_2단계_사용자와제품_1페이지요약.md",
+      "size_bytes": 9583,
+      "modified_at": "2026-08-04T03:54:24.312685+00:00",
+      "mime": "text/markdown",
+      "sha256": "7cb902b92a1d6fb6819d4647a07963848ed7c526a010d72b893fc51ff7b682c3",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "4.1",
+          "4.2",
+          "6.1",
+          "6.2",
+          "6.3"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "수학착착_7단계_컴포넌트_캐릭터시스템.md",
+      "path": "docs/agent/수학착착_7단계_컴포넌트_캐릭터시스템.md",
+      "size_bytes": 11202,
+      "modified_at": "2026-07-31T23:50:37.789885+00:00",
+      "mime": "text/markdown",
+      "sha256": "c00fef79a7983af608ab90c1881a42ca7d2bb45430d45c000bde5d5ef8b32ee7",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "10.1",
+          "10.2",
+          "10.3",
+          "10.4",
+          "10.5",
+          "2.5",
+          "3.1",
+          "3.2",
+          "3.3",
+          "3.5",
+          "4.5"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_7단계_컴포넌트시스템_공식이_캐릭터시안.png",
+      "path": "docs/agent/수학착착_7단계_컴포넌트시스템_공식이_캐릭터시안.png",
+      "size_bytes": 1558878,
+      "modified_at": "2026-07-31T23:50:39.012506+00:00",
+      "mime": "image/png",
+      "sha256": "2da5053e8839524f6232a21f7aee76f184114ab40cee09b78e3f6128ed03c021",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "2da5053e8839",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 2",
+      "file_name": "수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
+      "path": "docs/agent/수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
+      "size_bytes": 22287,
+      "modified_at": "2026-08-04T03:55:12.643684+00:00",
+      "mime": "text/markdown",
+      "sha256": "a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "a2bd14d6069f",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "1.1",
+          "1.2",
+          "1.5",
+          "2.0",
+          "2.1",
+          "2.2",
+          "2.5",
+          "2.8",
+          "3.0",
+          "3.2",
+          "3.5",
+          "3.6",
+          "3.8",
+          "4.0",
+          "4.2",
+          "4.3",
+          "4.4",
+          "4.5",
+          "4.6",
+          "4.7",
+          "5.0",
+          "6.1",
+          "7.1",
+          "7.2",
+          "7.3",
+          "7.4",
+          "7.5",
+          "7.6",
+          "7.7",
+          "7.8",
+          "7.9"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_브랜드명_슬로건_확정본.md",
+      "path": "docs/agent/수학착착_브랜드명_슬로건_확정본.md",
+      "size_bytes": 4524,
+      "modified_at": "2026-08-04T03:54:13.952751+00:00",
+      "mime": "text/markdown",
+      "sha256": "1bcbfb4777a509189af19b4e207e92d46676b03ae02015a72ce89294a47e87fa",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 2,
+        "version_tokens": [],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학튜터_랜딩페이지_타이포그래피_추천안.md",
+      "path": "docs/agent/수학튜터_랜딩페이지_타이포그래피_추천안.md",
+      "size_bytes": 11083,
+      "modified_at": "2026-08-04T03:54:59.696032+00:00",
+      "mime": "text/markdown",
+      "sha256": "f31e14d71b4c045c67bac29337b5f654ddda68296f093c52262d2bdb4992eaad",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.2",
+          "0.5",
+          "1.00",
+          "1.1",
+          "1.2",
+          "1.20",
+          "1.25",
+          "1.3",
+          "1.30",
+          "1.35",
+          "1.40",
+          "1.5",
+          "1.55",
+          "1.6",
+          "1.60",
+          "1.65",
+          "1.7",
+          "1.70",
+          "2.1",
+          "2.2",
+          "2.3",
+          "3.1",
+          "3.2",
+          "4.1",
+          "4.2",
+          "4.3",
+          "4.4",
+          "4.5",
+          "4.6",
+          "4.7",
+          "4.8",
+          "6.1",
+          "6.2",
+          "7.1",
+          "7.2",
+          "7.3",
+          "7.4",
+          "7.5",
+          "7.6",
+          "7.7"
+        ],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "웹스타일_레퍼런스3종비교_미리보기.png",
+      "path": "docs/agent/웹스타일_레퍼런스3종비교_미리보기.png",
+      "size_bytes": 427207,
+      "modified_at": "2026-07-31T07:43:14.578279+00:00",
+      "mime": "image/png",
+      "sha256": "12973bdb6e0aacb761a201bd25625f7d113b6be982aafdc0a7ec5b4fbd7af423",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 2120,
+        "height": 1832,
+        "mode": "RGBA",
+        "has_alpha": true
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "Chakchaki_Approved_Reference_v1.0(1).png",
+      "path": "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png",
+      "size_bytes": 1595043,
+      "modified_at": "2026-08-04T03:55:35.288966+00:00",
+      "mime": "image/png",
+      "sha256": "c0846ef13754fd32523561a94f47c4727a739bc6f3f4d7c280dc1a2d6a236a40",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1546,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png",
+      "path": "docs/developer/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (1).png",
+      "size_bytes": 1671646,
+      "modified_at": "2026-08-02T13:49:00.081559+00:00",
+      "mime": "image/png",
+      "sha256": "ca47cc30bc6018fdea883aed29828191772030a64d9d32cca61369f7fcd2ec74",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "ca47cc30bc60",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png",
+      "path": "docs/developer/ChatGPT Image 2026년 8월 2일 오후 10_48_59 (2).png",
+      "size_bytes": 1743160,
+      "modified_at": "2026-08-02T13:49:00.081559+00:00",
+      "mime": "image/png",
+      "sha256": "c55bacd61d81b79ec456f699d4ab21f143b62798961a2429e04bedb412f964ca",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "c55bacd61d81",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_49_05.png",
+      "path": "docs/developer/ChatGPT Image 2026년 8월 2일 오후 10_49_05.png",
+      "size_bytes": 1689528,
+      "modified_at": "2026-08-02T13:49:07.029969+00:00",
+      "mime": "image/png",
+      "sha256": "bca2198e1e0024fc7f966be296d2290008ca956ca20a813c6d56b457e5346a9d",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "bca2198e1e00",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1055,
+        "height": 1491,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "ChatGPT Image 2026년 8월 2일 오후 10_49_19.png",
+      "path": "docs/developer/ChatGPT Image 2026년 8월 2일 오후 10_49_19.png",
+      "size_bytes": 1558878,
+      "modified_at": "2026-08-02T13:49:20.448944+00:00",
+      "mime": "image/png",
+      "sha256": "2da5053e8839524f6232a21f7aee76f184114ab40cee09b78e3f6128ed03c021",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "2da5053e8839",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "Gongsickyi_Approved_Reference_v1.0(1).png",
+      "path": "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png",
+      "size_bytes": 1661159,
+      "modified_at": "2026-08-04T03:55:37.253360+00:00",
+      "mime": "image/png",
+      "sha256": "d5f884b7a7c0ab10a6e5355db51016e8161339cf68045cd4f2538cd4e790822a",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1546,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "Mathcraft_랜딩페이지_4단계_색상팔레트.xlsx",
+      "path": "docs/developer/Mathcraft_랜딩페이지_4단계_색상팔레트.xlsx",
+      "size_bytes": 56474,
+      "modified_at": "2026-08-04T03:54:52.596936+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "c2323bb64361cdf7a6b913471a8a05cb889721ea52846f3c94ddaef3baf8c507",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "01_요약본",
+            "state": "visible"
+          },
+          {
+            "name": "02_핵심팔레트",
+            "state": "visible"
+          },
+          {
+            "name": "03_사용비율",
+            "state": "visible"
+          },
+          {
+            "name": "04_UI적용기준",
+            "state": "visible"
+          },
+          {
+            "name": "05_상태색상",
+            "state": "visible"
+          },
+          {
+            "name": "06_랜딩적용가이드",
+            "state": "visible"
+          },
+          {
+            "name": "07_금지사항",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 13,
+        "defined_names": 0,
+        "data_validations": 0,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "SOOHACK.xlsx",
+      "path": "docs/developer/SOOHACK.xlsx",
+      "size_bytes": 41284,
+      "modified_at": "2026-07-31T07:43:58.708003+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "fc3f3b9ffc9c8ca40eaf08c8a8b447531d118aad7e36b8ded235094d3146d15f",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "1.아이덴티티",
+            "state": "visible"
+          },
+          {
+            "name": "2.사용자와 제품",
+            "state": "visible"
+          },
+          {
+            "name": "3.디자인유형",
+            "state": "visible"
+          },
+          {
+            "name": "4.색상팔레트",
+            "state": "visible"
+          },
+          {
+            "name": "5.타이포그래픽",
+            "state": "visible"
+          },
+          {
+            "name": "6.레이아웃,간격",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 42,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "랜딩페이지_03단계_디자인선정_1페이지요약.xlsx",
+      "path": "docs/developer/랜딩페이지_03단계_디자인선정_1페이지요약.xlsx",
+      "size_bytes": 6395,
+      "modified_at": "2026-08-04T03:54:39.285132+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "f8a74b2d7b2cb4c27aaf00314fd2edb1a668bf4fcd32ecb152d6e4f8f84984e3",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "03_디자인선정_요약",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 7,
+        "defined_names": 0,
+        "data_validations": 0,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "랜딩페이지_2단계_사용자와제품_1페이지요약.xlsx",
+      "path": "docs/developer/랜딩페이지_2단계_사용자와제품_1페이지요약.xlsx",
+      "size_bytes": 7044,
+      "modified_at": "2026-08-04T03:54:25.246660+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "9489b62384743b42c4cc9268c52ffca8a088df37aaaaafe1b627d3db247d6d13",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "2단계_1페이지요약",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 6,
+        "defined_names": 0,
+        "data_validations": 0,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "랜딩페이지_2단계_사용자와제품_재정리.xlsx",
+      "path": "docs/developer/랜딩페이지_2단계_사용자와제품_재정리.xlsx",
+      "size_bytes": 15707,
+      "modified_at": "2026-07-31T07:43:04.257756+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "4de67e3ad30f932e8cff8ceacd4fe35f64d19ac6494cbe2483d2e4259a0a3d22",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_결론요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_대화근거",
+            "state": "visible"
+          },
+          {
+            "name": "02_사용자와제품",
+            "state": "visible"
+          },
+          {
+            "name": "03_확정필요항목",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 17,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_7단계_컴포넌트_캐릭터시스템.xlsx",
+      "path": "docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx",
+      "size_bytes": 101717,
+      "modified_at": "2026-07-31T23:50:37.894475+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "abca87cf4ca172b77d7028ee54e14fb619d5cae0c5daf8916740db51c4c16bac",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_통합디자인토큰",
+            "state": "visible"
+          },
+          {
+            "name": "02_버튼_액션",
+            "state": "visible"
+          },
+          {
+            "name": "03_입력_검색_필터",
+            "state": "visible"
+          },
+          {
+            "name": "04_카드_네비게이션",
+            "state": "visible"
+          },
+          {
+            "name": "05_모달_피드백",
+            "state": "visible"
+          },
+          {
+            "name": "06_학습전용컴포넌트",
+            "state": "visible"
+          },
+          {
+            "name": "07_공식이_캐릭터",
+            "state": "visible"
+          },
+          {
+            "name": "08_재사용_접근성",
+            "state": "visible"
+          },
+          {
+            "name": "09_컴포넌트인벤토리",
+            "state": "visible"
+          },
+          {
+            "name": "10_제작체크리스트",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 4,
+        "merged_cells": 30,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "MOD-01",
+          "MOD-02",
+          "MOD-03",
+          "MOD-04"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_7단계_컴포넌트시스템_공식이_캐릭터시안.png",
+      "path": "docs/developer/수학착착_7단계_컴포넌트시스템_공식이_캐릭터시안.png",
+      "size_bytes": 1558878,
+      "modified_at": "2026-07-31T23:50:39.012506+00:00",
+      "mime": "image/png",
+      "sha256": "2da5053e8839524f6232a21f7aee76f184114ab40cee09b78e3f6128ed03c021",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": "2da5053e8839",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_랜딩페이지_정보밀도_메시지강도_설계.xlsx",
+      "path": "docs/developer/수학착착_랜딩페이지_정보밀도_메시지강도_설계.xlsx",
+      "size_bytes": 21361,
+      "modified_at": "2026-08-04T03:55:13.633460+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "dab6e484a3c6590e2ed116c43be2b31a1d1e456d680a95bf60667bb0e6210f86",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_밀도·강도기준",
+            "state": "visible"
+          },
+          {
+            "name": "02_섹션별설계",
+            "state": "visible"
+          },
+          {
+            "name": "03_대상별메시지",
+            "state": "visible"
+          },
+          {
+            "name": "04_제작검수표",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 20,
+        "merged_cells": 25,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_브랜드명_슬로건_1개시트_요약본.xlsx",
+      "path": "docs/developer/수학착착_브랜드명_슬로건_1개시트_요약본.xlsx",
+      "size_bytes": 7156,
+      "modified_at": "2026-08-04T03:54:14.362697+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "af6e33ab1634d5bd92aa7ea8353c11c6d5f59e1c65f5566c1d2af0eab700527f",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "브랜드·슬로건 확정본",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 6,
+        "defined_names": 0,
+        "data_validations": 0,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학착착_아이덴티티_브랜드명_슬로건_확정본.xlsx",
+      "path": "docs/developer/수학착착_아이덴티티_브랜드명_슬로건_확정본.xlsx",
+      "size_bytes": 33165,
+      "modified_at": "2026-07-31T07:42:55.203051+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "4c5a16a09810d84c8ddd8bbcf6234f0610da1b0c103a594dd2797c277d6afcda",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_전체 로드맵",
+            "state": "visible"
+          },
+          {
+            "name": "01_나의 아이덴티티",
+            "state": "visible"
+          },
+          {
+            "name": "02_프로덕션 정체성",
+            "state": "visible"
+          },
+          {
+            "name": "03_브랜드명 후보",
+            "state": "visible"
+          },
+          {
+            "name": "04_슬로건 후보",
+            "state": "visible"
+          },
+          {
+            "name": "05_최종 선정",
+            "state": "visible"
+          },
+          {
+            "name": "06_나를 정의하는 질문",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 58,
+        "merged_cells": 40,
+        "defined_names": 0,
+        "data_validations": 14,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 1-7 support",
+      "file_name": "수학튜터_랜딩페이지_타이포그래피_추천안.xlsx",
+      "path": "docs/developer/수학튜터_랜딩페이지_타이포그래피_추천안.xlsx",
+      "size_bytes": 50112,
+      "modified_at": "2026-08-04T03:55:01.583938+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "2ddaf9a89e6d631d4895d9150422cb5df1b5d24827796b500289da680f34715b",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "derived-or-working",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "01_요약본",
+            "state": "visible"
+          },
+          {
+            "name": "02_폰트조합",
+            "state": "visible"
+          },
+          {
+            "name": "03_크기체계",
+            "state": "visible"
+          },
+          {
+            "name": "04_영역별적용",
+            "state": "visible"
+          },
+          {
+            "name": "05_운영원칙",
+            "state": "visible"
+          },
+          {
+            "name": "06_제작체크리스트",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 2,
+        "merged_cells": 23,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+      "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
+      "size_bytes": 103244,
+      "modified_at": "2026-08-04T03:27:34.667046+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "7604c2199f3b",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_모듈명세",
+            "state": "visible"
+          },
+          {
+            "name": "02_본맵",
+            "state": "visible"
+          },
+          {
+            "name": "03_BlendShape",
+            "state": "visible"
+          },
+          {
+            "name": "04_애니메이션클립",
+            "state": "visible"
+          },
+          {
+            "name": "05_Export_LOD",
+            "state": "visible"
+          },
+          {
+            "name": "06_기술QA",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 15,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 09_23_27 (1).png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 09_23_27 (1).png",
+      "size_bytes": 1652543,
+      "modified_at": "2026-08-04T00:23:28.408508+00:00",
+      "mime": "image/png",
+      "sha256": "6a19817cb97eb050bad3c143c4134a21e4fc3d4487543da38f50176f9399a236",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 09_23_27 (2).png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 09_23_27 (2).png",
+      "size_bytes": 1717053,
+      "modified_at": "2026-08-04T00:23:28.408508+00:00",
+      "mime": "image/png",
+      "sha256": "e90e3c42086a54ae2b3cb58d75adb030ce4ef2c269178411b94905fcefec86a1",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 09_24_10.png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 09_24_10.png",
+      "size_bytes": 1689528,
+      "modified_at": "2026-08-04T00:24:11.079171+00:00",
+      "mime": "image/png",
+      "sha256": "bca2198e1e0024fc7f966be296d2290008ca956ca20a813c6d56b457e5346a9d",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": "bca2198e1e00",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1055,
+        "height": 1491,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 09_24_21.png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 09_24_21.png",
+      "size_bytes": 1558878,
+      "modified_at": "2026-08-04T00:24:21.870778+00:00",
+      "mime": "image/png",
+      "sha256": "2da5053e8839524f6232a21f7aee76f184114ab40cee09b78e3f6128ed03c021",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": "2da5053e8839",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 10_57_31.png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 10_57_31.png",
+      "size_bytes": 1643775,
+      "modified_at": "2026-08-04T01:57:31.872399+00:00",
+      "mime": "image/png",
+      "sha256": "16506de751a632d154d126bcb9c5ac8ee2845a68b208d471b18396b97a2c6de7",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "ChatGPT Image 2026년 8월 4일 오전 10_57_44.png",
+      "path": "docs/ssot/stage7/v1.0/ChatGPT Image 2026년 8월 4일 오전 10_57_44.png",
+      "size_bytes": 1585378,
+      "modified_at": "2026-08-04T01:57:44.540447+00:00",
+      "mime": "image/png",
+      "sha256": "ba97b92fd675eb5449bf4f334798280a5b334a48e1e5133ad97d2af4916e2d52",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1535,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Component_Inventory_v1.0.xlsx",
+      "path": "docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
+      "size_bytes": 81074,
+      "modified_at": "2026-08-04T03:26:30.518726+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "e023d54d8e1b",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_마스터인벤토리",
+            "state": "visible"
+          },
+          {
+            "name": "02_상태매트릭스",
+            "state": "visible"
+          },
+          {
+            "name": "03_화면재사용성",
+            "state": "visible"
+          },
+          {
+            "name": "04_QA체크",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 3,
+        "merged_cells": 11,
+        "defined_names": 0,
+        "data_validations": 2,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03",
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "path": "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "size_bytes": 90603,
+      "modified_at": "2026-08-04T03:27:46.276522+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "14181e5f8393",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_상태라이브러리",
+            "state": "visible"
+          },
+          {
+            "name": "02_이벤트매핑",
+            "state": "visible"
+          },
+          {
+            "name": "03_말풍선카피",
+            "state": "visible"
+          },
+          {
+            "name": "04_전환규칙",
+            "state": "visible"
+          },
+          {
+            "name": "05_QA시나리오",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 12,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "EVT-001",
+          "EVT-002",
+          "EVT-003",
+          "EVT-004",
+          "EVT-005",
+          "EVT-006",
+          "EVT-007",
+          "EVT-008",
+          "EVT-009",
+          "EVT-010",
+          "EVT-011",
+          "EVT-012",
+          "EVT-013",
+          "EVT-014",
+          "EVT-015",
+          "BUB-GUI-01",
+          "BUB-HIN-01",
+          "BUB-PRA-01",
+          "BUB-RET-01",
+          "BUB-RET-02",
+          "SRC-01",
+          "SRC-01",
+          "BUB-SRC-01",
+          "BUB-EMP-01",
+          "BUB-CMP-01",
+          "BUB-ERR-01",
+          "BUB-WEL-01",
+          "BUB-CHO-01",
+          "BUB-PRG-01",
+          "BUB-RST-01"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE1_CANONICAL_TURNAROUND_REMEDIATION_METAPROMPT_v5.2.0.md",
+      "path": "docs/ssot/stage7/v1.0/GATE1_CANONICAL_TURNAROUND_REMEDIATION_METAPROMPT_v5.2.0.md",
+      "size_bytes": 14448,
+      "modified_at": "2026-08-04T03:30:11.884332+00:00",
+      "mime": "text/markdown",
+      "sha256": "1dc4cc28ce14cf1ef9eab0bc4c5ec3238e9d0a022a7b7ad00b3117c4622e1c5e",
+      "version": "v5.2.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "APPROVED",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "10.1",
+          "10.2",
+          "2.0",
+          "5.1",
+          "5.2",
+          "5.3",
+          "5.4",
+          "5.5",
+          "6.1",
+          "6.2",
+          "6.3",
+          "6.4",
+          "7.1",
+          "7.2",
+          "7.3",
+          "7.4",
+          "8.1",
+          "8.2",
+          "8.3",
+          "8.4",
+          "8.5",
+          "9.1",
+          "9.2",
+          "v1.1",
+          "v5.2.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "FAIL",
+          "PASS",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "GATE1_QA_RESULT_v5.1.1.json",
+      "path": "docs/ssot/stage7/v1.0/GATE1_QA_RESULT_v5.1.1.json",
+      "size_bytes": 1491,
+      "modified_at": "2026-08-04T03:30:02.784363+00:00",
+      "mime": "application/json",
+      "sha256": "fec9b3f37066b6a561fceecf3e5c33a3f96d818497985ed13383e64b212cae25",
+      "version": "v5.1.1",
+      "approval_status_tokens": [
+        "FAIL",
+        "VERIFIED",
+        "approved"
+      ],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "path": "docs/ssot/stage7/v1.0/github-recovery-codes.txt",
+      "file_name": "github-recovery-codes.txt",
+      "security": "SENSITIVE_FILENAME_CONTENT_NOT_READ",
+      "stage": "Stage 7"
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+      "path": "docs/ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
+      "size_bytes": 3320,
+      "modified_at": "2026-08-04T03:27:14.260314+00:00",
+      "mime": "text/markdown",
+      "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "61cf588db93c",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.42",
+          "0.7",
+          "0.78",
+          "0.8",
+          "0.86",
+          "1.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "path": "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "size_bytes": 191386,
+      "modified_at": "2026-08-04T03:26:03.684578+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "73ff07caeb35",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_자료감사",
+            "state": "visible"
+          },
+          {
+            "name": "02_충돌결정",
+            "state": "visible"
+          },
+          {
+            "name": "03_디자인토큰",
+            "state": "visible"
+          },
+          {
+            "name": "04_컴포넌트마스터",
+            "state": "visible"
+          },
+          {
+            "name": "05_상태접근성",
+            "state": "visible"
+          },
+          {
+            "name": "06_재사용성매핑",
+            "state": "visible"
+          },
+          {
+            "name": "07_캐릭터락",
+            "state": "visible"
+          },
+          {
+            "name": "08_3D사전명세",
+            "state": "visible"
+          },
+          {
+            "name": "09_표정행동말풍선",
+            "state": "visible"
+          },
+          {
+            "name": "10_EXIT체크",
+            "state": "visible"
+          },
+          {
+            "name": "11_소스레지스트리",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 3,
+        "merged_cells": 27,
+        "defined_names": 0,
+        "data_validations": 6,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03",
+          "SRC-04",
+          "SRC-04",
+          "SRC-05",
+          "SRC-05",
+          "SRC-06",
+          "SRC-06",
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+      "path": "docs/ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md",
+      "size_bytes": 4322,
+      "modified_at": "2026-08-04T03:29:49.868843+00:00",
+      "mime": "text/markdown",
+      "sha256": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "미결정",
+        "미제작",
+        "승인",
+        "조건부 PASS"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "129342039bef",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0",
+          "v1.0.1",
+          "v1.1"
+        ],
+        "status_tokens": [
+          "미결정",
+          "미제작",
+          "승인",
+          "조건부 PASS"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "00_MASTER_PLAN.md",
+      "path": "docs/stage8/00_MASTER_PLAN.md",
+      "size_bytes": 1747,
+      "modified_at": "2026-08-04T04:13:09.977734+00:00",
+      "mime": "text/markdown",
+      "sha256": "a160981243ef53d9404d2fec1114ad95463f10f17c3ede260efb28d5d86a019f",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "FINAL_EXECUTION_REPORT.md",
+      "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
+      "size_bytes": 2892,
+      "modified_at": "2026-08-04T04:15:54.945781+00:00",
+      "mime": "text/markdown",
+      "sha256": "020fc08b3d044ea1d9b5faf55336ccf00680110dbda0136256c6ab3a182aa47c",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "NOT_STARTED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE0_SSOT_AUDIT_REPORT.md",
+      "path": "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+      "size_bytes": 1598,
+      "modified_at": "2026-08-04T04:15:08.577831+00:00",
+      "mime": "text/markdown",
+      "sha256": "d552126c863e9c9b92956435f309b5a01fabbce03e73c63d55708f3757b14d5a",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "08.568052",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "NOT_STARTED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "ID_CROSS_REFERENCE_AUDIT.json",
+      "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+      "size_bytes": 37363,
+      "modified_at": "2026-08-04T04:15:08.573143+00:00",
+      "mime": "application/json",
+      "sha256": "933418b2c089107e581dffad80c97aa7d9f064a43b03cd098332ee81a0d49395",
+      "version": "v1.0.1",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "ID_CROSS_REFERENCE_AUDIT.md",
+      "path": "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
+      "size_bytes": 8850,
+      "modified_at": "2026-08-04T04:15:08.576814+00:00",
+      "mime": "text/markdown",
+      "sha256": "d6dd623260a457a316708c3efe0c5c68354614d13817e838b8eec362466c6e55",
+      "version": "v1.0.1",
+      "approval_status_tokens": [
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.1",
+          "08.568052"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+      "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+      "size_bytes": 2758,
+      "modified_at": "2026-08-04T04:13:09.979748+00:00",
+      "mime": "text/markdown",
+      "sha256": "db878ab20681405887a8173eb6b56c25c23ba86bc4705ead88ae8efbb4b08a28",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "STAGE1_TO_STAGE8_INVENTORY.json",
+      "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
+      "size_bytes": 170008,
+      "modified_at": "2026-08-04T04:15:08.572130+00:00",
+      "mime": "application/json",
+      "sha256": "835752d1295833e2c596d601f18c68be573c5d400acb707ad5002f77442693b5",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "APPROVED",
+        "Approved",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "approved",
+        "fail",
+        "pass",
+        "미결정",
+        "미제작",
+        "승인",
+        "조건부 PASS",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "STAGE1_TO_STAGE8_INVENTORY.md",
+      "path": "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
+      "size_bytes": 25522,
+      "modified_at": "2026-08-04T04:15:08.576285+00:00",
+      "mime": "text/markdown",
+      "sha256": "742a29b883f3e46fc5c0fcfe9c59fb892b94fcffc9697b24ef254ddbc42f4e6e",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.1",
+          "00.081559",
+          "01.583938",
+          "02.784363",
+          "03.684578",
+          "04.257756",
+          "07.029969",
+          "08.568052",
+          "09.977734",
+          "09.978749",
+          "09.979748",
+          "1.1",
+          "11.079171",
+          "11.344139",
+          "11.884332",
+          "12.643684",
+          "13.633460",
+          "13.952751",
+          "14.260314",
+          "14.362697",
+          "14.578279",
+          "2.0",
+          "20.448944",
+          "21.870778",
+          "24.312685",
+          "25.246660",
+          "25.796461",
+          "25.796972",
+          "25.803526",
+          "26.031278",
+          "26.032801",
+          "26.033312",
+          "26.033847",
+          "26.034866",
+          "26.035863",
+          "26.036380",
+          "26.037395",
+          "26.038403",
+          "28.408508",
+          "30.518726",
+          "31.207747",
+          "31.209326",
+          "31.209896",
+          "31.210951",
+          "31.211511",
+          "31.324479",
+          "31.872399",
+          "33.181089",
+          "34.667046",
+          "35.288966",
+          "37.225316",
+          "37.253360",
+          "37.789885",
+          "37.894475",
+          "39.012506",
+          "39.285132",
+          "44.540447",
+          "44.804565",
+          "46.276522",
+          "48.600572",
+          "49.868843",
+          "50.486470",
+          "52.596936",
+          "55.203051",
+          "58.708003",
+          "59.696032",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "TEST_EXECUTION_REPORT.md",
+      "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
+      "size_bytes": 1330,
+      "modified_at": "2026-08-04T04:15:54.944251+00:00",
+      "mime": "text/markdown",
+      "sha256": "9f55360bce1f56c81d8306d33abbb21d1703230363cc33ec5184c7306608a1d1",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "WORKSPACE_BASELINE.md",
+      "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
+      "size_bytes": 1332,
+      "modified_at": "2026-08-04T04:13:09.979748+00:00",
+      "mime": "text/markdown",
+      "sha256": "f4068a8850f976c0b66aaf4c0a488bad2ae2e8a7fa7a0f3c806915ac523bc131",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "Approved",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "CHANGELOG.md",
+      "path": "docs/stage8/CHANGELOG.md",
+      "size_bytes": 917,
+      "modified_at": "2026-08-04T04:13:09.978749+00:00",
+      "mime": "text/markdown",
+      "sha256": "79752e3f77be7b430e59190eb0e4d0301ab751a29f972f2f0f00fc06980377ba",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVED",
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "NOT_STARTED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "gate0-decision.json",
+      "path": "docs/stage8/evidence/gate0/gate0-decision.json",
+      "size_bytes": 570,
+      "modified_at": "2026-08-04T04:15:08.577831+00:00",
+      "mime": "application/json",
+      "sha256": "5321788e7a62cfaef3cb21e840890c907d16d843a645894808304b02a98e7cf8",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE0_SSOT_AUDIT.md",
+      "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
+      "size_bytes": 1560,
+      "modified_at": "2026-08-04T04:14:26.031278+00:00",
+      "mime": "text/markdown",
+      "sha256": "a8334a31011a6959104656bb32b1893c22098311fbc3e26a3e094da3903a1820",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "IN_PROGRESS",
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE1_CANONICAL_VIEW.md",
+      "path": "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md",
+      "size_bytes": 1409,
+      "modified_at": "2026-08-04T04:14:26.032801+00:00",
+      "mime": "text/markdown",
+      "sha256": "5838cf3030b60e2225e81c87e2974ae267ffd05ea809cb5f0645bbfb8cabc679",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "IN_PROGRESS",
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE2_BASE_MESH_MATERIAL.md",
+      "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
+      "size_bytes": 1280,
+      "modified_at": "2026-08-04T04:14:26.033312+00:00",
+      "mime": "text/markdown",
+      "sha256": "68ea1677264d819f1820eaf79328d0db63b60ac34c4864e2d6c1289e3710d370",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE3_RIG_BLENDSHAPE.md",
+      "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
+      "size_bytes": 1237,
+      "modified_at": "2026-08-04T04:14:26.033847+00:00",
+      "mime": "text/markdown",
+      "sha256": "e006d42571f0089ef56a54b4f3c6bcb85b60204c43d78037fe44a41a1ecb62db",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE4_MOTION.md",
+      "path": "docs/stage8/prompts/GATE4_MOTION.md",
+      "size_bytes": 1211,
+      "modified_at": "2026-08-04T04:14:26.034866+00:00",
+      "mime": "text/markdown",
+      "sha256": "1f25382639aa085a83984527bd7b417d8b10021b922b16fe97ed0d70fb9867e6",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE5_AI_BEHAVIOR.md",
+      "path": "docs/stage8/prompts/GATE5_AI_BEHAVIOR.md",
+      "size_bytes": 1308,
+      "modified_at": "2026-08-04T04:14:26.035863+00:00",
+      "mime": "text/markdown",
+      "sha256": "f1fe33c97129ca835b66f7e815c377660de54afbf3f3376bb4f38954e353ffc2",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE6_PRODUCT_INTEGRATION.md",
+      "path": "docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md",
+      "size_bytes": 1351,
+      "modified_at": "2026-08-04T04:14:26.036380+00:00",
+      "mime": "text/markdown",
+      "sha256": "1cd178cb46fb4a5ba5b3abc1bd916bd72d52c4d7df6d57758e987df53bf9c580",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE7_QA.md",
+      "path": "docs/stage8/prompts/GATE7_QA.md",
+      "size_bytes": 1344,
+      "modified_at": "2026-08-04T04:14:26.037395+00:00",
+      "mime": "text/markdown",
+      "sha256": "90fd21eed771759fa960ee08f6fbc12331b244dd9061a6712211297053407ada",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE8_DEPLOYMENT.md",
+      "path": "docs/stage8/prompts/GATE8_DEPLOYMENT.md",
+      "size_bytes": 1357,
+      "modified_at": "2026-08-04T04:14:26.038403+00:00",
+      "mime": "text/markdown",
+      "sha256": "680d67664535c3b9142cce0e34ef65a9961de7b18985d4642c28a55ffb8755a4",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "BLOCKED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "README.md",
+      "path": "harness/README.md",
+      "size_bytes": 778,
+      "modified_at": "2026-08-04T04:12:25.796461+00:00",
+      "mime": "text/markdown",
+      "sha256": "28379867944939da72aa25694e2d669ae0fb7d267a88be87f872fd392d65897e",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "IN_PROGRESS",
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "ssot-manifest.json",
+      "path": "harness/ssot-manifest.json",
+      "size_bytes": 42514,
+      "modified_at": "2026-08-04T04:15:08.574661+00:00",
+      "mime": "application/json",
+      "sha256": "19fa9978ee3c071c54dafdf32745a9eefd1559b2bca1a0b41ae3ac975a904404",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "미결정",
+        "미제작",
+        "승인",
+        "조건부 PASS"
+      ],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "status.json",
+      "path": "harness/status.json",
+      "size_bytes": 2694,
+      "modified_at": "2026-08-04T04:14:44.804565+00:00",
+      "mime": "application/json",
+      "sha256": "57bdde1c7aa810a228b6514a082818011922df7ca203bca87424b0cf3ed7bb8e",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "approved"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "README.md",
+      "path": "README.md",
+      "size_bytes": 466,
+      "modified_at": "2026-08-04T04:12:25.796972+00:00",
+      "mime": "text/markdown",
+      "sha256": "8ad77318c947520b92cff466870bd0d89ab6b2356bd1950e63a7b2baf47aecf2",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "audit_stage8.py",
+      "path": "scripts/harness/audit_stage8.py",
+      "size_bytes": 21604,
+      "modified_at": "2026-08-04T04:11:11.344139+00:00",
+      "mime": "text/x-python",
+      "sha256": "d8625e4f6b508ca8c2bee34e9391c1dc1f0b89e7a2c179833ad1b6581031a8e6",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "APPROVED",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "approved",
+        "pass",
+        "미결정",
+        "미제작",
+        "승인",
+        "조건부 PASS",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "validate_harness.py",
+      "path": "scripts/harness/validate_harness.py",
+      "size_bytes": 4936,
+      "modified_at": "2026-08-04T04:11:50.486470+00:00",
+      "mime": "text/x-python",
+      "sha256": "ce22257a931a1708bc7231ef9ac403f498679f727b430130e77125234e657b6c",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "fail"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
+      "path": "ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
+      "size_bytes": 103244,
+      "modified_at": "2026-08-04T03:27:34.667046+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "7604c2199f3b",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_모듈명세",
+            "state": "visible"
+          },
+          {
+            "name": "02_본맵",
+            "state": "visible"
+          },
+          {
+            "name": "03_BlendShape",
+            "state": "visible"
+          },
+          {
+            "name": "04_애니메이션클립",
+            "state": "visible"
+          },
+          {
+            "name": "05_Export_LOD",
+            "state": "visible"
+          },
+          {
+            "name": "06_기술QA",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 15,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Component_Inventory_v1.0.xlsx",
+      "path": "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
+      "size_bytes": 81074,
+      "modified_at": "2026-08-04T03:26:30.518726+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "e023d54d8e1b",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_마스터인벤토리",
+            "state": "visible"
+          },
+          {
+            "name": "02_상태매트릭스",
+            "state": "visible"
+          },
+          {
+            "name": "03_화면재사용성",
+            "state": "visible"
+          },
+          {
+            "name": "04_QA체크",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 3,
+        "merged_cells": 11,
+        "defined_names": 0,
+        "data_validations": 2,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03",
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "path": "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "size_bytes": 90603,
+      "modified_at": "2026-08-04T03:27:46.276522+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "14181e5f8393",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_상태라이브러리",
+            "state": "visible"
+          },
+          {
+            "name": "02_이벤트매핑",
+            "state": "visible"
+          },
+          {
+            "name": "03_말풍선카피",
+            "state": "visible"
+          },
+          {
+            "name": "04_전환규칙",
+            "state": "visible"
+          },
+          {
+            "name": "05_QA시나리오",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 0,
+        "merged_cells": 12,
+        "defined_names": 0,
+        "data_validations": 1,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "EVT-001",
+          "EVT-002",
+          "EVT-003",
+          "EVT-004",
+          "EVT-005",
+          "EVT-006",
+          "EVT-007",
+          "EVT-008",
+          "EVT-009",
+          "EVT-010",
+          "EVT-011",
+          "EVT-012",
+          "EVT-013",
+          "EVT-014",
+          "EVT-015",
+          "BUB-GUI-01",
+          "BUB-HIN-01",
+          "BUB-PRA-01",
+          "BUB-RET-01",
+          "BUB-RET-02",
+          "SRC-01",
+          "SRC-01",
+          "BUB-SRC-01",
+          "BUB-EMP-01",
+          "BUB-CMP-01",
+          "BUB-ERR-01",
+          "BUB-WEL-01",
+          "BUB-CHO-01",
+          "BUB-PRG-01",
+          "BUB-RST-01"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Gongsickyi_Character_Bible_v1.0.md",
+      "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
+      "size_bytes": 3320,
+      "modified_at": "2026-08-04T03:27:14.260314+00:00",
+      "mime": "text/markdown",
+      "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "61cf588db93c",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.42",
+          "0.7",
+          "0.78",
+          "0.8",
+          "0.86",
+          "1.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "size_bytes": 191386,
+      "modified_at": "2026-08-04T03:26:03.684578+00:00",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "73ff07caeb35",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "xlsx_audit": {
+        "openable": true,
+        "sheets": [
+          {
+            "name": "00_1페이지요약",
+            "state": "visible"
+          },
+          {
+            "name": "01_자료감사",
+            "state": "visible"
+          },
+          {
+            "name": "02_충돌결정",
+            "state": "visible"
+          },
+          {
+            "name": "03_디자인토큰",
+            "state": "visible"
+          },
+          {
+            "name": "04_컴포넌트마스터",
+            "state": "visible"
+          },
+          {
+            "name": "05_상태접근성",
+            "state": "visible"
+          },
+          {
+            "name": "06_재사용성매핑",
+            "state": "visible"
+          },
+          {
+            "name": "07_캐릭터락",
+            "state": "visible"
+          },
+          {
+            "name": "08_3D사전명세",
+            "state": "visible"
+          },
+          {
+            "name": "09_표정행동말풍선",
+            "state": "visible"
+          },
+          {
+            "name": "10_EXIT체크",
+            "state": "visible"
+          },
+          {
+            "name": "11_소스레지스트리",
+            "state": "visible"
+          }
+        ],
+        "formula_count": 3,
+        "merged_cells": 27,
+        "defined_names": 0,
+        "data_validations": 6,
+        "external_links": 0,
+        "formula_errors": [],
+        "ids": [
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03",
+          "SRC-04",
+          "SRC-04",
+          "SRC-05",
+          "SRC-05",
+          "SRC-06",
+          "SRC-06",
+          "SRC-01",
+          "SRC-01",
+          "SRC-02",
+          "SRC-02",
+          "SRC-03",
+          "SRC-03"
+        ]
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Stage8_Handoff_Manifest_v1.0.md",
+      "path": "ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md",
+      "size_bytes": 4322,
+      "modified_at": "2026-08-04T03:29:49.868843+00:00",
+      "mime": "text/markdown",
+      "sha256": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "미결정",
+        "미제작",
+        "승인",
+        "조건부 PASS"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "129342039bef",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0",
+          "v1.0.1",
+          "v1.1"
+        ],
+        "status_tokens": [
+          "미결정",
+          "미제작",
+          "승인",
+          "조건부 PASS"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    }
+  ]
+}
