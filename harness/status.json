@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.0.1",
+  "schemaVersion": "1.0.2",
   "project": "Math ChackChack",
   "stage": 8,
-  "updatedAt": "2026-08-04T11:37:00+09:00",
+  "updatedAt": "2026-08-04T12:00:00+09:00",
   "allowedStatuses": [
     "DONE_SPEC",
     "DONE_IMPLEMENTED",
@@ -11,22 +11,24 @@
     "FAIL"
   ],
   "currentGate": 0,
-  "overallStatus": "FAIL",
+  "overallStatus": "BLOCKED_EXTERNAL",
   "gates": [
     {
       "id": 0,
       "name": "1-7 Integrated Audit",
-      "status": "FAIL",
+      "status": "BLOCKED_EXTERNAL",
       "entryAllowed": true,
       "nextGateAllowed": false,
       "evidence": [
         "docs/stage8/00_MASTER_PLAN.md",
-        "docs/stage8/prompts/GATE0_SSOT_AUDIT.md"
+        "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
+        "docs/stage8/01_FILE_LIBRARY_RECOVERY.md"
       ],
       "openItems": [
-        "Upload all 10 canonical SSOT files to the repository",
-        "Calculate and record SHA-256 for all 10 files",
-        "Verify SRC-01 through SRC-06 traceability",
+        "Export the eight canonical document originals from ChatGPT File Library into the persistent worktree",
+        "Commit all 10 canonical SSOT files under ssot/stage7/v1.0 without reconstruction",
+        "Calculate and record SHA-256 for the eight document originals",
+        "Run XLSX structure and Markdown encoding validation",
         "Record formal approver identities"
       ]
     },
@@ -112,7 +114,14 @@
       "openItems": ["Gate 7 must be VERIFIED", "Development", "Staging", "Canary", "Production", "Rollback evidence"]
     }
   ],
+  "recoveredFileLibrary": {
+    "documentsFound": 8,
+    "approvedImagesFound": 2,
+    "rawDocumentBytesExported": false,
+    "approvedImageHashesLocked": true
+  },
   "externalBlocks": [
+    "File Library original-byte export into persistent worktree",
     "Chakchaki cap/backpack badge IP review",
     "Trademark and character similarity review",
     "Student and parent user testing",
