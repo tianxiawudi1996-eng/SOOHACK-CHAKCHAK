@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T08:57:58.261126+00:00",
+  "generated_at": "2026-08-04T09:04:19.498625+00:00",
   "gate": 1,
   "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
   "status": "BLOCKED_EXTERNAL",
   "policy_sha256": "8ed019c2011d255bdf99bbb0d336ae847b76cfca617172b97fb93c7e77904fe4",
-  "decision_sha256": "7a9026ff552e511022ebc733c48b9e8b7eb63657f045ac25eec78014234d76df",
+  "decision_sha256": "1cc83a765b01504c3f1519ad54f1afa5c5902227aa670aff537e42ca46f435dd",
   "valid_approval_count": 0,
   "approval_required": 1,
   "automated_status": "PASS",

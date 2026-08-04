@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T08:58:08.249191+00:00",
+    "generated_at": "2026-08-04T09:04:29.519981+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
     "file_count": 184,
     "required_stage7_file_count": 10,
@@ -3695,9 +3695,9 @@
       "file_name": "GATE1_AUTOMATED_QA.md",
       "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
       "size_bytes": 954,
-      "modified_at": "2026-08-04T08:58:06.099068+00:00",
+      "modified_at": "2026-08-04T09:04:27.136888+00:00",
       "mime": "text/markdown",
-      "sha256": "a9a3bb2d3e411b0dca52b5677a1b9f55295d0eb75d7df0a739788ad61e094b47",
+      "sha256": "fca7c5e55a4f876fbedfd66b5432b1611e8f2db6e70110596cf834b54a34bdb5",
       "version": null,
       "approval_status_tokens": [
         "PASS"
@@ -3713,7 +3713,7 @@
         "version_tokens": [
           "0.1555",
           "0.3358",
-          "06.098056"
+          "27.134835"
         ],
         "status_tokens": [
           "BLOCKED",
@@ -3856,7 +3856,7 @@
       "file_name": "GATE1_SINGLE_APPROVER_AUDIT.md",
       "path": "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
       "size_bytes": 687,
-      "modified_at": "2026-08-04T08:57:58.263864+00:00",
+      "modified_at": "2026-08-04T09:04:19.501235+00:00",
       "mime": "text/markdown",
       "sha256": "ead90b058e1726e513cf7a2d54ea534d388d50dab49d0835accec06743251d7c",
       "version": null,
@@ -4155,9 +4155,9 @@
       "file_name": "Gate1_Automated_QA_v5.2.0.json",
       "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
       "size_bytes": 30299,
-      "modified_at": "2026-08-04T08:58:06.099068+00:00",
+      "modified_at": "2026-08-04T09:04:27.135377+00:00",
       "mime": "application/json",
-      "sha256": "e76506f9712eb42ee229e6d9eeeaa3fcee5a351e68c3257eb1d0fdd0d0e52523",
+      "sha256": "1fd55f2878e844fd582dc84edc1185a79014f78a1031a9f7e08db801c1aaab2e",
       "version": "v5.2.0",
       "approval_status_tokens": [
         "PASS",
@@ -5043,7 +5043,7 @@
       "file_name": "SHA256SUMS.txt",
       "path": "docs/stage8/evidence/gate1/SHA256SUMS.txt",
       "size_bytes": 5329,
-      "modified_at": "2026-08-04T08:58:06.149029+00:00",
+      "modified_at": "2026-08-04T09:04:27.174676+00:00",
       "mime": "text/plain",
       "sha256": "81699b4006bda7c624a9674d1b030e970ee7089dc1a8e1db1eb4dfddccb346f6",
       "version": "v5.2.0",
@@ -5059,9 +5059,9 @@
       "file_name": "GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
       "path": "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
       "size_bytes": 928,
-      "modified_at": "2026-08-04T08:57:58.263250+00:00",
+      "modified_at": "2026-08-04T09:04:19.500724+00:00",
       "mime": "application/json",
-      "sha256": "8ee6eea49c7a86914d1b1eae9748d3b04890fe77d8d7d2c4ba1e25a72573fcd0",
+      "sha256": "cf22d20856e0b22b3ee50815bb0ee54c1987e93c4b0c18db861106f3b8b3d2f8",
       "version": "v1.0",
       "approval_status_tokens": [
         "PASS"
@@ -5076,10 +5076,10 @@
       "stage": "Stage 8",
       "file_name": "SINGLE_APPROVER_DECISION_v1.0.json",
       "path": "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
-      "size_bytes": 537,
-      "modified_at": "2026-08-04T08:57:51.856000+00:00",
+      "size_bytes": 545,
+      "modified_at": "2026-08-04T09:04:12.056559+00:00",
       "mime": "application/json",
-      "sha256": "7a9026ff552e511022ebc733c48b9e8b7eb63657f045ac25eec78014234d76df",
+      "sha256": "1cc83a765b01504c3f1519ad54f1afa5c5902227aa670aff537e42ca46f435dd",
       "version": "v1.0",
       "approval_status_tokens": [],
       "classification": "unclassified",
