@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Math ChackChack",
+  "stage": 8,
+  "updatedAt": "2026-08-04T11:37:00+09:00",
+  "allowedStatuses": [
+    "DONE_SPEC",
+    "DONE_IMPLEMENTED",
+    "VERIFIED",
+    "BLOCKED_EXTERNAL",
+    "FAIL"
+  ],
+  "currentGate": 1,
+  "overallStatus": "FAIL",
+  "gates": [
+    {
+      "id": 0,
+      "name": "1-7 Integrated Audit",
+      "status": "DONE_IMPLEMENTED",
+      "entryAllowed": true,
+      "nextGateAllowed": false,
+      "evidence": [
+        "docs/stage8/00_MASTER_PLAN.md"
+      ],
+      "openItems": [
+        "Upload and hash all 10 canonical SSOT files",
+        "Record formal approver identities"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Canonical View",
+      "status": "FAIL",
+      "entryAllowed": true,
+      "nextGateAllowed": false,
+      "evidence": [
+        "docs/stage8/prompts/GATE1_CANONICAL_VIEW.md"
+      ],
+      "openItems": [
+        "Neutral front full body for both characters",
+        "Complete left/right side and front/rear three-quarter views",
+        "Accessory-off front/back views",
+        "Same camera scale and baseline",
+        "Five-role manual approval"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Base Mesh and Material",
+      "status": "BLOCKED_EXTERNAL",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": [],
+      "openItems": ["Gate 1 must be VERIFIED"]
+    },
+    {
+      "id": 3,
+      "name": "Rig and BlendShape",
+      "status": "BLOCKED_EXTERNAL",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": [],
+      "openItems": ["Gate 2 must be VERIFIED"]
+    },
+    {
+      "id": 4,
+      "name": "Motion",
+      "status": "BLOCKED_EXTERNAL",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": [],
+      "openItems": ["Gate 3 must be VERIFIED"]
+    },
+    {
+      "id": 5,
+      "name": "AI Behavior and Bubble",
+      "status": "DONE_SPEC",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": ["docs/stage8/prompts/GATE5_AI_BEHAVIOR.md"],
+      "openItems": ["Actual GLB runtime", "TTS/LipSync", "Event telemetry"]
+    },
+    {
+      "id": 6,
+      "name": "Product Integration",
+      "status": "DONE_SPEC",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": ["docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md"],
+      "openItems": ["P0 component implementation", "GLB lazy loading", "Fallback verification"]
+    },
+    {
+      "id": 7,
+      "name": "Integrated QA",
+      "status": "DONE_SPEC",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": ["docs/stage8/prompts/GATE7_QA.md"],
+      "openItems": ["Device/browser testing", "Child safety review", "Performance budget"]
+    },
+    {
+      "id": 8,
+      "name": "Progressive Deployment",
+      "status": "DONE_SPEC",
+      "entryAllowed": false,
+      "nextGateAllowed": false,
+      "evidence": ["docs/stage8/prompts/GATE8_DEPLOYMENT.md"],
+      "openItems": ["Development", "Staging", "Canary", "Production", "Rollback evidence"]
+    }
+  ],
+  "externalBlocks": [
+    "Chakchaki cap/backpack badge IP review",
+    "Trademark and character similarity review",
+    "Student and parent user testing",
+    "Approval for real child data processing"
+  ]
+}
