@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T08:28:59+09:00",
-  "head_commit": "310b26d",
+  "updated_at": "2026-08-05T08:43:07+09:00",
+  "head_commit": "04d6a71",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -93,9 +93,29 @@
     "entry_allowed": true
   },
   "gate3": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md"],
-    "blockers": ["No rig or blendshape asset exists"],
+    "status": "BLOCKED",
+    "evidence": [
+      "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
+      "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
+      "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+      "docs/stage8/evidence/gate3/previews/Chakchaki_Rig_Skeleton.png",
+      "docs/stage8/evidence/gate3/previews/Chakchaki_Deformation_Review.png",
+      "docs/stage8/evidence/gate3/previews/Chakchaki_Pose_Socket_Review.png",
+      "docs/stage8/evidence/gate3/previews/Gongsickyi_Rig_Skeleton.png",
+      "docs/stage8/evidence/gate3/previews/Gongsickyi_Deformation_Review.png",
+      "docs/stage8/evidence/gate3/previews/Gongsickyi_Pose_Socket_Review.png",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb"
+    ],
+    "blockers": ["One Project Owner deformation, gaze, socket, and intersection decision is required for Gate 3"],
     "entry_allowed": true
   },
   "gate4": {

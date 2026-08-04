@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-05 — Gate 3 rig and blendshape candidates built
+
+- Generated six actual glTF 2.0 GLBs with skins, joint hierarchies, inverse bind matrices, normalized weights, morph targets, and test poses.
+- Preserved 15 common facial controls across all LODs; added required Gongsickyi body/wing controls and character pose libraries.
+- Generated six skeleton, deformation, hand, wing, and prop-socket review renders.
+- Passed automated rig QA 6/6 with zero weight, joint-index, required-morph, pose, socket, or hash failures.
+- Set Gate 3 to `BLOCKED` pending one Project Owner deformation review; Gate 4 remains `NOT_STARTED`.
+
 ## 2026-08-05 — Gate 2 single approval and promotion
 
 - Recorded John KIM's explicit Project Owner approval for both characters and all five visual-comparison checks.

@@ -44,6 +44,8 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/inspect_stage7_rig_spec.mjs",
     "scripts/harness/build_gate2_base_mesh.py",
     "scripts/harness/audit_gate2.py",
+    "scripts/harness/build_gate3_rig.py",
+    "scripts/harness/audit_gate3.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -62,6 +64,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
     "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
+    "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -94,6 +97,16 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
     "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
     "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+    "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+    "docs/stage8/evidence/gate3/previews/Chakchaki_Rig_Skeleton.png",
+    "docs/stage8/evidence/gate3/previews/Chakchaki_Deformation_Review.png",
+    "docs/stage8/evidence/gate3/previews/Chakchaki_Pose_Socket_Review.png",
+    "docs/stage8/evidence/gate3/previews/Gongsickyi_Rig_Skeleton.png",
+    "docs/stage8/evidence/gate3/previews/Gongsickyi_Deformation_Review.png",
+    "docs/stage8/evidence/gate3/previews/Gongsickyi_Pose_Socket_Review.png",
     "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
@@ -107,6 +120,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE1_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
@@ -115,6 +129,12 @@ REQUIRED_STRUCTURE = [
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb",
 ]
 
 MANUAL_REVIEW_ROLES = {
@@ -738,6 +758,84 @@ def main() -> int:
         if gates[3].get("entry_allowed") is True and gates[2].get("status") != "VERIFIED":
             fail("gate3 entry allowed before gate2 VERIFIED")
 
+    if gates[3].get("status") != "NOT_STARTED":
+        if gates[2].get("status") != "VERIFIED":
+            fail("gate3 started before gate2 VERIFIED")
+        gate3_root = ROOT / "docs/stage8/evidence/gate3"
+        gate3_build = load_json(gate3_root / "GATE3_BUILD_MANIFEST_v1.0.json")
+        gate3_audit = load_json(gate3_root / "GATE3_AUTOMATED_QA_v1.0.json")
+        gate3_review = load_json(gate3_root / "GATE3_MANUAL_REVIEW_v1.0.json")
+        if gate3_build.get("status") != "RIG_CANDIDATE_BUILT":
+            fail("gate3 build manifest status is invalid")
+        if gate3_build.get("unit") != "meter" or gate3_build.get("up_axis") != "Y" or gate3_build.get("root_scale") != 1.0:
+            fail("gate3 build unit, axis, or root scale is invalid")
+        rig_files = gate3_build.get("files", [])
+        expected_pairs = {(character, lod) for character in ("Chakchaki", "Gongsickyi") for lod in (0, 1, 2)}
+        actual_pairs = {(item.get("character"), item.get("lod")) for item in rig_files}
+        if len(rig_files) != 6 or actual_pairs != expected_pairs:
+            fail("gate3 rig character/LOD matrix is incomplete")
+        for item in rig_files:
+            source = ROOT / item.get("source_path", "")
+            path = ROOT / item.get("path", "")
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest().lower() != item.get("source_sha256", "").lower():
+                fail(f"gate3 source GLB hash mismatch: {item.get('character')} LOD{item.get('lod')}")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                fail(f"gate3 rig GLB hash mismatch: {item.get('character')} LOD{item.get('lod')}")
+            expected_joints = 32 if item.get("character") == "Chakchaki" else 20
+            expected_morphs = 15 if item.get("character") == "Chakchaki" else 19
+            if item.get("joint_count") != expected_joints or item.get("skin_count") != 1:
+                fail(f"gate3 joint/skin count mismatch: {item.get('character')} LOD{item.get('lod')}")
+            if item.get("morph_count", 0) < expected_morphs or len(item.get("pose_names", [])) != 4:
+                fail(f"gate3 morph/pose count mismatch: {item.get('character')} LOD{item.get('lod')}")
+        previews = gate3_build.get("previews", [])
+        if len(previews) != 6:
+            fail("gate3 must contain six skeleton/deformation/pose previews")
+        for item in previews:
+            path = ROOT / item.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                fail(f"gate3 preview is missing or stale: {item.get('path')}")
+        if gate3_build.get("next_gate_allowed") is not False:
+            fail("gate3 build manifest prematurely allows Gate 4")
+        if gate3_audit.get("automated_status") != "PASS" or gate3_audit.get("rig_pass_count") != 6:
+            fail("gate3 automated rig audit did not pass 6/6")
+        if gate3_audit.get("failures"):
+            fail("gate3 automated audit contains failures")
+        audited = {(item.get("character"), item.get("lod")): item for item in gate3_audit.get("rigs", [])}
+        if set(audited) != expected_pairs:
+            fail("gate3 automated audit rig matrix is incomplete")
+        for item in rig_files:
+            result = audited[(item["character"], item["lod"])]
+            if result.get("status") != "PASS" or result.get("sha256", "").lower() != item.get("sha256", "").lower():
+                fail(f"gate3 audit/build mismatch: {item['character']} LOD{item['lod']}")
+            if result.get("bad_weight_count") != 0 or result.get("invalid_joint_index_count") != 0:
+                fail(f"gate3 skin-weight defect: {item['character']} LOD{item['lod']}")
+            if result.get("missing_morphs") or result.get("zero_morphs") or result.get("missing_poses"):
+                fail(f"gate3 morph/pose defect: {item['character']} LOD{item['lod']}")
+        if gate3_audit.get("manual_approval_required") != 1:
+            fail("gate3 must require one Project Owner approval")
+        if gates[3].get("status") == "BLOCKED":
+            if gate3_audit.get("status") != "BLOCKED_EXTERNAL" or gate3_audit.get("manual_approval_count") != 0:
+                fail("gate3 BLOCKED status disagrees with pending manual review")
+            if "PROJECT_OWNER_DEFORMATION_REVIEW_REQUIRED" not in gate3_audit.get("blockers", []):
+                fail("gate3 manual-review blocker is missing")
+            if gate3_review.get("approval_applied") is not False or gate3_review.get("next_gate_allowed") is not False:
+                fail("gate3 pending review contains premature promotion flags")
+        if gates[3].get("status") == "VERIFIED":
+            if gate3_audit.get("status") != "VERIFIED" or gate3_audit.get("manual_approval_count") != 1:
+                fail("gate3 VERIFIED without one valid manual approval")
+            if gate3_audit.get("gate3_status_change_applied") is not True or gate3_audit.get("next_gate_allowed") is not True:
+                fail("gate3 VERIFIED without applied promotion flags")
+            if gate3_review.get("status") != "APPROVED" or gate3_review.get("decision") != "APPROVE":
+                fail("gate3 VERIFIED without an approved manual-review record")
+            if gate3_review.get("approval_applied") is not True or gate3_review.get("next_gate_allowed") is not True:
+                fail("gate3 VERIFIED while manual approval is not applied")
+            if not gate3_review.get("scope_acknowledged") or not all(value is True for value in gate3_review.get("checks", {}).values()):
+                fail("gate3 VERIFIED with incomplete deformation-review checks")
+            if gates[4].get("entry_allowed") is not True:
+                fail("gate3 VERIFIED without enabling Gate 4 entry")
+        if gates[4].get("entry_allowed") is True and gates[3].get("status") != "VERIFIED":
+            fail("gate4 entry allowed before gate3 VERIFIED")
+
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
     if conflicts:
@@ -747,6 +845,7 @@ def main() -> int:
     print(f"gate0={gates[0].get('status')}")
     print(f"gate1={gates[1].get('status')}")
     print(f"gate2={gates[2].get('status')}")
+    print(f"gate3={gates[3].get('status')}")
     print(f"manifest_status={manifest.get('status')}")
     for warning in sensitive_warnings:
         print(f"HARNESS_WARNING: ignored untracked sensitive-looking file not read: {warning}")

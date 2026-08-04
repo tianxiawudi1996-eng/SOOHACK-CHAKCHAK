@@ -3,21 +3,23 @@
 ## Environment
 
 - Workspace: `D:\project\SOOHACK CHACKCHACK`
-- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-05T08:28:59+09:00`
+- Executed: `2026-08-04T15:32:14+09:00` to `2026-08-05T08:43:07+09:00`
 - Platform: Windows PowerShell / Python 3 / bundled Node.js
 
 ## Results
 
 | Command | Exit | Result |
 |---|---:|---|
-| `python -m py_compile scripts/harness/audit_stage8.py scripts/harness/audit_gate1.py scripts/harness/build_gate1_evidence.py scripts/harness/prepare_gate1_manual_review.py scripts/harness/audit_gate1_approval_intake.py scripts/harness/audit_gate1_reviewer_assignment.py scripts/harness/audit_gate1_external_unblock.py scripts/harness/audit_gate1_single_approval.py scripts/harness/build_gate2_base_mesh.py scripts/harness/audit_gate2.py scripts/harness/validate_harness.py` | 0 | Eleven Python harness scripts compiled successfully. |
-| `python scripts/harness/audit_stage8.py` | 0 | 204 files audited, Stage 7 exact originals 10/10, Gate 0 `VERIFIED`. |
+| Python harness `py_compile` | 0 | Thirteen Python harness scripts, including the Gate 3 builder and auditor, compiled successfully. |
+| `python scripts/harness/audit_stage8.py` | 0 | 224 files audited, Stage 7 exact originals 10/10, Gate 0 `VERIFIED`. |
 | `python scripts/harness/audit_gate1.py` | 0 | Gate 1 `VERIFIED`: automated QA `PASS`, active approval mode `PROJECT_OWNER_SINGLE_APPROVAL`, approvals 1/1. |
 | `python scripts/harness/audit_gate1_single_approval.py` | 0 | Single approval valid 1/1; candidate and immutable hash drift 0; promotion recorded. |
 | `python scripts/harness/build_gate2_base_mesh.py` | 0 | Six GLB files and four comparison renders generated; LOD ratios within Stage 7 specification. |
 | Rig-spec workbook inspection and render | 0 | Seven of seven sheets inspected and visually reviewed; formula error scan returned zero matches. |
 | `python scripts/harness/audit_gate2.py` | 0 | Gate 2 `VERIFIED`: automated QA PASS, models 6/6 PASS, John KIM manual visual approval 1/1, failures and blockers 0. |
-| `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 0, Gate 1, and Gate 2 `VERIFIED`; Gate 3 entry allowed; manifest `VERIFIED`. |
+| `python scripts/harness/build_gate3_rig.py` | 0 | Six rigged GLBs and six skeleton/deformation/pose review renders generated. |
+| `python scripts/harness/audit_gate3.py` | 1 | Expected external-blocking exit: automated QA PASS, rigs 6/6 PASS, manual deformation review 0/1. |
+| `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 0–2 `VERIFIED`, Gate 3 `BLOCKED`, manifest `VERIFIED`. |
 | Artifact-tool approval workbook preflight | 0 | Read-only inspection passed: 10/10 rows `PENDING`; reviewer, decision, and reviewed_at blank; formula errors 0. |
 | `python scripts/harness/prepare_gate1_manual_review.py` | 0 | 40/40 checksum records verified; 39 immutable inputs, one controlled ledger baseline, and 10/10 role packets prepared. |
 | Gate 1 manual-review package validation | 0 | Frozen manifest, blank intake template, candidate hashes, packet matrix, and no-fabricated-approval controls passed. |
@@ -52,9 +54,11 @@
 
 The 5-role and 10-decision rows above are retained historical test results. They are `SUPERSEDED_NON_GATING` and do not contribute to the active Gate 1 decision count.
 
-Gate 2 has six real GLBs. Its automated audit passes, John KIM's Project Owner visual comparison approval is valid 1/1, and Gate 2 is `VERIFIED`. Gate 3 entry is allowed but rig/blendshape work remains `NOT_STARTED`.
+Gate 2 has six real GLBs. Its automated audit passes, John KIM's Project Owner visual comparison approval is valid 1/1, and Gate 2 is `VERIFIED`.
+
+Gate 3 now has six real rigged GLBs. Skin, joint hierarchy, normalized weights, required morphs, four pose controls per character, sockets and hashes pass automated QA 6/6. `audit_gate3.py` intentionally returns exit 1 until one Project Owner completes the deformation comparison checklist.
 
 ## Not applicable
 
 - No root `package.json`; npm lint/typecheck/build commands do not apply.
-- Blender is not installed; GLB structure and topology are therefore generated and audited directly with a deterministic glTF 2.0 builder and parser.
+- Blender is not installed; GLB topology, skin, bind matrices, weights and morph accessors are therefore generated and audited directly with deterministic glTF 2.0 builders and parsers.
