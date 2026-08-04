@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 1,
+  "status": "NOT_VERIFIED",
+  "next_gate_allowed": false,
+  "generated_at": "2026-08-04T14:18:00+09:00",
+  "method": "Built-in image generation using one canonical approved reference image per character; outputs saved as non-canonical candidates.",
+  "source_references": {
+    "Chakchaki_Approved_Reference_v1.0.png": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+    "Gongsickyi_Approved_Reference_v1.0.png": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec"
+  },
+  "candidates": [
+    {
+      "character": "Chakchaki",
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png",
+      "sha256": "660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417",
+      "width": 1254,
+      "height": 1254,
+      "decodable": true,
+      "required_cells_present": 16
+    },
+    {
+      "character": "Gongsickyi",
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
+      "sha256": "c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e",
+      "width": 1254,
+      "height": 1254,
+      "decodable": true,
+      "required_cells_present": 16
+    }
+  ],
+  "superseded_candidates": [
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
+      "sha256": "eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334",
+      "reason": "SILHOUETTE-3Q was too close to a front silhouette."
+    }
+  ],
+  "passed": [
+    "Both candidate boards contain the requested 4x4/16-cell layout.",
+    "Front, back, left/right side, left/right three-quarter, accessory-off, silhouette, and readability cells are present.",
+    "Both PNG files decode at 1254x1254 and have recorded SHA-256 hashes.",
+    "Generated candidates remain outside canonical SSOT.",
+    "Gongsickyi v2 provides a distinct three-quarter silhouette with cap, pointer, body depth, and foot offset."
+  ],
+  "failed_or_unverified": [
+    "True orthographic camera equivalence cannot be proven from the generated raster boards.",
+    "Cross-view proportion, accessory-side consistency, floor-line equivalence, and identity drift require art/3D review.",
+    "The five required manual approvals are absent."
+  ],
+  "manual_approvals": [],
+  "blockers": [
+    "Targeted correction and direction-by-direction QA are required.",
+    "Art direction, 3D, brand UX, child-safety, and QA sign-off are required before VERIFIED."
+  ]
+}

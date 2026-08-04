@@ -1,7 +1,7 @@
 # ID 교차참조 감사
 
-- 생성 시각(UTC): `2026-08-04T04:41:22.713706+00:00`
-- 판정: `BLOCKED` — 승인 원본 입고·정의 충돌·자동검증 전제 확인이 필요하다.
+- 생성 시각(UTC): `2026-08-04T05:25:53.467711+00:00`
+- 판정: `VERIFIED` — 승인 원본 입고·정의 충돌·자동검증 전제 확인이 필요하다.
 
 ## ID 사용 현황
 
@@ -39,12 +39,12 @@
 | `MOD-02` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
 | `MOD-03` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
 | `MOD-04` | 1 | 1 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx` |
-| `SRC-01` | 14 | 9 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
+| `SRC-01` | 15 | 10 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-02` | 9 | 5 | `docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx`, `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx` |
 | `SRC-03` | 8 | 4 | `docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-04` | 2 | 2 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
 | `SRC-05` | 2 | 2 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
-| `SRC-06` | 5 | 4 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `docs/stage8/CHANGELOG.md`, `docs/stage8/audits/TEST_EXECUTION_REPORT.md`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` |
+| `SRC-06` | 6 | 5 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `docs/stage8/CHANGELOG.md`, `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md`, `docs/stage8/audits/TEST_EXECUTION_REPORT.md` |
 
 ## 필수 의미 연결
 
@@ -53,6 +53,5 @@
 
 ## 제한
 
-- 현재 로컬에는 지정된 Stage 7 원본 전체가 없으므로 정의/사용/충돌을 확정할 수 없다.
-- 파일명 후보를 ID 정의로 승격하지 않았다.
-- 의미 연결 토큰 발견은 승인 완료가 아니며 원본 10종과 수동 검토가 필요하다.
+- 파일명 후보는 ID 정의나 canonical 원본으로 자동 승격하지 않았다.
+- 의미 연결은 원문과 수동 검토 증거가 모두 있을 때만 Gate 0 승인 근거로 사용한다.

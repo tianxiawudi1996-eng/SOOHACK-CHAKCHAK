@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T04:41:22.713706+00:00",
+  "generated_at": "2026-08-04T05:25:53.467711+00:00",
   "id_counts": {
     "BUB-CHO-01": 2,
     "BUB-CMP-01": 2,
@@ -33,12 +33,12 @@
     "MOD-02": 1,
     "MOD-03": 1,
     "MOD-04": 1,
-    "SRC-01": 14,
+    "SRC-01": 15,
     "SRC-02": 9,
     "SRC-03": 8,
     "SRC-04": 2,
     "SRC-05": 2,
-    "SRC-06": 5
+    "SRC-06": 6
   },
   "id_locations": {
     "EVT-001": [
@@ -54,6 +54,7 @@
       "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
       "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
       "docs/stage8/CHANGELOG.md",
       "docs/stage8/CHANGELOG.md",
@@ -215,6 +216,7 @@
     ],
     "SRC-06": [
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+      "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
       "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
       "docs/stage8/CHANGELOG.md",
       "docs/stage8/CHANGELOG.md",
@@ -232,5 +234,5 @@
     ],
     "note": "Presence is evidenced by source lines containing both mapped terms; approval still requires all canonical originals and human review."
   },
-  "status": "BLOCKED"
+  "status": "VERIFIED"
 }

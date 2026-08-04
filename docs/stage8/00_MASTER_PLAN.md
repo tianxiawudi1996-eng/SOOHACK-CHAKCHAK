@@ -6,7 +6,7 @@
 
 ## 완료 정의
 
-각 Gate는 필수 증거와 자동·수동 검증이 모두 존재할 때만 `VERIFIED`가 된다. Gate 0이 `VERIFIED`가 아니면 Gate 1 이후 구현은 시작하지 않는다. 현재 Gate 0은 정확한 승인 원본 4종 누락으로 `BLOCKED`다. 로컬 민감 파일은 ignore·untracked 경고로 분리되며 canonical SSOT 또는 Git 추적 상태일 때만 Gate 차단으로 취급한다.
+각 Gate는 필수 증거와 자동·수동 검증이 모두 존재할 때만 `VERIFIED`가 된다. Gate 0이 `VERIFIED`가 아니면 Gate 1 이후 구현은 시작하지 않는다. Stage 7 정확 원본 10종이 canonical SSOT에 입고되어 Gate 0은 `VERIFIED` 조건을 충족했다. 로컬 민감 파일은 ignore·untracked 경고로 분리되며 canonical SSOT 또는 Git 추적 상태일 때만 Gate 차단으로 취급한다.
 
 ## 고정 순서
 
@@ -27,9 +27,9 @@
 → SSOT 대조 → 실패 원인 기록 → 회귀 검증 → 상태 갱신 → 커밋
 ```
 
-## 현재 차단 및 다음 작업
+## 현재 상태 및 다음 작업
 
-- 정확한 `MathChakChak_Stage7_SSOT_v1.0.md`, `Chakchaki_Character_Bible_v1.0.md`, 승인 이미지 2종의 원본을 작업공간에 입고해야 한다.
 - `github-recovery-codes.txt`는 내용을 열람·복사·커밋하지 않고 계정 보안 조치 후 격리해야 한다.
-- Git 저장소 기준선을 안전하게 만들고, 관련 파일만 별도 브랜치에 커밋해야 한다.
-- 위 항목이 해소되기 전 Gate 1~8 구현은 시작하지 않는다.
+- Gate 1에서는 두 캐릭터의 canonical view·turnaround 증거를 점검하고 승인 이미지의 임시 요소와 시점 일관성을 검증한다.
+- Gate 2 이후는 실제 3D 자산이 입고되기 전까지 시작하지 않는다.
+- 착착이 모자 고유 심볼과 외부 IP 검토는 공개·배포 전 차단조건으로 유지한다.

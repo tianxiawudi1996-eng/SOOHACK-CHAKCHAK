@@ -44,9 +44,12 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md",
     "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
+    "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
     "docs/stage8/evidence/gate0/gate0-decision.json",
+    "docs/stage8/evidence/gate0/manual-review.json",
+    "docs/stage8/evidence/gate1/candidate-review.json",
 ]
 
 
@@ -231,6 +234,35 @@ def main() -> int:
         report = (ROOT / "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md").read_text(encoding="utf-8")
         if "Gate 0 상태: `VERIFIED`" not in report:
             fail("gate0 status and report disagree")
+        if manifest.get("status") != "VERIFIED":
+            fail("gate0 is VERIFIED but SSOT manifest is not VERIFIED")
+        manual_review = load_json(ROOT / "docs/stage8/evidence/gate0/manual-review.json")
+        if manual_review.get("status") != "VERIFIED" or manual_review.get("blockers"):
+            fail("gate0 manual review is not VERIFIED or still has blockers")
+        reviewed_hashes = manual_review.get("canonical_sha256", {})
+        for name in REQUIRED_STAGE7:
+            canonical = ROOT / "ssot" / "stage7" / "v1.0" / name
+            actual = hashlib.sha256(canonical.read_bytes()).hexdigest().lower()
+            if reviewed_hashes.get(name, "").lower() != actual:
+                fail(f"gate0 manual review SHA-256 mismatch: {name}")
+        checks = manual_review.get("checks", {})
+        if not checks or not all(value is True for value in checks.values()):
+            fail("gate0 manual review checks are incomplete")
+
+    if gates[1].get("status") != "NOT_STARTED":
+        gate1_review = load_json(ROOT / "docs/stage8/evidence/gate1/candidate-review.json")
+        for candidate in gate1_review.get("candidates", []):
+            candidate_path = ROOT / candidate.get("path", "")
+            if not candidate_path.exists():
+                fail(f"gate1 candidate is missing: {candidate.get('path')}")
+            actual = hashlib.sha256(candidate_path.read_bytes()).hexdigest().lower()
+            if actual != candidate.get("sha256", "").lower():
+                fail(f"gate1 candidate SHA-256 mismatch: {candidate.get('path')}")
+        if gate1_review.get("next_gate_allowed") is True and gates[1].get("status") != "VERIFIED":
+            fail("gate1 review allows next gate while gate1 is not VERIFIED")
+        if gates[1].get("status") == "VERIFIED":
+            if gate1_review.get("status") != "VERIFIED" or len(gate1_review.get("manual_approvals", [])) < 5:
+                fail("gate1 VERIFIED without five manual approvals")
 
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))

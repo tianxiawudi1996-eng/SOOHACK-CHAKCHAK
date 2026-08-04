@@ -48,3 +48,14 @@
 - `Progress = Bubble Type / Happy State`, `Welcome State = Greet Clip`은 생성 산출물의 자기참조가 아니라 Stage 7 감사 원문에서 같은 행에 함께 등장하는 근거를 기록하도록 교정했다.
 - 생성되는 감사 파일 7개는 입력 인벤토리에서 제외해 재실행 시 자기 해시가 바뀌는 순환 의존을 제거했다.
 - ignored·untracked `github-recovery-codes.txt`는 내용을 읽지 않고 경고로 유지하며, tracked 또는 canonical SSOT에 들어갈 경우에만 실패시킨다.
+
+## 2026-08-04 — Stage 7 원본 10종 입고 및 Gate 0 승인
+
+- 누락됐던 SSOT Markdown, Chakchaki Character Bible, 승인 이미지 2종을 canonical `ssot/stage7/v1.0/`에 입고했다.
+- 새 이미지 제출본 `(2)`을 사용자 확인에 따른 원본으로 선택하고 후보 경로의 바이트를 변환 없이 exact 파일명으로 복사했으며 SHA-256 일치를 확인했다.
+- 수동 검토 증거에 canonical 10종의 SHA-256과 구조·링크·이미지·ID·추적성 체크를 기록했다.
+- 감사 생성기는 수동 검토 JSON의 상태·해시·체크가 실제 canonical 파일과 일치할 때만 Gate 0을 `VERIFIED`로 판정한다.
+- Gate 0은 `VERIFIED`; 기존 Gate 1 QA는 완전한 턴어라운드와 5역할 승인 누락으로 `BLOCKED`다.
+- 승인 레퍼런스를 입력으로 착착이·공식이 16셀 Canonical Turnaround 후보를 생성해 `evidence/gate-1/candidates/`에 저장했다.
+- 후보는 정투영·축척·방향 일관성과 5역할 승인이 부족하므로 canonical 또는 `VERIFIED`로 승격하지 않았다.
+- 공식이 v1의 정면에 가까운 `SILHOUETTE-3Q`를 단일 셀 보정해 v2 후보로 갱신하고 v1은 이력으로 보존했다.

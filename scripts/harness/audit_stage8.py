@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[2]
 AUDIT_ROOT = ROOT / "docs" / "stage8" / "audits"
 EVIDENCE_ROOT = ROOT / "docs" / "stage8" / "evidence" / "gate0"
 SSOT_TARGET = ROOT / "ssot" / "stage7" / "v1.0"
+MANUAL_REVIEW = EVIDENCE_ROOT / "manual-review.json"
 GENERATED_OUTPUTS = {
     "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
     "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md",
@@ -314,7 +315,6 @@ def main() -> int:
         path for path in sensitive
         if path in tracked or path.startswith("ssot/stage7/v1.0/")
     ]
-    audit_status = "BLOCKED" if missing or sensitive_tracked_or_canonical else "NOT_VERIFIED"
     target_rows = [row for row in rows if row.get("path", "").startswith("ssot/stage7/v1.0/")]
     required_records = []
     for name in REQUIRED:
@@ -353,6 +353,69 @@ def main() -> int:
         "welcome_evidence": sorted(set(welcome_evidence)),
         "note": "Presence is evidenced by source lines containing both mapped terms; approval still requires all canonical originals and human review.",
     }
+    canonical_rows = {
+        row["file_name"]: row
+        for row in target_rows
+        if row.get("file_name") in REQUIRED
+    }
+    required_src_present = all(f"SRC-0{index}" in id_counts for index in range(1, 7))
+    automatic_checks = {
+        "exact_names_and_canonical_locations": len(canonical_rows) == len(REQUIRED),
+        "canonical_hashes_recorded": all(canonical_rows.get(name, {}).get("sha256") for name in REQUIRED),
+        "xlsx_openable_and_no_formula_errors": all(
+            canonical_rows.get(name, {}).get("xlsx_audit", {}).get("openable")
+            and not canonical_rows.get(name, {}).get("xlsx_audit", {}).get("formula_errors")
+            for name in REQUIRED if name.endswith(".xlsx")
+        ),
+        "markdown_utf8_and_links_valid": all(
+            canonical_rows.get(name, {}).get("markdown_audit", {}).get("utf8")
+            and not canonical_rows.get(name, {}).get("markdown_audit", {}).get("broken_links")
+            for name in REQUIRED if name.endswith(".md")
+        ),
+        "images_decodable_and_visually_reviewed": all(
+            canonical_rows.get(name, {}).get("image_audit", {}).get("decodable")
+            for name in REQUIRED if name.endswith(".png")
+        ),
+        "src_01_through_src_06_present": required_src_present,
+        "required_semantic_links_evidenced": (
+            semantics["progress_bubble_type_happy_state"]
+            and semantics["welcome_greet_connection"]
+        ),
+    }
+    manual_review: dict = {}
+    manual_review_errors: list[str] = []
+    if MANUAL_REVIEW.exists():
+        try:
+            manual_review = json.loads(MANUAL_REVIEW.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            manual_review_errors.append(f"manual review JSON invalid: {exc}")
+    else:
+        manual_review_errors.append("manual review evidence is missing")
+    if manual_review.get("status") != "VERIFIED":
+        manual_review_errors.append("manual review status is not VERIFIED")
+    reviewed_hashes = manual_review.get("canonical_sha256", {})
+    for name in REQUIRED:
+        actual_hash = canonical_rows.get(name, {}).get("sha256")
+        if not actual_hash or reviewed_hashes.get(name, "").lower() != actual_hash.lower():
+            manual_review_errors.append(f"manual review SHA-256 mismatch: {name}")
+    review_checks = manual_review.get("checks", {})
+    required_review_checks = set(automatic_checks) | {"stage1_to_stage7_traceability_reviewed"}
+    for check in sorted(required_review_checks):
+        if review_checks.get(check) is not True:
+            manual_review_errors.append(f"manual review check is not true: {check}")
+    conflicting_records = [record["file_name"] for record in required_records if record["status"] == "CONFLICT_MULTIPLE_EXACT"]
+    automatic_ready = (
+        not missing
+        and not conflicting_records
+        and not sensitive_tracked_or_canonical
+        and all(automatic_checks.values())
+    )
+    if missing or conflicting_records or sensitive_tracked_or_canonical:
+        audit_status = "BLOCKED"
+    elif automatic_ready and not manual_review_errors:
+        audit_status = "VERIFIED"
+    else:
+        audit_status = "NOT_VERIFIED"
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "workspace_root": str(ROOT),
@@ -367,6 +430,9 @@ def main() -> int:
         "required_records": required_records,
         "ssot_target_rows": target_rows,
         "semantic_presence": semantics,
+        "automatic_checks": automatic_checks,
+        "manual_review_path": rel(MANUAL_REVIEW),
+        "manual_review_errors": manual_review_errors,
         "id_counts": id_counts,
         "id_locations": id_locations,
         "notes": [
@@ -386,7 +452,7 @@ def main() -> int:
         f"- 조사 파일 수: `{len(rows)}`",
         f"- Stage 7 지정 원본 정확 일치: `{summary['required_exact_found']}/{len(REQUIRED)}`",
         f"- Git 메타데이터: `{'FOUND' if summary['git_metadata_present'] else 'MISSING'}`",
-        f"- 판정: `{audit_status}` — 정확한 승인 원본 누락/미입고 여부와 canonical SSOT 보안 상태를 기준으로 판단한다.",
+        f"- 판정: `{audit_status}` — 원본·구조·해시·ID·수동 검토 증거를 함께 기준으로 판단한다.",
         "",
         "## Stage 7 지정 원본",
         "",
@@ -419,7 +485,7 @@ def main() -> int:
     for identifier, count in sorted(id_counts.items()):
         locations = id_locations[identifier]
         cross_lines.append(f"| `{identifier}` | {count} | {len(set(locations))} | {', '.join('`' + item + '`' for item in sorted(set(locations))[:4])} |")
-    cross_lines += ["", "## 필수 의미 연결", "", f"- `Progress = Bubble Type / Happy State`: **동일 원문 행에서 두 용어 발견 = {semantics['progress_bubble_type_happy_state']}**. 근거: {', '.join('`' + item + '`' for item in semantics['progress_evidence']) or '없음'}", f"- `Welcome State = Greet Clip`: **동일 원문 행에서 두 용어 발견 = {semantics['welcome_greet_connection']}**. 근거: {', '.join('`' + item + '`' for item in semantics['welcome_evidence']) or '없음'}", "", "## 제한", "", "- 현재 로컬에는 지정된 Stage 7 원본 전체가 없으므로 정의/사용/충돌을 확정할 수 없다.", "- 파일명 후보를 ID 정의로 승격하지 않았다.", "- 의미 연결 토큰 발견은 승인 완료가 아니며 원본 10종과 수동 검토가 필요하다.", ""]
+    cross_lines += ["", "## 필수 의미 연결", "", f"- `Progress = Bubble Type / Happy State`: **동일 원문 행에서 두 용어 발견 = {semantics['progress_bubble_type_happy_state']}**. 근거: {', '.join('`' + item + '`' for item in semantics['progress_evidence']) or '없음'}", f"- `Welcome State = Greet Clip`: **동일 원문 행에서 두 용어 발견 = {semantics['welcome_greet_connection']}**. 근거: {', '.join('`' + item + '`' for item in semantics['welcome_evidence']) or '없음'}", "", "## 제한", "", "- 파일명 후보는 ID 정의나 canonical 원본으로 자동 승격하지 않았다.", "- 의미 연결은 원문과 수동 검토 증거가 모두 있을 때만 Gate 0 승인 근거로 사용한다.", ""]
     (AUDIT_ROOT / "ID_CROSS_REFERENCE_AUDIT.md").write_text("\n".join(cross_lines), encoding="utf-8")
 
     report_lines = [
@@ -427,7 +493,7 @@ def main() -> int:
         "",
         f"- 감사 시각(UTC): `{summary['generated_at']}`",
         f"- Gate 0 상태: `{audit_status}`",
-        "- 다음 Gate: 실행 금지 (`Gate 1`은 `NOT_STARTED` 유지)",
+        f"- 다음 Gate: {'진입 가능' if audit_status == 'VERIFIED' else '실행 금지 (`Gate 1`은 `NOT_STARTED` 유지)'}",
         "",
         "## 확인 결과",
         "",
@@ -450,12 +516,16 @@ def main() -> int:
     if not (ROOT / ".git").exists():
         report_lines.append("- 로컬 `.git`이 없어 HEAD·브랜치·미커밋 기준선을 기록할 수 없음")
     if not summary["3d_files"]:
-        report_lines.append("- GLB/GLTF/BLEND/FBX가 없어 Gate 2~4 실제 자산 검증 불가")
-    report_lines += ["", "## 증거 경로", "", "- `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md`", "- `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json`", "- `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md`", "- `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json`", "- `harness/ssot-manifest.json`", "", "## 판정 근거", "", "필수 원본·형상관리·자동검증 전제가 충족되지 않았으므로 실제 증거 없이 `VERIFIED`로 변경하지 않는다. 누락된 파일을 재생성하거나 후보 파일을 승인 원본으로 이름 변경하지 않는다.", ""]
+        report_lines.append("- GLB/GLTF/BLEND/FBX가 없어 Gate 2~4 실제 자산 검증은 아직 시작할 수 없음 (Gate 0 차단사항 아님)")
+    if manual_review_errors:
+        report_lines.append("- 수동 검토 증거 오류: " + "; ".join(manual_review_errors))
+    if not missing and not sensitive_tracked_or_canonical and not manual_review_errors:
+        report_lines.append("- Gate 0 차단사항 없음")
+    report_lines += ["", "## 증거 경로", "", "- `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.md`", "- `docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json`", "- `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.md`", "- `docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json`", "- `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md`", "- `docs/stage8/evidence/gate0/manual-review.json`", "- `harness/ssot-manifest.json`", "", "## 판정 근거", "", ("정확 원본 10종, canonical SHA-256, 구조·링크·이미지·ID·추적성, 자동 검증과 수동 검토 증거가 모두 충족되어 Gate 0을 `VERIFIED`로 판정한다." if audit_status == "VERIFIED" else "필수 증거가 모두 충족되지 않아 `VERIFIED`로 변경하지 않는다."), ""]
     (AUDIT_ROOT / "GATE0_SSOT_AUDIT_REPORT.md").write_text("\n".join(report_lines), encoding="utf-8")
 
     EVIDENCE_ROOT.mkdir(parents=True, exist_ok=True)
-    (EVIDENCE_ROOT / "gate0-decision.json").write_text(json.dumps({"status": audit_status, "generated_at": summary["generated_at"], "missing_exact_files": missing, "sensitive_paths": sensitive, "sensitive_tracked_or_canonical_paths": sensitive_tracked_or_canonical, "evidence": ["docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md", "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json", "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (EVIDENCE_ROOT / "gate0-decision.json").write_text(json.dumps({"status": audit_status, "generated_at": summary["generated_at"], "missing_exact_files": missing, "conflicting_exact_files": conflicting_records, "sensitive_paths": sensitive, "sensitive_tracked_or_canonical_paths": sensitive_tracked_or_canonical, "automatic_checks": automatic_checks, "manual_review_path": rel(MANUAL_REVIEW), "manual_review_errors": manual_review_errors, "evidence": ["docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md", "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json", "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json", "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md", "docs/stage8/evidence/gate0/manual-review.json"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("AUDIT_WRITTEN")
     print(f"files={len(rows)}")
     print(f"required_exact={summary['required_exact_found']}/{len(REQUIRED)}")

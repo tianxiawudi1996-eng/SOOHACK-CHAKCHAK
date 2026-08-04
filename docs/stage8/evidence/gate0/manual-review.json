@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VERIFIED",
+  "reviewed_at": "2026-08-04T14:07:30+09:00",
+  "review_basis": "User confirmed all missing Stage 7 originals were supplied; exact canonical files were inspected locally without rewriting source bytes.",
+  "scope": "Gate 0 SSOT integrity only; this does not approve Gate 1 assets, production deployment, the temporary Chakchaki cap symbol, or external IP review.",
+  "canonical_sha256": {
+    "MathChakChak_Stage7_SSOT_v1.0.xlsx": "73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af",
+    "MathChakChak_Stage7_SSOT_v1.0.md": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+    "Component_Inventory_v1.0.xlsx": "e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f",
+    "Gongsickyi_Character_Bible_v1.0.md": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
+    "Chakchaki_Character_Bible_v1.0.md": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+    "Character_Module_Rig_Spec_v1.0.xlsx": "7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b",
+    "Expression_Motion_Bubble_Library_v1.0.xlsx": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+    "Stage8_Handoff_Manifest_v1.0.md": "129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e",
+    "Chakchaki_Approved_Reference_v1.0.png": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+    "Gongsickyi_Approved_Reference_v1.0.png": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec"
+  },
+  "selected_reference_sources": {
+    "Chakchaki_Approved_Reference_v1.0.png": "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png",
+    "Gongsickyi_Approved_Reference_v1.0.png": "evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png"
+  },
+  "checks": {
+    "exact_names_and_canonical_locations": true,
+    "canonical_hashes_recorded": true,
+    "xlsx_openable_and_no_formula_errors": true,
+    "markdown_utf8_and_links_valid": true,
+    "images_decodable_and_visually_reviewed": true,
+    "src_01_through_src_06_present": true,
+    "required_semantic_links_evidenced": true,
+    "stage1_to_stage7_traceability_reviewed": true
+  },
+  "blockers": [],
+  "warnings": [
+    "The Chakchaki cap S is a temporary reference mark and still requires replacement before final deployment.",
+    "Trademark and character-similarity review remains an external pre-deployment condition.",
+    "Alternative (1) reference candidates have different hashes and remain non-canonical."
+  ]
+}

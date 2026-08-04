@@ -1,30 +1,31 @@
 # Stage 1~8 파일 인벤토리
 
-- 생성 시각(UTC): `2026-08-04T04:41:22.713706+00:00`
-- 조사 파일 수: `75`
-- Stage 7 지정 원본 정확 일치: `6/10`
+- 생성 시각(UTC): `2026-08-04T05:25:53.467711+00:00`
+- 조사 파일 수: `89`
+- Stage 7 지정 원본 정확 일치: `10/10`
 - Git 메타데이터: `FOUND`
-- 판정: `BLOCKED` — 정확한 승인 원본 누락/미입고 여부와 canonical SSOT 보안 상태를 기준으로 판단한다.
+- 판정: `VERIFIED` — 원본·구조·해시·ID·수동 검토 증거를 함께 기준으로 판단한다.
 
 ## Stage 7 지정 원본
 
 | 파일 | 정확 일치 | 후보/대체 파일 | 판정 |
 |---|---:|---|---|
-| `MathChakChak_Stage7_SSOT_v1.0.xlsx` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
-| `MathChakChak_Stage7_SSOT_v1.0.md` | 0 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` | `MISSING_EXACT` |
+| `MathChakChak_Stage7_SSOT_v1.0.xlsx` | 2 | `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md` | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
+| `MathChakChak_Stage7_SSOT_v1.0.md` | 1 | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx`, `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` | `FOUND_EXACT` |
 | `Component_Inventory_v1.0.xlsx` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
 | `Gongsickyi_Character_Bible_v1.0.md` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
-| `Chakchaki_Character_Bible_v1.0.md` | 0 | 없음 | `MISSING_EXACT` |
+| `Chakchaki_Character_Bible_v1.0.md` | 1 | 없음 | `FOUND_EXACT` |
 | `Character_Module_Rig_Spec_v1.0.xlsx` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
 | `Expression_Motion_Bubble_Library_v1.0.xlsx` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
 | `Stage8_Handoff_Manifest_v1.0.md` | 2 | 없음 | `FOUND_EXACT_DUPLICATES_IDENTICAL` |
-| `Chakchaki_Approved_Reference_v1.0.png` | 0 | `docs/developer/Chakchaki_Approved_Reference_v1.0(1).png` | `MISSING_EXACT` |
-| `Gongsickyi_Approved_Reference_v1.0.png` | 0 | `docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png` | `MISSING_EXACT` |
+| `Chakchaki_Approved_Reference_v1.0.png` | 1 | `docs/developer/Chakchaki_Approved_Reference_v1.0(1).png`, `evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png` | `FOUND_EXACT` |
+| `Gongsickyi_Approved_Reference_v1.0.png` | 1 | `docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png`, `evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png` | `FOUND_EXACT` |
 
 ## 전체 파일 상세
 
 | Stage | 파일 | 경로 | 크기 | 수정일(UTC) | MIME | SHA-256 | 분류 | 사용 가능 |
 |---|---|---|---:|---|---|---|---|---|
+| `Unclassified` | `.gitattributes` | `.gitattributes` | 188 | `2026-08-04T05:24:45.155095+00:00` | `application/octet-stream` | `c9deb5dfc951a46bde895261f9f573d06bc9652f0e2701e431793c8c8de7884b` | `unclassified` | `False` |
 | `Stage 8` | `stage8-harness.yml` | `.github/workflows/stage8-harness.yml` | 426 | `2026-08-04T04:12:25.803526+00:00` | `application/octet-stream` | `735c0ec81206da58676dd6e07b1e723678c58506c74a2454a3fad3a5a78abcc6` | `unclassified` | `False` |
 | `Unclassified` | `.gitignore` | `.gitignore` | 187 | `2026-08-04T04:16:37.850377+00:00` | `application/octet-stream` | `c71e762d06fbdaab3797b9a5ec84a98f86b59b53c747f99cc924e1be27972522` | `unclassified` | `False` |
 | `Stage 2` | `6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md` | `docs/agent/6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md` | 22287 | `2026-07-31T07:51:31.324479+00:00` | `text/markdown` | `a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa` | `derived-or-working` | `True` |
@@ -74,12 +75,16 @@
 | `Stage 7` | `Gongsickyi_Character_Bible_v1.0.md` | `docs/ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md` | 3320 | `2026-08-04T03:27:14.260314+00:00` | `text/markdown` | `61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6` | `target-candidate` | `True` |
 | `Stage 8` | `MathChakChak_Stage7_SSOT_v1.0.xlsx` | `docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` | 191386 | `2026-08-04T03:26:03.684578+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af` | `target-candidate` | `True` |
 | `Stage 8` | `Stage8_Handoff_Manifest_v1.0.md` | `docs/ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md` | 4322 | `2026-08-04T03:29:49.868843+00:00` | `text/markdown` | `129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e` | `target-candidate` | `True` |
-| `Stage 8` | `00_MASTER_PLAN.md` | `docs/stage8/00_MASTER_PLAN.md` | 1858 | `2026-08-04T04:28:12.799105+00:00` | `text/markdown` | `3d04400c5fed49f74fa9abd36f99258da7efcc9c72b7493eb7762ee37ae29a10` | `unclassified` | `True` |
-| `Stage 8` | `FINAL_EXECUTION_REPORT.md` | `docs/stage8/audits/FINAL_EXECUTION_REPORT.md` | 3443 | `2026-08-04T04:39:43.801409+00:00` | `text/markdown` | `c2104b6d3280473b8f7244dcd7db2c92a8e9e6c56b680be936cce2226055aa3c` | `unclassified` | `True` |
-| `Stage 8` | `STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | 2780 | `2026-08-04T04:28:12.800108+00:00` | `text/markdown` | `746ee84b5fde32f735d608eb46dee007068f39c3151087ea124ebe6dc5601171` | `unclassified` | `True` |
-| `Stage 8` | `TEST_EXECUTION_REPORT.md` | `docs/stage8/audits/TEST_EXECUTION_REPORT.md` | 4194 | `2026-08-04T04:41:14.814316+00:00` | `text/markdown` | `302f8071fdf9ff1a4ff195b2edbd54891b0601b2383add04f9c86cd40d868f81` | `unclassified` | `True` |
+| `Stage 8` | `00_MASTER_PLAN.md` | `docs/stage8/00_MASTER_PLAN.md` | 1898 | `2026-08-04T05:10:37.990315+00:00` | `text/markdown` | `f21ede937ad26cdb01f9cfd7b9a151c6ef1076027cbac6d206d08ff51d7c2252` | `unclassified` | `True` |
+| `Stage 8` | `FINAL_EXECUTION_REPORT.md` | `docs/stage8/audits/FINAL_EXECUTION_REPORT.md` | 3798 | `2026-08-04T05:25:26.901475+00:00` | `text/markdown` | `94a47427a11dc073869a49197c56985d0fca9b922c89df9a0baf81fae777de3d` | `unclassified` | `True` |
+| `Stage 8` | `GATE1_CANONICAL_VIEW_AUDIT.md` | `docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md` | 1614 | `2026-08-04T05:23:45.097722+00:00` | `text/markdown` | `2afc7b6b0c07e8df0145ba1756e5e7d9f6cb50fe0d77cd7707533ec9fd1e3e78` | `unclassified` | `True` |
+| `Stage 8` | `STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | `docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md` | 3055 | `2026-08-04T05:10:37.989312+00:00` | `text/markdown` | `865fc497729b72f03044f5499e413f816cde31327196efb89752bb9e2ebae2bd` | `unclassified` | `True` |
+| `Stage 8` | `TEST_EXECUTION_REPORT.md` | `docs/stage8/audits/TEST_EXECUTION_REPORT.md` | 4735 | `2026-08-04T05:25:45.545975+00:00` | `text/markdown` | `f1f9f7752060c18c834839eae82f2130f0fa45bbbc1a38acd4cfb9e9ea3e7d20` | `unclassified` | `True` |
 | `Stage 8` | `WORKSPACE_BASELINE.md` | `docs/stage8/audits/WORKSPACE_BASELINE.md` | 1332 | `2026-08-04T04:13:09.979748+00:00` | `text/markdown` | `f4068a8850f976c0b66aaf4c0a488bad2ae2e8a7fa7a0f3c806915ac523bc131` | `unclassified` | `True` |
-| `Stage 8` | `CHANGELOG.md` | `docs/stage8/CHANGELOG.md` | 3274 | `2026-08-04T04:40:46.606926+00:00` | `text/markdown` | `4ee78cb9f34d99786c9487cd031fae829764de608ead094c77ebcbc04aedc1c3` | `unclassified` | `True` |
+| `Stage 8` | `CHANGELOG.md` | `docs/stage8/CHANGELOG.md` | 4489 | `2026-08-04T05:23:45.099236+00:00` | `text/markdown` | `668409d7b5c6be4a975887731c539e1c456816ffacc32ba3b48a9beb6859e58f` | `unclassified` | `True` |
+| `Stage 8` | `manual-review.json` | `docs/stage8/evidence/gate0/manual-review.json` | 2576 | `2026-08-04T05:10:01.650468+00:00` | `application/json` | `e540d809f8abd76ad910d73e61668d2f638af40f1d0ea259c442ecfd7ed4b1ea` | `unclassified` | `True` |
+| `Stage 8` | `candidate-review.json` | `docs/stage8/evidence/gate1/candidate-review.json` | 2495 | `2026-08-04T05:23:45.096215+00:00` | `application/json` | `daa799633f59f785c8735107925aa6de7cfff06858bb97e2bcaf2588b0ce42ec` | `unclassified` | `True` |
+| `Stage 8` | `GENERATION_RECORD.md` | `docs/stage8/evidence/gate1/GENERATION_RECORD.md` | 1694 | `2026-08-04T05:23:45.096719+00:00` | `text/markdown` | `b05560782f685711314574d1b78fa9621b4d49c4c3642c5dbaacf511924cf952` | `unclassified` | `True` |
 | `Stage 8` | `GATE0_SSOT_AUDIT.md` | `docs/stage8/prompts/GATE0_SSOT_AUDIT.md` | 1560 | `2026-08-04T04:14:26.031278+00:00` | `text/markdown` | `a8334a31011a6959104656bb32b1893c22098311fbc3e26a3e094da3903a1820` | `approval-candidate` | `True` |
 | `Stage 8` | `GATE1_CANONICAL_VIEW.md` | `docs/stage8/prompts/GATE1_CANONICAL_VIEW.md` | 1409 | `2026-08-04T04:14:26.032801+00:00` | `text/markdown` | `5838cf3030b60e2225e81c87e2974ae267ffd05ea809cb5f0645bbfb8cabc679` | `unclassified` | `True` |
 | `Stage 8` | `GATE2_BASE_MESH_MATERIAL.md` | `docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md` | 1280 | `2026-08-04T04:14:26.033312+00:00` | `text/markdown` | `68ea1677264d819f1820eaf79328d0db63b60ac34c4864e2d6c1289e3710d370` | `unclassified` | `True` |
@@ -89,15 +94,24 @@
 | `Stage 8` | `GATE6_PRODUCT_INTEGRATION.md` | `docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md` | 1351 | `2026-08-04T04:14:26.036380+00:00` | `text/markdown` | `1cd178cb46fb4a5ba5b3abc1bd916bd72d52c4d7df6d57758e987df53bf9c580` | `unclassified` | `True` |
 | `Stage 8` | `GATE7_QA.md` | `docs/stage8/prompts/GATE7_QA.md` | 1344 | `2026-08-04T04:14:26.037395+00:00` | `text/markdown` | `90fd21eed771759fa960ee08f6fbc12331b244dd9061a6712211297053407ada` | `unclassified` | `True` |
 | `Stage 8` | `GATE8_DEPLOYMENT.md` | `docs/stage8/prompts/GATE8_DEPLOYMENT.md` | 1357 | `2026-08-04T04:14:26.038403+00:00` | `text/markdown` | `680d67664535c3b9142cce0e34ef65a9961de7b18985d4642c28a55ffb8755a4` | `unclassified` | `True` |
+| `Unclassified` | `Chakchaki_Approved_Reference_v1.0(2).png` | `evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png` | 2428769 | `2026-08-04T05:00:53.615851+00:00` | `image/png` | `3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd` | `approval-candidate` | `True` |
+| `Unclassified` | `Gongsickyi_Approved_Reference_v1.0(2).png` | `evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png` | 2520041 | `2026-08-04T05:01:14.024701+00:00` | `image/png` | `3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec` | `approval-candidate` | `True` |
+| `Unclassified` | `Chakchaki_Canonical_Turnaround_Candidate_v1.png` | `evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png` | 1220614 | `2026-08-04T05:16:04.065312+00:00` | `image/png` | `660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417` | `unclassified` | `True` |
+| `Unclassified` | `Gongsickyi_Canonical_Turnaround_Candidate_v1.png` | `evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png` | 1215727 | `2026-08-04T05:19:05.362509+00:00` | `image/png` | `eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334` | `unclassified` | `True` |
+| `Unclassified` | `Gongsickyi_Canonical_Turnaround_Candidate_v2.png` | `evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png` | 1504619 | `2026-08-04T05:22:49.064061+00:00` | `image/png` | `c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e` | `unclassified` | `True` |
 | `Stage 8` | `README.md` | `harness/README.md` | 778 | `2026-08-04T04:12:25.796461+00:00` | `text/markdown` | `28379867944939da72aa25694e2d669ae0fb7d267a88be87f872fd392d65897e` | `unclassified` | `True` |
-| `Unclassified` | `status.json` | `harness/status.json` | 2819 | `2026-08-04T04:38:43.832708+00:00` | `application/json` | `a3a521269de053bf2dfb8e688538b0556df52c69729db6a4f9f9073f05c73d5d` | `unclassified` | `True` |
+| `Unclassified` | `status.json` | `harness/status.json` | 3418 | `2026-08-04T05:25:26.902475+00:00` | `application/json` | `5ace4a61dcda097451826a6a5caef38253607b6317c38d16ed257494b2feac1f` | `unclassified` | `True` |
 | `Stage 8` | `README.md` | `README.md` | 466 | `2026-08-04T04:12:25.796972+00:00` | `text/markdown` | `8ad77318c947520b92cff466870bd0d89ab6b2356bd1950e63a7b2baf47aecf2` | `unclassified` | `True` |
-| `Stage 8` | `audit_stage8.py` | `scripts/harness/audit_stage8.py` | 24929 | `2026-08-04T04:40:30.182436+00:00` | `text/x-python` | `0bf41fa37bfd4229e9d393879df97ae2b18b9ecc42f0866fea57ec5b64e9fe7f` | `unclassified` | `False` |
-| `Stage 8` | `validate_harness.py` | `scripts/harness/validate_harness.py` | 10869 | `2026-08-04T04:38:43.826484+00:00` | `text/x-python` | `fabdba6c84475c3f7f7e07692231bd4a5db22c8c13b43727ee50124d3826d1c6` | `unclassified` | `False` |
+| `Stage 8` | `audit_stage8.py` | `scripts/harness/audit_stage8.py` | 28979 | `2026-08-04T05:10:01.653492+00:00` | `text/x-python` | `f2f7929acd6e213d44211faae4f086c017ef14f4c5bd6fa19e3a653f1f2f6315` | `unclassified` | `False` |
+| `Stage 8` | `validate_harness.py` | `scripts/harness/validate_harness.py` | 13003 | `2026-08-04T05:20:52.122357+00:00` | `text/x-python` | `68bb7a1e9f6a8bc24dfdd0119c6968d77d57a5f06653b3b8c6008adaa1ea0c95` | `unclassified` | `False` |
+| `Stage 7` | `Chakchaki_Approved_Reference_v1.0.png` | `ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png` | 2428769 | `2026-08-04T05:00:53.615851+00:00` | `image/png` | `3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd` | `target-candidate` | `True` |
+| `Stage 7` | `Chakchaki_Character_Bible_v1.0.md` | `ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md` | 3929 | `2026-08-04T05:00:41.130336+00:00` | `text/markdown` | `4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c` | `target-candidate` | `True` |
 | `Stage 7` | `Character_Module_Rig_Spec_v1.0.xlsx` | `ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx` | 103244 | `2026-08-04T03:27:34.667046+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `7604c2199f3b2d2c08d29c458e87863a2f89328333341c55110faade1736b05b` | `target-candidate` | `True` |
 | `Stage 7` | `Component_Inventory_v1.0.xlsx` | `ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx` | 81074 | `2026-08-04T03:26:30.518726+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `e023d54d8e1b178360e3f67be9e53664372599ac0fcb69b4bee26f0623b2ed3f` | `target-candidate` | `True` |
 | `Stage 7` | `Expression_Motion_Bubble_Library_v1.0.xlsx` | `ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx` | 90603 | `2026-08-04T03:27:46.276522+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c` | `target-candidate` | `True` |
+| `Stage 7` | `Gongsickyi_Approved_Reference_v1.0.png` | `ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png` | 2520041 | `2026-08-04T05:01:14.024701+00:00` | `image/png` | `3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec` | `target-candidate` | `True` |
 | `Stage 7` | `Gongsickyi_Character_Bible_v1.0.md` | `ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md` | 3320 | `2026-08-04T03:27:14.260314+00:00` | `text/markdown` | `61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6` | `target-candidate` | `True` |
+| `Stage 7` | `MathChakChak_Stage7_SSOT_v1.0.md` | `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md` | 6171 | `2026-08-04T05:00:28.324798+00:00` | `text/markdown` | `4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a` | `target-candidate` | `True` |
 | `Stage 8` | `MathChakChak_Stage7_SSOT_v1.0.xlsx` | `ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx` | 191386 | `2026-08-04T03:26:03.684578+00:00` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | `73ff07caeb35c7fbb2efe1e94ae5d018f80ff14a576779e0be57c5aabf4f03af` | `target-candidate` | `True` |
 | `Stage 8` | `Stage8_Handoff_Manifest_v1.0.md` | `ssot/stage7/v1.0/Stage8_Handoff_Manifest_v1.0.md` | 4322 | `2026-08-04T03:29:49.868843+00:00` | `text/markdown` | `129342039bef09f5245bd46b47dbc92d0f4e0a7824dc0de3cea30fab89e1528e` | `target-candidate` | `True` |
 

@@ -1,19 +1,28 @@
 {
-  "status": "BLOCKED",
-  "generated_at": "2026-08-04T04:41:22.713706+00:00",
-  "missing_exact_files": [
-    "MathChakChak_Stage7_SSOT_v1.0.md",
-    "Chakchaki_Character_Bible_v1.0.md",
-    "Chakchaki_Approved_Reference_v1.0.png",
-    "Gongsickyi_Approved_Reference_v1.0.png"
-  ],
+  "status": "VERIFIED",
+  "generated_at": "2026-08-04T05:25:53.467711+00:00",
+  "missing_exact_files": [],
+  "conflicting_exact_files": [],
   "sensitive_paths": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt"
   ],
   "sensitive_tracked_or_canonical_paths": [],
+  "automatic_checks": {
+    "exact_names_and_canonical_locations": true,
+    "canonical_hashes_recorded": true,
+    "xlsx_openable_and_no_formula_errors": true,
+    "markdown_utf8_and_links_valid": true,
+    "images_decodable_and_visually_reviewed": true,
+    "src_01_through_src_06_present": true,
+    "required_semantic_links_evidenced": true
+  },
+  "manual_review_path": "docs/stage8/evidence/gate0/manual-review.json",
+  "manual_review_errors": [],
   "evidence": [
     "docs/stage8/audits/GATE0_SSOT_AUDIT_REPORT.md",
     "docs/stage8/audits/STAGE1_TO_STAGE8_INVENTORY.json",
-    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json"
+    "docs/stage8/audits/ID_CROSS_REFERENCE_AUDIT.json",
+    "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+    "docs/stage8/evidence/gate0/manual-review.json"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T04:41:22.713706+00:00",
+  "generated_at": "2026-08-04T05:25:53.467711+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -207,18 +207,58 @@
         }
       ],
       "exact_match_count": 2,
-      "candidate_paths": [],
+      "candidate_paths": [
+        "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md"
+      ],
       "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
     },
     {
       "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
-      "exact_matches": [],
-      "exact_match_count": 0,
+      "exact_matches": [
+        {
+          "stage": "Stage 7",
+          "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
+          "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md",
+          "size_bytes": 6171,
+          "modified_at": "2026-08-04T05:00:28.324798+00:00",
+          "mime": "text/markdown",
+          "sha256": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+          "version": "v1.0",
+          "approval_status_tokens": [
+            "승인",
+            "조건부 PASS"
+          ],
+          "classification": "target-candidate",
+          "references": [],
+          "duplicate_group": null,
+          "usable_now": true,
+          "basis": "metadata plus read-only content/OOXML inspection",
+          "markdown_audit": {
+            "utf8": true,
+            "h1_count": 1,
+            "version_tokens": [
+              "0.78",
+              "0.86",
+              "1.0",
+              "4.4",
+              "v1.0"
+            ],
+            "status_tokens": [
+              "승인",
+              "조건부 PASS"
+            ],
+            "links": [],
+            "broken_links": [],
+            "image_links": []
+          }
+        }
+      ],
+      "exact_match_count": 1,
       "candidate_paths": [
         "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
         "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
       ],
-      "status": "MISSING_EXACT"
+      "status": "FOUND_EXACT"
     },
     {
       "file_name": "Component_Inventory_v1.0.xlsx",
@@ -438,10 +478,47 @@
     },
     {
       "file_name": "Chakchaki_Character_Bible_v1.0.md",
-      "exact_matches": [],
-      "exact_match_count": 0,
+      "exact_matches": [
+        {
+          "stage": "Stage 7",
+          "file_name": "Chakchaki_Character_Bible_v1.0.md",
+          "path": "ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md",
+          "size_bytes": 3929,
+          "modified_at": "2026-08-04T05:00:41.130336+00:00",
+          "mime": "text/markdown",
+          "sha256": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+          "version": "v1.0",
+          "approval_status_tokens": [
+            "승인"
+          ],
+          "classification": "target-candidate",
+          "references": [],
+          "duplicate_group": null,
+          "usable_now": true,
+          "basis": "metadata plus read-only content/OOXML inspection",
+          "markdown_audit": {
+            "utf8": true,
+            "h1_count": 1,
+            "version_tokens": [
+              "0.8",
+              "0.85",
+              "1.0",
+              "22.7",
+              "4.4",
+              "v1.0"
+            ],
+            "status_tokens": [
+              "승인"
+            ],
+            "links": [],
+            "broken_links": [],
+            "image_links": []
+          }
+        }
+      ],
+      "exact_match_count": 1,
       "candidate_paths": [],
-      "status": "MISSING_EXACT"
+      "status": "FOUND_EXACT"
     },
     {
       "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
@@ -829,21 +906,73 @@
     },
     {
       "file_name": "Chakchaki_Approved_Reference_v1.0.png",
-      "exact_matches": [],
-      "exact_match_count": 0,
-      "candidate_paths": [
-        "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png"
+      "exact_matches": [
+        {
+          "stage": "Stage 7",
+          "file_name": "Chakchaki_Approved_Reference_v1.0.png",
+          "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+          "size_bytes": 2428769,
+          "modified_at": "2026-08-04T05:00:53.615851+00:00",
+          "mime": "image/png",
+          "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+          "version": "v1.0",
+          "approval_status_tokens": [],
+          "classification": "target-candidate",
+          "references": [],
+          "duplicate_group": "3263c6ea4e51",
+          "usable_now": true,
+          "basis": "metadata plus read-only content/OOXML inspection",
+          "image_audit": {
+            "decodable": true,
+            "format": "PNG",
+            "width": 1122,
+            "height": 1402,
+            "mode": "RGBA",
+            "has_alpha": true
+          }
+        }
       ],
-      "status": "MISSING_EXACT"
+      "exact_match_count": 1,
+      "candidate_paths": [
+        "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png",
+        "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png"
+      ],
+      "status": "FOUND_EXACT"
     },
     {
       "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
-      "exact_matches": [],
-      "exact_match_count": 0,
-      "candidate_paths": [
-        "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png"
+      "exact_matches": [
+        {
+          "stage": "Stage 7",
+          "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
+          "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+          "size_bytes": 2520041,
+          "modified_at": "2026-08-04T05:01:14.024701+00:00",
+          "mime": "image/png",
+          "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+          "version": "v1.0",
+          "approval_status_tokens": [],
+          "classification": "target-candidate",
+          "references": [],
+          "duplicate_group": "3d2fe052a9d7",
+          "usable_now": true,
+          "basis": "metadata plus read-only content/OOXML inspection",
+          "image_audit": {
+            "decodable": true,
+            "format": "PNG",
+            "width": 1122,
+            "height": 1402,
+            "mode": "RGBA",
+            "has_alpha": true
+          }
+        }
       ],
-      "status": "MISSING_EXACT"
+      "exact_match_count": 1,
+      "candidate_paths": [
+        "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png",
+        "evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png"
+      ],
+      "status": "FOUND_EXACT"
     }
   ],
   "sensitive_paths": [
@@ -851,6 +980,11 @@
   ],
   "sensitive_tracked_or_canonical_paths": [],
   "source_rows": [
+    {
+      "path": ".gitattributes",
+      "sha256": "c9deb5dfc951a46bde895261f9f573d06bc9652f0e2701e431793c8c8de7884b",
+      "size_bytes": 188
+    },
     {
       "path": ".github/workflows/stage8-harness.yml",
       "sha256": "735c0ec81206da58676dd6e07b1e723678c58506c74a2454a3fad3a5a78abcc6",
@@ -1093,23 +1227,28 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "3d04400c5fed49f74fa9abd36f99258da7efcc9c72b7493eb7762ee37ae29a10",
-      "size_bytes": 1858
+      "sha256": "f21ede937ad26cdb01f9cfd7b9a151c6ef1076027cbac6d206d08ff51d7c2252",
+      "size_bytes": 1898
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "c2104b6d3280473b8f7244dcd7db2c92a8e9e6c56b680be936cce2226055aa3c",
-      "size_bytes": 3443
+      "sha256": "94a47427a11dc073869a49197c56985d0fca9b922c89df9a0baf81fae777de3d",
+      "size_bytes": 3798
+    },
+    {
+      "path": "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
+      "sha256": "2afc7b6b0c07e8df0145ba1756e5e7d9f6cb50fe0d77cd7707533ec9fd1e3e78",
+      "size_bytes": 1614
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "sha256": "746ee84b5fde32f735d608eb46dee007068f39c3151087ea124ebe6dc5601171",
-      "size_bytes": 2780
+      "sha256": "865fc497729b72f03044f5499e413f816cde31327196efb89752bb9e2ebae2bd",
+      "size_bytes": 3055
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "302f8071fdf9ff1a4ff195b2edbd54891b0601b2383add04f9c86cd40d868f81",
-      "size_bytes": 4194
+      "sha256": "f1f9f7752060c18c834839eae82f2130f0fa45bbbc1a38acd4cfb9e9ea3e7d20",
+      "size_bytes": 4735
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1118,8 +1257,23 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "4ee78cb9f34d99786c9487cd031fae829764de608ead094c77ebcbc04aedc1c3",
-      "size_bytes": 3274
+      "sha256": "668409d7b5c6be4a975887731c539e1c456816ffacc32ba3b48a9beb6859e58f",
+      "size_bytes": 4489
+    },
+    {
+      "path": "docs/stage8/evidence/gate0/manual-review.json",
+      "sha256": "e540d809f8abd76ad910d73e61668d2f638af40f1d0ea259c442ecfd7ed4b1ea",
+      "size_bytes": 2576
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/candidate-review.json",
+      "sha256": "daa799633f59f785c8735107925aa6de7cfff06858bb97e2bcaf2588b0ce42ec",
+      "size_bytes": 2495
+    },
+    {
+      "path": "docs/stage8/evidence/gate1/GENERATION_RECORD.md",
+      "sha256": "b05560782f685711314574d1b78fa9621b4d49c4c3642c5dbaacf511924cf952",
+      "size_bytes": 1694
     },
     {
       "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
@@ -1167,14 +1321,39 @@
       "size_bytes": 1357
     },
     {
+      "path": "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+      "size_bytes": 2428769
+    },
+    {
+      "path": "evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+      "size_bytes": 2520041
+    },
+    {
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png",
+      "sha256": "660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417",
+      "size_bytes": 1220614
+    },
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
+      "sha256": "eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334",
+      "size_bytes": 1215727
+    },
+    {
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
+      "sha256": "c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e",
+      "size_bytes": 1504619
+    },
+    {
       "path": "harness/README.md",
       "sha256": "28379867944939da72aa25694e2d669ae0fb7d267a88be87f872fd392d65897e",
       "size_bytes": 778
     },
     {
       "path": "harness/status.json",
-      "sha256": "a3a521269de053bf2dfb8e688538b0556df52c69729db6a4f9f9073f05c73d5d",
-      "size_bytes": 2819
+      "sha256": "5ace4a61dcda097451826a6a5caef38253607b6317c38d16ed257494b2feac1f",
+      "size_bytes": 3418
     },
     {
       "path": "README.md",
@@ -1183,13 +1362,23 @@
     },
     {
       "path": "scripts/harness/audit_stage8.py",
-      "sha256": "0bf41fa37bfd4229e9d393879df97ae2b18b9ecc42f0866fea57ec5b64e9fe7f",
-      "size_bytes": 24929
+      "sha256": "f2f7929acd6e213d44211faae4f086c017ef14f4c5bd6fa19e3a653f1f2f6315",
+      "size_bytes": 28979
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "fabdba6c84475c3f7f7e07692231bd4a5db22c8c13b43727ee50124d3826d1c6",
-      "size_bytes": 10869
+      "sha256": "68bb7a1e9f6a8bc24dfdd0119c6968d77d57a5f06653b3b8c6008adaa1ea0c95",
+      "size_bytes": 13003
+    },
+    {
+      "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+      "size_bytes": 2428769
+    },
+    {
+      "path": "ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md",
+      "sha256": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+      "size_bytes": 3929
     },
     {
       "path": "ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
@@ -1207,9 +1396,19 @@
       "size_bytes": 90603
     },
     {
+      "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+      "size_bytes": 2520041
+    },
+    {
       "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
       "sha256": "61cf588db93c9357cdf6a751639723a6100732474baa547c8ef7ec922ebd75e6",
       "size_bytes": 3320
+    },
+    {
+      "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md",
+      "sha256": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+      "size_bytes": 6171
     },
     {
       "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
@@ -1222,5 +1421,5 @@
       "size_bytes": 4322
     }
   ],
-  "status": "BLOCKED"
+  "status": "VERIFIED"
 }

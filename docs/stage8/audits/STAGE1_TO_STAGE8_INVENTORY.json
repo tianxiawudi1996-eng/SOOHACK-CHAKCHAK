@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T04:41:22.713706+00:00",
+    "generated_at": "2026-08-04T05:25:53.467711+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 75,
+    "file_count": 89,
     "required_stage7_file_count": 10,
-    "required_exact_found": 6,
-    "required_exact_missing_or_conflicting": 4,
+    "required_exact_found": 10,
+    "required_exact_missing_or_conflicting": 0,
     "sensitive_filename_count": 1,
     "sensitive_tracked_or_canonical_count": 0,
     "git_metadata_present": true,
@@ -216,18 +216,58 @@
           }
         ],
         "exact_match_count": 2,
-        "candidate_paths": [],
+        "candidate_paths": [
+          "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md"
+        ],
         "status": "FOUND_EXACT_DUPLICATES_IDENTICAL"
       },
       {
         "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
-        "exact_matches": [],
-        "exact_match_count": 0,
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
+            "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md",
+            "size_bytes": 6171,
+            "modified_at": "2026-08-04T05:00:28.324798+00:00",
+            "mime": "text/markdown",
+            "sha256": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "승인",
+              "조건부 PASS"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": null,
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "0.78",
+                "0.86",
+                "1.0",
+                "4.4",
+                "v1.0"
+              ],
+              "status_tokens": [
+                "승인",
+                "조건부 PASS"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          }
+        ],
+        "exact_match_count": 1,
         "candidate_paths": [
           "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
           "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
         ],
-        "status": "MISSING_EXACT"
+        "status": "FOUND_EXACT"
       },
       {
         "file_name": "Component_Inventory_v1.0.xlsx",
@@ -447,10 +487,47 @@
       },
       {
         "file_name": "Chakchaki_Character_Bible_v1.0.md",
-        "exact_matches": [],
-        "exact_match_count": 0,
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Chakchaki_Character_Bible_v1.0.md",
+            "path": "ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md",
+            "size_bytes": 3929,
+            "modified_at": "2026-08-04T05:00:41.130336+00:00",
+            "mime": "text/markdown",
+            "sha256": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+            "version": "v1.0",
+            "approval_status_tokens": [
+              "승인"
+            ],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": null,
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "markdown_audit": {
+              "utf8": true,
+              "h1_count": 1,
+              "version_tokens": [
+                "0.8",
+                "0.85",
+                "1.0",
+                "22.7",
+                "4.4",
+                "v1.0"
+              ],
+              "status_tokens": [
+                "승인"
+              ],
+              "links": [],
+              "broken_links": [],
+              "image_links": []
+            }
+          }
+        ],
+        "exact_match_count": 1,
         "candidate_paths": [],
-        "status": "MISSING_EXACT"
+        "status": "FOUND_EXACT"
       },
       {
         "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
@@ -838,24 +915,136 @@
       },
       {
         "file_name": "Chakchaki_Approved_Reference_v1.0.png",
-        "exact_matches": [],
-        "exact_match_count": 0,
-        "candidate_paths": [
-          "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png"
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Chakchaki_Approved_Reference_v1.0.png",
+            "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+            "size_bytes": 2428769,
+            "modified_at": "2026-08-04T05:00:53.615851+00:00",
+            "mime": "image/png",
+            "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "3263c6ea4e51",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "image_audit": {
+              "decodable": true,
+              "format": "PNG",
+              "width": 1122,
+              "height": 1402,
+              "mode": "RGBA",
+              "has_alpha": true
+            }
+          }
         ],
-        "status": "MISSING_EXACT"
+        "exact_match_count": 1,
+        "candidate_paths": [
+          "docs/developer/Chakchaki_Approved_Reference_v1.0(1).png",
+          "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png"
+        ],
+        "status": "FOUND_EXACT"
       },
       {
         "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
-        "exact_matches": [],
-        "exact_match_count": 0,
-        "candidate_paths": [
-          "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png"
+        "exact_matches": [
+          {
+            "stage": "Stage 7",
+            "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
+            "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+            "size_bytes": 2520041,
+            "modified_at": "2026-08-04T05:01:14.024701+00:00",
+            "mime": "image/png",
+            "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+            "version": "v1.0",
+            "approval_status_tokens": [],
+            "classification": "target-candidate",
+            "references": [],
+            "duplicate_group": "3d2fe052a9d7",
+            "usable_now": true,
+            "basis": "metadata plus read-only content/OOXML inspection",
+            "image_audit": {
+              "decodable": true,
+              "format": "PNG",
+              "width": 1122,
+              "height": 1402,
+              "mode": "RGBA",
+              "has_alpha": true
+            }
+          }
         ],
-        "status": "MISSING_EXACT"
+        "exact_match_count": 1,
+        "candidate_paths": [
+          "docs/developer/Gongsickyi_Approved_Reference_v1.0(1).png",
+          "evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png"
+        ],
+        "status": "FOUND_EXACT"
       }
     ],
     "ssot_target_rows": [
+      {
+        "stage": "Stage 7",
+        "file_name": "Chakchaki_Approved_Reference_v1.0.png",
+        "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+        "size_bytes": 2428769,
+        "modified_at": "2026-08-04T05:00:53.615851+00:00",
+        "mime": "image/png",
+        "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "3263c6ea4e51",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "image_audit": {
+          "decodable": true,
+          "format": "PNG",
+          "width": 1122,
+          "height": 1402,
+          "mode": "RGBA",
+          "has_alpha": true
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "Chakchaki_Character_Bible_v1.0.md",
+        "path": "ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md",
+        "size_bytes": 3929,
+        "modified_at": "2026-08-04T05:00:41.130336+00:00",
+        "mime": "text/markdown",
+        "sha256": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+        "version": "v1.0",
+        "approval_status_tokens": [
+          "승인"
+        ],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": null,
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "markdown_audit": {
+          "utf8": true,
+          "h1_count": 1,
+          "version_tokens": [
+            "0.8",
+            "0.85",
+            "1.0",
+            "22.7",
+            "4.4",
+            "v1.0"
+          ],
+          "status_tokens": [
+            "승인"
+          ],
+          "links": [],
+          "broken_links": [],
+          "image_links": []
+        }
+      },
       {
         "stage": "Stage 7",
         "file_name": "Character_Module_Rig_Spec_v1.0.xlsx",
@@ -1062,6 +1251,30 @@
       },
       {
         "stage": "Stage 7",
+        "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
+        "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+        "size_bytes": 2520041,
+        "modified_at": "2026-08-04T05:01:14.024701+00:00",
+        "mime": "image/png",
+        "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+        "version": "v1.0",
+        "approval_status_tokens": [],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": "3d2fe052a9d7",
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "image_audit": {
+          "decodable": true,
+          "format": "PNG",
+          "width": 1122,
+          "height": 1402,
+          "mode": "RGBA",
+          "has_alpha": true
+        }
+      },
+      {
+        "stage": "Stage 7",
         "file_name": "Gongsickyi_Character_Bible_v1.0.md",
         "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
         "size_bytes": 3320,
@@ -1091,6 +1304,43 @@
           ],
           "status_tokens": [
             "승인"
+          ],
+          "links": [],
+          "broken_links": [],
+          "image_links": []
+        }
+      },
+      {
+        "stage": "Stage 7",
+        "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
+        "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md",
+        "size_bytes": 6171,
+        "modified_at": "2026-08-04T05:00:28.324798+00:00",
+        "mime": "text/markdown",
+        "sha256": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+        "version": "v1.0",
+        "approval_status_tokens": [
+          "승인",
+          "조건부 PASS"
+        ],
+        "classification": "target-candidate",
+        "references": [],
+        "duplicate_group": null,
+        "usable_now": true,
+        "basis": "metadata plus read-only content/OOXML inspection",
+        "markdown_audit": {
+          "utf8": true,
+          "h1_count": 1,
+          "version_tokens": [
+            "0.78",
+            "0.86",
+            "1.0",
+            "4.4",
+            "v1.0"
+          ],
+          "status_tokens": [
+            "승인",
+            "조건부 PASS"
           ],
           "links": [],
           "broken_links": [],
@@ -1248,6 +1498,17 @@
       ],
       "note": "Presence is evidenced by source lines containing both mapped terms; approval still requires all canonical originals and human review."
     },
+    "automatic_checks": {
+      "exact_names_and_canonical_locations": true,
+      "canonical_hashes_recorded": true,
+      "xlsx_openable_and_no_formula_errors": true,
+      "markdown_utf8_and_links_valid": true,
+      "images_decodable_and_visually_reviewed": true,
+      "src_01_through_src_06_present": true,
+      "required_semantic_links_evidenced": true
+    },
+    "manual_review_path": "docs/stage8/evidence/gate0/manual-review.json",
+    "manual_review_errors": [],
     "id_counts": {
       "BUB-CHO-01": 2,
       "BUB-CMP-01": 2,
@@ -1281,12 +1542,12 @@
       "MOD-02": 1,
       "MOD-03": 1,
       "MOD-04": 1,
-      "SRC-01": 14,
+      "SRC-01": 15,
       "SRC-02": 9,
       "SRC-03": 8,
       "SRC-04": 2,
       "SRC-05": 2,
-      "SRC-06": 5
+      "SRC-06": 6
     },
     "id_locations": {
       "EVT-001": [
@@ -1302,6 +1563,7 @@
         "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
         "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
         "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+        "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
         "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
         "docs/stage8/CHANGELOG.md",
         "docs/stage8/CHANGELOG.md",
@@ -1463,6 +1725,7 @@
       ],
       "SRC-06": [
         "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
+        "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
         "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
         "docs/stage8/CHANGELOG.md",
         "docs/stage8/CHANGELOG.md",
@@ -1476,6 +1739,22 @@
     ]
   },
   "files": [
+    {
+      "stage": "Unclassified",
+      "file_name": ".gitattributes",
+      "path": ".gitattributes",
+      "size_bytes": 188,
+      "modified_at": "2026-08-04T05:24:45.155095+00:00",
+      "mime": "application/octet-stream",
+      "sha256": "c9deb5dfc951a46bde895261f9f573d06bc9652f0e2701e431793c8c8de7884b",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
     {
       "stage": "Stage 8",
       "file_name": "stage8-harness.yml",
@@ -3317,11 +3596,11 @@
       "stage": "Stage 8",
       "file_name": "00_MASTER_PLAN.md",
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "size_bytes": 1858,
-      "modified_at": "2026-08-04T04:28:12.799105+00:00",
+      "size_bytes": 1898,
+      "modified_at": "2026-08-04T05:10:37.990315+00:00",
       "mime": "text/markdown",
-      "sha256": "3d04400c5fed49f74fa9abd36f99258da7efcc9c72b7493eb7762ee37ae29a10",
-      "version": "v1.0",
+      "sha256": "f21ede937ad26cdb01f9cfd7b9a151c6ef1076027cbac6d206d08ff51d7c2252",
+      "version": null,
       "approval_status_tokens": [
         "VERIFIED",
         "승인"
@@ -3336,7 +3615,6 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
-          "BLOCKED",
           "VERIFIED",
           "승인"
         ],
@@ -3349,46 +3627,13 @@
       "stage": "Stage 8",
       "file_name": "FINAL_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 3443,
-      "modified_at": "2026-08-04T04:39:43.801409+00:00",
+      "size_bytes": 3798,
+      "modified_at": "2026-08-04T05:25:26.901475+00:00",
       "mime": "text/markdown",
-      "sha256": "c2104b6d3280473b8f7244dcd7db2c92a8e9e6c56b680be936cce2226055aa3c",
+      "sha256": "94a47427a11dc073869a49197c56985d0fca9b922c89df9a0baf81fae777de3d",
       "version": "v1.0",
       "approval_status_tokens": [
-        "승인",
-        "후보"
-      ],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection",
-      "markdown_audit": {
-        "utf8": true,
-        "h1_count": 1,
-        "version_tokens": [
-          "v1.0"
-        ],
-        "status_tokens": [
-          "BLOCKED",
-          "NOT_STARTED",
-          "승인"
-        ],
-        "links": [],
-        "broken_links": [],
-        "image_links": []
-      }
-    },
-    {
-      "stage": "Stage 8",
-      "file_name": "STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
-      "size_bytes": 2780,
-      "modified_at": "2026-08-04T04:28:12.800108+00:00",
-      "mime": "text/markdown",
-      "sha256": "746ee84b5fde32f735d608eb46dee007068f39c3151087ea124ebe6dc5601171",
-      "version": "v1.0",
-      "approval_status_tokens": [
+        "FAIL",
         "VERIFIED",
         "승인",
         "후보"
@@ -3406,6 +3651,77 @@
         ],
         "status_tokens": [
           "BLOCKED",
+          "FAIL",
+          "NOT_STARTED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE1_CANONICAL_VIEW_AUDIT.md",
+      "path": "docs/stage8/audits/GATE1_CANONICAL_VIEW_AUDIT.md",
+      "size_bytes": 1614,
+      "modified_at": "2026-08-04T05:23:45.097722+00:00",
+      "mime": "text/markdown",
+      "sha256": "2afc7b6b0c07e8df0145ba1756e5e7d9f6cb50fe0d77cd7707533ec9fd1e3e78",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "1.1",
+          "2.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "BLOCKED",
+          "NOT_VERIFIED",
+          "VERIFIED"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+      "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+      "size_bytes": 3055,
+      "modified_at": "2026-08-04T05:10:37.989312+00:00",
+      "mime": "text/markdown",
+      "sha256": "865fc497729b72f03044f5499e413f816cde31327196efb89752bb9e2ebae2bd",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
           "VERIFIED",
           "승인"
         ],
@@ -3418,12 +3734,15 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 4194,
-      "modified_at": "2026-08-04T04:41:14.814316+00:00",
+      "size_bytes": 4735,
+      "modified_at": "2026-08-04T05:25:45.545975+00:00",
       "mime": "text/markdown",
-      "sha256": "302f8071fdf9ff1a4ff195b2edbd54891b0601b2383add04f9c86cd40d868f81",
+      "sha256": "f1f9f7752060c18c834839eae82f2130f0fa45bbbc1a38acd4cfb9e9ea3e7d20",
       "version": null,
-      "approval_status_tokens": [],
+      "approval_status_tokens": [
+        "VERIFIED",
+        "후보"
+      ],
       "classification": "unclassified",
       "references": [],
       "duplicate_group": null,
@@ -3433,6 +3752,10 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
+          "01.3797409",
+          "05.9156144",
+          "32.9958571",
+          "36.0897064",
           "44.6908750",
           "45.0007194",
           "49.0522938",
@@ -3443,7 +3766,8 @@
           "55.2444475"
         ],
         "status_tokens": [
-          "BLOCKED"
+          "BLOCKED",
+          "VERIFIED"
         ],
         "links": [],
         "broken_links": [],
@@ -3487,10 +3811,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 3274,
-      "modified_at": "2026-08-04T04:40:46.606926+00:00",
+      "size_bytes": 4489,
+      "modified_at": "2026-08-04T05:23:45.099236+00:00",
       "mime": "text/markdown",
-      "sha256": "4ee78cb9f34d99786c9487cd031fae829764de608ead094c77ebcbc04aedc1c3",
+      "sha256": "668409d7b5c6be4a975887731c539e1c456816ffacc32ba3b48a9beb6859e58f",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVED",
@@ -3512,6 +3836,81 @@
         "status_tokens": [
           "BLOCKED",
           "NOT_STARTED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "manual-review.json",
+      "path": "docs/stage8/evidence/gate0/manual-review.json",
+      "size_bytes": 2576,
+      "modified_at": "2026-08-04T05:10:01.650468+00:00",
+      "mime": "application/json",
+      "sha256": "e540d809f8abd76ad910d73e61668d2f638af40f1d0ea259c442ecfd7ed4b1ea",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "approve"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "candidate-review.json",
+      "path": "docs/stage8/evidence/gate1/candidate-review.json",
+      "size_bytes": 2495,
+      "modified_at": "2026-08-04T05:23:45.096215+00:00",
+      "mime": "application/json",
+      "sha256": "daa799633f59f785c8735107925aa6de7cfff06858bb97e2bcaf2588b0ce42ec",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "approved"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GENERATION_RECORD.md",
+      "path": "docs/stage8/evidence/gate1/GENERATION_RECORD.md",
+      "size_bytes": 1694,
+      "modified_at": "2026-08-04T05:23:45.096719+00:00",
+      "mime": "text/markdown",
+      "sha256": "b05560782f685711314574d1b78fa9621b4d49c4c3642c5dbaacf511924cf952",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVED",
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "4.4",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "NOT_VERIFIED",
           "VERIFIED",
           "승인"
         ],
@@ -3813,6 +4212,126 @@
       }
     },
     {
+      "stage": "Unclassified",
+      "file_name": "Chakchaki_Approved_Reference_v1.0(2).png",
+      "path": "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png",
+      "size_bytes": 2428769,
+      "modified_at": "2026-08-04T05:00:53.615851+00:00",
+      "mime": "image/png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": "3263c6ea4e51",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "has_alpha": true
+      }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Gongsickyi_Approved_Reference_v1.0(2).png",
+      "path": "evidence/gate-0/candidate-references/Gongsickyi_Approved_Reference_v1.0(2).png",
+      "size_bytes": 2520041,
+      "modified_at": "2026-08-04T05:01:14.024701+00:00",
+      "mime": "image/png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "approval-candidate",
+      "references": [],
+      "duplicate_group": "3d2fe052a9d7",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "has_alpha": true
+      }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Chakchaki_Canonical_Turnaround_Candidate_v1.png",
+      "path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v1.png",
+      "size_bytes": 1220614,
+      "modified_at": "2026-08-04T05:16:04.065312+00:00",
+      "mime": "image/png",
+      "sha256": "660896d727e2404ea6459a08bfb1f8c7019b3994fe38e68fd90db549fe255417",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v1.png",
+      "size_bytes": 1215727,
+      "modified_at": "2026-08-04T05:19:05.362509+00:00",
+      "mime": "image/png",
+      "sha256": "eabcfa0f6cfb2883af3ebec9bd9ce0cdb8ea968a8fdba94f9ee8f1db9e342334",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
+      "path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v2.png",
+      "size_bytes": 1504619,
+      "modified_at": "2026-08-04T05:22:49.064061+00:00",
+      "mime": "image/png",
+      "sha256": "c43f90a16245d481e3b5bffd66b879392608fe20874dd3a375b2175182ac655e",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
       "stage": "Stage 8",
       "file_name": "README.md",
       "path": "harness/README.md",
@@ -3853,14 +4372,13 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 2819,
-      "modified_at": "2026-08-04T04:38:43.832708+00:00",
+      "size_bytes": 3418,
+      "modified_at": "2026-08-04T05:25:26.902475+00:00",
       "mime": "application/json",
-      "sha256": "a3a521269de053bf2dfb8e688538b0556df52c69729db6a4f9f9073f05c73d5d",
+      "sha256": "5ace4a61dcda097451826a6a5caef38253607b6317c38d16ed257494b2feac1f",
       "version": "v1.0",
       "approval_status_tokens": [
-        "VERIFIED",
-        "approved"
+        "VERIFIED"
       ],
       "classification": "unclassified",
       "references": [],
@@ -3897,10 +4415,10 @@
       "stage": "Stage 8",
       "file_name": "audit_stage8.py",
       "path": "scripts/harness/audit_stage8.py",
-      "size_bytes": 24929,
-      "modified_at": "2026-08-04T04:40:30.182436+00:00",
+      "size_bytes": 28979,
+      "modified_at": "2026-08-04T05:10:01.653492+00:00",
       "mime": "text/x-python",
-      "sha256": "0bf41fa37bfd4229e9d393879df97ae2b18b9ecc42f0866fea57ec5b64e9fe7f",
+      "sha256": "f2f7929acd6e213d44211faae4f086c017ef14f4c5bd6fa19e3a653f1f2f6315",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
@@ -3926,10 +4444,10 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 10869,
-      "modified_at": "2026-08-04T04:38:43.826484+00:00",
+      "size_bytes": 13003,
+      "modified_at": "2026-08-04T05:20:52.122357+00:00",
       "mime": "text/x-python",
-      "sha256": "fabdba6c84475c3f7f7e07692231bd4a5db22c8c13b43727ee50124d3826d1c6",
+      "sha256": "68bb7a1e9f6a8bc24dfdd0119c6968d77d57a5f06653b3b8c6008adaa1ea0c95",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED",
@@ -3940,6 +4458,66 @@
       "duplicate_group": null,
       "usable_now": false,
       "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Chakchaki_Approved_Reference_v1.0.png",
+      "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+      "size_bytes": 2428769,
+      "modified_at": "2026-08-04T05:00:53.615851+00:00",
+      "mime": "image/png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "3263c6ea4e51",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "has_alpha": true
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "Chakchaki_Character_Bible_v1.0.md",
+      "path": "ssot/stage7/v1.0/Chakchaki_Character_Bible_v1.0.md",
+      "size_bytes": 3929,
+      "modified_at": "2026-08-04T05:00:41.130336+00:00",
+      "mime": "text/markdown",
+      "sha256": "4a8bbcdbe8a94d4b46f942fbcff98964a5cef4c7bb0dfd7226c1498e2723e32c",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.8",
+          "0.85",
+          "1.0",
+          "22.7",
+          "4.4",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
     },
     {
       "stage": "Stage 7",
@@ -4147,6 +4725,30 @@
     },
     {
       "stage": "Stage 7",
+      "file_name": "Gongsickyi_Approved_Reference_v1.0.png",
+      "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+      "size_bytes": 2520041,
+      "modified_at": "2026-08-04T05:01:14.024701+00:00",
+      "mime": "image/png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": "3d2fe052a9d7",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "has_alpha": true
+      }
+    },
+    {
+      "stage": "Stage 7",
       "file_name": "Gongsickyi_Character_Bible_v1.0.md",
       "path": "ssot/stage7/v1.0/Gongsickyi_Character_Bible_v1.0.md",
       "size_bytes": 3320,
@@ -4176,6 +4778,43 @@
         ],
         "status_tokens": [
           "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "file_name": "MathChakChak_Stage7_SSOT_v1.0.md",
+      "path": "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.md",
+      "size_bytes": 6171,
+      "modified_at": "2026-08-04T05:00:28.324798+00:00",
+      "mime": "text/markdown",
+      "sha256": "4e06e376b0ba45df4efef0c3122201aabf43800bb6b6c8a30191006370bca79a",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인",
+        "조건부 PASS"
+      ],
+      "classification": "target-candidate",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.78",
+          "0.86",
+          "1.0",
+          "4.4",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인",
+          "조건부 PASS"
         ],
         "links": [],
         "broken_links": [],
