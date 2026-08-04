@@ -6,6 +6,9 @@
 - Preparation result: `READY_FOR_HUMAN_REVIEW`
 - Automated QA: `PASS`
 - Actual approvals: `0/10`
+- Valid Coordinator nominations: `5/5`
+- Nomination state: `READY_FOR_ASSIGNMENT`
+- Applied assignments: `0/5`
 - Gate 1: `BLOCKED`
 - Gate 2: `NOT_STARTED`
 

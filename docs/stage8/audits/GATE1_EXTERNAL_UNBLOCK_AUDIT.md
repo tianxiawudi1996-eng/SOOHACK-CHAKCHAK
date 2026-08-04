@@ -2,9 +2,9 @@
 
 ## Outcome
 
-- Status: `BLOCKED_EXTERNAL`
-- Valid nominations: `0/5`
-- Authorization reference present: `false`
+- Status: `READY_FOR_ASSIGNMENT`
+- Valid nominations: `5/5`
+- Authorization reference present: `true`
 - Assignment applied: `false`
 - Dispatch performed: `false`
 - Approvals created: `0`
@@ -14,37 +14,11 @@
 
 ## Missing roles
 
-- `3D Technical Art Lead`
-- `Character Art Lead`
-- `Product Owner`
-- `QA Lead`
-- `UX Brand System Lead`
+- 없음
 
 ## Missing fields
 
-- `3D Technical Art Lead.conflict_declaration`
-- `3D Technical Art Lead.contact_reference`
-- `3D Technical Art Lead.reviewer_identity_reference`
-- `3D Technical Art Lead.reviewer_name`
-- `Character Art Lead.conflict_declaration`
-- `Character Art Lead.contact_reference`
-- `Character Art Lead.reviewer_identity_reference`
-- `Character Art Lead.reviewer_name`
-- `Product Owner.conflict_declaration`
-- `Product Owner.contact_reference`
-- `Product Owner.reviewer_identity_reference`
-- `Product Owner.reviewer_name`
-- `QA Lead.conflict_declaration`
-- `QA Lead.contact_reference`
-- `QA Lead.reviewer_identity_reference`
-- `QA Lead.reviewer_name`
-- `UX Brand System Lead.conflict_declaration`
-- `UX Brand System Lead.contact_reference`
-- `UX Brand System Lead.reviewer_identity_reference`
-- `UX Brand System Lead.reviewer_name`
-- `authorization_reference`
-- `submitted_at`
-- `submitted_by`
+- 없음
 
 ## Failures
 
@@ -52,7 +26,7 @@
 
 ## External blockers
 
-- COORDINATOR_INPUT_MISSING: 23 fields
+- 없음
 
 ## Next action
 

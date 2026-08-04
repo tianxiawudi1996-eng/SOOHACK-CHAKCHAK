@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T08:02:05.975266+00:00",
+  "generated_at": "2026-08-04T08:20:13.939218+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1232,8 +1232,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "edd52f3f074ece5b825368d90cbe21753dd440c2213797d00f7a52d375802d14",
-      "size_bytes": 3889
+      "sha256": "777d44dd806665bbf59aa8aff89c20de22718a4f0fc1c6cc9badd14745d91fb6",
+      "size_bytes": 3986
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1252,8 +1252,8 @@
     },
     {
       "path": "docs/stage8/audits/GATE1_EXTERNAL_UNBLOCK_AUDIT.md",
-      "sha256": "93d9d662d1ca77bef039970a2d5b6da8b4e41b56cdf89b56257c880ee02fa78e",
-      "size_bytes": 1869
+      "sha256": "23d98a9c0e2c203e802d3fe3072f30f278a66cd840eb8505358e06750111a6bb",
+      "size_bytes": 847
     },
     {
       "path": "docs/stage8/audits/GATE1_MANUAL_REVIEW_PREFLIGHT.md",
@@ -1267,8 +1267,8 @@
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "sha256": "eac8a1ad45ce8feda121235a7bd35e75450bba7e222d8783d4be8bb35696ded7",
-      "size_bytes": 5202
+      "sha256": "12b35be23c1613996838141f8f2c3d53468ac01daa88610eb7db23ae54b7ebb3",
+      "size_bytes": 5259
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1277,8 +1277,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "cc2741bf59fa74cf8c0c5f6de078e682e4726127e55eeca01b04de5232298362",
-      "size_bytes": 4805
+      "sha256": "a6e5a2b3ea33d8719a943199dc236ca7d9ee7e9fc3e38794c3ee5ba9d185bd86",
+      "size_bytes": 5003
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1287,8 +1287,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "cc9330bf265a044076fb1d4b589ca176ac8979f35e1c9c33ef52cce7d53edab1",
-      "size_bytes": 4390
+      "sha256": "56fbd53b44ff1116e3b1de7e3a0021af2e9f6f6f4feca3d9908ed9cedcb4bcbf",
+      "size_bytes": 4909
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1352,8 +1352,8 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json",
-      "sha256": "8ab49c29dbd4d106d0fa480b9917207af2e452f9deea5f06c866d0a729dea1ba",
-      "size_bytes": 1331
+      "sha256": "59e0460e35ba5c0b1a3ade57baf1f2b5c6c9ec72583ac1792a5d2588ee002764",
+      "size_bytes": 1580
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
@@ -1392,8 +1392,8 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
-      "sha256": "a9a62fdb7a3a1264ea9e1b46971cf6deb8b8c2d8fb220ff6f0fe1e23939e1a69",
-      "size_bytes": 1957
+      "sha256": "9cc19f859f6dbbcd22df81533b4021668a6c204dafbb9a0253558a52c596d937",
+      "size_bytes": 794
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
@@ -1452,8 +1452,8 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/README.md",
-      "sha256": "ded438da0bfcdbbb0d6d92c9f70cc8d85728aa2fba3a52a0ec3f3a9e276da89c",
-      "size_bytes": 2743
+      "sha256": "a1eb9766f6d77094d6e528fd0086a71854bd8e89ef831b090706f31cf8b7e386",
+      "size_bytes": 2852
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
@@ -1757,8 +1757,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "f6487869ba8c3c0ab72fac8bc0eb0a9fc9a3efcec35f2f2d059ae99ffd88c272",
-      "size_bytes": 5461
+      "sha256": "31d00b047f3eff776206b473c46a2a29be03bd2e993a928e458b4734f5e1457f",
+      "size_bytes": 5567
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",

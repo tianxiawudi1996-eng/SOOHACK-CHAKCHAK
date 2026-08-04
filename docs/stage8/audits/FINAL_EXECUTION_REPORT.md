@@ -34,8 +34,10 @@ Gate 1의 자동 QA·승인 준비 패키지, 수동 검토 Preflight, 승인 �
 - Reviewer acknowledgments: 0/5
 - Reviewer packet mappings: 10/10
 - Dispatch drafts: 5/5, all `NOT_SENT`
-- Coordinator nominations: 0/5
-- Nomination authorization reference: missing
+- Coordinator nominations: 5/5
+- Nomination authorization reference: present and validated
+- External-unblock status: `READY_FOR_ASSIGNMENT`
+- Applied assignments and acknowledgments: 0/5
 - External-unblock structural failures: 0
 - Manual approval rows: 10 required, 0 recorded
 
@@ -58,4 +60,4 @@ The local branch is committed, but `git push -u origin codex/stage8-harness-cont
 
 ## Next authorized action
 
-Gate 1 Coordinator가 `COORDINATOR_ACTION_REQUEST.md`에 따라 다섯 실제 검토자의 nomination과 `authorization_reference`를 제출해야 한다. `READY_FOR_ASSIGNMENT` 판정 후 사람이 배정 대장을 갱신하고 수신 확인을 받아야 한다. 이후 승인된 채널로 요청을 전달하고 실제 결정을 Excel과 JSON에 동기화한다. `READY_FOR_PROMOTION` 10/10 전에는 Gate 1 승격이나 Gate 2 진입을 허용하지 않는다.
+Coordinator nomination 5/5와 권한 참조가 검증되어 `READY_FOR_ASSIGNMENT`다. 다음으로 사람이 `REVIEWER_ASSIGNMENT_REGISTER_v1.0.json`에 배정 시각을 기록하고 각 검토자의 실제 수신 확인 시각을 받아야 한다. 이후 승인된 채널로 요청을 전달하고 실제 결정을 Excel과 JSON에 동기화한다. `READY_FOR_PROMOTION` 10/10 전에는 Gate 1 승격이나 Gate 2 진입을 허용하지 않는다.

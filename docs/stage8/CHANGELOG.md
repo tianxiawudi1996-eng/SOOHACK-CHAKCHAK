@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 Coordinator nominations validated
+
+- Recorded the Coordinator submission and authority reference supplied by the user.
+- Recorded five real reviewer nominations using distinct internal identity and contact references.
+- Validated five `NO_CONFLICT` declarations and the complete five-role matrix.
+- Changed the external-unblock result from `BLOCKED_EXTERNAL` to `READY_FOR_ASSIGNMENT`.
+- Did not apply assignments, acknowledgments, dispatch, approvals, Gate 1 promotion, or Gate 2 permission.
+
 ## 2026-08-04 — Gate 1 external-review unblock handoff
 
 - Added the next-stage metaprompt that hands the reviewer-assignment blocker to the authorized Gate 1 Coordinator.

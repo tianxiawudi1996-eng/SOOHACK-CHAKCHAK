@@ -1,48 +1,48 @@
 {
   "schema_version": "1.0.0",
-  "status": "AWAITING_COORDINATOR_INPUT",
-  "submitted_by": "",
-  "submitted_at": "",
-  "authorization_reference": "",
+  "status": "SUBMITTED",
+  "submitted_by": "John KIM",
+  "submitted_at": "2026-08-04T17:15:00+09:00",
+  "authorization_reference": "GATE1-AUTH-2026-001",
   "nominations": [
     {
       "role": "Character Art Lead",
-      "reviewer_name": "",
-      "reviewer_identity_reference": "",
-      "contact_reference": "",
-      "conflict_declaration": "",
+      "reviewer_name": "김무빈",
+      "reviewer_identity_reference": "USER-ART-01",
+      "contact_reference": "SLACK-USER-ART-01",
+      "conflict_declaration": "NO_CONFLICT",
       "conflict_record": ""
     },
     {
       "role": "3D Technical Art Lead",
-      "reviewer_name": "",
-      "reviewer_identity_reference": "",
-      "contact_reference": "",
-      "conflict_declaration": "",
+      "reviewer_name": "Alex",
+      "reviewer_identity_reference": "USER-3D-01",
+      "contact_reference": "SLACK-USER-3D-01",
+      "conflict_declaration": "NO_CONFLICT",
       "conflict_record": ""
     },
     {
       "role": "UX Brand System Lead",
-      "reviewer_name": "",
-      "reviewer_identity_reference": "",
-      "contact_reference": "",
-      "conflict_declaration": "",
+      "reviewer_name": "Mickey",
+      "reviewer_identity_reference": "USER-UX-01",
+      "contact_reference": "SLACK-USER-UX-01",
+      "conflict_declaration": "NO_CONFLICT",
       "conflict_record": ""
     },
     {
       "role": "QA Lead",
-      "reviewer_name": "",
-      "reviewer_identity_reference": "",
-      "contact_reference": "",
-      "conflict_declaration": "",
+      "reviewer_name": "Bred",
+      "reviewer_identity_reference": "USER-QA-01",
+      "contact_reference": "SLACK-USER-QA-01",
+      "conflict_declaration": "NO_CONFLICT",
       "conflict_record": ""
     },
     {
       "role": "Product Owner",
-      "reviewer_name": "",
-      "reviewer_identity_reference": "",
-      "contact_reference": "",
-      "conflict_declaration": "",
+      "reviewer_name": "Ford",
+      "reviewer_identity_reference": "USER-PO-01",
+      "contact_reference": "SLACK-USER-PO-01",
+      "conflict_declaration": "NO_CONFLICT",
       "conflict_record": ""
     }
   ],
