@@ -501,7 +501,7 @@ def main() -> int:
         if assignment_audit.get("assignment_register_sha256", "").lower() != register_hash:
             fail("gate1 reviewer assignment audit is stale")
         assignment_status = assignment_audit.get("status")
-        if assignment_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_DISPATCH"}:
+        if assignment_status not in {"BLOCKED_EXTERNAL", "FAIL", "READY_FOR_DISPATCH", "DISPATCH_CONFIRMED"}:
             fail(f"unsupported gate1 reviewer assignment status: {assignment_status!r}")
         if assignment_audit.get("assignment_required") != 5:
             fail("gate1 reviewer assignment audit does not require five roles")
@@ -515,13 +515,17 @@ def main() -> int:
             fail("gate1 reviewer assignment audit prematurely allows Gate 2")
         if assignment_audit.get("dispatch_performed") is not assignment_register.get("dispatch_performed"):
             fail("gate1 reviewer assignment dispatch state is inconsistent")
-        if assignment_status == "READY_FOR_DISPATCH":
+        if assignment_status in {"READY_FOR_DISPATCH", "DISPATCH_CONFIRMED"}:
             if assignment_audit.get("valid_assignment_count") != 5:
                 fail("gate1 reviewer assignment is ready without five valid assignments")
             if assignment_audit.get("acknowledged_assignment_count") != 5:
                 fail("gate1 reviewer assignment is ready without five acknowledgments")
             if assignment_audit.get("ready_for_dispatch") is not True:
                 fail("gate1 reviewer assignment readiness flag is false")
+            if assignment_status == "READY_FOR_DISPATCH" and assignment_audit.get("dispatch_performed") is not False:
+                fail("gate1 reviewer assignment is marked ready while dispatch is already recorded")
+            if assignment_status == "DISPATCH_CONFIRMED" and assignment_audit.get("dispatch_performed") is not True:
+                fail("gate1 reviewer assignment confirms dispatch without a dispatch record")
         elif assignment_audit.get("ready_for_dispatch") is not False:
             fail("gate1 reviewer assignment claims readiness while blocked or failed")
 

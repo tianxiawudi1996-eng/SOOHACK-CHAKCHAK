@@ -39,8 +39,8 @@ Gate 1의 자동 QA·승인 준비 패키지, 수동 검토 Preflight, 승인 �
 - External-unblock status: `READY_FOR_ASSIGNMENT`
 - Applied assignments: 5/5
 - Reviewer acknowledgments: 5/5
-- Reviewer-assignment status: `READY_FOR_DISPATCH`
-- Dispatch performed: `false`
+- Reviewer-assignment status: `DISPATCH_CONFIRMED`
+- Dispatch performed: `true`, confirmed by the user and not performed by AI
 - External-unblock structural failures: 0
 - Manual approval rows: 10 required, 0 recorded
 
@@ -63,4 +63,4 @@ The local branch is committed, but `git push -u origin codex/stage8-harness-cont
 
 ## Next authorized action
 
-Coordinator nomination, 배정, 수신 확인이 모두 5/5로 검증되어 `READY_FOR_DISPATCH`다. 다음으로 승인된 채널을 통한 실제 요청 전달 여부를 확인하고, 각 검토자의 두 캐릭터 결정을 Excel과 JSON에 동기화해야 한다. `READY_FOR_PROMOTION` 10/10 전에는 Gate 1 승격이나 Gate 2 진입을 허용하지 않는다.
+Coordinator nomination, 배정, 수신 확인, 요청 발송이 모두 5/5로 검증 또는 사용자 확인되어 `DISPATCH_CONFIRMED`다. 다음으로 각 검토자의 두 캐릭터 실제 결정 10개를 수집하고 Excel과 JSON에 동기화해야 한다. `READY_FOR_PROMOTION` 10/10 전에는 Gate 1 승격이나 Gate 2 진입을 허용하지 않는다.

@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-04T08:25:07.289491+00:00",
+  "generated_at": "2026-08-04T08:36:20.187200+00:00",
   "gate": 1,
-  "status": "READY_FOR_DISPATCH",
+  "status": "DISPATCH_CONFIRMED",
   "package_id": "gate1-manual-review-916636d0-9c8061af",
-  "assignment_register_sha256": "e03d51cc4270f07582610792642ecac44241625cb490dfaaab5152b5d3e2271e",
+  "assignment_register_sha256": "0e98522333d208788188eb613664d05ed15e5af4ec7415980eadbd979c6042ff",
   "valid_assignment_count": 5,
   "acknowledged_assignment_count": 5,
   "assignment_required": 5,
@@ -15,11 +15,11 @@
   "missing_roles": [],
   "failures": [],
   "blockers": [],
-  "dispatch_performed": false,
+  "dispatch_performed": true,
   "approvals_created": 0,
   "approval_intake_status": "BLOCKED_EXTERNAL",
   "approval_count": 0,
   "ready_for_dispatch": true,
   "next_gate_allowed": false,
-  "next_action": "Dispatch through an authorized channel and collect two decisions per reviewer."
+  "next_action": "각 검토자로부터 두 캐릭터의 실제 결정을 수집하고 Excel·JSON 승인 기록을 동기화한다."
 }

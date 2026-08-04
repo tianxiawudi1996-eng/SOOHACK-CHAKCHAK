@@ -1,9 +1,11 @@
 {
   "schema_version": "1.0.0",
   "package_id": "gate1-manual-review-916636d0-9c8061af",
-  "status": "READY_FOR_DISPATCH",
+  "status": "DISPATCH_CONFIRMED",
   "privacy_note": "Store internal identity/contact references only; do not store credentials or private contact details.",
-  "dispatch_performed": false,
+  "dispatch_performed": true,
+  "dispatch_confirmed_at": "2026-08-04T17:34:20+09:00",
+  "dispatch_confirmation_source": "USER_CONFIRMED_ALL_YES",
   "approvals_created": 0,
   "next_gate_allowed": false,
   "assignments": [

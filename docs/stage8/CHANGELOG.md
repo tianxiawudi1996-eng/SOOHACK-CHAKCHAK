@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-04 — Gate 1 reviewer dispatch confirmed
+
+- Recorded the user's confirmation that all five role-specific review requests were sent through the registered contact references.
+- Updated five dispatch records with reviewer, identity reference, contact reference, confirmation time, and user-confirmation source.
+- Changed reviewer-assignment status from `READY_FOR_DISPATCH` to `DISPATCH_CONFIRMED`.
+- Did not claim that AI sent the messages and did not create any reviewer decisions or approvals.
+- Retained approvals 0/10, Gate 1 `BLOCKED`, and Gate 2 `NOT_STARTED`.
+
 ## 2026-08-04 — Gate 1 reviewer assignments acknowledged
 
 - Transferred the five validated nominations into the reviewer assignment register.

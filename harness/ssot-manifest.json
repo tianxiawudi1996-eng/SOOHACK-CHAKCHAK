@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T08:25:09.440653+00:00",
+  "generated_at": "2026-08-04T08:36:22.207025+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1232,8 +1232,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "d354667325aeeec47bbdc01d6310e50aff6d4f08a4db7e2602b244c6f453f581",
-      "size_bytes": 3996
+      "sha256": "a2e627b954040fa9f3ab35e64c79f1dc49d413713af4a5c73b52c2e63791eb47",
+      "size_bytes": 4035
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1242,7 +1242,7 @@
     },
     {
       "path": "docs/stage8/audits/GATE1_AUTOMATED_QA.md",
-      "sha256": "d069afb2bb298e28e746532a24cc81f10b82ca5272f80fe7fcb43ef93a4ce431",
+      "sha256": "1af440a3ee1a5216151b11bcafcedac93627fee4ee1255015da30c3ac50f6c31",
       "size_bytes": 946
     },
     {
@@ -1262,13 +1262,13 @@
     },
     {
       "path": "docs/stage8/audits/GATE1_REVIEWER_ASSIGNMENT_AUDIT.md",
-      "sha256": "016d8c6f5d73d6d0bbd8fd2fc537e9d791850044d92243473d9ea905c27acc1f",
-      "size_bytes": 819
+      "sha256": "9510baf4a30ae2768d759846b0db263440e337ed54d59c6ff0fdc72c3a177019",
+      "size_bytes": 672
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "sha256": "b2330bda380f96c83389908330bb7954092f289044388ed3f7dfe7785043b5db",
-      "size_bytes": 5299
+      "sha256": "dd4cb0f41a2afaa68be9ef9ae501a76feb6b575a5a0fcdfffbf4b87fc18f5e38",
+      "size_bytes": 5356
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1277,8 +1277,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "4e2d5a2e43d2e24f712b32cb6dcbaff01a28287c7d8e85857410193167163799",
-      "size_bytes": 5163
+      "sha256": "76a5d0f8fc94f33a491ae117e98f483f9b63262226264ebeca629414ce3e87b7",
+      "size_bytes": 5341
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1287,8 +1287,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "48c754726a96100dd045b50185c8a9b44a255c41ab2e096a3e0ba084681808db",
-      "size_bytes": 5430
+      "sha256": "f5398cf314876feb2f31a01b8ad2c4d64cf2480701476777867be4fd4f66ca19",
+      "size_bytes": 6009
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1312,7 +1312,7 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/Gate1_Automated_QA_v5.2.0.json",
-      "sha256": "ea87b3514f7f374883b1b9ba0f585bedba895039f927fcebb8c261da369490a6",
+      "sha256": "6872dbee7dd478c3a140a4c16ee81df345c14d466c8200d6307414e6bf28e84a",
       "size_bytes": 30239
     },
     {
@@ -1357,28 +1357,28 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
-      "sha256": "e6b9e6c60b613c6ab76551dd50c669e514780a3010a79aaa2690a1120533100b",
-      "size_bytes": 1243
+      "sha256": "c05e323143d112b52fcb6f863a80ce7c76bc8c76e7faabb486581916aa0d288e",
+      "size_bytes": 1447
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
-      "sha256": "8a133a7481ea7c84c4c7adcd2d880a1a96fa3bd2926bb3b40c877a35d6bc32d5",
-      "size_bytes": 1206
+      "sha256": "78e3742b3fbfc640c5c5e32f1e5f60b15a58f4b3769f4ea37c57c32bce02d729",
+      "size_bytes": 1417
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/product_owner.md",
-      "sha256": "7de4eeb33fa86df016675ce644834cc7d6e98664f92954a5448676a96bccd232",
-      "size_bytes": 1203
+      "sha256": "e8f88e2af379ff18d38f939211f6640fda762c65228350b01215c02047c3454a",
+      "size_bytes": 1407
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/qa_lead.md",
-      "sha256": "027fcce674e25d515bf27cdeb90d80e4b48689f1f31401938b3413dbfb6bee0f",
-      "size_bytes": 1165
+      "sha256": "006ece0355c5ca7954378ed40d0aad4b8d1e00912d2d157d390bc319994c3b12",
+      "size_bytes": 1369
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
-      "sha256": "aac5e8a284eabf72bbb8098d7544d23915b107c8a2805f5fbab995583b2bac7c",
-      "size_bytes": 1233
+      "sha256": "bc35ecbe3e47d8ec999d03c3b5a5fba5c905995611e1807d33b207566f70be84",
+      "size_bytes": 1439
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/FROZEN_EVIDENCE_MANIFEST_v1.0.json",
@@ -1387,18 +1387,18 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_APPROVAL_INTAKE_AUDIT_v1.0.json",
-      "sha256": "fcce778f0a0d7f099950205dd3cf4399f49e6093c2287bf15e6817adf6781cb8",
+      "sha256": "9640fae60d39fec828f0d18b601833269e56a3104964171a8342afdf7c64cdcf",
       "size_bytes": 1785
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json",
-      "sha256": "2e5d7fdb7b763ca0ba60b40d49cffecb9760cfdf3bae1f8240674069b90bac7b",
+      "sha256": "941ea2f62ee80bd438594994b40c614873cf8b95027ad44d4afe08016ea55347",
       "size_bytes": 796
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/GATE1_REVIEWER_ASSIGNMENT_AUDIT_v1.0.json",
-      "sha256": "c280f8b9a2e51bb29bc2d1d22738f3c6efcd2e2171fd0550f69b3913ae649d11",
-      "size_bytes": 882
+      "sha256": "aee8a29be188a3d1b9265343e4a063833c8db31b848f9fbe57dec194efb920bf",
+      "size_bytes": 918
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/3d_technical_art_lead.md",
@@ -1452,13 +1452,13 @@
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/README.md",
-      "sha256": "1c025083df4abf11b361dd9835756c61f08bef5fbf97d5d0281472449a60bd22",
-      "size_bytes": 2957
+      "sha256": "b0245dee705b9bf58bc73b9144d673a459a4c39a576a176621b4731bc1a4e1e5",
+      "size_bytes": 3021
     },
     {
       "path": "docs/stage8/evidence/gate1/manual-review/REVIEWER_ASSIGNMENT_REGISTER_v1.0.json",
-      "sha256": "e03d51cc4270f07582610792642ecac44241625cb490dfaaab5152b5d3e2271e",
-      "size_bytes": 4150
+      "sha256": "0e98522333d208788188eb613664d05ed15e5af4ec7415980eadbd979c6042ff",
+      "size_bytes": 4265
     },
     {
       "path": "docs/stage8/evidence/gate1/overlays/Chakchaki_Main_Views_Overlay.png",
@@ -1757,8 +1757,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "f640bcd3f4c58c1062fa43556339bc1c8ba2b27fcb85af3079e301fe70d8914e",
-      "size_bytes": 5584
+      "sha256": "1339bbc7aa4c060c54baf42258a6e409c8ea7a8cabebedc480f105994714a52c",
+      "size_bytes": 5605
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -1792,8 +1792,8 @@
     },
     {
       "path": "scripts/harness/audit_gate1_reviewer_assignment.py",
-      "sha256": "3165457d58f62b4aaa70938dd3a66b85a9d6fbdcef07c59c779e29f491554b3c",
-      "size_bytes": 10946
+      "sha256": "6b29c908876e582337ce563e25ede8d5dd3ae5b38192b2e6a50238a892de1b2c",
+      "size_bytes": 11736
     },
     {
       "path": "scripts/harness/audit_stage8.py",
@@ -1812,8 +1812,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "bb0a9f4a23da0a8ee8cebf7a920456535f011f17de48385dab0c69962cdce6bb",
-      "size_bytes": 33493
+      "sha256": "4f154d354db5d67a82f1b911a51ad067c6bdf1331b17c68ce215bbae9593469f",
+      "size_bytes": 33969
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

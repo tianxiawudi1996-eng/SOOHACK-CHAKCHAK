@@ -2,11 +2,13 @@
 
 ## Routing — intentionally blank
 
-- Reviewer:
-- Identity reference:
-- Contact reference:
+- Reviewer: Ford
+- Identity reference: `USER-PO-01`
+- Contact reference: `SLACK-USER-PO-01`
 - Deadline:
-- Dispatch status: `NOT_SENT`
+- Dispatch status: `SENT_CONFIRMED`
+- Confirmation recorded at: `2026-08-04T17:34:20+09:00`
+- Confirmation source: `USER_CONFIRMED_ALL_YES`
 
 ## Fixed review package
 
@@ -22,4 +24,4 @@
 
 `Reviewer`, `Role`, `Character`, `Decision`, `Reviewed at`, `Evidence hash`, `Comment`, `Patch ID`, `Unresolved patch`
 
-이 초안은 아직 발송되지 않았으며 수신자의 실제 판단만 승인으로 인정한다.
+사용자가 등록된 경로로의 발송 완료를 확인했다. 발송 확인은 승인이 아니며 수신자의 실제 판단만 승인으로 인정한다.

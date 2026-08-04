@@ -10,8 +10,8 @@
 - Nomination state: `READY_FOR_ASSIGNMENT`
 - Applied assignments: `5/5`
 - Acknowledged assignments: `5/5`
-- Assignment state: `READY_FOR_DISPATCH`
-- Dispatch performed: `false`
+- Assignment state: `DISPATCH_CONFIRMED`
+- Dispatch performed: `true` — confirmed by the user; not sent by AI
 - Gate 1: `BLOCKED`
 - Gate 2: `NOT_STARTED`
 
@@ -28,7 +28,7 @@
 - `COORDINATOR_REVIEWER_NOMINATION_RESPONSE_v1.0.json`: blank, privacy-safe nomination response schema.
 - `GATE1_EXTERNAL_UNBLOCK_AUDIT_v1.0.json`: authority, role-matrix, identity-uniqueness, conflict, and resume-readiness decision.
 - `packets/`: ten role-specific human review packets.
-- `dispatch/`: five role-specific review-request drafts; all remain `NOT_SENT`.
+- `dispatch/`: five role-specific review-request records, all `SENT_CONFIRMED` from user confirmation.
 
 ## Workflow
 

@@ -97,7 +97,7 @@ def write_outputs(result: dict) -> None:
 
 ## Next action
 
-Gate 1 Coordinator가 각 역할의 실제 검토자, 내부 identity reference, contact reference를 제공하고 이해상충 선언과 수신 확인을 기록해야 한다. 그 전에는 요청 발송 완료 또는 승인 수집으로 진행하지 않는다.
+{result['next_action']}
 """,
         encoding="utf-8",
     )
@@ -189,14 +189,30 @@ def main() -> int:
             failures.append(f"DISPATCH_DRAFT_MISSING: {label}")
         else:
             request = request_path.read_text(encoding="utf-8")
+            dispatch_performed = register.get("dispatch_performed") is True
+            required_dispatch_status = (
+                "Dispatch status: `SENT_CONFIRMED`"
+                if dispatch_performed
+                else "Dispatch status: `NOT_SENT`"
+            )
             required = [
                 role,
                 clean(manifest.get("package_id")),
                 candidates.get("Chakchaki", ""),
                 candidates.get("Gongsickyi", ""),
-                "Dispatch status: `NOT_SENT`",
+                required_dispatch_status,
                 "APPROVE_WITH_PATCH",
             ]
+            if dispatch_performed:
+                required.extend(
+                    [
+                        clean(item.get("reviewer_name")),
+                        clean(item.get("reviewer_identity_reference")),
+                        clean(item.get("contact_reference")),
+                        "Confirmation recorded at:",
+                        "Confirmation source:",
+                    ]
+                )
             if any(value not in request for value in required):
                 failures.append(f"DISPATCH_DRAFT_CONTENT_INVALID: {label}")
             else:
@@ -215,18 +231,19 @@ def main() -> int:
         and packet_mapping_count == 10
         and dispatch_draft_count == 5
     )
-    if ready:
-        status = "READY_FOR_DISPATCH"
-    elif failures:
-        status = "FAIL"
-    else:
-        status = "BLOCKED_EXTERNAL"
-
     dispatch_performed = register.get("dispatch_performed") is True
     if dispatch_performed and not ready:
         failures.append("DISPATCH_RECORDED_BEFORE_READINESS")
         status = "FAIL"
         ready = False
+    elif ready and dispatch_performed:
+        status = "DISPATCH_CONFIRMED"
+    elif ready:
+        status = "READY_FOR_DISPATCH"
+    elif failures:
+        status = "FAIL"
+    else:
+        status = "BLOCKED_EXTERNAL"
 
     result = {
         "schema_version": "1.0.0",
@@ -252,9 +269,13 @@ def main() -> int:
         "ready_for_dispatch": ready,
         "next_gate_allowed": False,
         "next_action": (
-            "Dispatch through an authorized channel and collect two decisions per reviewer."
-            if ready
-            else "Assign five real reviewers and record conflict declarations and acknowledgments."
+            "각 검토자로부터 두 캐릭터의 실제 결정을 수집하고 Excel·JSON 승인 기록을 동기화한다."
+            if status == "DISPATCH_CONFIRMED"
+            else (
+                "승인된 채널로 요청을 전달한 뒤 각 검토자로부터 두 캐릭터 결정을 수집한다."
+                if ready
+                else "다섯 실제 검토자를 배정하고 이해상충 선언과 수신 확인을 기록한다."
+            )
         ),
     }
     write_outputs(result)

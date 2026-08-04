@@ -20,16 +20,16 @@
 
 - 작성 파일: `docs/stage8/prompts/GATE1_REVIEWER_ASSIGNMENT_AND_DISPATCH_METAPROMPT_v1.0.md`
 - 실행 파일: `scripts/harness/audit_gate1_reviewer_assignment.py`
-- 실행 판정: `READY_FOR_DISPATCH`
+- 실행 판정: `DISPATCH_CONFIRMED`
 - 유효 책임자 배정: 5/5
 - 수신 확인: 5/5
 - 패킷 매핑: 10/10
 - 역할별 요청 초안: 5/5
-- 외부 발송 수행: `false`
+- 외부 발송 수행: `true` — 사용자 확인, AI 발송 아님
 - 생성된 승인: 0
 - Gate 2 허용: `false`
 
-실명 검토자, 내부 연락 참조, 배정·수신 확인 시각이 모두 검증됐다. 외부 발송 수행 여부는 아직 확인되지 않아 요청 초안은 `NOT_SENT`, dispatch_performed는 `false`로 유지했다.
+실명 검토자, 내부 연락 참조, 배정·수신 확인 시각이 모두 검증됐고 사용자가 다섯 요청의 실제 발송을 확인했다. 다음 단계는 실제 검토 결정 10개를 한 건씩 수집·동기화하는 것이다.
 
 ## 후속 단계 작성·실행 결과
 
