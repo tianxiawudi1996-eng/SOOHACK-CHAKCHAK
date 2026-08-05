@@ -1,20 +1,20 @@
 {
   "schema_version": "1.0.0",
   "gate": 2,
-  "status": "APPROVED",
+  "status": "REJECTED",
   "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
   "reviewer_name": "John KIM",
-  "decision": "APPROVE",
-  "reviewed_at": "2026-08-05T08:27:34+09:00",
+  "decision": "REJECT",
+  "reviewed_at": "2026-08-05T08:57:06+09:00",
   "scope_acknowledged": true,
   "checks": {
-    "silhouette_matches_canonical": true,
-    "proportions_match_character_bibles": true,
-    "color_and_material_drift_acceptable": true,
-    "accessory_intersections_clear": true,
-    "lod_transitions_acceptable": true
+    "silhouette_matches_canonical": false,
+    "proportions_match_character_bibles": false,
+    "color_and_material_drift_acceptable": false,
+    "accessory_intersections_clear": false,
+    "lod_transitions_acceptable": false
   },
-  "comment": "John KIM approved both character base-mesh, material, and LOD comparison evidence through explicit user confirmation.",
-  "approval_applied": true,
-  "next_gate_allowed": true
+  "comment": "Approval superseded by explicit user rejection: the lower procedural characters ignore the existing canonical character identity and are low quality.",
+  "approval_applied": false,
+  "next_gate_allowed": false
 }

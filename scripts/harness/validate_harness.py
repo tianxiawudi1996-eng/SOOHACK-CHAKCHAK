@@ -65,6 +65,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE1_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
     "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
+    "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
     "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
     "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
     "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -89,24 +90,25 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_POLICY_v1.0.json",
     "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
     "docs/stage8/evidence/gate1/single-approval/GATE1_SINGLE_APPROVER_AUDIT_v1.0.json",
+    "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
     "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
     "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
     "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
-    "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
-    "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
-    "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
-    "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_Canonical_vs_LOD0.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_LOD_Comparison.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_Canonical_vs_LOD0.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_LOD_Comparison.png",
     "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
     "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
     "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
-    "docs/stage8/evidence/gate3/previews/Chakchaki_Rig_Skeleton.png",
-    "docs/stage8/evidence/gate3/previews/Chakchaki_Deformation_Review.png",
-    "docs/stage8/evidence/gate3/previews/Chakchaki_Pose_Socket_Review.png",
-    "docs/stage8/evidence/gate3/previews/Gongsickyi_Rig_Skeleton.png",
-    "docs/stage8/evidence/gate3/previews/Gongsickyi_Deformation_Review.png",
-    "docs/stage8/evidence/gate3/previews/Gongsickyi_Pose_Socket_Review.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Rig_Skeleton.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Deformation_Review.png",
+    "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Pose_Socket_Review.png",
     "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md",
     "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md",
@@ -121,20 +123,21 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
-    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod1_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod2_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod0_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod1_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod2_v100.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod0_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod1_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod2_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod0_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod1_v110.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod2_v110.glb",
 ]
 
 MANUAL_REVIEW_ROLES = {
@@ -677,7 +680,49 @@ def main() -> int:
         elif external_unblock_audit.get("ready_for_assignment") is not False:
             fail("gate1 external unblock audit claims readiness while blocked or failed")
 
-    if gates[2].get("status") != "NOT_STARTED":
+    if gates[2].get("status") == "NOT_VERIFIED":
+        if gates[1].get("status") != "VERIFIED":
+            fail("gate2 correction state requires gate1 VERIFIED")
+        register = load_json(ROOT / "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json")
+        gate2_root = ROOT / "docs/stage8/evidence/gate2"
+        gate2_build = load_json(gate2_root / "GATE2_BUILD_MANIFEST_v1.0.json")
+        gate2_audit = load_json(gate2_root / "GATE2_AUTOMATED_QA_v1.0.json")
+        gate2_review = load_json(gate2_root / "GATE2_MANUAL_REVIEW_v1.0.json")
+        if register.get("status") != "ACTIVE_2D_CANONICAL_ONLY":
+            fail("active character reference register status is invalid")
+        if register.get("actual_3d_source", {}).get("status") != "MISSING_NOT_PROVIDED":
+            fail("character register incorrectly claims an approved 3D source")
+        for character, record in register.get("characters", {}).items():
+            for key in ("approved_reference", "canonical_turnaround"):
+                path = ROOT / record.get(f"{key}_path", "")
+                expected = record.get(f"{key}_sha256", "").lower()
+                if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected:
+                    fail(f"canonical reference missing or stale: {character} {key}")
+        if gate2_build.get("status") != "REJECTED_SUPERSEDED":
+            fail("gate2 rejected build manifest status is invalid")
+        for item in gate2_build.get("files", []) + gate2_build.get("previews", []):
+            path = ROOT / item.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                fail(f"rejected gate2 artifact missing or stale: {item.get('path')}")
+        if gate2_audit.get("status") != "BLOCKED_EXTERNAL" or gate2_audit.get("automated_status") != "NOT_RUN":
+            fail("gate2 correction audit is not safely blocked")
+        if gate2_audit.get("model_pass_count") != 0 or gate2_audit.get("models") != []:
+            fail("gate2 correction audit still counts rejected models")
+        required_blockers = {
+            "APPROVED_HIGH_FIDELITY_3D_SOURCE_REQUIRED",
+            "PROCEDURAL_CANDIDATES_REJECTED_IDENTITY_MISMATCH",
+        }
+        if not required_blockers.issubset(set(gate2_audit.get("blockers", []))):
+            fail("gate2 correction blockers are incomplete")
+        if gate2_review.get("status") != "REJECTED" or gate2_review.get("decision") != "REJECT":
+            fail("gate2 superseded manual approval was not rejected")
+        if gate2_review.get("approval_applied") is not False or gate2_review.get("next_gate_allowed") is not False:
+            fail("gate2 rejected review contains promotion flags")
+        if list((ROOT / "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2").glob("*.glb")):
+            fail("active gate2 output contains rejected GLBs")
+        if gates[3].get("status") != "NOT_STARTED" or gates[3].get("entry_allowed") is not False:
+            fail("gate3 was not reset after gate2 rejection")
+    elif gates[2].get("status") != "NOT_STARTED":
         if gates[1].get("status") != "VERIFIED":
             fail("gate2 started before gate1 VERIFIED")
         gate2_root = ROOT / "docs/stage8/evidence/gate2"
@@ -758,7 +803,30 @@ def main() -> int:
         if gates[3].get("entry_allowed") is True and gates[2].get("status") != "VERIFIED":
             fail("gate3 entry allowed before gate2 VERIFIED")
 
-    if gates[3].get("status") != "NOT_STARTED":
+    if gates[3].get("status") == "NOT_STARTED" and gates[2].get("status") != "VERIFIED":
+        gate3_root = ROOT / "docs/stage8/evidence/gate3"
+        gate3_build = load_json(gate3_root / "GATE3_BUILD_MANIFEST_v1.0.json")
+        gate3_audit = load_json(gate3_root / "GATE3_AUTOMATED_QA_v1.0.json")
+        gate3_review = load_json(gate3_root / "GATE3_MANUAL_REVIEW_v1.0.json")
+        if gate3_build.get("status") != "REJECTED_SUPERSEDED":
+            fail("gate3 rejected build manifest status is invalid")
+        for item in gate3_build.get("files", []) + gate3_build.get("previews", []):
+            path = ROOT / item.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                fail(f"rejected gate3 artifact missing or stale: {item.get('path')}")
+        if gate3_audit.get("status") != "BLOCKED_PREREQUISITE" or gate3_audit.get("automated_status") != "NOT_RUN":
+            fail("gate3 correction audit is not prerequisite-blocked")
+        if gate3_audit.get("rig_pass_count") != 0 or gate3_audit.get("rigs") != []:
+            fail("gate3 correction audit still counts rejected rigs")
+        if gate3_review.get("status") != "REJECTED" or gate3_review.get("decision") != "REJECT":
+            fail("gate3 superseded manual review was not rejected")
+        if gate3_review.get("approval_applied") is not False or gate3_review.get("next_gate_allowed") is not False:
+            fail("gate3 rejected review contains promotion flags")
+        if list((ROOT / "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3").glob("*.glb")):
+            fail("active gate3 output contains rejected GLBs")
+        if gates[4].get("entry_allowed") is not False:
+            fail("gate4 entry allowed while gate3 is not started")
+    elif gates[3].get("status") != "NOT_STARTED":
         if gates[2].get("status") != "VERIFIED":
             fail("gate3 started before gate2 VERIFIED")
         gate3_root = ROOT / "docs/stage8/evidence/gate3"

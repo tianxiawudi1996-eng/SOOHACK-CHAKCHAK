@@ -1,20 +1,20 @@
 {
   "schema_version": "1.0.0",
   "gate": 3,
-  "status": "PENDING",
+  "status": "REJECTED",
   "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
-  "reviewer_name": "",
-  "decision": "",
-  "reviewed_at": "",
-  "scope_acknowledged": false,
+  "reviewer_name": "John KIM",
+  "decision": "REJECT",
+  "reviewed_at": "2026-08-05T08:57:06+09:00",
+  "scope_acknowledged": true,
   "checks": {
-    "skeleton_and_rest_pose_preserve_identity": null,
-    "deformation_poses_are_clear": null,
-    "facial_combinations_preserve_identity": null,
-    "gaze_and_prop_sockets_are_correct": null,
-    "accessory_intersections_are_acceptable": null
+    "skeleton_and_rest_pose_preserve_identity": false,
+    "deformation_poses_are_clear": false,
+    "facial_combinations_preserve_identity": false,
+    "gaze_and_prop_sockets_are_correct": false,
+    "accessory_intersections_are_acceptable": false
   },
-  "comment": "",
+  "comment": "Derived Gate 3 candidates are rejected because their Gate 2 character meshes do not match the approved canonical characters.",
   "approval_applied": false,
   "next_gate_allowed": false
 }

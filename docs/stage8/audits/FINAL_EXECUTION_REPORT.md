@@ -1,46 +1,29 @@
 # Final Execution Report
 
-## Outcome
+## 결과
 
-Gate 0, Gate 1, Gate 2가 모두 `VERIFIED`다. Gate 3에서는 승인된 Gate 2 GLB 6개를 입력으로 실제 skin·joint hierarchy·inverse bind matrix·normalized weights·morph target·pose library가 포함된 GLB 6개를 생성했다. 자동 검사는 `6/6 PASS`지만 프로젝트 책임자 변형 검토는 `0/1`이므로 Gate 3는 `BLOCKED`, Gate 4는 `NOT_STARTED`다.
+사용자 피드백에 따라 하단 절차형 캐릭터를 공식 후보에서 제외하고, 상단의 기존 승인 캐릭터 이미지만 공식 시각 기준으로 복구했다. 이전 Gate 2 승인과 Gate 3 후보 상태는 취소했다.
 
-## Gate status
-
-| Gate | Status | Evidence |
+| Gate | 상태 | 근거 |
 |---:|---|---|
-| 0 | `VERIFIED` | Stage 7 exact originals 10/10 and manual/automatic SSOT checks |
-| 1 | `VERIFIED` | Automated QA `PASS`; John KIM package approval 1/1; hash drift 0 |
-| 2 | `VERIFIED` | GLB 6/6 automated PASS; John KIM visual approval 1/1 |
-| 3 | `BLOCKED` | Rigged GLB 6/6 automated PASS; one Project Owner deformation review pending |
-| 4–8 | `NOT_STARTED` | Sequential prerequisite gates are not satisfied |
+| 0 | `VERIFIED` | Stage 7 원본과 SSOT 감사 완료 |
+| 1 | `VERIFIED` | 기존 캐릭터 턴어라운드와 승인 기록 |
+| 2 | `NOT_VERIFIED` | 고품질 실제 3D 원본 없음; 절차형 후보 거부 |
+| 3 | `NOT_STARTED` | Gate 2 미승인으로 리깅 시작 불가 |
+| 4~8 | `NOT_STARTED` | 선행 Gate 미충족 |
 
-## Gate 3 evidence summary
+## 보존·차단 조치
 
-- Rigged GLB files: 6/6 generated and parseable
-- Chakchaki: 32 joints; 15–18 morph targets by LOD; four hand test poses
-- Gongsickyi: 20 joints; 20–22 morph targets by LOD; four wing/socket test poses
-- Skin and inverse bind matrices: 6/6 PASS
-- Weighted vertices: all weights normalized to 1.0
-- Invalid joint indices: 0
-- Required common facial morphs: 15/15 on every LOD
-- Required Gongsickyi body/wing morphs: 4/4 on every LOD
-- Prop sockets: `prop_socket.L/R → wing_03.L/R`
-- Input, output, rig-spec and preview hash drift: 0
-- Automated QA: `PASS`
-- Manual deformation review: 0/1 pending
+- 거부된 GLB 12개와 미리보기 10개는 삭제하지 않고 `rejected/procedural-low-fidelity` 아래에 격리했다.
+- 활성 Gate 2·3 출력에는 GLB가 없다.
+- 이전 승인 레코드는 `REJECT`와 `REJECTED_SUPERSEDED`로 수정했다.
+- 절차형 생성기는 새 저품질 캐릭터를 만들지 않는 차단기로 교체했다.
+- 공식 이미지 경로와 SHA-256은 활성 캐릭터 참조 대장에 고정했다.
 
-## Controls retained
+## 원인
 
-- Gate 2 GLBs are immutable inputs and were not overwritten.
-- Bone, morph, pose and socket names follow the Stage 7 rig workbook.
-- Automatic nearest-joint weights remain candidate data until accountable visual review.
-- Gate 3 approval did not create or claim Gate 4 motion clips.
-- The ignored, untracked `github-recovery-codes.txt` was not read or committed.
+Blender와 실제 3D 원본이 없는 상태에서 기술 구조 검증을 진행하려고 기본 도형 기반 GLB를 만들었다. 파일 구조와 LOD 조건은 검사했지만, 가장 중요한 기존 캐릭터 정체성과 시각 품질을 승인 조건으로 우선 적용하지 않은 것이 문제였다.
 
-## Tool constraint
+## 다음 단계
 
-Blender is not installed. glTF 2.0 skin and deformation structures were generated directly and independently parsed for structural, weighting and hash verification. This does not replace the required human deformation/intersection review.
-
-## Next authorized action
-
-프로젝트 책임자 한 명이 Gate 3 skeleton, facial/body deformation, hand/wing pose, gaze, prop socket 및 accessory intersection 비교 렌더를 검토하고 결정한다.
+기존 캐릭터의 실제 3D 원본이 있다면 `.blend`, `.fbx`, `.glb`, `.gltf`, `.obj` 중 하나를 입력한다. 원본이 없다면 상단 승인 이미지를 기준으로 전문 수준의 3D 모델링을 새로 수행해야 하며, 그 전에는 Gate 2를 통과시키지 않는다.

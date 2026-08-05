@@ -1,8 +1,8 @@
 {
   "summary": {
-    "generated_at": "2026-08-04T23:46:26.702642+00:00",
+    "generated_at": "2026-08-05T00:08:49.372182+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 224,
+    "file_count": 227,
     "required_stage7_file_count": 10,
     "required_exact_found": 10,
     "required_exact_missing_or_conflicting": 0,
@@ -10,18 +10,18 @@
     "sensitive_tracked_or_canonical_count": 0,
     "git_metadata_present": true,
     "3d_files": [
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
-      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb"
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod2_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod0_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod1_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod2_v100.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod0_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod1_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod2_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod0_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod1_v110.glb",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod2_v110.glb"
     ],
     "required_records": [
       {
@@ -3630,16 +3630,15 @@
     },
     {
       "stage": "Stage 8",
-      "file_name": "FINAL_EXECUTION_REPORT.md",
-      "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 2382,
-      "modified_at": "2026-08-04T23:45:20.635910+00:00",
+      "file_name": "CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
+      "path": "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
+      "size_bytes": 756,
+      "modified_at": "2026-08-05T00:06:00.551568+00:00",
       "mime": "text/markdown",
-      "sha256": "eb017c4a91bc0bd1edbbeced26ae9317c226e98170713d110c559a4d502c101e",
+      "sha256": "c619c04ad1a16d2c328262c90c97c7a178bbc2d0f8c6aaa1f724a9d7bcab2dd7",
       "version": null,
       "approval_status_tokens": [
-        "PASS",
-        "VERIFIED"
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -3649,15 +3648,45 @@
       "markdown_audit": {
         "utf8": true,
         "h1_count": 1,
-        "version_tokens": [
-          "1.0",
-          "2.0"
-        ],
+        "version_tokens": [],
         "status_tokens": [
-          "BLOCKED",
           "NOT_STARTED",
-          "PASS",
-          "VERIFIED"
+          "NOT_VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "FINAL_EXECUTION_REPORT.md",
+      "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
+      "size_bytes": 1753,
+      "modified_at": "2026-08-05T00:06:00.558544+00:00",
+      "mime": "text/markdown",
+      "sha256": "a4a228059186dcee8461c6bc9e6d82e2b237661f724d365a383535ea81837f73",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "VERIFIED",
+          "승인"
         ],
         "links": [],
         "broken_links": [],
@@ -3892,14 +3921,13 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL_AUDIT.md",
       "path": "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
-      "size_bytes": 1096,
-      "modified_at": "2026-08-04T23:46:12.243789+00:00",
+      "size_bytes": 576,
+      "modified_at": "2026-08-05T00:07:50.875745+00:00",
       "mime": "text/markdown",
-      "sha256": "88dae5e0dfbb7b0164ad1528d5be9e3781bccf38f8e18d61704b2a1c50a37ca5",
+      "sha256": "137ee9b8ddb52dce491adfb7b6c5bf996f4d0146195547a844ab33377d80b5fb",
       "version": null,
       "approval_status_tokens": [
-        "PASS",
-        "VERIFIED"
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -3909,15 +3937,9 @@
       "markdown_audit": {
         "utf8": true,
         "h1_count": 1,
-        "version_tokens": [
-          "0.1658",
-          "0.1839",
-          "0.4896",
-          "0.4937"
-        ],
+        "version_tokens": [],
         "status_tokens": [
-          "PASS",
-          "VERIFIED"
+          "승인"
         ],
         "links": [],
         "broken_links": [],
@@ -3928,13 +3950,39 @@
       "stage": "Stage 8",
       "file_name": "GATE3_RIG_BLENDSHAPE_AUDIT.md",
       "path": "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
-      "size_bytes": 1086,
-      "modified_at": "2026-08-04T23:46:11.818642+00:00",
+      "size_bytes": 368,
+      "modified_at": "2026-08-05T00:07:51.000075+00:00",
       "mime": "text/markdown",
-      "sha256": "1eb4922a7ddd675f5d5d7c79ce9f0edd0e3deb8d573d709ef06675429d1f7ded",
+      "sha256": "61cd52e26386f661d9e0cc398f4249080b4cc0c798277759c022a021e776f33e",
       "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "NOT_VERIFIED"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "NEXT_PART_METAPROMPT_REPORT.md",
+      "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
+      "size_bytes": 1399,
+      "modified_at": "2026-08-05T00:08:33.509376+00:00",
+      "mime": "text/markdown",
+      "sha256": "d776e205596d35dc4a2241c0952293d5dd535d8dab46de49657d748885d353f8",
+      "version": "v1.0",
       "approval_status_tokens": [
-        "PASS",
         "VERIFIED",
         "승인"
       ],
@@ -3948,51 +3996,8 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
-          "PASS",
-          "VERIFIED",
-          "승인"
-        ],
-        "links": [],
-        "broken_links": [],
-        "image_links": []
-      }
-    },
-    {
-      "stage": "Stage 8",
-      "file_name": "NEXT_PART_METAPROMPT_REPORT.md",
-      "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "size_bytes": 7867,
-      "modified_at": "2026-08-04T23:44:47.729300+00:00",
-      "mime": "text/markdown",
-      "sha256": "1811375d3e32808651d3afc176eda06b79a6ea031d551c0b4039343cbd082110",
-      "version": "v1.0",
-      "approval_status_tokens": [
-        "APPROVE",
-        "FAIL",
-        "PASS",
-        "VERIFIED",
-        "승인"
-      ],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection",
-      "markdown_audit": {
-        "utf8": true,
-        "h1_count": 1,
-        "version_tokens": [
-          "16.58",
-          "18.39",
-          "48.96",
-          "49.37",
-          "v5.2.0"
-        ],
-        "status_tokens": [
-          "BLOCKED",
-          "FAIL",
           "NOT_STARTED",
-          "PASS",
+          "NOT_VERIFIED",
           "VERIFIED",
           "승인"
         ],
@@ -4038,16 +4043,13 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 6617,
-      "modified_at": "2026-08-04T23:45:50.734785+00:00",
+      "size_bytes": 1889,
+      "modified_at": "2026-08-05T00:08:40.667664+00:00",
       "mime": "text/markdown",
-      "sha256": "02ec33b562c31b0b83c5f8d0d0ac0d229a3bba75e673436b05f647c78299aa07",
+      "sha256": "433349545eea2b0084dce1e0060725dd575f2a2c32724f0b357b9b2251fcafdc",
       "version": null,
       "approval_status_tokens": [
-        "PASS",
-        "VERIFIED",
-        "pass",
-        "verified"
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -4057,17 +4059,11 @@
       "markdown_audit": {
         "utf8": true,
         "h1_count": 1,
-        "version_tokens": [
-          "0.1555",
-          "0.3358",
-          "2.0"
-        ],
+        "version_tokens": [],
         "status_tokens": [
-          "BLOCKED",
-          "PASS",
-          "VERIFIED",
-          "pass",
-          "verified"
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "승인"
         ],
         "links": [],
         "broken_links": [],
@@ -4111,10 +4107,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 8676,
-      "modified_at": "2026-08-04T23:44:47.726283+00:00",
+      "size_bytes": 9244,
+      "modified_at": "2026-08-05T00:06:29.015732+00:00",
       "mime": "text/markdown",
-      "sha256": "d7e697e27fbb0d8ae607d3a55aecfe09fdb1212fc75d474d946f6e0d642c49a9",
+      "sha256": "ea92ba9b26c5d677035bc8524a47d8c75d99ceb2c729cfec0d0c3dfb9df3ea1c",
       "version": null,
       "approval_status_tokens": [
         "APPROVE",
@@ -4122,7 +4118,8 @@
         "PASS",
         "VERIFIED",
         "Verified",
-        "approved"
+        "approved",
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -4145,14 +4142,34 @@
           "BLOCKED",
           "FAIL",
           "NOT_STARTED",
+          "NOT_VERIFIED",
           "PASS",
           "VERIFIED",
-          "Verified"
+          "Verified",
+          "승인"
         ],
         "links": [],
         "broken_links": [],
         "image_links": []
       }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
+      "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
+      "size_bytes": 2143,
+      "modified_at": "2026-08-04T23:59:28.790914+00:00",
+      "mime": "application/json",
+      "sha256": "aad5cbae16b50eb8d5e9985776c87c15260d9d19afa695e7b00f33fa197612a2",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "approved"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
       "stage": "Stage 8",
@@ -5981,15 +5998,12 @@
       "stage": "Stage 8",
       "file_name": "GATE2_AUTOMATED_QA_v1.0.json",
       "path": "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
-      "size_bytes": 4545,
-      "modified_at": "2026-08-04T23:46:12.243789+00:00",
+      "size_bytes": 556,
+      "modified_at": "2026-08-05T00:07:50.875745+00:00",
       "mime": "application/json",
-      "sha256": "3a86d3fe6ec94722ae90ee774a8a00d65ca96ef9bb8a8939606430cf8a766b9e",
+      "sha256": "0a400ca32828dafa58eda038f1af31bbe9f36fedf38b36e3d74a9f26c54fe71b",
       "version": "v1.0",
-      "approval_status_tokens": [
-        "PASS",
-        "VERIFIED"
-      ],
+      "approval_status_tokens": [],
       "classification": "unclassified",
       "references": [],
       "duplicate_group": null,
@@ -6000,15 +6014,12 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
       "path": "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
-      "size_bytes": 1740,
-      "modified_at": "2026-08-04T23:31:02.317803+00:00",
+      "size_bytes": 1069,
+      "modified_at": "2026-08-05T00:06:00.555012+00:00",
       "mime": "text/markdown",
-      "sha256": "db18271bdcc03ceb5a7e0609c9bd91a11e2ab1c2f1975614e4c33bdb960bfa5c",
+      "sha256": "91a68c50d200ebe130ef52211fce4ca7a9bacd72712d6a5e49f2b37bb1eb11c5",
       "version": "v1.0",
       "approval_status_tokens": [
-        "APPROVE",
-        "PASS",
-        "VERIFIED",
         "승인"
       ],
       "classification": "unclassified",
@@ -6020,17 +6031,10 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
-          "16.58",
-          "18.39",
-          "2.0",
-          "48.96",
-          "49.37",
           "v1.0"
         ],
         "status_tokens": [
-          "NOT_STARTED",
-          "PASS",
-          "VERIFIED",
+          "NOT_VERIFIED",
           "승인"
         ],
         "links": [],
@@ -6042,10 +6046,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BUILD_MANIFEST_v1.0.json",
       "path": "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
-      "size_bytes": 4324,
-      "modified_at": "2026-08-04T09:37:25.098419+00:00",
+      "size_bytes": 4919,
+      "modified_at": "2026-08-05T00:01:47.414670+00:00",
       "mime": "application/json",
-      "sha256": "5927488626582f390d21f8c19e21fc794c7efe068a828452fe2de17b5bad92eb",
+      "sha256": "a3b3e6993f9c1f1a6737a74b6f50135bb2493d1d9a343268f43a42f23aac2ff1",
       "version": "v1.0",
       "approval_status_tokens": [],
       "classification": "unclassified",
@@ -6058,14 +6062,60 @@
       "stage": "Stage 8",
       "file_name": "GATE2_MANUAL_REVIEW_v1.0.json",
       "path": "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
-      "size_bytes": 684,
-      "modified_at": "2026-08-04T23:30:26.077153+00:00",
+      "size_bytes": 722,
+      "modified_at": "2026-08-04T23:59:28.793455+00:00",
       "mime": "application/json",
-      "sha256": "6ae0dcf3c5723749a3a914dc93ebf4639b03548277b9de6dd632941fe18db1fb",
+      "sha256": "3875ff578faa102276c3ddaeaa760e921714dafccddc9c6c79d5cb807f83d48c",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE3_AUTOMATED_QA_v1.0.json",
+      "path": "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
+      "size_bytes": 563,
+      "modified_at": "2026-08-05T00:07:50.980627+00:00",
+      "mime": "application/json",
+      "sha256": "9fbe855b02008768480dd9654597eb3477b63078bd593aa45b095e5dc80e7828",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE3_BUILD_MANIFEST_v1.0.json",
+      "path": "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
+      "size_bytes": 10335,
+      "modified_at": "2026-08-05T00:01:47.415672+00:00",
+      "mime": "application/json",
+      "sha256": "d2d658e1e6bbbd130a13de07dca91cbb2b892fbf8639e772c645f4285527438f",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE3_MANUAL_REVIEW_v1.0.json",
+      "path": "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
+      "size_bytes": 720,
+      "modified_at": "2026-08-04T23:59:28.793973+00:00",
+      "mime": "application/json",
+      "sha256": "b38494a8370b0deef6c1c17f1d19daddb10ada89f951e73fbfce302b5bddc27f",
       "version": "v1.0",
       "approval_status_tokens": [
-        "APPROVE",
-        "APPROVED",
         "approved"
       ],
       "classification": "unclassified",
@@ -6076,8 +6126,38 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+      "path": "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+      "size_bytes": 518,
+      "modified_at": "2026-08-05T00:06:00.555533+00:00",
+      "mime": "text/markdown",
+      "sha256": "40cc43465bee33419aa4ec3aa045b38a4142d7b6d8a741487968d907ce2dc670",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "Chakchaki_Canonical_vs_LOD0.png",
-      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_Canonical_vs_LOD0.png",
       "size_bytes": 418358,
       "modified_at": "2026-08-04T09:37:23.752826+00:00",
       "mime": "image/png",
@@ -6101,7 +6181,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Chakchaki_LOD_Comparison.png",
-      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_LOD_Comparison.png",
       "size_bytes": 168327,
       "modified_at": "2026-08-04T09:37:24.383626+00:00",
       "mime": "image/png",
@@ -6125,7 +6205,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Gongsickyi_Canonical_vs_LOD0.png",
-      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_Canonical_vs_LOD0.png",
       "size_bytes": 550348,
       "modified_at": "2026-08-04T09:37:24.773375+00:00",
       "mime": "image/png",
@@ -6149,7 +6229,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Gongsickyi_LOD_Comparison.png",
-      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_LOD_Comparison.png",
       "size_bytes": 166348,
       "modified_at": "2026-08-04T09:37:25.096381+00:00",
       "mime": "image/png",
@@ -6172,96 +6252,8 @@
     },
     {
       "stage": "Stage 8",
-      "file_name": "GATE3_AUTOMATED_QA_v1.0.json",
-      "path": "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
-      "size_bytes": 4952,
-      "modified_at": "2026-08-04T23:46:11.817136+00:00",
-      "mime": "application/json",
-      "sha256": "43976933b08e0aab37af21d93af068d1ce33794021c94aa1921283804c4d75ef",
-      "version": "v1.0",
-      "approval_status_tokens": [
-        "PASS"
-      ],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection"
-    },
-    {
-      "stage": "Stage 8",
-      "file_name": "GATE3_BUILD_MANIFEST_v1.0.json",
-      "path": "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
-      "size_bytes": 9475,
-      "modified_at": "2026-08-04T23:46:11.528969+00:00",
-      "mime": "application/json",
-      "sha256": "576628e839b2dc01571d59f177394ef3097a3472fd6688ccaedd97c6762813a3",
-      "version": "v1.0",
-      "approval_status_tokens": [],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection"
-    },
-    {
-      "stage": "Stage 8",
-      "file_name": "GATE3_MANUAL_REVIEW_v1.0.json",
-      "path": "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
-      "size_bytes": 552,
-      "modified_at": "2026-08-04T23:39:09.919948+00:00",
-      "mime": "application/json",
-      "sha256": "6f17afbf5e987bce871f7ee813511c924190c5b7e5f5459e18ddbda094b725b1",
-      "version": "v1.0",
-      "approval_status_tokens": [],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection"
-    },
-    {
-      "stage": "Stage 8",
-      "file_name": "GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
-      "path": "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
-      "size_bytes": 1852,
-      "modified_at": "2026-08-04T23:44:47.722336+00:00",
-      "mime": "text/markdown",
-      "sha256": "d744b181df12fdb698790ad1f44fb2ad60aae9221ecee9f60d3aae2436b4689f",
-      "version": "v1.0",
-      "approval_status_tokens": [
-        "PASS",
-        "VERIFIED",
-        "승인"
-      ],
-      "classification": "unclassified",
-      "references": [],
-      "duplicate_group": null,
-      "usable_now": true,
-      "basis": "metadata plus read-only content/OOXML inspection",
-      "markdown_audit": {
-        "utf8": true,
-        "h1_count": 1,
-        "version_tokens": [
-          "1.0",
-          "2.0",
-          "v1.0"
-        ],
-        "status_tokens": [
-          "NOT_STARTED",
-          "PASS",
-          "VERIFIED",
-          "승인"
-        ],
-        "links": [],
-        "broken_links": [],
-        "image_links": []
-      }
-    },
-    {
-      "stage": "Stage 8",
       "file_name": "Chakchaki_Deformation_Review.png",
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Deformation_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
       "size_bytes": 51679,
       "modified_at": "2026-08-04T23:46:10.460345+00:00",
       "mime": "image/png",
@@ -6285,7 +6277,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Chakchaki_Pose_Socket_Review.png",
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Pose_Socket_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
       "size_bytes": 73985,
       "modified_at": "2026-08-04T23:46:10.482868+00:00",
       "mime": "image/png",
@@ -6309,7 +6301,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Chakchaki_Rig_Skeleton.png",
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Rig_Skeleton.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
       "size_bytes": 52530,
       "modified_at": "2026-08-04T23:46:10.438226+00:00",
       "mime": "image/png",
@@ -6333,7 +6325,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Gongsickyi_Deformation_Review.png",
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Deformation_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Deformation_Review.png",
       "size_bytes": 77426,
       "modified_at": "2026-08-04T23:46:11.497233+00:00",
       "mime": "image/png",
@@ -6357,7 +6349,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Gongsickyi_Pose_Socket_Review.png",
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Pose_Socket_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Pose_Socket_Review.png",
       "size_bytes": 86514,
       "modified_at": "2026-08-04T23:46:11.526460+00:00",
       "mime": "image/png",
@@ -6381,7 +6373,7 @@
     {
       "stage": "Stage 8",
       "file_name": "Gongsickyi_Rig_Skeleton.png",
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Rig_Skeleton.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Rig_Skeleton.png",
       "size_bytes": 46046,
       "modified_at": "2026-08-04T23:46:11.470477+00:00",
       "mime": "image/png",
@@ -6400,6 +6392,40 @@
         "height": 720,
         "mode": "RGB",
         "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
+      "size_bytes": 2837,
+      "modified_at": "2026-08-05T00:06:00.549925+00:00",
+      "mime": "text/markdown",
+      "sha256": "4ee3207ea8cedeb8b33295fe0878ded6f457c2cada4f338eb95dacbaf2ebdab8",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
       }
     },
     {
@@ -6717,11 +6743,11 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL.md",
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
-      "size_bytes": 1558,
-      "modified_at": "2026-08-04T23:30:26.080521+00:00",
+      "size_bytes": 1551,
+      "modified_at": "2026-08-05T00:06:29.013742+00:00",
       "mime": "text/markdown",
-      "sha256": "69f30f3791a997dfa67a61706af828a74aac0c0e0392a8bab5c3de287730494e",
-      "version": "v1.0",
+      "sha256": "17e41e1fde9cd9ed5d3f1ba98330ce0d86c525334aab846f8b788de4a84be5f1",
+      "version": null,
       "approval_status_tokens": [
         "VERIFIED",
         "승인",
@@ -6751,10 +6777,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
-      "size_bytes": 6423,
-      "modified_at": "2026-08-04T09:34:06.675544+00:00",
+      "size_bytes": 6658,
+      "modified_at": "2026-08-05T00:06:29.014180+00:00",
       "mime": "text/markdown",
-      "sha256": "d12c08dfd8634f98ec33839f3d41210fdf4723d44b5e50917e0290df6d71c0cf",
+      "sha256": "a961c0b4cbd971db474c0f3338605eef99facda30f40b9eae1c141fe9594c62c",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
@@ -6795,10 +6821,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
       "path": "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
-      "size_bytes": 2961,
-      "modified_at": "2026-08-04T23:28:43.660179+00:00",
+      "size_bytes": 3188,
+      "modified_at": "2026-08-05T00:08:33.510983+00:00",
       "mime": "text/markdown",
-      "sha256": "b54544e5ae74409c7ba4841902fa9ce594e59955d9ab30726878d2466bf91cc5",
+      "sha256": "7556ed4a94efcc18243292d82d32e52f20513083a991e398a1967c88eec75a79",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
@@ -6821,6 +6847,7 @@
         ],
         "status_tokens": [
           "FAIL",
+          "NOT_VERIFIED",
           "PASS",
           "VERIFIED",
           "승인"
@@ -6834,13 +6861,12 @@
       "stage": "Stage 8",
       "file_name": "GATE3_RIG_BLENDSHAPE.md",
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
-      "size_bytes": 1496,
-      "modified_at": "2026-08-04T23:44:47.724022+00:00",
+      "size_bytes": 1445,
+      "modified_at": "2026-08-05T00:06:29.014691+00:00",
       "mime": "text/markdown",
-      "sha256": "d7ba8322847cdf89d5876fd00538813e3db6380240ba9e9862c83a5852a2cd6b",
-      "version": "v1.0",
+      "sha256": "2e1f9a4ee4b82e923e20fea76131cbd2c4acc86854d317fbcc85ed5fe7df44a7",
+      "version": null,
       "approval_status_tokens": [
-        "PASS",
         "VERIFIED",
         "승인"
       ],
@@ -6854,7 +6880,7 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
-          "PASS",
+          "NOT_STARTED",
           "VERIFIED",
           "승인"
         ],
@@ -6867,10 +6893,10 @@
       "stage": "Stage 8",
       "file_name": "GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
-      "size_bytes": 3751,
-      "modified_at": "2026-08-04T23:39:09.913406+00:00",
+      "size_bytes": 3947,
+      "modified_at": "2026-08-05T00:06:29.015213+00:00",
       "mime": "text/markdown",
-      "sha256": "a213f7779c2c6433ec3cca31d899ebff77554a7fee934fcc495016a52f67e9ee",
+      "sha256": "2091047ce74fdbc2974befd96efb98c202ec54bd75493b3252dad8749fe80365",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED",
@@ -7278,15 +7304,13 @@
       "stage": "Stage 8",
       "file_name": "README.md",
       "path": "harness/README.md",
-      "size_bytes": 1585,
-      "modified_at": "2026-08-04T23:45:20.632906+00:00",
+      "size_bytes": 1213,
+      "modified_at": "2026-08-05T00:06:00.557545+00:00",
       "mime": "text/markdown",
-      "sha256": "e4e58e9b67b163c5ae2f3a8eeb1fede5fd27ed60f421282b2f350a156f77706e",
+      "sha256": "7035067d0a3cf43186346697ed1c13f02accf261a8bf4616aeef7614006faf71",
       "version": "v1.0",
       "approval_status_tokens": [
-        "PASS",
-        "VERIFIED",
-        "승인"
+        "VERIFIED"
       ],
       "classification": "unclassified",
       "references": [],
@@ -7296,17 +7320,11 @@
       "markdown_audit": {
         "utf8": true,
         "h1_count": 1,
-        "version_tokens": [
-          "v1.0"
-        ],
+        "version_tokens": [],
         "status_tokens": [
-          "BLOCKED",
-          "IN_PROGRESS",
           "NOT_STARTED",
           "NOT_VERIFIED",
-          "PASS",
-          "VERIFIED",
-          "승인"
+          "VERIFIED"
         ],
         "links": [],
         "broken_links": [],
@@ -7317,12 +7335,13 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 8355,
-      "modified_at": "2026-08-04T23:44:47.725034+00:00",
+      "size_bytes": 7044,
+      "modified_at": "2026-08-05T00:03:24.903831+00:00",
       "mime": "application/json",
-      "sha256": "5b464155e968d337a4593ca6e456c4ca4b7d9854a0e9629e395fc4a6e0fa70c1",
+      "sha256": "4ff5d9c09e46612e908a0a6257fcfd1134cbbb033c01a1da91d20d49a61bc12c",
       "version": "v1.0",
       "approval_status_tokens": [
+        "Approved",
         "VERIFIED"
       ],
       "classification": "unclassified",
@@ -7428,7 +7447,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod0_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
       "size_bytes": 547476,
       "modified_at": "2026-08-04T09:37:23.092136+00:00",
       "mime": "application/octet-stream",
@@ -7444,7 +7463,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod1_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod1_v100.glb",
       "size_bytes": 285068,
       "modified_at": "2026-08-04T09:37:23.106372+00:00",
       "mime": "application/octet-stream",
@@ -7460,7 +7479,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod2_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod2_v100.glb",
       "size_bytes": 109072,
       "modified_at": "2026-08-04T09:37:23.110966+00:00",
       "mime": "application/octet-stream",
@@ -7476,7 +7495,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod0_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod0_v100.glb",
       "size_bytes": 270252,
       "modified_at": "2026-08-04T09:37:23.127643+00:00",
       "mime": "application/octet-stream",
@@ -7492,7 +7511,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod1_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod1_v100.glb",
       "size_bytes": 145344,
       "modified_at": "2026-08-04T09:37:23.135466+00:00",
       "mime": "application/octet-stream",
@@ -7508,7 +7527,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod2_v100.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod2_v100.glb",
       "size_bytes": 65928,
       "modified_at": "2026-08-04T09:37:23.140074+00:00",
       "mime": "application/octet-stream",
@@ -7524,7 +7543,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod0_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod0_v110.glb",
       "size_bytes": 1018464,
       "modified_at": "2026-08-04T23:46:08.350975+00:00",
       "mime": "application/octet-stream",
@@ -7540,7 +7559,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod1_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod1_v110.glb",
       "size_bytes": 533432,
       "modified_at": "2026-08-04T23:46:08.371656+00:00",
       "mime": "application/octet-stream",
@@ -7556,7 +7575,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_chakchaki_lod2_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod2_v110.glb",
       "size_bytes": 226268,
       "modified_at": "2026-08-04T23:46:08.383237+00:00",
       "mime": "application/octet-stream",
@@ -7572,7 +7591,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod0_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod0_v110.glb",
       "size_bytes": 615300,
       "modified_at": "2026-08-04T23:46:08.409708+00:00",
       "mime": "application/octet-stream",
@@ -7588,7 +7607,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod1_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod1_v110.glb",
       "size_bytes": 330920,
       "modified_at": "2026-08-04T23:46:08.424909+00:00",
       "mime": "application/octet-stream",
@@ -7604,7 +7623,7 @@
     {
       "stage": "Unclassified",
       "file_name": "char_gongsickyi_lod2_v110.glb",
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod2_v110.glb",
       "size_bytes": 167680,
       "modified_at": "2026-08-04T23:46:08.433872+00:00",
       "mime": "application/octet-stream",
@@ -7743,20 +7762,17 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
-      "stage": "Stage 8",
+      "stage": "Stage 7",
       "file_name": "audit_gate2.py",
       "path": "scripts/harness/audit_gate2.py",
-      "size_bytes": 17764,
-      "modified_at": "2026-08-04T23:28:43.657902+00:00",
+      "size_bytes": 3140,
+      "modified_at": "2026-08-05T00:02:44.107319+00:00",
       "mime": "text/x-python",
-      "sha256": "08b036ba7bd1e2eeb004d0dc9252f77f21b73a1ec42a6769c9c73fb00685afb9",
+      "sha256": "b43259bcbd18471e0960d27ab470cd1d0709364755abf8e64e52a3f275e88059",
       "version": "v1.0",
       "approval_status_tokens": [
-        "APPROVE",
         "FAIL",
-        "PASS",
-        "VERIFIED",
-        "verified"
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -7765,20 +7781,16 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
-      "stage": "Stage 8",
+      "stage": "Unclassified",
       "file_name": "audit_gate3.py",
       "path": "scripts/harness/audit_gate3.py",
-      "size_bytes": 15144,
-      "modified_at": "2026-08-04T23:42:36.211755+00:00",
+      "size_bytes": 2264,
+      "modified_at": "2026-08-05T00:02:44.109361+00:00",
       "mime": "text/x-python",
-      "sha256": "700311326bcda03cc83580a9c0460cf1da1874aefc0bc842e1cf24f0caccf3b3",
+      "sha256": "a474783be500bd63f07bf841451b08f52241e082d658baa05f83d2dd09936924",
       "version": "v1.0",
       "approval_status_tokens": [
-        "APPROVE",
-        "FAIL",
-        "PASS",
-        "VERIFIED",
-        "승인"
+        "FAIL"
       ],
       "classification": "unclassified",
       "references": [],
@@ -7832,16 +7844,16 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
-      "stage": "Stage 8",
+      "stage": "Unclassified",
       "file_name": "build_gate2_base_mesh.py",
       "path": "scripts/harness/build_gate2_base_mesh.py",
-      "size_bytes": 32895,
-      "modified_at": "2026-08-04T09:30:33.480261+00:00",
+      "size_bytes": 1525,
+      "modified_at": "2026-08-05T00:02:44.107319+00:00",
       "mime": "text/x-python",
-      "sha256": "23e4aa8bc2ce2ac1a0eeda2c1bc79b461800618024a10267e19bd62985f44f6f",
+      "sha256": "83a79466472560cd76992a8c842143b1a0b20945bcc18cc0043923067406e559",
       "version": "v1.0",
       "approval_status_tokens": [
-        "VERIFIED"
+        "approved"
       ],
       "classification": "unclassified",
       "references": [],
@@ -7853,12 +7865,15 @@
       "stage": "Unclassified",
       "file_name": "build_gate3_rig.py",
       "path": "scripts/harness/build_gate3_rig.py",
-      "size_bytes": 25977,
-      "modified_at": "2026-08-04T23:42:36.209727+00:00",
+      "size_bytes": 942,
+      "modified_at": "2026-08-05T00:02:44.109361+00:00",
       "mime": "text/x-python",
-      "sha256": "840de1446fe211da4bfc80989230b6f8fdf3819652248933500d0dc08b2b8fbb",
-      "version": "v1.0",
-      "approval_status_tokens": [],
+      "sha256": "d9bf45c18efb88328dad269f396c9bf00d353844b70a49d4e400583c6f23ea03",
+      "version": null,
+      "approval_status_tokens": [
+        "VERIFIED",
+        "verified"
+      ],
       "classification": "unclassified",
       "references": [],
       "duplicate_group": null,
@@ -7909,10 +7924,10 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 53547,
-      "modified_at": "2026-08-04T23:44:03.256347+00:00",
+      "size_bytes": 59431,
+      "modified_at": "2026-08-05T00:07:41.718084+00:00",
       "mime": "text/x-python",
-      "sha256": "037cbc3081656d2b565b8a0f0d477355a2c849b021315138849cd23a1eced897",
+      "sha256": "ebe6d737e948960e99837f89754686f23235504f78b25c76c360ee1d44b32dbe",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",

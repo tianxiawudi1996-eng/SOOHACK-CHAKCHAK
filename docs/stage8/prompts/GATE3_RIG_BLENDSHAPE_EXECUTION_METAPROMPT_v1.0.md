@@ -1,5 +1,7 @@
 # 수학착착 Stage 8 — Gate 3 Rig & Blendshape 실행 메타프롬프트 v1.0
 
+> **폐기 공지:** 거부된 저품질 Gate 2 메시를 입력으로 만든 기존 리그 후보는 사용할 수 없다. Gate 2 재승인 전에는 이 프롬프트를 실행하지 않는다.
+
 ## 1. Goal Framing
 
 - 사용자: 3D Technical Art Lead, Character Art Lead, Product Owner

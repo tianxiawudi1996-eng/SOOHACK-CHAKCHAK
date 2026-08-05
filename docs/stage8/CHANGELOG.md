@@ -1,5 +1,12 @@
 # Stage 8 Change Log
 
+## 2026-08-05 — 캐릭터 정체성 복구 및 잘못된 승격 취소
+
+- 사용자의 명시적 피드백에 따라 하단 절차형 캐릭터를 거부하고 상단의 기존 승인 캐릭터만 공식 기준으로 복구했다.
+- Gate 2 승인 효력을 취소하고 상태를 `NOT_VERIFIED`로, Gate 3을 `NOT_STARTED`로 되돌렸다.
+- Gate 2·3 GLB 12개와 미리보기 10개를 삭제하지 않고 감사용 격리 경로로 이동했다.
+- 실제 승인 가능한 3D 원본이 없음을 기록하고, 절차형 저품질 모델 재생성을 차단했다.
+
 ## 2026-08-05 — Gate 3 rig and blendshape candidates built
 
 - Generated six actual glTF 2.0 GLBs with skins, joint hierarchies, inverse bind matrices, normalized weights, morph targets, and test poses.

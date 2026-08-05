@@ -1,35 +1,10 @@
-# Gate 2 Base Mesh & Material Audit
+# Gate 2 캐릭터 정체성 수정 감사
 
-## Outcome
+- 상태: `BLOCKED_EXTERNAL`
+- 공식 입력: Stage 7 승인 이미지와 Gate 1 턴어라운드
+- 실제 고품질 3D 원본: 없음
+- 기존 절차형 GLB: 사용자 명시적 거부로 격리
+- 활성 Gate 2 GLB: 0개
+- 다음 단계 허용: `false`
 
-- Status: `VERIFIED`
-- Automated status: `PASS`
-- Models: `6/6 PASS`
-- Manual approval: `1/1`
-- Gate 2 status change applied: `true`
-- Gate 3 allowed: `true`
-
-## Model metrics
-
-| Character | LOD | Triangles | Vertices | Materials | Non-manifold edges | Result |
-|---|---:|---:|---:|---:|---:|---|
-| Chakchaki | LOD0 | 23,372 | 11,768 | 10 | 0 | `PASS` |
-| Chakchaki | LOD1 | 11,444 | 5,804 | 10 | 0 | `PASS` |
-| Chakchaki | LOD2 | 3,876 | 2,002 | 8 | 0 | `PASS` |
-| Gongsickyi | LOD0 | 11,028 | 5,738 | 9 | 0 | `PASS` |
-| Gongsickyi | LOD1 | 5,444 | 2,882 | 9 | 0 | `PASS` |
-| Gongsickyi | LOD2 | 2,028 | 1,150 | 8 | 0 | `PASS` |
-
-LOD1 ratios are 0.4896 and 0.4937; LOD2 ratios are 0.1658 and 0.1839.
-
-## Failures
-
-- 없음
-
-## Blockers
-
-- 없음
-
-## Decision
-
-실제 GLB 6개와 비교 렌더를 생성했고 자동 구조·토폴로지·UV·PBR·LOD 검사를 수행했다. 프로젝트 책임자의 유효한 1인 승인과 상태 승격이 모두 확인된 경우에만 Gate 2를 `VERIFIED`로 판정한다.
+상단의 기존 캐릭터 이미지만 시각적 기준으로 사용한다. 해당 2D 이미지를 실제 3D 메시로 오인하지 않으며, 정체성과 품질을 충족하는 3D 원본 또는 전문 제작 결과가 제공되기 전까지 Gate 2는 차단된다.

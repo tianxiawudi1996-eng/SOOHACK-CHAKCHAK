@@ -1,5 +1,7 @@
 # 수학착착 Stage 8 — Gate 2 베이스 메시·머티리얼 실행 메타프롬프트 v1.0
 
+> **폐기 공지:** 이 프롬프트로 만든 절차형 후보는 기존 캐릭터를 재현하지 못해 거부·격리되었다. 재실행하지 않으며 `CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md`의 통제를 따른다.
+
 ## 0. 실행 선언
 
 이 프롬프트는 Gate 1에서 승인된 Chakchaki·Gongsickyi Canonical View를 실제 glTF 2.0 GLB 베이스 메시, 분리 모듈, PBR 재질과 LOD0/1/2 후보로 변환하고 자동·수동 증거로 Gate 2를 통제한다. 실제 파일과 검증 결과 없이 완료를 주장하지 않는다.

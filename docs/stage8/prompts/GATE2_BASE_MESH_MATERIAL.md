@@ -1,6 +1,6 @@
 # Gate 2 — Base Mesh & Material
 
-> 실행 완료: 실제 GLB 6개와 자동 QA 6/6 PASS가 준비됐고 John KIM의 프로젝트 책임자 수동 비교 승인 1/1이 적용되어 Gate 2는 `VERIFIED`다. 승인·승격 기록은 `GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md`를 따른다.
+> **수정 상태:** 이전 절차형 GLB는 사용자에 의해 정체성·품질 불일치로 거부되었다. 이 문서의 기존 생성 결과는 승격 근거가 아니며 Gate 2는 `NOT_VERIFIED`다. 공식 기준은 상단의 기존 Stage 7 승인 이미지다.
 
 ## 역할
 모델링·토폴로지·UV·LookDev 리드.

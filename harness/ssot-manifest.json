@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T23:46:26.702642+00:00",
+  "generated_at": "2026-08-05T00:08:49.372182+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1231,9 +1231,14 @@
       "size_bytes": 1898
     },
     {
+      "path": "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
+      "sha256": "c619c04ad1a16d2c328262c90c97c7a178bbc2d0f8c6aaa1f724a9d7bcab2dd7",
+      "size_bytes": 756
+    },
+    {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "eb017c4a91bc0bd1edbbeced26ae9317c226e98170713d110c559a4d502c101e",
-      "size_bytes": 2382
+      "sha256": "a4a228059186dcee8461c6bc9e6d82e2b237661f724d365a383535ea81837f73",
+      "size_bytes": 1753
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1272,18 +1277,18 @@
     },
     {
       "path": "docs/stage8/audits/GATE2_BASE_MESH_MATERIAL_AUDIT.md",
-      "sha256": "88dae5e0dfbb7b0164ad1528d5be9e3781bccf38f8e18d61704b2a1c50a37ca5",
-      "size_bytes": 1096
+      "sha256": "137ee9b8ddb52dce491adfb7b6c5bf996f4d0146195547a844ab33377d80b5fb",
+      "size_bytes": 576
     },
     {
       "path": "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
-      "sha256": "1eb4922a7ddd675f5d5d7c79ce9f0edd0e3deb8d573d709ef06675429d1f7ded",
-      "size_bytes": 1086
+      "sha256": "61cd52e26386f661d9e0cc398f4249080b4cc0c798277759c022a021e776f33e",
+      "size_bytes": 368
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "sha256": "1811375d3e32808651d3afc176eda06b79a6ea031d551c0b4039343cbd082110",
-      "size_bytes": 7867
+      "sha256": "d776e205596d35dc4a2241c0952293d5dd535d8dab46de49657d748885d353f8",
+      "size_bytes": 1399
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1292,8 +1297,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "02ec33b562c31b0b83c5f8d0d0ac0d229a3bba75e673436b05f647c78299aa07",
-      "size_bytes": 6617
+      "sha256": "433349545eea2b0084dce1e0060725dd575f2a2c32724f0b357b9b2251fcafdc",
+      "size_bytes": 1889
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1302,8 +1307,13 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "d7e697e27fbb0d8ae607d3a55aecfe09fdb1212fc75d474d946f6e0d642c49a9",
-      "size_bytes": 8676
+      "sha256": "ea92ba9b26c5d677035bc8524a47d8c75d99ceb2c729cfec0d0c3dfb9df3ea1c",
+      "size_bytes": 9244
+    },
+    {
+      "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
+      "sha256": "aad5cbae16b50eb8d5e9985776c87c15260d9d19afa695e7b00f33fa197612a2",
+      "size_bytes": 2143
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1667,93 +1677,98 @@
     },
     {
       "path": "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
-      "sha256": "3a86d3fe6ec94722ae90ee774a8a00d65ca96ef9bb8a8939606430cf8a766b9e",
-      "size_bytes": 4545
+      "sha256": "0a400ca32828dafa58eda038f1af31bbe9f36fedf38b36e3d74a9f26c54fe71b",
+      "size_bytes": 556
     },
     {
       "path": "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
-      "sha256": "db18271bdcc03ceb5a7e0609c9bd91a11e2ab1c2f1975614e4c33bdb960bfa5c",
-      "size_bytes": 1740
+      "sha256": "91a68c50d200ebe130ef52211fce4ca7a9bacd72712d6a5e49f2b37bb1eb11c5",
+      "size_bytes": 1069
     },
     {
       "path": "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
-      "sha256": "5927488626582f390d21f8c19e21fc794c7efe068a828452fe2de17b5bad92eb",
-      "size_bytes": 4324
+      "sha256": "a3b3e6993f9c1f1a6737a74b6f50135bb2493d1d9a343268f43a42f23aac2ff1",
+      "size_bytes": 4919
     },
     {
       "path": "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
-      "sha256": "6ae0dcf3c5723749a3a914dc93ebf4639b03548277b9de6dd632941fe18db1fb",
-      "size_bytes": 684
+      "sha256": "3875ff578faa102276c3ddaeaa760e921714dafccddc9c6c79d5cb807f83d48c",
+      "size_bytes": 722
     },
     {
-      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
+      "sha256": "9fbe855b02008768480dd9654597eb3477b63078bd593aa45b095e5dc80e7828",
+      "size_bytes": 563
+    },
+    {
+      "path": "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
+      "sha256": "d2d658e1e6bbbd130a13de07dca91cbb2b892fbf8639e772c645f4285527438f",
+      "size_bytes": 10335
+    },
+    {
+      "path": "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
+      "sha256": "b38494a8370b0deef6c1c17f1d19daddb10ada89f951e73fbfce302b5bddc27f",
+      "size_bytes": 720
+    },
+    {
+      "path": "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+      "sha256": "40cc43465bee33419aa4ec3aa045b38a4142d7b6d8a741487968d907ce2dc670",
+      "size_bytes": 518
+    },
+    {
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_Canonical_vs_LOD0.png",
       "sha256": "730155a751b6b10df792910a5e85016200a5bd77f1238154a24dff795374f2a7",
       "size_bytes": 418358
     },
     {
-      "path": "docs/stage8/evidence/gate2/previews/Chakchaki_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_LOD_Comparison.png",
       "sha256": "8b82a31996aafa98faa9df7523437ea6e427fa37c9a8f52104965207fbbdd21d",
       "size_bytes": 168327
     },
     {
-      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_Canonical_vs_LOD0.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_Canonical_vs_LOD0.png",
       "sha256": "a22cd2942306df6802e186363f71f40baad4cada754765543fa681aa92020959",
       "size_bytes": 550348
     },
     {
-      "path": "docs/stage8/evidence/gate2/previews/Gongsickyi_LOD_Comparison.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Gongsickyi_LOD_Comparison.png",
       "sha256": "5a8a0c06b56dce2cebfbef8f49308f039f9fba0cb55b0fa108d821edefd04a68",
       "size_bytes": 166348
     },
     {
-      "path": "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
-      "sha256": "43976933b08e0aab37af21d93af068d1ce33794021c94aa1921283804c4d75ef",
-      "size_bytes": 4952
-    },
-    {
-      "path": "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
-      "sha256": "576628e839b2dc01571d59f177394ef3097a3472fd6688ccaedd97c6762813a3",
-      "size_bytes": 9475
-    },
-    {
-      "path": "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
-      "sha256": "6f17afbf5e987bce871f7ee813511c924190c5b7e5f5459e18ddbda094b725b1",
-      "size_bytes": 552
-    },
-    {
-      "path": "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
-      "sha256": "d744b181df12fdb698790ad1f44fb2ad60aae9221ecee9f60d3aae2436b4689f",
-      "size_bytes": 1852
-    },
-    {
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Deformation_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
       "sha256": "a09ec910e46a5df90089692a2003e84769fc8d2541a6153ffde87f1fdd3a9d6c",
       "size_bytes": 51679
     },
     {
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Pose_Socket_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
       "sha256": "65fecb9aa33eb2f90b2795898c53860d36b0b75b0818032d25a203a385994849",
       "size_bytes": 73985
     },
     {
-      "path": "docs/stage8/evidence/gate3/previews/Chakchaki_Rig_Skeleton.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
       "sha256": "b004618a4fbe2db803a8088dcbb9f9152f4afa0a87afbb893921360de59808e2",
       "size_bytes": 52530
     },
     {
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Deformation_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Deformation_Review.png",
       "sha256": "a85b6a39e7283c150be2937a036c81d9d90c17d1c5337f7e79a8deb964f0460b",
       "size_bytes": 77426
     },
     {
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Pose_Socket_Review.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Pose_Socket_Review.png",
       "sha256": "8b61de1c8f0029ef271b57f6e21f1d651ccce7b3e86616ecc015fc583c5ad9b2",
       "size_bytes": 86514
     },
     {
-      "path": "docs/stage8/evidence/gate3/previews/Gongsickyi_Rig_Skeleton.png",
+      "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Gongsickyi_Rig_Skeleton.png",
       "sha256": "aaee8e8685458fc6d62bea2956bc7ee9ddd6076d54be5404a2d8065c24893fd9",
       "size_bytes": 46046
+    },
+    {
+      "path": "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
+      "sha256": "4ee3207ea8cedeb8b33295fe0878ded6f457c2cada4f338eb95dacbaf2ebdab8",
+      "size_bytes": 2837
     },
     {
       "path": "docs/stage8/prompts/GATE0_SSOT_AUDIT.md",
@@ -1797,28 +1812,28 @@
     },
     {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
-      "sha256": "69f30f3791a997dfa67a61706af828a74aac0c0e0392a8bab5c3de287730494e",
-      "size_bytes": 1558
+      "sha256": "17e41e1fde9cd9ed5d3f1ba98330ce0d86c525334aab846f8b788de4a84be5f1",
+      "size_bytes": 1551
     },
     {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
-      "sha256": "d12c08dfd8634f98ec33839f3d41210fdf4723d44b5e50917e0290df6d71c0cf",
-      "size_bytes": 6423
+      "sha256": "a961c0b4cbd971db474c0f3338605eef99facda30f40b9eae1c141fe9594c62c",
+      "size_bytes": 6658
     },
     {
       "path": "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
-      "sha256": "b54544e5ae74409c7ba4841902fa9ce594e59955d9ab30726878d2466bf91cc5",
-      "size_bytes": 2961
+      "sha256": "7556ed4a94efcc18243292d82d32e52f20513083a991e398a1967c88eec75a79",
+      "size_bytes": 3188
     },
     {
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
-      "sha256": "d7ba8322847cdf89d5876fd00538813e3db6380240ba9e9862c83a5852a2cd6b",
-      "size_bytes": 1496
+      "sha256": "2e1f9a4ee4b82e923e20fea76131cbd2c4acc86854d317fbcc85ed5fe7df44a7",
+      "size_bytes": 1445
     },
     {
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
-      "sha256": "a213f7779c2c6433ec3cca31d899ebff77554a7fee934fcc495016a52f67e9ee",
-      "size_bytes": 3751
+      "sha256": "2091047ce74fdbc2974befd96efb98c202ec54bd75493b3252dad8749fe80365",
+      "size_bytes": 3947
     },
     {
       "path": "docs/stage8/prompts/GATE4_MOTION.md",
@@ -1892,13 +1907,13 @@
     },
     {
       "path": "harness/README.md",
-      "sha256": "e4e58e9b67b163c5ae2f3a8eeb1fede5fd27ed60f421282b2f350a156f77706e",
-      "size_bytes": 1585
+      "sha256": "7035067d0a3cf43186346697ed1c13f02accf261a8bf4616aeef7614006faf71",
+      "size_bytes": 1213
     },
     {
       "path": "harness/status.json",
-      "sha256": "5b464155e968d337a4593ca6e456c4ca4b7d9854a0e9629e395fc4a6e0fa70c1",
-      "size_bytes": 8355
+      "sha256": "4ff5d9c09e46612e908a0a6257fcfd1134cbbb033c01a1da91d20d49a61bc12c",
+      "size_bytes": 7044
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -1911,62 +1926,62 @@
       "size_bytes": 6763
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
       "sha256": "445c71c81dcdc2eeb2f06b4c65f9db88d0e71578566695f0a3195c30692a33d1",
       "size_bytes": 547476
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod1_v100.glb",
       "sha256": "3c945eb0db19d29e76d43d0bb28716dc367aff31a16853e676dbc879aa09717d",
       "size_bytes": 285068
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_chakchaki_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod2_v100.glb",
       "sha256": "02964f3afbdac9a1877f7815f3e374d66a643978ee7ac6ccdfa4bca2ea51f453",
       "size_bytes": 109072
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod0_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod0_v100.glb",
       "sha256": "df9e476eae28f327bdc7fe82aa3625c59d5940e9c4662257563bf7a7da0a8edb",
       "size_bytes": 270252
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod1_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod1_v100.glb",
       "sha256": "ef88583c2a3ff818060de50e753d798e2b391d2d68e96763b7a8b8abd479c6f4",
       "size_bytes": 145344
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2/char_gongsickyi_lod2_v100.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_gongsickyi_lod2_v100.glb",
       "sha256": "bae9f5cdbf232218474c50d189bc485b34d0ff23baa62e83643d7b05dcdc37ef",
       "size_bytes": 65928
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod0_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod0_v110.glb",
       "sha256": "8850bda829c929750570cd6636c2cccc097a467affb5a8b9b3fc6c1a64875137",
       "size_bytes": 1018464
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod1_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod1_v110.glb",
       "sha256": "50a481850da5fe649b03a67c958d7715a7581a74815e4768ab115ea6199e5fb0",
       "size_bytes": 533432
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_chakchaki_lod2_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_chakchaki_lod2_v110.glb",
       "sha256": "9ebc52a802f8a76adf7cbad158b32468e09650991296d49c66253df50822e816",
       "size_bytes": 226268
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod0_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod0_v110.glb",
       "sha256": "6941283e426329a3cdb38954298930e9ec2b6211dd64080ec49f6afab30f8bac",
       "size_bytes": 615300
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod1_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod1_v110.glb",
       "sha256": "671a97342d76d9d7e03b73df61f653fb26a63912f13d0b775299f80b0c547590",
       "size_bytes": 330920
     },
     {
-      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate3/char_gongsickyi_lod2_v110.glb",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/char_gongsickyi_lod2_v110.glb",
       "sha256": "61855d9495998315831af76269f4d2d45681578ce1fc0bebd4bebd0672ecbf0a",
       "size_bytes": 167680
     },
@@ -2002,13 +2017,13 @@
     },
     {
       "path": "scripts/harness/audit_gate2.py",
-      "sha256": "08b036ba7bd1e2eeb004d0dc9252f77f21b73a1ec42a6769c9c73fb00685afb9",
-      "size_bytes": 17764
+      "sha256": "b43259bcbd18471e0960d27ab470cd1d0709364755abf8e64e52a3f275e88059",
+      "size_bytes": 3140
     },
     {
       "path": "scripts/harness/audit_gate3.py",
-      "sha256": "700311326bcda03cc83580a9c0460cf1da1874aefc0bc842e1cf24f0caccf3b3",
-      "size_bytes": 15144
+      "sha256": "a474783be500bd63f07bf841451b08f52241e082d658baa05f83d2dd09936924",
+      "size_bytes": 2264
     },
     {
       "path": "scripts/harness/audit_stage8.py",
@@ -2022,13 +2037,13 @@
     },
     {
       "path": "scripts/harness/build_gate2_base_mesh.py",
-      "sha256": "23e4aa8bc2ce2ac1a0eeda2c1bc79b461800618024a10267e19bd62985f44f6f",
-      "size_bytes": 32895
+      "sha256": "83a79466472560cd76992a8c842143b1a0b20945bcc18cc0043923067406e559",
+      "size_bytes": 1525
     },
     {
       "path": "scripts/harness/build_gate3_rig.py",
-      "sha256": "840de1446fe211da4bfc80989230b6f8fdf3819652248933500d0dc08b2b8fbb",
-      "size_bytes": 25977
+      "sha256": "d9bf45c18efb88328dad269f396c9bf00d353844b70a49d4e400583c6f23ea03",
+      "size_bytes": 942
     },
     {
       "path": "scripts/harness/inspect_stage7_rig_spec.mjs",
@@ -2042,8 +2057,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "037cbc3081656d2b565b8a0f0d477355a2c849b021315138849cd23a1eced897",
-      "size_bytes": 53547
+      "sha256": "ebe6d737e948960e99837f89754686f23235504f78b25c76c360ee1d44b32dbe",
+      "size_bytes": 59431
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

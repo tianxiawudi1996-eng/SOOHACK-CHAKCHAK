@@ -1,6 +1,6 @@
 # Gate 3 — Rig & Blendshape
 
-> 활성 실행 프롬프트: `GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md`. 실제 rigged GLB 6개와 skeleton/deformation/pose 렌더 6개가 생성됐고 자동 QA는 `6/6 PASS`다. 프로젝트 책임자 수동 변형 검토 `0/1`을 대기한다.
+> **수정 상태:** 이전 리그 후보는 거부된 Gate 2 메시에서 파생되어 함께 격리되었다. Gate 2가 고품질 캐릭터로 다시 `VERIFIED`되기 전까지 Gate 3은 `NOT_STARTED`다.
 
 ## 역할
 리깅·페이셜·디포메이션 리드.
