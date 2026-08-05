@@ -7,7 +7,7 @@
     "1": {"name": "requirements", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:requirements", "npm.cmd run test:productization"]},
     "2": {"name": "functional_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:functions", "npm.cmd run test:productization"]},
     "3": {"name": "infrastructure_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:infrastructure", "npm.cmd run test:productization"]},
-    "4": {"name": "database_design", "status": "VERIFIED_STATIC", "tests": ["npm.cmd run test:productization:database", "npm.cmd run test:productization"], "runtime_test": "NOT_RUN_NO_PSQL"},
+    "4": {"name": "database_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:database", "PostgreSQL 16: initial migration + smoke + rollback"], "runtime_test": "PASS"},
     "5": {"name": "screen_and_brand_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:screens", "browser: 8 locales + 1440px + 390px"]},
     "6": {"name": "feature_development", "status": "PARTIAL_VERIFIED", "progress": "14/15", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:features", "npm.cmd run test:productization"]},
     "7": {"name": "staging_deployment", "status": "NOT_STARTED", "tests": []},
@@ -20,8 +20,7 @@
     "gate6_entry_allowed": false
   },
   "blockers": [
-    "Stage 8 Gate 5 manual approval required for FEAT-PET-001 (0/1)",
-    "PostgreSQL runtime migration test required before staging deployment"
+    "Stage 8 Gate 5 manual approval required for FEAT-PET-001 (0/1)"
   ],
-  "last_updated": "2026-08-06T00:35:00+09:00"
+  "last_updated": "2026-08-06T00:09:52+09:00"
 }

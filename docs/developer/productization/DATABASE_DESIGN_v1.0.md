@@ -86,8 +86,10 @@ erDiagram
 4. 실패하면 트랜잭션을 중단한다. 적용 후 되돌림이 필요하면 백업 확인 후 `0001_rollback.sql`을 사용한다.
 5. 운영에는 동일 해시의 검증된 migration만 적용한다.
 
-## 9. 검증 범위와 제한
+## 9. 검증 결과
 
-- 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드
-- 현재 제한: 이 작업 환경에는 `psql` 실행기가 없으므로 실제 PostgreSQL 파싱·적용 검증은 수행하지 않았다.
-- 종료 조건: 정적 검증 PASS 후 Phase 5 진입 가능. 스테이징 배포 전에는 실제 PostgreSQL migration test가 반드시 필요하다.
+- 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
+- PostgreSQL 16 격리 실행: `0001_initial.sql` 적용 PASS
+- smoke test: 18개 테이블, locale 허용 목록, idempotency 고유성, 감사 metadata 민감정보 차단 PASS
+- `0001_rollback.sql` 적용 후 `mathchakchak` 스키마 0개 확인 PASS
+- 실행 근거: `docs/productization/evidence/PHASE_4_POSTGRES_RUNTIME_QA.json`

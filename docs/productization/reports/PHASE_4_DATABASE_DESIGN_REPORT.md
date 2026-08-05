@@ -2,12 +2,12 @@
 
 ## 결과
 
-- 상태: `VERIFIED_STATIC`
+- 상태: `VERIFIED`
 - PostgreSQL 테이블 계약: 18/18
 - 지원 locale 제약: 8/8
 - 정방향·역방향 migration 대칭성: PASS
 - 개인정보 보호 규칙: PASS
-- 실제 PostgreSQL 적용: `NOT_RUN_NO_PSQL`
+- 실제 PostgreSQL 16 적용·rollback: PASS
 
 ## 산출물
 
@@ -36,12 +36,14 @@
 | migration 단일 트랜잭션 | PASS |
 | rollback 객체 대칭성 | PASS |
 | 민감정보 금지 컬럼 | PASS |
-| 실제 PostgreSQL parse/apply | NOT RUN |
+| 실제 PostgreSQL parse/apply | PASS |
+| 제약 smoke test | PASS |
+| rollback 후 스키마 제거 | PASS |
 
-## 남은 차단 조건
+## 실행 검증 결과
 
-스테이징 배포 전에 PostgreSQL 실행 환경에서 `0001_initial.sql → 구조 smoke test → 0001_rollback.sql`을 실제로 실행해야 한다. 현재는 설계·정적 검증 완료이며 운영 준비 완료를 의미하지 않는다.
+PostgreSQL 16 임시 격리 환경에서 `0001_initial.sql → 구조·제약 smoke test → 0001_rollback.sql`을 실행했다. 18개 테이블이 생성됐고 테스트 트랜잭션은 rollback됐으며, 역 migration 후 `mathchakchak` 스키마가 존재하지 않음을 확인했다. 검증 전용 컨테이너는 결과 확인 후 제거했다.
 
 ## 다음 Phase 진입
 
-`ALLOWED` — Phase 5 화면·브랜드 설계는 진행할 수 있다. 실제 스테이징 배포 진입은 위 runtime migration test 완료 전까지 차단한다.
+`ALLOWED` — DB runtime 차단 조건이 해소됐다. 스테이징 배포는 Phase 6 기능 15/15 완료 후 진입한다.

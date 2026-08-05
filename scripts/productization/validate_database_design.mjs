@@ -6,8 +6,10 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const contract = JSON.parse(read('infra/database/schema-contract.json'));
 const up = read('infra/database/migrations/0001_initial.sql');
 const down = read('infra/database/migrations/0001_rollback.sql');
+const smoke = read('infra/database/tests/0001_smoke.sql');
 const design = read('docs/developer/productization/DATABASE_DESIGN_v1.0.md');
 const retention = read('docs/developer/productization/DATA_RETENTION_AND_ACCESS_v1.0.md');
+const runtimeEvidence = JSON.parse(read('docs/productization/evidence/PHASE_4_POSTGRES_RUNTIME_QA.json'));
 
 const fail = (message) => {
   console.error(`DATABASE_DESIGN_FAIL: ${message}`);
@@ -50,13 +52,15 @@ const requiredSql = [
 ];
 if (requiredSql.some((token) => !up.includes(token))) fail('required relationship, constraint, or index missing');
 
-const requiredDesign = ['Goal Framing', 'Specification Engineering', 'Context Engineering', '권한과 개인정보', '무결성·동시성', '마이그레이션·복구', '`psql`'];
+const requiredDesign = ['Goal Framing', 'Specification Engineering', 'Context Engineering', '권한과 개인정보', '무결성·동시성', '마이그레이션·복구', 'PostgreSQL 16 격리 실행'];
 if (requiredDesign.some((token) => !design.includes(token))) fail('database design section missing');
 if (!retention.includes('24개월') || !retention.includes('중복방지 키') || !retention.includes('답안 원문')) fail('retention or privacy rule missing');
+if (!smoke.includes('table_count <> 18') || !smoke.includes('unsupported locale was accepted') || !smoke.includes('duplicate idempotency key was accepted') || !smoke.includes('sensitive audit metadata was accepted')) fail('database smoke tests incomplete');
+if (runtimeEvidence.status !== 'PASS' || runtimeEvidence.postgres_version !== '16' || runtimeEvidence.tables_created !== 18 || runtimeEvidence.rollback_schema_count !== 0 || runtimeEvidence.temporary_container_removed !== true) fail('PostgreSQL runtime evidence incomplete');
 
 console.log('DATABASE_DESIGN_STATIC_PASS');
 console.log(`tables=${expectedTables.length}/${expectedTables.length}`);
 console.log(`locales=${expectedLocales.length}/${expectedLocales.length}`);
 console.log('migration_symmetry=PASS');
 console.log('privacy_guards=PASS');
-console.log('postgres_runtime=NOT_RUN_NO_PSQL');
+console.log('postgres_runtime=PASS');
