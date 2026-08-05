@@ -30,6 +30,7 @@ REQUIRED_STAGE7 = [
 REQUIRED_STRUCTURE = [
     ".github/workflows/stage8-harness.yml",
     "README.md",
+    "mock.html",
     "harness/README.md",
     "harness/status.json",
     "harness/ssot-manifest.json",
@@ -129,6 +130,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
     "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
+    "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -244,6 +246,19 @@ def main() -> int:
     missing_structure = [item for item in REQUIRED_STRUCTURE if not (ROOT / item).exists()]
     if missing_structure:
         fail("missing required harness files: " + ", ".join(missing_structure))
+
+    landing_text = (ROOT / "mock.html").read_text(encoding="utf-8")
+    landing_assets = [
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png",
+    ]
+    for asset in landing_assets:
+        if asset not in landing_text or not (ROOT / asset).is_file():
+            fail(f"landing-page hero character is missing: {asset}")
+    if "ssot/stage7/v1.0/" in landing_text:
+        fail("landing page still contains the broken pre-Gate3 character path")
+    if landing_text.count('class="hero-mascot ') != 2:
+        fail("landing page must contain exactly two hero mascots")
 
     data = load_json(STATUS)
     manifest = load_json(MANIFEST)

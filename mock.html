@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>수학착착 — 공식보다 먼저, 이해부터</title>
+  <meta name="description" content="아이에게 맞춰 설명하고, 오래 기억하게 하는 1:1 AI 수학 튜터 수학착착 목업" />
+  <style>
+    :root {
+      --blue: #2f5bff;
+      --blue-dark: #2046d9;
+      --blue-soft: #e9eeff;
+      --mint: #20bfa9;
+      --mint-soft: #e7faf6;
+      --yellow: #ffb84d;
+      --yellow-soft: #fff4de;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #dde3f0;
+      --paper: #ffffff;
+      --wash: #f6f8ff;
+      --coral: #ff6b6b;
+      --shadow: 0 20px 55px rgba(41, 62, 128, .12);
+      font-family: Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--wash); line-height: 1.6; }
+    button, a { font: inherit; }
+    button { cursor: pointer; border: 0; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar { height: 72px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 3; }
+    .brand { display: inline-flex; gap: 10px; align-items: center; font-weight: 900; letter-spacing: -.04em; }
+    .brand-mark { width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center; color: #fff; background: var(--blue); box-shadow: 0 7px 18px rgba(47, 91, 255, .25); font-weight: 900; transform: rotate(-6deg); }
+    .brand-name { font-size: 20px; }
+    .brand-name small { display: block; color: var(--muted); font-size: 9px; letter-spacing: .18em; line-height: 1; margin-top: 2px; }
+    .nav { display: flex; gap: 28px; align-items: center; color: var(--muted); font-size: 14px; font-weight: 700; }
+    .nav a:hover { color: var(--blue); }
+    .nav-cta { padding: 11px 17px; border-radius: 13px; color: var(--blue); background: var(--blue-soft); }
+
+    .hero { position: relative; overflow: hidden; padding: 66px 0 110px; background: radial-gradient(circle at 89% 18%, #eef2ff 0 10%, transparent 34%), linear-gradient(160deg, #fff 0%, #f7f9ff 76%); }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 999px; pointer-events: none; }
+    .hero::before { width: 240px; height: 240px; right: -80px; top: 260px; background: var(--yellow-soft); }
+    .hero::after { width: 120px; height: 120px; left: -38px; top: 100px; background: var(--mint-soft); }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 70px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border-radius: 999px; color: var(--blue); background: var(--blue-soft); font-size: 12px; font-weight: 800; }
+    .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(32, 191, 169, .13); }
+    h1 { margin: 20px 0 17px; font-size: clamp(42px, 5.2vw, 72px); line-height: 1.08; letter-spacing: -.075em; word-break: keep-all; }
+    h1 span { color: var(--blue); }
+    .hero-copy { max-width: 500px; color: var(--muted); font-size: 18px; word-break: keep-all; }
+    .hero-copy strong { color: var(--ink); }
+    .actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 30px; }
+    .primary, .secondary { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 0 19px; border-radius: 14px; font-weight: 800; transition: transform .18s, box-shadow .18s, background .18s; }
+    .primary { color: #fff; background: var(--blue); box-shadow: 0 12px 22px rgba(47,91,255,.2); }
+    .primary:hover { transform: translateY(-2px); background: var(--blue-dark); box-shadow: 0 15px 28px rgba(47,91,255,.28); }
+    .secondary { color: var(--blue); background: #fff; border: 1px solid #ccd6ff; }
+    .secondary:hover { transform: translateY(-2px); background: var(--blue-soft); }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 17px; color: var(--muted); font-size: 12px; }
+    .hero-note b { color: var(--mint); }
+
+    .hero-showcase { position: relative; min-height: 520px; display: flex; align-items: center; padding: 36px 62px 80px; isolation: isolate; }
+    .tutor-card { position: relative; z-index: 2; width: 100%; padding: 21px; border: 1px solid rgba(255,255,255,.75); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+    .tutor-card::after { content: ""; position: absolute; width: 52px; height: 52px; right: -16px; top: -20px; border-radius: 16px; background: var(--yellow); transform: rotate(14deg); }
+    .hero-mascot { position: absolute; z-index: 3; width: 280px; margin: 0; pointer-events: none; user-select: none; text-align: center; filter: drop-shadow(0 18px 18px rgba(31, 48, 102, .16)); }
+    .hero-mascot img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+    .hero-mascot figcaption { display: inline-flex; align-items: center; gap: 5px; margin-top: -30px; padding: 6px 10px; border: 1px solid rgba(255,255,255,.9); border-radius: 999px; color: var(--ink); background: rgba(255,255,255,.9); box-shadow: 0 8px 20px rgba(31,48,102,.1); font-size: 11px; font-weight: 900; white-space: nowrap; }
+    .hero-mascot figcaption span { color: var(--blue); }
+    .hero-mascot.chakchaki { left: -105px; bottom: -10px; }
+    .hero-mascot.gongsickyi { right: -108px; bottom: -8px; }
+    .window-bar { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; font-weight: 800; margin-bottom: 15px; }
+    .window-bar .status { color: var(--mint); }
+    .chat { min-height: 290px; padding: 20px; border-radius: 20px; background: #f8faff; border: 1px solid #e8edfa; }
+    .chat-row { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 16px; }
+    .chat-row.right { justify-content: flex-end; }
+    .avatar { flex: 0 0 42px; width: 42px; height: 42px; overflow: hidden; display: grid; place-items: center; border-radius: 15px; background: var(--yellow-soft); font-size: 23px; }
+    .avatar img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.45); }
+    .bubble { max-width: 270px; padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: #fff; border: 1px solid #e3e8f5; color: var(--ink); font-size: 13px; box-shadow: 0 6px 15px rgba(55,69,111,.05); }
+    .right .bubble { border-radius: 16px 16px 4px 16px; background: var(--blue); border-color: var(--blue); color: #fff; }
+    .math-chip { display: inline-block; margin-top: 9px; padding: 6px 9px; border-radius: 9px; color: var(--blue); background: var(--blue-soft); font-weight: 900; }
+    .tutor-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding-top: 15px; }
+    .progress-copy { color: var(--muted); font-size: 11px; }
+    .progress-copy strong { display: block; color: var(--ink); font-size: 13px; }
+    .progress { width: 128px; height: 8px; overflow: hidden; border-radius: 99px; background: #e5eaf5; }
+    .progress i { display: block; width: 72%; height: 100%; border-radius: inherit; background: var(--mint); }
+
+    .proof { margin-top: -36px; position: relative; z-index: 2; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 18px; border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
+    .proof-item { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 12px; color: var(--muted); font-size: 13px; text-align: center; }
+    .proof-item strong { display: block; color: var(--ink); font-size: 20px; line-height: 1.1; letter-spacing: -.04em; }
+    .proof-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: var(--mint-soft); font-size: 18px; }
+
+    section { padding: 110px 0; }
+    .section-head { max-width: 620px; margin-bottom: 35px; }
+    .section-kicker { color: var(--blue); font-size: 13px; font-weight: 900; letter-spacing: .08em; }
+    h2 { margin: 9px 0 12px; font-size: clamp(30px, 4vw, 47px); line-height: 1.15; letter-spacing: -.065em; word-break: keep-all; }
+    .section-head p { margin: 0; color: var(--muted); word-break: keep-all; }
+    .bento { display: grid; grid-template-columns: 1.1fr .9fr .9fr; grid-template-rows: 235px 235px; gap: 15px; }
+    .card { padding: 25px; overflow: hidden; position: relative; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); }
+    .card h3 { margin: 11px 0 7px; font-size: 20px; letter-spacing: -.04em; }
+    .card p { margin: 0; color: var(--muted); font-size: 13px; word-break: keep-all; }
+    .card.tall { grid-row: span 2; background: var(--blue); color: #fff; border-color: var(--blue); }
+    .card.tall p { color: #dce4ff; }
+    .card.tall::after { content: "?"; position: absolute; right: 24px; bottom: -42px; color: rgba(255,255,255,.11); font-size: 220px; font-weight: 900; line-height: 1; }
+    .card.mint { background: var(--mint-soft); border-color: #c9f1e9; }
+    .card.yellow { background: var(--yellow-soft); border-color: #ffe4b8; }
+    .card-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; color: var(--blue); background: var(--blue-soft); font-size: 22px; }
+    .tall .card-icon { color: var(--blue); background: #fff; }
+    .mini-stat { position: absolute; bottom: 24px; left: 25px; display: flex; align-items: baseline; gap: 5px; }
+    .mini-stat strong { font-size: 43px; letter-spacing: -.08em; }
+    .mini-stat span { color: #dce4ff; font-size: 13px; }
+
+    .loop-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .loop { display: grid; gap: 10px; }
+    .loop-step { display: grid; grid-template-columns: 43px 1fr auto; align-items: center; gap: 13px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .loop-step.current { border-color: #aebcff; box-shadow: 0 9px 24px rgba(47,91,255,.1); }
+    .step-number { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 12px; color: var(--blue); background: var(--blue-soft); font-weight: 900; }
+    .loop-step.done .step-number { color: #fff; background: var(--mint); }
+    .step-copy strong { display: block; font-size: 14px; }
+    .step-copy span { color: var(--muted); font-size: 12px; }
+    .step-state { color: var(--muted); font-size: 11px; font-weight: 800; }
+    .step-state.done { color: var(--mint); }
+    .score-card { padding: 30px; border-radius: 24px; background: #fff; box-shadow: var(--shadow); }
+    .score-top { display: flex; align-items: center; justify-content: space-between; }
+    .score-top span { color: var(--muted); font-size: 12px; font-weight: 800; }
+    .score { display: flex; align-items: baseline; gap: 6px; margin: 8px 0 20px; }
+    .score strong { color: var(--blue); font-size: 63px; line-height: 1; letter-spacing: -.09em; }
+    .score small { color: var(--muted); }
+    .bars { display: grid; gap: 13px; }
+    .bar-line { display: grid; grid-template-columns: 60px 1fr 35px; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; }
+    .bar { height: 9px; border-radius: 99px; background: #edf0f7; overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: var(--mint); }
+    .bar-line:nth-child(2) i { background: var(--blue); }
+    .bar-line:nth-child(3) i { background: var(--yellow); }
+    .character-strip { display: flex; align-items: center; gap: 12px; margin-top: 25px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .character { width: 51px; height: 51px; overflow: hidden; border-radius: 17px; background: var(--yellow-soft); }
+    .character img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.35); }
+    .character-copy { color: var(--muted); font-size: 12px; }
+    .character-copy strong { display: block; color: var(--ink); font-size: 14px; }
+
+    .diagnosis { background: #fff; }
+    .diagnosis-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 65px; align-items: center; }
+    .quote { position: relative; margin: 28px 0 0; padding: 20px 22px; border-left: 4px solid var(--yellow); border-radius: 0 16px 16px 0; background: var(--yellow-soft); color: #5e461e; font-size: 14px; font-weight: 700; word-break: keep-all; }
+    .form-card { padding: 25px; border: 1px solid var(--line); border-radius: 23px; background: var(--wash); }
+    .form-card h3 { margin: 0 0 4px; font-size: 20px; }
+    .form-card p { margin: 0 0 19px; color: var(--muted); font-size: 13px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    input, select { width: 100%; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--ink); outline: none; }
+    input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+    .full { margin-top: 12px; }
+    .form-card .primary { width: 100%; margin-top: 18px; }
+    .form-feedback { min-height: 20px; margin: 10px 0 0; color: var(--mint); text-align: center; font-size: 12px; font-weight: 800; }
+
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    details { padding: 18px 20px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    details[open] { border-color: #b9c5ff; box-shadow: 0 10px 25px rgba(47,91,255,.07); }
+    summary { cursor: pointer; list-style: none; font-weight: 800; font-size: 14px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--blue); font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 13px 25px 0 0; color: var(--muted); font-size: 13px; }
+
+    .final-cta { padding: 72px 0; }
+    .cta-panel { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 41px 47px; border-radius: 27px; color: #fff; background: var(--blue); overflow: hidden; position: relative; }
+    .cta-panel::after { content: "착착"; position: absolute; right: 20px; bottom: -35px; color: rgba(255,255,255,.1); font-size: 150px; font-weight: 900; letter-spacing: -.1em; }
+    .cta-panel h2 { margin: 0 0 7px; font-size: clamp(28px, 4vw, 43px); }
+    .cta-panel p { margin: 0; color: #dce4ff; font-size: 14px; }
+    .cta-panel .primary { color: var(--blue); background: #fff; position: relative; z-index: 1; white-space: nowrap; }
+    footer { padding: 28px 0 45px; color: var(--muted); font-size: 12px; }
+    footer .container { display: flex; justify-content: space-between; gap: 20px; }
+
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 10; transform: translateY(20px); opacity: 0; pointer-events: none; padding: 13px 17px; border-radius: 13px; color: #fff; background: var(--ink); box-shadow: var(--shadow); font-size: 13px; transition: .25s; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    @media (max-width: 850px) {
+      .nav a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 35px; }
+      .hero-grid, .loop-wrap, .diagnosis-grid { grid-template-columns: 1fr; gap: 35px; }
+      .bento { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .card.tall { grid-row: auto; grid-column: 1 / -1; min-height: 250px; }
+      .card { min-height: 190px; }
+      .diagnosis-grid { gap: 20px; }
+      .hero-showcase { min-height: 590px; padding: 0 50px 170px; }
+      .hero-mascot { width: 260px; }
+      .hero-mascot.chakchaki { left: -26px; bottom: -14px; }
+      .hero-mascot.gongsickyi { right: -26px; bottom: -12px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1160px); }
+      .topbar { height: 62px; }
+      .hero { padding-bottom: 75px; }
+      .hero-copy { font-size: 16px; }
+      .hero-showcase { min-height: 555px; padding: 0 4px 150px; }
+      .hero-mascot { width: 225px; }
+      .hero-mascot.chakchaki { left: -38px; }
+      .hero-mascot.gongsickyi { right: -38px; }
+      .hero-mascot figcaption { margin-top: -25px; font-size: 10px; }
+      .chat { min-height: 0; padding: 15px; }
+      .bubble { max-width: 230px; }
+      .proof-grid, .faq-grid, .bento { grid-template-columns: 1fr; }
+      .proof-item { justify-content: flex-start; text-align: left; }
+      .bento .card.tall { grid-column: auto; }
+      .field-row { grid-template-columns: 1fr; }
+      .cta-panel { display: block; padding: 30px 25px; }
+      .cta-panel .primary { margin-top: 22px; }
+      footer .container { display: block; }
+      footer span { display: block; margin-top: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="container topbar">
+    <a class="brand" href="#top" aria-label="수학착착 홈">
+      <span class="brand-mark">÷</span>
+      <span class="brand-name">수학착착<small>MATH CHAKCHAK</small></span>
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#method">학습 루프</a>
+      <a href="#diagnosis">맞춤 진단</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#diagnosis">무료로 시작하기</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><i></i> 아이에게 맞춰 설명하는 1:1 AI 수학 튜터</div>
+          <h1>수학은 <span>착착</span>,<br />공식보다 먼저<br />이해부터.</h1>
+          <p class="hero-copy"><strong>쉽게 이해하고, 오래 기억하고, 문제에 스스로 적용하도록.</strong><br />수학착착은 아이의 현재 학습 상태에 맞춰 설명의 순서와 난이도를 바꿔요.</p>
+          <div class="actions">
+            <a class="primary" href="#diagnosis">무료 학습 진단 시작</a>
+            <a class="secondary" href="#method">어떻게 배우나요?</a>
+          </div>
+          <div class="hero-note"><b>✓</b> 진단 결과는 3분 안에 확인해요 · 카드 등록 없음</div>
+        </div>
+        <div class="hero-showcase" aria-label="착착이와 공식이가 함께하는 AI 수학 학습 미리보기">
+          <div class="tutor-card" aria-label="AI 튜터 대화 미리보기">
+            <div class="window-bar"><span>오늘의 수학 대화</span><span class="status">● 학습 중</span></div>
+            <div class="chat">
+              <div class="chat-row">
+                <div class="avatar"><img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p03_guide_v1.0.png" alt="설명하는 착착이" /></div>
+                <div class="bubble">분수의 덧셈, 왜 분모를 먼저 같게 만드는지 같이 찾아볼까?<div class="math-chip">⅓ + ⅙ = ?</div></div>
+              </div>
+              <div class="chat-row right"><div class="bubble">6을 기준으로 바꾸면… 2/6 + 1/6 이니까 3/6!</div></div>
+              <div class="chat-row">
+                <div class="avatar"><img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.png" alt="칭찬하는 공식이" /></div>
+                <div class="bubble">맞아! 공통분모를 만들면 조각의 크기를 비교할 수 있어. 이제 네 말로 설명해볼래?</div>
+              </div>
+            </div>
+            <div class="tutor-footer"><div class="progress-copy"><strong>분수의 덧셈</strong>개념 이해 72%</div><div class="progress"><i></i></div></div>
+          </div>
+          <figure class="hero-mascot chakchaki">
+            <img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png" alt="손을 흔들며 환영하는 착착이" />
+            <figcaption><span>착착이</span> 함께 풀어보자!</figcaption>
+          </figure>
+          <figure class="hero-mascot gongsickyi">
+            <img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png" alt="별 지시봉으로 설명하는 공식이" />
+            <figcaption><span>공식이</span> 원리를 찾아볼까?</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="container proof"><div class="proof-grid">
+      <div class="proof-item"><span class="proof-icon">◎</span><span><strong>3분</strong>맞춤 진단</span></div>
+      <div class="proof-item"><span class="proof-icon" style="background:var(--yellow-soft)">↗</span><span><strong>1:1</strong>아이별 설명</span></div>
+      <div class="proof-item"><span class="proof-icon" style="background:var(--blue-soft)">✦</span><span><strong>5단계</strong>이해·기억·적용</span></div>
+    </div></div>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head"><div class="section-kicker">WHY CHAKCHAK</div><h2>문제를 많이 풀기 전에,<br />배우는 방법부터 바꿔요.</h2><p>정답만 알려주지 않아요. 아이가 막힌 지점을 찾아, 이해한 뒤 스스로 다시 풀 수 있게 도와줍니다.</p></div>
+        <div class="bento">
+          <article class="card tall"><div class="card-icon">✦</div><h3>설명이 아이에게<br />맞춰서 바뀌어요</h3><p>같은 문제라도 아이의 오답 이유와 말투, 속도에 따라 다른 비유와 힌트를 건넵니다.</p><div class="mini-stat"><strong>1:1</strong><span>개인 맞춤 튜터</span></div></article>
+          <article class="card mint"><div class="card-icon">↺</div><h3>이해 → 연결 → 반복</h3><p>공식 암기에서 끝나지 않고, 다음 문제에 꺼내 쓰는 연습까지 이어져요.</p></article>
+          <article class="card yellow"><div class="card-icon">☼</div><h3>틀려도 괜찮은 피드백</h3><p>실수를 실패가 아닌 다음 힌트로 바꿔, 다시 시도할 용기를 줍니다.</p></article>
+          <article class="card"><div class="card-icon">▣</div><h3>부모님은 성장만 확인</h3><p>오늘 배운 것과 다음 추천 학습을 한눈에 확인할 수 있어요.</p></article>
+          <article class="card"><div class="card-icon">⌁</div><h3>공식·그림·말하기</h3><p>한 가지 방식이 막히면 다른 표현으로 바꿔 설명합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" style="background:#f0f3ff;">
+      <div class="container loop-wrap">
+        <div><div class="section-kicker">LEARNING LOOP</div><h2>한 번 이해하면,<br /><span style="color:var(--blue)">다음 문제도 착착.</span></h2><p class="hero-copy" style="font-size:16px;">수학착착의 학습 루프는 정답을 빠르게 맞히는 대신, 아이가 자기 언어로 설명하고 새로운 문제에 적용하는 순간까지 봅니다.</p><a class="secondary" href="#diagnosis" style="margin-top:22px;">내 학습 루프 확인하기</a></div>
+        <div class="loop">
+          <div class="loop-step done"><span class="step-number">1</span><div class="step-copy"><strong>문제 인식</strong><span>어디서 막혔는지 찾아요</span></div><span class="step-state done">완료</span></div>
+          <div class="loop-step done"><span class="step-number">2</span><div class="step-copy"><strong>개념 이해</strong><span>그림과 말로 다시 설명해요</span></div><span class="step-state done">완료</span></div>
+          <div class="loop-step current"><span class="step-number">3</span><div class="step-copy"><strong>짧은 반복</strong><span>기억이 꺼지기 전에 한 번 더</span></div><span class="step-state">진행 중</span></div>
+          <div class="loop-step"><span class="step-number">4</span><div class="step-copy"><strong>스스로 적용</strong><span>새로운 문제에 써봐요</span></div><span class="step-state">다음</span></div>
+          <div class="loop-step"><span class="step-number">5</span><div class="step-copy"><strong>성장 기록</strong><span>다음 학습을 추천해요</span></div><span class="step-state">예정</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="diagnosis" id="diagnosis">
+      <div class="container diagnosis-grid">
+        <div><div class="section-kicker">FREE DIAGNOSIS</div><h2>우리 아이에게 맞는<br />첫 문제를 찾아볼까요?</h2><p class="hero-copy" style="font-size:16px;">학년과 고민을 알려주면, 지금 필요한 개념부터 부담 없이 시작할 수 있도록 추천해드려요.</p><div class="quote">“틀린 문제를 찾는 진단이 아니라,<br />다시 시작하기 좋은 지점을 찾는 진단이에요.”</div></div>
+        <form class="form-card" id="diagnosisForm">
+          <h3>3분 맞춤 학습 진단</h3><p>간단한 정보만 입력하면 바로 시작할 수 있어요.</p>
+          <div class="field-row"><label>아이 이름<input name="name" placeholder="예: 민준" required /></label><label>학년<select name="grade"><option>초등 3학년</option><option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option></select></label></div>
+          <label class="full">가장 어려워하는 영역<select name="topic"><option>개념은 알겠는데 문제에 적용하기</option><option>분수·소수</option><option>도형·측정</option><option>문장제</option></select></label>
+          <button class="primary" type="submit">무료 진단 시작하기 <span aria-hidden="true">→</span></button>
+          <div class="form-feedback" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="report">
+      <div class="container">
+        <div class="section-head"><div class="section-kicker">GROWTH REPORT</div><h2>부모님께는 결과보다<br />성장의 흐름을 보여드려요.</h2><p>아이의 현재 상태와 다음 학습을 짧고 선명하게 확인할 수 있습니다.</p></div>
+        <div class="score-card">
+          <div class="score-top"><span>민준이의 이번 주 학습 리포트</span><span style="color:var(--mint)">● 업데이트됨</span></div>
+          <div class="score"><strong>78</strong><small>/ 100 · 지난주보다 12점 성장</small></div>
+          <div class="bars"><div class="bar-line"><span>개념 이해</span><div class="bar"><i style="width:84%"></i></div><b>84</b></div><div class="bar-line"><span>기억 유지</span><div class="bar"><i style="width:72%"></i></div><b>72</b></div><div class="bar-line"><span>문제 적용</span><div class="bar"><i style="width:63%"></i></div><b>63</b></div></div>
+          <div class="character-strip"><div class="character"><img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p01_idle-listen_v1.0.png" alt="공식이" loading="lazy" /></div><div class="character-copy"><strong>다음 추천: 문장제 속 핵심 정보 찾기</strong>공식이와 함께 10분만 연습해볼까요?</div><a class="secondary" href="#diagnosis" style="margin-left:auto; padding:0 13px; min-height:38px; font-size:12px;">추천 보기</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" style="padding-top:30px;">
+      <div class="container"><div class="section-head"><div class="section-kicker">FAQ</div><h2>시작하기 전에, 궁금한 점</h2></div><div class="faq-grid">
+        <details><summary>몇 학년부터 사용할 수 있나요?</summary><p>초등 3~6학년을 기준으로 설계했어요. 아이의 현재 수준을 먼저 확인해 학년과 다른 난이도에서도 시작할 수 있습니다.</p></details>
+        <details><summary>정답을 바로 알려주지는 않나요?</summary><p>정답보다 먼저 생각의 방향을 잡는 힌트를 줍니다. 아이가 충분히 시도한 뒤에는 풀이를 함께 정리해요.</p></details>
+        <details><summary>부모님이 계속 옆에 있어야 하나요?</summary><p>아니요. 아이가 혼자 학습할 수 있도록 설계했고, 부모님은 리포트에서 성장 흐름을 확인하면 됩니다.</p></details>
+        <details><summary>진단 결과가 아이에게 부담이 되지 않나요?</summary><p>평가나 등수를 매기는 시험이 아닙니다. 지금의 출발점을 찾기 위한 짧은 대화형 진단이에요.</p></details>
+      </div></div>
+    </section>
+
+    <section class="final-cta"><div class="container"><div class="cta-panel"><div><h2>오늘, 수학을 다시<br />착착 시작해요.</h2><p>아이에게 맞는 첫 설명부터 무료로 만나보세요.</p></div><a class="primary" href="#diagnosis">무료 학습 진단 시작 <span aria-hidden="true">→</span></a></div></div></section>
+  </main>
+  <footer><div class="container"><span>© 2026 Math ChakChak · 수학착착</span><span>이 페이지는 제품 콘셉트 검증을 위한 목업입니다.</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const form = document.querySelector('#diagnosisForm');
+    const feedback = document.querySelector('.form-feedback');
+    const toast = document.querySelector('#toast');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = new FormData(form).get('name') || '친구';
+      feedback.textContent = `${name}에게 맞는 첫 진단을 준비했어요!`;
+      toast.textContent = '진단 준비 완료 · 아래에서 첫 문제를 시작해보세요.';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    });
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.style.scrollMarginTop = '18px';
+      });
+    });
+  </script>
+</body>
+</html>
