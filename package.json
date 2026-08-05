@@ -12,7 +12,9 @@
     "test:productization:screens": "node scripts/productization/validate_screen_design.mjs",
     "test:unit": "node --test \"tests/unit/**/*.test.mjs\"",
     "test:productization:features": "npm run test:unit && node scripts/productization/validate_feature_implementation.mjs",
-    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features",
+    "build:staging": "node scripts/productization/build_staging.mjs",
+    "test:productization:staging": "node scripts/productization/validate_staging_readiness.mjs",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features && npm run test:productization:staging",
     "test": "npm run test:productization"
   },
   "engines": {

@@ -10,7 +10,7 @@
     "4": {"name": "database_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:database", "PostgreSQL 16: initial migration + smoke + rollback"], "runtime_test": "PASS"},
     "5": {"name": "screen_and_brand_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:screens", "browser: 8 locales + 1440px + 390px"]},
     "6": {"name": "feature_development", "status": "VERIFIED", "progress": "15/15", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:features", "npm.cmd run test:productization"]},
-    "7": {"name": "staging_deployment", "status": "IN_PROGRESS", "tests": []},
+    "7": {"name": "staging_deployment", "status": "BLOCKED_EXTERNAL", "readiness": "VERIFIED", "tests": ["npm.cmd run build:staging", "npm.cmd run test:productization:staging", "local HTTP smoke 14/14"]},
     "8": {"name": "integration_testing", "status": "NOT_STARTED", "tests": []},
     "9": {"name": "operations_maintenance", "status": "NOT_STARTED", "tests": []}
   },
@@ -19,6 +19,8 @@
     "gate5_approval": "1/1",
     "gate6_entry_allowed": true
   },
-  "blockers": [],
-  "last_updated": "2026-08-06T00:19:51+09:00"
+  "blockers": [
+    "Authorized external staging target and configuration references are required"
+  ],
+  "last_updated": "2026-08-06T00:26:18+09:00"
 }

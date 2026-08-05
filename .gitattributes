@@ -3,3 +3,6 @@ ssot/stage7/v1.0/* -text
 
 # Generated and supplied evidence images are binary evidence.
 evidence/**/*.png -text
+
+# Staging release artifacts are hash-addressed and must remain byte-identical.
+artifacts/staging/** -text

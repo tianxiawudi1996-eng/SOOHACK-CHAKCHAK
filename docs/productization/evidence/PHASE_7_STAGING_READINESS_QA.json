@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-06T00:26:18+09:00",
+  "status": "READY_BLOCKED_EXTERNAL",
+  "release": "0.1.0",
+  "artifact": {
+    "path": "artifacts/staging/v0.1.0/site",
+    "manifest": "artifacts/staging/v0.1.0/manifest.json",
+    "manifest_sha256": "6138fe2853f10d1200ec1d86ef0f9a50024a404b90ab74de0a30ebf8858d6538",
+    "file_count": 14,
+    "hashes": "PASS",
+    "locales": "8/8",
+    "approved_character_assets": "2/2"
+  },
+  "local_http_smoke": {
+    "base_url": "http://127.0.0.1:4174/artifacts/staging/v0.1.0/site/",
+    "status": "PASS",
+    "responses_200": "14/14"
+  },
+  "external_deployment": {
+    "performed": false,
+    "target_reference": null,
+    "url": null,
+    "deployment_id": null,
+    "rollback_rehearsal": "NOT_RUN_NO_EXTERNAL_TARGET"
+  },
+  "required_next_inputs": [
+    "STAGING_BASE_URL",
+    "STAGING_API_BASE_URL",
+    "STAGING_DATABASE_URL_REFERENCE",
+    "STAGING_SESSION_SECRET_REFERENCE",
+    "STAGING_OBJECT_STORAGE_REFERENCE",
+    "deployment_authorization"
+  ]
+}
