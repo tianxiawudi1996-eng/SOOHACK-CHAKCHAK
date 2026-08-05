@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T06:59:39.514754+00:00",
+  "generated_at": "2026-08-05T07:54:03.147305+00:00",
   "gate": 4,
   "status": "BLOCKED_EXTERNAL",
   "automated_status": "PASS",
   "motion_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
-  "motion_manifest_sha256": "12d40bdf8b49b9e2c1d11d84f300460495cab8355e9ca572bbf8e656a77c4e59",
+  "motion_manifest_sha256": "b82467f07a87b776ea7e239d3884b4aa0750dd75f8c647384b5ecd402c8a6fba",
   "state_pass_count": 8,
   "state_expected_count": 8,
   "reduced_motion_pass_count": 8,
@@ -13,6 +13,8 @@
   "implementation_expected_count": 2,
   "pose_bridge_pass": true,
   "natural_choreography_pass": true,
+  "browser_runtime_pass": true,
+  "browser_runtime_qa": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
   "states": [
     {
       "state": "IDLE_LISTEN",

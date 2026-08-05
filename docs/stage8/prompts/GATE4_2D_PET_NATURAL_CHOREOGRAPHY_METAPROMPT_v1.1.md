@@ -32,10 +32,12 @@
 - 구현: `assets/stage8/2d-pet-motion-v1.0.css`, `assets/stage8/2d-pet-motion-v1.0.js`
 - 검토: `docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html`
 - 감사: `scripts/harness/audit_gate4_2d_pet_motion.py`
+- 브라우저 런타임 감사: `scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs`
+- 브라우저 증거: `docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json`
 
 ## 4. Harness Engineering
 
-AI는 승인 자산의 정체성을 변경하거나 새 캐릭터를 생성하지 않는다. SHA-256, 상태 매핑, 전환 단계, 허용 속성, reduced-motion, 빠른 입력 취소 정책을 자동 감사한다. 제품 책임자 승인을 추정하지 않으며 자동 QA 통과와 수동 승인을 분리한다.
+AI는 승인 자산의 정체성을 변경하거나 새 캐릭터를 생성하지 않는다. SHA-256, 상태 매핑, 전환 단계, 허용 속성, reduced-motion, 빠른 입력 취소 정책을 자동 감사한다. 실제 Edge에서 순차·역순·빠른 입력, CLS, 360·768·1440px 잘림·포인터, reduced-motion을 실행 검증한다. 제품 책임자 승인을 추정하지 않으며 자동 QA 통과와 수동 승인을 분리한다.
 
 ## 5. Prompt Engineering
 

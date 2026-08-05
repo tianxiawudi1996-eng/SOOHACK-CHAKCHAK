@@ -51,6 +51,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_2d_pet_assets.py",
     "scripts/harness/audit_2d_pet_single_approval.py",
     "scripts/harness/audit_gate4_2d_pet_motion.py",
+    "scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -130,6 +131,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
     "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
@@ -1033,6 +1035,7 @@ def main() -> int:
         gate4_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
         gate4_manifest = load_json(gate4_root / "2D_PET_MOTION_MANIFEST_v1.0.json")
         gate4_audit = load_json(gate4_root / "GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json")
+        gate4_browser_qa = load_json(gate4_root / "GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json")
         gate4_review = load_json(gate4_root / "GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json")
         expected_gate4_manifest_status = "APPROVED" if gates[4].get("status") == "VERIFIED" else "CANDIDATE_BUILT"
         if gate4_manifest.get("status") != expected_gate4_manifest_status:
@@ -1081,6 +1084,14 @@ def main() -> int:
             fail("gate4 pose-to-pose transition bridge audit failed")
         if gate4_audit.get("natural_choreography_pass") is not True:
             fail("gate4 natural choreography audit failed")
+        expected_browser_tests = {"api_contract", "forward_sequence", "reverse_sequence", "rapid_latest_wins", "layout_stability", "viewport_and_pointer", "reduced_motion_runtime"}
+        browser_tests = gate4_browser_qa.get("tests", {})
+        if gate4_browser_qa.get("status") != "PASS" or gate4_browser_qa.get("failures"):
+            fail("gate4 browser runtime QA failed")
+        if set(browser_tests) != expected_browser_tests or any(item.get("status") != "PASS" for item in browser_tests.values()):
+            fail("gate4 browser runtime QA matrix is incomplete")
+        if gate4_audit.get("browser_runtime_pass") is not True:
+            fail("gate4 automated audit did not accept browser runtime QA")
         if gate4_audit.get("failures"):
             fail("gate4 automated motion audit contains failures")
         expected_gate4_promotion = gates[4].get("status") == "VERIFIED"

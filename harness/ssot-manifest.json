@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T06:59:42.142552+00:00",
+  "generated_at": "2026-08-05T07:54:05.687180+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1237,8 +1237,8 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "5f52a727edc142baeb5596e14773471d62617f27f89f58d8f13d671392ab2dd1",
-      "size_bytes": 2918
+      "sha256": "6cd531d0665b0f14d24d20ad9cac1369452d672c78d0fe430ff51a62c059c730",
+      "size_bytes": 2984
     },
     {
       "path": "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
@@ -1257,8 +1257,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "26ba2c16b8299e264b85707067ba5bbd2905b53b6b3f875ccc293f05d8801e4d",
-      "size_bytes": 2997
+      "sha256": "ad645912a6f5f20a28a3032c0eea0f1ec2ace8331d4ea3c81ef57656878a7a2e",
+      "size_bytes": 3132
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1312,8 +1312,8 @@
     },
     {
       "path": "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md",
-      "sha256": "88bb74831e1cf8d3d80dd56972442e792123295d2a78157154378598de116bee",
-      "size_bytes": 725
+      "sha256": "4a624253d841f20a81a69a9f62a79db4882e0450fac4062d3737c09b3f0563e2",
+      "size_bytes": 796
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
@@ -1322,8 +1322,8 @@
     },
     {
       "path": "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
-      "sha256": "e8ced1a4612074d7a278fd8fd21f28993fe49cd60f28c07326879c63a10f0e69",
-      "size_bytes": 5777
+      "sha256": "25b0c4170257a524d65794fc57792c061d4d925dec05cf6fb9d93703a04ece19",
+      "size_bytes": 5922
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1332,8 +1332,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "8536c60290bb10389c7989265680666188c5acb7d8254ec5952411912a4c9bce",
-      "size_bytes": 2117
+      "sha256": "d41276f83232d23268d18236281868a1131daf89d590235244f72eddedb87c98",
+      "size_bytes": 2410
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1342,8 +1342,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "2c080530361263115a1ed08a1128162d4ee970a21b7773b0d0fa82a2605432fe",
-      "size_bytes": 15075
+      "sha256": "e9cfc40f8a09898f28adfe6c2722bfa58f8d68c395af439965d75dc66bc47881",
+      "size_bytes": 15884
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
@@ -1362,8 +1362,8 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
-      "sha256": "12d40bdf8b49b9e2c1d11d84f300460495cab8355e9ca572bbf8e656a77c4e59",
-      "size_bytes": 4698
+      "sha256": "b82467f07a87b776ea7e239d3884b4aa0750dd75f8c647384b5ecd402c8a6fba",
+      "size_bytes": 5021
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
@@ -1402,13 +1402,18 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
-      "sha256": "2dd745ea40628aabf70baa561977ac7f7fc7fc9f846a35ee9122404b29a80a2c",
+      "sha256": "73cc795c149409e12f58dde56ffb9cc763b619296a344fbabf6128a03e945d6c",
       "size_bytes": 6817
     },
     {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
+      "sha256": "df440e70cd0d92dbcb3fbe2aa3c8aab24bb82b0c0bbd773d32d70894bcdf1018",
+      "size_bytes": 10551
+    },
+    {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
-      "sha256": "46fed5ad13004e62add13120e18b9f301da1d9e9ac8ba693e7175e5fa6d391aa",
-      "size_bytes": 2316
+      "sha256": "1775756d324af4270856bc1ef47624108a5a97b3d87ca1e47aba0c7cf306b078",
+      "size_bytes": 2452
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
@@ -2007,8 +2012,8 @@
     },
     {
       "path": "docs/stage8/prompts/GATE4_2D_PET_NATURAL_CHOREOGRAPHY_METAPROMPT_v1.1.md",
-      "sha256": "9a8873bbc426683d0f1f79ff1a9623daf34c5945f0cc197e0fe2d3bbb2077e4c",
-      "size_bytes": 3556
+      "sha256": "68417eb7a9fe5bf1d88ab83f0bac88ea8dd1524c70943ca4408eedecc2d3a6ad",
+      "size_bytes": 3875
     },
     {
       "path": "docs/stage8/prompts/GATE4_MOTION.md",
@@ -2092,8 +2097,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "1b1654b9b1ded6346354cf40a31c71165740d71051031a6167a720b4456199b9",
-      "size_bytes": 9733
+      "sha256": "526e891b71068ad1627109c75e7b22ab042c6b92696aeedcccdd16ab48e03fd9",
+      "size_bytes": 9881
     },
     {
       "path": "mock.html",
@@ -2506,9 +2511,14 @@
       "size_bytes": 8676
     },
     {
+      "path": "scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs",
+      "sha256": "bcf4c89aa3720ba907a23fd101290042b76c0b2d01878b812d36507f77b6db65",
+      "size_bytes": 16939
+    },
+    {
       "path": "scripts/harness/audit_gate4_2d_pet_motion.py",
-      "sha256": "516cf21c6c700081a3c3f9cb0048ccac5acc522aab3f526e352ef84d0467c958",
-      "size_bytes": 12417
+      "sha256": "010917139224ceafb62b540d5f9703d00607c07c0125338bb085d1079c1662b8",
+      "size_bytes": 13394
     },
     {
       "path": "scripts/harness/audit_stage8.py",
@@ -2547,8 +2557,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "654046529b64116d744a6bf218c8ec9422ed4db28f96727037ab2d2818d087e4",
-      "size_bytes": 77084
+      "sha256": "262fd19b72fe114ec90cbbc99686774c0ee1d30f237f4e79f324b207ac70ee82",
+      "size_bytes": 78038
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

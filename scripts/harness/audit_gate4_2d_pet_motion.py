@@ -16,6 +16,7 @@ PET_ROOT = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
 GATE3_MANIFEST_PATH = PET_ROOT / "2D_PET_RUNTIME_MANIFEST_v1.0.json"
 MOTION_MANIFEST_PATH = PET_ROOT / "2D_PET_MOTION_MANIFEST_v1.0.json"
 REVIEW_PATH = PET_ROOT / "GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json"
+BROWSER_QA_PATH = PET_ROOT / "GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json"
 OUTPUT_JSON = PET_ROOT / "GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json"
 OUTPUT_MD = ROOT / "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md"
 
@@ -61,6 +62,7 @@ def main() -> int:
         gate3 = load_json(GATE3_MANIFEST_PATH)
         motion = load_json(MOTION_MANIFEST_PATH)
         review = load_json(REVIEW_PATH)
+        browser_qa = load_json(BROWSER_QA_PATH)
     except RuntimeError as exc:
         print(f"GATE4_2D_MOTION_FAIL: {exc}", file=sys.stderr)
         return 2
@@ -113,6 +115,25 @@ def main() -> int:
         failures.append("NATURAL_CHOREOGRAPHY_CANCELLATION_INVALID")
     if set(choreography.get("properties", [])) != ALLOWED_PROPERTIES or choreography.get("reduced_motion") != "STATIC_POSE_SWAP":
         failures.append("NATURAL_CHOREOGRAPHY_ACCESSIBILITY_INVALID")
+
+    expected_browser_tests = {
+        "api_contract",
+        "forward_sequence",
+        "reverse_sequence",
+        "rapid_latest_wins",
+        "layout_stability",
+        "viewport_and_pointer",
+        "reduced_motion_runtime",
+    }
+    browser_tests = browser_qa.get("tests", {})
+    browser_runtime_pass = (
+        browser_qa.get("status") == "PASS"
+        and not browser_qa.get("failures")
+        and set(browser_tests) == expected_browser_tests
+        and all(item.get("status") == "PASS" for item in browser_tests.values())
+    )
+    if not browser_runtime_pass:
+        failures.append("BROWSER_RUNTIME_QA_FAILED")
 
     states = motion.get("states", [])
     by_state = {item.get("state"): item for item in states}
@@ -196,6 +217,8 @@ def main() -> int:
         "implementation_expected_count": 2,
         "pose_bridge_pass": not any(failure.startswith("POSE_TO_POSE") for failure in failures),
         "natural_choreography_pass": not any(failure.startswith("NATURAL_CHOREOGRAPHY") for failure in failures),
+        "browser_runtime_pass": browser_runtime_pass,
+        "browser_runtime_qa": relative(BROWSER_QA_PATH),
         "states": state_results,
         "implementations": implementation_results,
         "failures": failures,
@@ -216,6 +239,7 @@ def main() -> int:
 - CSS/JS 구현: `{result['implementation_pass_count']}/2`
 - 포즈 사이 이중 레이어 교차 모션: `{str(result['pose_bridge_pass']).lower()}`
 - 준비·교차·착지·잔동작 자연 연동: `{str(result['natural_choreography_pass']).lower()}`
+- 실제 Edge 순차·역순·연속 입력·뷰포트 검사: `{str(result['browser_runtime_pass']).lower()}`
 - 수동 승인: `{result['manual_approval_count']}/1`
 - Gate 5 진입: `{str(result['next_gate_allowed']).lower()}`
 

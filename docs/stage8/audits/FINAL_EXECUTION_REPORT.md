@@ -10,7 +10,7 @@
 | 1 | `VERIFIED` | canonical view와 1인 승인 기록 완료 |
 | 2 | `VERIFIED` | 음영 2D 시트 자동 QA PASS, 제품 책임자 수동 승인 1/1 |
 | 3 | `VERIFIED` | 투명 PNG/WebP 16/16 자동 QA PASS, 제품 책임자 수동 승인 1/1 |
-| 4 | `BLOCKED` | 상태·reduced-motion 8/8 자동 QA PASS, 제품 책임자 수동 승인 0/1 |
+| 4 | `BLOCKED` | 상태·reduced-motion 8/8 및 Edge 런타임 7/7 자동 QA PASS, 제품 책임자 수동 승인 0/1 |
 | 5~8 | `NOT_STARTED` | 선행 Gate 순서와 실제 제품 소스·배포 권한 필요 |
 
 ## Gate 2 후보
@@ -51,5 +51,6 @@ Gate 3 승인 입력은 `GATE3_2D_PET_MANUAL_REVIEW_v1.0.json`과 `audit_gate3_2
 - 허용 속성: `transform`, `opacity`
 - 런타임 API: `window.mathChakChakPets.setState(state, source)`
 - 자동 QA: `PASS`
+- Edge 런타임 QA: `PASS` — 순차·역순·빠른 입력, CLS, 360·768·1440px, 포인터, reduced-motion
 - 시각 검토: `PENDING`
 - 검토 URL: `http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/gate4-review/`

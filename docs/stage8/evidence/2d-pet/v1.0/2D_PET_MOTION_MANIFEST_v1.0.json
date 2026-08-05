@@ -49,6 +49,14 @@
     "properties": ["transform", "opacity"],
     "reduced_motion": "STATIC_POSE_SWAP"
   },
+  "browser_runtime_qa": {
+    "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
+    "required_status": "PASS",
+    "test_count": 7,
+    "state_orders": ["FORWARD", "REVERSE", "RAPID_LATEST_WINS"],
+    "viewport_widths": [360, 768, 1440],
+    "maximum_cumulative_layout_shift": 0.01
+  },
   "allowed_motion_properties": ["transform", "opacity"],
   "state_count": 8,
   "states": [

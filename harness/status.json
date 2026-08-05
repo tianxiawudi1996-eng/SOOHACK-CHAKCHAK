@@ -139,6 +139,8 @@
       "assets/stage8/2d-pet-motion-v1.0.js",
       "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
       "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs",
       "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
       "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
       "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md"
