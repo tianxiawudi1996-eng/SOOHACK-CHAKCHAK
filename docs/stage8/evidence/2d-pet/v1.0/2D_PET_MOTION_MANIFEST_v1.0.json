@@ -13,17 +13,27 @@
   "implementation": {
     "stylesheet": {
       "path": "assets/stage8/2d-pet-motion-v1.0.css",
-      "sha256": "53436a8715145d7c3981fc4e6df3ed36b6bc89a82008b5ef01152639541f03c0",
-      "bytes": 4181
+      "sha256": "5a712b413bf036cdda11de7a1c7d0c14d8e4110cd5b83712e9234df346cc1270",
+      "bytes": 5290
     },
     "runtime": {
       "path": "assets/stage8/2d-pet-motion-v1.0.js",
-      "sha256": "0c4c3ac126bc95e618d4216c9cb899136d18c03893d20df11f0283b3832945f3",
-      "bytes": 4473,
+      "sha256": "d80b61aca94d823d4a087611a76bf12dbd87020ba8f5bbd4b3a41286a90fe518",
+      "bytes": 7341,
       "public_api": "window.mathChakChakPets.setState(state, source)",
       "event": "mathchakchak:pet-state"
     },
     "landing_page": "mock.html"
+  },
+  "transition_bridge": {
+    "mode": "DUAL_LAYER_CROSSFADE",
+    "duration_ms": 320,
+    "incoming_layer": "pet-motion-incoming",
+    "outgoing_layer": "pet-motion-outgoing",
+    "properties": ["transform", "opacity"],
+    "direction_profile_per_target_state": true,
+    "rapid_input_policy": "LATEST_TRANSITION_WINS",
+    "reduced_motion": "STATIC_POSE_SWAP"
   },
   "allowed_motion_properties": ["transform", "opacity"],
   "state_count": 8,

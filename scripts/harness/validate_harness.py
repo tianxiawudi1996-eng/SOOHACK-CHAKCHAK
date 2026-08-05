@@ -1047,6 +1047,13 @@ def main() -> int:
             fail("gate4 motion manifest contains layout-affecting properties")
         if any(item.get("reduced_motion") != "STATIC_POSE_SWAP" for item in states):
             fail("gate4 reduced-motion fallback matrix is incomplete")
+        transition_bridge = gate4_manifest.get("transition_bridge", {})
+        if transition_bridge.get("mode") != "DUAL_LAYER_CROSSFADE" or transition_bridge.get("duration_ms") != 320:
+            fail("gate4 pose-to-pose transition bridge is invalid")
+        if set(transition_bridge.get("properties", [])) != {"transform", "opacity"}:
+            fail("gate4 transition bridge contains invalid properties")
+        if transition_bridge.get("reduced_motion") != "STATIC_POSE_SWAP" or transition_bridge.get("rapid_input_policy") != "LATEST_TRANSITION_WINS":
+            fail("gate4 transition bridge fallback or rapid-input policy is invalid")
         for key in ("stylesheet", "runtime"):
             artifact = gate4_manifest.get("implementation", {}).get(key, {})
             path = ROOT / artifact.get("path", "")
@@ -1056,6 +1063,8 @@ def main() -> int:
             fail("gate4 automated motion audit did not pass 8/8")
         if gate4_audit.get("reduced_motion_pass_count") != 8 or gate4_audit.get("implementation_pass_count") != 2:
             fail("gate4 accessibility or implementation audit is incomplete")
+        if gate4_audit.get("pose_bridge_pass") is not True:
+            fail("gate4 pose-to-pose transition bridge audit failed")
         if gate4_audit.get("failures"):
             fail("gate4 automated motion audit contains failures")
         expected_gate4_promotion = gates[4].get("status") == "VERIFIED"

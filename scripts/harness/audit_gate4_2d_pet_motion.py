@@ -89,6 +89,16 @@ def main() -> int:
         failures.extend(f"{key}:{failure}" for failure in item_failures)
         implementation_results.append({"kind": key, "path": item.get("path"), "status": "PASS" if not item_failures else "FAIL", "failures": item_failures})
 
+    bridge = motion.get("transition_bridge", {})
+    if bridge.get("mode") != "DUAL_LAYER_CROSSFADE" or bridge.get("duration_ms") != 320:
+        failures.append("POSE_TO_POSE_BRIDGE_INVALID")
+    if set(bridge.get("properties", [])) != ALLOWED_PROPERTIES:
+        failures.append("POSE_TO_POSE_BRIDGE_PROPERTIES_INVALID")
+    if bridge.get("reduced_motion") != "STATIC_POSE_SWAP":
+        failures.append("POSE_TO_POSE_BRIDGE_REDUCED_MOTION_INVALID")
+    if bridge.get("rapid_input_policy") != "LATEST_TRANSITION_WINS":
+        failures.append("POSE_TO_POSE_RAPID_INPUT_POLICY_INVALID")
+
     states = motion.get("states", [])
     by_state = {item.get("state"): item for item in states}
     if len(states) != 8 or set(by_state) != set(EXPECTED):
@@ -126,14 +136,19 @@ def main() -> int:
     for state in EXPECTED:
         if f'data-pet-state="{state}"' not in css or state not in js:
             failures.append(f"STATE_IMPLEMENTATION_MISSING:{state}")
-    for marker in ("matchMedia('(prefers-reduced-motion: reduce)')", "mathChakChakPets", "mathchakchak:pet-state", "visibilitychange"):
+    for marker in ("matchMedia('(prefers-reduced-motion: reduce)')", "mathChakChakPets", "mathchakchak:pet-state", "visibilitychange", "CROSSFADE_BRIDGE", "previousState", "transitionToken"):
         if marker not in js:
             failures.append(f"RUNTIME_CONTROL_MISSING:{marker}")
+    for marker in ("pet-motion-image-stage", "pet-motion-incoming", "pet-motion-outgoing", "pet-pose-enter", "pet-pose-exit"):
+        if marker not in css:
+            failures.append(f"POSE_TO_POSE_CSS_MISSING:{marker}")
     for page_name, page in (("landing", landing), ("review", review_page)):
         if page.count("data-pet-state-trigger=") != 8:
             failures.append(f"{page_name.upper()}_STATE_CONTROLS_NOT_8")
         if page.count("data-pet-character=") != 2:
             failures.append(f"{page_name.upper()}_PET_CONTROLLERS_NOT_2")
+        if page.count("data-pet-image-stage") != 2:
+            failures.append(f"{page_name.upper()}_TRANSITION_STAGES_NOT_2")
         if "2d-pet-motion-v1.0.css" not in page or "2d-pet-motion-v1.0.js" not in page:
             failures.append(f"{page_name.upper()}_MOTION_BUNDLE_NOT_LINKED")
     if "pointer-events: none" not in landing:
@@ -164,6 +179,7 @@ def main() -> int:
         "reduced_motion_pass_count": sum(item["status"] == "PASS" for item in state_results),
         "implementation_pass_count": sum(item["status"] == "PASS" for item in implementation_results),
         "implementation_expected_count": 2,
+        "pose_bridge_pass": not any(failure.startswith("POSE_TO_POSE") for failure in failures),
         "states": state_results,
         "implementations": implementation_results,
         "failures": failures,
@@ -182,6 +198,7 @@ def main() -> int:
 - 상태 전환: `{result['state_pass_count']}/8`
 - reduced-motion 대체: `{result['reduced_motion_pass_count']}/8`
 - CSS/JS 구현: `{result['implementation_pass_count']}/2`
+- 포즈 사이 이중 레이어 교차 모션: `{str(result['pose_bridge_pass']).lower()}`
 - 수동 승인: `{result['manual_approval_count']}/1`
 - Gate 5 진입: `{str(result['next_gate_allowed']).lower()}`
 

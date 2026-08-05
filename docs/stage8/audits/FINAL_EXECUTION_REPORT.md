@@ -46,6 +46,7 @@ Gate 3 승인 입력은 `GATE3_2D_PET_MANUAL_REVIEW_v1.0.json`과 `audit_gate3_2
 ## Gate 4 후보
 
 - 상태 전환: 8/8
+- 포즈 사이 전환: 이전·다음 이중 레이어 320ms 교차 모션
 - 모션 축소 정적 대체: 8/8
 - 허용 속성: `transform`, `opacity`
 - 런타임 API: `window.mathChakChakPets.setState(state, source)`

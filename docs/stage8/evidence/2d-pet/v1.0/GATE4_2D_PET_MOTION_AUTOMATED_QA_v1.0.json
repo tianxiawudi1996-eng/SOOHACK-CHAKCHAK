@@ -1,16 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T06:31:32.042922+00:00",
+  "generated_at": "2026-08-05T06:39:16.616900+00:00",
   "gate": 4,
   "status": "BLOCKED_EXTERNAL",
   "automated_status": "PASS",
   "motion_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
-  "motion_manifest_sha256": "e05ce2cf396ab2480c9d8d4dd235a1c97163d92bbd4cf05e1d642cd3e513f3be",
+  "motion_manifest_sha256": "8c30ff1fe06aedb20b9ad1ab8f910f2ed6f88d0b411c3ca37e47c378aa466d30",
   "state_pass_count": 8,
   "state_expected_count": 8,
   "reduced_motion_pass_count": 8,
   "implementation_pass_count": 2,
   "implementation_expected_count": 2,
+  "pose_bridge_pass": true,
   "states": [
     {
       "state": "IDLE_LISTEN",

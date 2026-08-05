@@ -13,6 +13,16 @@
     RETRY: { pose: 'p08_retry', label: '다시 해볼까요?', duration: 1100 }
   });
   const CHARACTERS = Object.freeze(['Chakchaki', 'Gongsickyi']);
+  const TRANSITIONS = Object.freeze({
+    IDLE_LISTEN: { enterX: '0px', enterY: '4px', enterRotate: '0deg', exitX: '0px', exitY: '-2px', exitRotate: '0deg' },
+    WELCOME: { enterX: '-7px', enterY: '5px', enterRotate: '-1deg', exitX: '4px', exitY: '-2px', exitRotate: '.5deg' },
+    GUIDE: { enterX: '7px', enterY: '1px', enterRotate: '1deg', exitX: '-4px', exitY: '0px', exitRotate: '-.5deg' },
+    THINK: { enterX: '0px', enterY: '5px', enterRotate: '-.7deg', exitX: '0px', exitY: '-3px', exitRotate: '.4deg' },
+    PRAISE_PROGRESS: { enterX: '0px', enterY: '7px', enterRotate: '0deg', exitX: '0px', exitY: '-5px', exitRotate: '0deg' },
+    SEARCH: { enterX: '8px', enterY: '2px', enterRotate: '1deg', exitX: '-6px', exitY: '0px', exitRotate: '-.8deg' },
+    CELEBRATE: { enterX: '0px', enterY: '10px', enterRotate: '0deg', exitX: '0px', exitY: '-8px', exitRotate: '0deg' },
+    RETRY: { enterX: '-6px', enterY: '3px', enterRotate: '-.8deg', exitX: '5px', exitY: '-1px', exitRotate: '.7deg' }
+  });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const controllers = [];
 
@@ -30,8 +40,10 @@
       this.root = root;
       this.character = root.dataset.petCharacter;
       this.image = root.querySelector('[data-pet-image]');
+      this.stage = root.querySelector('[data-pet-image-stage]');
       this.caption = root.querySelector('[data-pet-caption]');
-      if (!CHARACTERS.includes(this.character) || !this.image) return;
+      this.transitionToken = 0;
+      if (!CHARACTERS.includes(this.character) || !this.image || !this.stage) return;
       this.image.addEventListener('error', () => {
         const fallback = this.image.dataset.pngFallback;
         if (fallback && this.image.src !== new URL(fallback, document.baseURI).href) this.image.src = fallback;
@@ -42,17 +54,51 @@
     setState(state, source = 'api') {
       if (!STATES[state]) return false;
       const definition = STATES[state];
-      this.root.classList.add('is-transitioning');
-      this.image.dataset.pngFallback = assetPath(this.character, state, 'png');
-      this.image.src = assetPath(this.character, state, 'webp');
-      this.image.alt = `${definition.label} — ${this.character}`;
-      this.root.dataset.petState = state;
-      if (this.caption) this.caption.textContent = definition.label;
-      window.setTimeout(() => this.root.classList.remove('is-transitioning'), reducedMotion.matches ? 0 : 170);
-      this.root.dispatchEvent(new CustomEvent('mathchakchak:pet-state', {
-        bubbles: true,
-        detail: { character: this.character, state, source, reducedMotion: reducedMotion.matches }
-      }));
+      const token = ++this.transitionToken;
+      const previousState = this.root.dataset.petState;
+      const webp = assetPath(this.character, state, 'webp');
+      const png = assetPath(this.character, state, 'png');
+      const bridge = TRANSITIONS[state];
+      const commit = (nextSource) => {
+        if (token !== this.transitionToken) return;
+        this.stage.querySelectorAll('.pet-motion-outgoing').forEach((item) => item.remove());
+        const shouldBridge = previousState && previousState !== state && !reducedMotion.matches;
+        let outgoing = null;
+        if (shouldBridge) {
+          outgoing = this.image.cloneNode(false);
+          outgoing.removeAttribute('data-pet-image');
+          outgoing.removeAttribute('data-png-fallback');
+          outgoing.alt = '';
+          outgoing.setAttribute('aria-hidden', 'true');
+          outgoing.className = 'pet-motion-outgoing';
+          this.stage.appendChild(outgoing);
+          this.root.style.setProperty('--pet-enter-x', bridge.enterX);
+          this.root.style.setProperty('--pet-enter-y', bridge.enterY);
+          this.root.style.setProperty('--pet-enter-rotate', bridge.enterRotate);
+          this.root.style.setProperty('--pet-exit-x', bridge.exitX);
+          this.root.style.setProperty('--pet-exit-y', bridge.exitY);
+          this.root.style.setProperty('--pet-exit-rotate', bridge.exitRotate);
+          this.image.classList.add('pet-motion-incoming');
+        }
+        this.image.dataset.pngFallback = png;
+        this.image.src = nextSource;
+        this.image.alt = `${definition.label} — ${this.character}`;
+        this.root.dataset.petState = state;
+        if (this.caption) this.caption.textContent = definition.label;
+        window.setTimeout(() => {
+          if (token !== this.transitionToken) return;
+          this.image.classList.remove('pet-motion-incoming');
+          outgoing?.remove();
+        }, shouldBridge ? 340 : 0);
+        this.root.dispatchEvent(new CustomEvent('mathchakchak:pet-state', {
+          bubbles: true,
+          detail: { character: this.character, previousState, state, source, transition: shouldBridge ? 'CROSSFADE_BRIDGE' : 'STATIC_POSE_SWAP', reducedMotion: reducedMotion.matches }
+        }));
+      };
+      const probe = new Image();
+      probe.addEventListener('load', () => commit(webp), { once: true });
+      probe.addEventListener('error', () => commit(png), { once: true });
+      probe.src = webp;
       return true;
     }
   }
