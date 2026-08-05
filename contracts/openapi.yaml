@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Math ChackChack Learning API
+  version: 0.1.0
+  description: Contract-first API for the 2D learning MVP. No PII is required.
+servers:
+  - url: /api
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      responses:
+        '200':
+          description: Service is ready
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, const: ok }
+  /v1/units/{unitId}:
+    get:
+      operationId: getLearningUnit
+      parameters:
+        - in: path
+          name: unitId
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Learning unit
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LearningUnit' }
+  /v1/sessions:
+    post:
+      operationId: createSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [unitId]
+              properties:
+                unitId: { type: string }
+                clientSessionId: { type: string }
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LearningSession' }
+  /v1/sessions/{sessionId}/responses:
+    post:
+      operationId: submitResponse
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LearnerResponse' }
+      responses:
+        '200':
+          description: Deterministic feedback
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Feedback' }
+  /v1/sessions/{sessionId}/complete:
+    post:
+      operationId: completeSession
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Completion summary
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SessionSummary' }
+components:
+  schemas:
+    LearningUnit:
+      type: object
+      required: [id, title, steps]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        steps:
+          type: array
+          minItems: 5
+          maxItems: 5
+          items: { $ref: '#/components/schemas/LearningStep' }
+    LearningStep:
+      type: object
+      required: [id, type, title]
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [understand, connect, recall, apply, explain] }
+        title: { type: string }
+    LearningSession:
+      type: object
+      required: [id, unitId, currentStep, status]
+      properties:
+        id: { type: string }
+        unitId: { type: string }
+        currentStep: { type: integer, minimum: 0, maximum: 4 }
+        status: { type: string, enum: [active, completed] }
+    LearnerResponse:
+      type: object
+      required: [stepId, response]
+      properties:
+        stepId: { type: string }
+        response: { type: string, maxLength: 500 }
+        attempt: { type: integer, minimum: 1 }
+    Feedback:
+      type: object
+      required: [result, state, bubbleType, message]
+      properties:
+        result: { type: string, enum: [correct, retry, accepted] }
+        state: { type: string, enum: [Guide, Think, Praise, Retry, Happy] }
+        bubbleType: { type: string, enum: [Guide, Hint, Praise, Retry, Progress] }
+        message: { type: string }
+    SessionSummary:
+      type: object
+      required: [sessionId, completedSteps, retryCount, explanation]
+      properties:
+        sessionId: { type: string }
+        completedSteps: { type: integer, minimum: 0, maximum: 5 }
+        retryCount: { type: integer, minimum: 0 }
+        explanation: { type: string }
