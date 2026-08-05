@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, "agent/**"]
   pull_request:
-    branches: [main]
+    branches: [main, "agent/stage8-harness"]
 
 permissions:
   contents: read
@@ -30,6 +30,19 @@ jobs:
               json.loads(path.read_text(encoding='utf-8'))
               print(f'JSON_PASS {path}')
           PY
+      - name: Test MVP vertical slice contracts
+        run: python -m unittest discover -s tests -v
+      - name: Smoke test static learning slice
+        run: |
+          python scripts/serve.py --port 4173 > /tmp/mathchackchack-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 1
+          curl --fail --silent --show-error http://127.0.0.1:4173/apps/web/ > /tmp/index.html
+          curl --fail --silent --show-error http://127.0.0.1:4173/apps/web/data/unit-equation-basics.json > /tmp/unit.json
+          test -s /tmp/index.html
+          test -s /tmp/unit.json
+          echo "VERTICAL_SLICE_SMOKE_PASS"
       - name: Reject forbidden completion claims
         run: |
           python - <<'PY'

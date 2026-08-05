@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2F5BFF">
+  <meta name="description" content="수학착착 2D 학습 MVP Vertical Slice">
+  <title>수학착착 | 등식과 한 단계 방정식</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#learning-panel">학습 내용으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">수</span>
+      <div><strong>수학착착</strong><small>MATH CHAKCHAK</small></div>
+    </div>
+    <button id="character-toggle" class="button button-secondary" type="button" aria-pressed="true">캐릭터 숨기기</button>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">MVP v0.1 · 2D Vertical Slice</p>
+        <h1 id="page-title">수학이 착착,<br>공식이 척척.</h1>
+        <p>등식의 뜻부터 한 단계씩 이해하고, 마지막에는 풀이 이유를 스스로 설명합니다.</p>
+      </div>
+      <div class="hero-status" role="status">
+        <span class="badge">개인정보 수집 없음</span>
+        <span class="badge badge-mint">이어하기 지원</span>
+      </div>
+    </section>
+
+    <section id="learning-panel" class="learning-layout" aria-labelledby="unit-title">
+      <aside id="character-panel" class="character-panel" aria-label="학습 도우미">
+        <div class="mascot mascot-chak" aria-hidden="true"><span>착</span></div>
+        <div class="speech-bubble" id="speech-bubble">
+          <strong id="speaker">착착이</strong>
+          <p id="bubble-text">공식의 뜻부터 한 단계만 같이 볼까?</p>
+        </div>
+        <div class="mascot mascot-gong" aria-hidden="true"><span>공</span></div>
+      </aside>
+
+      <div class="learning-card">
+        <div class="unit-heading">
+          <div>
+            <p class="eyebrow">ALG-EQ-001</p>
+            <h2 id="unit-title">등식과 한 단계 방정식</h2>
+          </div>
+          <div id="progress-text" class="progress-label">1 / 5</div>
+        </div>
+
+        <ol id="stepper" class="stepper" aria-label="학습 5단계"></ol>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+
+        <section id="step-content" class="step-content" aria-live="polite"></section>
+        <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+
+        <div class="actions">
+          <button id="back-button" class="button button-secondary" type="button">이전</button>
+          <button id="next-button" class="button button-primary" type="button">다음</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary-panel" class="summary-card" hidden aria-labelledby="summary-title">
+      <h2 id="summary-title">오늘 학습 요약</h2>
+      <div id="summary-content"></div>
+      <button id="restart-button" class="button button-secondary" type="button">처음부터 다시 하기</button>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
