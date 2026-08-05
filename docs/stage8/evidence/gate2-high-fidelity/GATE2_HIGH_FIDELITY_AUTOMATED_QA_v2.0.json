@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "generated_at": "2026-08-05T09:58:52+09:00",
   "gate": 2,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "SUPERSEDED",
   "automated_status": "PASS",
   "blender_version": "5.2.0 LTS",
   "blend_sources_passed": 2,
@@ -177,9 +177,9 @@
   "failures": [],
   "manual_visual_review_required": 1,
   "manual_visual_review_count": 0,
-  "blockers": [
-    "PROJECT_OWNER_CANONICAL_IDENTITY_AND_QUALITY_REVIEW_REQUIRED"
-  ],
+  "blockers": [],
+  "superseded_at": "2026-08-05T13:28:03+09:00",
+  "superseded_by": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
   "gate2_status_change_applied": false,
   "next_gate_allowed": false
 }

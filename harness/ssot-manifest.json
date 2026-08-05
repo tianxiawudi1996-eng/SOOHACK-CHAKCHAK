@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T00:59:12.338558+00:00",
+  "generated_at": "2026-08-05T04:47:04.682067+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1227,8 +1227,13 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "f21ede937ad26cdb01f9cfd7b9a151c6ef1076027cbac6d206d08ff51d7c2252",
-      "size_bytes": 1898
+      "sha256": "25c42881e68e0af3881f0ad5f64b5c48b541af4a178fa9c8920a903501f580db",
+      "size_bytes": 2451
+    },
+    {
+      "path": "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
+      "sha256": "6e526fd17e0c4421c14e5c4b189699bc1a02f9551b26ff503f640ce2b0e8b0f4",
+      "size_bytes": 910
     },
     {
       "path": "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
@@ -1237,8 +1242,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "7138a25eb39be8bfb42ffee2c5615e89010a74887859957610549d6feb12489d",
-      "size_bytes": 1488
+      "sha256": "dcc64132db90ddcb3d009ffda3190bf3e8287052af3e84419cd270a7a746742f",
+      "size_bytes": 1811
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1297,8 +1302,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "829fe0d506f32abf9c7127d2eaaa9817df8f1ec7ba47ae4bb5df5663b96291fc",
-      "size_bytes": 2297
+      "sha256": "59f5a2638429c33eab1869580fc07a740790cba426db7ca710c799a384ae17fa",
+      "size_bytes": 1335
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1307,13 +1312,53 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "1927cb56a30846b012e8f02d3d09126c5f563d7fa3f6b49c1c2c49823d355395",
-      "size_bytes": 9739
+      "sha256": "4f1f428397b09e0bda4707f707bb694fdb826eb484151986cd16b12484b78e7a",
+      "size_bytes": 10362
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+      "sha256": "bc1c6604b21ef280e61ae59d91250f6ec7f08c110d364e5b35142dc124ea8c92",
+      "size_bytes": 2401
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
+      "sha256": "6dca1e1aac86276d01deb82b11d4076bfaa3a97f21d53bf3f7e4978cefd3b536",
+      "size_bytes": 849
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
+      "sha256": "54d9181dc13b081a05e18ece50d1d27ec8daea3e2fc165fdef447251c2d3af17",
+      "size_bytes": 714
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+      "sha256": "12a1d3a085be0b7efde5aa37524368e22ddbb3e0a0b9b8bef13fc8e3805cc19d",
+      "size_bytes": 925
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
+      "sha256": "51e13a635e070ca02452b0f7fbc43c64418257a1bf305436977dbbcee0ef7618",
+      "size_bytes": 1133
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+      "size_bytes": 1762247
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
+      "size_bytes": 1653526
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
+      "sha256": "709084704ab42f2061e44090cc53a6d2bfaeefd059499baed1a6facd18e6b696",
+      "size_bytes": 4770
     },
     {
       "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
-      "sha256": "63677f2001573c381830cde6e83628646639190146e67eff5fd6879982e1d7bf",
-      "size_bytes": 2636
+      "sha256": "10d94a08398ae07544ccf1fa6a4b0d721913365a00f63d6c91630bc076001abd",
+      "size_bytes": 3610
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1677,18 +1722,18 @@
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
-      "sha256": "1579a9ee488418ebfce92cc0efc1ad369dada9a676973c064ca6579879efea83",
-      "size_bytes": 6891
+      "sha256": "cbde4fd8720a5487573a9df2a169ce491d0e984f37bb9aee8595ef5f0b4a6b2f",
+      "size_bytes": 6945
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
-      "sha256": "c868fa5f938035d9c2ec4ad3b9cd1740cbeac4df620d1443b7d442dc0de318a1",
-      "size_bytes": 627
+      "sha256": "2e78644a53ba61e1e7493dbfc5addd320f8a5c6efd33653bba13699b60202574",
+      "size_bytes": 936
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
-      "sha256": "3c960406aaaeae195215d114bd4976a7b6c58b09f81b52af8e976e1d39a92339",
-      "size_bytes": 465
+      "sha256": "969e3628d43a60db56c1b03f8651ebf9bd518c028a63889a4f073dfe95552e75",
+      "size_bytes": 632
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
@@ -1837,8 +1882,8 @@
     },
     {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
-      "sha256": "17e41e1fde9cd9ed5d3f1ba98330ce0d86c525334aab846f8b788de4a84be5f1",
-      "size_bytes": 1551
+      "sha256": "251afd0db66ddbb0e9fa601cc9f8907bf636f45856990814d4d0b7fb971c63b4",
+      "size_bytes": 2020
     },
     {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
@@ -1856,9 +1901,14 @@
       "size_bytes": 3188
     },
     {
+      "path": "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
+      "sha256": "666fde9dd44d193ff01c0ae5e893104b672ba34acd21d722d866525e7a0d48c8",
+      "size_bytes": 2016
+    },
+    {
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
-      "sha256": "2e1f9a4ee4b82e923e20fea76131cbd2c4acc86854d317fbcc85ed5fe7df44a7",
-      "size_bytes": 1445
+      "sha256": "853c7f698a039a9eb7d61305a49d91de2ffe21121cc2ec456acefaa3195280b1",
+      "size_bytes": 1907
     },
     {
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
@@ -1866,9 +1916,14 @@
       "size_bytes": 3947
     },
     {
+      "path": "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+      "sha256": "9a9e45e240294fb4b55b4e3178185c89c9ef692f241c25d21465392665f78ba0",
+      "size_bytes": 1809
+    },
+    {
       "path": "docs/stage8/prompts/GATE4_MOTION.md",
-      "sha256": "1f25382639aa085a83984527bd7b417d8b10021b922b16fe97ed0d70fb9867e6",
-      "size_bytes": 1211
+      "sha256": "b966572d3d7591ca5eb2081506384311b901094a79764e18aac1d8eb5a8ff6e0",
+      "size_bytes": 1813
     },
     {
       "path": "docs/stage8/prompts/GATE5_AI_BEHAVIOR.md",
@@ -1889,6 +1944,11 @@
       "path": "docs/stage8/prompts/GATE8_DEPLOYMENT.md",
       "sha256": "680d67664535c3b9142cce0e34ef65a9961de7b18985d4642c28a55ffb8755a4",
       "size_bytes": 1357
+    },
+    {
+      "path": "docs/stage8/prompts/STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+      "sha256": "1e965759036ebd8e8c8d75de7a88d1032e0130a0542ef189d3fe72481171ca07",
+      "size_bytes": 9078
     },
     {
       "path": "evidence/gate-0/candidate-references/Chakchaki_Approved_Reference_v1.0(2).png",
@@ -1942,8 +2002,23 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "f193c1498d0c6926776eacff62d6fddc22c2688e2f6ab325f7618f6fece734fb",
-      "size_bytes": 7641
+      "sha256": "5584cf3641ce73075cd4c48e57593f4396c959662914bd4a0e50b43cee173f28",
+      "size_bytes": 8627
+    },
+    {
+      "path": "mock.html",
+      "sha256": "b753849f63d4ec355058f10c33c2ab9c9bf99616c92cebb12c2fc2f1382fd679",
+      "size_bytes": 27509
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+      "size_bytes": 1762247
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
+      "size_bytes": 1653526
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -2101,6 +2176,11 @@
       "size_bytes": 25317
     },
     {
+      "path": "scripts/harness/audit_2d_pet_assets.py",
+      "sha256": "636b396d1a22daddb2140b2ef29e9da4f4458f3df2961b5eb4c411921b6d2c6c",
+      "size_bytes": 5770
+    },
+    {
       "path": "scripts/harness/audit_gate1.py",
       "sha256": "c91cb0f3c7a918412938acc270763fe75f14a6d3c35fd8c4322a966444687705",
       "size_bytes": 12745
@@ -2172,8 +2252,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "6f494be6a855ca7c721d7ab3863262688ce608f5b709b4d109631f7754ae3d89",
-      "size_bytes": 63329
+      "sha256": "2b400b324cec84269d70788e9d92624d4e61dcb71d9656e6789ea7f0e25002f5",
+      "size_bytes": 67101
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

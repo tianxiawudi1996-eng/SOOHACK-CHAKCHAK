@@ -1,47 +1,21 @@
-# Test Execution Report
+# Stage 8 테스트 실행 보고
 
-## 현재 수정 검증
+## 2026-08-05 음영 2D 전략 검증
 
-| 명령 | 예상 종료 | 성공 기준 |
+| 명령 | 종료 코드 | 결과 |
 |---|---:|---|
-| Python `py_compile` | 0 | 수정된 네 개 빌더·감사기와 하네스 문법 정상 |
-| `python scripts/harness/build_gate2_base_mesh.py` | 1 | `GATE2_BLOCKED_EXTERNAL`; 절차형 모델 미생성 |
-| `python scripts/harness/audit_gate2.py` | 1 | 공식 이미지 해시 일치, 활성 Gate 2 GLB 0, `BLOCKED_EXTERNAL` |
-| `python scripts/harness/build_gate3_rig.py` | 1 | `GATE3_BLOCKED_PREREQUISITE`; 리그 미생성 |
-| `python scripts/harness/audit_gate3.py` | 1 | 활성 Gate 3 GLB 0, `BLOCKED_PREREQUISITE` |
-| `python scripts/harness/audit_stage8.py` | 0 | 전체 파일 감사 통과 |
+| `python scripts/harness/audit_2d_pet_assets.py` | 1 | 자동 QA `PASS`; 시트 2/2, 선언 포즈 16/16, 수동 승인 0/1로 예상 차단 |
+| `python scripts/harness/audit_stage8.py` | 0 | 전체 파일 266개, Stage 7 필수 원본 10/10, Gate 0 `VERIFIED` |
 | `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 2 `NOT_VERIFIED`, Gate 3 `NOT_STARTED` |
 | `git diff --check` | 0 | 공백 오류 없음 |
+| 정적 검토 서버 HTTP 검사 | 0 | 페이지·원본 2개·후보 시트 2개 모두 `200 OK` |
 
-## 과거 결과의 효력
+## 결과 해석
 
-이전 Gate 2·3 GLB 구조 및 리그 검사는 실행 이력으로만 남는다. 해당 자산은 사용자가 캐릭터 정체성과 품질을 거부했으므로 현재 Gate 승인 근거가 아니며, 관련 승인과 승격은 폐기되었다.
+2D 자동 감사기의 종료 코드 1은 실패가 아니라 제품 책임자 수동 승인 0/1을 나타내는 통제된 외부 차단이다. PNG 디코딩, 1536×1024 크기, 원본·후보 해시, 검토 복사본, 캐릭터 2/2, 상태 매핑 8/8은 통과했다.
 
-## 적용하지 않은 검사
+전체 Stage 8 하네스는 새 2D 전략과 기존 3D 감사 보관 상태를 함께 검증하여 `HARNESS_PASS`를 반환했다. Gate 2는 시각 승인 전까지 `NOT_VERIFIED`로 유지되고 Gate 3 진입은 차단된다.
 
-- Blender 기반 모델·리그 품질 검사: Blender와 승인된 실제 3D 원본이 없음
-- 제품 빌드 검사: 제품 소스와 후속 Gate가 아직 없음
-- 민감한 복구 코드 파일: 읽거나 커밋하지 않음
+## 보안 통제
 
-## 실행 결과 — 2026-08-05
-
-- `py_compile`: 종료 0
-- Gate 2 빌더: 예상 차단 종료 1, `GATE2_BLOCKED_EXTERNAL`
-- Gate 2 감사: 예상 차단 종료 1, 활성 GLB 0
-- Gate 3 빌더: 예상 차단 종료 1, `GATE3_BLOCKED_PREREQUISITE`
-- Gate 3 감사: 예상 차단 종료 1, 활성 GLB 0
-- Stage 8 감사: 종료 0, 감사 파일 227개
-- 하네스 검증: 종료 0, `HARNESS_PASS`
-- `git diff --check`: 종료 0
-- 격리 확인: GLB 12개, 미리보기 10개
-
-## 고품질 Blender 후보 실행 결과 — 2026-08-05
-
-- Blender 5.2 LTS 배포판 SHA-256: 공식 체크섬 일치
-- `.blend` 원본: 2/2 생성
-- GLB LOD 행렬: 6/6 생성 및 glTF 2.0 파싱 PASS
-- 렌더 행렬: 6/6 생성
-- 비교 보드: 2/2 생성
-- `audit_gate2_high_fidelity.py`: 예상 외부 차단 종료 1, 자동 QA PASS, 수동 승인 0/1
-- Gate 2: `NOT_VERIFIED`
-- Gate 3: `NOT_STARTED`
+`docs/ssot/stage7/v1.0/github-recovery-codes.txt`는 ignore·untracked 경고로만 확인했으며 내용을 읽거나 기록하지 않았다.

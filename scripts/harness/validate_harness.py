@@ -47,6 +47,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/build_gate3_rig.py",
     "scripts/harness/audit_gate3.py",
     "scripts/harness/audit_gate2_high_fidelity.py",
+    "scripts/harness/audit_2d_pet_assets.py",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -110,6 +111,15 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
     "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
     "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
+    "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
+    "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -132,6 +142,9 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_HIGH_FIDELITY_CHARACTER_PRODUCTION_METAPROMPT_v2.0.md",
+    "docs/stage8/prompts/STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json",
@@ -705,12 +718,12 @@ def main() -> int:
         gate2_build = load_json(gate2_root / "GATE2_BUILD_MANIFEST_v1.0.json")
         gate2_audit = load_json(gate2_root / "GATE2_AUTOMATED_QA_v1.0.json")
         gate2_review = load_json(gate2_root / "GATE2_MANUAL_REVIEW_v1.0.json")
-        if register.get("status") != "ACTIVE_2D_CANONICAL_ONLY":
+        if register.get("status") != "ACTIVE_SHADED_2D_PET_CANDIDATES":
             fail("active character reference register status is invalid")
-        if register.get("actual_3d_source", {}).get("status") != "ORIGINAL_MISSING":
-            fail("character register incorrectly describes the missing original 3D source")
-        if register.get("new_authored_3d_candidates", {}).get("status") != "PENDING_MANUAL_VISUAL_REVIEW":
-            fail("new authored 3D candidates are not safely pending visual review")
+        if register.get("actual_3d_source", {}).get("status") != "ABANDONED_BY_USER_STRATEGY":
+            fail("character register does not record the abandoned 3D strategy")
+        if register.get("new_authored_3d_candidates", {}).get("status") != "SUPERSEDED_BY_2D_STRATEGY":
+            fail("new authored 3D candidates are not safely superseded")
         for character, record in register.get("characters", {}).items():
             for key in ("approved_reference", "canonical_turnaround"):
                 path = ROOT / record.get(f"{key}_path", "")
@@ -744,8 +757,8 @@ def main() -> int:
         hf_root = ROOT / "docs/stage8/evidence/gate2-high-fidelity"
         hf_qa = load_json(hf_root / "GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json")
         hf_review = load_json(hf_root / "GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json")
-        if hf_qa.get("status") != "BLOCKED_EXTERNAL" or hf_qa.get("automated_status") != "PASS":
-            fail("high-fidelity Gate 2 candidate audit is not safely review-blocked")
+        if hf_qa.get("status") != "SUPERSEDED" or hf_qa.get("automated_status") != "PASS":
+            fail("high-fidelity Gate 2 candidate audit is not safely superseded")
         if (hf_qa.get("blend_sources_passed"), hf_qa.get("glb_models_passed"), hf_qa.get("renders_passed")) != (2, 6, 6):
             fail("high-fidelity Gate 2 artifact matrix is incomplete")
         if hf_qa.get("failures"):
@@ -761,10 +774,46 @@ def main() -> int:
                 path = ROOT / item.get("path", "")
                 if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
                     fail(f"high-fidelity artifact is missing or stale: {item.get('path')}")
-        if hf_review.get("status") != "PENDING" or hf_review.get("decision") is not None:
-            fail("high-fidelity manual review is not pending")
+        if hf_review.get("status") != "SUPERSEDED" or hf_review.get("decision") != "NOT_APPLICABLE":
+            fail("high-fidelity manual review is not superseded")
         if hf_review.get("approval_applied") is not False or hf_review.get("next_gate_allowed") is not False:
-            fail("high-fidelity pending review contains promotion flags")
+            fail("high-fidelity superseded review contains promotion flags")
+
+        pet_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
+        pet_decision = load_json(pet_root / "2D_STRATEGY_DECISION_v1.0.json")
+        pet_manifest = load_json(pet_root / "2D_PET_ASSET_MANIFEST_v1.0.json")
+        pet_qa = load_json(pet_root / "2D_PET_AUTOMATED_QA_v1.0.json")
+        pet_review = load_json(pet_root / "2D_PET_MANUAL_REVIEW_v1.0.json")
+        if pet_decision.get("decision") != "ADOPT_SHADED_2D_PET_SYSTEM" or pet_decision.get("status") != "ACTIVE":
+            fail("shaded 2D strategy decision is not active")
+        if pet_manifest.get("status") != "CANDIDATE_READY_FOR_MANUAL_REVIEW":
+            fail("shaded 2D asset manifest is not review-ready")
+        if len(pet_manifest.get("sheets", [])) != 2 or len(pet_manifest.get("pose_order", [])) != 8:
+            fail("shaded 2D sheet or pose matrix is incomplete")
+        if len({item.get("state") for item in pet_manifest.get("pose_order", [])}) != 8:
+            fail("shaded 2D pose states are not unique")
+        for character, source_record in pet_manifest.get("canonical_sources", {}).items():
+            source = ROOT / source_record.get("path", "")
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest().lower() != source_record.get("sha256", "").lower():
+                fail(f"shaded 2D canonical source is missing or stale: {character}")
+        for sheet in pet_manifest.get("sheets", []):
+            path = ROOT / sheet.get("path", "")
+            review_copy = ROOT / sheet.get("review_copy", "")
+            expected = sheet.get("sha256", "").lower()
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected:
+                fail(f"shaded 2D pose sheet is missing or stale: {sheet.get('character')}")
+            if not review_copy.is_file() or hashlib.sha256(review_copy.read_bytes()).hexdigest().lower() != expected:
+                fail(f"shaded 2D review copy is missing or stale: {sheet.get('character')}")
+            if (sheet.get("width"), sheet.get("height"), sheet.get("expected_pose_count")) != (1536, 1024, 8):
+                fail(f"shaded 2D pose-sheet metadata is invalid: {sheet.get('character')}")
+        if pet_qa.get("status") != "BLOCKED_EXTERNAL" or pet_qa.get("automated_status") != "PASS":
+            fail("shaded 2D automated QA is not safely review-blocked")
+        if pet_qa.get("files_passed") != 2 or pet_qa.get("failures"):
+            fail("shaded 2D automated QA file matrix is incomplete")
+        if pet_review.get("status") != "PENDING" or pet_review.get("decision") is not None:
+            fail("shaded 2D manual review is not safely pending")
+        if pet_review.get("approval_applied") is not False or pet_review.get("next_gate_allowed") is not False:
+            fail("shaded 2D pending review contains promotion flags")
     elif gates[2].get("status") != "NOT_STARTED":
         if gates[1].get("status") != "VERIFIED":
             fail("gate2 started before gate1 VERIFIED")

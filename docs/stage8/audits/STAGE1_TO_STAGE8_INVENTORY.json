@@ -1,8 +1,8 @@
 {
   "summary": {
-    "generated_at": "2026-08-05T00:59:12.338558+00:00",
+    "generated_at": "2026-08-05T04:47:04.682067+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 250,
+    "file_count": 266,
     "required_stage7_file_count": 10,
     "required_exact_found": 10,
     "required_exact_missing_or_conflicting": 0,
@@ -3609,14 +3609,15 @@
       "stage": "Stage 8",
       "file_name": "00_MASTER_PLAN.md",
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "size_bytes": 1898,
-      "modified_at": "2026-08-04T05:10:37.990315+00:00",
+      "size_bytes": 2451,
+      "modified_at": "2026-08-05T04:41:32.287450+00:00",
       "mime": "text/markdown",
-      "sha256": "f21ede937ad26cdb01f9cfd7b9a151c6ef1076027cbac6d206d08ff51d7c2252",
+      "sha256": "25c42881e68e0af3881f0ad5f64b5c48b541af4a178fa9c8920a903501f580db",
       "version": null,
       "approval_status_tokens": [
         "VERIFIED",
-        "승인"
+        "승인",
+        "후보"
       ],
       "classification": "unclassified",
       "references": [],
@@ -3628,7 +3629,43 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED",
           "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2D_PET_TRANSITION_AUDIT.md",
+      "path": "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
+      "size_bytes": 910,
+      "modified_at": "2026-08-05T04:34:49.097096+00:00",
+      "mime": "text/markdown",
+      "sha256": "6e526fd17e0c4421c14e5c4b189699bc1a02f9551b26ff503f640ce2b0e8b0f4",
+      "version": null,
+      "approval_status_tokens": [
+        "PASS",
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "PASS",
           "승인"
         ],
         "links": [],
@@ -3671,12 +3708,13 @@
       "stage": "Stage 8",
       "file_name": "FINAL_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 1488,
-      "modified_at": "2026-08-05T00:52:40.490688+00:00",
+      "size_bytes": 1811,
+      "modified_at": "2026-08-05T04:45:53.010119+00:00",
       "mime": "text/markdown",
-      "sha256": "7138a25eb39be8bfb42ffee2c5615e89010a74887859957610549d6feb12489d",
-      "version": null,
+      "sha256": "dcc64132db90ddcb3d009ffda3190bf3e8287052af3e84419cd270a7a746742f",
+      "version": "v1.0",
       "approval_status_tokens": [
+        "APPROVE",
         "PASS",
         "VERIFIED",
         "승인",
@@ -3691,8 +3729,8 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
-          "2.0",
-          "5.2"
+          "127.0.0",
+          "v1.0"
         ],
         "status_tokens": [
           "NOT_STARTED",
@@ -4059,13 +4097,14 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 2297,
-      "modified_at": "2026-08-05T00:52:40.494287+00:00",
+      "size_bytes": 1335,
+      "modified_at": "2026-08-05T04:45:53.009600+00:00",
       "mime": "text/markdown",
-      "sha256": "829fe0d506f32abf9c7127d2eaaa9817df8f1ec7ba47ae4bb5df5663b96291fc",
-      "version": null,
+      "sha256": "59f5a2638429c33eab1869580fc07a740790cba426db7ca710c799a384ae17fa",
+      "version": "v1.0",
       "approval_status_tokens": [
         "PASS",
+        "VERIFIED",
         "승인",
         "후보"
       ],
@@ -4078,13 +4117,13 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
-          "2.0",
-          "5.2"
+          "v1.0"
         ],
         "status_tokens": [
           "NOT_STARTED",
           "NOT_VERIFIED",
           "PASS",
+          "VERIFIED",
           "승인"
         ],
         "links": [],
@@ -4129,10 +4168,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 9739,
-      "modified_at": "2026-08-05T00:52:40.493277+00:00",
+      "size_bytes": 10362,
+      "modified_at": "2026-08-05T04:41:32.288974+00:00",
       "mime": "text/markdown",
-      "sha256": "1927cb56a30846b012e8f02d3d09126c5f563d7fa3f6b49c1c2c49823d355395",
+      "sha256": "4f1f428397b09e0bda4707f707bb694fdb826eb484151986cd16b12484b78e7a",
       "version": null,
       "approval_status_tokens": [
         "APPROVE",
@@ -4179,12 +4218,174 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "2D_PET_ASSET_MANIFEST_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+      "size_bytes": 2401,
+      "modified_at": "2026-08-05T04:34:49.092479+00:00",
+      "mime": "application/json",
+      "sha256": "bc1c6604b21ef280e61ae59d91250f6ec7f08c110d364e5b35142dc124ea8c92",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2D_PET_AUTOMATED_QA_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
+      "size_bytes": 849,
+      "modified_at": "2026-08-05T04:34:49.094438+00:00",
+      "mime": "application/json",
+      "sha256": "6dca1e1aac86276d01deb82b11d4076bfaa3a97f21d53bf3f7e4978cefd3b536",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2D_PET_MANUAL_REVIEW_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
+      "size_bytes": 714,
+      "modified_at": "2026-08-05T04:34:49.094997+00:00",
+      "mime": "application/json",
+      "sha256": "54d9181dc13b081a05e18ece50d1d27ec8daea3e2fc165fdef447251c2d3af17",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2D_STRATEGY_DECISION_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+      "size_bytes": 925,
+      "modified_at": "2026-08-05T04:29:14.775030+00:00",
+      "mime": "application/json",
+      "sha256": "12a1d3a085be0b7efde5aa37524368e22ddbb3e0a0b9b8bef13fc8e3805cc19d",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GENERATION_RECORD_v1.0.md",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
+      "size_bytes": 1133,
+      "modified_at": "2026-08-05T04:34:49.097096+00:00",
+      "mime": "text/markdown",
+      "sha256": "51e13a635e070ca02452b0f7fbc43c64418257a1bf305436977dbbcee0ef7618",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인",
+        "후보"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "size_bytes": 1762247,
+      "modified_at": "2026-08-05T04:30:18.565120+00:00",
+      "mime": "image/png",
+      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": "91a80d6666d1",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "size_bytes": 1653526,
+      "modified_at": "2026-08-05T04:31:29.422207+00:00",
+      "mime": "image/png",
+      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": "f6871819cecf",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "index.html",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
+      "size_bytes": 4770,
+      "modified_at": "2026-08-05T04:46:18.480726+00:00",
+      "mime": "text/html",
+      "sha256": "709084704ab42f2061e44090cc53a6d2bfaeefd059499baed1a6facd18e6b696",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
       "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
-      "size_bytes": 2636,
-      "modified_at": "2026-08-05T00:52:11.411594+00:00",
+      "size_bytes": 3610,
+      "modified_at": "2026-08-05T04:38:32.620070+00:00",
       "mime": "application/json",
-      "sha256": "63677f2001573c381830cde6e83628646639190146e67eff5fd6879982e1d7bf",
+      "sha256": "10d94a08398ae07544ccf1fa6a4b0d721913365a00f63d6c91630bc076001abd",
       "version": "v1.0",
       "approval_status_tokens": [
         "PASS",
@@ -6023,10 +6224,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
-      "size_bytes": 6891,
-      "modified_at": "2026-08-05T00:58:52.662549+00:00",
+      "size_bytes": 6945,
+      "modified_at": "2026-08-05T04:39:19.895421+00:00",
       "mime": "application/json",
-      "sha256": "1579a9ee488418ebfce92cc0efc1ad369dada9a676973c064ca6579879efea83",
+      "sha256": "cbde4fd8720a5487573a9df2a169ce491d0e984f37bb9aee8595ef5f0b4a6b2f",
       "version": "v2.0",
       "approval_status_tokens": [
         "PASS"
@@ -6041,10 +6242,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
-      "size_bytes": 627,
-      "modified_at": "2026-08-05T00:50:37.909518+00:00",
+      "size_bytes": 936,
+      "modified_at": "2026-08-05T04:38:32.623691+00:00",
       "mime": "application/json",
-      "sha256": "c868fa5f938035d9c2ec4ad3b9cd1740cbeac4df620d1443b7d442dc0de318a1",
+      "sha256": "2e78644a53ba61e1e7493dbfc5addd320f8a5c6efd33653bba13699b60202574",
       "version": "v2.0",
       "approval_status_tokens": [],
       "classification": "unclassified",
@@ -6057,10 +6258,10 @@
       "stage": "Stage 8",
       "file_name": "GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
-      "size_bytes": 465,
-      "modified_at": "2026-08-05T00:58:52.662549+00:00",
+      "size_bytes": 632,
+      "modified_at": "2026-08-05T04:39:30.665935+00:00",
       "mime": "text/markdown",
-      "sha256": "3c960406aaaeae195215d114bd4976a7b6c58b09f81b52af8e976e1d39a92339",
+      "sha256": "969e3628d43a60db56c1b03f8651ebf9bd518c028a63889a4f073dfe95552e75",
       "version": "v2.0",
       "approval_status_tokens": [
         "PASS",
@@ -6076,11 +6277,10 @@
         "utf8": true,
         "h1_count": 1,
         "version_tokens": [
+          "v1.0",
           "v2.0"
         ],
         "status_tokens": [
-          "NOT_STARTED",
-          "NOT_VERIFIED",
           "PASS",
           "승인"
         ],
@@ -6886,15 +7086,16 @@
       "stage": "Stage 8",
       "file_name": "GATE2_BASE_MESH_MATERIAL.md",
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
-      "size_bytes": 1551,
-      "modified_at": "2026-08-05T00:06:29.013742+00:00",
+      "size_bytes": 2020,
+      "modified_at": "2026-08-05T04:42:44.845806+00:00",
       "mime": "text/markdown",
-      "sha256": "17e41e1fde9cd9ed5d3f1ba98330ce0d86c525334aab846f8b788de4a84be5f1",
+      "sha256": "251afd0db66ddbb0e9fa601cc9f8907bf636f45856990814d4d0b7fb971c63b4",
       "version": null,
       "approval_status_tokens": [
+        "APPROVE",
+        "PASS",
         "VERIFIED",
-        "승인",
-        "후보"
+        "승인"
       ],
       "classification": "unclassified",
       "references": [],
@@ -6906,8 +7107,8 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
-          "BLOCKED",
           "NOT_VERIFIED",
+          "PASS",
           "VERIFIED",
           "승인"
         ],
@@ -7044,12 +7245,45 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
+      "size_bytes": 2016,
+      "modified_at": "2026-08-05T04:34:49.098635+00:00",
+      "mime": "text/markdown",
+      "sha256": "666fde9dd44d193ff01c0ae5e893104b672ba34acd21d722d866525e7a0d48c8",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "GATE3_RIG_BLENDSHAPE.md",
       "path": "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
-      "size_bytes": 1445,
-      "modified_at": "2026-08-05T00:06:29.014691+00:00",
+      "size_bytes": 1907,
+      "modified_at": "2026-08-05T04:42:44.846810+00:00",
       "mime": "text/markdown",
-      "sha256": "2e1f9a4ee4b82e923e20fea76131cbd2c4acc86854d317fbcc85ed5fe7df44a7",
+      "sha256": "853c7f698a039a9eb7d61305a49d91de2ffe21121cc2ec456acefaa3195280b1",
       "version": null,
       "approval_status_tokens": [
         "VERIFIED",
@@ -7065,6 +7299,8 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
+          "BLOCKED",
+          "IN_PROGRESS",
           "NOT_STARTED",
           "VERIFIED",
           "승인"
@@ -7113,12 +7349,45 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+      "size_bytes": 1809,
+      "modified_at": "2026-08-05T04:34:49.098635+00:00",
+      "mime": "text/markdown",
+      "sha256": "9a9e45e240294fb4b55b4e3178185c89c9ef692f241c25d21465392665f78ba0",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "0.8",
+          "1.0",
+          "v1.0"
+        ],
+        "status_tokens": [
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "GATE4_MOTION.md",
       "path": "docs/stage8/prompts/GATE4_MOTION.md",
-      "size_bytes": 1211,
-      "modified_at": "2026-08-04T04:14:26.034866+00:00",
+      "size_bytes": 1813,
+      "modified_at": "2026-08-05T04:42:44.847996+00:00",
       "mime": "text/markdown",
-      "sha256": "1f25382639aa085a83984527bd7b417d8b10021b922b16fe97ed0d70fb9867e6",
+      "sha256": "b966572d3d7591ca5eb2081506384311b901094a79764e18aac1d8eb5a8ff6e0",
       "version": null,
       "approval_status_tokens": [
         "VERIFIED",
@@ -7134,7 +7403,6 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
-          "NOT_VERIFIED",
           "VERIFIED",
           "승인"
         ],
@@ -7261,6 +7529,44 @@
         "version_tokens": [],
         "status_tokens": [
           "BLOCKED",
+          "VERIFIED",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+      "path": "docs/stage8/prompts/STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+      "size_bytes": 9078,
+      "modified_at": "2026-08-05T04:29:14.767884+00:00",
+      "mime": "text/markdown",
+      "sha256": "1e965759036ebd8e8c8d75de7a88d1032e0130a0542ef189d3fe72481171ca07",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVE",
+        "PASS",
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [
+          "v1.0"
+        ],
+        "status_tokens": [
+          "NOT_STARTED",
+          "NOT_VERIFIED",
+          "PASS",
           "VERIFIED",
           "승인"
         ],
@@ -7520,19 +7826,84 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 7641,
-      "modified_at": "2026-08-05T00:50:37.911524+00:00",
+      "size_bytes": 8627,
+      "modified_at": "2026-08-05T04:44:14.389915+00:00",
       "mime": "application/json",
-      "sha256": "f193c1498d0c6926776eacff62d6fddc22c2688e2f6ab325f7618f6fece734fb",
+      "sha256": "5584cf3641ce73075cd4c48e57593f4396c959662914bd4a0e50b43cee173f28",
       "version": "v1.0",
       "approval_status_tokens": [
-        "VERIFIED"
+        "VERIFIED",
+        "approved"
       ],
       "classification": "unclassified",
       "references": [],
       "duplicate_group": null,
       "usable_now": true,
       "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "mock.html",
+      "path": "mock.html",
+      "size_bytes": 27509,
+      "modified_at": "2026-08-05T04:40:19.204732+00:00",
+      "mime": "text/html",
+      "sha256": "b753849f63d4ec355058f10c33c2ab9c9bf99616c92cebb12c2fc2f1382fd679",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "size_bytes": 1762247,
+      "modified_at": "2026-08-05T04:30:18.565120+00:00",
+      "mime": "image/png",
+      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": "91a80d6666d1",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
+    },
+    {
+      "stage": "Unclassified",
+      "file_name": "Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "size_bytes": 1653526,
+      "modified_at": "2026-08-05T04:31:29.422207+00:00",
+      "mime": "image/png",
+      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": "f6871819cecf",
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "image_audit": {
+        "decodable": true,
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGB",
+        "has_alpha": false
+      }
     },
     {
       "stage": "Unclassified",
@@ -8152,6 +8523,24 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
+      "stage": "Stage 8",
+      "file_name": "audit_2d_pet_assets.py",
+      "path": "scripts/harness/audit_2d_pet_assets.py",
+      "size_bytes": 5770,
+      "modified_at": "2026-08-05T04:40:11.931051+00:00",
+      "mime": "text/x-python",
+      "sha256": "636b396d1a22daddb2140b2ef29e9da4f4458f3df2961b5eb4c411921b6d2c6c",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
       "stage": "Unclassified",
       "file_name": "audit_gate1.py",
       "path": "scripts/harness/audit_gate1.py",
@@ -8435,10 +8824,10 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 63329,
-      "modified_at": "2026-08-05T00:52:11.414656+00:00",
+      "size_bytes": 67101,
+      "modified_at": "2026-08-05T04:44:14.391474+00:00",
       "mime": "text/x-python",
-      "sha256": "6f494be6a855ca7c721d7ab3863262688ce608f5b709b4d109631f7754ae3d89",
+      "sha256": "2b400b324cec84269d70788e9d92624d4e61dcb71d9656e6789ea7f0e25002f5",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",

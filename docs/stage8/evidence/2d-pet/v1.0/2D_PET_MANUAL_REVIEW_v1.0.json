@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 2,
+  "status": "PENDING",
+  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "reviewer": null,
+  "decision": null,
+  "reviewed_at": null,
+  "scope_acknowledged": false,
+  "characters": ["Chakchaki", "Gongsickyi"],
+  "checks": {
+    "canonical_identity_match": null,
+    "face_and_silhouette_match": null,
+    "clothing_accessory_and_color_match": null,
+    "two_dimensional_shading_quality_acceptable": null,
+    "eight_poses_present_per_character": null,
+    "pose_meanings_are_clear": null,
+    "small_ui_readability_acceptable": null,
+    "no_low_poly_or_unwanted_3d_appearance": null
+  },
+  "comment": null,
+  "approval_applied": false,
+  "next_gate_allowed": false
+}

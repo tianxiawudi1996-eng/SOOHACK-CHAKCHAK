@@ -1,31 +1,33 @@
-# Final Execution Report
+# Stage 8 현재 실행 보고
 
-## 현재 결과
+## 결과
 
-기존 상단 승인 캐릭터를 기준으로 Blender 5.2 LTS에서 새 편집 가능 3D 후보를 제작했다. 이전 저품질 절차형 모델은 계속 격리 상태이며 새 후보와 섞이지 않는다.
+사용자의 최신 결정에 따라 3D 제작 경로를 종료하고, Stage 7 승인 캐릭터를 직접 참조한 음영 2D 다중 포즈 시스템으로 전환했다. 기존 Blender·GLB 후보는 삭제하지 않고 `SUPERSEDED_BY_2D_STRATEGY` 감사 이력으로 보존한다.
 
 | Gate | 상태 | 근거 |
 |---:|---|---|
-| 0 | `VERIFIED` | Stage 7 원본·SSOT 감사 완료 |
-| 1 | `VERIFIED` | 공식 턴어라운드와 승인 기록 |
-| 2 | `NOT_VERIFIED` | 새 Blender 후보 자동 QA PASS, 책임자 시각 승인 0/1 |
-| 3 | `NOT_STARTED` | Gate 2 수동 승인 전 리깅 금지 |
-| 4~8 | `NOT_STARTED` | 선행 Gate 미충족 |
+| 0 | `VERIFIED` | Stage 7 필수 원본 10/10과 SSOT 감사 완료 |
+| 1 | `VERIFIED` | canonical view와 1인 승인 기록 완료 |
+| 2 | `NOT_VERIFIED` | 음영 2D 시트 자동 QA PASS, 제품 책임자 수동 승인 0/1 |
+| 3 | `NOT_STARTED` | Gate 2 승인 후 개별 포즈 추출·알파·레이어 작업 |
+| 4 | `NOT_STARTED` | Gate 3 승인 후 2D 전환 모션·reduced-motion 구현 |
+| 5~8 | `NOT_STARTED` | 선행 Gate 순서와 실제 제품 소스·배포 권한 필요 |
 
-## 새 Gate 2 후보
+## Gate 2 후보
 
-- Blender 편집 원본: 2개
-- glTF 2.0 GLB: 6개(캐릭터별 LOD0/1/2)
-- 세 방향 렌더: 6개
-- 공식 다면도 비교 보드: 2개
+- 착착이 8포즈 시트: 1536×1024 PNG
+- 공식이 8포즈 시트: 1536×1024 PNG
+- 상태: `IDLE_LISTEN`, `WELCOME`, `GUIDE`, `THINK`, `PRAISE_PROGRESS`, `SEARCH`, `CELEBRATE`, `RETRY`
 - 자동 QA: `PASS`
-- GLB 구조·해시·LOD 순서 실패: 0
-- 수동 시각 승인: `PENDING`
+- 시각 검토: `PENDING`
+- 검토 URL: `http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/review/`
 
-공식이는 달걀형 몸·큰 눈·원형 안경·학사모·별 포인터를 포함한다. 착착이는 파란 모자·흰 후드·파란 반바지·가방·큰 운동화와 분리 모듈을 포함한다.
+## 남은 통제 작업
 
-## 통제
+1. 제품 책임자가 원본 대비 정체성·포즈·음영·작은 UI 가독성을 검토한다.
+2. `APPROVE`일 때만 Gate 2를 `VERIFIED`로 승격한다.
+3. Gate 3에서 16개 개별 투명 PNG/WebP와 런타임 매니페스트를 만든다.
+4. Gate 4에서 상태 전환 모션과 reduced-motion 대체를 구현한다.
+5. Gate 5~8은 실제 제품 코드·QA 환경·배포 대상이 확인된 뒤 순차 실행한다.
 
-자동 검사는 파일 유효성을 보장할 뿐 캐릭터 정체성과 제품 품질을 승인하지 않는다. 공식 비교 보드에 대한 프로젝트 책임자의 명시적 승인 전에는 Gate 2를 승격하지 않고 Gate 3 리깅을 시작하지 않는다.
-
-외부 공개는 CapBadge 고유 심볼과 브랜드·캐릭터 IP 검토가 해결될 때까지 별도로 차단된다.
+현재 증거는 2D 후보 제작과 자동 QA까지 완료됐음을 증명하지만, 수동 시각 승인과 제품 통합 완료를 증명하지는 않는다.

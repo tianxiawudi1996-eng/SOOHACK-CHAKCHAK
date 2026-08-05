@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0",
   "gate": 2,
-  "status": "PENDING",
-  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "status": "SUPERSEDED",
+  "review_mode": "NOT_APPLICABLE_AFTER_USER_STRATEGY_CHANGE",
   "reviewer": null,
-  "decision": null,
+  "decision": "NOT_APPLICABLE",
   "reviewed_at": null,
   "scope_acknowledged": false,
   "characters": ["Chakchaki", "Gongsickyi"],
@@ -16,7 +16,9 @@
     "production_visual_quality_acceptable": null,
     "front_side_three_quarter_consistency": null
   },
-  "comment": null,
+  "comment": "User explicitly abandoned the 3D production strategy in favor of shaded 2D characters with varied poses. These candidates are retained for audit only.",
+  "superseded_at": "2026-08-05T13:28:03+09:00",
+  "superseded_by": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
   "approval_applied": false,
   "next_gate_allowed": false
 }

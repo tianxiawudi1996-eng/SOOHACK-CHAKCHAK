@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-05T08:57:06+09:00",
-  "status": "ACTIVE_2D_CANONICAL_ONLY",
-  "decision_source": "User correction: use the existing upper/canonical characters and reject the lower procedural characters.",
+  "updated_at": "2026-08-05T13:31:00+09:00",
+  "status": "ACTIVE_SHADED_2D_PET_CANDIDATES",
+  "decision_source": "User directive: abandon 3D and replace it with shaded 2D characters in varied poses with a compact desktop-companion experience.",
   "characters": {
     "Chakchaki": {
       "approved_reference_path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
@@ -18,16 +18,27 @@
     }
   },
   "actual_3d_source": {
-    "status": "ORIGINAL_MISSING",
+    "status": "ABANDONED_BY_USER_STRATEGY",
     "accepted_formats": ["BLEND", "FBX", "GLB", "GLTF", "OBJ"],
-    "workspace_scan_result": "No pre-existing 3D source was found; only the rejected procedural Gate 2/3 GLBs exist."
+    "workspace_scan_result": "No pre-existing approved 3D source was found. Subsequent authored 3D candidates are retained for audit only and are no longer an active production path."
   },
   "new_authored_3d_candidates": {
-    "status": "PENDING_MANUAL_VISUAL_REVIEW",
+    "status": "SUPERSEDED_BY_2D_STRATEGY",
     "blender_version": "5.2.0 LTS",
     "chakchaki_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
     "gongsickyi_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
     "automated_qa": "PASS",
+    "gate2_verified": false
+  },
+  "shaded_2d_pet_candidates": {
+    "status": "CANDIDATE_READY_FOR_MANUAL_REVIEW",
+    "strategy_record": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+    "asset_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+    "chakchaki_sheet": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "gongsickyi_sheet": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "declared_pose_count": 16,
+    "automated_qa": "PASS",
+    "manual_review": "PENDING",
     "gate2_verified": false
   },
   "rejected_assets": {
@@ -40,8 +51,12 @@
     "canonical_images_are_active_visual_source": true,
     "canonical_images_are_not_claimed_as_3d_meshes": true,
     "procedural_candidates_may_not_be_used_or_promoted": true,
+    "authored_3d_candidates_may_not_be_used_or_promoted": true,
     "gate2_requires_new_high_fidelity_3d_source_or_authoring": false,
+    "gate2_requires_shaded_2d_pose_sheets": true,
     "gate2_requires_manual_visual_approval": true,
-    "gate3_requires_gate2_verified": true
+    "gate3_requires_gate2_verified": true,
+    "gate3_is_2d_pose_layer_preparation": true,
+    "gate4_is_2d_transition_motion": true
   }
 }

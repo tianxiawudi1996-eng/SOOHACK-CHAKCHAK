@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T09:50:18+09:00",
-  "head_commit": "c47e3a3",
+  "updated_at": "2026-08-05T13:31:00+09:00",
+  "head_commit": "f64ba94",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
   "gate0": {
@@ -72,6 +72,16 @@
     "evidence": [
       "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
       "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
+      "docs/stage8/prompts/STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
+      "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
+      "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
       "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
       "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL_EXECUTION_METAPROMPT_v1.0.md",
       "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
@@ -89,7 +99,7 @@
       "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json"
     ],
     "blockers": [
-      "Project Owner canonical identity and production-quality review is required for the new Blender candidates"
+      "Project Owner identity, pose meaning, and 2D shading review is required for the new shaded 2D pose sheets"
     ],
     "entry_allowed": true
   },
@@ -100,6 +110,7 @@
       "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
       "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
       "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
       "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
       "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
       "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
@@ -107,13 +118,16 @@
       "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
       "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md"
     ],
-    "blockers": ["Gate 2 must be VERIFIED with a canonical-quality 3D character before rigging"],
+    "blockers": ["Gate 2 must be VERIFIED with approved shaded 2D pose sheets before pose extraction and layer preparation"],
     "entry_allowed": false
   },
   "gate4": {
     "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE4_MOTION.md"],
-    "blockers": ["Gate 3 must be VERIFIED; no animation clips exist"],
+    "evidence": [
+      "docs/stage8/prompts/GATE4_MOTION.md",
+      "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md"
+    ],
+    "blockers": ["Gate 3 must be VERIFIED; no approved 2D pose files or transition-motion implementation exists"],
     "entry_allowed": false
   },
   "gate5": {

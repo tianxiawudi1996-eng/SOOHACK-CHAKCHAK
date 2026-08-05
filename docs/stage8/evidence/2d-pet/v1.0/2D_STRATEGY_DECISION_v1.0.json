@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "decided_at": "2026-08-05T13:28:03+09:00",
+  "decision_source": "USER_DIRECTIVE",
+  "decision": "ADOPT_SHADED_2D_PET_SYSTEM",
+  "supersedes": "HIGH_FIDELITY_3D_CHARACTER_PRODUCTION",
+  "reason": "Abandon 3D and use shaded 2D characters in varied poses with a compact responsive desktop-companion experience.",
+  "canonical_identity_sources": {
+    "Chakchaki": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+    "Gongsickyi": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png"
+  },
+  "controls": {
+    "canonical_identity_must_not_change": true,
+    "three_dimensional_mesh_required": false,
+    "three_dimensional_rig_required": false,
+    "shaded_two_dimensional_assets_required": true,
+    "varied_pose_system_required": true,
+    "manual_visual_approval_required": true,
+    "existing_three_dimensional_outputs_retained_for_audit_only": true
+  },
+  "status": "ACTIVE"
+}
