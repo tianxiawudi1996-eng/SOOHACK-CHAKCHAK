@@ -6,7 +6,8 @@
   "scripts": {
     "test:productization:phase0": "node scripts/productization/validate_phase0.mjs",
     "test:productization:requirements": "node scripts/productization/validate_requirements.mjs",
-    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements",
+    "test:productization:functions": "node scripts/productization/validate_functional_design.mjs",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions",
     "test": "npm run test:productization"
   },
   "engines": {
