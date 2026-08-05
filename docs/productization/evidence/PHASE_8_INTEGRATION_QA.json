@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-06T00:40:37+09:00",
+  "release": "0.1.0",
+  "status": "PARTIAL_PASS",
+  "result": "FRONTEND_INTEGRATION_PASS_API_RUNTIME_BLOCKED",
+  "environment": {
+    "type": "DOCKER_LOCAL_ISOLATED",
+    "url": "http://127.0.0.1:4180/?locale=ko",
+    "container_health": "healthy",
+    "image_digest": "sha256:d9d5087c491692dbc44d8f7878fd75433593c4fa1b9d0feba9eb37e2d4f452ae"
+  },
+  "frontend_checks": {
+    "artifact_hashes": "PASS",
+    "locale_rendering": "8/8 PASS",
+    "missing_translation_keys": 0,
+    "desktop_1440x1000": "PASS",
+    "mobile_390x844": "PASS",
+    "horizontal_overflow": 0,
+    "approved_character_images": "2/2 PASS",
+    "cta_live_status": "PASS",
+    "keyboard_first_focus_skip_link": "PASS",
+    "landmarks_and_h1": "PASS",
+    "console_errors_or_warnings": 0,
+    "security_headers": "6/6 PASS"
+  },
+  "performance_smoke": {
+    "samples": 10,
+    "min_ms": 13.21,
+    "average_ms": 17.9,
+    "max_ms": 46.56,
+    "scope": "LOCAL_LOOPBACK_STATIC_HTML"
+  },
+  "defects_fixed": [
+    {
+      "id": "P8-SEC-001",
+      "summary": "필수 HTTP 보안 응답 헤더 누락",
+      "fix": "Nginx staging configuration에 CSP 및 5개 방어 헤더 추가",
+      "retest": "PASS"
+    }
+  ],
+  "runtime_integration": {
+    "api_deployed": false,
+    "database_connected_through_api": false,
+    "core_user_journey_tested": false,
+    "status": "BLOCKED_RUNTIME"
+  },
+  "blockers": [
+    "제품 API 런타임이 스테이징에 배포되지 않음",
+    "제품 API를 통한 PostgreSQL 통합 경로가 연결되지 않음"
+  ],
+  "phase8_complete": false,
+  "phase9_entry_allowed": false
+}
