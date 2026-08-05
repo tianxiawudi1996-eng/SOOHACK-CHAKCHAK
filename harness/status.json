@@ -130,7 +130,7 @@
     "entry_allowed": true
   },
   "gate4": {
-    "status": "BLOCKED",
+    "status": "VERIFIED",
     "evidence": [
       "docs/stage8/prompts/GATE4_MOTION.md",
       "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
@@ -145,14 +145,14 @@
       "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
       "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md"
     ],
-    "blockers": ["Project Owner motion friendliness, repetition, viewport, learning-interference, and reduced-motion review is required"],
+    "blockers": [],
     "entry_allowed": true
   },
   "gate5": {
     "status": "NOT_STARTED",
     "evidence": ["docs/stage8/prompts/GATE5_AI_BEHAVIOR.md"],
-    "blockers": ["Gate 4 must be VERIFIED; no runtime behavior implementation exists"],
-    "entry_allowed": false
+    "blockers": ["Gate 5 AI behavior implementation, automated QA, and manual approval are not completed"],
+    "entry_allowed": true
   },
   "gate6": {
     "status": "NOT_STARTED",

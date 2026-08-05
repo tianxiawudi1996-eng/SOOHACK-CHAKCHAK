@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T07:54:03.147305+00:00",
+  "generated_at": "2026-08-05T13:42:42.424237+00:00",
   "gate": 4,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "VERIFIED",
   "automated_status": "PASS",
   "motion_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
-  "motion_manifest_sha256": "b82467f07a87b776ea7e239d3884b4aa0750dd75f8c647384b5ecd402c8a6fba",
+  "motion_manifest_sha256": "19430e0e8047b21942012f08c8be28c01e2b570e2eb02ecd507e55652bd54bb0",
   "state_pass_count": 8,
   "state_expected_count": 8,
   "reduced_motion_pass_count": 8,
@@ -89,10 +89,8 @@
   ],
   "failures": [],
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "blockers": [
-    "PROJECT_OWNER_GATE4_MOTION_AND_REDUCED_MOTION_REVIEW_REQUIRED"
-  ],
-  "gate4_status_change_applied": false,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "blockers": [],
+  "gate4_status_change_applied": true,
+  "next_gate_allowed": true
 }

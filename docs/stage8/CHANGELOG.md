@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-05 — Gate 4 제품 책임자 승인 및 승격
+
+- 사용자의 명시적 `APPROVE`를 John KIM 제품 책임자 1인 승인으로 기록했다.
+- 두 캐릭터의 8개 상태 의미, 자연스러운 움직임, 반복 피로도, 지원 뷰포트 잘림, 학습·클릭 방해, reduced-motion 대체를 6/6 승인했다.
+- 정적 자동 QA와 실제 Edge 런타임 QA를 결합해 Gate 4를 `VERIFIED`로 승격했다.
+- 모션 매니페스트의 수동 승인 수를 1/1, 다음 Gate 허용을 `true`로 갱신했다.
+- Gate 5 진입을 허용했으며 AI Behavior 구현을 완료한 것으로 기록하지 않았다.
+
 ## 2026-08-05 — Gate 4 실제 Edge 런타임 회귀 검증
 
 - 설치 의존성 없는 Chrome DevTools Protocol 기반 Edge 런타임 감사기를 추가했다.

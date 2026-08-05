@@ -14,7 +14,7 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 2. Gate 1: Canonical View 승인 — `VERIFIED`
 3. Gate 2: 음영 2D 다중 포즈 시트 — `VERIFIED`
 4. Gate 3: 개별 포즈 추출·투명 배경·레이어/피벗 — `VERIFIED`
-5. Gate 4: 2D 상태 전환·펫 모션·reduced-motion — `BLOCKED`
+5. Gate 4: 2D 상태 전환·펫 모션·reduced-motion — `VERIFIED`
 6. Gate 5: AI Behavior 상태·이벤트·말풍선 연결 — `NOT_STARTED`
 7. Gate 6: Product Integration — `NOT_STARTED`
 8. Gate 7: QA — `NOT_STARTED`
@@ -44,5 +44,6 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 - Gate 3의 16개 포즈는 512×512 투명 PNG와 무손실 WebP로 추출됐고 자동 QA 16/16을 통과했다.
 - Gate 3는 알파 경계·정체성·소품·작은 UI 가독성에 대한 제품 책임자 수동 승인 1/1로 `VERIFIED`다.
 - Gate 4의 8개 상태 전환은 준비·교차·착지·잔동작의 680ms 자연 연동 안무와 상태별 미세 모션을 갖추었고, Edge 실제 런타임의 순차·역순·빠른 입력·CLS·3개 뷰포트·포인터·`prefers-reduced-motion` 검사 7/7을 통과했다.
-- Gate 4는 제품 책임자의 친근함·반복 피로도·화면 잘림·학습 방해 검토 0/1로 `BLOCKED`다.
+- Gate 4는 제품 책임자의 친근함·반복 피로도·화면 잘림·학습 방해 검토 1/1 승인으로 `VERIFIED`다.
+- Gate 5 진입이 허용됐으며 AI Behavior 구현·검증은 아직 시작하지 않았다.
 - 민감한 `github-recovery-codes.txt`는 읽거나 추적하지 않는다.

@@ -1,23 +1,23 @@
 {
   "schema_version": "1.0.0",
   "gate": 4,
-  "status": "PENDING",
+  "status": "APPROVED",
   "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
-  "reviewer": null,
-  "decision": null,
-  "reviewed_at": null,
-  "scope_acknowledged": false,
+  "reviewer": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-05T22:40:15+09:00",
+  "scope_acknowledged": true,
   "characters": ["Chakchaki", "Gongsickyi"],
   "state_count": 8,
   "checks": {
-    "state_meanings_are_immediately_clear": null,
-    "motion_feels_friendly_and_not_excessive": null,
-    "repeated_motion_is_not_fatiguing": null,
-    "characters_are_not_clipped_on_supported_viewports": null,
-    "motion_does_not_block_learning_or_clicks": null,
-    "reduced_motion_static_fallback_is_acceptable": null
+    "state_meanings_are_immediately_clear": true,
+    "motion_feels_friendly_and_not_excessive": true,
+    "repeated_motion_is_not_fatiguing": true,
+    "characters_are_not_clipped_on_supported_viewports": true,
+    "motion_does_not_block_learning_or_clicks": true,
+    "reduced_motion_static_fallback_is_acceptable": true
   },
-  "comment": null,
-  "approval_applied": false,
-  "next_gate_allowed": false
+  "comment": "The user explicitly approved the Gate 4 natural 2D pet motion review covering both characters, all eight states, transition choreography, viewport safety, learning interaction, and reduced-motion fallback.",
+  "approval_applied": true,
+  "next_gate_allowed": true
 }

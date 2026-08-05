@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T15:51:33+09:00",
+  "generated_at": "2026-08-05T22:40:15+09:00",
   "gate": 4,
-  "status": "CANDIDATE_BUILT",
+  "status": "APPROVED",
   "strategy": "SHADED_2D_PET_TRANSFORM_OPACITY_MOTION",
   "source_runtime_manifest": {
     "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
@@ -149,6 +149,6 @@
     "reduced_motion_required": true
   },
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
 }
