@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "database": "PostgreSQL",
+  "namespace": "mathchakchak",
+  "id_strategy": "application_generated_uuid",
+  "time_storage": "UTC_TIMESTAMPTZ",
+  "supported_locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "tables": [
+    {"name":"app_user","domain":"identity","owner":"platform","retention":"account_lifetime_plus_30d","rls":"self_or_service"},
+    {"name":"user_preference","domain":"identity","owner":"platform","retention":"account_lifetime","rls":"self"},
+    {"name":"student_profile","domain":"identity","owner":"learning","retention":"account_lifetime_plus_30d","rls":"student_or_linked_parent"},
+    {"name":"parent_student_link","domain":"identity","owner":"platform","retention":"link_lifetime_plus_90d","rls":"linked_parties"},
+    {"name":"consent_record","domain":"privacy","owner":"privacy","retention":"legal_policy","rls":"subject_guardian_or_service"},
+    {"name":"topic","domain":"content","owner":"curriculum","retention":"versioned_permanent","rls":"public_read_service_write"},
+    {"name":"problem_item","domain":"content","owner":"curriculum","retention":"versioned_permanent","rls":"service_only"},
+    {"name":"diagnostic_session","domain":"diagnosis","owner":"learning","retention":"24_months","rls":"student_or_linked_parent"},
+    {"name":"diagnostic_response","domain":"diagnosis","owner":"learning","retention":"24_months","rls":"student_only_write_parent_summary"},
+    {"name":"learning_path","domain":"learning","owner":"learning","retention":"24_months","rls":"student_or_linked_parent"},
+    {"name":"learning_path_item","domain":"learning","owner":"learning","retention":"24_months","rls":"via_learning_path"},
+    {"name":"learning_session","domain":"learning","owner":"learning","retention":"24_months","rls":"student_or_linked_parent"},
+    {"name":"learning_attempt","domain":"learning","owner":"learning","retention":"24_months","rls":"student_only_write_parent_summary"},
+    {"name":"review_item","domain":"review","owner":"learning","retention":"24_months","rls":"student_or_linked_parent"},
+    {"name":"review_attempt","domain":"review","owner":"learning","retention":"24_months","rls":"student_only_write_parent_summary"},
+    {"name":"progress_snapshot","domain":"reporting","owner":"reporting","retention":"24_months","rls":"student_or_linked_parent"},
+    {"name":"idempotency_record","domain":"reliability","owner":"platform","retention":"24_hours","rls":"service_only"},
+    {"name":"audit_event","domain":"security","owner":"platform","retention":"12_months","rls":"service_only"}
+  ],
+  "invariants": [
+    "one_preference_per_user",
+    "one_active_parent_student_link_per_pair",
+    "completed_time_requires_completed_status",
+    "attempt_sequence_unique_within_session",
+    "review_due_time_is_timezone_independent",
+    "idempotency_key_unique_per_actor_scope",
+    "audit_payload_denies_answer_text_and_problem_text",
+    "locale_is_restricted_to_supported_set"
+  ],
+  "migration": {
+    "up": "infra/database/migrations/0001_initial.sql",
+    "down": "infra/database/migrations/0001_rollback.sql",
+    "transactional": true,
+    "production_policy": "staging_first_backup_then_migrate"
+  }
+}
