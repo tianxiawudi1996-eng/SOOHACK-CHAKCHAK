@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MathChakChak multilingual productization screen mock">
+  <title>MathChakChak</title>
+  <link rel="stylesheet" href="../design/tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="MathChakChak home">
+        <span class="brand-mark" aria-hidden="true">착</span>
+        <span><strong>수학착착</strong><small>MATH CHAKCHAK</small></span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#method" data-i18n="nav.method">How it works</a>
+        <a href="#report" data-i18n="nav.progress">Progress report</a>
+      </nav>
+      <div class="header-actions">
+        <label class="locale-control">
+          <span class="sr-only" data-i18n="locale.label">Language</span>
+          <select id="localeSelect" aria-label="Language">
+            <option value="ko">한국어</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="ru">Русский</option>
+          </select>
+        </label>
+        <a class="button button-small" href="#start" data-i18n="nav.start">Free check</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true"></span><b data-i18n="hero.eyebrow">Personalized math companion for elementary learners</b></p>
+          <h1><span data-i18n="hero.title.before">Before formulas,</span><br><em data-i18n="hero.title.highlight">build understanding.</em></h1>
+          <p class="lead" data-i18n="hero.body">We check what your child understands and guide each step until they can apply it.</p>
+          <div class="hero-actions">
+            <a class="button" href="#start" data-i18n="hero.primary">Start the 3-minute check</a>
+            <a class="button button-secondary" href="#method" data-i18n="hero.secondary">See how learning works</a>
+          </div>
+          <p class="assurance"><span aria-hidden="true">✓</span><span data-i18n="hero.note">Start without entering a payment card.</span></p>
+        </div>
+
+        <div class="product-stage" aria-label="MathChakChak learning preview">
+          <figure class="pet pet-chakchaki">
+            <img src="../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp" alt="Chakchaki guiding the learner">
+          </figure>
+          <article class="lesson-card">
+            <div class="lesson-top"><span data-i18n="preview.label">Today's personalized lesson</span><b><i></i> LIVE</b></div>
+            <div class="chat chat-tutor"><span class="avatar">착</span><p data-i18n="preview.tutor">What changes when we make the denominators the same?</p></div>
+            <div class="fraction" aria-label="one half plus one third"><span>1<small>2</small></span><b>+</b><span>1<small>3</small></span><b>=</b><span>?</span></div>
+            <div class="chat chat-student"><p data-i18n="preview.student">The pieces become equal in size, so we can add them!</p></div>
+            <div class="lesson-progress"><span data-i18n="preview.progress">Concept understanding 72%</span><div><i></i></div></div>
+          </article>
+          <figure class="pet pet-gongsickyi">
+            <img src="../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp" alt="Gongsickyi celebrating progress">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Product highlights">
+      <div class="shell proof-grid">
+        <div><span aria-hidden="true">◷</span><strong data-i18n="proof.diagnostic">3-minute check</strong></div>
+        <div><span aria-hidden="true">✦</span><strong data-i18n="proof.personal">1:1 explanations</strong></div>
+        <div><span aria-hidden="true">↗</span><strong data-i18n="proof.loop">5-step learning loop</strong></div>
+      </div>
+    </section>
+
+    <section class="method section" id="method">
+      <div class="shell method-grid">
+        <div class="section-copy">
+          <p class="kicker" data-i18n="method.kicker">LEARNING LOOP</p>
+          <h2 data-i18n="method.title">Understand, explain, and apply it yourself.</h2>
+          <p data-i18n="method.body">Before revealing an answer, we point learners in the right direction.</p>
+        </div>
+        <ol class="steps">
+          <li><span>01</span><strong data-i18n="method.step1">Check current understanding</strong><b aria-label="complete">✓</b></li>
+          <li class="active"><span>02</span><strong data-i18n="method.step2">Explain in your own words</strong><b aria-label="current">●</b></li>
+          <li><span>03</span><strong data-i18n="method.step3">Apply to a new problem</strong><b aria-label="next">→</b></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="report section" id="report">
+      <div class="shell report-grid">
+        <div class="report-card" aria-label="Sample weekly progress report">
+          <div class="score-ring"><strong>78</strong><small>/100</small></div>
+          <div class="metrics">
+            <p><span>Concept</span><b>84%</b></p><div><i style="--value:84%"></i></div>
+            <p><span>Recall</span><b>72%</b></p><div><i style="--value:72%"></i></div>
+            <p><span>Apply</span><b>63%</b></p><div><i style="--value:63%"></i></div>
+          </div>
+        </div>
+        <div class="section-copy">
+          <p class="kicker" data-i18n="report.kicker">GROWTH REPORT</p>
+          <h2 data-i18n="report.title">See why growth happened, not just a score.</h2>
+          <p data-i18n="report.body">Students and linked parents can review this week's change and next lesson.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="start section" id="start">
+      <div class="shell start-panel">
+        <div><h2 data-i18n="cta.title">Make math click again today.</h2><p data-i18n="cta.body">Find the first explanation that fits your child with a free check.</p></div>
+        <button class="button button-inverse" type="button" data-i18n="hero.primary">Start the 3-minute check</button>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell"><span>© 2026 MathChakChak</span><span data-i18n="footer.note">MathChakChak productization multilingual screen mock</span></div></footer>
+  <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

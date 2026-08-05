@@ -9,7 +9,8 @@
     "test:productization:functions": "node scripts/productization/validate_functional_design.mjs",
     "test:productization:infrastructure": "node scripts/productization/validate_infrastructure.mjs",
     "test:productization:database": "node scripts/productization/validate_database_design.mjs",
-    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database",
+    "test:productization:screens": "node scripts/productization/validate_screen_design.mjs",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens",
     "test": "npm run test:productization"
   },
   "engines": {
