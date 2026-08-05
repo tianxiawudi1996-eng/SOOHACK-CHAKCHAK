@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T04:55:24.097588+00:00",
+  "gate": 2,
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "status": "BLOCKED_EXTERNAL",
+  "policy_sha256": "fe0532ee4d35abd2245d97a289c714346ec1295107b0032d8dfc7300bbac8138",
+  "review_sha256": "b6d9c1659d02bc120e1db6cb9bda40b4e296c73ab7ec5af88428a28b096e20c0",
+  "manifest_sha256": "bc1c6604b21ef280e61ae59d91250f6ec7f08c110d364e5b35142dc124ea8c92",
+  "valid_approval_count": 0,
+  "approval_required": 1,
+  "automated_status": "PASS",
+  "candidate_hash_drift_count": 0,
+  "candidate_hash_drift": [],
+  "required_checks_true_count": 0,
+  "required_checks_count": 8,
+  "reject_count": 0,
+  "unresolved_patch_count": 0,
+  "failures": [],
+  "blockers": [
+    "PROJECT_OWNER_2D_DECISION_MISSING"
+  ],
+  "ready_for_promotion": false,
+  "gate2_status_change_applied": false,
+  "next_gate_allowed": false,
+  "next_action": "제품 책임자가 비교 페이지의 두 시트를 검토하고 명시적 결정을 입력해야 합니다."
+}

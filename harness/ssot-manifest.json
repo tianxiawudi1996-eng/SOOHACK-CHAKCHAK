@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T04:47:04.682067+00:00",
+  "generated_at": "2026-08-05T04:55:24.000102+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1231,6 +1231,11 @@
       "size_bytes": 2451
     },
     {
+      "path": "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
+      "sha256": "82db32e07fb64d90b0b13ccd1864a60b5ed9bd787415f047d9637294c6da83d3",
+      "size_bytes": 544
+    },
+    {
       "path": "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
       "sha256": "6e526fd17e0c4421c14e5c4b189699bc1a02f9551b26ff503f640ce2b0e8b0f4",
       "size_bytes": 910
@@ -1242,8 +1247,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "dcc64132db90ddcb3d009ffda3190bf3e8287052af3e84419cd270a7a746742f",
-      "size_bytes": 1811
+      "sha256": "6e8bdea5a9e963874d80c345707edd6fe27c4184b48a658259fecaa6f6216b88",
+      "size_bytes": 2118
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1302,8 +1307,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "59f5a2638429c33eab1869580fc07a740790cba426db7ca710c799a384ae17fa",
-      "size_bytes": 1335
+      "sha256": "f4f3ba50b12fe824d5699adb64350477f57e61b80b7479734b65473f198753e1",
+      "size_bytes": 1483
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1312,8 +1317,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "4f1f428397b09e0bda4707f707bb694fdb826eb484151986cd16b12484b78e7a",
-      "size_bytes": 10362
+      "sha256": "ebbb25209b0b989f7dcf573d44ff72418cab912f4dbbf93c6843d5de3d1d6926",
+      "size_bytes": 10960
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
@@ -1327,8 +1332,18 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
-      "sha256": "54d9181dc13b081a05e18ece50d1d27ec8daea3e2fc165fdef447251c2d3af17",
-      "size_bytes": 714
+      "sha256": "b6d9c1659d02bc120e1db6cb9bda40b4e296c73ab7ec5af88428a28b096e20c0",
+      "size_bytes": 967
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_SINGLE_APPROVER_AUDIT_v1.0.json",
+      "sha256": "63c9fea767472b122bff1d600cb0284d8ba99e47d26d70d4fb69852474a02dfc",
+      "size_bytes": 1052
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_SINGLE_APPROVER_POLICY_v1.0.json",
+      "sha256": "fe0532ee4d35abd2245d97a289c714346ec1295107b0032d8dfc7300bbac8138",
+      "size_bytes": 1444
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
@@ -1881,6 +1896,11 @@
       "size_bytes": 5421
     },
     {
+      "path": "docs/stage8/prompts/GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
+      "sha256": "519845ab6ddd126235938da2132fe0fa87fea4854e79781593f3647db25bed31",
+      "size_bytes": 3889
+    },
+    {
       "path": "docs/stage8/prompts/GATE2_BASE_MESH_MATERIAL.md",
       "sha256": "251afd0db66ddbb0e9fa601cc9f8907bf636f45856990814d4d0b7fb971c63b4",
       "size_bytes": 2020
@@ -2002,8 +2022,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "5584cf3641ce73075cd4c48e57593f4396c959662914bd4a0e50b43cee173f28",
-      "size_bytes": 8627
+      "sha256": "52a74152c153083bb9e3eb45f4d870e08c2d61b71bbcd7490396349eda7908f9",
+      "size_bytes": 8946
     },
     {
       "path": "mock.html",
@@ -2177,8 +2197,13 @@
     },
     {
       "path": "scripts/harness/audit_2d_pet_assets.py",
-      "sha256": "636b396d1a22daddb2140b2ef29e9da4f4458f3df2961b5eb4c411921b6d2c6c",
-      "size_bytes": 5770
+      "sha256": "a73695794143f4daa03096663f9791a8d28ec44b1c5721c4e3ea54914bf4affa",
+      "size_bytes": 6712
+    },
+    {
+      "path": "scripts/harness/audit_2d_pet_single_approval.py",
+      "sha256": "76e0afa12b73eb46c2896d773ccf6f1b4832abcbe3e0bd8a953d06a44d6c2421",
+      "size_bytes": 10132
     },
     {
       "path": "scripts/harness/audit_gate1.py",
@@ -2252,8 +2277,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "2b400b324cec84269d70788e9d92624d4e61dcb71d9656e6789ea7f0e25002f5",
-      "size_bytes": 67101
+      "sha256": "bba0748ea6cb336ea289c570535fadeae1f640edbd4b5a587d3e0498b3e746c7",
+      "size_bytes": 67099
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

@@ -5,7 +5,8 @@
 | 명령 | 종료 코드 | 결과 |
 |---|---:|---|
 | `python scripts/harness/audit_2d_pet_assets.py` | 1 | 자동 QA `PASS`; 시트 2/2, 선언 포즈 16/16, 수동 승인 0/1로 예상 차단 |
-| `python scripts/harness/audit_stage8.py` | 0 | 전체 파일 266개, Stage 7 필수 원본 10/10, Gate 0 `VERIFIED` |
+| `python scripts/harness/audit_2d_pet_single_approval.py` | 1 | `BLOCKED_EXTERNAL`; 유효 승인 0/1, 필수 체크 0/8, 후보 해시 변동 0 |
+| `python scripts/harness/audit_stage8.py` | 0 | 전체 파일 271개, Stage 7 필수 원본 10/10, Gate 0 `VERIFIED` |
 | `python scripts/harness/validate_harness.py` | 0 | `HARNESS_PASS`; Gate 2 `NOT_VERIFIED`, Gate 3 `NOT_STARTED` |
 | `git diff --check` | 0 | 공백 오류 없음 |
 | 정적 검토 서버 HTTP 검사 | 0 | 페이지·원본 2개·후보 시트 2개 모두 `200 OK` |

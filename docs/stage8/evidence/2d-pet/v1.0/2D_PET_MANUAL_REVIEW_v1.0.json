@@ -8,6 +8,10 @@
   "reviewed_at": null,
   "scope_acknowledged": false,
   "characters": ["Chakchaki", "Gongsickyi"],
+  "candidate_sheet_hashes": {
+    "Chakchaki": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+    "Gongsickyi": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100"
+  },
   "checks": {
     "canonical_identity_match": null,
     "face_and_silhouette_match": null,
@@ -19,6 +23,8 @@
     "no_low_poly_or_unwanted_3d_appearance": null
   },
   "comment": null,
+  "patch_id": null,
+  "unresolved_patch": null,
   "approval_applied": false,
   "next_gate_allowed": false
 }

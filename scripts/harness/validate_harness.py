@@ -48,6 +48,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate3.py",
     "scripts/harness/audit_gate2_high_fidelity.py",
     "scripts/harness/audit_2d_pet_assets.py",
+    "scripts/harness/audit_2d_pet_single_approval.py",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -115,11 +116,14 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_SINGLE_APPROVER_POLICY_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_SINGLE_APPROVER_AUDIT_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
     "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
     "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
     "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
+    "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -143,6 +147,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE2_HIGH_FIDELITY_CHARACTER_PRODUCTION_METAPROMPT_v2.0.md",
     "docs/stage8/prompts/STAGE8_2D_SHADED_PET_SYSTEM_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -784,6 +789,9 @@ def main() -> int:
         pet_manifest = load_json(pet_root / "2D_PET_ASSET_MANIFEST_v1.0.json")
         pet_qa = load_json(pet_root / "2D_PET_AUTOMATED_QA_v1.0.json")
         pet_review = load_json(pet_root / "2D_PET_MANUAL_REVIEW_v1.0.json")
+        pet_policy = load_json(pet_root / "2D_PET_SINGLE_APPROVER_POLICY_v1.0.json")
+        pet_approval_audit = load_json(pet_root / "2D_PET_SINGLE_APPROVER_AUDIT_v1.0.json")
+        approver_authority = load_json(ROOT / "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json")
         if pet_decision.get("decision") != "ADOPT_SHADED_2D_PET_SYSTEM" or pet_decision.get("status") != "ACTIVE":
             fail("shaded 2D strategy decision is not active")
         if pet_manifest.get("status") != "CANDIDATE_READY_FOR_MANUAL_REVIEW":
@@ -814,82 +822,63 @@ def main() -> int:
             fail("shaded 2D manual review is not safely pending")
         if pet_review.get("approval_applied") is not False or pet_review.get("next_gate_allowed") is not False:
             fail("shaded 2D pending review contains promotion flags")
+        if pet_policy.get("policy_status") != "ACTIVE" or pet_policy.get("approval_required") != 1:
+            fail("shaded 2D single-approver policy is invalid")
+        if pet_policy.get("approval_mode") != "PROJECT_OWNER_SINGLE_APPROVAL":
+            fail("shaded 2D approval mode is invalid")
+        if pet_policy.get("approver_name") != approver_authority.get("approver_name"):
+            fail("shaded 2D approver authority does not match Gate 1")
+        manifest_hashes = {item.get("character"): item.get("sha256", "").lower() for item in pet_manifest.get("sheets", [])}
+        policy_hashes = {key: value.lower() for key, value in pet_policy.get("candidate_sheet_hashes", {}).items()}
+        review_hashes = {key: value.lower() for key, value in pet_review.get("candidate_sheet_hashes", {}).items()}
+        if manifest_hashes != policy_hashes or manifest_hashes != review_hashes:
+            fail("shaded 2D approval candidate hashes disagree")
+        if pet_approval_audit.get("status") != "BLOCKED_EXTERNAL":
+            fail("shaded 2D single-approval audit is not safely blocked")
+        if pet_approval_audit.get("valid_approval_count") != 0 or pet_approval_audit.get("candidate_hash_drift_count") != 0:
+            fail("shaded 2D pending approval audit counters are invalid")
+        if pet_approval_audit.get("required_checks_true_count") != 0 or pet_approval_audit.get("required_checks_count") != 8:
+            fail("shaded 2D pending visual-check counters are invalid")
+        if pet_approval_audit.get("failures") or "PROJECT_OWNER_2D_DECISION_MISSING" not in pet_approval_audit.get("blockers", []):
+            fail("shaded 2D pending approval audit blockers are invalid")
+        if pet_approval_audit.get("ready_for_promotion") is not False:
+            fail("shaded 2D pending approval is prematurely ready for promotion")
     elif gates[2].get("status") != "NOT_STARTED":
         if gates[1].get("status") != "VERIFIED":
             fail("gate2 started before gate1 VERIFIED")
-        gate2_root = ROOT / "docs/stage8/evidence/gate2"
-        gate2_build = load_json(gate2_root / "GATE2_BUILD_MANIFEST_v1.0.json")
-        gate2_audit = load_json(gate2_root / "GATE2_AUTOMATED_QA_v1.0.json")
-        gate2_review = load_json(gate2_root / "GATE2_MANUAL_REVIEW_v1.0.json")
-        if gate2_build.get("status") != "CANDIDATE_BUILT":
-            fail("gate2 build manifest status is invalid")
-        if gate2_build.get("unit") != "meter" or gate2_build.get("up_axis") != "Y" or gate2_build.get("root_scale") != 1.0:
-            fail("gate2 build unit, axis, or root scale is invalid")
-        build_files = gate2_build.get("files", [])
-        if len(build_files) != 6:
-            fail("gate2 build manifest must contain six GLB files")
-        expected_pairs = {(character, lod) for character in ("Chakchaki", "Gongsickyi") for lod in (0, 1, 2)}
-        actual_pairs = {(item.get("character"), item.get("lod")) for item in build_files}
-        if actual_pairs != expected_pairs:
-            fail("gate2 build manifest character/LOD matrix is incomplete")
-        for item in build_files:
-            path = ROOT / item.get("path", "")
-            if not path.is_file():
-                fail(f"gate2 GLB is missing: {item.get('path')}")
-            actual = hashlib.sha256(path.read_bytes()).hexdigest().lower()
-            if actual != item.get("sha256", "").lower():
-                fail(f"gate2 GLB SHA-256 mismatch: {item.get('path')}")
-        for character, ratios in gate2_build.get("lod_ratios", {}).items():
-            if character not in {"Chakchaki", "Gongsickyi"}:
-                fail(f"unexpected gate2 LOD ratio character: {character}")
-            if not 0.45 <= ratios.get("lod1_to_lod0", -1) <= 0.60:
-                fail(f"gate2 LOD1 ratio is invalid: {character}")
-            if not 0.15 <= ratios.get("lod2_to_lod0", -1) <= 0.25:
-                fail(f"gate2 LOD2 ratio is invalid: {character}")
-        previews = gate2_build.get("previews", [])
-        if len(previews) != 4:
-            fail("gate2 build manifest must contain four comparison previews")
-        for item in previews:
-            path = ROOT / item.get("path", "")
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
-                fail(f"gate2 preview is missing or stale: {item.get('path')}")
-        if gate2_build.get("next_gate_allowed") is not False:
-            fail("gate2 build manifest prematurely allows Gate 3")
-        if gate2_audit.get("automated_status") != "PASS" or gate2_audit.get("model_pass_count") != 6:
-            fail("gate2 automated model audit did not pass 6/6")
-        if gate2_audit.get("failures"):
-            fail("gate2 automated audit contains failures")
-        audited_files = {(item.get("character"), item.get("lod")): item for item in gate2_audit.get("models", [])}
-        if set(audited_files) != expected_pairs:
-            fail("gate2 automated audit model matrix is incomplete")
-        for item in build_files:
-            audited = audited_files[(item["character"], item["lod"])]
-            if audited.get("status") != "PASS":
-                fail(f"gate2 audited model is not PASS: {item['character']} LOD{item['lod']}")
-            if audited.get("sha256", "").lower() != item.get("sha256", "").lower():
-                fail(f"gate2 audit/build hash mismatch: {item['character']} LOD{item['lod']}")
-            if audited.get("degenerate_triangles") != 0 or audited.get("non_manifold_edges_welded") != 0:
-                fail(f"gate2 topology defect: {item['character']} LOD{item['lod']}")
-        if gate2_audit.get("manual_approval_required") != 1:
-            fail("gate2 must require one Project Owner approval")
+        pet_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
+        pet_manifest = load_json(pet_root / "2D_PET_ASSET_MANIFEST_v1.0.json")
+        pet_qa = load_json(pet_root / "2D_PET_AUTOMATED_QA_v1.0.json")
+        pet_review = load_json(pet_root / "2D_PET_MANUAL_REVIEW_v1.0.json")
+        pet_policy = load_json(pet_root / "2D_PET_SINGLE_APPROVER_POLICY_v1.0.json")
+        pet_approval_audit = load_json(pet_root / "2D_PET_SINGLE_APPROVER_AUDIT_v1.0.json")
+        if len(pet_manifest.get("sheets", [])) != 2 or pet_qa.get("automated_status") != "PASS":
+            fail("gate2 shaded 2D candidate evidence is incomplete")
+        for sheet in pet_manifest.get("sheets", []):
+            path = ROOT / sheet.get("path", "")
+            expected = sheet.get("sha256", "").lower()
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected:
+                fail(f"gate2 shaded 2D pose sheet is missing or stale: {sheet.get('character')}")
+        if pet_policy.get("approval_required") != 1 or pet_policy.get("approval_mode") != "PROJECT_OWNER_SINGLE_APPROVAL":
+            fail("gate2 shaded 2D approval policy is invalid")
         if gates[2].get("status") == "BLOCKED":
-            if gate2_audit.get("status") != "BLOCKED_EXTERNAL" or gate2_audit.get("manual_approval_count") != 0:
-                fail("gate2 BLOCKED status disagrees with pending manual review")
-            if "PROJECT_OWNER_VISUAL_REVIEW_REQUIRED" not in gate2_audit.get("blockers", []):
-                fail("gate2 manual-review blocker is missing")
-            if gate2_review.get("approval_applied") is not False or gate2_review.get("next_gate_allowed") is not False:
-                fail("gate2 pending review contains premature promotion flags")
+            if pet_review.get("approval_applied") is not False or pet_review.get("next_gate_allowed") is not False:
+                fail("gate2 blocked shaded 2D review contains promotion flags")
+            if pet_approval_audit.get("status") not in {"BLOCKED_EXTERNAL", "READY_FOR_PROMOTION"}:
+                fail("gate2 blocked shaded 2D approval audit has an invalid status")
         if gates[2].get("status") == "VERIFIED":
-            if gate2_audit.get("status") != "VERIFIED" or gate2_audit.get("manual_approval_count") != 1:
-                fail("gate2 VERIFIED without one valid manual approval")
-            if gate2_audit.get("gate2_status_change_applied") is not True or gate2_audit.get("next_gate_allowed") is not True:
-                fail("gate2 VERIFIED without applied promotion flags")
-            if gate2_review.get("status") != "APPROVED" or gate2_review.get("decision") != "APPROVE":
-                fail("gate2 VERIFIED without an approved manual-review record")
-            if gate2_review.get("approval_applied") is not True or gate2_review.get("next_gate_allowed") is not True:
-                fail("gate2 VERIFIED while manual approval is not applied")
-            if not gate2_review.get("scope_acknowledged") or not all(value is True for value in gate2_review.get("checks", {}).values()):
-                fail("gate2 VERIFIED with incomplete visual-review checks")
+            if pet_review.get("status") != "APPROVED" or pet_review.get("decision") not in {"APPROVE", "APPROVE_WITH_PATCH"}:
+                fail("gate2 VERIFIED without an approved shaded 2D review")
+            if pet_review.get("reviewer") != pet_policy.get("approver_name"):
+                fail("gate2 VERIFIED with an unauthorized shaded 2D reviewer")
+            if pet_review.get("approval_applied") is not True or pet_review.get("next_gate_allowed") is not True:
+                fail("gate2 VERIFIED while shaded 2D approval is not applied")
+            if not pet_review.get("scope_acknowledged") or not all(value is True for value in pet_review.get("checks", {}).values()):
+                fail("gate2 VERIFIED with incomplete shaded 2D visual checks")
+            if pet_approval_audit.get("status") != "PROMOTED" or pet_approval_audit.get("valid_approval_count") != 1:
+                fail("gate2 VERIFIED without a promoted shaded 2D approval audit")
+            if pet_approval_audit.get("gate2_status_change_applied") is not True or pet_approval_audit.get("next_gate_allowed") is not True:
+                fail("gate2 VERIFIED without applied shaded 2D promotion flags")
             if gates[3].get("entry_allowed") is not True:
                 fail("gate2 VERIFIED without enabling Gate 3 entry")
         if gates[3].get("entry_allowed") is True and gates[2].get("status") != "VERIFIED":

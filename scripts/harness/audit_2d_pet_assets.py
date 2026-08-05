@@ -42,6 +42,7 @@ def require_file(record: dict, key: str = "path") -> Path:
 
 def main() -> int:
     failures: list[str] = []
+    approved = False
     try:
         decision = load_json(EVIDENCE / "2D_STRATEGY_DECISION_v1.0.json")
         manifest = load_json(EVIDENCE / "2D_PET_ASSET_MANIFEST_v1.0.json")
@@ -100,10 +101,23 @@ def main() -> int:
 
         if qa.get("automated_status") != "PASS" or qa.get("files_passed") != 2 or qa.get("failures"):
             raise AssertionError("recorded 2D automated QA is not PASS")
-        if review.get("status") != "PENDING" or review.get("decision") is not None:
-            raise AssertionError("2D manual review is not safely pending")
-        if review.get("approval_applied") is not False or review.get("next_gate_allowed") is not False:
-            raise AssertionError("2D pending review contains promotion flags")
+        if review.get("status") == "PENDING":
+            if review.get("decision") is not None:
+                raise AssertionError("2D pending review contains a decision")
+            if review.get("approval_applied") is not False or review.get("next_gate_allowed") is not False:
+                raise AssertionError("2D pending review contains promotion flags")
+        elif review.get("status") == "APPROVED":
+            if review.get("decision") not in {"APPROVE", "APPROVE_WITH_PATCH"}:
+                raise AssertionError("2D approved review has an invalid decision")
+            if review.get("scope_acknowledged") is not True or not all(
+                value is True for value in review.get("checks", {}).values()
+            ):
+                raise AssertionError("2D approved review has incomplete visual checks")
+            if review.get("approval_applied") is not True or review.get("next_gate_allowed") is not True:
+                raise AssertionError("2D approved review is missing promotion flags")
+            approved = True
+        else:
+            raise AssertionError("2D manual review status is invalid")
     except AssertionError as exc:
         failures.append(str(exc))
 
@@ -115,8 +129,11 @@ def main() -> int:
     print("2D_PET_AUTOMATED_QA_PASS")
     print("sheets=2/2")
     print("declared_poses=16/16")
-    print("manual_approval=0/1")
-    print("gate2=NOT_VERIFIED")
+    print(f"manual_approval={1 if approved else 0}/1")
+    print(f"gate2={'VERIFIED' if approved else 'NOT_VERIFIED'}")
+    if approved:
+        print("2D_PET_AUDIT_VERIFIED")
+        return 0
     print("2D_PET_AUDIT_BLOCKED_EXTERNAL: PROJECT_OWNER_2D_IDENTITY_AND_POSE_REVIEW_REQUIRED")
     return 1
 

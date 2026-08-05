@@ -31,3 +31,5 @@
 5. Gate 5~8은 실제 제품 코드·QA 환경·배포 대상이 확인된 뒤 순차 실행한다.
 
 현재 증거는 2D 후보 제작과 자동 QA까지 완료됐음을 증명하지만, 수동 시각 승인과 제품 통합 완료를 증명하지는 않는다.
+
+Gate 2 승인 입력은 `GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md`와 `audit_2d_pet_single_approval.py`로 검증한다. 현재 감사 결과는 후보 해시 변동 없이 `BLOCKED_EXTERNAL`이며, 사용자 `APPROVE` 전에는 어떤 승격 플래그도 적용되지 않는다.
