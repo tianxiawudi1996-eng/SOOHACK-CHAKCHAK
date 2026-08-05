@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T00:53:01.608560+00:00",
+  "generated_at": "2026-08-05T00:59:12.338558+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
-      "sha256": "312056eee2a411fc03332f2a540b984f0f6b9bbe7ad71a3c2e4876abbe70ed2b",
-      "size_bytes": 6935
+      "sha256": "1579a9ee488418ebfce92cc0efc1ad369dada9a676973c064ca6579879efea83",
+      "size_bytes": 6891
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
@@ -1692,13 +1692,13 @@
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
-      "sha256": "ca37887046f2b535a7f8c71d91ae10c52c2791617de21a85b643d5ae20df4ef3",
-      "size_bytes": 759702
+      "sha256": "259c4829d8253dc5913122aea33852cf04cca9877bd2c8aca6f06ad184b5e9ef",
+      "size_bytes": 762764
     },
     {
       "path": "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
-      "sha256": "30bec205a2b57e12f2344143282a52535919c5dcfd02cc37b7c45fe78e0facd2",
-      "size_bytes": 908438
+      "sha256": "514af86e8889fba0e36fc3bf22645680d32dc646af7a2aa4ab5f40f016f9cd36",
+      "size_bytes": 938917
     },
     {
       "path": "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
@@ -1957,78 +1957,78 @@
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json",
-      "sha256": "5c7bea0305f21e217b8fa92037686e228af3762c6cea7b182af399e6847533dc",
-      "size_bytes": 3724
+      "sha256": "af9fa5eee339679b1dc6768f521c4b3a203add162b1e9b66b80452786719fd1c",
+      "size_bytes": 3683
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
-      "sha256": "d29e13912b90f5737c8686e11101081c3d95cba04aae78a06b570010af7438a6",
-      "size_bytes": 3252468
+      "sha256": "0cff32ce86b19f0ca7857f88119c45d6021c8550ed65f872ed5ab27590d6c6eb",
+      "size_bytes": 3277212
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod1_v200.glb",
-      "sha256": "ad7ace9634d3177f5cad8aa28465b537a5ef40a578cbb9e3bc2448314776e920",
-      "size_bytes": 1835184
+      "sha256": "0fc5e64a87c719bdd3d2382d3871226451fe155a980d2ec2929ebb4422456b6c",
+      "size_bytes": 1845468
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod2_v200.glb",
-      "sha256": "c597df4a333607491bb480882415f0f116da28c079127b88738bd071f7c8dd18",
-      "size_bytes": 813364
+      "sha256": "353b6cff4ce63ab76f55d898393de1671292c3434b3ed818c36a3910fb4bc52e",
+      "size_bytes": 819068
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod0_v200.glb",
-      "sha256": "e6d9ba4f7f7176167ac0b38be500a3ee5db935aad103e9e94eb85fe6c55a4185",
-      "size_bytes": 1679132
+      "sha256": "3074df06ea7a0e78bbf1885a6106cb074bfd38e7358fd9a14bea1b69848c83f0",
+      "size_bytes": 1578840
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod1_v200.glb",
-      "sha256": "d3417c521bff70e218642ccf0e9715a3a72e17409ee450a771e807c691b5b8f5",
-      "size_bytes": 938568
+      "sha256": "d6b62b62747e11d72710a5a65866f76064a39d43769dfedbf7f4c6765db6573a",
+      "size_bytes": 883788
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod2_v200.glb",
-      "sha256": "3a376031cf900d99978de8285309fef7c2dabe248222790048a60a62a5ae53df",
-      "size_bytes": 407648
+      "sha256": "9dfaa6775d2ce54a4018d6df0efd2522a435e98426d8b82559995f216f21c1c5",
+      "size_bytes": 383068
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_front_v2.0.png",
-      "sha256": "1bf81dfcee3580a54446dd3b91c9bc1302ff79a0ca344fd8cb8059ed5b5d9171",
-      "size_bytes": 1169555
+      "sha256": "0891a167f9952b9570d2adb7017683d59194cb57728be984216d22c69674371b",
+      "size_bytes": 1171935
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_side_left_v2.0.png",
-      "sha256": "d07b5ccaa0ed5a38824afd29188878fc65a3fd33be4715832edeccf0a241c2f4",
-      "size_bytes": 1126570
+      "sha256": "88dc11f82c3edf7ebfff3e577d70b591826aa96d77f6764b24836aaedf4305cd",
+      "size_bytes": 1128009
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_three_quarter_v2.0.png",
-      "sha256": "587f553721cb63f45b5da609a4c01ef37791beb89b1d7cbcee52bae4c4840665",
-      "size_bytes": 1154195
+      "sha256": "c76f2b033b903974883d870835efae560302e0a6a77f66f2e58164740bcd7936",
+      "size_bytes": 1154579
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_front_v2.0.png",
-      "sha256": "2d011b9e2c1d76945b38ef8ae07d5cd30b33492cf030e4ef7d383c36778d13e3",
-      "size_bytes": 1231819
+      "sha256": "f1a36345c9921f1fac59414caa868d621a9c715bff9d7caf407d8839d6fb4091",
+      "size_bytes": 1241667
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_side_left_v2.0.png",
-      "sha256": "d811739b6f988ef837e66c4457090c734db24fc1cd23ba7d2522b76d4d570521",
-      "size_bytes": 1160627
+      "sha256": "d2a4025c42d277dbdf43d502857083a43535dc754ce81c4d9657d6e563b9de0c",
+      "size_bytes": 1169136
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_three_quarter_v2.0.png",
-      "sha256": "7615cf39ddb131ec574d414a0afb97d9cc31b7239869e068834302eee9704559",
-      "size_bytes": 1213663
+      "sha256": "bd58f65fb8ac7c5bc21e5bdbfd4e8a81f3fb1e8c184e86147e35153db2e39851",
+      "size_bytes": 1225739
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
-      "sha256": "271cb85ffb387123afdd99bb2a1d4cfb0fc74429edfe010cd0c99a4bec8c1bdf",
-      "size_bytes": 1643146
+      "sha256": "de4fa47725b90db0fd633e9ab2d238c65a7aa423ace379445d588902fc180bc8",
+      "size_bytes": 1586049
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
-      "sha256": "58a53f8e6f3a7d7fbac384e7b7133631ccc1263a7f981fffbbd48ebb12d5cce9",
-      "size_bytes": 909487
+      "sha256": "642405b09b3f07c19d8386fc10fdb40b7e1dcd7784a120ff4acfc9cbe388ff5c",
+      "size_bytes": 868743
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
@@ -2097,8 +2097,8 @@
     },
     {
       "path": "scripts/blender/build_stage8_high_fidelity_characters.py",
-      "sha256": "6840e8ef30c1660e6d3a2d84980c0dc7c8259c9dabbbd726ca553e49bf48b4dc",
-      "size_bytes": 25484
+      "sha256": "da9e79f8362b13bc3355aa4d0b58cc561b9286f4e14bdbad1b06155c8abeefd7",
+      "size_bytes": 25317
     },
     {
       "path": "scripts/harness/audit_gate1.py",

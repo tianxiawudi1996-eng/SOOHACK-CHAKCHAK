@@ -215,49 +215,46 @@ def build_gongsickyi() -> tuple[bpy.types.Object, list[str]]:
     root = bpy.data.objects.new("Gongsickyi_ROOT", None)
     bpy.context.collection.objects.link(root)
     modules = []
-    body = uv_sphere("Body", (0, 0, 1.72), (1.18, 1.02, 1.43), mats["yellow"], root, 96, 64)
+    body = uv_sphere("Body", (0, 0, 1.58), (1.18, 0.92, 1.26), mats["yellow"], root, 96, 64)
     modules.append(body.name)
     for side in (-1, 1):
-        x = side * 0.49
-        add_eye(f"Eyes.{ 'L' if side < 0 else 'R' }", x, -0.94, 2.02, (0.34, 0.16, 0.42), mats, root)
-        torus(f"Glasses.Rim.{ 'L' if side < 0 else 'R' }", (x, -1.13, 2.02), 0.40, 0.045, mats["navy"], root)
+        x = side * 0.47
+        add_eye(f"Eyes.{ 'L' if side < 0 else 'R' }", x, -0.86, 1.78, (0.33, 0.15, 0.39), mats, root)
+        torus(f"Glasses.Rim.{ 'L' if side < 0 else 'R' }", (x, -1.04, 1.78), 0.38, 0.043, mats["navy"], root)
         curve(f"Eyebrows.{ 'L' if side < 0 else 'R' }",
-              [(x - 0.20, -1.13, 2.48), (x, -1.20, 2.55), (x + 0.20, -1.13, 2.48)],
-              0.035, mats["brown"], root)
-        wing_x = side * 1.03
-        wing = uv_sphere(f"Wings.{ 'L' if side < 0 else 'R' }", (wing_x, -0.01, 1.55),
-                         (0.29, 0.47, 0.57), mats["yellow"], root, 64, 36)
+              [(x - 0.18, -1.03, 2.19), (x, -1.10, 2.25), (x + 0.18, -1.03, 2.19)],
+              0.035, mats["orange"], root)
+        wing_x = side * 1.14
+        wing = uv_sphere(f"Wings.{ 'L' if side < 0 else 'R' }", (wing_x, -0.01, 1.42),
+                         (0.28, 0.43, 0.50), mats["yellow"], root, 64, 36)
         wing.rotation_euler = (0.10, side * 0.25, side * 0.20)
         modules.append(wing.name)
-    curve("Glasses.Bridge", [(-0.10, -1.16, 2.04), (0, -1.22, 2.10), (0.10, -1.16, 2.04)],
+    curve("Glasses.Bridge", [(-0.10, -1.07, 1.80), (0, -1.13, 1.86), (0.10, -1.07, 1.80)],
           0.042, mats["navy"], root)
-    curve("Glasses.Temple.L", [(-0.88, -1.02, 2.06), (-1.08, -0.72, 2.05)], 0.035, mats["navy"], root)
-    curve("Glasses.Temple.R", [(0.88, -1.02, 2.06), (1.08, -0.72, 2.05)], 0.035, mats["navy"], root)
+    curve("Glasses.Temple.L", [(-0.84, -0.94, 1.81), (-1.06, -0.68, 1.80)], 0.035, mats["navy"], root)
+    curve("Glasses.Temple.R", [(0.84, -0.94, 1.81), (1.06, -0.68, 1.80)], 0.035, mats["navy"], root)
     modules.append("Glasses")
-    uv_sphere("MouthBeak.Upper", (0, -1.12, 1.58), (0.27, 0.18, 0.15), mats["orange"], root, 48, 24)
-    uv_sphere("MouthBeak.Interior", (0, -1.18, 1.46), (0.22, 0.10, 0.16), mats["mouth"], root, 48, 24)
-    uv_sphere("MouthBeak.Tongue", (0, -1.27, 1.40), (0.13, 0.04, 0.06), mats["tongue"], root, 32, 16)
-    uv_sphere("Cheeks.L", (-0.82, -1.00, 1.60), (0.17, 0.06, 0.09), mats["cheek"], root, 40, 20)
-    uv_sphere("Cheeks.R", (0.82, -1.00, 1.60), (0.17, 0.06, 0.09), mats["cheek"], root, 40, 20)
-    modules += ["Eyes", "Eyebrows", "MouthBeak", "Cheeks"]
+    uv_sphere("MouthBeak.Upper", (0, -1.00, 1.44), (0.25, 0.14, 0.11), mats["orange"], root, 48, 24)
+    uv_sphere("MouthBeak.Lower", (0, -1.01, 1.38), (0.20, 0.12, 0.075), mats["gold"], root, 48, 24)
+    modules += ["Eyes", "Eyebrows", "MouthBeak"]
     for side in (-1, 1):
-        foot = uv_sphere(f"Feet.{ 'L' if side < 0 else 'R' }", (side * 0.48, -0.22, 0.26),
-                         (0.53, 0.72, 0.27), mats["brown"], root, 64, 32)
+        foot = uv_sphere(f"Feet.{ 'L' if side < 0 else 'R' }", (side * 0.43, -0.22, 0.24),
+                         (0.46, 0.62, 0.24), mats["brown"], root, 64, 32)
         modules.append(foot.name)
     # Graduation cap with softened crown, square board, tassel and knot.
-    uv_sphere("GraduationCap.Crown", (0, 0.02, 3.06), (0.72, 0.65, 0.30), mats["navy"], root, 64, 32)
-    board = round_cube("GraduationCap.Board", (0, -0.02, 3.31), (1.03, 0.88, 0.07), mats["navy"], root, 0.025)
+    uv_sphere("GraduationCap.Crown", (0, 0.02, 2.78), (0.70, 0.62, 0.27), mats["navy"], root, 64, 32)
+    board = round_cube("GraduationCap.Board", (0, -0.02, 3.02), (1.00, 0.84, 0.065), mats["navy"], root, 0.022)
     board.rotation_euler[2] = math.radians(-5)
-    curve("GraduationCap.TasselCord", [(0.32, -0.66, 3.38), (0.82, -0.77, 3.23), (0.84, -0.82, 2.84)],
+    curve("GraduationCap.TasselCord", [(0.32, -0.63, 3.08), (0.80, -0.72, 2.96), (0.82, -0.77, 2.61)],
           0.025, mats["gold"], root)
-    uv_sphere("GraduationCap.TasselKnot", (0.84, -0.82, 2.80), (0.10, 0.08, 0.12), mats["gold"], root, 32, 16)
-    curve("GraduationCap.Tassel", [(0.79, -0.82, 2.73), (0.72, -0.82, 2.56)], 0.025, mats["gold"], root)
-    curve("GraduationCap.Tassel.2", [(0.84, -0.82, 2.73), (0.84, -0.82, 2.53)], 0.025, mats["gold"], root)
-    curve("GraduationCap.Tassel.3", [(0.89, -0.82, 2.73), (0.96, -0.82, 2.56)], 0.025, mats["gold"], root)
+    uv_sphere("GraduationCap.TasselKnot", (0.82, -0.77, 2.57), (0.09, 0.07, 0.11), mats["gold"], root, 32, 16)
+    curve("GraduationCap.Tassel", [(0.77, -0.77, 2.50), (0.70, -0.77, 2.34)], 0.022, mats["gold"], root)
+    curve("GraduationCap.Tassel.2", [(0.82, -0.77, 2.50), (0.82, -0.77, 2.31)], 0.022, mats["gold"], root)
+    curve("GraduationCap.Tassel.3", [(0.87, -0.77, 2.50), (0.94, -0.77, 2.34)], 0.022, mats["gold"], root)
     modules.append("GraduationCap")
     # Pointer is held beside the left wing and remains a separate prop module.
-    cylinder_between("StarPointer.Handle", (-1.18, -0.30, 1.10), (-1.55, -0.34, 2.62), 0.055, mats["brown"], root)
-    star("StarPointer.Star", (-1.61, -0.34, 2.86), 0.28, 0.12, mats["gold"], root, rotation_z=0.12)
+    cylinder_between("StarPointer.Handle", (-1.15, -0.32, 1.00), (-1.48, -0.34, 2.38), 0.052, mats["brown"], root)
+    star("StarPointer.Star", (-1.54, -0.34, 2.61), 0.27, 0.12, mats["gold"], root, rotation_z=0.12)
     modules.append("StarPointer")
     return root, sorted(set(modules))
 
@@ -266,6 +263,9 @@ def add_fingers(prefix: str, center, side: int, mats, root) -> None:
     uv_sphere(prefix + ".Palm", center, (0.18, 0.13, 0.22), mats["skin"], root, 56, 28)
     uv_sphere(prefix + ".Thumb", (center[0] + side * 0.15, center[1] - 0.045, center[2] + 0.03),
               (0.07, 0.055, 0.10), mats["skin"], root, 36, 18)
+    for i, offset in enumerate((-0.075, 0.0, 0.075)):
+        uv_sphere(f"{prefix}.Finger{i + 1}", (center[0] + offset, center[1] - 0.025, center[2] - 0.14),
+                  (0.045, 0.045, 0.10), mats["skin"], root, 32, 16)
 
 
 def build_chakchaki() -> tuple[bpy.types.Object, list[str]]:
@@ -315,7 +315,12 @@ def build_chakchaki() -> tuple[bpy.types.Object, list[str]]:
         add_fingers(f"Hands.{ 'L' if side < 0 else 'R' }", (side * 0.78, -0.14, 1.34), side, mats, root)
     modules += ["Body", "Hoodie", "Arms", "Hands", "Fingers"]
     # Head and face use layered smooth surfaces, not flat texture cards.
-    uv_sphere("Head", (0, -0.02, 3.08), (0.67, 0.59, 0.67), mats["skin"], root, 96, 64)
+    head = uv_sphere("Head", (0, -0.02, 3.08), (0.67, 0.59, 0.67), mats["skin"], root, 96, 64)
+    for vertex in head.data.vertices:
+        if vertex.co.z < 0:
+            taper = 1.0 + 0.16 * vertex.co.z / 0.67
+            vertex.co.x *= taper
+            vertex.co.y *= 0.97 + 0.03 * taper
     uv_sphere("Ears.L", (-0.66, -0.01, 3.07), (0.15, 0.10, 0.20), mats["skin"], root, 48, 24)
     uv_sphere("Ears.R", (0.66, -0.01, 3.07), (0.15, 0.10, 0.20), mats["skin"], root, 48, 24)
     add_eye("Eyes.L", -0.24, -0.58, 3.13, (0.19, 0.070, 0.24), mats, root)
@@ -323,11 +328,8 @@ def build_chakchaki() -> tuple[bpy.types.Object, list[str]]:
     curve("Eyebrows.L", [(-0.42, -0.62, 3.43), (-0.26, -0.66, 3.49), (-0.09, -0.62, 3.44)], 0.029, mats["hair"], root)
     curve("Eyebrows.R", [(0.09, -0.62, 3.44), (0.26, -0.66, 3.49), (0.42, -0.62, 3.43)], 0.029, mats["hair"], root)
     uv_sphere("Nose", (0, -0.63, 2.97), (0.070, 0.045, 0.080), mats["skin"], root, 40, 20)
-    uv_sphere("Mouth.Interior", (0, -0.625, 2.79), (0.23, 0.018, 0.105), mats["mouth"], root, 48, 24)
-    uv_sphere("Mouth.Tongue", (0, -0.648, 2.755), (0.13, 0.010, 0.035), mats["tongue"], root, 40, 20)
-    uv_sphere("Cheeks.L", (-0.46, -0.57, 2.89), (0.09, 0.020, 0.043), mats["cheek"], root, 36, 18)
-    uv_sphere("Cheeks.R", (0.46, -0.57, 2.89), (0.09, 0.020, 0.043), mats["cheek"], root, 36, 18)
-    modules += ["Head", "Eyes", "Eyebrows", "Mouth", "Cheeks", "Ears", "Nose"]
+    curve("Mouth.Smile", [(-0.20, -0.635, 2.83), (0, -0.665, 2.75), (0.20, -0.635, 2.83)], 0.018, mats["mouth"], root)
+    modules += ["Head", "Eyes", "Eyebrows", "Mouth", "Ears", "Nose"]
     # Hair cap and individually shaped fringe tufts preserve the approved silhouette.
     uv_sphere("Hair.Cap", (0, 0.02, 3.43), (0.64, 0.55, 0.34), mats["hair"], root, 80, 44)
     fringe_specs = [(-0.46, -0.51, 3.44, -18), (-0.31, -0.57, 3.49, -10), (-0.15, -0.60, 3.45, -4),
@@ -337,7 +339,7 @@ def build_chakchaki() -> tuple[bpy.types.Object, list[str]]:
         tuft.rotation_euler[1] = math.radians(angle)
     modules += ["Hair", "Fringe"]
     # Round cap, structured brim and replaceable placeholder badge.
-    uv_sphere("Cap.Crown", (0, 0.00, 3.77), (0.69, 0.60, 0.29), mats["blue"], root, 80, 44)
+    uv_sphere("Cap.Crown", (0, 0.00, 3.80), (0.69, 0.60, 0.35), mats["blue"], root, 80, 44)
     brim = uv_sphere("Cap.Brim", (0, -0.57, 3.65), (0.53, 0.29, 0.070), mats["deepblue"], root, 64, 28)
     brim.rotation_euler[0] = math.radians(-7)
     uv_sphere("CapBadge.Base", (0, -0.630, 3.83), (0.18, 0.03, 0.16), mats["white"], root, 48, 24)
@@ -382,7 +384,7 @@ def setup_render(character: str) -> tuple[bpy.types.Object, bpy.types.Object]:
     bpy.context.collection.objects.link(cam)
     cam_data.type = "ORTHO"
     cam_data.lens = 62
-    cam_data.ortho_scale = 4.25 if character == "Gongsickyi" else 4.80
+    cam_data.ortho_scale = 3.75 if character == "Gongsickyi" else 4.80
     scene.camera = cam
     return cam, ground
 
@@ -394,7 +396,7 @@ def point_camera(camera: bpy.types.Object, location, target) -> None:
 
 def render_views(character: str, root: bpy.types.Object) -> list[str]:
     camera, ground = setup_render(character)
-    center = 1.75 if character == "Gongsickyi" else 2.05
+    center = 1.52 if character == "Gongsickyi" else 2.05
     distance = 9.0
     views = {
         "front": ((0, -distance, center), (0, 0, center)),
