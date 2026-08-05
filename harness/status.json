@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T08:57:06+09:00",
+  "updated_at": "2026-08-05T09:50:18+09:00",
   "head_commit": "c47e3a3",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
@@ -79,11 +79,17 @@
       "docs/stage8/evidence/gate2/GATE2_BUILD_MANIFEST_v1.0.json",
       "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
       "docs/stage8/evidence/gate2/GATE2_MANUAL_REVIEW_v1.0.json",
-      "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md"
+      "docs/stage8/evidence/gate2/GATE2_BASE_MESH_MATERIAL_REPORT_v1.0.md",
+      "docs/stage8/prompts/GATE2_HIGH_FIDELITY_CHARACTER_PRODUCTION_METAPROMPT_v2.0.md",
+      "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
+      "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
+      "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
+      "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
+      "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json"
     ],
     "blockers": [
-      "Approved high-fidelity 3D source or professional 3D authoring is required",
-      "Previous procedural candidates were rejected for canonical identity and quality mismatch"
+      "Project Owner canonical identity and production-quality review is required for the new Blender candidates"
     ],
     "entry_allowed": true
   },

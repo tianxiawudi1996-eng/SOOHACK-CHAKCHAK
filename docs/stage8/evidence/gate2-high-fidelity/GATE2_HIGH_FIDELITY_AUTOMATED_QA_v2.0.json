@@ -1,0 +1,187 @@
+{
+  "schema_version": "2.0.0",
+  "generated_at": "2026-08-05T09:52:59+09:00",
+  "gate": 2,
+  "status": "BLOCKED_EXTERNAL",
+  "automated_status": "PASS",
+  "blender_version": "5.2.0 LTS",
+  "blend_sources_passed": 2,
+  "glb_models_passed": 6,
+  "renders_passed": 6,
+  "characters": [
+    {
+      "character": "Gongsickyi",
+      "source_path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+      "source_sha256": "58a53f8e6f3a7d7fbac384e7b7133631ccc1263a7f981fffbbd48ebb12d5cce9",
+      "modules": [
+        "Body",
+        "Cheeks",
+        "Eyebrows",
+        "Eyes",
+        "Feet.L",
+        "Feet.R",
+        "Glasses",
+        "GraduationCap",
+        "MouthBeak",
+        "StarPointer",
+        "Wings.L",
+        "Wings.R"
+      ],
+      "renders": [
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_front_v2.0.png",
+          "sha256": "2d011b9e2c1d76945b38ef8ae07d5cd30b33492cf030e4ef7d383c36778d13e3"
+        },
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_side_left_v2.0.png",
+          "sha256": "d811739b6f988ef837e66c4457090c734db24fc1cd23ba7d2522b76d4d570521"
+        },
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_three_quarter_v2.0.png",
+          "sha256": "7615cf39ddb131ec574d414a0afb97d9cc31b7239869e068834302eee9704559"
+        }
+      ],
+      "review_board": "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
+      "review_board_sha256": "30bec205a2b57e12f2344143282a52535919c5dcfd02cc37b7c45fe78e0facd2",
+      "lods": [
+        {
+          "lod": 0,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod0_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 36190,
+          "triangles": 72036,
+          "materials": 11,
+          "sha256": "e6d9ba4f7f7176167ac0b38be500a3ee5db935aad103e9e94eb85fe6c55a4185",
+          "bytes": 1679132,
+          "gltf_version": "2.0",
+          "mesh_count": 34,
+          "material_count_exported": 11,
+          "status": "PASS"
+        },
+        {
+          "lod": 1,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod1_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 20017,
+          "triangles": 39690,
+          "materials": 11,
+          "sha256": "d3417c521bff70e218642ccf0e9715a3a72e17409ee450a771e807c691b5b8f5",
+          "bytes": 938568,
+          "gltf_version": "2.0",
+          "mesh_count": 34,
+          "material_count_exported": 11,
+          "status": "PASS"
+        },
+        {
+          "lod": 2,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod2_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 8144,
+          "triangles": 15957,
+          "materials": 11,
+          "sha256": "3a376031cf900d99978de8285309fef7c2dabe248222790048a60a62a5ae53df",
+          "bytes": 407648,
+          "gltf_version": "2.0",
+          "mesh_count": 34,
+          "material_count_exported": 11,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "character": "Chakchaki",
+      "source_path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+      "source_sha256": "271cb85ffb387123afdd99bb2a1d4cfb0fc74429edfe010cd0c99a4bec8c1bdf",
+      "modules": [
+        "Arms",
+        "Backpack",
+        "Body",
+        "Cap",
+        "CapBadge",
+        "Cheeks",
+        "Ears",
+        "Eyebrows",
+        "Eyes",
+        "Fingers",
+        "Fringe",
+        "Hair",
+        "Hands",
+        "Head",
+        "Hoodie",
+        "Legs",
+        "Mouth",
+        "Nose",
+        "Shoes",
+        "Shorts"
+      ],
+      "renders": [
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_front_v2.0.png",
+          "sha256": "1bf81dfcee3580a54446dd3b91c9bc1302ff79a0ca344fd8cb8059ed5b5d9171"
+        },
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_side_left_v2.0.png",
+          "sha256": "d07b5ccaa0ed5a38824afd29188878fc65a3fd33be4715832edeccf0a241c2f4"
+        },
+        {
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_three_quarter_v2.0.png",
+          "sha256": "587f553721cb63f45b5da609a4c01ef37791beb89b1d7cbcee52bae4c4840665"
+        }
+      ],
+      "review_board": "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
+      "review_board_sha256": "ca37887046f2b535a7f8c71d91ae10c52c2791617de21a85b643d5ae20df4ef3",
+      "lods": [
+        {
+          "lod": 0,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 69540,
+          "triangles": 138004,
+          "materials": 12,
+          "sha256": "d29e13912b90f5737c8686e11101081c3d95cba04aae78a06b570010af7438a6",
+          "bytes": 3252468,
+          "gltf_version": "2.0",
+          "mesh_count": 70,
+          "material_count_exported": 12,
+          "status": "PASS"
+        },
+        {
+          "lod": 1,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod1_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 38724,
+          "triangles": 76372,
+          "materials": 12,
+          "sha256": "ad7ace9634d3177f5cad8aa28465b537a5ef40a578cbb9e3bc2448314776e920",
+          "bytes": 1835184,
+          "gltf_version": "2.0",
+          "mesh_count": 70,
+          "material_count_exported": 12,
+          "status": "PASS"
+        },
+        {
+          "lod": 2,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod2_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 16045,
+          "triangles": 31161,
+          "materials": 12,
+          "sha256": "c597df4a333607491bb480882415f0f116da28c079127b88738bd071f7c8dd18",
+          "bytes": 813364,
+          "gltf_version": "2.0",
+          "mesh_count": 70,
+          "material_count_exported": 12,
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "manual_visual_review_required": 1,
+  "manual_visual_review_count": 0,
+  "blockers": [
+    "PROJECT_OWNER_CANONICAL_IDENTITY_AND_QUALITY_REVIEW_REQUIRED"
+  ],
+  "gate2_status_change_applied": false,
+  "next_gate_allowed": false
+}

@@ -46,6 +46,8 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate2.py",
     "scripts/harness/build_gate3_rig.py",
     "scripts/harness/audit_gate3.py",
+    "scripts/harness/audit_gate2_high_fidelity.py",
+    "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
     "docs/stage8/CHANGELOG.md",
@@ -103,6 +105,11 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/gate3/GATE3_AUTOMATED_QA_v1.0.json",
     "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md",
+    "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
+    "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
+    "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
+    "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
+    "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -124,8 +131,18 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE2_HIGH_FIDELITY_CHARACTER_PRODUCTION_METAPROMPT_v2.0.md",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod1_v200.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod2_v200.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod0_v200.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod1_v200.glb",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod2_v200.glb",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod1_v100.glb",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod2_v100.glb",
@@ -690,8 +707,10 @@ def main() -> int:
         gate2_review = load_json(gate2_root / "GATE2_MANUAL_REVIEW_v1.0.json")
         if register.get("status") != "ACTIVE_2D_CANONICAL_ONLY":
             fail("active character reference register status is invalid")
-        if register.get("actual_3d_source", {}).get("status") != "MISSING_NOT_PROVIDED":
-            fail("character register incorrectly claims an approved 3D source")
+        if register.get("actual_3d_source", {}).get("status") != "ORIGINAL_MISSING":
+            fail("character register incorrectly describes the missing original 3D source")
+        if register.get("new_authored_3d_candidates", {}).get("status") != "PENDING_MANUAL_VISUAL_REVIEW":
+            fail("new authored 3D candidates are not safely pending visual review")
         for character, record in register.get("characters", {}).items():
             for key in ("approved_reference", "canonical_turnaround"):
                 path = ROOT / record.get(f"{key}_path", "")
@@ -722,6 +741,30 @@ def main() -> int:
             fail("active gate2 output contains rejected GLBs")
         if gates[3].get("status") != "NOT_STARTED" or gates[3].get("entry_allowed") is not False:
             fail("gate3 was not reset after gate2 rejection")
+        hf_root = ROOT / "docs/stage8/evidence/gate2-high-fidelity"
+        hf_qa = load_json(hf_root / "GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json")
+        hf_review = load_json(hf_root / "GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json")
+        if hf_qa.get("status") != "BLOCKED_EXTERNAL" or hf_qa.get("automated_status") != "PASS":
+            fail("high-fidelity Gate 2 candidate audit is not safely review-blocked")
+        if (hf_qa.get("blend_sources_passed"), hf_qa.get("glb_models_passed"), hf_qa.get("renders_passed")) != (2, 6, 6):
+            fail("high-fidelity Gate 2 artifact matrix is incomplete")
+        if hf_qa.get("failures"):
+            fail("high-fidelity Gate 2 audit contains failures")
+        for character in hf_qa.get("characters", []):
+            source = ROOT / character.get("source_path", "")
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest().lower() != character.get("source_sha256", "").lower():
+                fail(f"high-fidelity Blender source is missing or stale: {character.get('character')}")
+            board = ROOT / character.get("review_board", "")
+            if not board.is_file() or hashlib.sha256(board.read_bytes()).hexdigest().lower() != character.get("review_board_sha256", "").lower():
+                fail(f"high-fidelity review board is missing or stale: {character.get('character')}")
+            for item in character.get("renders", []) + character.get("lods", []):
+                path = ROOT / item.get("path", "")
+                if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
+                    fail(f"high-fidelity artifact is missing or stale: {item.get('path')}")
+        if hf_review.get("status") != "PENDING" or hf_review.get("decision") is not None:
+            fail("high-fidelity manual review is not pending")
+        if hf_review.get("approval_applied") is not False or hf_review.get("next_gate_allowed") is not False:
+            fail("high-fidelity pending review contains promotion flags")
     elif gates[2].get("status") != "NOT_STARTED":
         if gates[1].get("status") != "VERIFIED":
             fail("gate2 started before gate1 VERIFIED")

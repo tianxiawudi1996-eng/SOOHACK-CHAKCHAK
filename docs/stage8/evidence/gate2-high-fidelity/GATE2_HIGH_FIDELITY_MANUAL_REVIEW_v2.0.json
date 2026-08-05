@@ -1,0 +1,22 @@
+{
+  "schema_version": "2.0.0",
+  "gate": 2,
+  "status": "PENDING",
+  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "reviewer": null,
+  "decision": null,
+  "reviewed_at": null,
+  "scope_acknowledged": false,
+  "characters": ["Chakchaki", "Gongsickyi"],
+  "checks": {
+    "canonical_identity_match": null,
+    "face_and_age_impression_match": null,
+    "silhouette_and_proportion_match": null,
+    "clothing_accessory_and_color_match": null,
+    "production_visual_quality_acceptable": null,
+    "front_side_three_quarter_consistency": null
+  },
+  "comment": null,
+  "approval_applied": false,
+  "next_gate_allowed": false
+}

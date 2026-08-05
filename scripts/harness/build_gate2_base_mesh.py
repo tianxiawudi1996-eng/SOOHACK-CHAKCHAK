@@ -36,7 +36,7 @@ def main() -> int:
         return 2
 
     print("GATE2_BLOCKED_EXTERNAL")
-    print("Canonical 2D references are valid, but no approved high-fidelity 3D source exists.")
+    print("Canonical 2D references are valid and new Blender candidates exist, but they are not visually approved.")
     print("Procedural primitive generation is disabled because it failed character-identity review.")
     return 1
 

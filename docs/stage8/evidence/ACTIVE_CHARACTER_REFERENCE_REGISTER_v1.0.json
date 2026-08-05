@@ -18,9 +18,17 @@
     }
   },
   "actual_3d_source": {
-    "status": "MISSING_NOT_PROVIDED",
+    "status": "ORIGINAL_MISSING",
     "accepted_formats": ["BLEND", "FBX", "GLB", "GLTF", "OBJ"],
     "workspace_scan_result": "No pre-existing 3D source was found; only the rejected procedural Gate 2/3 GLBs exist."
+  },
+  "new_authored_3d_candidates": {
+    "status": "PENDING_MANUAL_VISUAL_REVIEW",
+    "blender_version": "5.2.0 LTS",
+    "chakchaki_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+    "gongsickyi_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+    "automated_qa": "PASS",
+    "gate2_verified": false
   },
   "rejected_assets": {
     "reason": "Canonical identity and production visual quality do not match the approved character references.",
@@ -32,7 +40,8 @@
     "canonical_images_are_active_visual_source": true,
     "canonical_images_are_not_claimed_as_3d_meshes": true,
     "procedural_candidates_may_not_be_used_or_promoted": true,
-    "gate2_requires_new_high_fidelity_3d_source_or_authoring": true,
+    "gate2_requires_new_high_fidelity_3d_source_or_authoring": false,
+    "gate2_requires_manual_visual_approval": true,
     "gate3_requires_gate2_verified": true
   }
 }

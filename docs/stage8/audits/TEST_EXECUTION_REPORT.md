@@ -34,3 +34,14 @@
 - 하네스 검증: 종료 0, `HARNESS_PASS`
 - `git diff --check`: 종료 0
 - 격리 확인: GLB 12개, 미리보기 10개
+
+## 고품질 Blender 후보 실행 결과 — 2026-08-05
+
+- Blender 5.2 LTS 배포판 SHA-256: 공식 체크섬 일치
+- `.blend` 원본: 2/2 생성
+- GLB LOD 행렬: 6/6 생성 및 glTF 2.0 파싱 PASS
+- 렌더 행렬: 6/6 생성
+- 비교 보드: 2/2 생성
+- `audit_gate2_high_fidelity.py`: 예상 외부 차단 종료 1, 자동 QA PASS, 수동 승인 0/1
+- Gate 2: `NOT_VERIFIED`
+- Gate 3: `NOT_STARTED`

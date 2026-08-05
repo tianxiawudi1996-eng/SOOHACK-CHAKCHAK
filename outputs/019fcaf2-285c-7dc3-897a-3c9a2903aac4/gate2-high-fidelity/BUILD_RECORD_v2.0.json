@@ -1,0 +1,115 @@
+{
+  "schema_version": "2.0.0",
+  "blender_version": "5.2.0 LTS",
+  "status": "HIGH_FIDELITY_CANDIDATES_BUILT",
+  "characters": [
+    {
+      "character": "Gongsickyi",
+      "source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+      "modules": [
+        "Body",
+        "Cheeks",
+        "Eyebrows",
+        "Eyes",
+        "Feet.L",
+        "Feet.R",
+        "Glasses",
+        "GraduationCap",
+        "MouthBeak",
+        "StarPointer",
+        "Wings.L",
+        "Wings.R"
+      ],
+      "renders": [
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_front_v2.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_side_left_v2.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_three_quarter_v2.0.png"
+      ],
+      "lods": [
+        {
+          "lod": 0,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod0_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 36190,
+          "triangles": 72036,
+          "materials": 11
+        },
+        {
+          "lod": 1,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod1_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 20017,
+          "triangles": 39690,
+          "materials": 11
+        },
+        {
+          "lod": 2,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod2_v200.glb",
+          "mesh_objects": 34,
+          "vertices": 8144,
+          "triangles": 15957,
+          "materials": 11
+        }
+      ]
+    },
+    {
+      "character": "Chakchaki",
+      "source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+      "modules": [
+        "Arms",
+        "Backpack",
+        "Body",
+        "Cap",
+        "CapBadge",
+        "Cheeks",
+        "Ears",
+        "Eyebrows",
+        "Eyes",
+        "Fingers",
+        "Fringe",
+        "Hair",
+        "Hands",
+        "Head",
+        "Hoodie",
+        "Legs",
+        "Mouth",
+        "Nose",
+        "Shoes",
+        "Shorts"
+      ],
+      "renders": [
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_front_v2.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_side_left_v2.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_three_quarter_v2.0.png"
+      ],
+      "lods": [
+        {
+          "lod": 0,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 69540,
+          "triangles": 138004,
+          "materials": 12
+        },
+        {
+          "lod": 1,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod1_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 38724,
+          "triangles": 76372,
+          "materials": 12
+        },
+        {
+          "lod": 2,
+          "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod2_v200.glb",
+          "mesh_objects": 70,
+          "vertices": 16045,
+          "triangles": 31161,
+          "materials": 12
+        }
+      ]
+    }
+  ],
+  "manual_visual_review_required": true,
+  "gate2_verified": false
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T00:08:49.372182+00:00",
+  "generated_at": "2026-08-05T00:53:01.608560+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1237,8 +1237,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "a4a228059186dcee8461c6bc9e6d82e2b237661f724d365a383535ea81837f73",
-      "size_bytes": 1753
+      "sha256": "7138a25eb39be8bfb42ffee2c5615e89010a74887859957610549d6feb12489d",
+      "size_bytes": 1488
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1287,8 +1287,8 @@
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
-      "sha256": "d776e205596d35dc4a2241c0952293d5dd535d8dab46de49657d748885d353f8",
-      "size_bytes": 1399
+      "sha256": "93ae16643abd72b1de0737bad77d693662fdfcadcad3c8ecc403a422b1cd65a9",
+      "size_bytes": 899
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1297,8 +1297,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "433349545eea2b0084dce1e0060725dd575f2a2c32724f0b357b9b2251fcafdc",
-      "size_bytes": 1889
+      "sha256": "829fe0d506f32abf9c7127d2eaaa9817df8f1ec7ba47ae4bb5df5663b96291fc",
+      "size_bytes": 2297
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1307,13 +1307,13 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "ea92ba9b26c5d677035bc8524a47d8c75d99ceb2c729cfec0d0c3dfb9df3ea1c",
-      "size_bytes": 9244
+      "sha256": "1927cb56a30846b012e8f02d3d09126c5f563d7fa3f6b49c1c2c49823d355395",
+      "size_bytes": 9739
     },
     {
       "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
-      "sha256": "aad5cbae16b50eb8d5e9985776c87c15260d9d19afa695e7b00f33fa197612a2",
-      "size_bytes": 2143
+      "sha256": "63677f2001573c381830cde6e83628646639190146e67eff5fd6879982e1d7bf",
+      "size_bytes": 2636
     },
     {
       "path": "docs/stage8/evidence/gate0/manual-review.json",
@@ -1676,6 +1676,31 @@
       "size_bytes": 397358
     },
     {
+      "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_AUTOMATED_QA_v2.0.json",
+      "sha256": "312056eee2a411fc03332f2a540b984f0f6b9bbe7ad71a3c2e4876abbe70ed2b",
+      "size_bytes": 6935
+    },
+    {
+      "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_MANUAL_REVIEW_v2.0.json",
+      "sha256": "c868fa5f938035d9c2ec4ad3b9cd1740cbeac4df620d1443b7d442dc0de318a1",
+      "size_bytes": 627
+    },
+    {
+      "path": "docs/stage8/evidence/gate2-high-fidelity/GATE2_HIGH_FIDELITY_REPORT_v2.0.md",
+      "sha256": "3c960406aaaeae195215d114bd4976a7b6c58b09f81b52af8e976e1d39a92339",
+      "size_bytes": 465
+    },
+    {
+      "path": "docs/stage8/evidence/gate2-high-fidelity/review/Chakchaki_Canonical_vs_HighFidelity_v2.0.png",
+      "sha256": "ca37887046f2b535a7f8c71d91ae10c52c2791617de21a85b643d5ae20df4ef3",
+      "size_bytes": 759702
+    },
+    {
+      "path": "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
+      "sha256": "30bec205a2b57e12f2344143282a52535919c5dcfd02cc37b7c45fe78e0facd2",
+      "size_bytes": 908438
+    },
+    {
       "path": "docs/stage8/evidence/gate2/GATE2_AUTOMATED_QA_v1.0.json",
       "sha256": "0a400ca32828dafa58eda038f1af31bbe9f36fedf38b36e3d74a9f26c54fe71b",
       "size_bytes": 556
@@ -1821,6 +1846,11 @@
       "size_bytes": 6658
     },
     {
+      "path": "docs/stage8/prompts/GATE2_HIGH_FIDELITY_CHARACTER_PRODUCTION_METAPROMPT_v2.0.md",
+      "sha256": "774ad7475f23aac1c128252d4a8b9abd1fc3e85fee6f553e59740eaed6c8c851",
+      "size_bytes": 4552
+    },
+    {
       "path": "docs/stage8/prompts/GATE2_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
       "sha256": "7556ed4a94efcc18243292d82d32e52f20513083a991e398a1967c88eec75a79",
       "size_bytes": 3188
@@ -1912,8 +1942,8 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "4ff5d9c09e46612e908a0a6257fcfd1134cbbb033c01a1da91d20d49a61bc12c",
-      "size_bytes": 7044
+      "sha256": "f193c1498d0c6926776eacff62d6fddc22c2688e2f6ab325f7618f6fece734fb",
+      "size_bytes": 7641
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -1924,6 +1954,81 @@
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
       "sha256": "a62ceebe465db9c2626e0a66728b81a708cba0b378459d47d052170e486e3be0",
       "size_bytes": 6763
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json",
+      "sha256": "5c7bea0305f21e217b8fa92037686e228af3762c6cea7b182af399e6847533dc",
+      "size_bytes": 3724
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
+      "sha256": "d29e13912b90f5737c8686e11101081c3d95cba04aae78a06b570010af7438a6",
+      "size_bytes": 3252468
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod1_v200.glb",
+      "sha256": "ad7ace9634d3177f5cad8aa28465b537a5ef40a578cbb9e3bc2448314776e920",
+      "size_bytes": 1835184
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod2_v200.glb",
+      "sha256": "c597df4a333607491bb480882415f0f116da28c079127b88738bd071f7c8dd18",
+      "size_bytes": 813364
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod0_v200.glb",
+      "sha256": "e6d9ba4f7f7176167ac0b38be500a3ee5db935aad103e9e94eb85fe6c55a4185",
+      "size_bytes": 1679132
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod1_v200.glb",
+      "sha256": "d3417c521bff70e218642ccf0e9715a3a72e17409ee450a771e807c691b5b8f5",
+      "size_bytes": 938568
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_gongsickyi_lod2_v200.glb",
+      "sha256": "3a376031cf900d99978de8285309fef7c2dabe248222790048a60a62a5ae53df",
+      "size_bytes": 407648
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_front_v2.0.png",
+      "sha256": "1bf81dfcee3580a54446dd3b91c9bc1302ff79a0ca344fd8cb8059ed5b5d9171",
+      "size_bytes": 1169555
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_side_left_v2.0.png",
+      "sha256": "d07b5ccaa0ed5a38824afd29188878fc65a3fd33be4715832edeccf0a241c2f4",
+      "size_bytes": 1126570
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Chakchaki_three_quarter_v2.0.png",
+      "sha256": "587f553721cb63f45b5da609a4c01ef37791beb89b1d7cbcee52bae4c4840665",
+      "size_bytes": 1154195
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_front_v2.0.png",
+      "sha256": "2d011b9e2c1d76945b38ef8ae07d5cd30b33492cf030e4ef7d383c36778d13e3",
+      "size_bytes": 1231819
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_side_left_v2.0.png",
+      "sha256": "d811739b6f988ef837e66c4457090c734db24fc1cd23ba7d2522b76d4d570521",
+      "size_bytes": 1160627
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/renders/Gongsickyi_three_quarter_v2.0.png",
+      "sha256": "7615cf39ddb131ec574d414a0afb97d9cc31b7239869e068834302eee9704559",
+      "size_bytes": 1213663
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+      "sha256": "271cb85ffb387123afdd99bb2a1d4cfb0fc74429edfe010cd0c99a4bec8c1bdf",
+      "size_bytes": 1643146
+    },
+    {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+      "sha256": "58a53f8e6f3a7d7fbac384e7b7133631ccc1263a7f981fffbbd48ebb12d5cce9",
+      "size_bytes": 909487
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/char_chakchaki_lod0_v100.glb",
@@ -1991,6 +2096,11 @@
       "size_bytes": 466
     },
     {
+      "path": "scripts/blender/build_stage8_high_fidelity_characters.py",
+      "sha256": "6840e8ef30c1660e6d3a2d84980c0dc7c8259c9dabbbd726ca553e49bf48b4dc",
+      "size_bytes": 25484
+    },
+    {
       "path": "scripts/harness/audit_gate1.py",
       "sha256": "c91cb0f3c7a918412938acc270763fe75f14a6d3c35fd8c4322a966444687705",
       "size_bytes": 12745
@@ -2021,6 +2131,11 @@
       "size_bytes": 3140
     },
     {
+      "path": "scripts/harness/audit_gate2_high_fidelity.py",
+      "sha256": "506cfd088133d81bf0f2c38fe179f30da15fb8b20e808376aeece9d18d8ee34c",
+      "size_bytes": 7792
+    },
+    {
       "path": "scripts/harness/audit_gate3.py",
       "sha256": "a474783be500bd63f07bf841451b08f52241e082d658baa05f83d2dd09936924",
       "size_bytes": 2264
@@ -2037,8 +2152,8 @@
     },
     {
       "path": "scripts/harness/build_gate2_base_mesh.py",
-      "sha256": "83a79466472560cd76992a8c842143b1a0b20945bcc18cc0043923067406e559",
-      "size_bytes": 1525
+      "sha256": "1be79759ca7c8ed75da4b18c3e1573dcf47378148ba391fae9caffc93b516f35",
+      "size_bytes": 1546
     },
     {
       "path": "scripts/harness/build_gate3_rig.py",
@@ -2057,8 +2172,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "ebe6d737e948960e99837f89754686f23235504f78b25c76c360ee1d44b32dbe",
-      "size_bytes": 59431
+      "sha256": "6f494be6a855ca7c721d7ab3863262688ce608f5b709b4d109631f7754ae3d89",
+      "size_bytes": 63329
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
