@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Math ChackChack",
+  "gate": 0,
+  "updatedAt": "2026-08-06T06:57:00+09:00",
+  "overallStatus": "FAIL",
+  "localRoot": "D:\\project\\SOOHACK CHACKCHACK",
+  "targetDirectory": "ssot/stage7/v1.0",
+  "files": [
+    {"name":"MathChakChak_Stage7_SSOT_v1.0.xlsx","kind":"spreadsheet","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"MathChakChak_Stage7_SSOT_v1.0.md","kind":"markdown","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Component_Inventory_v1.0.xlsx","kind":"spreadsheet","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Gongsickyi_Character_Bible_v1.0.md","kind":"markdown","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Chakchaki_Character_Bible_v1.0.md","kind":"markdown","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Character_Module_Rig_Spec_v1.0.xlsx","kind":"spreadsheet","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Expression_Motion_Bubble_Library_v1.0.xlsx","kind":"spreadsheet","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Stage8_Handoff_Manifest_v1.0.md","kind":"markdown","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":null,"status":"BLOCKED_EXTERNAL"},
+    {"name":"Chakchaki_Approved_Reference_v1.0.png","kind":"image","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":"3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd","status":"DONE_IMPLEMENTED","approvalChain":"REQUIRES_CONFLICT_DECISION"},
+    {"name":"Gongsickyi_Approved_Reference_v1.0.png","kind":"image","locatedInFileLibrary":true,"rawBytesInRepo":false,"sha256":"3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec","status":"DONE_IMPLEMENTED","approvalChain":"REQUIRES_CONFLICT_DECISION"}
+  ],
+  "gate1Allowed": false
+}
