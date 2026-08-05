@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 3,
+  "current_phase": 4,
   "phases": {
     "0": {"name": "project_foundation", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:phase0"]},
     "1": {"name": "requirements", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:requirements", "npm.cmd run test:productization"]},
     "2": {"name": "functional_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:functions", "npm.cmd run test:productization"]},
-    "3": {"name": "infrastructure_design", "status": "IN_PROGRESS", "tests": []},
-    "4": {"name": "database_design", "status": "NOT_STARTED", "tests": []},
+    "3": {"name": "infrastructure_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:infrastructure", "npm.cmd run test:productization"]},
+    "4": {"name": "database_design", "status": "IN_PROGRESS", "tests": []},
     "5": {"name": "screen_and_brand_design", "status": "NOT_STARTED", "tests": []},
     "6": {"name": "feature_development", "status": "NOT_STARTED", "tests": []},
     "7": {"name": "staging_deployment", "status": "NOT_STARTED", "tests": []},
@@ -20,5 +20,5 @@
     "gate6_entry_allowed": false
   },
   "blockers": [],
-  "last_updated": "2026-08-06T00:32:00+09:00"
+  "last_updated": "2026-08-05T23:40:51+09:00"
 }
