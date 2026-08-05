@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T14:17:55.263346+00:00",
+  "gate": 5,
+  "status": "BLOCKED_EXTERNAL",
+  "automated_status": "PASS",
+  "manifest": "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+  "manifest_sha256": "0b44795e651200f03ecc61f456d449ded94b773c9a55f9bd59d0c816ce5eb29c",
+  "state_pass_count": 15,
+  "state_expected_count": 15,
+  "event_pass_count": 15,
+  "event_expected_count": 15,
+  "bubble_pass_count": 13,
+  "bubble_expected_count": 13,
+  "implementation_pass_count": 2,
+  "implementation_expected_count": 2,
+  "browser_runtime_pass": true,
+  "browser_runtime_qa": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+  "events": [
+    {
+      "event_id": "EVT-001",
+      "trigger": "page.enter.home",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-002",
+      "trigger": "learning.start",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-003",
+      "trigger": "concept.open",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-004",
+      "trigger": "input.started",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-005",
+      "trigger": "idle.4s",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-006",
+      "trigger": "hint.request",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-007",
+      "trigger": "answer.correct",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-008",
+      "trigger": "answer.wrong.first",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-009",
+      "trigger": "answer.wrong.repeated",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-010",
+      "trigger": "search.loading.5s",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-011",
+      "trigger": "search.empty",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-012",
+      "trigger": "diagnosis.complete",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-013",
+      "trigger": "learning.complete",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-014",
+      "trigger": "network.error",
+      "status": "PASS"
+    },
+    {
+      "event_id": "EVT-015",
+      "trigger": "idle.3m",
+      "status": "PASS"
+    }
+  ],
+  "implementations": [
+    {
+      "kind": "stylesheet",
+      "path": "assets/stage8/ai-behavior-v1.0.css",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "kind": "runtime",
+      "path": "assets/stage8/ai-behavior-v1.0.js",
+      "status": "PASS",
+      "failures": []
+    }
+  ],
+  "failures": [],
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "blockers": [
+    "PROJECT_OWNER_GATE5_AI_BEHAVIOR_REVIEW_REQUIRED"
+  ],
+  "gate5_status_change_applied": false,
+  "next_gate_allowed": false
+}

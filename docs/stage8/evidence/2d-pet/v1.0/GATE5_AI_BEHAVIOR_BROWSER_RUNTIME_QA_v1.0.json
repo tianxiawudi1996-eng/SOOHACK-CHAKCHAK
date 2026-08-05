@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T14:17:52.223Z",
+  "gate": 5,
+  "target_url": "http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/gate5-review/",
+  "browser": "Google Chrome headless through Playwright",
+  "status": "PASS",
+  "tests": {
+    "api_contract": {
+      "status": "PASS",
+      "observed": {
+        "states": 15,
+        "events": [
+          "page.enter.home",
+          "learning.start",
+          "concept.open",
+          "input.started",
+          "idle.4s",
+          "hint.request",
+          "answer.correct",
+          "answer.wrong.first",
+          "answer.wrong.repeated",
+          "search.loading.5s",
+          "search.empty",
+          "diagnosis.complete",
+          "learning.complete",
+          "network.error",
+          "idle.3m"
+        ],
+        "bubbles": 13,
+        "characters": 2,
+        "triggers": 15
+      }
+    },
+    "event_matrix": {
+      "status": "PASS",
+      "observed": [
+        {
+          "trigger": "page.enter.home",
+          "status": "APPLIED",
+          "eventId": "EVT-001",
+          "current": "EVT-001",
+          "logCount": 1
+        },
+        {
+          "trigger": "learning.start",
+          "status": "APPLIED",
+          "eventId": "EVT-002",
+          "current": "EVT-002",
+          "logCount": 1
+        },
+        {
+          "trigger": "concept.open",
+          "status": "APPLIED",
+          "eventId": "EVT-003",
+          "current": "EVT-003",
+          "logCount": 1
+        },
+        {
+          "trigger": "input.started",
+          "status": "APPLIED",
+          "eventId": "EVT-004",
+          "current": "EVT-004",
+          "logCount": 1
+        },
+        {
+          "trigger": "idle.4s",
+          "status": "APPLIED",
+          "eventId": "EVT-005",
+          "current": "EVT-005",
+          "logCount": 1
+        },
+        {
+          "trigger": "hint.request",
+          "status": "APPLIED",
+          "eventId": "EVT-006",
+          "current": "EVT-006",
+          "logCount": 1
+        },
+        {
+          "trigger": "answer.correct",
+          "status": "APPLIED",
+          "eventId": "EVT-007",
+          "current": "EVT-007",
+          "logCount": 1
+        },
+        {
+          "trigger": "answer.wrong.first",
+          "status": "APPLIED",
+          "eventId": "EVT-008",
+          "current": "EVT-008",
+          "logCount": 1
+        },
+        {
+          "trigger": "answer.wrong.repeated",
+          "status": "APPLIED",
+          "eventId": "EVT-009",
+          "current": "EVT-009",
+          "logCount": 1
+        },
+        {
+          "trigger": "search.loading.5s",
+          "status": "APPLIED",
+          "eventId": "EVT-010",
+          "current": "EVT-010",
+          "logCount": 1
+        },
+        {
+          "trigger": "search.empty",
+          "status": "APPLIED",
+          "eventId": "EVT-011",
+          "current": "EVT-011",
+          "logCount": 1
+        },
+        {
+          "trigger": "diagnosis.complete",
+          "status": "APPLIED",
+          "eventId": "EVT-012",
+          "current": "EVT-012",
+          "logCount": 1
+        },
+        {
+          "trigger": "learning.complete",
+          "status": "APPLIED",
+          "eventId": "EVT-013",
+          "current": "EVT-013",
+          "logCount": 1
+        },
+        {
+          "trigger": "network.error",
+          "status": "APPLIED",
+          "eventId": "EVT-014",
+          "current": "EVT-014",
+          "logCount": 1
+        },
+        {
+          "trigger": "idle.3m",
+          "status": "APPLIED",
+          "eventId": "EVT-015",
+          "current": "EVT-015",
+          "logCount": 1
+        }
+      ]
+    },
+    "priority_preemption": {
+      "status": "PASS",
+      "observed": {
+        "outcome": {
+          "sequence": 18,
+          "trigger": "network.error",
+          "eventId": "EVT-014",
+          "status": "APPLIED_PREEMPTED_LOWER_PRIORITY",
+          "state": "Error",
+          "motionState": "RETRY",
+          "bubbleId": "BUB-ERR-01"
+        },
+        "current": {
+          "id": "EVT-014",
+          "character": "Gongsickyi",
+          "state": "Error",
+          "motionState": "RETRY",
+          "priority": 0,
+          "bubbleId": "BUB-ERR-01"
+        }
+      }
+    },
+    "single_queue": {
+      "status": "PASS",
+      "observed": {
+        "current": {
+          "id": "EVT-002",
+          "character": "Chakchaki",
+          "state": "Welcome",
+          "motionState": "WELCOME",
+          "priority": 1,
+          "bubbleId": "BUB-CHO-01"
+        },
+        "queued": {
+          "id": "EVT-006",
+          "character": "Gongsickyi",
+          "state": "Curious",
+          "motionState": "GUIDE",
+          "priority": 1,
+          "bubbleId": "BUB-HIN-01"
+        },
+        "inputProtected": false,
+        "lastBubbleId": "BUB-CHO-01",
+        "logs": [
+          {
+            "sequence": 19,
+            "trigger": "learning.start",
+            "eventId": "EVT-002",
+            "status": "APPLIED",
+            "state": "Welcome",
+            "motionState": "WELCOME",
+            "bubbleId": "BUB-CHO-01"
+          },
+          {
+            "sequence": 20,
+            "trigger": "hint.request",
+            "eventId": "EVT-006",
+            "status": "QUEUED",
+            "state": "Curious",
+            "motionState": "GUIDE",
+            "bubbleId": "BUB-HIN-01"
+          },
+          {
+            "sequence": 21,
+            "trigger": "search.empty",
+            "eventId": "EVT-011",
+            "status": "QUEUED",
+            "state": "Search",
+            "motionState": "SEARCH",
+            "bubbleId": "BUB-EMP-01"
+          }
+        ]
+      }
+    },
+    "input_protection": {
+      "status": "PASS",
+      "observed": {
+        "idle": "SUPPRESSED_INPUT_PROTECTION",
+        "error": "APPLIED_PREEMPTED_LOWER_PRIORITY",
+        "inputProtected": true
+      }
+    },
+    "privacy_log": {
+      "status": "PASS",
+      "observed": {
+        "keys": [
+          "bubbleId",
+          "eventId",
+          "motionState",
+          "sequence",
+          "state",
+          "status",
+          "trigger"
+        ],
+        "serialized": "[{\"sequence\":19,\"trigger\":\"learning.start\",\"eventId\":\"EVT-002\",\"status\":\"APPLIED\",\"state\":\"Welcome\",\"motionState\":\"WELCOME\",\"bubbleId\":\"BUB-CHO-01\"},{\"sequence\":20,\"trigger\":\"hint.request\",\"eventId\":\"EVT-006\",\"status\":\"QUEUED\",\"state\":\"Curious\",\"motionState\":\"GUIDE\",\"bubbleId\":\"BUB-HIN-01\"},{\"sequence\":21,\"trigger\":\"search.empty\",\"eventId\":\"EVT-011\",\"status\":\"QUEUED\",\"state\":\"Search\",\"motionState\":\"SEARCH\",\"bubbleId\":\"BUB-EMP-01\"},{\"sequence\":22,\"trigger\":\"input.started\",\"eventId\":\"EVT-004\",\"status\":\"QUEUED\",\"state\":\"Listen\",\"motionState\":\"IDLE_LISTEN\",\"bubbleId\":null},{\"sequence\":23,\"trigger\":\"idle.4s\",\"eventId\":\"EVT-005\",\"status\":\"SUPPRESSED_INPUT_PROTECTION\",\"state\":\"Think\",\"motionState\":\"THINK\",\"bubbleId\":null},{\"sequence\":24,\"trigger\":\"network.error\",\"eventId\":\"EVT-014\",\"status\":\"APPLIED_PREEMPTED_LOWER_PRIORITY\",\"state\":\"Error\",\"motionState\":\"RETRY\",\"bubbleId\":\"BUB-ERR-01\"}]"
+      }
+    },
+    "mascot_hidden_mode": {
+      "status": "PASS",
+      "observed": {
+        "pressed": "true",
+        "rootVisibility": [
+          "hidden",
+          "hidden"
+        ],
+        "controlsVisibility": "visible"
+      }
+    },
+    "viewport_and_pointer": {
+      "status": "PASS",
+      "observed": [
+        {
+          "name": "mobile",
+          "width": 360,
+          "height": 800,
+          "observed": {
+            "overflow": false,
+            "images": [
+              true,
+              true
+            ],
+            "bubblePointer": "auto"
+          },
+          "status": "PASS"
+        },
+        {
+          "name": "desktop",
+          "width": 1440,
+          "height": 1000,
+          "observed": {
+            "overflow": false,
+            "images": [
+              true,
+              true
+            ],
+            "bubblePointer": "auto"
+          },
+          "status": "PASS"
+        }
+      ]
+    },
+    "reduced_motion": {
+      "status": "PASS",
+      "observed": {
+        "motionReduced": true,
+        "transitions": [
+          "0s",
+          "0s"
+        ],
+        "phases": [
+          "steady",
+          "steady"
+        ]
+      }
+    }
+  },
+  "failures": []
+}

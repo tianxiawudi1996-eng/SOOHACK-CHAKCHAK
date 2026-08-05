@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 5,
+  "created_at": "2026-08-05T22:58:51+09:00",
+  "status": "CANDIDATE_BUILT",
+  "source_motion_manifest": {
+    "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+    "sha256": "19430e0e8047b21942012f08c8be28c01e2b570e2eb02ecd507e55652bd54bb0",
+    "status": "APPROVED",
+    "manual_approval_count": 1,
+    "next_gate_allowed": true,
+    "approved_pose_count": 16
+  },
+  "source_stage7_workbook": {
+    "path": "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+    "sha256": "14181e5f839344b22eb76a27c1dda4ac36d3a01521582b3e9d2a8bb3469b9d4c",
+    "bytes": 90603,
+    "state_count": 15,
+    "event_count": 15,
+    "bubble_count": 13,
+    "rule_count": 10
+  },
+  "implementation": {
+    "stylesheet": {
+      "path": "assets/stage8/ai-behavior-v1.0.css",
+      "sha256": "cc8060acd51ece95147e944d9fdcedef28aad84cd07f4447a858950b1f2d4f5e",
+      "bytes": 3086
+    },
+    "runtime": {
+      "path": "assets/stage8/ai-behavior-v1.0.js",
+      "sha256": "f2a0a590b0940955fcf9b3ed5fb8d2795234bc5d54fdbe0f1223eef748623b07",
+      "bytes": 17490
+    },
+    "landing": "mock.html",
+    "review_page": "docs/stage8/evidence/2d-pet/v1.0/gate5-review/index.html"
+  },
+  "canonical_states": [
+    "Neutral", "Welcome", "Happy", "Listen", "Think", "Curious", "Guide", "Search", "Praise", "Retry", "Concern", "Celebrate", "Wait", "Rest", "Error"
+  ],
+  "motion_mapping": {
+    "Neutral": "IDLE_LISTEN",
+    "Welcome": "WELCOME",
+    "Happy": "PRAISE_PROGRESS",
+    "Listen": "IDLE_LISTEN",
+    "Think": "THINK",
+    "Curious": "GUIDE",
+    "Guide": "GUIDE",
+    "Search": "SEARCH",
+    "Praise": "PRAISE_PROGRESS",
+    "Retry": "RETRY",
+    "Concern": "RETRY",
+    "Celebrate": "CELEBRATE",
+    "Wait": "IDLE_LISTEN",
+    "Rest": "IDLE_LISTEN",
+    "Error": "RETRY"
+  },
+  "events": [
+    {"id":"EVT-001","trigger":"page.enter.home","state":"Welcome","character":"Chakchaki","priority":2,"bubble_id":"BUB-WEL-01"},
+    {"id":"EVT-002","trigger":"learning.start","state":"Welcome","character":"Chakchaki","priority":1,"bubble_id":"BUB-CHO-01"},
+    {"id":"EVT-003","trigger":"concept.open","state":"Guide","character":"Gongsickyi","priority":1,"bubble_id":"BUB-GUI-01"},
+    {"id":"EVT-004","trigger":"input.started","state":"Listen","character":"Both","priority":1,"bubble_id":null},
+    {"id":"EVT-005","trigger":"idle.4s","state":"Think","character":"Gongsickyi","priority":4,"bubble_id":null},
+    {"id":"EVT-006","trigger":"hint.request","state":"Curious","character":"Gongsickyi","priority":1,"bubble_id":"BUB-HIN-01"},
+    {"id":"EVT-007","trigger":"answer.correct","state":"Praise","character":"Gongsickyi","priority":1,"bubble_id":"BUB-PRA-01"},
+    {"id":"EVT-008","trigger":"answer.wrong.first","state":"Retry","character":"Gongsickyi","priority":1,"bubble_id":"BUB-RET-01"},
+    {"id":"EVT-009","trigger":"answer.wrong.repeated","state":"Concern","character":"Gongsickyi","priority":1,"bubble_id":"BUB-RET-02"},
+    {"id":"EVT-010","trigger":"search.loading.5s","state":"Search","character":"Gongsickyi","priority":3,"bubble_id":"BUB-SRC-01"},
+    {"id":"EVT-011","trigger":"search.empty","state":"Search","character":"Gongsickyi","priority":2,"bubble_id":"BUB-EMP-01"},
+    {"id":"EVT-012","trigger":"diagnosis.complete","state":"Celebrate","character":"Both","priority":1,"bubble_id":"BUB-CMP-01"},
+    {"id":"EVT-013","trigger":"learning.complete","state":"Celebrate","character":"Both","priority":1,"bubble_id":"BUB-CMP-01"},
+    {"id":"EVT-014","trigger":"network.error","state":"Error","character":"Gongsickyi","priority":0,"bubble_id":"BUB-ERR-01"},
+    {"id":"EVT-015","trigger":"idle.3m","state":"Rest","character":"Chakchaki","priority":5,"bubble_id":"BUB-RST-01"}
+  ],
+  "bubble_ids": [
+    "BUB-GUI-01", "BUB-HIN-01", "BUB-PRA-01", "BUB-RET-01", "BUB-RET-02", "BUB-SRC-01", "BUB-EMP-01", "BUB-CMP-01", "BUB-ERR-01", "BUB-WEL-01", "BUB-CHO-01", "BUB-PRG-01", "BUB-RST-01"
+  ],
+  "runtime_controls": {
+    "priority_order": ["ERROR_SAFETY", "USER_ACTION", "REQUIRED_GUIDE", "HINT", "PRAISE", "IDLE"],
+    "input_protection": true,
+    "queue_capacity": 1,
+    "higher_priority_preempts": true,
+    "identical_bubble_repeat_suppression": true,
+    "single_primary_speaker": true,
+    "page_exit_queue_clear": true,
+    "mascot_visibility_toggle": true,
+    "log_context_values": false,
+    "log_limit": 50,
+    "answer_reveal_prohibited": true
+  },
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "next_gate_allowed": false
+}

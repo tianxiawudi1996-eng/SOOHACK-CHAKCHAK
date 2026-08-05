@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T15:28:21+09:00",
+  "updated_at": "2026-08-05T22:58:51+09:00",
   "head_commit": "f64ba94",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
@@ -149,9 +149,22 @@
     "entry_allowed": true
   },
   "gate5": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE5_AI_BEHAVIOR.md"],
-    "blockers": ["Gate 5 AI behavior implementation, automated QA, and manual approval are not completed"],
+    "status": "BLOCKED",
+    "evidence": [
+      "docs/stage8/prompts/GATE5_AI_BEHAVIOR.md",
+      "docs/stage8/prompts/GATE5_AI_BEHAVIOR_EXECUTION_METAPROMPT_v1.0.md",
+      "assets/stage8/ai-behavior-v1.0.css",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/gate5-review/index.html",
+      "docs/stage8/audits/GATE5_AI_BEHAVIOR_AUDIT.md",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior_browser_runtime.mjs"
+    ],
+    "blockers": ["Project Owner Gate 5 AI behavior manual review and approval are required"],
     "entry_allowed": true
   },
   "gate6": {

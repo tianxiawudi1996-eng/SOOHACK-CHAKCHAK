@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-08-05T13:42:45.249130+00:00",
+  "generated_at": "2026-08-05T14:17:59.277121+00:00",
   "id_counts": {
-    "BUB-CHO-01": 2,
-    "BUB-CMP-01": 2,
-    "BUB-EMP-01": 2,
-    "BUB-ERR-01": 2,
-    "BUB-GUI-01": 2,
-    "BUB-HIN-01": 2,
-    "BUB-PRA-01": 2,
-    "BUB-PRG-01": 2,
-    "BUB-RET-01": 2,
-    "BUB-RET-02": 2,
-    "BUB-RST-01": 2,
-    "BUB-SRC-01": 2,
-    "BUB-WEL-01": 2,
-    "EVT-001": 3,
-    "EVT-002": 2,
-    "EVT-003": 2,
-    "EVT-004": 2,
-    "EVT-005": 2,
-    "EVT-006": 2,
-    "EVT-007": 2,
-    "EVT-008": 2,
-    "EVT-009": 2,
-    "EVT-010": 2,
-    "EVT-011": 2,
-    "EVT-012": 2,
-    "EVT-013": 2,
-    "EVT-014": 2,
-    "EVT-015": 2,
+    "BUB-CHO-01": 12,
+    "BUB-CMP-01": 11,
+    "BUB-EMP-01": 10,
+    "BUB-ERR-01": 11,
+    "BUB-GUI-01": 8,
+    "BUB-HIN-01": 11,
+    "BUB-PRA-01": 8,
+    "BUB-PRG-01": 5,
+    "BUB-RET-01": 8,
+    "BUB-RET-02": 8,
+    "BUB-RST-01": 8,
+    "BUB-SRC-01": 8,
+    "BUB-WEL-01": 8,
+    "EVT-001": 9,
+    "EVT-002": 11,
+    "EVT-003": 8,
+    "EVT-004": 9,
+    "EVT-005": 9,
+    "EVT-006": 11,
+    "EVT-007": 8,
+    "EVT-008": 8,
+    "EVT-009": 8,
+    "EVT-010": 8,
+    "EVT-011": 10,
+    "EVT-012": 8,
+    "EVT-013": 8,
+    "EVT-014": 11,
+    "EVT-015": 8,
     "MOD-01": 1,
     "MOD-02": 1,
     "MOD-03": 1,
     "MOD-04": 1,
-    "SRC-01": 12,
+    "SRC-01": 18,
     "SRC-02": 9,
     "SRC-03": 8,
     "SRC-04": 2,
@@ -41,12 +41,9 @@
     "SRC-06": 3
   },
   "id_locations": {
-    "EVT-001": [
-      "docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
     "SRC-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
       "docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx",
       "docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "docs/ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
@@ -54,11 +51,321 @@
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
       "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
       "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
+    ],
+    "EVT-001": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/agent/MathChakChak_Stage7_Incremental_Audit_v1.0.1.md",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-002": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-003": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-004": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-005": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-006": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-007": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-008": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-009": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-010": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-011": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-012": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-013": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-014": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "EVT-015": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-GUI-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-HIN-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-PRA-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-RET-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-RET-02": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-SRC-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-EMP-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-CMP-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-ERR-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-WEL-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-CHO-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-PRG-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
+    ],
+    "BUB-RST-01": [
+      "assets/stage8/ai-behavior-v1.0.js",
+      "assets/stage8/ai-behavior-v1.0.js",
+      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "scripts/harness/audit_gate5_ai_behavior.py",
+      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
     ],
     "SRC-02": [
       "docs/developer/수학착착_7단계_컴포넌트_캐릭터시스템.xlsx",
@@ -92,114 +399,6 @@
       "ssot/stage7/v1.0/Component_Inventory_v1.0.xlsx",
       "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",
       "ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx"
-    ],
-    "EVT-002": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-003": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-004": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-005": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-006": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-007": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-008": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-009": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-010": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-011": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-012": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-013": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-014": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "EVT-015": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-GUI-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-HIN-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-PRA-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-RET-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-RET-02": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-SRC-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-EMP-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-CMP-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-ERR-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-WEL-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-CHO-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-PRG-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
-    ],
-    "BUB-RST-01": [
-      "docs/ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx",
-      "ssot/stage7/v1.0/Expression_Motion_Bubble_Library_v1.0.xlsx"
     ],
     "SRC-04": [
       "docs/ssot/stage7/v1.0/MathChakChak_Stage7_SSOT_v1.0.xlsx",

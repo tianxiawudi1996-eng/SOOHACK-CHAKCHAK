@@ -6,6 +6,7 @@
   <title>수학착착 — 공식보다 먼저, 이해부터</title>
   <meta name="description" content="아이에게 맞춰 설명하고, 오래 기억하게 하는 1:1 AI 수학 튜터 수학착착 목업" />
   <link rel="stylesheet" href="assets/stage8/2d-pet-motion-v1.0.css" />
+  <link rel="stylesheet" href="assets/stage8/ai-behavior-v1.0.css" />
   <style>
     :root {
       --blue: #2f5bff;
@@ -252,6 +253,11 @@
                 <div class="bubble">맞아! 공통분모를 만들면 조각의 크기를 비교할 수 있어. 이제 네 말로 설명해볼래?</div>
               </div>
             </div>
+            <div class="ai-behavior-panel" data-ai-bubble hidden role="status" aria-live="polite">
+              <span class="ai-behavior-panel__speaker" data-ai-bubble-speaker>착착이</span>
+              <span class="ai-behavior-panel__copy"><strong data-ai-bubble-body>오늘도 한 단계씩 해볼까?</strong><small data-ai-bubble-meta>Welcome · BUB-WEL-01</small></span>
+              <button class="ai-behavior-panel__cta" type="button" data-ai-bubble-cta>학습 시작</button>
+            </div>
             <div class="tutor-footer"><div class="progress-copy"><strong>분수의 덧셈</strong>개념 이해 72%</div><div class="progress"><i></i></div></div>
             <div class="motion-state-controls" role="group" aria-label="캐릭터 학습 상태 미리보기">
               <div class="motion-state-controls__label"><span>캐릭터 반응 미리보기</span><span>모션 축소 설정 지원</span></div>
@@ -370,5 +376,6 @@
     });
   </script>
   <script src="assets/stage8/2d-pet-motion-v1.0.js"></script>
+  <script src="assets/stage8/ai-behavior-v1.0.js"></script>
 </body>
 </html>

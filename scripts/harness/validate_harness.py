@@ -52,6 +52,8 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_2d_pet_single_approval.py",
     "scripts/harness/audit_gate4_2d_pet_motion.py",
     "scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs",
+    "scripts/harness/audit_gate5_ai_behavior.py",
+    "scripts/harness/audit_gate5_ai_behavior_browser_runtime.mjs",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -134,10 +136,16 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
+    "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/gate5-review/index.html",
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
     "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
     "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md",
+    "docs/stage8/audits/GATE5_AI_BEHAVIOR_AUDIT.md",
     "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
@@ -166,8 +174,11 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_NATURAL_CHOREOGRAPHY_METAPROMPT_v1.1.md",
+    "docs/stage8/prompts/GATE5_AI_BEHAVIOR_EXECUTION_METAPROMPT_v1.0.md",
     "assets/stage8/2d-pet-motion-v1.0.css",
     "assets/stage8/2d-pet-motion-v1.0.js",
+    "assets/stage8/ai-behavior-v1.0.css",
+    "assets/stage8/ai-behavior-v1.0.js",
     "scripts/harness/extract_2d_pet_poses.py",
     "scripts/harness/audit_gate3_2d_pet_poses.py",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -272,6 +283,8 @@ def main() -> int:
         fail("landing page must contain exactly two hero mascots")
     if "2d-pet-motion-v1.0.css" not in landing_text or "2d-pet-motion-v1.0.js" not in landing_text:
         fail("landing page is missing the approved Gate 4 motion bundle")
+    if "ai-behavior-v1.0.css" not in landing_text or "ai-behavior-v1.0.js" not in landing_text:
+        fail("landing page is missing the Gate 5 AI behavior bundle")
 
     data = load_json(STATUS)
     manifest = load_json(MANIFEST)
@@ -1124,6 +1137,57 @@ def main() -> int:
         if gates[5].get("entry_allowed") is True and gates[4].get("status") != "VERIFIED":
             fail("gate5 entry allowed before gate4 VERIFIED")
 
+    if gates[5].get("status") != "NOT_STARTED":
+        if gates[4].get("status") != "VERIFIED":
+            fail("gate5 started before gate4 VERIFIED")
+        gate5_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
+        gate5_manifest = load_json(gate5_root / "AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json")
+        gate5_audit = load_json(gate5_root / "GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json")
+        gate5_browser = load_json(gate5_root / "GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json")
+        gate5_review = load_json(gate5_root / "GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json")
+        expected_gate5_manifest_status = "APPROVED" if gates[5].get("status") == "VERIFIED" else "CANDIDATE_BUILT"
+        if gate5_manifest.get("status") != expected_gate5_manifest_status:
+            fail("gate5 AI behavior manifest status is invalid")
+        gate4_motion_path = ROOT / gate5_manifest.get("source_motion_manifest", {}).get("path", "")
+        if not gate4_motion_path.is_file() or hashlib.sha256(gate4_motion_path.read_bytes()).hexdigest().lower() != gate5_manifest.get("source_motion_manifest", {}).get("sha256", "").lower():
+            fail("gate5 approved Gate 4 motion hash is missing or stale")
+        if len(gate5_manifest.get("canonical_states", [])) != 15 or len(gate5_manifest.get("events", [])) != 15 or len(gate5_manifest.get("bubble_ids", [])) != 13:
+            fail("gate5 canonical behavior matrix is incomplete")
+        for key in ("stylesheet", "runtime"):
+            artifact = gate5_manifest.get("implementation", {}).get(key, {})
+            path = ROOT / artifact.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != artifact.get("sha256", "").lower():
+                fail(f"gate5 {key} implementation is missing or stale")
+        if gate5_audit.get("automated_status") != "PASS" or gate5_audit.get("state_pass_count") != 15 or gate5_audit.get("event_pass_count") != 15 or gate5_audit.get("bubble_pass_count") != 13:
+            fail("gate5 automated behavior matrix did not pass")
+        if gate5_audit.get("implementation_pass_count") != 2 or gate5_audit.get("browser_runtime_pass") is not True or gate5_audit.get("failures"):
+            fail("gate5 implementation or browser audit did not pass")
+        expected_gate5_browser_tests = {"api_contract", "event_matrix", "priority_preemption", "single_queue", "input_protection", "privacy_log", "mascot_hidden_mode", "viewport_and_pointer", "reduced_motion"}
+        browser_tests = gate5_browser.get("tests", {})
+        if gate5_browser.get("status") != "PASS" or gate5_browser.get("failures") or set(browser_tests) != expected_gate5_browser_tests or any(item.get("status") != "PASS" for item in browser_tests.values()):
+            fail("gate5 browser runtime QA matrix is incomplete")
+        expected_gate5_promotion = gates[5].get("status") == "VERIFIED"
+        if gate5_manifest.get("manual_approval_count") != (1 if expected_gate5_promotion else 0) or gate5_manifest.get("next_gate_allowed") is not expected_gate5_promotion:
+            fail("gate5 manifest promotion flags are invalid")
+        if gates[5].get("status") == "BLOCKED":
+            if gate5_audit.get("status") != "BLOCKED_EXTERNAL" or gate5_audit.get("manual_approval_count") != 0:
+                fail("gate5 BLOCKED status disagrees with pending manual review")
+            if "PROJECT_OWNER_GATE5_AI_BEHAVIOR_REVIEW_REQUIRED" not in gate5_audit.get("blockers", []):
+                fail("gate5 manual-review blocker is missing")
+            if gate5_review.get("status") != "PENDING" or gate5_review.get("decision") is not None or gate5_review.get("approval_applied") is not False:
+                fail("gate5 pending manual-review record is invalid")
+            if gates[6].get("entry_allowed") is not False:
+                fail("gate6 entry allowed while gate5 review is pending")
+        if gates[5].get("status") == "VERIFIED":
+            if gate5_audit.get("status") != "VERIFIED" or gate5_audit.get("manual_approval_count") != 1:
+                fail("gate5 VERIFIED without one valid manual approval")
+            if gate5_review.get("status") != "APPROVED" or gate5_review.get("decision") != "APPROVE" or gate5_review.get("approval_applied") is not True:
+                fail("gate5 VERIFIED without applied manual approval")
+            if not gate5_review.get("scope_acknowledged") or not all(value is True for value in gate5_review.get("checks", {}).values()):
+                fail("gate5 VERIFIED with incomplete behavior review checks")
+            if gates[6].get("entry_allowed") is not True:
+                fail("gate5 VERIFIED without enabling Gate 6 entry")
+
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
     if conflicts:
@@ -1135,6 +1199,7 @@ def main() -> int:
     print(f"gate2={gates[2].get('status')}")
     print(f"gate3={gates[3].get('status')}")
     print(f"gate4={gates[4].get('status')}")
+    print(f"gate5={gates[5].get('status')}")
     print(f"manifest_status={manifest.get('status')}")
     for warning in sensitive_warnings:
         print(f"HARNESS_WARNING: ignored untracked sensitive-looking file not read: {warning}")

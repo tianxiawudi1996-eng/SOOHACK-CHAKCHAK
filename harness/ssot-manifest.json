@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T13:42:45.249130+00:00",
+  "generated_at": "2026-08-05T14:17:59.277121+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1006,6 +1006,16 @@
       "size_bytes": 11016
     },
     {
+      "path": "assets/stage8/ai-behavior-v1.0.css",
+      "sha256": "cc8060acd51ece95147e944d9fdcedef28aad84cd07f4447a858950b1f2d4f5e",
+      "size_bytes": 3086
+    },
+    {
+      "path": "assets/stage8/ai-behavior-v1.0.js",
+      "sha256": "f2a0a590b0940955fcf9b3ed5fb8d2795234bc5d54fdbe0f1223eef748623b07",
+      "size_bytes": 17490
+    },
+    {
       "path": "docs/agent/6. 수학착착_랜딩페이지_정보밀도_메시지강도_설계.md",
       "sha256": "a2bd14d6069fe3377c02300f657e66842bba4db2e68a1738564dc094e4c284fa",
       "size_bytes": 22287
@@ -1237,8 +1247,8 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "5bf10b8394d0959a7b2298593359a3482d0f975fd89cdbe19a78ee668f542f9b",
-      "size_bytes": 3092
+      "sha256": "0680eec0c83f762fa3aecc4cd5f7236b1ec8ec6739edb33db8e947e6bfe66c17",
+      "size_bytes": 3444
     },
     {
       "path": "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
@@ -1257,8 +1267,8 @@
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "sha256": "2b4aad9a3cbd0309c564bf5c2ce1a4cb66adf5f5031e74604985658ce051a5c1",
-      "size_bytes": 3181
+      "sha256": "66a45e649d21aaebeccf7735cdf1766680e0e92c7509d4de6db439ee667a229e",
+      "size_bytes": 4021
     },
     {
       "path": "docs/stage8/audits/GATE1_APPROVAL_INTAKE_AUDIT.md",
@@ -1316,14 +1326,19 @@
       "size_bytes": 787
     },
     {
+      "path": "docs/stage8/audits/GATE5_AI_BEHAVIOR_AUDIT.md",
+      "sha256": "200528ab6d2fd02eff9eeaaff9552e7d84326161a381e07dd8c2317c639ae307",
+      "size_bytes": 678
+    },
+    {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
       "sha256": "93ae16643abd72b1de0737bad77d693662fdfcadcad3c8ecc403a422b1cd65a9",
       "size_bytes": 899
     },
     {
       "path": "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
-      "sha256": "f588b26750b892127a52c438ceea02d317301024e647d9cdfd7fb92bf1104db3",
-      "size_bytes": 5222
+      "sha256": "50239b6b7f7303fc6eae15b994bf8ddea860437f47efd660c6da6addf66d9063",
+      "size_bytes": 5338
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -1332,8 +1347,8 @@
     },
     {
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "sha256": "1bd9b7b66ef837bb511b167b0f33221fbfacbeb1d2bee6349a14f777cf1c1d8a",
-      "size_bytes": 2353
+      "sha256": "bfa3a8cc026ba496673412a04ae54da1ada51a4875e47e2a8d2910d78f811882",
+      "size_bytes": 3062
     },
     {
       "path": "docs/stage8/audits/WORKSPACE_BASELINE.md",
@@ -1342,8 +1357,8 @@
     },
     {
       "path": "docs/stage8/CHANGELOG.md",
-      "sha256": "4d2b9dfb4591576a3839a2729211147d8d0ec14052b2ad4b85adc15b5e15994d",
-      "size_bytes": 16516
+      "sha256": "c6c139d913ec6a0297a7ef2d693ed344400753fd96eb0bdf08f951044696dd27",
+      "size_bytes": 17637
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
@@ -1386,6 +1401,11 @@
       "size_bytes": 925
     },
     {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+      "sha256": "0b44795e651200f03ecc61f456d449ded94b773c9a55f9bd59d0c816ce5eb29c",
+      "size_bytes": 4533
+    },
+    {
       "path": "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
       "sha256": "d77591ca52022d881645aecd5f20958780e26a4ccc4d1578f8d9b8cb2f34a5ba",
       "size_bytes": 4610
@@ -1412,13 +1432,33 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
-      "sha256": "1ac3cbc16cb73d40013376ee7e33149bd4cdef2c5f4e2d2f80e5287579ed9ed5",
+      "sha256": "791792db896a51cfbbca3c5b0f32556c39defc87eb619054394096e72106cbcf",
       "size_bytes": 2369
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
       "sha256": "1e36b3b13acab5ded1b91ba9e0e6cac71488b9491a039e5c9ce9f2da4c14fa9f",
       "size_bytes": 932
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/gate5-review/index.html",
+      "sha256": "06fdec68a1ddcfa529f453783d09967b35184ce3050aa2d3aa2f7b06c04a1fd5",
+      "size_bytes": 10219
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
+      "sha256": "3f7dd2359c3b31d74d45991a693ea43008e491fce5db74adf507f2a278a43e22",
+      "size_bytes": 2881
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_BROWSER_RUNTIME_QA_v1.0.json",
+      "sha256": "b07cecd1292ae257277d3387926088fd07cebd569c4aa8fa438a712adc3ea12f",
+      "size_bytes": 8411
+    },
+    {
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json",
+      "sha256": "57d52c6d2387ae6c72b8540bf71456c2b48f55456ef2f10b7c92b7430cf40f35",
+      "size_bytes": 709
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GENERATION_RECORD_v1.0.md",
@@ -2026,6 +2066,11 @@
       "size_bytes": 1308
     },
     {
+      "path": "docs/stage8/prompts/GATE5_AI_BEHAVIOR_EXECUTION_METAPROMPT_v1.0.md",
+      "sha256": "818fb2b227c7a37d42fd64cd8e7c6563db9900025a5ee8a2c779ac2bea67126d",
+      "size_bytes": 3966
+    },
+    {
       "path": "docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md",
       "sha256": "1cd178cb46fb4a5ba5b3abc1bd916bd72d52c4d7df6d57758e987df53bf9c580",
       "size_bytes": 1351
@@ -2097,13 +2142,13 @@
     },
     {
       "path": "harness/status.json",
-      "sha256": "7690d273f27377614203719f9b33265ff5d627a73746a2ee7d16d33098588e1b",
-      "size_bytes": 9782
+      "sha256": "879909256db8b1c7953b1dc4f1b83bb6904ffdb4fde47b170ae60cd6200cf01a",
+      "size_bytes": 10518
     },
     {
       "path": "mock.html",
-      "sha256": "5dab3144c622c80b106e53809b1016b6c6267d51643b71dfea5d9825fdd077dc",
-      "size_bytes": 31961
+      "sha256": "25ccdbcd601ce62eecba1cf4e36ac1d8242df33fdd136071eb09efa4c9ef6ab4",
+      "size_bytes": 32600
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Chakchaki_Shaded2D_PoseSheet_Alpha_v1.0.png",
@@ -2521,6 +2566,16 @@
       "size_bytes": 13394
     },
     {
+      "path": "scripts/harness/audit_gate5_ai_behavior.py",
+      "sha256": "207782cb6275c4bdd9f486a83393b3bbbc6004b5795a076fad1d3dcb94b4bda0",
+      "size_bytes": 13913
+    },
+    {
+      "path": "scripts/harness/audit_gate5_ai_behavior_browser_runtime.mjs",
+      "sha256": "6b8f95f1cafd92ded4ca2e212042246d7cc0d6eca85c5ed4d93d8e99cf87cba2",
+      "size_bytes": 8439
+    },
+    {
       "path": "scripts/harness/audit_stage8.py",
       "sha256": "f2f7929acd6e213d44211faae4f086c017ef14f4c5bd6fa19e3a653f1f2f6315",
       "size_bytes": 28979
@@ -2557,8 +2612,8 @@
     },
     {
       "path": "scripts/harness/validate_harness.py",
-      "sha256": "262fd19b72fe114ec90cbbc99686774c0ee1d30f237f4e79f324b207ac70ee82",
-      "size_bytes": 78038
+      "sha256": "54e2772fd9c5f4cfff77661c5d063ccc2c37fd418721cdec4282f8d8fc01a70e",
+      "size_bytes": 83668
     },
     {
       "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",

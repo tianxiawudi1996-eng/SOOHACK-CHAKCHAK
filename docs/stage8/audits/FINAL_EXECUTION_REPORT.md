@@ -11,7 +11,8 @@
 | 2 | `VERIFIED` | 음영 2D 시트 자동 QA PASS, 제품 책임자 수동 승인 1/1 |
 | 3 | `VERIFIED` | 투명 PNG/WebP 16/16 자동 QA PASS, 제품 책임자 수동 승인 1/1 |
 | 4 | `VERIFIED` | 상태·reduced-motion 8/8, Edge 런타임 7/7, 제품 책임자 수동 승인 1/1 |
-| 5~8 | `NOT_STARTED` | Gate 5 진입 허용, AI Behavior부터 순차 구현 필요 |
+| 5 | `BLOCKED` | 상태 15/15·이벤트 15/15·말풍선 13/13과 브라우저 QA PASS, 제품 책임자 승인 0/1 |
+| 6~8 | `NOT_STARTED` | Gate 5 승인 후 제품 통합부터 순차 실행 필요 |
 
 ## Gate 2 후보
 
@@ -33,11 +34,11 @@
 
 ## 남은 통제 작업
 
-1. Gate 5에서 학습 이벤트를 캐릭터 상태와 말풍선에 연결하고 충돌·취소 정책을 검증한다.
-2. Gate 5 자동 QA와 제품 책임자 수동 승인 후에만 Gate 6 진입을 연다.
+1. Gate 5 검토 화면에서 아동 문구·힌트 비노출·오답 흐름·우선순위·반복 빈도·숨김 모드를 제품 책임자가 확인한다.
+2. Gate 5 제품 책임자 수동 승인 후에만 Gate 6 진입을 연다.
 3. Gate 6~8은 실제 제품 코드·QA 환경·배포 대상이 확인된 뒤 순차 실행한다.
 
-현재 증거는 Gate 2·3·4 구현, 자동 QA와 제품 책임자 승인을 증명한다. Gate 5 AI Behavior, Gate 6 제품 통합, Gate 7 QA, Gate 8 배포 완료는 아직 증명하지 않는다.
+현재 증거는 Gate 2·3·4의 구현·자동 QA·제품 책임자 승인과 Gate 5 AI Behavior 후보·자동 QA 완료를 증명한다. Gate 5 수동 승인, Gate 6 제품 통합, Gate 7 QA, Gate 8 배포 완료는 아직 증명하지 않는다.
 
 랜딩페이지 프로토타입에는 승인된 투명 포즈 자산을 사용해 착착이·공식이를 첫 화면, 학습 대화 아바타, 성장 리포트에 배치했다. 이 배치는 사용자 화면 검증용이며 선행 Gate를 건너뛴 Gate 6 완료로 계산하지 않는다. 상세 잔여 범위는 `REMAINING_WORK_REPORT_v1.0.md`에 기록했다.
 
@@ -54,3 +55,13 @@ Gate 3 승인 입력은 `GATE3_2D_PET_MANUAL_REVIEW_v1.0.json`과 `audit_gate3_2
 - Edge 런타임 QA: `PASS` — 순차·역순·빠른 입력, CLS, 360·768·1440px, 포인터, reduced-motion
 - 시각 검토: `APPROVED` — John KIM, 2026-08-05T22:40:15+09:00
 - 검토 URL: `http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/gate4-review/`
+
+## Gate 5 후보 결과
+
+- 정본 연결: 상태 15/15, 이벤트 15/15, 말풍선 13/13, 중재 규칙 10개
+- 시각 상태: Gate 4 승인 상태 8개에만 매핑
+- 행동 통제: 오류 우선 선점, 입력 보호, 단일 대기열, 반복 억제, 쿨다운, 주연·보조 역할
+- 개인정보: 이벤트 ID·상태·처리 결과만 최대 50개 기록, 입력값 미기록
+- 브라우저 QA: `PASS` — 이벤트 매트릭스·우선순위·대기열·입력 보호·숨김·뷰포트·reduced-motion
+- 수동 검토: `PENDING` — 제품 책임자 0/1
+- 검토 URL: `http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/gate5-review/`

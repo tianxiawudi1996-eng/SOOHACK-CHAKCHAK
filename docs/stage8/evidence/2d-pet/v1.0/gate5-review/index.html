@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 Gate 5 AI 행동 검토</title>
+  <link rel="stylesheet" href="/assets/stage8/2d-pet-motion-v1.0.css">
+  <link rel="stylesheet" href="/assets/stage8/ai-behavior-v1.0.css">
+  <style>
+    :root { --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --bg:#f3f6fb; --muted:#66728a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif; color:var(--navy); background:var(--bg); }
+    header { padding:22px 26px; color:#fff; background:linear-gradient(115deg,#13224b,#2f5bff); }
+    h1 { margin:0 0 6px; font-size:24px; } header p { margin:0; opacity:.88; font-size:13px; }
+    main { max-width:1120px; margin:auto; padding:24px; }
+    .status { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:18px; }
+    .badge { padding:8px 11px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; font-weight:800; }
+    .pass { color:#126b45; background:#eaf9f1; border-color:#8fd8b4; }
+    .pending { color:#805600; background:#fff8df; border-color:#f0d573; }
+    .stage { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pet-card { margin:0; min-height:390px; display:grid; grid-template-rows:1fr auto; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:#fff; box-shadow:0 12px 32px #25395f12; }
+    .pet-surface { min-height:320px; display:grid; place-items:center; background:radial-gradient(circle at 50% 35%,#fff 0 24%,#edf2ff 70%); }
+    .pet-surface .pet-motion-image-stage { width:min(300px,88%); }
+    .pet-surface img { width:100%; aspect-ratio:1; object-fit:contain; }
+    figcaption { padding:14px 18px; border-top:1px solid var(--line); font-weight:850; }
+    figcaption span { display:block; color:var(--muted); font-size:12px; font-weight:600; }
+    .card { margin-top:16px; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; }
+    .card h2 { margin:0 0 7px; font-size:17px; } .card p { margin:0 0 13px; color:var(--muted); font-size:12px; line-height:1.55; }
+    .event-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:7px; }
+    .event-grid button,.utility button { min-height:42px; padding:7px 9px; border:1px solid #d7def0; border-radius:10px; color:#40506d; background:#fff; font-size:11px; font-weight:800; cursor:pointer; }
+    .event-grid button:hover,.event-grid button:focus-visible,.utility button:focus-visible { border-color:var(--blue); color:var(--blue); outline:3px solid #e9eeff; }
+    .event-grid small { display:block; margin-top:2px; color:#8490a6; font-size:9px; font-weight:650; }
+    .utility { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; }
+    .utility label { display:flex; align-items:center; gap:7px; min-height:42px; padding:0 11px; border:1px solid var(--line); border-radius:10px; font-size:11px; font-weight:800; }
+    .utility input { min-width:170px; border:0; outline:0; font:inherit; }
+    .checks { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:0; padding:0; list-style:none; }
+    .checks li { padding:11px; border-radius:11px; color:#40506d; background:#eef2ff; font-size:12px; line-height:1.45; }
+    .legend { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .legend div { padding:10px; border-radius:11px; background:#f7f9fc; font-size:11px; line-height:1.5; }
+    @media(max-width:800px){.event-grid{grid-template-columns:repeat(3,1fr)}.checks,.legend{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.stage{grid-template-columns:1fr}.event-grid{grid-template-columns:1fr 1fr}.checks,.legend{grid-template-columns:1fr}.pet-card{min-height:330px}.pet-surface{min-height:270px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gate 5 · AI 행동 연동 검토</h1>
+    <p>Stage 7 정본의 15개 이벤트가 승인된 2D 포즈·말풍선·우선순위 규칙으로 안전하게 연결되는지 확인합니다.</p>
+  </header>
+  <main>
+    <div class="status">
+      <span class="badge pass">정본 상태 15/15</span><span class="badge pass">이벤트 15/15</span><span class="badge pass">말풍선 13/13</span>
+      <span class="badge pass">승인 포즈만 사용 16/16</span><span class="badge pending">제품 책임자 검토 대기</span><span class="badge pending">Gate 5: BLOCKED_EXTERNAL</span>
+    </div>
+
+    <section class="stage" aria-label="AI 행동에 반응하는 캐릭터">
+      <figure class="pet-card" data-pet-character="Chakchaki" data-pet-state="WELCOME" data-pet-phase="steady" data-ai-role="primary">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp" alt="환영하는 착착이"></span></div>
+        <figcaption>착착이<span>학습 흐름·환영·휴식 담당</span></figcaption>
+      </figure>
+      <figure class="pet-card" data-pet-character="Gongsickyi" data-pet-state="WELCOME" data-pet-phase="steady" data-ai-role="support">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp" alt="환영하는 공식이"></span></div>
+        <figcaption>공식이<span>개념 안내·힌트·재도전 담당</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="ai-behavior-panel" data-ai-bubble hidden role="status" aria-live="polite">
+      <span class="ai-behavior-panel__speaker" data-ai-bubble-speaker>착착이</span>
+      <span class="ai-behavior-panel__copy"><strong data-ai-bubble-body>오늘도 한 단계씩 해볼까?</strong><small data-ai-bubble-meta>Welcome · BUB-WEL-01</small></span>
+      <button class="ai-behavior-panel__cta" type="button" data-ai-bubble-cta>학습 시작</button>
+    </div>
+
+    <section class="card">
+      <h2>15개 학습 이벤트 시험</h2>
+      <p>버튼을 순서대로 누른 뒤 빠르게 연속 입력하여 우선순위·한 개 대기열·반복 억제·최신 고우선 요청 선점을 확인하세요.</p>
+      <div class="event-grid">
+        <button type="button" data-ai-event-trigger="page.enter.home">EVT-001<small>홈 진입</small></button>
+        <button type="button" data-ai-event-trigger="learning.start">EVT-002<small>학습 시작</small></button>
+        <button type="button" data-ai-event-trigger="concept.open">EVT-003<small>개념 열기</small></button>
+        <button type="button" data-ai-event-trigger="input.started">EVT-004<small>입력 시작</small></button>
+        <button type="button" data-ai-event-trigger="idle.4s">EVT-005<small>4초 유휴</small></button>
+        <button type="button" data-ai-event-trigger="hint.request">EVT-006<small>힌트 요청</small></button>
+        <button type="button" data-ai-event-trigger="answer.correct">EVT-007<small>연속 정답</small></button>
+        <button type="button" data-ai-event-trigger="answer.wrong.first">EVT-008<small>첫 오답</small></button>
+        <button type="button" data-ai-event-trigger="answer.wrong.repeated">EVT-009<small>반복 오답</small></button>
+        <button type="button" data-ai-event-trigger="search.loading.5s">EVT-010<small>검색 5초</small></button>
+        <button type="button" data-ai-event-trigger="search.empty">EVT-011<small>검색 결과 없음</small></button>
+        <button type="button" data-ai-event-trigger="diagnosis.complete">EVT-012<small>진단 완료</small></button>
+        <button type="button" data-ai-event-trigger="learning.complete">EVT-013<small>학습 완료</small></button>
+        <button type="button" data-ai-event-trigger="network.error">EVT-014<small>네트워크 오류</small></button>
+        <button type="button" data-ai-event-trigger="idle.3m">EVT-015<small>3분 유휴</small></button>
+      </div>
+      <div class="utility">
+        <label>입력 보호 시험 <input name="gate5-input-test" placeholder="여기에 입력하는 동안 유휴 반응 억제"></label>
+        <button type="button" data-ai-hide-toggle aria-pressed="false">캐릭터 숨기기</button>
+        <button type="button" data-ai-reset>상태·쿨다운 초기화</button>
+      </div>
+      <div class="ai-behavior-debug" aria-label="행동 엔진 상태">
+        <span>현재: <b data-ai-current>대기</b></span><span>대기열: <b data-ai-queue>없음</b></span>
+        <span>입력 보호: <b data-ai-input-protected>OFF</b></span><span>결과: <b data-ai-last-outcome>없음</b></span>
+      </div>
+      <ol class="ai-behavior-log" data-ai-log aria-label="최근 행동 기록"></ol>
+    </section>
+
+    <section class="card">
+      <h2>규칙 해석</h2>
+      <div class="legend"><div><strong>우선순위</strong><br>오류·안전 → 사용자 행동 → 필수 안내 → 힌트 → 칭찬 → 유휴</div><div><strong>입력 보호</strong><br>학습자가 입력 중이면 오류를 제외한 개입을 억제합니다.</div><div><strong>개인정보 최소화</strong><br>행동 로그에는 입력값을 남기지 않고 이벤트 ID·상태·처리 결과만 보관합니다.</div></div>
+    </section>
+
+    <section class="card">
+      <h2>제품 책임자 수동 검토 항목</h2>
+      <ul class="checks"><li>아동에게 안전하고 격려하는 문장인가?</li><li>힌트가 정답을 직접 노출하지 않는가?</li><li>오답 흐름이 비난하거나 압박하지 않는가?</li><li>우선순위와 입력 보호가 자연스러운가?</li><li>반복·쿨다운 빈도가 적절한가?</li><li>주연·보조 캐릭터 역할이 명확한가?</li><li>캐릭터 숨김에서도 핵심 UI가 유지되는가?</li><li>보호자에게 행동 이유를 설명할 수 있는가?</li></ul>
+    </section>
+    <span class="sr-only" data-pet-announcer aria-live="polite"></span>
+  </main>
+  <script src="/assets/stage8/2d-pet-motion-v1.0.js"></script>
+  <script src="/assets/stage8/ai-behavior-v1.0.js"></script>
+</body>
+</html>
