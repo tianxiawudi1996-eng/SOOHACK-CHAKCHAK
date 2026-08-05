@@ -7,7 +7,7 @@
 
 ## 2. Specification Engineering
 
-완료 상태는 동일 해시의 빌드가 승인된 스테이징 대상에 배포되고, 8개 언어·health check·DB migration·rollback rehearsal이 통과하며 URL과 배포 ID가 근거로 남은 상태다.
+완료 상태는 동일 해시의 빌드가 승인된 격리 스테이징 대상(로컬 컨테이너 또는 외부 환경)에 배포되고, 8개 언어·health check·DB migration·rollback rehearsal이 통과하며 URL과 배포 ID가 근거로 남은 상태다.
 
 성공 기준:
 
@@ -22,7 +22,7 @@
 
 차단 기준:
 
-- 배포 대상·권한·비밀값 참조 미제공: `BLOCKED_EXTERNAL`
+- 로컬·외부 어느 스테이징 대상도 사용할 수 없음: `BLOCKED_EXTERNAL`
 - artifact 해시 불일치: `FAIL`
 - 운영 DB 또는 운영 트래픽 사용: `FAIL`
 - Gate 승인·migration 검증 누락: `FAIL`
@@ -46,8 +46,8 @@ AI는 배포 URL, 배포 ID, 자격증명, 성공 상태를 추정하지 않는�
 3. 모든 파일 SHA-256 manifest를 생성한다.
 4. artifact 구조·locale·자산 해시·비밀값 금지를 검사한다.
 5. 로컬 HTTP smoke test를 수행한다.
-6. 외부 대상·권한이 있으면 배포하고 health check와 rollback을 검증한다.
-7. 대상이 없으면 `BLOCKED_EXTERNAL`로 보고하며 배포 성공을 기록하지 않는다.
+6. 외부 대상·권한이 있으면 외부에, 없으면 사용자 작업공간의 격리 로컬 컨테이너에 배포해 health check와 rollback을 검증한다.
+7. 사용할 수 있는 대상이 없으면 `BLOCKED_EXTERNAL`로 보고하며 배포 성공을 기록하지 않는다.
 
 ## 6. Workflow Engineering
 

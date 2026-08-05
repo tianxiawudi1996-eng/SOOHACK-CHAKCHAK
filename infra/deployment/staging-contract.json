@@ -2,13 +2,14 @@
   "schema_version": "1.0.0",
   "project": "MathChakChak",
   "environment": "staging",
-  "status": "READY_FOR_TARGET_CONFIGURATION",
+  "status": "DEPLOYED_LOCAL_ISOLATED",
   "release": "0.1.0",
   "artifact": "artifacts/staging/v0.1.0/site",
   "scope": {
     "frontend_preview": true,
     "api_runtime": false,
     "database_runtime": false,
+    "local_container_runtime": true,
     "external_deployment": false
   },
   "required_configuration": [
@@ -20,15 +21,24 @@
   ],
   "security": {
     "literal_secrets_allowed": false,
-    "tls_required": true,
+    "tls_required_for_external_promotion": true,
     "production_data_allowed": false,
     "test_accounts_only": true,
-    "logs_redacted": true
+    "logs_redacted": true,
+    "response_headers": [
+      "Content-Security-Policy",
+      "X-Content-Type-Options",
+      "X-Frame-Options",
+      "Referrer-Policy",
+      "Permissions-Policy",
+      "Cross-Origin-Opener-Policy"
+    ]
   },
   "feature_flags": {
     "gate5_ai_pet_behavior": true,
     "production_traffic": false
   },
+  "external_configuration_optional_for_local_integration": true,
   "promotion_gates": [
     "artifact_hashes_match",
     "eight_locale_smoke_pass",

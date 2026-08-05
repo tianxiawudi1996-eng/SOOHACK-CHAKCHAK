@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "tested_at": "2026-08-06T00:26:18+09:00",
-  "status": "READY_BLOCKED_EXTERNAL",
+  "tested_at": "2026-08-06T00:40:37+09:00",
+  "status": "PASS_LOCAL_STAGING",
   "release": "0.1.0",
   "artifact": {
     "path": "artifacts/staging/v0.1.0/site",
@@ -14,18 +14,48 @@
     "approved_character_assets": "2/2"
   },
   "local_http_smoke": {
-    "base_url": "http://127.0.0.1:4174/artifacts/staging/v0.1.0/site/",
+    "base_url": "http://127.0.0.1:4180/",
     "status": "PASS",
-    "responses_200": "14/14"
+    "artifact_responses_200": "14/14",
+    "locale_routes_200": "8/8"
+  },
+  "local_deployment": {
+    "performed": true,
+    "type": "DOCKER_LOCAL_ISOLATED",
+    "container_name": "mathchakchak-staging-v010",
+    "container_id": "c469f7e1c21111d677a909747b3082dd0bbdad201f112c2622f52cc26ea9ece4",
+    "image": "mathchakchak-staging:0.1.0",
+    "image_digest": "sha256:d9d5087c491692dbc44d8f7878fd75433593c4fa1b9d0feba9eb37e2d4f452ae",
+    "health": "healthy",
+    "url": "http://127.0.0.1:4180/?locale=ko",
+    "production_data_used": false,
+    "production_traffic_used": false
+  },
+  "security_headers": {
+    "status": "PASS",
+    "content_security_policy": true,
+    "x_content_type_options": "nosniff",
+    "x_frame_options": "DENY",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "permissions_policy": true,
+    "cross_origin_opener_policy": "same-origin"
+  },
+  "rollback_rehearsal": {
+    "status": "PASS",
+    "target_state": "NO_DEPLOYMENT_BEFORE_INITIAL_RELEASE",
+    "container_removed": true,
+    "port_closed": true,
+    "same_image_redeployed": true,
+    "post_redeploy_health": "healthy"
   },
   "external_deployment": {
     "performed": false,
     "target_reference": null,
     "url": null,
     "deployment_id": null,
-    "rollback_rehearsal": "NOT_RUN_NO_EXTERNAL_TARGET"
+    "rollback_rehearsal": "NOT_APPLICABLE_TO_LOCAL_VERIFICATION"
   },
-  "required_next_inputs": [
+  "optional_external_promotion_inputs": [
     "STAGING_BASE_URL",
     "STAGING_API_BASE_URL",
     "STAGING_DATABASE_URL_REFERENCE",

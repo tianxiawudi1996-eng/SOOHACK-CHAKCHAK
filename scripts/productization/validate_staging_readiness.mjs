@@ -36,11 +36,14 @@ if (/(password|secret)\s*[:=]\s*(?!false|null|"secret-manager:\/\/)/i.test(seria
 if (fs.existsSync(evidencePath)) {
   const evidence = JSON.parse(fs.readFileSync(evidencePath, 'utf8'));
   const manifestHash = crypto.createHash('sha256').update(fs.readFileSync(manifestPath)).digest('hex');
-  if (evidence.status !== 'READY_BLOCKED_EXTERNAL' || evidence.artifact.manifest_sha256 !== manifestHash || evidence.external_deployment.performed !== false) fail('staging readiness evidence invalid');
+  if (evidence.status !== 'PASS_LOCAL_STAGING' || evidence.artifact.manifest_sha256 !== manifestHash || evidence.local_deployment.performed !== true || evidence.local_deployment.health !== 'healthy' || evidence.security_headers.status !== 'PASS' || evidence.rollback_rehearsal.status !== 'PASS' || evidence.external_deployment.performed !== false) fail('staging readiness evidence invalid');
 }
 
 console.log('STAGING_READINESS_PASS');
 console.log(`artifact_files=${manifest.file_count}/${manifest.file_count}`);
 console.log('locales=8/8');
 console.log('hashes=PASS');
-console.log('external_deployment=BLOCKED_NO_TARGET_CONFIGURATION');
+console.log('local_deployment=PASS');
+console.log('rollback_rehearsal=PASS');
+console.log('security_headers=PASS');
+console.log('external_deployment=NOT_PERFORMED');
