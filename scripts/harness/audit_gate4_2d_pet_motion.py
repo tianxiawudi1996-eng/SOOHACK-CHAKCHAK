@@ -99,6 +99,21 @@ def main() -> int:
     if bridge.get("rapid_input_policy") != "LATEST_TRANSITION_WINS":
         failures.append("POSE_TO_POSE_RAPID_INPUT_POLICY_INVALID")
 
+    choreography = motion.get("natural_choreography", {})
+    if choreography.get("phase_order") != ["PREPARE", "BRIDGE", "SETTLE", "STEADY"]:
+        failures.append("NATURAL_CHOREOGRAPHY_PHASE_ORDER_INVALID")
+    expected_timings = {"prepare_ms": 120, "bridge_ms": 320, "settle_ms": 240, "total_transition_ms": 680}
+    if any(choreography.get(key) != value for key, value in expected_timings.items()):
+        failures.append("NATURAL_CHOREOGRAPHY_TIMING_INVALID")
+    if choreography.get("direction_profile_count") != 8 or choreography.get("state_micro_motion_keyframes_min", 0) < 4:
+        failures.append("NATURAL_CHOREOGRAPHY_PROFILE_MATRIX_INCOMPLETE")
+    if choreography.get("character_rhythm_offset_ms") != 90 or choreography.get("ground_shadow_breathing") is not True:
+        failures.append("NATURAL_CHOREOGRAPHY_AMBIENT_MOTION_INVALID")
+    if choreography.get("latest_input_cancels_active_choreography") is not True:
+        failures.append("NATURAL_CHOREOGRAPHY_CANCELLATION_INVALID")
+    if set(choreography.get("properties", [])) != ALLOWED_PROPERTIES or choreography.get("reduced_motion") != "STATIC_POSE_SWAP":
+        failures.append("NATURAL_CHOREOGRAPHY_ACCESSIBILITY_INVALID")
+
     states = motion.get("states", [])
     by_state = {item.get("state"): item for item in states}
     if len(states) != 8 or set(by_state) != set(EXPECTED):
@@ -136,10 +151,10 @@ def main() -> int:
     for state in EXPECTED:
         if f'data-pet-state="{state}"' not in css or state not in js:
             failures.append(f"STATE_IMPLEMENTATION_MISSING:{state}")
-    for marker in ("matchMedia('(prefers-reduced-motion: reduce)')", "mathChakChakPets", "mathchakchak:pet-state", "visibilitychange", "CROSSFADE_BRIDGE", "previousState", "transitionToken"):
+    for marker in ("matchMedia('(prefers-reduced-motion: reduce)')", "mathChakChakPets", "mathchakchak:pet-state", "visibilitychange", "NATURAL_CHOREOGRAPHY", "previousState", "transitionToken", "PREPARE_MS", "BRIDGE_MS", "SETTLE_MS", "resetTransition"):
         if marker not in js:
             failures.append(f"RUNTIME_CONTROL_MISSING:{marker}")
-    for marker in ("pet-motion-image-stage", "pet-motion-incoming", "pet-motion-outgoing", "pet-pose-enter", "pet-pose-exit"):
+    for marker in ("pet-motion-image-stage", "pet-motion-preparing", "pet-motion-incoming", "pet-motion-outgoing", "pet-motion-settling", "pet-pose-prepare", "pet-pose-enter", "pet-pose-exit", "pet-pose-settle", "pet-ground-shadow"):
         if marker not in css:
             failures.append(f"POSE_TO_POSE_CSS_MISSING:{marker}")
     for page_name, page in (("landing", landing), ("review", review_page)):
@@ -180,6 +195,7 @@ def main() -> int:
         "implementation_pass_count": sum(item["status"] == "PASS" for item in implementation_results),
         "implementation_expected_count": 2,
         "pose_bridge_pass": not any(failure.startswith("POSE_TO_POSE") for failure in failures),
+        "natural_choreography_pass": not any(failure.startswith("NATURAL_CHOREOGRAPHY") for failure in failures),
         "states": state_results,
         "implementations": implementation_results,
         "failures": failures,
@@ -199,10 +215,11 @@ def main() -> int:
 - reduced-motion 대체: `{result['reduced_motion_pass_count']}/8`
 - CSS/JS 구현: `{result['implementation_pass_count']}/2`
 - 포즈 사이 이중 레이어 교차 모션: `{str(result['pose_bridge_pass']).lower()}`
+- 준비·교차·착지·잔동작 자연 연동: `{str(result['natural_choreography_pass']).lower()}`
 - 수동 승인: `{result['manual_approval_count']}/1`
 - Gate 5 진입: `{str(result['next_gate_allowed']).lower()}`
 
-자동 감사는 Gate 3 해시, 8개 상태·포즈·지속시간, 허용 모션 속성, reduced-motion 정적 대체, 랜딩·검토 화면 연결, 클릭 차단 방지를 검사한다. 제품 책임자의 친근함·피로도·화면 잘림·학습 방해 검토 전에는 Gate 4를 승격하지 않는다.
+자동 감사는 Gate 3 해시, 8개 상태·포즈·지속시간, 4단계 자연 연동 안무, 캐릭터 리듬 차이, 빠른 입력 취소, 허용 모션 속성, reduced-motion 정적 대체, 랜딩·검토 화면 연결, 클릭 차단 방지를 검사한다. 제품 책임자의 친근함·피로도·화면 잘림·학습 방해 검토 전에는 Gate 4를 승격하지 않는다.
 """,
         encoding="utf-8",
     )

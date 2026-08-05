@@ -163,6 +163,7 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+    "docs/stage8/prompts/GATE4_2D_PET_NATURAL_CHOREOGRAPHY_METAPROMPT_v1.1.md",
     "assets/stage8/2d-pet-motion-v1.0.css",
     "assets/stage8/2d-pet-motion-v1.0.js",
     "scripts/harness/extract_2d_pet_poses.py",
@@ -1054,6 +1055,19 @@ def main() -> int:
             fail("gate4 transition bridge contains invalid properties")
         if transition_bridge.get("reduced_motion") != "STATIC_POSE_SWAP" or transition_bridge.get("rapid_input_policy") != "LATEST_TRANSITION_WINS":
             fail("gate4 transition bridge fallback or rapid-input policy is invalid")
+        choreography = gate4_manifest.get("natural_choreography", {})
+        if choreography.get("phase_order") != ["PREPARE", "BRIDGE", "SETTLE", "STEADY"]:
+            fail("gate4 natural choreography phase order is invalid")
+        if [choreography.get(key) for key in ("prepare_ms", "bridge_ms", "settle_ms", "total_transition_ms")] != [120, 320, 240, 680]:
+            fail("gate4 natural choreography timing is invalid")
+        if choreography.get("direction_profile_count") != 8 or choreography.get("state_micro_motion_keyframes_min", 0) < 4:
+            fail("gate4 natural choreography state matrix is incomplete")
+        if choreography.get("character_rhythm_offset_ms") != 90 or choreography.get("ground_shadow_breathing") is not True:
+            fail("gate4 natural choreography rhythm controls are invalid")
+        if choreography.get("latest_input_cancels_active_choreography") is not True:
+            fail("gate4 natural choreography rapid-input cancellation is invalid")
+        if set(choreography.get("properties", [])) != {"transform", "opacity"} or choreography.get("reduced_motion") != "STATIC_POSE_SWAP":
+            fail("gate4 natural choreography accessibility controls are invalid")
         for key in ("stylesheet", "runtime"):
             artifact = gate4_manifest.get("implementation", {}).get(key, {})
             path = ROOT / artifact.get("path", "")
@@ -1065,6 +1079,8 @@ def main() -> int:
             fail("gate4 accessibility or implementation audit is incomplete")
         if gate4_audit.get("pose_bridge_pass") is not True:
             fail("gate4 pose-to-pose transition bridge audit failed")
+        if gate4_audit.get("natural_choreography_pass") is not True:
+            fail("gate4 natural choreography audit failed")
         if gate4_audit.get("failures"):
             fail("gate4 automated motion audit contains failures")
         expected_gate4_promotion = gates[4].get("status") == "VERIFIED"

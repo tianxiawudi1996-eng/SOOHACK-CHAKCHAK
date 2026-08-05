@@ -134,6 +134,7 @@
     "evidence": [
       "docs/stage8/prompts/GATE4_MOTION.md",
       "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/prompts/GATE4_2D_PET_NATURAL_CHOREOGRAPHY_METAPROMPT_v1.1.md",
       "assets/stage8/2d-pet-motion-v1.0.css",
       "assets/stage8/2d-pet-motion-v1.0.js",
       "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",

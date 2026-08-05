@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T15:25:20+09:00",
+  "generated_at": "2026-08-05T15:51:33+09:00",
   "gate": 4,
   "status": "CANDIDATE_BUILT",
   "strategy": "SHADED_2D_PET_TRANSFORM_OPACITY_MOTION",
@@ -13,13 +13,13 @@
   "implementation": {
     "stylesheet": {
       "path": "assets/stage8/2d-pet-motion-v1.0.css",
-      "sha256": "5a712b413bf036cdda11de7a1c7d0c14d8e4110cd5b83712e9234df346cc1270",
-      "bytes": 5290
+      "sha256": "34982125538f3b01bd848360116caf8c433a3bbc60a57db498b77aee7a7f5f80",
+      "bytes": 8692
     },
     "runtime": {
       "path": "assets/stage8/2d-pet-motion-v1.0.js",
-      "sha256": "d80b61aca94d823d4a087611a76bf12dbd87020ba8f5bbd4b3a41286a90fe518",
-      "bytes": 7341,
+      "sha256": "8206b0354884d00bee63d1abf1993416c6bea9961d5bed5438e36957ccec966f",
+      "bytes": 11016,
       "public_api": "window.mathChakChakPets.setState(state, source)",
       "event": "mathchakchak:pet-state"
     },
@@ -33,6 +33,20 @@
     "properties": ["transform", "opacity"],
     "direction_profile_per_target_state": true,
     "rapid_input_policy": "LATEST_TRANSITION_WINS",
+    "reduced_motion": "STATIC_POSE_SWAP"
+  },
+  "natural_choreography": {
+    "phase_order": ["PREPARE", "BRIDGE", "SETTLE", "STEADY"],
+    "prepare_ms": 120,
+    "bridge_ms": 320,
+    "settle_ms": 240,
+    "total_transition_ms": 680,
+    "direction_profile_count": 8,
+    "state_micro_motion_keyframes_min": 4,
+    "character_rhythm_offset_ms": 90,
+    "ground_shadow_breathing": true,
+    "latest_input_cancels_active_choreography": true,
+    "properties": ["transform", "opacity"],
     "reduced_motion": "STATIC_POSE_SWAP"
   },
   "allowed_motion_properties": ["transform", "opacity"],
