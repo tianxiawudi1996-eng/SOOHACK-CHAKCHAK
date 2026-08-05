@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T14:17:55.263346+00:00",
+  "generated_at": "2026-08-05T15:22:11.826520+00:00",
   "gate": 5,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "VERIFIED",
   "automated_status": "PASS",
   "manifest": "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
-  "manifest_sha256": "0b44795e651200f03ecc61f456d449ded94b773c9a55f9bd59d0c816ce5eb29c",
+  "manifest_sha256": "e150c7988333294937626ca8344acc836eb202a9a79110a500430b6e1053718c",
   "state_pass_count": 15,
   "state_expected_count": 15,
   "event_pass_count": 15,
@@ -109,10 +109,8 @@
   ],
   "failures": [],
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "blockers": [
-    "PROJECT_OWNER_GATE5_AI_BEHAVIOR_REVIEW_REQUIRED"
-  ],
-  "gate5_status_change_applied": false,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "blockers": [],
+  "gate5_status_change_applied": true,
+  "next_gate_allowed": true
 }

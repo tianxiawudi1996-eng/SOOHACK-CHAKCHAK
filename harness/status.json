@@ -149,7 +149,7 @@
     "entry_allowed": true
   },
   "gate5": {
-    "status": "BLOCKED",
+    "status": "VERIFIED",
     "evidence": [
       "docs/stage8/prompts/GATE5_AI_BEHAVIOR.md",
       "docs/stage8/prompts/GATE5_AI_BEHAVIOR_EXECUTION_METAPROMPT_v1.0.md",
@@ -164,14 +164,14 @@
       "scripts/harness/audit_gate5_ai_behavior.py",
       "scripts/harness/audit_gate5_ai_behavior_browser_runtime.mjs"
     ],
-    "blockers": ["Project Owner Gate 5 AI behavior manual review and approval are required"],
+    "blockers": [],
     "entry_allowed": true
   },
   "gate6": {
     "status": "NOT_STARTED",
     "evidence": ["docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md"],
-    "blockers": ["Gate 5 must be VERIFIED; no product source code exists"],
-    "entry_allowed": false
+    "blockers": [],
+    "entry_allowed": true
   },
   "gate7": {
     "status": "NOT_STARTED",

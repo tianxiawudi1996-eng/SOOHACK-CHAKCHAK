@@ -1,23 +1,23 @@
 {
   "schema_version": "1.0.0",
   "gate": 5,
-  "status": "PENDING",
+  "status": "APPROVED",
   "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
-  "reviewer": null,
-  "decision": null,
-  "reviewed_at": null,
-  "scope_acknowledged": false,
+  "reviewer": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-06T00:19:51+09:00",
+  "scope_acknowledged": true,
   "checks": {
-    "student_language_safe_and_encouraging": null,
-    "hints_do_not_reveal_answers": null,
-    "wrong_answer_flow_is_nonjudgmental": null,
-    "priority_and_input_protection_feel_correct": null,
-    "repetition_and_cooldowns_are_acceptable": null,
-    "single_speaker_and_support_roles_are_clear": null,
-    "mascot_hidden_mode_preserves_core_ui": null,
-    "parent_facing_rationale_is_clear": null
+    "student_language_safe_and_encouraging": true,
+    "hints_do_not_reveal_answers": true,
+    "wrong_answer_flow_is_nonjudgmental": true,
+    "priority_and_input_protection_feel_correct": true,
+    "repetition_and_cooldowns_are_acceptable": true,
+    "single_speaker_and_support_roles_are_clear": true,
+    "mascot_hidden_mode_preserves_core_ui": true,
+    "parent_facing_rationale_is_clear": true
   },
-  "comment": null,
-  "approval_applied": false,
-  "next_gate_allowed": false
+  "comment": "The project owner explicitly approved the Gate 5 AI pet behavior in the active Gate 5 review context. The approval covers safe student language, answer-safe hints, nonjudgmental retry flow, priority and input protection, cooldowns, speaker roles, mascot-hidden fallback, and parent-facing rationale.",
+  "approval_applied": true,
+  "next_gate_allowed": true
 }

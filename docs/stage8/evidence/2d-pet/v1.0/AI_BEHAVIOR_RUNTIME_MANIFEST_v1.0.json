@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "gate": 5,
   "created_at": "2026-08-05T22:58:51+09:00",
-  "status": "CANDIDATE_BUILT",
+  "status": "APPROVED",
   "source_motion_manifest": {
     "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
     "sha256": "19430e0e8047b21942012f08c8be28c01e2b570e2eb02ecd507e55652bd54bb0",
@@ -88,6 +88,6 @@
     "answer_reveal_prohibited": true
   },
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
 }

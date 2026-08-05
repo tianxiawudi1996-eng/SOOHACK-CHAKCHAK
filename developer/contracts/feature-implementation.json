@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "phase": 6,
-  "status": "PARTIAL_VERIFIED",
-  "summary": {"implemented": 14, "blocked": 1, "total": 15},
+  "status": "VERIFIED",
+  "summary": {"implemented": 15, "blocked": 0, "total": 15},
   "features": [
     {"id":"FEAT-I18N-001","status":"IMPLEMENTED","source":"developer/src/i18n/locale-resolver.mjs"},
     {"id":"FEAT-LAND-001","status":"IMPLEMENTED","source":"client/mock/index.html"},
@@ -13,7 +13,7 @@
     {"id":"FEAT-FEED-001","status":"IMPLEMENTED","source":"developer/src/agent/feedback-policy.mjs"},
     {"id":"FEAT-REVIEW-001","status":"IMPLEMENTED","source":"developer/src/review/review-scheduler.mjs"},
     {"id":"FEAT-REPORT-001","status":"IMPLEMENTED","source":"developer/src/report/progress-report.mjs"},
-    {"id":"FEAT-PET-001","status":"BLOCKED_APPROVAL","source":"developer/src/pet/behavior-gate.mjs","blocker":"Stage 8 Gate 5 manual approval 0/1"},
+    {"id":"FEAT-PET-001","status":"IMPLEMENTED","source":"developer/src/pet/behavior-gate.mjs","approval_evidence":"docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json"},
     {"id":"FEAT-A11Y-001","status":"IMPLEMENTED","source":"client/mock/index.html"},
     {"id":"FEAT-RWD-001","status":"IMPLEMENTED","source":"client/mock/styles.css"},
     {"id":"FEAT-PRIV-001","status":"IMPLEMENTED","source":"developer/src/privacy/log-policy.mjs"},

@@ -21,7 +21,13 @@ for (const marker of ['수학착착', 'client/', 'developer/', 'agent/', 'ko', '
 
 const status = JSON.parse(await readFile(resolve(root, 'docs/productization/STATUS.json'), 'utf8'));
 if (status.project !== 'MathChakChak' || Object.keys(status.phases || {}).length !== 10) failures.push('PHASE_STATUS_INVALID');
-if (status.stage8_dependency?.gate5_status !== 'BLOCKED' || status.stage8_dependency?.gate6_entry_allowed !== false) failures.push('STAGE8_GATE_BOUNDARY_INVALID');
+const gate5Review = JSON.parse(await readFile(resolve(root, 'docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json'), 'utf8'));
+const gate5Approved = gate5Review.status === 'APPROVED' && gate5Review.decision === 'APPROVE' && gate5Review.approval_applied === true;
+if (gate5Approved) {
+  if (status.stage8_dependency?.gate5_status !== 'VERIFIED' || status.stage8_dependency?.gate5_approval !== '1/1' || status.stage8_dependency?.gate6_entry_allowed !== true) failures.push('STAGE8_GATE_BOUNDARY_INVALID');
+} else if (status.stage8_dependency?.gate5_status !== 'BLOCKED' || status.stage8_dependency?.gate5_approval !== '0/1' || status.stage8_dependency?.gate6_entry_allowed !== false) {
+  failures.push('STAGE8_GATE_BOUNDARY_INVALID');
+}
 
 if (failures.length) {
   console.error('PRODUCTIZATION_PHASE0_FAIL');
