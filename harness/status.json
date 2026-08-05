@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T14:28:00+09:00",
+  "updated_at": "2026-08-05T15:14:16+09:00",
   "head_commit": "f64ba94",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
@@ -106,7 +106,7 @@
     "entry_allowed": true
   },
   "gate3": {
-    "status": "BLOCKED",
+    "status": "VERIFIED",
     "evidence": [
       "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
       "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
@@ -126,7 +126,7 @@
       "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
       "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md"
     ],
-    "blockers": ["Project Owner alpha-edge, sprite completeness, and small-UI review is required for the 16 extracted 2D poses"],
+    "blockers": [],
     "entry_allowed": true
   },
   "gate4": {
@@ -135,8 +135,8 @@
       "docs/stage8/prompts/GATE4_MOTION.md",
       "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md"
     ],
-    "blockers": ["Gate 3 must be VERIFIED; no approved 2D pose files or transition-motion implementation exists"],
-    "entry_allowed": false
+    "blockers": ["Gate 4 2D transition-motion implementation and manual approval are not completed"],
+    "entry_allowed": true
   },
   "gate5": {
     "status": "NOT_STARTED",

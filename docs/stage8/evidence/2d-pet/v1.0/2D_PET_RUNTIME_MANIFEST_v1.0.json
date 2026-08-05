@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "generated_at": "2026-08-05T05:33:56.102696+00:00",
   "gate": 3,
-  "status": "CANDIDATE_BUILT",
+  "status": "APPROVED",
   "strategy": "SHADED_2D_PET",
   "source_sheets": {
     "Chakchaki": {
@@ -706,6 +706,6 @@
     }
   ],
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
 }

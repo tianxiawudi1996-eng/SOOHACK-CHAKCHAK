@@ -939,7 +939,8 @@ def main() -> int:
         gate3_build = load_json(gate3_root / "2D_PET_RUNTIME_MANIFEST_v1.0.json")
         gate3_audit = load_json(gate3_root / "GATE3_2D_PET_AUTOMATED_QA_v1.0.json")
         gate3_review = load_json(gate3_root / "GATE3_2D_PET_MANUAL_REVIEW_v1.0.json")
-        if gate3_build.get("status") != "CANDIDATE_BUILT" or gate3_build.get("strategy") != "SHADED_2D_PET":
+        expected_gate3_build_status = "APPROVED" if gates[3].get("status") == "VERIFIED" else "CANDIDATE_BUILT"
+        if gate3_build.get("status") != expected_gate3_build_status or gate3_build.get("strategy") != "SHADED_2D_PET":
             fail("gate3 shaded 2D runtime manifest status is invalid")
         if gate3_build.get("canvas") != {"width": 512, "height": 512}:
             fail("gate3 shaded 2D canvas must be 512x512")
@@ -970,8 +971,13 @@ def main() -> int:
                     fail(f"gate3 {format_key} missing or stale: {item.get('character')} {item.get('pose_id')}")
             if item.get("webp", {}).get("lossless") is not True:
                 fail(f"gate3 WebP is not lossless: {item.get('character')} {item.get('pose_id')}")
-        if gate3_build.get("manual_approval_required") != 1 or gate3_build.get("next_gate_allowed") is not False:
+        expected_gate3_promotion = gates[3].get("status") == "VERIFIED"
+        if gate3_build.get("manual_approval_required") != 1:
             fail("gate3 runtime manifest approval controls are invalid")
+        if gate3_build.get("manual_approval_count") != (1 if expected_gate3_promotion else 0):
+            fail("gate3 runtime manifest manual approval count is invalid")
+        if gate3_build.get("next_gate_allowed") is not expected_gate3_promotion:
+            fail("gate3 runtime manifest promotion flag is invalid")
         if gate3_audit.get("automated_status") != "PASS" or gate3_audit.get("pose_pass_count") != 16:
             fail("gate3 shaded 2D automated audit did not pass 16/16")
         if gate3_audit.get("png_pass_count") != 16 or gate3_audit.get("webp_pass_count") != 16:

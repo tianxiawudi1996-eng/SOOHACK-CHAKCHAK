@@ -14,6 +14,7 @@
     .status { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px; }
     .badge { padding:8px 11px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; font-weight:800; }
     .pending { color:#805600; background:#fff8df; border-color:#f0d573; }
+    .approved { color:#087460; background:#e7faf6; border-color:#8bdcca; }
     section { margin-bottom:28px; }
     section h2 { margin:0 0 12px; font-size:21px; }
     .grid { display:grid; grid-template-columns:repeat(4,minmax(180px,1fr)); gap:14px; }
@@ -33,7 +34,7 @@
   <main>
     <div class="status">
       <span class="badge">자동 QA: PASS</span><span class="badge">PNG: 16/16</span><span class="badge">WebP: 16/16</span>
-      <span class="badge">원본 셀 픽셀 일치: 16/16</span><span class="badge pending">수동 승인: 0/1</span><span class="badge pending">Gate 3: BLOCKED</span>
+      <span class="badge">원본 셀 픽셀 일치: 16/16</span><span class="badge approved">수동 승인: 1/1</span><span class="badge approved">Gate 3: VERIFIED</span>
     </div>
     <section><h2>착착이</h2><div id="chakchaki" class="grid"></div></section>
     <section><h2>공식이</h2><div id="gongsickyi" class="grid"></div></section>

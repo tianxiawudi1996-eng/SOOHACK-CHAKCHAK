@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-05T13:31:00+09:00",
+  "updated_at": "2026-08-05T15:14:16+09:00",
   "status": "ACTIVE_SHADED_2D_PET_CANDIDATES",
   "decision_source": "User directive: abandon 3D and replace it with shaded 2D characters in varied poses with a compact desktop-companion experience.",
   "characters": {
@@ -39,7 +39,11 @@
     "declared_pose_count": 16,
     "automated_qa": "PASS",
     "manual_review": "APPROVED",
-    "gate2_verified": true
+    "gate2_verified": true,
+    "runtime_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "runtime_pose_count": 16,
+    "gate3_manual_review": "APPROVED",
+    "gate3_verified": true
   },
   "rejected_assets": {
     "reason": "Canonical identity and production visual quality do not match the approved character references.",

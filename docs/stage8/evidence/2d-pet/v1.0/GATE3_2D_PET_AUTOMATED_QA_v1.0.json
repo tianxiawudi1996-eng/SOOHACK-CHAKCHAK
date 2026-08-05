@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T06:01:39.949599+00:00",
+  "generated_at": "2026-08-05T06:17:09.695522+00:00",
   "gate": 3,
-  "status": "BLOCKED_EXTERNAL",
+  "status": "VERIFIED",
   "automated_status": "PASS",
   "runtime_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
-  "runtime_manifest_sha256": "5722f9536b822ab1587d94461cff256fac38f33cb39a98d47a881258336b50b2",
+  "runtime_manifest_sha256": "957f20566653e5450872b8a134a289c51693de89957edfbf18a573dd3020b07a",
   "pose_pass_count": 16,
   "pose_expected_count": 16,
   "png_pass_count": 16,
@@ -255,10 +255,8 @@
   ],
   "failures": [],
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "blockers": [
-    "PROJECT_OWNER_GATE3_ALPHA_AND_SPRITE_REVIEW_REQUIRED"
-  ],
-  "gate3_status_change_applied": false,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "blockers": [],
+  "gate3_status_change_applied": true,
+  "next_gate_allowed": true
 }
