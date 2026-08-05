@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test:productization:phase0": "node scripts/productization/validate_phase0.mjs",
-    "test:productization": "npm run test:productization:phase0",
+    "test:productization:requirements": "node scripts/productization/validate_requirements.mjs",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements",
     "test": "npm run test:productization"
   },
   "engines": {
