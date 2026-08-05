@@ -50,6 +50,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate2_high_fidelity.py",
     "scripts/harness/audit_2d_pet_assets.py",
     "scripts/harness/audit_2d_pet_single_approval.py",
+    "scripts/harness/audit_gate4_2d_pet_motion.py",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -127,9 +128,14 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_AUTOMATED_QA_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_MANUAL_REVIEW_v1.0.json",
     "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
     "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
     "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
+    "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md",
     "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
@@ -157,6 +163,8 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+    "assets/stage8/2d-pet-motion-v1.0.css",
+    "assets/stage8/2d-pet-motion-v1.0.js",
     "scripts/harness/extract_2d_pet_poses.py",
     "scripts/harness/audit_gate3_2d_pet_poses.py",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -249,8 +257,8 @@ def main() -> int:
 
     landing_text = (ROOT / "mock.html").read_text(encoding="utf-8")
     landing_assets = [
-        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png",
-        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+        "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
     ]
     for asset in landing_assets:
         if asset not in landing_text or not (ROOT / asset).is_file():
@@ -259,6 +267,8 @@ def main() -> int:
         fail("landing page still contains the broken pre-Gate3 character path")
     if landing_text.count('class="hero-mascot ') != 2:
         fail("landing page must contain exactly two hero mascots")
+    if "2d-pet-motion-v1.0.css" not in landing_text or "2d-pet-motion-v1.0.js" not in landing_text:
+        fail("landing page is missing the approved Gate 4 motion bundle")
 
     data = load_json(STATUS)
     manifest = load_json(MANIFEST)
@@ -1016,6 +1026,68 @@ def main() -> int:
         if gates[4].get("entry_allowed") is True and gates[3].get("status") != "VERIFIED":
             fail("gate4 entry allowed before gate3 VERIFIED")
 
+    if gates[4].get("status") != "NOT_STARTED":
+        if gates[3].get("status") != "VERIFIED":
+            fail("gate4 started before gate3 VERIFIED")
+        gate4_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
+        gate4_manifest = load_json(gate4_root / "2D_PET_MOTION_MANIFEST_v1.0.json")
+        gate4_audit = load_json(gate4_root / "GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json")
+        gate4_review = load_json(gate4_root / "GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json")
+        expected_gate4_manifest_status = "APPROVED" if gates[4].get("status") == "VERIFIED" else "CANDIDATE_BUILT"
+        if gate4_manifest.get("status") != expected_gate4_manifest_status:
+            fail("gate4 motion manifest status is invalid")
+        gate3_runtime_path = ROOT / gate4_manifest.get("source_runtime_manifest", {}).get("path", "")
+        if not gate3_runtime_path.is_file() or hashlib.sha256(gate3_runtime_path.read_bytes()).hexdigest().lower() != gate4_manifest.get("source_runtime_manifest", {}).get("sha256", "").lower():
+            fail("gate4 approved Gate 3 runtime hash is missing or stale")
+        expected_states = {"IDLE_LISTEN", "WELCOME", "GUIDE", "THINK", "PRAISE_PROGRESS", "SEARCH", "CELEBRATE", "RETRY"}
+        states = gate4_manifest.get("states", [])
+        if len(states) != 8 or {item.get("state") for item in states} != expected_states:
+            fail("gate4 motion state matrix is incomplete")
+        if any(set(item.get("normal_properties", [])) - {"transform", "opacity"} for item in states):
+            fail("gate4 motion manifest contains layout-affecting properties")
+        if any(item.get("reduced_motion") != "STATIC_POSE_SWAP" for item in states):
+            fail("gate4 reduced-motion fallback matrix is incomplete")
+        for key in ("stylesheet", "runtime"):
+            artifact = gate4_manifest.get("implementation", {}).get(key, {})
+            path = ROOT / artifact.get("path", "")
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != artifact.get("sha256", "").lower():
+                fail(f"gate4 {key} implementation is missing or stale")
+        if gate4_audit.get("automated_status") != "PASS" or gate4_audit.get("state_pass_count") != 8:
+            fail("gate4 automated motion audit did not pass 8/8")
+        if gate4_audit.get("reduced_motion_pass_count") != 8 or gate4_audit.get("implementation_pass_count") != 2:
+            fail("gate4 accessibility or implementation audit is incomplete")
+        if gate4_audit.get("failures"):
+            fail("gate4 automated motion audit contains failures")
+        expected_gate4_promotion = gates[4].get("status") == "VERIFIED"
+        if gate4_manifest.get("manual_approval_count") != (1 if expected_gate4_promotion else 0):
+            fail("gate4 motion manifest manual approval count is invalid")
+        if gate4_manifest.get("next_gate_allowed") is not expected_gate4_promotion:
+            fail("gate4 motion manifest promotion flag is invalid")
+        if gates[4].get("status") == "BLOCKED":
+            if gate4_audit.get("status") != "BLOCKED_EXTERNAL" or gate4_audit.get("manual_approval_count") != 0:
+                fail("gate4 BLOCKED status disagrees with pending manual review")
+            if "PROJECT_OWNER_GATE4_MOTION_AND_REDUCED_MOTION_REVIEW_REQUIRED" not in gate4_audit.get("blockers", []):
+                fail("gate4 manual-review blocker is missing")
+            if gate4_review.get("status") != "PENDING" or gate4_review.get("decision") is not None:
+                fail("gate4 pending manual-review record is invalid")
+            if gate4_review.get("approval_applied") is not False or gate4_review.get("next_gate_allowed") is not False:
+                fail("gate4 pending review contains premature promotion flags")
+            if gates[5].get("entry_allowed") is not False:
+                fail("gate5 entry allowed while gate4 review is pending")
+        if gates[4].get("status") == "VERIFIED":
+            if gate4_audit.get("status") != "VERIFIED" or gate4_audit.get("manual_approval_count") != 1:
+                fail("gate4 VERIFIED without one valid manual approval")
+            if gate4_review.get("status") != "APPROVED" or gate4_review.get("decision") != "APPROVE":
+                fail("gate4 VERIFIED without approved manual review")
+            if gate4_review.get("approval_applied") is not True or gate4_review.get("next_gate_allowed") is not True:
+                fail("gate4 VERIFIED while manual approval is not applied")
+            if not gate4_review.get("scope_acknowledged") or not all(value is True for value in gate4_review.get("checks", {}).values()):
+                fail("gate4 VERIFIED with incomplete motion review checks")
+            if gates[5].get("entry_allowed") is not True:
+                fail("gate4 VERIFIED without enabling Gate 5 entry")
+        if gates[5].get("entry_allowed") is True and gates[4].get("status") != "VERIFIED":
+            fail("gate5 entry allowed before gate4 VERIFIED")
+
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
     if conflicts:
@@ -1026,6 +1098,7 @@ def main() -> int:
     print(f"gate1={gates[1].get('status')}")
     print(f"gate2={gates[2].get('status')}")
     print(f"gate3={gates[3].get('status')}")
+    print(f"gate4={gates[4].get('status')}")
     print(f"manifest_status={manifest.get('status')}")
     for warning in sensitive_warnings:
         print(f"HARNESS_WARNING: ignored untracked sensitive-looking file not read: {warning}")

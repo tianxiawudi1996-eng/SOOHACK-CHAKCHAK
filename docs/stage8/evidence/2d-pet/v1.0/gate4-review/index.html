@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 Gate 4 2D 펫 모션 검토</title>
+  <link rel="stylesheet" href="/assets/stage8/2d-pet-motion-v1.0.css">
+  <style>
+    :root { --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --bg:#f3f6fb; --muted:#66728a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif; color:var(--navy); background:var(--bg); }
+    header { padding:22px 26px; color:#fff; background:linear-gradient(115deg,#13224b,#2f5bff); }
+    h1 { margin:0 0 6px; font-size:24px; } header p { margin:0; opacity:.85; font-size:13px; }
+    main { max-width:1120px; margin:auto; padding:24px; }
+    .status { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px; }
+    .badge { padding:8px 11px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; font-weight:800; }
+    .pending { color:#805600; background:#fff8df; border-color:#f0d573; }
+    .stage { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pet-card { margin:0; min-height:430px; display:grid; grid-template-rows:1fr auto; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:#fff; box-shadow:0 12px 32px #25395f12; }
+    .pet-surface { min-height:360px; display:grid; place-items:center; background:radial-gradient(circle at 50% 35%,#fff 0 24%,#edf2ff 70%); }
+    .pet-surface img { width:min(390px,90%); aspect-ratio:1; object-fit:contain; }
+    figcaption { padding:14px 18px; border-top:1px solid var(--line); font-weight:850; }
+    figcaption span { display:block; color:var(--muted); font-size:12px; font-weight:600; }
+    .controls-card,.checks-card { margin-top:16px; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; }
+    .checks { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:0; list-style:none; }
+    .checks li { padding:11px; border-radius:11px; color:#40506d; background:#eaf0ff; font-size:12px; }
+    @media(max-width:720px){.stage{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.pet-card{min-height:360px}.pet-surface{min-height:300px}}
+  </style>
+</head>
+<body>
+  <header><h1>Gate 4 2D 펫 상태 전환 모션</h1><p>8개 버튼을 눌러 포즈 의미·움직임·반복 피로도를 확인하세요.</p></header>
+  <main>
+    <div class="status"><span class="badge">상태: 8/8</span><span class="badge">reduced-motion: 8/8</span><span class="badge">허용 속성: transform·opacity</span><span class="badge pending">수동 승인: 0/1</span><span class="badge pending">Gate 4: BLOCKED</span></div>
+    <section class="stage" aria-label="캐릭터 모션 검토 무대">
+      <figure class="pet-card" data-pet-character="Chakchaki" data-pet-state="WELCOME">
+        <div class="pet-surface"><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp" alt="반가워요! — Chakchaki"></div>
+        <figcaption>착착이 <span data-pet-caption>반가워요!</span></figcaption>
+      </figure>
+      <figure class="pet-card" data-pet-character="Gongsickyi" data-pet-state="WELCOME">
+        <div class="pet-surface"><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp" alt="반가워요! — Gongsickyi"></div>
+        <figcaption>공식이 <span data-pet-caption>반가워요!</span></figcaption>
+      </figure>
+    </section>
+    <section class="controls-card motion-state-controls" role="group" aria-label="8개 학습 상태 선택">
+      <div class="motion-state-controls__label"><span>상태를 선택하세요</span><span>운영체제 모션 축소 설정 자동 반영</span></div>
+      <div class="motion-state-controls__buttons">
+        <button type="button" data-pet-state-trigger="IDLE_LISTEN" aria-pressed="false">듣기</button><button type="button" data-pet-state-trigger="WELCOME" aria-pressed="true">환영</button>
+        <button type="button" data-pet-state-trigger="GUIDE" aria-pressed="false">안내</button><button type="button" data-pet-state-trigger="THINK" aria-pressed="false">생각</button>
+        <button type="button" data-pet-state-trigger="PRAISE_PROGRESS" aria-pressed="false">칭찬</button><button type="button" data-pet-state-trigger="SEARCH" aria-pressed="false">탐색</button>
+        <button type="button" data-pet-state-trigger="CELEBRATE" aria-pressed="false">축하</button><button type="button" data-pet-state-trigger="RETRY" aria-pressed="false">재도전</button>
+      </div>
+      <span class="sr-only" data-pet-announcer aria-live="polite"></span>
+    </section>
+    <section class="checks-card"><h2>수동 검토 항목</h2><ul class="checks"><li>상태 의미가 즉시 읽히는가?</li><li>움직임이 친근하고 과하지 않은가?</li><li>반복 동작이 피로하지 않은가?</li><li>화면 크기별 잘림이 없는가?</li><li>클릭과 학습 내용을 방해하지 않는가?</li><li>모션 축소 시 정적 교체가 자연스러운가?</li></ul></section>
+  </main>
+  <script src="/assets/stage8/2d-pet-motion-v1.0.js"></script>
+</body>
+</html>

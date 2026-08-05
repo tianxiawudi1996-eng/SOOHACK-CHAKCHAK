@@ -1,5 +1,14 @@
 # Stage 8 Change Log
 
+## 2026-08-05 — Gate 4 2D 펫 상태 전환 모션 후보
+
+- 승인된 8개 포즈를 `IDLE_LISTEN`부터 `RETRY`까지 동일한 상태 머신으로 연결했다.
+- 랜딩페이지와 Gate 4 검토 화면에 8개 상태 선택 컨트롤을 추가했다.
+- 모션 속성을 `transform`·`opacity`로 제한하고 문서 비활성 시 애니메이션을 일시 정지한다.
+- `prefers-reduced-motion`에서는 애니메이션 없이 정적 승인 포즈만 교체한다.
+- 자동 QA에서 상태 8/8, reduced-motion 8/8, CSS/JS 2/2를 통과했다.
+- 제품 책임자 수동 승인 0/1로 Gate 4는 `BLOCKED`, Gate 5는 `NOT_STARTED`로 유지했다.
+
 ## 2026-08-05 — Gate 3 제품 책임자 승인 및 승격
 
 - 사용자의 명시적 `APPROVE`를 John KIM 제품 책임자 1인 승인으로 기록했다.

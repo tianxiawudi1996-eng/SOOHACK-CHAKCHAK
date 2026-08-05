@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T15:25:20+09:00",
+  "gate": 4,
+  "status": "CANDIDATE_BUILT",
+  "strategy": "SHADED_2D_PET_TRANSFORM_OPACITY_MOTION",
+  "source_runtime_manifest": {
+    "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "sha256": "957f20566653e5450872b8a134a289c51693de89957edfbf18a573dd3020b07a",
+    "required_status": "APPROVED",
+    "pose_count": 16
+  },
+  "implementation": {
+    "stylesheet": {
+      "path": "assets/stage8/2d-pet-motion-v1.0.css",
+      "sha256": "53436a8715145d7c3981fc4e6df3ed36b6bc89a82008b5ef01152639541f03c0",
+      "bytes": 4181
+    },
+    "runtime": {
+      "path": "assets/stage8/2d-pet-motion-v1.0.js",
+      "sha256": "0c4c3ac126bc95e618d4216c9cb899136d18c03893d20df11f0283b3832945f3",
+      "bytes": 4473,
+      "public_api": "window.mathChakChakPets.setState(state, source)",
+      "event": "mathchakchak:pet-state"
+    },
+    "landing_page": "mock.html"
+  },
+  "allowed_motion_properties": ["transform", "opacity"],
+  "state_count": 8,
+  "states": [
+    {
+      "state": "IDLE_LISTEN",
+      "pose_id": "P01",
+      "duration_ms": 5000,
+      "easing": "ease-in-out",
+      "animation": "pet-idle",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["initial-settle", "listening", "idle"]
+    },
+    {
+      "state": "WELCOME",
+      "pose_id": "P02",
+      "duration_ms": 1000,
+      "easing": "cubic-bezier(.2,.8,.2,1)",
+      "animation": "pet-welcome",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["initialization", "session-start"]
+    },
+    {
+      "state": "GUIDE",
+      "pose_id": "P03",
+      "duration_ms": 1200,
+      "easing": "ease-in-out",
+      "animation": "pet-guide",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["hint", "explanation"]
+    },
+    {
+      "state": "THINK",
+      "pose_id": "P04",
+      "duration_ms": 3000,
+      "easing": "ease-in-out",
+      "animation": "pet-think",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["student-thinking", "answer-wait"]
+    },
+    {
+      "state": "PRAISE_PROGRESS",
+      "pose_id": "P05",
+      "duration_ms": 1200,
+      "easing": "cubic-bezier(.2,.8,.2,1)",
+      "animation": "pet-praise",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["progress", "partial-success"]
+    },
+    {
+      "state": "SEARCH",
+      "pose_id": "P06",
+      "duration_ms": 2500,
+      "easing": "ease-in-out",
+      "animation": "pet-search",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["find-clue", "scan-problem"]
+    },
+    {
+      "state": "CELEBRATE",
+      "pose_id": "P07",
+      "duration_ms": 1300,
+      "easing": "cubic-bezier(.18,.82,.25,1)",
+      "animation": "pet-celebrate",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["correct-answer", "diagnosis-submit"]
+    },
+    {
+      "state": "RETRY",
+      "pose_id": "P08",
+      "duration_ms": 1100,
+      "easing": "ease-in-out",
+      "animation": "pet-retry",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["incorrect-answer", "retry-request"]
+    }
+  ],
+  "controls": {
+    "layout_shift_allowed": false,
+    "pointer_blocking_allowed": false,
+    "offscreen_clipping_allowed": false,
+    "pause_when_document_hidden": true,
+    "reduced_motion_required": true
+  },
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "next_gate_allowed": false
+}

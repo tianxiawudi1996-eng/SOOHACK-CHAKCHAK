@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T15:14:16+09:00",
+  "updated_at": "2026-08-05T15:28:21+09:00",
   "head_commit": "f64ba94",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
@@ -130,12 +130,19 @@
     "entry_allowed": true
   },
   "gate4": {
-    "status": "NOT_STARTED",
+    "status": "BLOCKED",
     "evidence": [
       "docs/stage8/prompts/GATE4_MOTION.md",
-      "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md"
+      "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+      "assets/stage8/2d-pet-motion-v1.0.css",
+      "assets/stage8/2d-pet-motion-v1.0.js",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
+      "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md"
     ],
-    "blockers": ["Gate 4 2D transition-motion implementation and manual approval are not completed"],
+    "blockers": ["Project Owner motion friendliness, repetition, viewport, learning-interference, and reduced-motion review is required"],
     "entry_allowed": true
   },
   "gate5": {

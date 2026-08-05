@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>수학착착 — 공식보다 먼저, 이해부터</title>
   <meta name="description" content="아이에게 맞춰 설명하고, 오래 기억하게 하는 1:1 AI 수학 튜터 수학착착 목업" />
+  <link rel="stylesheet" href="assets/stage8/2d-pet-motion-v1.0.css" />
   <style>
     :root {
       --blue: #2f5bff;
@@ -252,14 +253,28 @@
               </div>
             </div>
             <div class="tutor-footer"><div class="progress-copy"><strong>분수의 덧셈</strong>개념 이해 72%</div><div class="progress"><i></i></div></div>
+            <div class="motion-state-controls" role="group" aria-label="캐릭터 학습 상태 미리보기">
+              <div class="motion-state-controls__label"><span>캐릭터 반응 미리보기</span><span>모션 축소 설정 지원</span></div>
+              <div class="motion-state-controls__buttons">
+                <button type="button" data-pet-state-trigger="IDLE_LISTEN" aria-pressed="false">듣기</button>
+                <button type="button" data-pet-state-trigger="WELCOME" aria-pressed="true">환영</button>
+                <button type="button" data-pet-state-trigger="GUIDE" aria-pressed="false">안내</button>
+                <button type="button" data-pet-state-trigger="THINK" aria-pressed="false">생각</button>
+                <button type="button" data-pet-state-trigger="PRAISE_PROGRESS" aria-pressed="false">칭찬</button>
+                <button type="button" data-pet-state-trigger="SEARCH" aria-pressed="false">탐색</button>
+                <button type="button" data-pet-state-trigger="CELEBRATE" aria-pressed="false">축하</button>
+                <button type="button" data-pet-state-trigger="RETRY" aria-pressed="false">재도전</button>
+              </div>
+              <span class="sr-only" data-pet-announcer aria-live="polite"></span>
+            </div>
           </div>
-          <figure class="hero-mascot chakchaki">
-            <img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png" alt="손을 흔들며 환영하는 착착이" />
-            <figcaption><span>착착이</span> 함께 풀어보자!</figcaption>
+          <figure class="hero-mascot chakchaki" data-pet-character="Chakchaki" data-pet-state="WELCOME">
+            <img data-pet-image src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp" alt="반가워요! — Chakchaki" />
+            <figcaption><span>착착이</span> <b data-pet-caption>반가워요!</b></figcaption>
           </figure>
-          <figure class="hero-mascot gongsickyi">
-            <img src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png" alt="별 지시봉으로 설명하는 공식이" />
-            <figcaption><span>공식이</span> 원리를 찾아볼까?</figcaption>
+          <figure class="hero-mascot gongsickyi" data-pet-character="Gongsickyi" data-pet-state="WELCOME">
+            <img data-pet-image src="outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp" alt="반가워요! — Gongsickyi" />
+            <figcaption><span>공식이</span> <b data-pet-caption>반가워요!</b></figcaption>
           </figure>
         </div>
       </div>
@@ -354,5 +369,6 @@
       });
     });
   </script>
+  <script src="assets/stage8/2d-pet-motion-v1.0.js"></script>
 </body>
 </html>

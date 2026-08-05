@@ -27,7 +27,8 @@
 | Gate 2 음영 2D 시트 | `VERIFIED` | 2개 시트, 16개 포즈, 승인 1/1 |
 | Gate 3 개별 포즈 | `VERIFIED` | PNG 16/16, WebP 16/16 자동 QA PASS, 수동 승인 1/1 |
 | 랜딩페이지 캐릭터 배치 | `PROTOTYPE_COMPLETE` | 첫 화면·대화 아바타·성장 리포트에 공식 2D 자산 연결 |
-| Gate 4~8 | `NOT_STARTED` | 선행 Gate 승인과 실제 제품 통합 필요 |
+| Gate 4 모션 | `BLOCKED` | 상태·reduced-motion 8/8 자동 QA PASS, 수동 승인 0/1 |
+| Gate 5~8 | `NOT_STARTED` | 선행 Gate 승인과 실제 제품 통합 필요 |
 
 ### 최종 완료 기준
 
@@ -66,9 +67,9 @@
 
 ### 우선순위 1: Gate 4 2D 펫 모션
 
-- `IDLE_LISTEN`, `WELCOME`, `GUIDE`, `THINK`, `PRAISE_PROGRESS`, `SEARCH`, `CELEBRATE`, `RETRY` 전환을 구현한다.
-- 위치·회전·크기·투명도 중심의 가벼운 모션을 사용한다.
-- 모션 축소 설정에서는 정적 교체 또는 페이드만 사용한다.
+- 구현된 8개 전환의 의미·친근함·반복 피로도·화면 잘림·학습 방해 여부를 검토한다.
+- 운영체제 모션 축소 설정에서 정적 포즈 교체가 자연스러운지 확인한다.
+- 성공: 6/6 수동 체크 후 `APPROVE`; 실패: 상태와 문제 항목을 특정해 모션 토큰을 수정한다.
 
 ### 우선순위 2: Gate 5 AI Behavior 연결
 
@@ -124,4 +125,4 @@ Gate 3 VERIFIED
 
 ## 현재 결론
 
-랜딩페이지 캐릭터 배치와 Gate 3 승인은 완료됐지만 전체 Stage 8은 완료되지 않았다. 즉시 필요한 다음 작업은 Gate 4의 8개 상태 전환 모션과 `prefers-reduced-motion` 대체 구현이다.
+랜딩페이지 캐릭터 배치와 Gate 3 승인은 완료됐고 Gate 4 모션은 자동 QA를 통과했다. 전체 Stage 8은 완료되지 않았으며, 즉시 필요한 다음 결정은 Gate 4 검토 화면에 대한 제품 책임자 승인이다.

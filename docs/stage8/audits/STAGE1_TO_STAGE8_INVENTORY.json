@@ -1,8 +1,8 @@
 {
   "summary": {
-    "generated_at": "2026-08-05T06:18:12.420037+00:00",
+    "generated_at": "2026-08-05T06:31:43.639193+00:00",
     "workspace_root": "D:\\project\\SOOHACK CHACKCHACK",
-    "file_count": 316,
+    "file_count": 324,
     "required_stage7_file_count": 10,
     "required_exact_found": 10,
     "required_exact_missing_or_conflicting": 0,
@@ -1793,6 +1793,38 @@
       "mime": "application/octet-stream",
       "sha256": "c71e762d06fbdaab3797b9a5ec84a98f86b59b53c747f99cc924e1be27972522",
       "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2d-pet-motion-v1.0.css",
+      "path": "assets/stage8/2d-pet-motion-v1.0.css",
+      "size_bytes": 4181,
+      "modified_at": "2026-08-05T06:25:04.180878+00:00",
+      "mime": "text/css",
+      "sha256": "53436a8715145d7c3981fc4e6df3ed36b6bc89a82008b5ef01152639541f03c0",
+      "version": "v1.0",
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2d-pet-motion-v1.0.js",
+      "path": "assets/stage8/2d-pet-motion-v1.0.js",
+      "size_bytes": 4473,
+      "modified_at": "2026-08-05T06:25:05.909172+00:00",
+      "mime": "text/javascript",
+      "sha256": "0c4c3ac126bc95e618d4216c9cb899136d18c03893d20df11f0283b3832945f3",
+      "version": "v1.0",
       "approval_status_tokens": [],
       "classification": "unclassified",
       "references": [],
@@ -3609,10 +3641,10 @@
       "stage": "Stage 8",
       "file_name": "00_MASTER_PLAN.md",
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "size_bytes": 2714,
-      "modified_at": "2026-08-05T06:16:52.714495+00:00",
+      "size_bytes": 2815,
+      "modified_at": "2026-08-05T06:31:06.126004+00:00",
       "mime": "text/markdown",
-      "sha256": "0ea2d1df32332a0f4e30b5856fca0f476f18d6e604114e5a7646978c95968cdc",
+      "sha256": "ce059a875591ad7e44ebaf6666971a6a1267752dda4966721638218fbb9e9577",
       "version": null,
       "approval_status_tokens": [
         "VERIFIED",
@@ -3629,6 +3661,7 @@
         "h1_count": 1,
         "version_tokens": [],
         "status_tokens": [
+          "BLOCKED",
           "NOT_STARTED",
           "VERIFIED",
           "승인"
@@ -3743,12 +3776,13 @@
       "stage": "Stage 8",
       "file_name": "FINAL_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
-      "size_bytes": 2541,
-      "modified_at": "2026-08-05T06:16:58.011003+00:00",
+      "size_bytes": 2921,
+      "modified_at": "2026-08-05T06:31:08.683995+00:00",
       "mime": "text/markdown",
-      "sha256": "c93784ca9d1f9e496b5f7271f4511b9c8113513f92306dc3c817fe7ec62ca2dd",
+      "sha256": "612e7e3083098e1dc2e35066dba6c86257639ce0641224577aeaab0b913fad9c",
       "version": "v1.0",
       "approval_status_tokens": [
+        "APPROVE",
         "APPROVED",
         "PASS",
         "VERIFIED",
@@ -3770,6 +3804,7 @@
           "v1.0"
         ],
         "status_tokens": [
+          "BLOCKED",
           "NOT_STARTED",
           "PASS",
           "VERIFIED",
@@ -4095,6 +4130,37 @@
     },
     {
       "stage": "Stage 8",
+      "file_name": "GATE4_2D_PET_MOTION_AUDIT.md",
+      "path": "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md",
+      "size_bytes": 533,
+      "modified_at": "2026-08-05T06:31:32.044747+00:00",
+      "mime": "text/markdown",
+      "sha256": "2c3601c8bcbcefb4bb1256f1fe408842232b65afbe88fa70691fc3d2233c1631",
+      "version": null,
+      "approval_status_tokens": [
+        "PASS",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection",
+      "markdown_audit": {
+        "utf8": true,
+        "h1_count": 1,
+        "version_tokens": [],
+        "status_tokens": [
+          "PASS",
+          "승인"
+        ],
+        "links": [],
+        "broken_links": [],
+        "image_links": []
+      }
+    },
+    {
+      "stage": "Stage 8",
       "file_name": "NEXT_PART_METAPROMPT_REPORT.md",
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
       "size_bytes": 899,
@@ -4133,12 +4199,13 @@
       "stage": "Stage 8",
       "file_name": "REMAINING_WORK_REPORT_v1.0.md",
       "path": "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
-      "size_bytes": 5219,
-      "modified_at": "2026-08-05T06:17:00.270194+00:00",
+      "size_bytes": 5388,
+      "modified_at": "2026-08-05T06:31:11.821668+00:00",
       "mime": "text/markdown",
-      "sha256": "829d722607dc4c69f6577661710c9140a89bdd3ad328924b01b80c7c9444229f",
+      "sha256": "087d070f669b1431028ebf8fc1624910d72819edbe7f76fbd1cd743647731100",
       "version": "v1.0",
       "approval_status_tokens": [
+        "APPROVE",
         "PASS",
         "VERIFIED",
         "승인"
@@ -4155,6 +4222,7 @@
           "v1.0"
         ],
         "status_tokens": [
+          "BLOCKED",
           "NOT_STARTED",
           "PASS",
           "VERIFIED",
@@ -4202,12 +4270,13 @@
       "stage": "Stage 8",
       "file_name": "TEST_EXECUTION_REPORT.md",
       "path": "docs/stage8/audits/TEST_EXECUTION_REPORT.md",
-      "size_bytes": 1506,
-      "modified_at": "2026-08-05T06:17:58.827481+00:00",
+      "size_bytes": 1956,
+      "modified_at": "2026-08-05T06:31:15.211112+00:00",
       "mime": "text/markdown",
-      "sha256": "d3b9998e6f61f63cab47235d391a186be97ac87f9ac51ae45cdccee7f6c28063",
+      "sha256": "74b00da0b792d9a39f9e66a56f218987b3f91545efd5b1603d9eff3779d1b05e",
       "version": "v1.0",
       "approval_status_tokens": [
+        "PASS",
         "VERIFIED",
         "승인",
         "후보"
@@ -4224,6 +4293,8 @@
           "v1.0"
         ],
         "status_tokens": [
+          "BLOCKED",
+          "PASS",
           "VERIFIED",
           "승인"
         ],
@@ -4269,10 +4340,10 @@
       "stage": "Stage 8",
       "file_name": "CHANGELOG.md",
       "path": "docs/stage8/CHANGELOG.md",
-      "size_bytes": 12952,
-      "modified_at": "2026-08-05T06:17:02.962652+00:00",
+      "size_bytes": 13606,
+      "modified_at": "2026-08-05T06:31:18.211596+00:00",
       "mime": "text/markdown",
-      "sha256": "097150c672e9dcd7d17cffcfc801d0a4a572db38bf9f26c3f69f86eb71e944d5",
+      "sha256": "bfe5c4b337e8d0ac1ea541ee06bc73eff4d4b637a12992a2e677202a97f1e4b3",
       "version": null,
       "approval_status_tokens": [
         "APPROVE",
@@ -4367,6 +4438,24 @@
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
+        "APPROVED"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "2D_PET_MOTION_MANIFEST_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+      "size_bytes": 3847,
+      "modified_at": "2026-08-05T06:26:50.093954+00:00",
+      "mime": "application/json",
+      "sha256": "e05ce2cf396ab2480c9d8d4dd235a1c97163d92bbd4cf05e1d642cd3e513f3be",
+      "version": "v1.0",
+      "approval_status_tokens": [
         "APPROVED"
       ],
       "classification": "unclassified",
@@ -4495,6 +4584,56 @@
         "APPROVED",
         "approved"
       ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "index.html",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
+      "size_bytes": 5300,
+      "modified_at": "2026-08-05T06:26:55.179531+00:00",
+      "mime": "text/html",
+      "sha256": "2295a795a3a198a3323e9e756910a95333c665dc2722120706038712c79440c8",
+      "version": null,
+      "approval_status_tokens": [],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
+      "size_bytes": 2249,
+      "modified_at": "2026-08-05T06:31:32.044747+00:00",
+      "mime": "application/json",
+      "sha256": "f9c2aad8fdaa73440c6e39c248bae5246e45d9ac294db575b1aa76e6a37c377c",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "PASS"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": true,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
+      "stage": "Stage 8",
+      "file_name": "GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
+      "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_MANUAL_REVIEW_v1.0.json",
+      "size_bytes": 697,
+      "modified_at": "2026-08-05T06:26:51.833547+00:00",
+      "mime": "application/json",
+      "sha256": "ddb3b92f8904d043d4857ce71b816079a8af4ba1fc8795f62acc5107d9c80ed8",
+      "version": "v1.0",
+      "approval_status_tokens": [],
       "classification": "unclassified",
       "references": [],
       "duplicate_group": null,
@@ -8084,10 +8223,10 @@
       "stage": "Unclassified",
       "file_name": "status.json",
       "path": "harness/status.json",
-      "size_bytes": 9158,
-      "modified_at": "2026-08-05T06:15:38.345216+00:00",
+      "size_bytes": 9651,
+      "modified_at": "2026-08-05T06:29:13.028824+00:00",
       "mime": "application/json",
-      "sha256": "9ee723552a4655e6f638b5879699f2a9f0aad0fca87223d5661a001ef7d31cfa",
+      "sha256": "3d8b9028181f7656e41051aa67e81e74dce9e4ad32c622efdc8ff6eb69377e69",
       "version": "v1.0",
       "approval_status_tokens": [
         "VERIFIED"
@@ -8102,10 +8241,10 @@
       "stage": "Unclassified",
       "file_name": "mock.html",
       "path": "mock.html",
-      "size_bytes": 30233,
-      "modified_at": "2026-08-05T05:59:51.183823+00:00",
+      "size_bytes": 31831,
+      "modified_at": "2026-08-05T06:24:42.161946+00:00",
       "mime": "text/html",
-      "sha256": "763cdfa4ccc6192a9ba7a6c4bdd718858f435844213959e8c1885f14516986df",
+      "sha256": "33eadbc264f64a6ea713557548201f17bc6e53d4de7fbba49c2cf97f7e018ce2",
       "version": null,
       "approval_status_tokens": [],
       "classification": "unclassified",
@@ -9886,6 +10025,28 @@
       "basis": "metadata plus read-only content/OOXML inspection"
     },
     {
+      "stage": "Unclassified",
+      "file_name": "audit_gate4_2d_pet_motion.py",
+      "path": "scripts/harness/audit_gate4_2d_pet_motion.py",
+      "size_bytes": 9563,
+      "modified_at": "2026-08-05T06:27:58.060759+00:00",
+      "mime": "text/x-python",
+      "sha256": "0467788f6516e37ba930379bd66602d1e7188f7dd0634349d607161fe0c0c450",
+      "version": "v1.0",
+      "approval_status_tokens": [
+        "APPROVED",
+        "FAIL",
+        "PASS",
+        "VERIFIED",
+        "승인"
+      ],
+      "classification": "unclassified",
+      "references": [],
+      "duplicate_group": null,
+      "usable_now": false,
+      "basis": "metadata plus read-only content/OOXML inspection"
+    },
+    {
       "stage": "Stage 8",
       "file_name": "audit_stage8.py",
       "path": "scripts/harness/audit_stage8.py",
@@ -10029,10 +10190,10 @@
       "stage": "Stage 8",
       "file_name": "validate_harness.py",
       "path": "scripts/harness/validate_harness.py",
-      "size_bytes": 69137,
-      "modified_at": "2026-08-05T06:15:41.797209+00:00",
+      "size_bytes": 74882,
+      "modified_at": "2026-08-05T06:29:45.444821+00:00",
       "mime": "text/x-python",
-      "sha256": "b4a4eb17fadb26f9ea98ff5b0fc376c3e8220b6082763f6d2d34d0fa505d5474",
+      "sha256": "f947cf2e41eccb6b53a8efb21d93f68c5609fcd9bcdbcadbe2847220bf5aa3cd",
       "version": "v1.0",
       "approval_status_tokens": [
         "APPROVE",
