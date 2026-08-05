@@ -122,8 +122,13 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
     "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
     "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_AUTOMATED_QA_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_MANUAL_REVIEW_v1.0.json",
+    "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
     "docs/stage8/audits/2D_PET_TRANSITION_AUDIT.md",
     "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
+    "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -150,9 +155,14 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/prompts/GATE2_2D_SINGLE_APPROVER_DECISION_AND_PROMOTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
     "docs/stage8/prompts/GATE4_2D_PET_MOTION_EXECUTION_METAPROMPT_v1.0.md",
+    "scripts/harness/extract_2d_pet_poses.py",
+    "scripts/harness/audit_gate3_2d_pet_poses.py",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Chakchaki_Shaded2D_PoseSheet_Alpha_v1.0.png",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Gongsickyi_Shaded2D_PoseSheet_Alpha_v1.0.png",
+    "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/POSE_EXTRACTION_BUILD_RECORD_v1.0.json",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
     "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/glb/char_chakchaki_lod0_v200.glb",
@@ -910,65 +920,65 @@ def main() -> int:
     elif gates[3].get("status") != "NOT_STARTED":
         if gates[2].get("status") != "VERIFIED":
             fail("gate3 started before gate2 VERIFIED")
-        gate3_root = ROOT / "docs/stage8/evidence/gate3"
-        gate3_build = load_json(gate3_root / "GATE3_BUILD_MANIFEST_v1.0.json")
-        gate3_audit = load_json(gate3_root / "GATE3_AUTOMATED_QA_v1.0.json")
-        gate3_review = load_json(gate3_root / "GATE3_MANUAL_REVIEW_v1.0.json")
-        if gate3_build.get("status") != "RIG_CANDIDATE_BUILT":
-            fail("gate3 build manifest status is invalid")
-        if gate3_build.get("unit") != "meter" or gate3_build.get("up_axis") != "Y" or gate3_build.get("root_scale") != 1.0:
-            fail("gate3 build unit, axis, or root scale is invalid")
-        rig_files = gate3_build.get("files", [])
-        expected_pairs = {(character, lod) for character in ("Chakchaki", "Gongsickyi") for lod in (0, 1, 2)}
-        actual_pairs = {(item.get("character"), item.get("lod")) for item in rig_files}
-        if len(rig_files) != 6 or actual_pairs != expected_pairs:
-            fail("gate3 rig character/LOD matrix is incomplete")
-        for item in rig_files:
-            source = ROOT / item.get("source_path", "")
-            path = ROOT / item.get("path", "")
-            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest().lower() != item.get("source_sha256", "").lower():
-                fail(f"gate3 source GLB hash mismatch: {item.get('character')} LOD{item.get('lod')}")
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
-                fail(f"gate3 rig GLB hash mismatch: {item.get('character')} LOD{item.get('lod')}")
-            expected_joints = 32 if item.get("character") == "Chakchaki" else 20
-            expected_morphs = 15 if item.get("character") == "Chakchaki" else 19
-            if item.get("joint_count") != expected_joints or item.get("skin_count") != 1:
-                fail(f"gate3 joint/skin count mismatch: {item.get('character')} LOD{item.get('lod')}")
-            if item.get("morph_count", 0) < expected_morphs or len(item.get("pose_names", [])) != 4:
-                fail(f"gate3 morph/pose count mismatch: {item.get('character')} LOD{item.get('lod')}")
-        previews = gate3_build.get("previews", [])
-        if len(previews) != 6:
-            fail("gate3 must contain six skeleton/deformation/pose previews")
-        for item in previews:
-            path = ROOT / item.get("path", "")
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != item.get("sha256", "").lower():
-                fail(f"gate3 preview is missing or stale: {item.get('path')}")
-        if gate3_build.get("next_gate_allowed") is not False:
-            fail("gate3 build manifest prematurely allows Gate 4")
-        if gate3_audit.get("automated_status") != "PASS" or gate3_audit.get("rig_pass_count") != 6:
-            fail("gate3 automated rig audit did not pass 6/6")
-        if gate3_audit.get("failures"):
-            fail("gate3 automated audit contains failures")
-        audited = {(item.get("character"), item.get("lod")): item for item in gate3_audit.get("rigs", [])}
-        if set(audited) != expected_pairs:
-            fail("gate3 automated audit rig matrix is incomplete")
-        for item in rig_files:
-            result = audited[(item["character"], item["lod"])]
-            if result.get("status") != "PASS" or result.get("sha256", "").lower() != item.get("sha256", "").lower():
-                fail(f"gate3 audit/build mismatch: {item['character']} LOD{item['lod']}")
-            if result.get("bad_weight_count") != 0 or result.get("invalid_joint_index_count") != 0:
-                fail(f"gate3 skin-weight defect: {item['character']} LOD{item['lod']}")
-            if result.get("missing_morphs") or result.get("zero_morphs") or result.get("missing_poses"):
-                fail(f"gate3 morph/pose defect: {item['character']} LOD{item['lod']}")
+        gate3_root = ROOT / "docs/stage8/evidence/2d-pet/v1.0"
+        gate3_build = load_json(gate3_root / "2D_PET_RUNTIME_MANIFEST_v1.0.json")
+        gate3_audit = load_json(gate3_root / "GATE3_2D_PET_AUTOMATED_QA_v1.0.json")
+        gate3_review = load_json(gate3_root / "GATE3_2D_PET_MANUAL_REVIEW_v1.0.json")
+        if gate3_build.get("status") != "CANDIDATE_BUILT" or gate3_build.get("strategy") != "SHADED_2D_PET":
+            fail("gate3 shaded 2D runtime manifest status is invalid")
+        if gate3_build.get("canvas") != {"width": 512, "height": 512}:
+            fail("gate3 shaded 2D canvas must be 512x512")
+        if gate3_build.get("pivot_policy") != "BOTTOM_CENTER_NORMALIZED_0.5_1.0":
+            fail("gate3 shaded 2D pivot policy is invalid")
+        expected_pairs = {
+            (character, f"P{pose:02d}")
+            for character in ("Chakchaki", "Gongsickyi")
+            for pose in range(1, 9)
+        }
+        poses = gate3_build.get("poses", [])
+        actual_pairs = {(item.get("character"), item.get("pose_id")) for item in poses}
+        if len(poses) != 16 or actual_pairs != expected_pairs or gate3_build.get("pose_count") != 16:
+            fail("gate3 shaded 2D character/pose matrix is incomplete")
+        for character, source_record in gate3_build.get("source_sheets", {}).items():
+            source = ROOT / source_record.get("path", "")
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest().lower() != source_record.get("sha256", "").lower():
+                fail(f"gate3 alpha source sheet missing or stale: {character}")
+        for item in poses:
+            if item.get("canvas") != {"width": 512, "height": 512}:
+                fail(f"gate3 pose canvas mismatch: {item.get('character')} {item.get('pose_id')}")
+            if item.get("pivot_normalized") != {"x": 0.5, "y": 1.0}:
+                fail(f"gate3 pose pivot mismatch: {item.get('character')} {item.get('pose_id')}")
+            for format_key in ("png", "webp"):
+                artifact = item.get(format_key, {})
+                path = ROOT / artifact.get("path", "")
+                if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().lower() != artifact.get("sha256", "").lower():
+                    fail(f"gate3 {format_key} missing or stale: {item.get('character')} {item.get('pose_id')}")
+            if item.get("webp", {}).get("lossless") is not True:
+                fail(f"gate3 WebP is not lossless: {item.get('character')} {item.get('pose_id')}")
+        if gate3_build.get("manual_approval_required") != 1 or gate3_build.get("next_gate_allowed") is not False:
+            fail("gate3 runtime manifest approval controls are invalid")
+        if gate3_audit.get("automated_status") != "PASS" or gate3_audit.get("pose_pass_count") != 16:
+            fail("gate3 shaded 2D automated audit did not pass 16/16")
+        if gate3_audit.get("png_pass_count") != 16 or gate3_audit.get("webp_pass_count") != 16:
+            fail("gate3 shaded 2D format audit did not pass 16/16")
+        if gate3_audit.get("source_cell_pixel_match_count") != 16 or gate3_audit.get("failures"):
+            fail("gate3 shaded 2D source pixel audit failed")
+        audited = {(item.get("character"), item.get("pose_id")): item for item in gate3_audit.get("poses", [])}
+        if set(audited) != expected_pairs or not all(item.get("status") == "PASS" for item in audited.values()):
+            fail("gate3 shaded 2D automated pose matrix is incomplete")
         if gate3_audit.get("manual_approval_required") != 1:
             fail("gate3 must require one Project Owner approval")
         if gates[3].get("status") == "BLOCKED":
             if gate3_audit.get("status") != "BLOCKED_EXTERNAL" or gate3_audit.get("manual_approval_count") != 0:
                 fail("gate3 BLOCKED status disagrees with pending manual review")
-            if "PROJECT_OWNER_DEFORMATION_REVIEW_REQUIRED" not in gate3_audit.get("blockers", []):
+            if "PROJECT_OWNER_GATE3_ALPHA_AND_SPRITE_REVIEW_REQUIRED" not in gate3_audit.get("blockers", []):
                 fail("gate3 manual-review blocker is missing")
+            if gate3_review.get("status") != "PENDING" or gate3_review.get("decision") is not None:
+                fail("gate3 pending shaded 2D review status is invalid")
             if gate3_review.get("approval_applied") is not False or gate3_review.get("next_gate_allowed") is not False:
                 fail("gate3 pending review contains premature promotion flags")
+            if gates[4].get("entry_allowed") is not False:
+                fail("gate4 entry allowed while gate3 review is pending")
         if gates[3].get("status") == "VERIFIED":
             if gate3_audit.get("status") != "VERIFIED" or gate3_audit.get("manual_approval_count") != 1:
                 fail("gate3 VERIFIED without one valid manual approval")
@@ -979,7 +989,7 @@ def main() -> int:
             if gate3_review.get("approval_applied") is not True or gate3_review.get("next_gate_allowed") is not True:
                 fail("gate3 VERIFIED while manual approval is not applied")
             if not gate3_review.get("scope_acknowledged") or not all(value is True for value in gate3_review.get("checks", {}).values()):
-                fail("gate3 VERIFIED with incomplete deformation-review checks")
+                fail("gate3 VERIFIED with incomplete shaded 2D sprite-review checks")
             if gates[4].get("entry_allowed") is not True:
                 fail("gate3 VERIFIED without enabling Gate 4 entry")
         if gates[4].get("entry_allowed") is True and gates[3].get("status") != "VERIFIED":

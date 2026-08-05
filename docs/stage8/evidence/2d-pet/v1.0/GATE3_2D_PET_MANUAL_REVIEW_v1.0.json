@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 3,
+  "status": "PENDING",
+  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "reviewer": null,
+  "decision": null,
+  "reviewed_at": null,
+  "scope_acknowledged": false,
+  "characters": ["Chakchaki", "Gongsickyi"],
+  "pose_count": 16,
+  "checks": {
+    "transparent_edges_clean": null,
+    "identity_preserved_after_background_removal": null,
+    "all_poses_complete_and_uncropped": null,
+    "consistent_canvas_scale_and_baseline": null,
+    "props_and_confetti_preserved": null,
+    "small_ui_readability_acceptable": null,
+    "png_and_webp_render_equivalently": null,
+    "no_green_fringe_or_background_remnant": null
+  },
+  "comment": null,
+  "approval_applied": false,
+  "next_gate_allowed": false
+}

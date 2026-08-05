@@ -2,15 +2,15 @@
 
 ## 결과
 
-- 상태: `BLOCKED_EXTERNAL`
+- 상태: `PROMOTED`
 - 승인 방식: `PROJECT_OWNER_SINGLE_APPROVAL`
-- 유효 승인: `0/1`
+- 유효 승인: `1/1`
 - 자동 QA: `PASS`
 - 후보 해시 변동: `0`
-- 필수 체크 통과: `0/8`
-- 승격 준비: `false`
-- Gate 2 승격 적용: `false`
-- Gate 3 진입 허용: `false`
+- 필수 체크 통과: `8/8`
+- 승격 준비: `true`
+- Gate 2 승격 적용: `true`
+- Gate 3 진입 허용: `true`
 
 ## 실패
 
@@ -18,8 +18,8 @@
 
 ## 차단
 
-- `PROJECT_OWNER_2D_DECISION_MISSING`
+- 없음
 
 ## 다음 작업
 
-제품 책임자가 비교 페이지의 두 시트를 검토하고 명시적 결정을 입력해야 합니다.
+Gate 3 개별 포즈 추출 작업을 시작할 수 있습니다.

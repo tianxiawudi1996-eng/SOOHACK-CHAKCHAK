@@ -1,30 +1,30 @@
 {
   "schema_version": "1.0.0",
   "gate": 2,
-  "status": "PENDING",
+  "status": "APPROVED",
   "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
-  "reviewer": null,
-  "decision": null,
-  "reviewed_at": null,
-  "scope_acknowledged": false,
+  "reviewer": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-05T14:21:53+09:00",
+  "scope_acknowledged": true,
   "characters": ["Chakchaki", "Gongsickyi"],
   "candidate_sheet_hashes": {
     "Chakchaki": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
     "Gongsickyi": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100"
   },
   "checks": {
-    "canonical_identity_match": null,
-    "face_and_silhouette_match": null,
-    "clothing_accessory_and_color_match": null,
-    "two_dimensional_shading_quality_acceptable": null,
-    "eight_poses_present_per_character": null,
-    "pose_meanings_are_clear": null,
-    "small_ui_readability_acceptable": null,
-    "no_low_poly_or_unwanted_3d_appearance": null
+    "canonical_identity_match": true,
+    "face_and_silhouette_match": true,
+    "clothing_accessory_and_color_match": true,
+    "two_dimensional_shading_quality_acceptable": true,
+    "eight_poses_present_per_character": true,
+    "pose_meanings_are_clear": true,
+    "small_ui_readability_acceptable": true,
+    "no_low_poly_or_unwanted_3d_appearance": true
   },
-  "comment": null,
+  "comment": "The user reviewed the running UI and explicitly instructed Codex to continue the previously defined Gate 2 approval and transparent-pose workflow.",
   "patch_id": null,
-  "unresolved_patch": null,
-  "approval_applied": false,
-  "next_gate_allowed": false
+  "unresolved_patch": false,
+  "approval_applied": true,
+  "next_gate_allowed": true
 }

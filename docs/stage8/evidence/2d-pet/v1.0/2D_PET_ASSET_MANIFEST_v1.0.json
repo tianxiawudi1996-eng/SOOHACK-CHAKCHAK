@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "generated_at": "2026-08-05T13:31:00+09:00",
   "strategy": "SHADED_2D_PET",
-  "status": "CANDIDATE_READY_FOR_MANUAL_REVIEW",
+  "status": "APPROVED",
   "layout": {
     "columns": 4,
     "rows": 2,
@@ -55,6 +55,6 @@
     {"pose_id": "P08", "state": "RETRY", "index": 8}
   ],
   "manual_approval_required": 1,
-  "manual_approval_count": 0,
-  "next_gate_allowed": false
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
 }

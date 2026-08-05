@@ -1,0 +1,711 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T05:33:56.102696+00:00",
+  "gate": 3,
+  "status": "CANDIDATE_BUILT",
+  "strategy": "SHADED_2D_PET",
+  "source_sheets": {
+    "Chakchaki": {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Chakchaki_Shaded2D_PoseSheet_Alpha_v1.0.png",
+      "sha256": "1f69a3ece8284be87d33ff63f565cb63ca5a1aa6be21e9360b7bd78ae0782974",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    "Gongsickyi": {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Gongsickyi_Shaded2D_PoseSheet_Alpha_v1.0.png",
+      "sha256": "c2ecb930b754d40839c8866e67d8696b3dc7581e38b6a50590b8877a9a589973",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    }
+  },
+  "pose_count": 16,
+  "expected_pose_count": 16,
+  "formats": [
+    "PNG",
+    "WEBP_LOSSLESS"
+  ],
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "pivot_policy": "BOTTOM_CENTER_NORMALIZED_0.5_1.0",
+  "poses": [
+    {
+      "character": "Chakchaki",
+      "pose_id": "P01",
+      "state": "IDLE_LISTEN",
+      "source_index": 1,
+      "source_box": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        195,
+        42,
+        375,
+        474
+      ],
+      "alpha": {
+        "transparent_pixels": 206062,
+        "partial_alpha_pixels": 1217,
+        "opaque_pixels": 54865
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p01_idle-listen_v1.0.png",
+        "sha256": "5471eac97246560320d4c942f2937a28c5ddc77216f4eac477608eb0eef15e30",
+        "bytes": 124208
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p01_idle-listen_v1.0.webp",
+        "sha256": "0d22413c6162389317c43e602d84e8358e0514bd954cea04c3eabb953a33f28f",
+        "bytes": 83594,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P02",
+      "state": "WELCOME",
+      "source_index": 2,
+      "source_box": [
+        384,
+        0,
+        768,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        102,
+        41,
+        346,
+        477
+      ],
+      "alpha": {
+        "transparent_pixels": 202506,
+        "partial_alpha_pixels": 1523,
+        "opaque_pixels": 58115
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png",
+        "sha256": "01e2283bcb729113c035982b40680b3b211e3c3a14b9785252e8cf879965725f",
+        "bytes": 134055
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+        "sha256": "1e9b967e5b40785641949b6f1671dd9efe180357e474eda77e8cde83cd035c0f",
+        "bytes": 90898,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P03",
+      "state": "GUIDE",
+      "source_index": 3,
+      "source_box": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        68,
+        44,
+        346,
+        477
+      ],
+      "alpha": {
+        "transparent_pixels": 201090,
+        "partial_alpha_pixels": 1457,
+        "opaque_pixels": 59597
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p03_guide_v1.0.png",
+        "sha256": "d65406b4a1b9b81e65593762c3a789e5619a478976e39a7170554eb635498e6b",
+        "bytes": 135536
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp",
+        "sha256": "cb201e01a5e8809b3b1d64c74683e892031e85334aecd7a5e0a54606b2907f3b",
+        "bytes": 91110,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P04",
+      "state": "THINK",
+      "source_index": 4,
+      "source_box": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        123,
+        44,
+        315,
+        478
+      ],
+      "alpha": {
+        "transparent_pixels": 205833,
+        "partial_alpha_pixels": 1171,
+        "opaque_pixels": 55140
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p04_think_v1.0.png",
+        "sha256": "33263d42b9a041fe5054dafc3adb9e6410b8bc15637c3be51e43a0f7e1b30029",
+        "bytes": 123399
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p04_think_v1.0.webp",
+        "sha256": "f4f4ad3fddaf70f5e4a7d396199cd567900a2eb868ce61de718ab7a493854d64",
+        "bytes": 82508,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P05",
+      "state": "PRAISE_PROGRESS",
+      "source_index": 5,
+      "source_box": [
+        0,
+        512,
+        384,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        148,
+        14,
+        374,
+        444
+      ],
+      "alpha": {
+        "transparent_pixels": 203080,
+        "partial_alpha_pixels": 1293,
+        "opaque_pixels": 57771
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p05_praise-progress_v1.0.png",
+        "sha256": "2c2ad6fbce787e95ddefc8d943b4ad339389979c329a41177ed239fc090076c6",
+        "bytes": 131906
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p05_praise-progress_v1.0.webp",
+        "sha256": "5c94efb4a8779d1dc00745fc150a0547563cb118ec66898f1e947b9f99753293",
+        "bytes": 88764,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P06",
+      "state": "SEARCH",
+      "source_index": 6,
+      "source_box": [
+        384,
+        512,
+        768,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        108,
+        30,
+        341,
+        434
+      ],
+      "alpha": {
+        "transparent_pixels": 206427,
+        "partial_alpha_pixels": 1750,
+        "opaque_pixels": 53967
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p06_search_v1.0.png",
+        "sha256": "e2eb25b84f022e1a6f11ba6287ca283f4a19696740de38a979925b0bc8c255e8",
+        "bytes": 130060
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p06_search_v1.0.webp",
+        "sha256": "0f8789edca2bc95aa7f1afcf4230c72be5f83df89f149f190aa3782bcd631c55",
+        "bytes": 86664,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P07",
+      "state": "CELEBRATE",
+      "source_index": 7,
+      "source_box": [
+        768,
+        512,
+        1152,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        65,
+        1,
+        400,
+        380
+      ],
+      "alpha": {
+        "transparent_pixels": 205382,
+        "partial_alpha_pixels": 1661,
+        "opaque_pixels": 55101
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p07_celebrate_v1.0.png",
+        "sha256": "c5463f0644b0e0430bc7be93c04010aa557b252fd56dcac42c92c16acfdf0f35",
+        "bytes": 129575
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p07_celebrate_v1.0.webp",
+        "sha256": "a6f3bbda47c84b7dbefbf49fb306d89790cbe727309d022437ce82b1542b64a8",
+        "bytes": 86432,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Chakchaki",
+      "pose_id": "P08",
+      "state": "RETRY",
+      "source_index": 8,
+      "source_box": [
+        1152,
+        512,
+        1536,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        83,
+        14,
+        294,
+        444
+      ],
+      "alpha": {
+        "transparent_pixels": 205920,
+        "partial_alpha_pixels": 1298,
+        "opaque_pixels": 54926
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Chakchaki/chakchaki_p08_retry_v1.0.png",
+        "sha256": "818857a4ea636498a8510bb2337a1245af460ee3863b9d7497876b3ac5edf940",
+        "bytes": 126736
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p08_retry_v1.0.webp",
+        "sha256": "300ed8d96126d88f0452ff6685ded944a514e7cc18ba2c260c9e6f27fc75f962",
+        "bytes": 85782,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P01",
+      "state": "IDLE_LISTEN",
+      "source_index": 1,
+      "source_box": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        128,
+        122,
+        410,
+        450
+      ],
+      "alpha": {
+        "transparent_pixels": 201280,
+        "partial_alpha_pixels": 1142,
+        "opaque_pixels": 59722
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p01_idle-listen_v1.0.png",
+        "sha256": "4601d8d089960a0b58ac04a822adbe50f6c87ee821730c269b59b0c9357e5e2a",
+        "bytes": 120223
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p01_idle-listen_v1.0.webp",
+        "sha256": "51bcf316dbf879872bfca8e8405d3b5474b09ec38dfcb21beeca5a3f8764ebd1",
+        "bytes": 82452,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P02",
+      "state": "WELCOME",
+      "source_index": 2,
+      "source_box": [
+        384,
+        0,
+        768,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        90,
+        122,
+        448,
+        449
+      ],
+      "alpha": {
+        "transparent_pixels": 198669,
+        "partial_alpha_pixels": 1266,
+        "opaque_pixels": 62209
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p02_welcome_v1.0.png",
+        "sha256": "689c01bffb055fca3be3da78756cd91e144f539e1a3fae5671cab4141f326d4b",
+        "bytes": 125830
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+        "sha256": "1ec2920b6a51eb4c2785b23d2fad6a769c02b2e5ceb86712f7ab527e2df7fbb3",
+        "bytes": 86064,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P03",
+      "state": "GUIDE",
+      "source_index": 3,
+      "source_box": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        64,
+        131,
+        398,
+        449
+      ],
+      "alpha": {
+        "transparent_pixels": 202994,
+        "partial_alpha_pixels": 1372,
+        "opaque_pixels": 57778
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png",
+        "sha256": "e1b790e050ac3f53240ddac27d9c309f909349d14ec6bd76f270caf08afa5b81",
+        "bytes": 120944
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p03_guide_v1.0.webp",
+        "sha256": "b172b8cc3fd2a3df22af2809d137e16167b527d04ac2e8ff29f5d3e9fd2176f9",
+        "bytes": 82920,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P04",
+      "state": "THINK",
+      "source_index": 4,
+      "source_box": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        128,
+        125,
+        390,
+        453
+      ],
+      "alpha": {
+        "transparent_pixels": 204198,
+        "partial_alpha_pixels": 1037,
+        "opaque_pixels": 56909
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p04_think_v1.0.png",
+        "sha256": "5560031279193a2171e6c0bfc2a946f2810af1306b77cf3c0fea73797dc1efa1",
+        "bytes": 116431
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p04_think_v1.0.webp",
+        "sha256": "7401714e6a8c3391f0ffca52b27bdd7de7ee47a3dc591a1c54468d5f2b511056",
+        "bytes": 78520,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P05",
+      "state": "PRAISE_PROGRESS",
+      "source_index": 5,
+      "source_box": [
+        0,
+        512,
+        384,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        89,
+        43,
+        440,
+        353
+      ],
+      "alpha": {
+        "transparent_pixels": 204326,
+        "partial_alpha_pixels": 1250,
+        "opaque_pixels": 56568
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.png",
+        "sha256": "f2471b4aaba928600633a06bdc1c4be548d9dde9e129835250b84ce5f539021e",
+        "bytes": 115817
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp",
+        "sha256": "e68bc9dc587832ab28b16b88d42ba52521fd7a7fa5378d5a802a3792573f1ae1",
+        "bytes": 79820,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P06",
+      "state": "SEARCH",
+      "source_index": 6,
+      "source_box": [
+        384,
+        512,
+        768,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        116,
+        31,
+        448,
+        353
+      ],
+      "alpha": {
+        "transparent_pixels": 203680,
+        "partial_alpha_pixels": 1111,
+        "opaque_pixels": 57353
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p06_search_v1.0.png",
+        "sha256": "0a3e2f6548e3ce5f9584db36ce5c0259a24c2e85fa2140d2156c1feddec225ec",
+        "bytes": 119085
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p06_search_v1.0.webp",
+        "sha256": "84c989c8c04c5f7611254d0a30e8da5c4a92dcc8addefe1c705d7143ecf9e76a",
+        "bytes": 80202,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P07",
+      "state": "CELEBRATE",
+      "source_index": 7,
+      "source_box": [
+        768,
+        512,
+        1152,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        64,
+        4,
+        433,
+        324
+      ],
+      "alpha": {
+        "transparent_pixels": 205014,
+        "partial_alpha_pixels": 2073,
+        "opaque_pixels": 55057
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p07_celebrate_v1.0.png",
+        "sha256": "74516a3af207f53ac15a1c7b8767659d95aa2e914f7235b349e68becfd7e8b8b",
+        "bytes": 121842
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p07_celebrate_v1.0.webp",
+        "sha256": "784f2a2c5df5e19573fd9f6aa175a284b44f15cfd6d7a00577a8602ee65133a4",
+        "bytes": 83996,
+        "lossless": true
+      }
+    },
+    {
+      "character": "Gongsickyi",
+      "pose_id": "P08",
+      "state": "RETRY",
+      "source_index": 8,
+      "source_box": [
+        1152,
+        512,
+        1536,
+        1024
+      ],
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "pivot_normalized": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "visible_bbox": [
+        74,
+        40,
+        370,
+        354
+      ],
+      "alpha": {
+        "transparent_pixels": 205634,
+        "partial_alpha_pixels": 1119,
+        "opaque_pixels": 55391
+      },
+      "png": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png/Gongsickyi/gongsickyi_p08_retry_v1.0.png",
+        "sha256": "7daccfcc8644430c45b28979359b12ee8f9f477ea0467510b79ca6575c113237",
+        "bytes": 113265
+      },
+      "webp": {
+        "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p08_retry_v1.0.webp",
+        "sha256": "7f52a83955fd10015a4f63650d4606ddf2784e822d163559db52163727d795f3",
+        "bytes": 77704,
+        "lossless": true
+      }
+    }
+  ],
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "next_gate_allowed": false
+}

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T13:31:00+09:00",
+  "updated_at": "2026-08-05T14:28:00+09:00",
   "head_commit": "f64ba94",
   "branch": "codex/stage8-harness-continuation",
   "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
@@ -68,7 +68,7 @@
     "entry_allowed": true
   },
   "gate2": {
-    "status": "NOT_VERIFIED",
+    "status": "VERIFIED",
     "evidence": [
       "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
       "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
@@ -102,19 +102,23 @@
       "docs/stage8/evidence/gate2-high-fidelity/review/Gongsickyi_Canonical_vs_HighFidelity_v2.0.png",
       "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/BUILD_RECORD_v2.0.json"
     ],
-    "blockers": [
-      "Project Owner identity, pose meaning, and 2D shading review is required for the new shaded 2D pose sheets"
-    ],
+    "blockers": [],
     "entry_allowed": true
   },
   "gate3": {
-    "status": "NOT_STARTED",
+    "status": "BLOCKED",
     "evidence": [
       "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
       "docs/stage8/prompts/CHARACTER_IDENTITY_CORRECTION_METAPROMPT_v1.0.md",
       "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE.md",
       "docs/stage8/prompts/GATE3_RIG_BLENDSHAPE_EXECUTION_METAPROMPT_v1.0.md",
       "docs/stage8/prompts/GATE3_2D_POSE_LAYER_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_AUTOMATED_QA_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_MANUAL_REVIEW_v1.0.json",
+      "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
+      "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
+      "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/POSE_EXTRACTION_BUILD_RECORD_v1.0.json",
       "docs/stage8/audits/CHARACTER_IDENTITY_CORRECTION_AUDIT.md",
       "docs/stage8/audits/GATE3_RIG_BLENDSHAPE_AUDIT.md",
       "docs/stage8/evidence/gate3/GATE3_BUILD_MANIFEST_v1.0.json",
@@ -122,8 +126,8 @@
       "docs/stage8/evidence/gate3/GATE3_MANUAL_REVIEW_v1.0.json",
       "docs/stage8/evidence/gate3/GATE3_RIG_BLENDSHAPE_REPORT_v1.0.md"
     ],
-    "blockers": ["Gate 2 must be VERIFIED with approved shaded 2D pose sheets before pose extraction and layer preparation"],
-    "entry_allowed": false
+    "blockers": ["Project Owner alpha-edge, sprite completeness, and small-UI review is required for the 16 extracted 2D poses"],
+    "entry_allowed": true
   },
   "gate4": {
     "status": "NOT_STARTED",

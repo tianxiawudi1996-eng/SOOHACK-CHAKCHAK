@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 Gate 3 투명 포즈 검토</title>
+  <style>
+    :root { --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --paper:#fff; --bg:#f3f6fb; --muted:#66728a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif; color:var(--navy); background:var(--bg); }
+    header { position:sticky; top:0; z-index:2; padding:18px 26px; color:#fff; background:linear-gradient(115deg,#13224b,#2f5bff); box-shadow:0 8px 24px #1720332b; }
+    h1 { margin:0 0 5px; font-size:23px; } header p { margin:0; opacity:.85; font-size:13px; }
+    main { max-width:1500px; margin:auto; padding:22px; }
+    .status { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px; }
+    .badge { padding:8px 11px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; font-weight:800; }
+    .pending { color:#805600; background:#fff8df; border-color:#f0d573; }
+    section { margin-bottom:28px; }
+    section h2 { margin:0 0 12px; font-size:21px; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(180px,1fr)); gap:14px; }
+    article { overflow:hidden; border:1px solid var(--line); border-radius:16px; background:#fff; box-shadow:0 7px 22px #25395f0d; }
+    .sprite { aspect-ratio:1; display:grid; place-items:center; background-color:#fff; background-image:linear-gradient(45deg,#e6ebf4 25%,transparent 25%),linear-gradient(-45deg,#e6ebf4 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6ebf4 75%),linear-gradient(-45deg,transparent 75%,#e6ebf4 75%); background-size:28px 28px; background-position:0 0,0 14px,14px -14px,-14px 0; }
+    .sprite img { display:block; width:100%; height:100%; object-fit:contain; image-rendering:auto; }
+    .meta { padding:11px 13px 13px; border-top:1px solid var(--line); }
+    .meta strong { display:block; font-size:14px; } .meta span { color:var(--muted); font-size:12px; }
+    .checks { display:grid; grid-template-columns:repeat(4,minmax(170px,1fr)); gap:9px; padding:0; list-style:none; }
+    .checks li { padding:12px; border-radius:12px; background:#eaf0ff; color:#304162; font-size:12px; }
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.checks{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.grid,.checks{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header><h1>Gate 3 투명 포즈 자산 검토</h1><p>체커보드에서 알파 경계·잘림·소품·일관된 캔버스를 확인합니다.</p></header>
+  <main>
+    <div class="status">
+      <span class="badge">자동 QA: PASS</span><span class="badge">PNG: 16/16</span><span class="badge">WebP: 16/16</span>
+      <span class="badge">원본 셀 픽셀 일치: 16/16</span><span class="badge pending">수동 승인: 0/1</span><span class="badge pending">Gate 3: BLOCKED</span>
+    </div>
+    <section><h2>착착이</h2><div id="chakchaki" class="grid"></div></section>
+    <section><h2>공식이</h2><div id="gongsickyi" class="grid"></div></section>
+    <section><h2>검토 체크</h2><ul class="checks">
+      <li>투명 외곽선이 깨끗한가?</li><li>배경 제거 후 정체성이 유지됐는가?</li><li>16개 포즈가 잘림 없이 완전한가?</li><li>캔버스·크기·기준선이 일관적인가?</li>
+      <li>돋보기·별 지시봉·색종이가 보존됐는가?</li><li>작은 UI에서도 읽히는가?</li><li>PNG와 WebP가 동일하게 보이는가?</li><li>녹색 테두리나 배경 잔여물이 없는가?</li>
+    </ul></section>
+  </main>
+  <script>
+    const poses=[['p01','idle-listen','IDLE / LISTEN'],['p02','welcome','WELCOME'],['p03','guide','GUIDE'],['p04','think','THINK'],['p05','praise-progress','PRAISE / PROGRESS'],['p06','search','SEARCH'],['p07','celebrate','CELEBRATE'],['p08','retry','RETRY']];
+    const root='/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/png';
+    function render(target,character){const slug=character.toLowerCase();document.getElementById(target).innerHTML=poses.map(([id,name,label])=>`<article><div class="sprite"><img src="${root}/${character}/${slug}_${id}_${name}_v1.0.png" alt="${character} ${label}"></div><div class="meta"><strong>${id.toUpperCase()} · ${label}</strong><span>512×512 transparent PNG</span></div></article>`).join('');}
+    render('chakchaki','Chakchaki'); render('gongsickyi','Gongsickyi');
+  </script>
+</body>
+</html>

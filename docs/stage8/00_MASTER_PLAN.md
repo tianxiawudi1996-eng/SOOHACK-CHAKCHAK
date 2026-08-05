@@ -12,8 +12,8 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 
 1. Gate 0: SSOT 원본·메타데이터·참조 무결성 — `VERIFIED`
 2. Gate 1: Canonical View 승인 — `VERIFIED`
-3. Gate 2: 음영 2D 다중 포즈 시트 — `NOT_VERIFIED`
-4. Gate 3: 개별 포즈 추출·투명 배경·레이어/피벗 — `NOT_STARTED`
+3. Gate 2: 음영 2D 다중 포즈 시트 — `VERIFIED`
+4. Gate 3: 개별 포즈 추출·투명 배경·레이어/피벗 — `BLOCKED`
 5. Gate 4: 2D 상태 전환·펫 모션·reduced-motion — `NOT_STARTED`
 6. Gate 5: AI Behavior 상태·이벤트·말풍선 연결 — `NOT_STARTED`
 7. Gate 6: Product Integration — `NOT_STARTED`
@@ -40,6 +40,8 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 
 - 착착이·공식이 8포즈 시트 후보 2개를 생성했다.
 - 자동 파일·해시·크기·상태 매핑 QA는 통과했다.
-- Gate 2는 제품 책임자의 정체성·포즈·음영 품질 승인 전까지 `NOT_VERIFIED`다.
-- 승인 후 Gate 3에서 16개 포즈를 개별 투명 자산으로 추출한다.
+- Gate 2는 제품 책임자 1인 승인과 승격 감사를 거쳐 `VERIFIED`다.
+- Gate 3의 16개 포즈는 512×512 투명 PNG와 무손실 WebP로 추출됐고 자동 QA 16/16을 통과했다.
+- Gate 3는 알파 경계·정체성·소품·작은 UI 가독성에 대한 제품 책임자 수동 승인 0/1로 `BLOCKED`다.
+- Gate 3 승인 전에는 Gate 4 상태 전환 모션 작업을 시작하지 않는다.
 - 민감한 `github-recovery-codes.txt`는 읽거나 추적하지 않는다.

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T05:33:56.102696+00:00",
+  "status": "CANDIDATE_BUILT",
+  "script": "scripts/harness/extract_2d_pet_poses.py",
+  "runtime_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+  "runtime_manifest_sha256": "5722f9536b822ab1587d94461cff256fac38f33cb39a98d47a881258336b50b2",
+  "alpha_sources": {
+    "Chakchaki": {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Chakchaki_Shaded2D_PoseSheet_Alpha_v1.0.png",
+      "sha256": "1f69a3ece8284be87d33ff63f565cb63ca5a1aa6be21e9360b7bd78ae0782974",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    "Gongsickyi": {
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Gongsickyi_Shaded2D_PoseSheet_Alpha_v1.0.png",
+      "sha256": "c2ecb930b754d40839c8866e67d8696b3dc7581e38b6a50590b8877a9a589973",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    }
+  },
+  "png_count": 16,
+  "webp_count": 16,
+  "failures": [],
+  "next_gate_allowed": false
+}
