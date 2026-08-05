@@ -7,3 +7,15 @@
 # Local/generated caches.
 __pycache__/
 *.pyc
+
+# Product application dependencies and build outputs.
+node_modules/
+.next/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+*.log
