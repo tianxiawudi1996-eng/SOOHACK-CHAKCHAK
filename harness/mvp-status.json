@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Math ChackChack",
+  "track": "MVP v0.1 foundation",
+  "updatedAt": "2026-08-06T06:57:00+09:00",
+  "status": "DONE_IMPLEMENTED",
+  "gateStatus": "NOT_VERIFIED",
+  "scope": "APPROVED_FOR_FOUNDATION_IMPLEMENTATION",
+  "unit": "ALG-EQ-001",
+  "artifacts": [
+    "docs/product/MVP_v0.1_SCOPE.md",
+    "docs/adr/ADR-0001-2D-FIRST.md",
+    "docs/adr/ADR-0002-ARCHITECTURE.md",
+    "docs/adr/ADR-0003-DATA-PRIVACY.md",
+    "contracts/openapi.yaml",
+    "contracts/schema.sql",
+    "apps/web/index.html",
+    "apps/web/app.js",
+    "apps/web/styles.css",
+    "tests/test_vertical_slice.py"
+  ],
+  "checks": {
+    "unitTests": "PASS_6",
+    "jsonValidation": "PASS",
+    "httpSmoke": "PASS",
+    "realDeviceQA": "NOT_RUN",
+    "userTest": "NOT_RUN"
+  },
+  "productionAllowed": false,
+  "reasons": [
+    "Gate 0 is not VERIFIED",
+    "Backend and database are contract-only",
+    "Real-device and user testing have not run"
+  ]
+}
