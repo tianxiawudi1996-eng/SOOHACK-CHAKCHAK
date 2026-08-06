@@ -3,7 +3,7 @@ import {UI_MESSAGES} from './messages.mjs?v=1.0.0';
 
 const supported = ['ko','zh-CN','ja','en','es','fr','it','ru'];
 const fallback = 'en';
-const state = {locale:fallback,messages:UI_MESSAGES.en,token:null,lesson:null,learningSessionId:null,formulaSession:null,selectedChoice:null};
+const state = {locale:fallback,messages:UI_MESSAGES.en,token:null,lesson:null,learningSessionId:null,formulaSession:null,selectedChoice:null,handoffCode:null};
 const byId = (id) => document.getElementById(id);
 const elements = {
   locale:byId('localeSelect'),intro:byId('introPanel'),lesson:byId('lessonPanel'),complete:byId('completePanel'),
@@ -14,9 +14,10 @@ const elements = {
 };
 
 function normalizeLocale(value='') {
-  const exact = supported.find((item) => item.toLowerCase() === value.toLowerCase());
+  const candidate = String(value ?? '');
+  const exact = supported.find((item) => item.toLowerCase() === candidate.toLowerCase());
   if (exact) return exact;
-  const language = value.split('-')[0].toLowerCase();
+  const language = candidate.split('-')[0].toLowerCase();
   return supported.find((item) => item.split('-')[0].toLowerCase() === language) || null;
 }
 
@@ -72,9 +73,11 @@ function showFeedback(kind,text) {
   elements.feedback.hidden=false;
 }
 
-function optionButton(value) {
+function optionButton(choice) {
+  const value=typeof choice==='string' ? choice : choice.value;
+  const label=typeof choice==='string' ? message(choice) : choice.label;
   const button=document.createElement('button');
-  button.type='button';button.className='choice-button';button.textContent=message(value);
+  button.type='button';button.className='choice-button';button.textContent=label;
   button.addEventListener('click',()=>submitResponse({choice:value}));
   return button;
 }
@@ -168,7 +171,10 @@ async function completeLesson() {
 async function startLesson() {
   elements.start.disabled=true;elements.start.textContent=message('loading');
   try {
-    const bootstrap=await request('/api/v1/local-demo/session',{method:'POST',body:{},authenticated:false});
+    const bootstrap=state.handoffCode
+      ? await request(`/api/v1/local-demo/handoffs/${state.handoffCode}/consume`,{method:'POST',authenticated:false})
+      : await request('/api/v1/local-demo/session',{method:'POST',body:{},authenticated:false});
+    state.handoffCode=null;
     state.token=bootstrap.access_token;
     state.lesson=await request(`/api/v1/concepts/${bootstrap.concept_id}/lesson?locale=${encodeURIComponent(state.locale)}`);
     const learning=await request('/api/v1/learning-sessions',{method:'POST',body:{learning_path_item_id:bootstrap.learning_path_item_id,locale:state.locale}});
@@ -186,6 +192,9 @@ async function startLesson() {
   }
 }
 
+const fragment=new URLSearchParams(location.hash.slice(1));
+state.handoffCode=/^[0-9a-f]{64}$/.test(fragment.get('handoff') || '') ? fragment.get('handoff') : null;
+if (state.handoffCode) history.replaceState(null,'',`${location.pathname}${location.search}`);
 state.locale=resolveLocale();state.messages=UI_MESSAGES[state.locale] || UI_MESSAGES.en;applyMessages();
 elements.start.addEventListener('click',startLesson);
 elements.continue.addEventListener('click',loadFormulaSession);

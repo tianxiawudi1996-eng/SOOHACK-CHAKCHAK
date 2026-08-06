@@ -25,8 +25,10 @@
     "test:productization:math-learning": "npm run test:unit && node scripts/productization/validate_math_learning.mjs",
     "test:productization:math-learning-ui": "node scripts/productization/validate_math_learning_ui.mjs",
     "test:productization:adaptive-learning": "npm run test:unit && node scripts/productization/validate_adaptive_learning.mjs",
+    "test:productization:diagnostic-curriculum": "npm run test:unit && node scripts/productization/validate_diagnostic_curriculum.mjs",
+    "test:integration:diagnostic-curriculum": "node --test tests/integration/web-diagnostic-curriculum.test.mjs",
     "test:productization:presentation-metadata": "node scripts/productization/validate_presentation_metadata.mjs",
-    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features && npm run test:productization:math-learning && npm run test:productization:math-learning-ui && npm run test:productization:adaptive-learning && npm run test:productization:presentation-metadata && npm run test:productization:staging && npm run test:productization:integration && npm run test:productization:operations",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features && npm run test:productization:math-learning && npm run test:productization:math-learning-ui && npm run test:productization:adaptive-learning && npm run test:productization:diagnostic-curriculum && npm run test:productization:presentation-metadata && npm run test:productization:staging && npm run test:productization:integration && npm run test:productization:operations",
     "test": "npm run test:productization"
   },
   "engines": {

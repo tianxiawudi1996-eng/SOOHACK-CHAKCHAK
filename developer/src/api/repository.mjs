@@ -115,6 +115,86 @@ export class MathChakChakRepository {
     });
   }
 
+  async getDiagnosticItems({actor, locale}) {
+    const client = await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client, actor);
+      const result = await client.query(
+        `SELECT dil.problem_item_id AS id, dil.sequence_no, dil.prompt, dil.choices,
+                pi.difficulty, t.semantic_key AS topic_key
+           FROM mathchakchak.diagnostic_item_localization dil
+           JOIN mathchakchak.problem_item pi ON pi.id = dil.problem_item_id AND pi.active = true
+           JOIN mathchakchak.topic t ON t.id = pi.topic_id AND t.active = true
+          WHERE dil.locale = $1
+          ORDER BY dil.sequence_no`,
+        [locale]
+      );
+      return {items:result.rows};
+    } finally {
+      client.release();
+    }
+  }
+
+  async createLocalDemoHandoff({actor, pathItemId, codeHash, key, hash}) {
+    return this.withTransaction(async (client) => {
+      await this.assertStudentOwner(client, actor);
+      const scope = 'local-demo.handoffs.create';
+      const replayReference = await this.findIdempotency(client, {actor, scope, key, hash});
+      if (replayReference) {
+        const replay = await client.query(
+          'SELECT id, expires_at FROM mathchakchak.local_demo_learning_handoff WHERE id = $1',
+          [replayReference]
+        );
+        if (!replay.rowCount) throw notFound();
+        return {...replay.rows[0],replayed:true};
+      }
+      const path = await client.query(
+        `SELECT lpi.id
+           FROM mathchakchak.learning_path_item lpi
+           JOIN mathchakchak.learning_path lp ON lp.id = lpi.learning_path_id
+          WHERE lpi.id = $1 AND lp.student_profile_id = $2 AND lpi.status = 'READY'`,
+        [pathItemId,actor.studentId]
+      );
+      if (!path.rowCount) throw notFound();
+      const id = crypto.randomUUID();
+      const result = await client.query(
+        `INSERT INTO mathchakchak.local_demo_learning_handoff
+          (id, code_hash, student_profile_id, learning_path_item_id, expires_at)
+         VALUES ($1,$2,$3,$4,now() + interval '180 seconds')
+         RETURNING id, expires_at`,
+        [id,codeHash,actor.studentId,pathItemId]
+      );
+      await this.saveIdempotency(client, {actor,scope,key,hash,reference:id,status:201});
+      return {...result.rows[0],replayed:false};
+    });
+  }
+
+  async consumeLocalDemoHandoff({codeHash}) {
+    return this.withTransaction(async (client) => {
+      const result = await client.query(
+        `SELECT h.id, h.learning_path_item_id, h.student_profile_id,
+                u.id AS user_id, c.id AS concept_id, lpi.adaptive_route
+           FROM mathchakchak.local_demo_learning_handoff h
+           JOIN mathchakchak.student_profile sp ON sp.id = h.student_profile_id
+           JOIN mathchakchak.app_user u ON u.id = sp.user_id
+           JOIN mathchakchak.learning_path_item lpi ON lpi.id = h.learning_path_item_id
+           JOIN mathchakchak.math_concept c ON c.topic_id = lpi.topic_id AND c.active = true
+          WHERE h.code_hash = $1 AND h.consumed_at IS NULL AND h.expires_at > now()
+            AND u.auth_subject = 'staging-student-001' AND u.status = 'ACTIVE'
+          ORDER BY c.content_version DESC LIMIT 1
+          FOR UPDATE OF h`,
+        [codeHash]
+      );
+      if (!result.rowCount) throw notFound();
+      await client.query('UPDATE mathchakchak.local_demo_learning_handoff SET consumed_at = now() WHERE id = $1', [result.rows[0].id]);
+      const row = result.rows[0];
+      return {
+        userId:row.user_id,studentId:row.student_profile_id,conceptId:row.concept_id,
+        learningPathItemId:row.learning_path_item_id,adaptiveRoute:row.adaptive_route
+      };
+    });
+  }
+
   async withTransaction(operation) {
     const client = await this.pool.connect();
     try {

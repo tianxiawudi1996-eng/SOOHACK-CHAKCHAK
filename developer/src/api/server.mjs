@@ -1,4 +1,5 @@
 import http from 'node:http';
+import crypto from 'node:crypto';
 import {createSessionToken} from './auth.mjs';
 import {SUPPORTED_LOCALES} from '../i18n/locale-resolver.mjs';
 import {ApiError, badRequest, notFound} from './errors.mjs';
@@ -31,9 +32,13 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/session') return {name: 'localDemoSession'};
+  if (method === 'GET' && pathname === '/api/v1/diagnostic-items') return {name: 'getDiagnosticItems'};
+  if (method === 'POST' && pathname === '/api/v1/local-demo/handoffs') return {name: 'createLocalDemoHandoff'};
+  let match = pathname.match(/^\/api\/v1\/local-demo\/handoffs\/([0-9a-f]{64})\/consume$/);
+  if (method === 'POST' && match) return {name: 'consumeLocalDemoHandoff', code: match[1]};
   if (method === 'POST' && pathname === '/api/v1/diagnostics') return {name: 'createDiagnostic'};
 
-  let match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
+  match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
   if (method === 'POST' && match) return {name: 'addDiagnosticResponse', diagnosticId: match[1]};
   match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/complete$`));
   if (method === 'POST' && match) return {name: 'completeDiagnostic', diagnosticId: match[1]};
@@ -86,8 +91,25 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       environment:'LOCAL_SYNTHETIC_ONLY'
     }, {requestId, locale:'en', status:201});
   }
+  if (match.name === 'consumeLocalDemoHandoff') {
+    if (!auth.localDemoEnabled) throw notFound();
+    const codeHash = crypto.createHash('sha256').update(match.code).digest('hex');
+    const context = await repository.consumeLocalDemoHandoff({codeHash});
+    return success({
+      access_token:createSessionToken({userId:context.userId,studentId:context.studentId}, auth.sessionSecret),
+      token_type:'Bearer',expires_in:300,student_id:context.studentId,
+      concept_id:context.conceptId,learning_path_item_id:context.learningPathItemId,
+      adaptive_route:context.adaptiveRoute,environment:'LOCAL_SYNTHETIC_ONLY'
+    }, {requestId, locale:'en'});
+  }
 
   const actor = requestContext(request, auth);
+  if (match.name === 'getDiagnosticItems') {
+    const url = new URL(request.url, 'http://localhost');
+    const locale = normalizeRequestedLocale(url.searchParams.get('locale') || 'en');
+    const data = await repository.getDiagnosticItems({actor, locale});
+    return success(data, {requestId, locale});
+  }
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -135,6 +157,18 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if (match.name === 'completeDiagnostic') {
     const data = await repository.completeDiagnostic({actor, diagnosticId: requireUuid(match.diagnosticId, 'diagnostic_id'), key, hash});
     return success(data, {requestId, extraMeta: {replayed: data.replayed}});
+  }
+  if (match.name === 'createLocalDemoHandoff') {
+    if (!auth.localDemoEnabled) throw notFound();
+    const pathItemId = requireUuid(body.learning_path_item_id, 'learning_path_item_id');
+    const code = crypto.createHmac('sha256', auth.sessionSecret)
+      .update(`${actor.userId}:${actor.studentId}:${pathItemId}:${key}`)
+      .digest('hex');
+    const codeHash = crypto.createHash('sha256').update(code).digest('hex');
+    const data = await repository.createLocalDemoHandoff({actor, pathItemId, codeHash, key, hash});
+    return success({code,expires_at:data.expires_at,single_use:true,environment:'LOCAL_SYNTHETIC_ONLY'}, {
+      requestId,status:data.replayed ? 200 : 201,extraMeta:{replayed:data.replayed}
+    });
   }
   if (match.name === 'createLearningSession') {
     const locale = normalizeRequestedLocale(body.locale);
