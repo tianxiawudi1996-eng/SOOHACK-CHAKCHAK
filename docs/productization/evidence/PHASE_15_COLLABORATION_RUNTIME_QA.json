@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 15,
+  "tested_at": "2026-08-07T06:03:37+09:00",
+  "status": "PASS_LOCAL_ISOLATED",
+  "runtime_boundary": {
+    "phase_count": "5/5",
+    "structured_signals": "10/10",
+    "free_text_collected": false,
+    "mathematical_mastery_claimed": false,
+    "score_name": "evidence_score"
+  },
+  "postgresql": {
+    "version": 16,
+    "migration": "0006 PASS",
+    "rollback_reapply": "PASS",
+    "phase_evidence_persisted": "5/5",
+    "formula_progress_upserted": "1/1",
+    "completed_session": "1/1"
+  },
+  "guards": {
+    "out_of_order_phase": "409 BLOCKED",
+    "early_completion": "409 BLOCKED",
+    "duplicate_phase": "DB UNIQUE + state guard",
+    "student_ownership": "ENFORCED",
+    "idempotency": "ENFORCED"
+  },
+  "tests": {
+    "unit": "38/38 PASS",
+    "static": "PASS",
+    "integration": "1/1 PASS",
+    "browser_phases": "5/5",
+    "browser_completion_score": "100%",
+    "browser_next_review": "7 days",
+    "browser_horizontal_overflow": false
+  },
+  "external_deployment": {"performed": false}
+}

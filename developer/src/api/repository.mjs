@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 import pg from 'pg';
 import {selectAdaptiveRoute} from '../learning/adaptive-routing.mjs';
 import {buildCurriculumCollaborationPlan} from '../learning/curriculum-collaboration.mjs';
+import {evaluateCollaborationEvidence,nextCollaborationPhase,summarizeCollaborationEvidence} from '../learning/collaboration-runtime.mjs';
 import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
@@ -196,11 +197,29 @@ export class MathChakChakRepository {
     );
     if(!result.rowCount) throw notFound();
     const row=result.rows[0];
+    const evidence=await client.query(
+      `SELECT id,phase_no,signal,outcome,hint_level,duration_ms,lead_character,recorded_at
+         FROM mathchakchak.collaboration_phase_evidence
+        WHERE collaboration_session_id=$1 ORDER BY phase_no`,
+      [sessionId]
+    );
     return {
-      session:{id:row.id,status:row.status,current_phase_no:row.current_phase_no,created_at:row.created_at},
+      session:{
+        id:row.id,status:row.status,current_phase_no:row.current_phase_no,evidence_score:row.evidence_score,
+        created_at:row.created_at,started_at:row.started_at,completed_at:row.completed_at
+      },
       formula:{id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation,title:row.title},
-      plan:buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version})
+      plan:buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version}),
+      evidence:evidence.rows
     };
+  }
+
+  async getCurriculumCollaborationPlan({actor,sessionId}) {
+    const client=await this.pool.connect();
+    try{
+      await this.assertStudentOwner(client,actor);
+      return await this.collaborationPlanResult(client,{actor,sessionId});
+    } finally { client.release(); }
   }
 
   async createCurriculumCollaborationPlan({actor,formulaCatalogId,route,key,hash}) {
@@ -220,6 +239,81 @@ export class MathChakChakRepository {
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.collaborationPlanResult(client,{actor,sessionId:id}),replayed:false};
+    });
+  }
+
+  async addCurriculumCollaborationEvidence({actor,sessionId,phaseNo,signal,hintLevel,durationMs,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const session=await client.query(
+        `SELECT id,status,current_phase_no FROM mathchakchak.formula_collaboration_session
+          WHERE id=$1 AND student_profile_id=$2 FOR UPDATE`,
+        [sessionId,actor.studentId]
+      );
+      if(!session.rowCount) throw notFound();
+      const row=session.rows[0];
+      const scope=`collab.evidence.${sessionId}.${phaseNo}`;
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference) return {...await this.collaborationPlanResult(client,{actor,sessionId}),replayed:true};
+      if(!['PLANNED','IN_PROGRESS'].includes(row.status)) throw conflict('COLLABORATION_SESSION_NOT_ACTIVE');
+      if(row.current_phase_no!==phaseNo) throw conflict('COLLABORATION_PHASE_OUT_OF_ORDER');
+      const evaluated=evaluateCollaborationEvidence({phaseNo,signal,hintLevel,durationMs});
+      const evidenceId=crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.collaboration_phase_evidence
+          (id,collaboration_session_id,phase_no,signal,outcome,hint_level,duration_ms,lead_character)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
+        [evidenceId,sessionId,evaluated.phase_no,evaluated.signal,evaluated.outcome,evaluated.hint_level,evaluated.duration_ms,evaluated.lead_character]
+      );
+      await client.query(
+        `UPDATE mathchakchak.formula_collaboration_session
+            SET status='IN_PROGRESS',started_at=COALESCE(started_at,now()),current_phase_no=$2,updated_at=now()
+          WHERE id=$1`,
+        [sessionId,nextCollaborationPhase(phaseNo)]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:sessionId,status:201});
+      return {...await this.collaborationPlanResult(client,{actor,sessionId}),replayed:false};
+    });
+  }
+
+  async completeCurriculumCollaborationPlan({actor,sessionId,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const session=await client.query(
+        `SELECT * FROM mathchakchak.formula_collaboration_session
+          WHERE id=$1 AND student_profile_id=$2 FOR UPDATE`,
+        [sessionId,actor.studentId]
+      );
+      if(!session.rowCount) throw notFound();
+      const scope=`collab.complete.${sessionId}`;
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference) return {...await this.collaborationPlanResult(client,{actor,sessionId}),replayed:true};
+      if(session.rows[0].status!=='IN_PROGRESS') throw conflict('COLLABORATION_SESSION_NOT_COMPLETABLE');
+      const evidence=await client.query(
+        `SELECT phase_no,outcome,hint_level FROM mathchakchak.collaboration_phase_evidence
+          WHERE collaboration_session_id=$1 ORDER BY phase_no`,
+        [sessionId]
+      );
+      let summary;
+      try{summary=summarizeCollaborationEvidence(evidence.rows);}catch{throw conflict('FIVE_PHASE_EVIDENCE_REQUIRED');}
+      await client.query(
+        `UPDATE mathchakchak.formula_collaboration_session
+            SET status='COMPLETED',evidence_score=$2,completed_at=now(),updated_at=now()
+          WHERE id=$1`,
+        [sessionId,summary.evidence_score]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.student_formula_collaboration_progress
+          (student_profile_id,formula_catalog_id,completed_sessions,latest_evidence_score,next_review_at,last_collaboration_session_id)
+         VALUES ($1,$2,1,$3,now()+make_interval(days=>$4),$5)
+         ON CONFLICT (student_profile_id,formula_catalog_id) DO UPDATE
+           SET completed_sessions=mathchakchak.student_formula_collaboration_progress.completed_sessions+1,
+               latest_evidence_score=EXCLUDED.latest_evidence_score,next_review_at=EXCLUDED.next_review_at,
+               last_collaboration_session_id=EXCLUDED.last_collaboration_session_id,updated_at=now()`,
+        [actor.studentId,session.rows[0].formula_catalog_id,summary.evidence_score,summary.next_review_days,sessionId]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:sessionId,status:200});
+      return {...await this.collaborationPlanResult(client,{actor,sessionId}),next_review_days:summary.next_review_days,replayed:false};
     });
   }
 

@@ -18,6 +18,10 @@ import {
 import {OperationsMetrics} from './metrics.mjs';
 
 const UUID_PATTERN = '[0-9a-fA-F-]{36}';
+const COLLABORATION_PHASE_SIGNALS={
+  1:['CONFIDENT','NEEDS_REVIEW'],2:['CONNECTED','NEEDS_EXAMPLE'],3:['DERIVED','NEEDS_GUIDANCE'],
+  4:['APPLIED','NEEDS_HINT'],5:['VERIFIED','REVIEW_REQUIRED']
+};
 
 function requireUuid(value, field) {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value || '')) {
@@ -41,6 +45,12 @@ function route(method, pathname) {
   match = pathname.match(/^\/api\/v1\/curriculum\/grades\/(E[1-6]|M[1-3]|H[1-3])\/formulas$/);
   if (method === 'GET' && match) return {name:'getGradeFormulas',gradeCode:match[1]};
   if (method === 'POST' && pathname === '/api/v1/curriculum/collaboration-plans') return {name:'createCurriculumCollaborationPlan'};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/collaboration-plans/(${UUID_PATTERN})$`));
+  if (method === 'GET' && match) return {name:'getCurriculumCollaborationPlan',collaborationSessionId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/collaboration-plans/(${UUID_PATTERN})/phase-evidence$`));
+  if (method === 'POST' && match) return {name:'addCurriculumCollaborationEvidence',collaborationSessionId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/collaboration-plans/(${UUID_PATTERN})/complete$`));
+  if (method === 'POST' && match) return {name:'completeCurriculumCollaborationPlan',collaborationSessionId:match[1]};
 
   match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
   if (method === 'POST' && match) return {name: 'addDiagnosticResponse', diagnosticId: match[1]};
@@ -124,6 +134,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getGradeFormulas({actor,gradeCode:match.gradeCode,requestedLocale});
     return success(data,{requestId,locale:requestedLocale});
   }
+  if (match.name === 'getCurriculumCollaborationPlan') {
+    const data=await repository.getCurriculumCollaborationPlan({actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id')});
+    return success(data,{requestId,locale:'ko'});
+  }
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -163,6 +177,21 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       actor,formulaCatalogId:requireUuid(body.formula_catalog_id,'formula_catalog_id'),route:routeName,key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if (match.name === 'addCurriculumCollaborationEvidence') {
+    const phaseNo=body.phase_no;
+    if(!Number.isInteger(phaseNo)||!COLLABORATION_PHASE_SIGNALS[phaseNo]?.includes(body.signal)) throw badRequest('INVALID_COLLABORATION_EVIDENCE','error.invalid_collaboration_evidence');
+    if(body.hint_level!==undefined&&(!Number.isInteger(body.hint_level)||body.hint_level<0||body.hint_level>3)) throw badRequest('INVALID_HINT_LEVEL','error.invalid_hint_level');
+    if(body.duration_ms!==undefined&&(!Number.isInteger(body.duration_ms)||body.duration_ms<0||body.duration_ms>3600000)) throw badRequest('INVALID_DURATION','error.invalid_duration');
+    const data=await repository.addCurriculumCollaborationEvidence({
+      actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id'),phaseNo,signal:body.signal,
+      hintLevel:body.hint_level??0,durationMs:body.duration_ms??null,key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if (match.name === 'completeCurriculumCollaborationPlan') {
+    const data=await repository.completeCurriculumCollaborationPlan({actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id'),key,hash});
+    return success(data,{requestId,extraMeta:{replayed:data.replayed}});
   }
   if (match.name === 'addDiagnosticResponse') {
     const data = await repository.addDiagnosticResponse({
