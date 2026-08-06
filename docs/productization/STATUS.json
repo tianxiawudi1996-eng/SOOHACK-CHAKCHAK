@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 8,
+  "current_phase": 9,
   "phases": {
     "0": {"name": "project_foundation", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:phase0"]},
     "1": {"name": "requirements", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:requirements", "npm.cmd run test:productization"]},
@@ -11,17 +11,14 @@
     "5": {"name": "screen_and_brand_design", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:screens", "browser: 8 locales + 1440px + 390px"]},
     "6": {"name": "feature_development", "status": "VERIFIED", "progress": "15/15", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:features", "npm.cmd run test:productization"]},
     "7": {"name": "staging_deployment", "status": "VERIFIED", "scope": "LOCAL_ISOLATED", "tests": ["npm.cmd run build:staging", "npm.cmd run test:productization:staging", "container health PASS", "locale HTTP 8/8", "security headers 6/6", "rollback rehearsal PASS"]},
-    "8": {"name": "integration_testing", "status": "PARTIAL_VERIFIED", "progress": "FRONTEND_PASS_API_RUNTIME_BLOCKED", "tests": ["npm.cmd run test:productization:integration", "browser locale 8/8", "browser desktop+mobile", "HTTP security headers 6/6"]},
-    "9": {"name": "operations_maintenance", "status": "NOT_STARTED", "tests": []}
+    "8": {"name": "integration_testing", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "tests": ["npm.cmd run test:productization:integration", "npm.cmd run test:integration:api", "browser locale 8/8", "browser desktop+mobile", "API restart persistence PASS", "PostgreSQL 16 API path PASS"]},
+    "9": {"name": "operations_maintenance", "status": "READY", "tests": []}
   },
   "stage8_dependency": {
     "gate5_status": "VERIFIED",
     "gate5_approval": "1/1",
     "gate6_entry_allowed": true
   },
-  "blockers": [
-    "Product API runtime is not deployed in staging",
-    "PostgreSQL is not connected through the product API runtime"
-  ],
-  "last_updated": "2026-08-06T00:40:37+09:00"
+  "blockers": [],
+  "last_updated": "2026-08-06T13:58:34+09:00"
 }

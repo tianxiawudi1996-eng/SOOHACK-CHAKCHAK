@@ -1,15 +1,24 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "tested_at": "2026-08-06T00:40:37+09:00",
+  "tested_at": "2026-08-06T13:58:34+09:00",
   "release": "0.1.0",
-  "status": "PARTIAL_PASS",
-  "result": "FRONTEND_INTEGRATION_PASS_API_RUNTIME_BLOCKED",
+  "status": "PASS",
+  "result": "FULL_INTEGRATION_PASS_LOCAL_ISOLATED",
   "environment": {
-    "type": "DOCKER_LOCAL_ISOLATED",
-    "url": "http://127.0.0.1:4180/?locale=ko",
-    "container_health": "healthy",
-    "image_digest": "sha256:d9d5087c491692dbc44d8f7878fd75433593c4fa1b9d0feba9eb37e2d4f452ae"
+    "type": "DOCKER_LOCAL_ISOLATED_FULL_STACK",
+    "web_url": "http://127.0.0.1:4180/?locale=ko",
+    "api_url": "http://127.0.0.1:4181",
+    "web_health": "healthy",
+    "api_health": "healthy",
+    "database_health": "healthy",
+    "api_container_id": "e6cb0704706368ba3237751fd0d0a72f5344772febc3ce9dabd35bc98a2d5b76",
+    "api_image_digest": "sha256:c679afade3cf07aba1d6024b3de13d77831924bbdbdcc1253a1d4a52bffa9ca8",
+    "database_container_id": "23143c396690c8d8478eebac4ea24a32c6dce62ebc472322b7c274e6933ce6b1",
+    "database_image_digest": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+    "database_external_port_exposed": false,
+    "production_data_used": false,
+    "production_traffic_used": false
   },
   "frontend_checks": {
     "artifact_hashes": "PASS",
@@ -25,12 +34,45 @@
     "console_errors_or_warnings": 0,
     "security_headers": "6/6 PASS"
   },
+  "runtime_integration": {
+    "api_deployed": true,
+    "database_connected_through_api": true,
+    "postgres_version": "16",
+    "schema_tables": "18/18",
+    "synthetic_seed_only": true,
+    "core_user_journey": "PASS",
+    "journey_steps": [
+      "health",
+      "locales",
+      "diagnostic_create",
+      "diagnostic_responses",
+      "diagnostic_complete_and_path_create",
+      "learning_session_create_and_read",
+      "learning_answers",
+      "learning_session_complete",
+      "progress_report_read"
+    ],
+    "server_side_scoring": "PASS",
+    "idempotent_replay": "PASS",
+    "idempotency_payload_mismatch_rejected": "PASS",
+    "missing_idempotency_key_rejected": "PASS",
+    "ownership_denial": "PASS",
+    "invalid_locale_rejected": "PASS",
+    "api_restart_database_persistence": "PASS",
+    "api_log_sensitive_value_scan": "PASS",
+    "status": "PASS"
+  },
+  "database_observation_after_tests": {
+    "diagnostic_sessions": 2,
+    "learning_sessions": 2,
+    "learning_attempts": 6,
+    "idempotency_records": 18
+  },
   "performance_smoke": {
-    "samples": 10,
-    "min_ms": 13.21,
-    "average_ms": 17.9,
-    "max_ms": 46.56,
-    "scope": "LOCAL_LOOPBACK_STATIC_HTML"
+    "frontend_samples": 10,
+    "frontend_average_ms": 17.9,
+    "api_core_journey_ms": 195.5,
+    "scope": "LOCAL_LOOPBACK_ISOLATED_STACK"
   },
   "defects_fixed": [
     {
@@ -38,18 +80,20 @@
       "summary": "필수 HTTP 보안 응답 헤더 누락",
       "fix": "Nginx staging configuration에 CSP 및 5개 방어 헤더 추가",
       "retest": "PASS"
+    },
+    {
+      "id": "P8-NET-002",
+      "summary": "내부 전용 Docker network에서 API 호스트 포트가 게시되지 않음",
+      "fix": "DB 포트 비노출을 유지하고 API만 loopback에 게시하는 bridge network로 수정",
+      "retest": "PASS"
     }
   ],
-  "runtime_integration": {
-    "api_deployed": false,
-    "database_connected_through_api": false,
-    "core_user_journey_tested": false,
-    "status": "BLOCKED_RUNTIME"
-  },
-  "blockers": [
-    "제품 API 런타임이 스테이징에 배포되지 않음",
-    "제품 API를 통한 PostgreSQL 통합 경로가 연결되지 않음"
+  "external_promotion_boundaries": [
+    "trusted identity headers must be replaced or injected only by an authenticated gateway",
+    "local trust database authentication must not be used outside isolated local staging",
+    "TLS and managed secret references are required for external promotion"
   ],
-  "phase8_complete": false,
-  "phase9_entry_allowed": false
+  "blockers": [],
+  "phase8_complete": true,
+  "phase9_entry_allowed": true
 }

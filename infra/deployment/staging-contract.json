@@ -2,15 +2,17 @@
   "schema_version": "1.0.0",
   "project": "MathChakChak",
   "environment": "staging",
-  "status": "DEPLOYED_LOCAL_ISOLATED",
+  "status": "DEPLOYED_LOCAL_FULL_STACK",
   "release": "0.1.0",
   "artifact": "artifacts/staging/v0.1.0/site",
   "scope": {
     "frontend_preview": true,
-    "api_runtime": false,
-    "database_runtime": false,
+    "api_runtime": true,
+    "database_runtime": true,
     "local_container_runtime": true,
-    "external_deployment": false
+    "external_deployment": false,
+    "api_loopback_port": 4181,
+    "database_external_port": false
   },
   "required_configuration": [
     "STAGING_BASE_URL",

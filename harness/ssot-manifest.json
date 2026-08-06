@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T15:43:29.627978+00:00",
+  "generated_at": "2026-08-06T06:07:11.175836+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1206,6 +1206,36 @@
       "size_bytes": 388
     },
     {
+      "path": "developer/src/api/errors.mjs",
+      "sha256": "859517a2341b565863d904fe5ba9b7f94c3289d0e57bff47f932359020fc038d",
+      "size_bytes": 671
+    },
+    {
+      "path": "developer/src/api/http.mjs",
+      "sha256": "1e8adb1934f57ca535a887775ddd7896dc8bca5e142d3fb55b420648c7b2cc4f",
+      "size_bytes": 3010
+    },
+    {
+      "path": "developer/src/api/index.mjs",
+      "sha256": "9220ef475bd79232339286c6c755ef5a9f6b53ccd4f819f604404bef4eb0c766",
+      "size_bytes": 859
+    },
+    {
+      "path": "developer/src/api/repository.mjs",
+      "sha256": "087b9531a3b4dcf5aa5e73b85c5d153bd6b90f4f0772045edfe161024c9c7585",
+      "size_bytes": 17406
+    },
+    {
+      "path": "developer/src/api/scoring.mjs",
+      "sha256": "2560cada4e9e86f8f79ba247f9fefeb3083ef5f5f37d9681734cb4a9e81bed8e",
+      "size_bytes": 851
+    },
+    {
+      "path": "developer/src/api/server.mjs",
+      "sha256": "8ddaa6d8483ce0142a21c44cfe9807f7748ef2628ea0050e92a60a4f1a1637c4",
+      "size_bytes": 7020
+    },
+    {
       "path": "developer/src/auth/role-policy.mjs",
       "sha256": "27283c86f23139aea4df9a7f976a7f8bf65390fb55dde4b5ff5fadea35f424c7",
       "size_bytes": 1133
@@ -1401,6 +1431,11 @@
       "size_bytes": 2375
     },
     {
+      "path": "docs/developer/productization/API_RUNTIME_v1.0.md",
+      "sha256": "b32238139f5fff8b5200834dc04b6fd0e9b51d29775e3bd42e886aa786612a7d",
+      "size_bytes": 1324
+    },
+    {
       "path": "docs/developer/productization/DATA_RETENTION_AND_ACCESS_v1.0.md",
       "sha256": "28df0a46871cbf988fdf11795f9c44f0b96f444bcc06341761cb30ae56deeaeb",
       "size_bytes": 1740
@@ -1502,8 +1537,8 @@
     },
     {
       "path": "docs/productization/evidence/PHASE_8_INTEGRATION_QA.json",
-      "sha256": "0b5f2fadceb1dfe283ba032776de550848d6849ad60ff13f9e99bd642b32c8ef",
-      "size_bytes": 1686
+      "sha256": "4f7c7768c9e68c8f5209a8d0bb94fee794ff8fc7395642d1801d32a859c7f23c",
+      "size_bytes": 3499
     },
     {
       "path": "docs/productization/PHASE_ROADMAP.md",
@@ -1519,6 +1554,11 @@
       "path": "docs/productization/prompts/PHASE_8_INTEGRATION_TEST_METAPROMPT_v1.0.md",
       "sha256": "01595cd99db97a0a109e08073ecb360a462e47450196c4cd815971a7d60439b4",
       "size_bytes": 3043
+    },
+    {
+      "path": "docs/productization/prompts/PHASE_9_OPERATIONS_MAINTENANCE_METAPROMPT_v1.0.md",
+      "sha256": "c1424e3fc1a8d5cd539672be8f2fa09d63f84a57c53fdd94065d99d67380bab9",
+      "size_bytes": 2835
     },
     {
       "path": "docs/productization/reports/PHASE_0_PROJECT_FOUNDATION_REPORT.md",
@@ -1566,9 +1606,9 @@
       "size_bytes": 1376
     },
     {
-      "path": "docs/productization/reports/PHASE_8_INTEGRATION_TEST_PROGRESS.md",
-      "sha256": "7b3fcc762000b6decc55e8983a2f1294d477e611266236742115bacc2439cb51",
-      "size_bytes": 1445
+      "path": "docs/productization/reports/PHASE_8_INTEGRATION_TEST_REPORT.md",
+      "sha256": "c90802cbce8a718a3922e577d9bd36bd18718b07fcf7897b85abb915a61b23eb",
+      "size_bytes": 1928
     },
     {
       "path": "docs/productization/REQUIREMENT_TRACEABILITY_v1.0.md",
@@ -1577,8 +1617,8 @@
     },
     {
       "path": "docs/productization/STATUS.json",
-      "sha256": "5ee7be65297aaf69b75baa6c1ef546984d4677c4a388b265dde8ac4b5da9935d",
-      "size_bytes": 2156
+      "sha256": "2cc5fa6e1894d5272e4e57beb0809afb509869cc42e77fca081635f7c1cb85cc",
+      "size_bytes": 2078
     },
     {
       "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
@@ -2571,9 +2611,29 @@
       "size_bytes": 3202
     },
     {
+      "path": "infra/database/seeds/0001_staging_seed.sql",
+      "sha256": "f94f198a9643bfabe0fd2fec03f159ddc350d3bac083d8297bcf7427acfefa08",
+      "size_bytes": 1291
+    },
+    {
       "path": "infra/database/tests/0001_smoke.sql",
       "sha256": "19b8ac2deff2892470e75acccc28007568a11e3b37aa2a889f33435fd596b3dd",
       "size_bytes": 2060
+    },
+    {
+      "path": "infra/deployment/API_STAGING_RUNBOOK.md",
+      "sha256": "eb7d266f797a4fcc82ac63057bcd3901a896a6b13751a992e83fba06d2ed8c8f",
+      "size_bytes": 1211
+    },
+    {
+      "path": "infra/deployment/compose.api-staging.yaml",
+      "sha256": "9c5653d1af0f153d42ab7bb0df9a7d0b4b28b96c20eb5af5e126d09ef6a556ab",
+      "size_bytes": 1386
+    },
+    {
+      "path": "infra/deployment/Dockerfile.api",
+      "sha256": "211f04e85721677f7e2a04f10ae2993b82199e5c55f6a25101a89968779dc21b",
+      "size_bytes": 243
     },
     {
       "path": "infra/deployment/Dockerfile.staging",
@@ -2592,8 +2652,8 @@
     },
     {
       "path": "infra/deployment/staging-contract.json",
-      "sha256": "fc0c15df3baa04aa8265627a79f94581d7595c0589e7bdccfef887124e138250",
-      "size_bytes": 1357
+      "sha256": "ffc5010137b36ae33a7b9e4928ce525dd6bb617c4f66ecf733e309fb420f605f",
+      "size_bytes": 1425
     },
     {
       "path": "infra/deployment/staging.env.example",
@@ -2946,9 +3006,14 @@
       "size_bytes": 167680
     },
     {
+      "path": "package-lock.json",
+      "sha256": "878a9997cc7e9025d13dc44065802560ef841ce44a6b4418008bd2eda07801de",
+      "size_bytes": 5701
+    },
+    {
       "path": "package.json",
-      "sha256": "016c4c2b47b20dd4e896791e5c1de91a1873c9dc758eb83a4a1b51abf7a45c7d",
-      "size_bytes": 1614
+      "sha256": "9ba306ad780994c103458c97324edc12b058542366f6831c4b5d27973171d706",
+      "size_bytes": 1799
     },
     {
       "path": "README.md",
@@ -3102,8 +3167,8 @@
     },
     {
       "path": "scripts/productization/validate_integration.mjs",
-      "sha256": "031c524125268fd78a9305ceb3afca0571fc8b93d565b7dbf6b89ef4511a1b8d",
-      "size_bytes": 2647
+      "sha256": "90cc68ccba0acb721c85cf71b3da2c1127acc9706893faa288a718f21f5e8d22",
+      "size_bytes": 4159
     },
     {
       "path": "scripts/productization/validate_phase0.mjs",
@@ -3176,6 +3241,11 @@
       "size_bytes": 4322
     },
     {
+      "path": "tests/integration/api-core-journey.test.mjs",
+      "sha256": "574e0da703ab262b210d1f77be81bb6a153b2cf52c6662f1ca9f106d32090935",
+      "size_bytes": 6521
+    },
+    {
       "path": "tests/unit/agent/feedback-policy.test.mjs",
       "sha256": "51da0cb2274dc7dbac7f41e966310e977afbe8c2d96d09e827e4250694d4dfb6",
       "size_bytes": 504
@@ -3184,6 +3254,11 @@
       "path": "tests/unit/agent/hint-policy.test.mjs",
       "sha256": "6a7bb942283ad83f664e4449a2a09664e5ed4a8fdcc3eb0488d14bf04e6f5b5b",
       "size_bytes": 554
+    },
+    {
+      "path": "tests/unit/api/scoring.test.mjs",
+      "sha256": "1ddd869faf02fb2eb4c58100caefbe2778286652d4ae9255e432b1702d21235b",
+      "size_bytes": 495
     },
     {
       "path": "tests/unit/auth/role-policy.test.mjs",
