@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 16,
+  "tested_at": "2026-08-07T06:22:46+09:00",
+  "status": "PASS_LOCAL_ISOLATED",
+  "assessment_boundary": {
+    "kind": "FORMULA_RECOGNITION",
+    "score_name": "recall_score",
+    "mathematical_application_mastery_claimed": false,
+    "answer_schema_exposed_to_client": false
+  },
+  "content": {
+    "grades": "12/12",
+    "formula_items": "72/72",
+    "items_per_formula": "1/1",
+    "choices_per_item": "4/4",
+    "source": "Phase 14 canonical Korean formula catalog"
+  },
+  "postgresql": {
+    "version": 16,
+    "migration": "0007 PASS",
+    "seed": "0005 PASS",
+    "rollback_reapply": "PASS",
+    "items_after_restore": 72,
+    "progress_upsert": "PASS"
+  },
+  "guards": {
+    "incomplete_collaboration_attempt": "409 BLOCKED",
+    "matching_completed_session": "REQUIRED",
+    "server_side_scoring": "ENFORCED",
+    "student_ownership": "ENFORCED",
+    "idempotency": "ENFORCED"
+  },
+  "tests": {
+    "unit": "38/38 PASS",
+    "static": "PASS",
+    "integration": "1/1 PASS",
+    "browser_collaboration_phases": "5/5",
+    "browser_choices": "4/4",
+    "browser_result": "CORRECT",
+    "browser_cumulative_recall_score": "67%",
+    "browser_answer_schema_visible": false,
+    "presentation_metadata": "PASS"
+  },
+  "runtime": {
+    "url": "http://127.0.0.1:4180/curriculum/index.html?locale=ko&grade=E6",
+    "web_container_id": "cbd5573d929406b7d2de7a7c9eeb38d4fa7ae7abab77b570202dbd138ba4b2cd",
+    "api_container_id": "284ea43271f548453af7ac981db94d9cccada7dda33b6cb1b69dd5a5ba1e21d3",
+    "database_container_id": "07f713e80cfbef33dbdbad82ccbf0412c2349d6ebaec7e2a08abdbdc30200f8e"
+  },
+  "external_deployment": {"performed": false}
+}

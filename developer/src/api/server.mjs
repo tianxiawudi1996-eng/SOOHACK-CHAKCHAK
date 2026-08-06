@@ -51,6 +51,10 @@ function route(method, pathname) {
   if (method === 'POST' && match) return {name:'addCurriculumCollaborationEvidence',collaborationSessionId:match[1]};
   match = pathname.match(new RegExp(`^/api/v1/curriculum/collaboration-plans/(${UUID_PATTERN})/complete$`));
   if (method === 'POST' && match) return {name:'completeCurriculumCollaborationPlan',collaborationSessionId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/formulas/(${UUID_PATTERN})/recall-check$`));
+  if (method === 'GET' && match) return {name:'getFormulaRecallCheck',formulaCatalogId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/recall-checks/(${UUID_PATTERN})/attempts$`));
+  if (method === 'POST' && match) return {name:'addFormulaRecallAttempt',recallItemId:match[1]};
 
   match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
   if (method === 'POST' && match) return {name: 'addDiagnosticResponse', diagnosticId: match[1]};
@@ -138,6 +142,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getCurriculumCollaborationPlan({actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id')});
     return success(data,{requestId,locale:'ko'});
   }
+  if (match.name === 'getFormulaRecallCheck') {
+    const url=new URL(request.url,'http://localhost');
+    const requestedLocale=normalizeRequestedLocale(url.searchParams.get('locale')||'ko');
+    const data=await repository.getFormulaRecallCheck({actor,formulaCatalogId:requireUuid(match.formulaCatalogId,'formula_catalog_id'),requestedLocale});
+    return success(data,{requestId,locale:requestedLocale});
+  }
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -192,6 +202,16 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if (match.name === 'completeCurriculumCollaborationPlan') {
     const data=await repository.completeCurriculumCollaborationPlan({actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id'),key,hash});
     return success(data,{requestId,extraMeta:{replayed:data.replayed}});
+  }
+  if (match.name === 'addFormulaRecallAttempt') {
+    if(typeof body.selected_value!=='string'||body.selected_value.length<1||body.selected_value.length>191) throw badRequest('INVALID_RECALL_SELECTION','error.invalid_recall_selection');
+    if(body.duration_ms!==undefined&&(!Number.isInteger(body.duration_ms)||body.duration_ms<0||body.duration_ms>3600000)) throw badRequest('INVALID_DURATION','error.invalid_duration');
+    const data=await repository.addFormulaRecallAttempt({
+      actor,recallItemId:requireUuid(match.recallItemId,'recall_item_id'),
+      collaborationSessionId:requireUuid(body.collaboration_session_id,'collaboration_session_id'),
+      selectedValue:body.selected_value,durationMs:body.duration_ms??null,key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }
   if (match.name === 'addDiagnosticResponse') {
     const data = await repository.addDiagnosticResponse({

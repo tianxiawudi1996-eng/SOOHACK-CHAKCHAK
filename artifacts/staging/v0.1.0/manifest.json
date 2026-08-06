@@ -43,13 +43,13 @@
     },
     {
       "path": "site/curriculum/app.js",
-      "bytes": 12392,
-      "sha256": "4ee5946344a5c824547b00ffafa2ac431eb59a31e1a481975d0dfd74e36adc05"
+      "bytes": 15895,
+      "sha256": "1cb67c7afcab5dfc8664c8e28f0d8af71ec6bb485a37b11adf410c5a06a4272d"
     },
     {
       "path": "site/curriculum/index.html",
-      "bytes": 2871,
-      "sha256": "7fca2c0868454522ace8ba25923d6cf517c16adc7a4df2745eb5485266733be1"
+      "bytes": 3215,
+      "sha256": "857866afb5485ccaa9919f2a8b9a64b53a44ad4f4528b1cd9e7ec6ddc4fa2498"
     },
     {
       "path": "site/curriculum/messages.mjs",
@@ -63,8 +63,8 @@
     },
     {
       "path": "site/curriculum/styles.css",
-      "bytes": 4978,
-      "sha256": "f005a2fa933540e4684cade3c5c580aa53f2e2ce3b2ae8a8a9bee1191ec5422f"
+      "bytes": 5686,
+      "sha256": "29a90c17de266c121aec2b0d8f372b8e3e94883d61fd05638bf36b816a9e9519"
     },
     {
       "path": "site/diagnostic/app.js",

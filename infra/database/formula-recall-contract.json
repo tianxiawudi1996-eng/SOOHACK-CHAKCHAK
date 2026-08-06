@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 16,
+  "database": "PostgreSQL",
+  "assessment_kind": "FORMULA_RECOGNITION",
+  "item_count": 72,
+  "items_per_formula": 1,
+  "choices_per_item": 4,
+  "score_name": "recall_score",
+  "mathematical_application_mastery_claimed": false,
+  "answer_schema_exposed_to_client": false,
+  "migration": "infra/database/migrations/0007_formula_recall_check.sql",
+  "rollback": "infra/database/migrations/0007_formula_recall_check_rollback.sql",
+  "seed": "infra/database/seeds/0005_formula_recall_checks.sql"
+}
