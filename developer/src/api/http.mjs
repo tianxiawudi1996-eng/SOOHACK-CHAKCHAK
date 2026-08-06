@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import {ApiError, badRequest} from './errors.mjs';
 import {normalizeLocale} from '../i18n/locale-resolver.mjs';
+import {authenticatedRequestContext} from './auth.mjs';
 
 const MAX_BODY_BYTES = 64 * 1024;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -21,14 +22,12 @@ export async function readJson(request) {
   }
 }
 
-export function requestContext(request) {
-  const userId = request.headers['x-user-id'];
-  const studentId = request.headers['x-student-id'];
-  const role = request.headers['x-role'];
-  if (!UUID_PATTERN.test(userId || '') || !UUID_PATTERN.test(studentId || '') || role !== 'STUDENT') {
+export function requestContext(request, auth) {
+  const context = authenticatedRequestContext(request, auth);
+  if (!UUID_PATTERN.test(context.userId) || !UUID_PATTERN.test(context.studentId)) {
     throw new ApiError(401, 'UNAUTHENTICATED', 'error.unauthenticated');
   }
-  return {userId, studentId, role};
+  return context;
 }
 
 export function requireIdempotencyKey(request) {
@@ -60,6 +59,17 @@ export function sendJson(response, status, payload, {requestId, locale = 'en'} =
     'X-Frame-Options': 'DENY',
     'Referrer-Policy': 'no-referrer',
     'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
+    'X-Request-Id': requestId
+  });
+  response.end(body);
+}
+
+export function sendText(response, status, body, {requestId, contentType = 'text/plain; charset=utf-8'} = {}) {
+  response.writeHead(status, {
+    'Content-Type': contentType,
+    'Content-Length': Buffer.byteLength(body),
+    'Cache-Control': 'no-store',
+    'X-Content-Type-Options': 'nosniff',
     'X-Request-Id': requestId
   });
   response.end(body);

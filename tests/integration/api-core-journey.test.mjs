@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {createSessionToken} from '../../developer/src/api/auth.mjs';
 
 const baseUrl = process.env.API_BASE_URL || 'http://127.0.0.1:4181';
 const userId = '11111111-1111-4111-8111-111111111111';
@@ -8,11 +9,11 @@ const studentId = '22222222-2222-4222-8222-222222222222';
 const problem1 = '44444444-4444-4444-8444-444444444444';
 const problem2 = '55555555-5555-4555-8555-555555555555';
 const problem3 = '66666666-6666-4666-8666-666666666666';
+const sessionSecret = process.env.TEST_SESSION_HMAC_SECRET;
+if (!sessionSecret) throw new Error('TEST_SESSION_HMAC_SECRET_REQUIRED');
 
 const actorHeaders = {
-  'x-user-id': userId,
-  'x-student-id': studentId,
-  'x-role': 'STUDENT'
+  authorization: `Bearer ${createSessionToken({userId,studentId}, sessionSecret)}`
 };
 
 async function api(path, {method = 'GET', body, key, headers = {}} = {}) {
@@ -31,14 +32,20 @@ async function api(path, {method = 'GET', body, key, headers = {}} = {}) {
 }
 
 test('diagnostic to learning progress core journey persists through PostgreSQL', async () => {
-  const health = await api('/healthz', {headers:{'x-user-id':'','x-student-id':'','x-role':''}});
+  const health = await api('/healthz');
   assert.equal(health.response.status, 200);
   assert.equal(health.payload.data.database.ready, true);
   assert.match(health.response.headers.get('content-security-policy'), /default-src 'none'/);
   assert.equal(health.response.headers.get('x-content-type-options'), 'nosniff');
 
-  const locales = await api('/api/v1/locales', {headers:{'x-user-id':'','x-student-id':'','x-role':''}});
+  const locales = await api('/api/v1/locales');
   assert.equal(locales.payload.data.locales.length, 8);
+
+  const rawHeaderAttempt = await fetch(`${baseUrl}/api/v1/students/${studentId}/progress`, {
+    headers:{'x-user-id':userId,'x-student-id':studentId,'x-role':'STUDENT'}
+  });
+  assert.equal(rawHeaderAttempt.status, 401);
+  assert.equal((await rawHeaderAttempt.json()).error.code, 'UNAUTHENTICATED');
 
   const diagnosticKey = `diag-${crypto.randomUUID()}`;
   const diagnosticBody = {locale:'ko'};
@@ -124,7 +131,7 @@ test('diagnostic to learning progress core journey persists through PostgreSQL',
   assert.ok(progress.payload.data.learning_sessions.completed >= 1);
 
   const denied = await api(`/api/v1/students/99999999-9999-4999-8999-999999999999/progress`, {
-    headers:{'x-student-id':'99999999-9999-4999-8999-999999999999'}
+    headers:{authorization:`Bearer ${createSessionToken({userId,studentId:'99999999-9999-4999-8999-999999999999'}, sessionSecret)}`}
   });
   assert.equal(denied.response.status, 403);
   assert.equal(denied.payload.error.code, 'FORBIDDEN');
@@ -138,4 +145,10 @@ test('diagnostic to learning progress core journey persists through PostgreSQL',
   const missingIdempotency = await api('/api/v1/diagnostics', {method:'POST', body:{locale:'ko'}});
   assert.equal(missingIdempotency.response.status, 400);
   assert.equal(missingIdempotency.payload.error.code, 'IDEMPOTENCY_KEY_REQUIRED');
+
+  const metrics = await fetch(`${baseUrl}/metrics`);
+  const metricsText = await metrics.text();
+  assert.equal(metrics.status, 200);
+  assert.match(metricsText, /mathchakchak_http_requests_total [1-9][0-9]*/);
+  assert.match(metricsText, /mathchakchak_http_server_errors_total 0/);
 });

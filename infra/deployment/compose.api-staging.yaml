@@ -28,6 +28,8 @@ services:
       DATABASE_URL: postgresql://mathchakchak@database:5432/mathchakchak
       RUNTIME_ENV: staging-local-isolated
       PORT: "8080"
+      SESSION_HMAC_SECRET: ${MATHCHAKCHAK_STAGE_SESSION_SECRET:?MATHCHAKCHAK_STAGE_SESSION_SECRET is required}
+      ALLOW_TRUSTED_TEST_HEADERS: "false"
     depends_on:
       database:
         condition: service_healthy

@@ -10,8 +10,10 @@ import {
   requestHash,
   requireIdempotencyKey,
   sendJson,
+  sendText,
   success
 } from './http.mjs';
+import {OperationsMetrics} from './metrics.mjs';
 
 const UUID_PATTERN = '[0-9a-fA-F-]{36}';
 
@@ -24,6 +26,8 @@ function requireUuid(value, field) {
 
 function route(method, pathname) {
   if (method === 'GET' && pathname === '/healthz') return {name: 'health'};
+  if (method === 'GET' && pathname === '/readyz') return {name: 'health'};
+  if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
   if (method === 'POST' && pathname === '/api/v1/diagnostics') return {name: 'createDiagnostic'};
 
@@ -45,15 +49,16 @@ function route(method, pathname) {
   return null;
 }
 
-async function execute(repository, request, match, requestId) {
+async function execute(repository, request, match, requestId, {auth, metrics}) {
   if (match.name === 'health') {
     return success({status: 'ok', database: await repository.health()}, {requestId});
   }
   if (match.name === 'locales') {
     return success({locales: SUPPORTED_LOCALES, fallback: 'en'}, {requestId});
   }
+  if (match.name === 'metrics') return {status: 200, text: metrics.render()};
 
-  const actor = requestContext(request);
+  const actor = requestContext(request, auth);
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -122,7 +127,7 @@ async function execute(repository, request, match, requestId) {
   throw notFound();
 }
 
-export function createMathChakChakServer({repository}) {
+export function createMathChakChakServer({repository, auth, metrics = new OperationsMetrics()}) {
   return http.createServer(async (request, response) => {
     const requestId = newRequestId();
     const startedAt = performance.now();
@@ -131,9 +136,10 @@ export function createMathChakChakServer({repository}) {
       const url = new URL(request.url, 'http://localhost');
       const matched = route(request.method, url.pathname);
       if (!matched) throw notFound();
-      const result = await execute(repository, request, matched, requestId);
+      const result = await execute(repository, request, matched, requestId, {auth, metrics});
       status = result.status;
-      sendJson(response, result.status, result.payload, {requestId, locale: result.payload.meta?.locale});
+      if (result.text !== undefined) sendText(response, result.status, result.text, {requestId, contentType: 'text/plain; version=0.0.4; charset=utf-8'});
+      else sendJson(response, result.status, result.payload, {requestId, locale: result.payload.meta?.locale});
     } catch (error) {
       if (error?.code === '22P02') error = badRequest('INVALID_IDENTIFIER', 'error.invalid_identifier');
       if (error?.code === '23503') error = badRequest('INVALID_REFERENCE', 'error.invalid_reference');
@@ -144,13 +150,15 @@ export function createMathChakChakServer({repository}) {
         console.error(JSON.stringify({event: 'request_failure', request_id: requestId, code: 'INTERNAL_ERROR'}));
       }
     } finally {
+      const durationMs = Math.round((performance.now() - startedAt) * 100) / 100;
+      metrics.record({status, durationMs});
       console.log(JSON.stringify({
         event: 'http_request',
         request_id: requestId,
         method: request.method,
         path: new URL(request.url, 'http://localhost').pathname,
         status,
-        duration_ms: Math.round((performance.now() - startedAt) * 100) / 100
+        duration_ms: durationMs
       }));
     }
   });
