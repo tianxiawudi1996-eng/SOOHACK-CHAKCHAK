@@ -6,7 +6,7 @@
     {"id":"FEAT-LAND-001","requirement_id":"REQ-P0-002","owner":"client","unit_test":"scripts/productization/validate_screen_design.mjs","dependencies":["FEAT-I18N-001"]},
     {"id":"FEAT-AUTH-001","requirement_id":"REQ-P0-003","owner":"developer","unit_test":"tests/unit/auth/role-policy.test.mjs","dependencies":[]},
     {"id":"FEAT-DIAG-001","requirement_id":"REQ-P0-004","owner":"developer","unit_test":"tests/unit/diagnosis/diagnosis-service.test.mjs","dependencies":["FEAT-AUTH-001"]},
-    {"id":"FEAT-LEARN-001","requirement_id":"REQ-P0-005","owner":"developer","unit_test":"tests/unit/learning/session-machine.test.mjs","dependencies":["FEAT-DIAG-001"]},
+    {"id":"FEAT-LEARN-001","requirement_id":"REQ-P0-005","owner":"developer","unit_test":"tests/unit/learning/formula-learning.test.mjs","dependencies":["FEAT-DIAG-001"]},
     {"id":"FEAT-HINT-001","requirement_id":"REQ-P0-006","owner":"agent","unit_test":"tests/unit/agent/hint-policy.test.mjs","dependencies":["FEAT-LEARN-001"]},
     {"id":"FEAT-FEED-001","requirement_id":"REQ-P0-007","owner":"agent","unit_test":"tests/unit/agent/feedback-policy.test.mjs","dependencies":["FEAT-LEARN-001"]},
     {"id":"FEAT-REVIEW-001","requirement_id":"REQ-P0-008","owner":"developer","unit_test":"tests/unit/review/review-scheduler.test.mjs","dependencies":["FEAT-LEARN-001"]},

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 10,
+  "status": "PASS",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "executed_at": "2026-08-06T17:01:31+09:00",
+  "database": {
+    "engine": "PostgreSQL",
+    "major_version": 16,
+    "base_tables": 18,
+    "formula_learning_extension_tables": 8,
+    "runtime_table_count": 26,
+    "formula_localizations": 8,
+    "lesson_steps": 5
+  },
+  "automated_qa": {
+    "unit_tests": "21/21 PASS",
+    "math_learning_contract": "PASS",
+    "legacy_productization_suite": "PASS",
+    "legacy_api_core_journey": "PASS",
+    "formula_learning_postgres_journey": "PASS"
+  },
+  "journey_evidence": {
+    "locales": "8/8",
+    "stages": "5/5",
+    "misconception_detected": "ADD_DENOMINATORS",
+    "completed_formula_sessions": 1,
+    "mastery_score": 1.0,
+    "expected_response_exposed": false
+  },
+  "manual_product_approval": "NOT_REQUIRED_FOR_BACKEND_CORRECTION",
+  "next": "Implement the student-facing formula lesson screen and expand curriculum content beyond the first fraction lesson."
+}

@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import pg from 'pg';
+import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
@@ -29,6 +30,30 @@ function mapLearningSession(row) {
     started_at: row.started_at,
     completed_at: row.completed_at,
     created_at: row.created_at,
+    updated_at: row.updated_at
+  };
+}
+
+function localizeValue(value, locale) {
+  if (Array.isArray(value)) return value.map((item) => localizeValue(item, locale));
+  if (!value || typeof value !== 'object') return value;
+  const localeKeys = ['ko', 'zh-CN', 'ja', 'en', 'es', 'fr', 'it', 'ru'];
+  if (localeKeys.some((key) => Object.hasOwn(value, key))) return value[locale] ?? value.en ?? value.ko;
+  return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, localizeValue(item, locale)]));
+}
+
+function mapFormulaSession(row) {
+  return {
+    id: row.id,
+    learning_session_id: row.learning_session_id,
+    lesson_definition_id: row.lesson_definition_id,
+    student_id: row.student_profile_id,
+    locale: row.locale,
+    status: row.status,
+    current_step_no: row.current_step_no,
+    mastery_score: Number(row.mastery_score),
+    started_at: row.started_at,
+    completed_at: row.completed_at,
     updated_at: row.updated_at
   };
 }
@@ -267,6 +292,266 @@ export class MathChakChakRepository {
     }
   }
 
+  async getConceptLesson({actor, conceptId, locale}) {
+    const client = await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client, actor);
+      const lesson = await client.query(
+        `SELECT c.id AS concept_id, c.semantic_key AS concept_key, c.grade_band,
+                f.id AS formula_id, f.semantic_key AS formula_key, f.notation,
+                f.variable_definitions, f.derivation_steps, f.misconception_rules,
+                fl.title, fl.plain_language, fl.memory_cue, fl.worked_example_intro,
+                ld.id AS lesson_definition_id, ld.semantic_key AS lesson_key,
+                ld.content_version, ld.mastery_threshold
+           FROM mathchakchak.math_concept c
+           JOIN mathchakchak.formula_definition f ON f.concept_id = c.id AND f.active = true
+           JOIN mathchakchak.formula_localization fl ON fl.formula_id = f.id AND fl.locale = $2
+           JOIN mathchakchak.lesson_definition ld ON ld.concept_id = c.id AND ld.active = true
+          WHERE c.id = $1 AND c.active = true
+          ORDER BY ld.content_version DESC LIMIT 1`,
+        [conceptId, locale]
+      );
+      if (!lesson.rowCount) throw notFound();
+      const examples = await client.query(
+        `SELECT sequence_no, problem_context, solution_steps, final_answer
+           FROM mathchakchak.worked_example
+          WHERE formula_id = $1 AND active = true ORDER BY sequence_no`,
+        [lesson.rows[0].formula_id]
+      );
+      const steps = await client.query(
+        `SELECT id, sequence_no, stage, interaction_type, content,
+                jsonb_array_length(hint_ladder) AS hint_count
+           FROM mathchakchak.lesson_step
+          WHERE lesson_definition_id = $1 ORDER BY sequence_no`,
+        [lesson.rows[0].lesson_definition_id]
+      );
+      const row = lesson.rows[0];
+      return {
+        concept: {id:row.concept_id,semantic_key:row.concept_key,grade_band:row.grade_band},
+        formula: {
+          id:row.formula_id,semantic_key:row.formula_key,notation:row.notation,
+          variable_definitions:row.variable_definitions,derivation_steps:row.derivation_steps,
+          misconception_rules:row.misconception_rules,title:row.title,
+          plain_language:row.plain_language,memory_cue:row.memory_cue,
+          worked_example_intro:row.worked_example_intro
+        },
+        lesson: {
+          id:row.lesson_definition_id,semantic_key:row.lesson_key,content_version:row.content_version,
+          mastery_threshold:Number(row.mastery_threshold),
+          steps:steps.rows.map((step) => ({...step,content:localizeValue(step.content, locale)}))
+        },
+        worked_examples:examples.rows
+      };
+    } finally {
+      client.release();
+    }
+  }
+
+  async formulaSessionResult(client, {actor, formulaSessionId}) {
+    const session = await client.query(
+      `SELECT * FROM mathchakchak.formula_learning_session
+        WHERE id = $1 AND student_profile_id = $2`,
+      [formulaSessionId, actor.studentId]
+    );
+    if (!session.rowCount) throw notFound();
+    const row = session.rows[0];
+    let currentStep = null;
+    if (row.status === 'IN_PROGRESS' && row.current_step_no <= 5) {
+      const step = await client.query(
+        `SELECT id, sequence_no, stage, interaction_type, content,
+                jsonb_array_length(hint_ladder) AS hint_count
+           FROM mathchakchak.lesson_step
+          WHERE lesson_definition_id = $1 AND sequence_no = $2`,
+        [row.lesson_definition_id, row.current_step_no]
+      );
+      currentStep = step.rowCount ? {...step.rows[0],content:localizeValue(step.rows[0].content, row.locale)} : null;
+    }
+    const summary = await client.query(
+      `SELECT count(*)::integer AS attempts,
+              count(DISTINCT lesson_step_id) FILTER (WHERE outcome = 'CORRECT')::integer AS completed_steps,
+              array_remove(array_agg(DISTINCT misconception_code), NULL) AS misconceptions
+         FROM mathchakchak.formula_learning_response WHERE formula_learning_session_id = $1`,
+      [formulaSessionId]
+    );
+    return {...mapFormulaSession(row),current_step:currentStep,response_summary:summary.rows[0]};
+  }
+
+  async startFormulaLesson({actor, learningSessionId, lessonDefinitionId, key, hash}) {
+    return this.withTransaction(async (client) => {
+      await this.assertStudentOwner(client, actor);
+      const learning = await client.query(
+        `SELECT ls.*, lpi.topic_id
+           FROM mathchakchak.learning_session ls
+           JOIN mathchakchak.learning_path_item lpi ON lpi.id = ls.learning_path_item_id
+          WHERE ls.id = $1 AND ls.student_profile_id = $2 FOR UPDATE`,
+        [learningSessionId, actor.studentId]
+      );
+      if (!learning.rowCount) throw notFound();
+      if (learning.rows[0].status !== 'IN_PROGRESS') throw conflict('LEARNING_SESSION_NOT_ACTIVE');
+      const scope = `formula-lessons.create.${learningSessionId}`;
+      const replayReference = await this.findIdempotency(client, {actor, scope, key, hash});
+      if (replayReference) return {...await this.formulaSessionResult(client, {actor, formulaSessionId:replayReference}),replayed:true};
+      const definition = await client.query(
+        `SELECT ld.id
+           FROM mathchakchak.lesson_definition ld
+           JOIN mathchakchak.math_concept c ON c.id = ld.concept_id
+          WHERE c.topic_id = $1 AND c.active = true AND ld.active = true
+            AND ($2::uuid IS NULL OR ld.id = $2)
+          ORDER BY ld.content_version DESC LIMIT 1`,
+        [learning.rows[0].topic_id, lessonDefinitionId ?? null]
+      );
+      if (!definition.rowCount) throw notFound();
+      const existing = await client.query(
+        `SELECT status FROM mathchakchak.formula_learning_session
+          WHERE learning_session_id = $1 AND lesson_definition_id = $2`,
+        [learningSessionId, definition.rows[0].id]
+      );
+      if (existing.rowCount) {
+        throw conflict(existing.rows[0].status === 'COMPLETED' ? 'FORMULA_LESSON_ALREADY_COMPLETED' : 'ACTIVE_FORMULA_LESSON_EXISTS');
+      }
+      const id = crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.formula_learning_session
+          (id, learning_session_id, lesson_definition_id, student_profile_id, locale, status)
+         VALUES ($1, $2, $3, $4, $5, 'IN_PROGRESS')`,
+        [id, learningSessionId, definition.rows[0].id, actor.studentId, learning.rows[0].locale]
+      );
+      await this.saveIdempotency(client, {actor, scope, key, hash, reference:id, status:201});
+      return {...await this.formulaSessionResult(client, {actor, formulaSessionId:id}),replayed:false};
+    });
+  }
+
+  async getFormulaLessonSession({actor, formulaSessionId}) {
+    const client = await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client, actor);
+      return this.formulaSessionResult(client, {actor, formulaSessionId});
+    } finally {
+      client.release();
+    }
+  }
+
+  async addFormulaLessonResponse({actor, formulaSessionId, responseValue, hintLevel, durationMs, key, hash}) {
+    return this.withTransaction(async (client) => {
+      await this.assertStudentOwner(client, actor);
+      const session = await client.query(
+        `SELECT * FROM mathchakchak.formula_learning_session
+          WHERE id = $1 AND student_profile_id = $2 FOR UPDATE`,
+        [formulaSessionId, actor.studentId]
+      );
+      if (!session.rowCount) throw notFound();
+      if (session.rows[0].status !== 'IN_PROGRESS' || session.rows[0].current_step_no > 5) throw conflict('FORMULA_LESSON_NOT_ACTIVE');
+      const scope = `formula-lessons.response.${formulaSessionId}`;
+      const replayReference = await this.findIdempotency(client, {actor, scope, key, hash});
+      if (replayReference) {
+        const replay = await client.query(
+          'SELECT id, lesson_step_id, attempt_no, outcome, misconception_code, hint_level, duration_ms, created_at FROM mathchakchak.formula_learning_response WHERE id = $1',
+          [replayReference]
+        );
+        return {...replay.rows[0],replayed:true};
+      }
+      const stepResult = await client.query(
+        `SELECT * FROM mathchakchak.lesson_step
+          WHERE lesson_definition_id = $1 AND sequence_no = $2`,
+        [session.rows[0].lesson_definition_id, session.rows[0].current_step_no]
+      );
+      if (!stepResult.rowCount) throw conflict('FORMULA_LESSON_STEP_MISSING');
+      const step = stepResult.rows[0];
+      const evaluation = evaluateFormulaResponse(step, responseValue, {hintLevel:hintLevel ?? 0});
+      const attempts = await client.query(
+        `SELECT count(*)::integer + 1 AS next FROM mathchakchak.formula_learning_response
+          WHERE formula_learning_session_id = $1 AND lesson_step_id = $2`,
+        [formulaSessionId, step.id]
+      );
+      const id = crypto.randomUUID();
+      const inserted = await client.query(
+        `INSERT INTO mathchakchak.formula_learning_response
+          (id, formula_learning_session_id, lesson_step_id, attempt_no, response_value,
+           outcome, misconception_code, hint_level, duration_ms)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+         RETURNING id, lesson_step_id, attempt_no, outcome, misconception_code, hint_level, duration_ms, created_at`,
+        [id,formulaSessionId,step.id,attempts.rows[0].next,responseValue,evaluation.outcome,
+         evaluation.misconception_code,hintLevel ?? 0,durationMs ?? null]
+      );
+      if (evaluation.outcome === 'CORRECT') {
+        await client.query(
+          'UPDATE mathchakchak.formula_learning_session SET current_step_no = current_step_no + 1, updated_at = now() WHERE id = $1',
+          [formulaSessionId]
+        );
+      }
+      const responseRows = await client.query(
+        `SELECT lesson_step_id, outcome, hint_level FROM mathchakchak.formula_learning_response
+          WHERE formula_learning_session_id = $1`,
+        [formulaSessionId]
+      );
+      const completion = canCompleteFormulaLesson({responses:responseRows.rows});
+      await client.query('UPDATE mathchakchak.formula_learning_session SET mastery_score = $2 WHERE id = $1', [formulaSessionId, completion.mastery]);
+      if (evaluation.outcome === 'CORRECT' && step.sequence_no === 5 && !completion.allowed) {
+        const remediation = await client.query(
+          `SELECT ls.sequence_no
+             FROM mathchakchak.lesson_step ls
+             LEFT JOIN mathchakchak.formula_learning_response flr
+               ON flr.lesson_step_id = ls.id
+              AND flr.formula_learning_session_id = $2
+              AND flr.outcome = 'CORRECT'
+            WHERE ls.lesson_definition_id = $1
+            GROUP BY ls.id, ls.sequence_no
+            ORDER BY COALESCE(min(flr.hint_level), 4) DESC, ls.sequence_no
+            LIMIT 1`,
+          [session.rows[0].lesson_definition_id, formulaSessionId]
+        );
+        await client.query(
+          'UPDATE mathchakchak.formula_learning_session SET current_step_no = $2, updated_at = now() WHERE id = $1',
+          [formulaSessionId, remediation.rows[0].sequence_no]
+        );
+      }
+      await this.saveIdempotency(client, {actor, scope, key, hash, reference:id, status:201});
+      const hintIndex = Math.min(hintLevel ?? 0, Math.max(0, step.hint_ladder.length - 1));
+      return {
+        ...inserted.rows[0],
+        mastery_score:completion.mastery,
+        hint:evaluation.outcome === 'INCORRECT' ? localizeValue(step.hint_ladder[hintIndex], session.rows[0].locale) : null,
+        replayed:false
+      };
+    });
+  }
+
+  async completeFormulaLesson({actor, formulaSessionId, key, hash}) {
+    return this.withTransaction(async (client) => {
+      await this.assertStudentOwner(client, actor);
+      const session = await client.query(
+        `SELECT fls.*, ld.mastery_threshold
+           FROM mathchakchak.formula_learning_session fls
+           JOIN mathchakchak.lesson_definition ld ON ld.id = fls.lesson_definition_id
+          WHERE fls.id = $1 AND fls.student_profile_id = $2 FOR UPDATE`,
+        [formulaSessionId, actor.studentId]
+      );
+      if (!session.rowCount) throw notFound();
+      const scope = `formula-lessons.complete.${formulaSessionId}`;
+      const replayReference = await this.findIdempotency(client, {actor, scope, key, hash});
+      if (replayReference) return {...await this.formulaSessionResult(client, {actor, formulaSessionId}),replayed:true};
+      if (session.rows[0].status !== 'IN_PROGRESS') throw conflict('FORMULA_LESSON_NOT_ACTIVE');
+      const responses = await client.query(
+        'SELECT lesson_step_id, outcome, hint_level FROM mathchakchak.formula_learning_response WHERE formula_learning_session_id = $1',
+        [formulaSessionId]
+      );
+      const result = canCompleteFormulaLesson({
+        responses:responses.rows,
+        masteryThreshold:Number(session.rows[0].mastery_threshold)
+      });
+      if (!result.allowed) throw conflict('FORMULA_LESSON_MASTERY_REQUIRED');
+      await client.query(
+        `UPDATE mathchakchak.formula_learning_session
+            SET status = 'COMPLETED', current_step_no = 6, mastery_score = $2,
+                completed_at = now(), updated_at = now()
+          WHERE id = $1`,
+        [formulaSessionId,result.mastery]
+      );
+      await this.saveIdempotency(client, {actor, scope, key, hash, reference:formulaSessionId, status:200});
+      return {...await this.formulaSessionResult(client, {actor, formulaSessionId}),replayed:false};
+    });
+  }
+
   async addLearningAnswer({actor, sessionId, problemItemId, responseValue, durationMs, hintLevel, key, hash}) {
     return this.withTransaction(async (client) => {
       await this.assertStudentOwner(client, actor);
@@ -316,8 +601,13 @@ export class MathChakChakRepository {
         return {...mapLearningSession(replay.rows[0]), replayed: true};
       }
       if (session.rows[0].status !== 'IN_PROGRESS') throw conflict('LEARNING_SESSION_NOT_ACTIVE');
-      const attempts = await client.query('SELECT count(*)::integer AS count FROM mathchakchak.learning_attempt WHERE learning_session_id = $1', [sessionId]);
-      if (attempts.rows[0].count === 0) throw conflict('LEARNING_SESSION_NOT_COMPLETABLE');
+      const attempts = await client.query(
+        `SELECT
+           (SELECT count(*) FROM mathchakchak.learning_attempt WHERE learning_session_id = $1)::integer AS answer_count,
+           (SELECT count(*) FROM mathchakchak.formula_learning_session WHERE learning_session_id = $1 AND status = 'COMPLETED')::integer AS formula_count`,
+        [sessionId]
+      );
+      if (attempts.rows[0].answer_count === 0 && attempts.rows[0].formula_count === 0) throw conflict('LEARNING_SESSION_NOT_COMPLETABLE');
       const result = await client.query(
         `UPDATE mathchakchak.learning_session
             SET status = 'COMPLETED', completed_at = now(), updated_at = now()

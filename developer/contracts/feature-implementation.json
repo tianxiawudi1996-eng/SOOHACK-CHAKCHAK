@@ -8,7 +8,7 @@
     {"id":"FEAT-LAND-001","status":"IMPLEMENTED","source":"client/mock/index.html"},
     {"id":"FEAT-AUTH-001","status":"IMPLEMENTED","source":"developer/src/auth/role-policy.mjs"},
     {"id":"FEAT-DIAG-001","status":"IMPLEMENTED","source":"developer/src/diagnosis/diagnosis-service.mjs"},
-    {"id":"FEAT-LEARN-001","status":"IMPLEMENTED","source":"developer/src/learning/session-machine.mjs"},
+    {"id":"FEAT-LEARN-001","status":"IMPLEMENTED","source":"developer/src/learning/formula-learning.mjs"},
     {"id":"FEAT-HINT-001","status":"IMPLEMENTED","source":"developer/src/agent/hint-policy.mjs"},
     {"id":"FEAT-FEED-001","status":"IMPLEMENTED","source":"developer/src/agent/feedback-policy.mjs"},
     {"id":"FEAT-REVIEW-001","status":"IMPLEMENTED","source":"developer/src/review/review-scheduler.mjs"},
