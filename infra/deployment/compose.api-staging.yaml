@@ -1,0 +1,54 @@
+name: mathchakchak-api-staging
+
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mathchakchak
+      POSTGRES_USER: mathchakchak
+      POSTGRES_HOST_AUTH_METHOD: trust
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ../database/migrations/0001_initial.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+      - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/002-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mathchakchak -d mathchakchak"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    networks:
+      - runtime
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infra/deployment/Dockerfile.api
+    environment:
+      DATABASE_URL: postgresql://mathchakchak@database:5432/mathchakchak
+      RUNTIME_ENV: staging-local-isolated
+      PORT: "8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:4181:8080
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/healthz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    networks:
+      - runtime
+
+networks:
+  runtime:
+    driver: bridge
