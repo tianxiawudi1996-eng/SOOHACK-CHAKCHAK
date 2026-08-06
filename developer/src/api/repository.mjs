@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import pg from 'pg';
 import {selectAdaptiveRoute} from '../learning/adaptive-routing.mjs';
+import {buildCurriculumCollaborationPlan} from '../learning/curriculum-collaboration.mjs';
 import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
@@ -133,6 +134,93 @@ export class MathChakChakRepository {
     } finally {
       client.release();
     }
+  }
+
+  async getCurriculumGrades({actor}) {
+    const client=await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client,actor);
+      const result=await client.query(
+        `SELECT cg.grade_code,cg.school_level,cg.grade_number,cg.label_ko,cg.official_band,
+                cg.implementation_year,cg.placement_basis,cg.course_path,
+                count(gfc.id)::integer AS formula_count
+           FROM mathchakchak.curriculum_grade cg
+           LEFT JOIN mathchakchak.grade_formula_catalog gfc
+             ON gfc.grade_code=cg.grade_code AND gfc.active=true
+          GROUP BY cg.grade_code,cg.school_level,cg.grade_number,cg.label_ko,cg.official_band,
+                   cg.implementation_year,cg.placement_basis,cg.course_path,cg.sequence_no
+          ORDER BY cg.sequence_no`
+      );
+      return {grades:result.rows,canonical_content_locale:'ko'};
+    } finally { client.release(); }
+  }
+
+  async getGradeFormulas({actor,gradeCode,requestedLocale}) {
+    const client=await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client,actor);
+      const grade=await client.query('SELECT * FROM mathchakchak.curriculum_grade WHERE grade_code=$1',[gradeCode]);
+      if(!grade.rowCount) throw notFound();
+      const formulas=await client.query(
+        `SELECT gfc.id,gfc.grade_code,gfc.sequence_no,gfc.strand,gfc.knowledge_type,
+                gfc.semantic_key,gfc.title_ko AS title,gfc.notation,gfc.explanation_ko AS explanation,
+                gfc.source_standard_codes,gfc.course_name,gfc.content_version,
+                cr.notice_code,cr.annex,cr.official_url,
+                fer.revision_no,fer.verification_status
+           FROM mathchakchak.grade_formula_catalog gfc
+           JOIN mathchakchak.curriculum_reference cr ON cr.id=gfc.curriculum_reference_id
+           JOIN LATERAL (
+             SELECT revision_no,verification_status
+               FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale='ko'
+              ORDER BY revision_no DESC LIMIT 1
+           ) fer ON true
+          WHERE gfc.grade_code=$1 AND gfc.active=true
+          ORDER BY gfc.sequence_no`,
+        [gradeCode]
+      );
+      return {
+        grade:grade.rows[0],formulas:formulas.rows,requested_locale:requestedLocale,
+        content_locale:'ko',translation_status:requestedLocale==='ko'?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'
+      };
+    } finally { client.release(); }
+  }
+
+  async collaborationPlanResult(client,{actor,sessionId}) {
+    const result=await client.query(
+      `SELECT fcs.*,gfc.grade_code,gfc.knowledge_type,gfc.notation,gfc.title_ko AS title
+         FROM mathchakchak.formula_collaboration_session fcs
+         JOIN mathchakchak.grade_formula_catalog gfc ON gfc.id=fcs.formula_catalog_id
+        WHERE fcs.id=$1 AND fcs.student_profile_id=$2`,
+      [sessionId,actor.studentId]
+    );
+    if(!result.rowCount) throw notFound();
+    const row=result.rows[0];
+    return {
+      session:{id:row.id,status:row.status,current_phase_no:row.current_phase_no,created_at:row.created_at},
+      formula:{id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation,title:row.title},
+      plan:buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version})
+    };
+  }
+
+  async createCurriculumCollaborationPlan({actor,formulaCatalogId,route,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const scope='curriculum.collaboration-plans.create';
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference) return {...await this.collaborationPlanResult(client,{actor,sessionId:replayReference}),replayed:true};
+      const formula=await client.query('SELECT id FROM mathchakchak.grade_formula_catalog WHERE id=$1 AND active=true',[formulaCatalogId]);
+      if(!formula.rowCount) throw notFound();
+      const id=crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.formula_collaboration_session
+          (id,student_profile_id,formula_catalog_id,adaptive_route,policy_version,status)
+         VALUES ($1,$2,$3,$4,'pet-collab-v1','PLANNED')`,
+        [id,actor.studentId,formulaCatalogId,route]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.collaborationPlanResult(client,{actor,sessionId:id}),replayed:false};
+    });
   }
 
   async createLocalDemoHandoff({actor, pathItemId, codeHash, key, hash}) {

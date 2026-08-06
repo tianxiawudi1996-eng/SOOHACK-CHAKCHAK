@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 14,
+  "tested_at": "2026-08-07T00:08:45+09:00",
+  "status": "PASS_LOCAL_ISOLATED",
+  "official_curriculum": {
+    "authority": "대한민국 교육부",
+    "notice_code": "교육부 고시 제2022-33호",
+    "annex": "별책 8 수학과 교육과정",
+    "source_sha256": "aab8eed59ecf244223d04afad75f4cf5ac5085fadcfc3cf52c2f6d54ddfc7856",
+    "placement_policy": "OFFICIAL_BAND_PRODUCT_SEQUENCE"
+  },
+  "catalog": {
+    "grades": "12/12",
+    "elementary": "6/6",
+    "middle": "3/3",
+    "high": "3/3",
+    "formula_clusters": "72/72",
+    "canonical_content_locale": "ko",
+    "shell_locales": "8/8"
+  },
+  "collaboration": {
+    "policy_version": "pet-collab-v1",
+    "phases": "5/5",
+    "adaptive_routes": "3/3",
+    "chakchaki_role": "PASS",
+    "gongsickyi_role": "PASS"
+  },
+  "postgresql": {
+    "version": 16,
+    "migration": "PASS",
+    "seed_counts": {"grades": 12, "formulas": 72, "revisions": 72, "policies": 5},
+    "rollback_reapply": "PASS"
+  },
+  "tests": {
+    "unit": "36/36 PASS",
+    "static": "PASS",
+    "integration": "1/1 PASS",
+    "browser_grade_buttons": "12/12",
+    "browser_formula_cards": "6/6 per selected grade",
+    "browser_collaboration_phases": "5/5",
+    "browser_shell_locales": "8/8",
+    "browser_horizontal_overflow_1280": false,
+    "staging_artifacts": "29/29 HTTP 200"
+  },
+  "external_deployment": {"performed": false}
+}

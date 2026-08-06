@@ -1,0 +1,13 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.formula_collaboration_session;
+DROP TABLE IF EXISTS mathchakchak.character_collaboration_policy;
+DROP TABLE IF EXISTS mathchakchak.formula_explanation_revision;
+DROP TABLE IF EXISTS mathchakchak.grade_formula_catalog;
+DROP TABLE IF EXISTS mathchakchak.curriculum_grade;
+DROP TABLE IF EXISTS mathchakchak.curriculum_reference;
+ALTER TABLE mathchakchak.math_concept DROP CONSTRAINT IF EXISTS math_concept_grade_band_check;
+ALTER TABLE mathchakchak.math_concept ADD CONSTRAINT math_concept_grade_band_check CHECK (grade_band IN ('ELEMENTARY_1_2','ELEMENTARY_3_4','ELEMENTARY_5_6'));
+ALTER TABLE mathchakchak.student_profile DROP COLUMN IF EXISTS grade_code;
+ALTER TABLE mathchakchak.student_profile DROP CONSTRAINT IF EXISTS student_profile_grade_band_check;
+ALTER TABLE mathchakchak.student_profile ADD CONSTRAINT student_profile_grade_band_check CHECK (grade_band IN ('ELEMENTARY_1_2','ELEMENTARY_3_4','ELEMENTARY_5_6'));
+COMMIT;

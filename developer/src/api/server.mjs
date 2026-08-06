@@ -37,6 +37,10 @@ function route(method, pathname) {
   let match = pathname.match(/^\/api\/v1\/local-demo\/handoffs\/([0-9a-f]{64})\/consume$/);
   if (method === 'POST' && match) return {name: 'consumeLocalDemoHandoff', code: match[1]};
   if (method === 'POST' && pathname === '/api/v1/diagnostics') return {name: 'createDiagnostic'};
+  if (method === 'GET' && pathname === '/api/v1/curriculum/grades') return {name:'getCurriculumGrades'};
+  match = pathname.match(/^\/api\/v1\/curriculum\/grades\/(E[1-6]|M[1-3]|H[1-3])\/formulas$/);
+  if (method === 'GET' && match) return {name:'getGradeFormulas',gradeCode:match[1]};
+  if (method === 'POST' && pathname === '/api/v1/curriculum/collaboration-plans') return {name:'createCurriculumCollaborationPlan'};
 
   match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
   if (method === 'POST' && match) return {name: 'addDiagnosticResponse', diagnosticId: match[1]};
@@ -110,6 +114,16 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data = await repository.getDiagnosticItems({actor, locale});
     return success(data, {requestId, locale});
   }
+  if (match.name === 'getCurriculumGrades') {
+    const data=await repository.getCurriculumGrades({actor});
+    return success(data,{requestId,locale:'ko'});
+  }
+  if (match.name === 'getGradeFormulas') {
+    const url=new URL(request.url,'http://localhost');
+    const requestedLocale=normalizeRequestedLocale(url.searchParams.get('locale')||'ko');
+    const data=await repository.getGradeFormulas({actor,gradeCode:match.gradeCode,requestedLocale});
+    return success(data,{requestId,locale:requestedLocale});
+  }
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -141,6 +155,14 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const locale = normalizeRequestedLocale(body.locale);
     const data = await repository.createDiagnostic({actor, locale, key, hash});
     return success(data, {requestId, locale, status: data.replayed ? 200 : 201, extraMeta: {replayed: data.replayed}});
+  }
+  if (match.name === 'createCurriculumCollaborationPlan') {
+    const routeName=body.adaptive_route??'CORE';
+    if(!['REMEDIATE','CORE','EXTEND'].includes(routeName)) throw badRequest('INVALID_ADAPTIVE_ROUTE','error.invalid_adaptive_route');
+    const data=await repository.createCurriculumCollaborationPlan({
+      actor,formulaCatalogId:requireUuid(body.formula_catalog_id,'formula_catalog_id'),route:routeName,key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }
   if (match.name === 'addDiagnosticResponse') {
     const data = await repository.addDiagnosticResponse({
