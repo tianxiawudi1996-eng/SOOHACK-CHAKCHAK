@@ -80,6 +80,37 @@ export class MathChakChakRepository {
     return {database: result.rows[0].database, ready: result.rows[0].ready === 1};
   }
 
+  async createLocalDemoContext({conceptId}) {
+    return this.withTransaction(async (client) => {
+      const studentId = '22222222-2222-4222-8222-222222222222';
+      const userId = '11111111-1111-4111-8111-111111111111';
+      const concept = await client.query(
+        `SELECT c.id, c.topic_id
+           FROM mathchakchak.math_concept c
+           JOIN mathchakchak.student_profile sp ON sp.id = $2
+           JOIN mathchakchak.app_user u ON u.id = sp.user_id AND u.id = $3
+          WHERE c.id = $1 AND c.active = true AND u.auth_subject = 'staging-student-001'`,
+        [conceptId, studentId, userId]
+      );
+      if (!concept.rowCount) throw notFound();
+      const learningPathId = crypto.randomUUID();
+      const pathItemId = crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.learning_path
+          (id, student_profile_id, status, algorithm_version)
+         VALUES ($1, $2, 'ACTIVE', 'local-demo-v1')`,
+        [learningPathId, studentId]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.learning_path_item
+          (id, learning_path_id, topic_id, sequence_no, status)
+         VALUES ($1, $2, $3, 1, 'READY')`,
+        [pathItemId, learningPathId, concept.rows[0].topic_id]
+      );
+      return {userId,studentId,conceptId,learningPathItemId:pathItemId};
+    });
+  }
+
   async withTransaction(operation) {
     const client = await this.pool.connect();
     try {

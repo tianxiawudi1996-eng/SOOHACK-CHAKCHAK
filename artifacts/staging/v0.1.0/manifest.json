@@ -43,8 +43,8 @@
     },
     {
       "path": "site/index.html",
-      "bytes": 6943,
-      "sha256": "ad79a4c1e91dddcbb18d3bc834e130b0cd158f33dc19c41922a88125102bfc6a"
+      "bytes": 6961,
+      "sha256": "c3dd8d3e0425090dc53cf9a880fb916b39384071b94fccb834f5b86fbe3ab112"
     },
     {
       "path": "site/locales/en.json",
@@ -85,9 +85,34 @@
       "path": "site/locales/zh-CN.json",
       "bytes": 1706,
       "sha256": "856928eff9c9727a425440010e696434fbceacd52c4004d659fd67c7a28c7b3f"
+    },
+    {
+      "path": "site/math-learning/app.js",
+      "bytes": 10660,
+      "sha256": "770c19d19c3b57a40ec03422e685a5cbae96100bd788d2294ad72cbd115fb88a"
+    },
+    {
+      "path": "site/math-learning/index.html",
+      "bytes": 4899,
+      "sha256": "513de65f5f83d1807cc05f9f568dddaa2e3e04536c44da945c6fcc35fb9bb4ee"
+    },
+    {
+      "path": "site/math-learning/messages.mjs",
+      "bytes": 14249,
+      "sha256": "6841be2089f3605bfda6595c55d939deb2ee69ef66328dde223dfac2a8b41d55"
+    },
+    {
+      "path": "site/math-learning/model.mjs",
+      "bytes": 1240,
+      "sha256": "a98d584faacbad721d793f66389c5568c40e027fe741df01a546f5bc153ca57e"
+    },
+    {
+      "path": "site/math-learning/styles.css",
+      "bytes": 9680,
+      "sha256": "26820effa4362d52e3a13f56c4fb4b7be5cf61fec0ea503c7b3e957940f00823"
     }
   ],
-  "file_count": 14,
+  "file_count": 19,
   "external_deployment": {
     "performed": false,
     "url": null,

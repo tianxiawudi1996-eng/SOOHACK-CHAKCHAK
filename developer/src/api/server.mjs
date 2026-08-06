@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {createSessionToken} from './auth.mjs';
 import {SUPPORTED_LOCALES} from '../i18n/locale-resolver.mjs';
 import {ApiError, badRequest, notFound} from './errors.mjs';
 import {
@@ -29,6 +30,7 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/readyz') return {name: 'health'};
   if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
+  if (method === 'POST' && pathname === '/api/v1/local-demo/session') return {name: 'localDemoSession'};
   if (method === 'POST' && pathname === '/api/v1/diagnostics') return {name: 'createDiagnostic'};
 
   let match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
@@ -68,6 +70,20 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     return success({locales: SUPPORTED_LOCALES, fallback: 'en'}, {requestId});
   }
   if (match.name === 'metrics') return {status: 200, text: metrics.render()};
+  if (match.name === 'localDemoSession') {
+    if (!auth.localDemoEnabled) throw notFound();
+    const conceptId = '77777777-7777-4777-8777-777777777777';
+    const context = await repository.createLocalDemoContext({conceptId});
+    return success({
+      access_token:createSessionToken({userId:context.userId,studentId:context.studentId}, auth.sessionSecret),
+      token_type:'Bearer',
+      expires_in:300,
+      student_id:context.studentId,
+      concept_id:context.conceptId,
+      learning_path_item_id:context.learningPathItemId,
+      environment:'LOCAL_SYNTHETIC_ONLY'
+    }, {requestId, locale:'en', status:201});
+  }
 
   const actor = requestContext(request, auth);
   if (match.name === 'getLearningSession') {

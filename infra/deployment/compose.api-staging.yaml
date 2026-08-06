@@ -32,6 +32,7 @@ services:
       PORT: "8080"
       SESSION_HMAC_SECRET: ${MATHCHAKCHAK_STAGE_SESSION_SECRET:?MATHCHAKCHAK_STAGE_SESSION_SECRET is required}
       ALLOW_TRUSTED_TEST_HEADERS: "false"
+      ENABLE_LOCAL_DEMO_SESSION: "true"
     depends_on:
       database:
         condition: service_healthy
@@ -50,6 +51,31 @@ services:
       interval: 3s
       timeout: 2s
       retries: 20
+    networks:
+      - runtime
+
+  web:
+    build:
+      context: ../..
+      dockerfile: infra/deployment/Dockerfile.staging
+    container_name: mathchakchak-staging-v010
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:4180:80
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
     networks:
       - runtime
 

@@ -5,7 +5,8 @@ const port = Number.parseInt(process.env.PORT || '8080', 10);
 const host = process.env.HOST || '0.0.0.0';
 const auth = {
   sessionSecret: process.env.SESSION_HMAC_SECRET,
-  allowTrustedHeaders: process.env.ALLOW_TRUSTED_TEST_HEADERS === 'true'
+  allowTrustedHeaders: process.env.ALLOW_TRUSTED_TEST_HEADERS === 'true',
+  localDemoEnabled: process.env.RUNTIME_ENV === 'staging-local-isolated' && process.env.ENABLE_LOCAL_DEMO_SESSION === 'true'
 };
 if (!auth.allowTrustedHeaders && (!auth.sessionSecret || Buffer.byteLength(auth.sessionSecret) < 32)) {
   throw new Error('SESSION_HMAC_SECRET_REQUIRED');

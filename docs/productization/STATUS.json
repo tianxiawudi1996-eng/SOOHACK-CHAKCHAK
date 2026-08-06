@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 10,
+  "current_phase": 11,
   "phases": {
     "0": {"name": "project_foundation", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:phase0"]},
     "1": {"name": "requirements", "status": "VERIFIED", "tests": ["npm.cmd run test:productization:requirements", "npm.cmd run test:productization"]},
@@ -13,7 +13,8 @@
     "7": {"name": "staging_deployment", "status": "VERIFIED", "scope": "LOCAL_ISOLATED", "tests": ["npm.cmd run build:staging", "npm.cmd run test:productization:staging", "container health PASS", "locale HTTP 8/8", "security headers 6/6", "rollback rehearsal PASS"]},
     "8": {"name": "integration_testing", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "tests": ["npm.cmd run test:productization:integration", "npm.cmd run test:integration:api", "browser locale 8/8", "browser desktop+mobile", "API restart persistence PASS", "PostgreSQL 16 API path PASS"]},
     "9": {"name": "operations_maintenance", "status": "PARTIAL_VERIFIED", "scope": "LOCAL_OPERATIONS_PASS_EXTERNAL_BLOCKED", "tests": ["npm.cmd run test:productization:operations", "npm.cmd run test:operations:runtime", "npm.cmd run test:integration:api", "PostgreSQL backup+restore rehearsal", "npm.cmd audit --audit-level=moderate"]},
-    "10": {"name": "math_formula_learning_correction", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "first_vertical_lesson_1/1", "tests": ["npm.cmd run test:productization:math-learning", "npm.cmd run test:integration:math-learning", "npm.cmd run test:integration:api", "PostgreSQL 16 runtime tables 26/26"]}
+    "10": {"name": "math_formula_learning_correction", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "first_vertical_lesson_1/1", "tests": ["npm.cmd run test:productization:math-learning", "npm.cmd run test:integration:math-learning", "npm.cmd run test:integration:api", "PostgreSQL 16 runtime tables 26/26"]},
+    "11": {"name": "student_formula_learning_ui", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "student_vertical_journey_1/1", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:math-learning-ui", "npm.cmd run test:integration:web-learning", "browser stages 5/5", "browser locales 8/8", "browser mobile 390px"]}
   },
   "stage8_dependency": {
     "gate5_status": "VERIFIED",
@@ -24,5 +25,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-06T17:01:31+09:00"
+  "last_updated": "2026-08-06T17:32:59+09:00"
 }
