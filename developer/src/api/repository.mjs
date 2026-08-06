@@ -4,6 +4,7 @@ import {selectAdaptiveRoute} from '../learning/adaptive-routing.mjs';
 import {buildCurriculumCollaborationPlan} from '../learning/curriculum-collaboration.mjs';
 import {evaluateCollaborationEvidence,nextCollaborationPhase,summarizeCollaborationEvidence} from '../learning/collaboration-runtime.mjs';
 import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
+import {applicationReviewDays,evaluateFormulaApplication} from '../learning/formula-application.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
@@ -323,7 +324,8 @@ export class MathChakChakRepository {
       await this.assertStudentOwner(client,actor);
       const result=await client.query(
         `SELECT fri.id,fri.formula_catalog_id,fri.prompt_ko AS prompt,fri.choices,fri.assessment_kind,
-                gfc.grade_code,gfc.title_ko AS formula_title
+                gfc.grade_code,gfc.title_ko AS formula_title,
+                EXISTS (SELECT 1 FROM mathchakchak.formula_application_item fai WHERE fai.formula_catalog_id=fri.formula_catalog_id AND fai.active=true) AS application_available
            FROM mathchakchak.formula_recall_item fri
            JOIN mathchakchak.grade_formula_catalog gfc ON gfc.id=fri.formula_catalog_id
           WHERE fri.formula_catalog_id=$1 AND fri.active=true
@@ -394,6 +396,124 @@ export class MathChakChakRepository {
                latest_outcome=$5,next_review_at=now()+make_interval(days=>$6),updated_at=now()
          RETURNING total_attempts,correct_attempts,recall_score,next_review_at`,
         [actor.studentId,item.rows[0].formula_catalog_id,correctDelta,correctDelta,outcome,nextReviewDays]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:attemptId,status:201});
+      return {...inserted.rows[0],progress:progress.rows[0],next_review_days:nextReviewDays,replayed:false};
+    });
+  }
+
+  async getFormulaApplicationChecks({actor,formulaCatalogId,collaborationSessionId,requestedLocale}) {
+    const client=await this.pool.connect();
+    try{
+      await this.assertStudentOwner(client,actor);
+      const gate=await client.query(
+        `SELECT 1
+           FROM mathchakchak.formula_collaboration_session fcs
+          WHERE fcs.id=$1 AND fcs.student_profile_id=$2 AND fcs.formula_catalog_id=$3 AND fcs.status='COMPLETED'
+            AND EXISTS (
+              SELECT 1 FROM mathchakchak.formula_recall_attempt fra
+              JOIN mathchakchak.formula_recall_item fri ON fri.id=fra.recall_item_id
+              WHERE fra.collaboration_session_id=fcs.id AND fra.student_profile_id=$2 AND fri.formula_catalog_id=$3
+            )`,
+        [collaborationSessionId,actor.studentId,formulaCatalogId]
+      );
+      if(!gate.rowCount) throw conflict('COMPLETED_RECALL_REQUIRED');
+      const items=await client.query(
+        `SELECT id,formula_catalog_id,sequence_no,assessment_kind,prompt_ko AS prompt,response_type,difficulty
+           FROM mathchakchak.formula_application_item
+          WHERE formula_catalog_id=$1 AND active=true
+          ORDER BY sequence_no`,
+        [formulaCatalogId]
+      );
+      if(!items.rowCount) throw notFound();
+      const progress=await client.query(
+        `SELECT attempted_items,correct_items,application_mastery_score,mastered,next_review_at
+           FROM mathchakchak.student_formula_application_progress
+          WHERE student_profile_id=$1 AND formula_catalog_id=$2`,
+        [actor.studentId,formulaCatalogId]
+      );
+      return {formula_catalog_id:formulaCatalogId,items:items.rows,progress:progress.rows[0]??null,requested_locale:requestedLocale,content_locale:'ko',translation_status:requestedLocale==='ko'?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'};
+    } finally { client.release(); }
+  }
+
+  async addFormulaApplicationAttempt({actor,applicationItemId,collaborationSessionId,responseValue,durationMs,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const scope=`application.attempt.${applicationItemId}`;
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference){
+        const replay=await client.query(
+          `SELECT faa.id,faa.outcome,faa.misconception_code,faa.duration_ms,faa.attempted_at,fai.formula_catalog_id
+             FROM mathchakchak.formula_application_attempt faa
+             JOIN mathchakchak.formula_application_item fai ON fai.id=faa.application_item_id
+            WHERE faa.id=$1 AND faa.student_profile_id=$2`,
+          [replayReference,actor.studentId]
+        );
+        if(!replay.rowCount)throw notFound();
+        const progress=await client.query(
+          `SELECT attempted_items,correct_items,application_mastery_score,mastered,next_review_at
+             FROM mathchakchak.student_formula_application_progress
+            WHERE student_profile_id=$1 AND formula_catalog_id=$2`,
+          [actor.studentId,replay.rows[0].formula_catalog_id]
+        );
+        const p=progress.rows[0];
+        const {formula_catalog_id,...attempt}=replay.rows[0];
+        return {...attempt,progress:p,next_review_days:applicationReviewDays({attemptedItems:p.attempted_items,score:Number(p.application_mastery_score),mastered:p.mastered}),replayed:true};
+      }
+      const item=await client.query(
+        `SELECT id,formula_catalog_id,answer_schema,misconception_rules,difficulty
+           FROM mathchakchak.formula_application_item WHERE id=$1 AND active=true`,
+        [applicationItemId]
+      );
+      if(!item.rowCount)throw notFound();
+      const gate=await client.query(
+        `SELECT 1 FROM mathchakchak.formula_collaboration_session fcs
+          WHERE fcs.id=$1 AND fcs.student_profile_id=$2 AND fcs.formula_catalog_id=$3 AND fcs.status='COMPLETED'
+            AND EXISTS (
+              SELECT 1 FROM mathchakchak.formula_recall_attempt fra
+              JOIN mathchakchak.formula_recall_item fri ON fri.id=fra.recall_item_id
+              WHERE fra.collaboration_session_id=fcs.id AND fra.student_profile_id=$2 AND fri.formula_catalog_id=$3
+            )`,
+        [collaborationSessionId,actor.studentId,item.rows[0].formula_catalog_id]
+      );
+      if(!gate.rowCount)throw conflict('COMPLETED_RECALL_REQUIRED');
+      const evaluation=evaluateFormulaApplication({answerSchema:item.rows[0].answer_schema,misconceptionRules:item.rows[0].misconception_rules},responseValue);
+      const attemptId=crypto.randomUUID();
+      const inserted=await client.query(
+        `INSERT INTO mathchakchak.formula_application_attempt
+          (id,student_profile_id,application_item_id,collaboration_session_id,response_value,outcome,misconception_code,duration_ms)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+         RETURNING id,outcome,misconception_code,duration_ms,attempted_at`,
+        [attemptId,actor.studentId,applicationItemId,collaborationSessionId,responseValue,evaluation.outcome,evaluation.misconception_code,durationMs]
+      );
+      const aggregate=await client.query(
+        `WITH latest AS (
+           SELECT DISTINCT ON (faa.application_item_id) faa.application_item_id,faa.outcome,fai.difficulty
+             FROM mathchakchak.formula_application_attempt faa
+             JOIN mathchakchak.formula_application_item fai ON fai.id=faa.application_item_id
+            WHERE faa.student_profile_id=$1 AND fai.formula_catalog_id=$2 AND fai.active=true
+            ORDER BY faa.application_item_id,faa.attempted_at DESC,faa.id DESC
+         )
+         SELECT count(*)::int AS attempted_items,
+                count(*) FILTER (WHERE outcome='CORRECT')::int AS correct_items,
+                coalesce(sum(difficulty) FILTER (WHERE outcome='CORRECT'),0)::numeric/nullif(sum(difficulty),0) AS score
+           FROM latest`,
+        [actor.studentId,item.rows[0].formula_catalog_id]
+      );
+      const summary=aggregate.rows[0];
+      const score=Number(summary.score??0);
+      const mastered=summary.attempted_items===3&&score>=0.8;
+      const nextReviewDays=applicationReviewDays({attemptedItems:summary.attempted_items,score,mastered});
+      const progress=await client.query(
+        `INSERT INTO mathchakchak.student_formula_application_progress
+          (student_profile_id,formula_catalog_id,attempted_items,correct_items,application_mastery_score,mastered,next_review_at)
+         VALUES ($1,$2,$3,$4,$5,$6,now()+make_interval(days=>$7))
+         ON CONFLICT (student_profile_id,formula_catalog_id) DO UPDATE
+           SET attempted_items=EXCLUDED.attempted_items,correct_items=EXCLUDED.correct_items,
+               application_mastery_score=EXCLUDED.application_mastery_score,mastered=EXCLUDED.mastered,
+               next_review_at=EXCLUDED.next_review_at,updated_at=now()
+         RETURNING attempted_items,correct_items,application_mastery_score,mastered,next_review_at`,
+        [actor.studentId,item.rows[0].formula_catalog_id,summary.attempted_items,summary.correct_items,score,mastered,nextReviewDays]
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:attemptId,status:201});
       return {...inserted.rows[0],progress:progress.rows[0],next_review_days:nextReviewDays,replayed:false};

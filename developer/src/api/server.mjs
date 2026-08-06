@@ -55,6 +55,10 @@ function route(method, pathname) {
   if (method === 'GET' && match) return {name:'getFormulaRecallCheck',formulaCatalogId:match[1]};
   match = pathname.match(new RegExp(`^/api/v1/curriculum/recall-checks/(${UUID_PATTERN})/attempts$`));
   if (method === 'POST' && match) return {name:'addFormulaRecallAttempt',recallItemId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/formulas/(${UUID_PATTERN})/application-checks$`));
+  if (method === 'GET' && match) return {name:'getFormulaApplicationChecks',formulaCatalogId:match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/curriculum/application-checks/(${UUID_PATTERN})/attempts$`));
+  if (method === 'POST' && match) return {name:'addFormulaApplicationAttempt',applicationItemId:match[1]};
 
   match = pathname.match(new RegExp(`^/api/v1/diagnostics/(${UUID_PATTERN})/responses$`));
   if (method === 'POST' && match) return {name: 'addDiagnosticResponse', diagnosticId: match[1]};
@@ -148,6 +152,13 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getFormulaRecallCheck({actor,formulaCatalogId:requireUuid(match.formulaCatalogId,'formula_catalog_id'),requestedLocale});
     return success(data,{requestId,locale:requestedLocale});
   }
+  if (match.name === 'getFormulaApplicationChecks') {
+    const url=new URL(request.url,'http://localhost');
+    const requestedLocale=normalizeRequestedLocale(url.searchParams.get('locale')||'ko');
+    const collaborationSessionId=requireUuid(url.searchParams.get('collaboration_session_id'),'collaboration_session_id');
+    const data=await repository.getFormulaApplicationChecks({actor,formulaCatalogId:requireUuid(match.formulaCatalogId,'formula_catalog_id'),collaborationSessionId,requestedLocale});
+    return success(data,{requestId,locale:requestedLocale});
+  }
   if (match.name === 'getLearningSession') {
     const data = await repository.getLearningSession({actor, sessionId: requireUuid(match.sessionId, 'session_id')});
     return success(data, {requestId, locale: data.locale});
@@ -210,6 +221,17 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       actor,recallItemId:requireUuid(match.recallItemId,'recall_item_id'),
       collaborationSessionId:requireUuid(body.collaboration_session_id,'collaboration_session_id'),
       selectedValue:body.selected_value,durationMs:body.duration_ms??null,key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if (match.name === 'addFormulaApplicationAttempt') {
+    if(!body.response_value||typeof body.response_value!=='object'||typeof body.response_value.value!=='string'||body.response_value.value.length<1||body.response_value.value.length>191)throw badRequest('INVALID_APPLICATION_RESPONSE','error.invalid_application_response');
+    if(body.response_value.unit!==undefined&&(typeof body.response_value.unit!=='string'||body.response_value.unit.length>40))throw badRequest('INVALID_APPLICATION_UNIT','error.invalid_application_unit');
+    if(body.duration_ms!==undefined&&(!Number.isInteger(body.duration_ms)||body.duration_ms<0||body.duration_ms>3600000))throw badRequest('INVALID_DURATION','error.invalid_duration');
+    const data=await repository.addFormulaApplicationAttempt({
+      actor,applicationItemId:requireUuid(match.applicationItemId,'application_item_id'),
+      collaborationSessionId:requireUuid(body.collaboration_session_id,'collaboration_session_id'),
+      responseValue:{value:body.response_value.value,unit:body.response_value.unit??''},durationMs:body.duration_ms??null,key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

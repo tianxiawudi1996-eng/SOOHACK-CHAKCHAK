@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 16,
+  "current_phase": 17,
   "phases": {
+    "17": {"name": "formula_application_mastery", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_representative_formulas_12/12_application_items_36/36", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-application", "npm.cmd run test:integration:formula-application", "PostgreSQL 16 migration rollback+reapply", "browser collaboration+recall+application 3/3"]},
     "16": {"name": "formula_recall_check", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_formula_items_72/72_choices_4/4_server_scoring", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-recall", "npm.cmd run test:integration:formula-recall", "PostgreSQL 16 migration rollback+reapply", "browser collaboration 5/5 + recall result"]},
     "15": {"name": "character_collaboration_learning_runtime", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "phases_5/5_structured_signals_10/10_postgresql_evidence_5/5", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:collaboration-runtime", "npm.cmd run test:integration:collaboration-runtime", "PostgreSQL 16 migration rollback+reapply", "browser collaboration phases 5/5 + completion score"]},
     "14": {"name": "k12_curriculum_character_collaboration", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_formula_clusters_72/72_collaboration_phases_5/5_shell_locales_8/8", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:k12-curriculum", "npm.cmd run test:integration:k12-curriculum", "PostgreSQL 16 migration rollback+reapply", "browser grades 12/12 + collaboration phases 5/5 + locales 8/8"]},
@@ -30,5 +31,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T06:22:46+09:00"
+  "last_updated": "2026-08-07T06:58:24+09:00"
 }

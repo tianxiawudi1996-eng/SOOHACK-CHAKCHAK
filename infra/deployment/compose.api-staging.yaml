@@ -17,11 +17,13 @@ services:
       - ../database/migrations/0005_k12_curriculum_collaboration.sql:/docker-entrypoint-initdb.d/005-k12-curriculum.sql:ro
       - ../database/migrations/0006_collaboration_learning_runtime.sql:/docker-entrypoint-initdb.d/006-collaboration-runtime.sql:ro
       - ../database/migrations/0007_formula_recall_check.sql:/docker-entrypoint-initdb.d/007-formula-recall.sql:ro
-      - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/008-seed.sql:ro
-      - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/009-formula-lesson-seed.sql:ro
-      - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/010-diagnostic-curriculum-seed.sql:ro
-      - ../database/seeds/0004_k12_curriculum_catalog.sql:/docker-entrypoint-initdb.d/011-k12-curriculum-seed.sql:ro
-      - ../database/seeds/0005_formula_recall_checks.sql:/docker-entrypoint-initdb.d/012-formula-recall-seed.sql:ro
+      - ../database/migrations/0008_formula_application_mastery.sql:/docker-entrypoint-initdb.d/008-formula-application.sql:ro
+      - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/009-seed.sql:ro
+      - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/010-formula-lesson-seed.sql:ro
+      - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/011-diagnostic-curriculum-seed.sql:ro
+      - ../database/seeds/0004_k12_curriculum_catalog.sql:/docker-entrypoint-initdb.d/012-k12-curriculum-seed.sql:ro
+      - ../database/seeds/0005_formula_recall_checks.sql:/docker-entrypoint-initdb.d/013-formula-recall-seed.sql:ro
+      - ../database/seeds/0006_formula_application_checks.sql:/docker-entrypoint-initdb.d/014-formula-application-seed.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U mathchakchak -d mathchakchak"]
       interval: 3s

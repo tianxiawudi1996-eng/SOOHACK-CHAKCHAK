@@ -48,6 +48,19 @@
         <p id="recallPrompt"></p>
         <div id="recallChoices" class="recall-choices"></div>
         <p id="recallResult" class="recall-result" hidden aria-live="polite"></p>
+        <button id="applicationStart" class="application-start" type="button" data-message="applicationCta" hidden></button>
+      </div>
+      <div id="applicationPanel" class="application-panel" hidden>
+        <p id="applicationStep" class="eyebrow"></p>
+        <h3 id="applicationTitle"></h3>
+        <p id="applicationPrompt"></p>
+        <form id="applicationForm">
+          <label><span data-message="applicationValue"></span><input id="applicationValue" name="value" autocomplete="off" required></label>
+          <label><span data-message="applicationUnit"></span><input id="applicationUnit" name="unit" autocomplete="off"></label>
+          <button type="submit" data-message="applicationSubmit"></button>
+        </form>
+        <p id="applicationResult" class="application-result" hidden aria-live="polite"></p>
+        <button id="applicationNext" class="application-next" type="button" hidden></button>
       </div>
     </section>
   </main>
