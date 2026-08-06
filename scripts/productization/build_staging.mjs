@@ -19,7 +19,7 @@ let html = read('client/mock/index.html')
   .replace('src="app.js"', 'src="assets/app.js"')
   .replace('../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp', 'assets/characters/chakchaki-guide.webp')
   .replace('../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp', 'assets/characters/gongsickyi-praise.webp')
-  .replace('../math-learning/index.html', 'math-learning/index.html');
+  .replaceAll('../math-learning/index.html', 'math-learning/index.html');
 const app = read('client/mock/app.js').replace('../i18n/messages/', './locales/');
 fs.writeFileSync(path.join(site, 'index.html'), html, 'utf8');
 fs.writeFileSync(path.join(site, 'assets', 'app.js'), app, 'utf8');

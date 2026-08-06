@@ -9,8 +9,14 @@
   "scope_acknowledged": true,
   "characters": ["Chakchaki", "Gongsickyi"],
   "candidate_sheet_hashes": {
-    "Chakchaki": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
-    "Gongsickyi": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100"
+    "Chakchaki": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+    "Gongsickyi": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c"
+  },
+  "metadata_scrub": {
+    "authorized_by_user": true,
+    "removed_png_chunks": ["caBX"],
+    "pixel_data_changed": false,
+    "visual_approval_impact": "NONE"
   },
   "checks": {
     "canonical_identity_match": true,

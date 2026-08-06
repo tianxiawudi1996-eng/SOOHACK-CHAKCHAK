@@ -51,9 +51,5 @@ async function applyLocale(locale, persist = false) {
 }
 
 select.addEventListener('change', () => applyLocale(select.value, true));
-document.querySelector('.start-panel button').addEventListener('click', () => {
-  notice.textContent = select.value === 'ko' ? '제품 mock에서는 진단 화면 연결을 준비 중입니다.' : 'The diagnostic flow will be connected during feature development.';
-  notice.hidden = false;
-});
 
 applyLocale(resolveLocale());

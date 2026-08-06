@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T06:33:41.141971+00:00",
+  "generated_at": "2026-08-06T13:40:17.062343+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1012,13 +1012,13 @@
     },
     {
       "path": "artifacts/staging/v0.1.0/manifest.json",
-      "sha256": "6138fe2853f10d1200ec1d86ef0f9a50024a404b90ab74de0a30ebf8858d6538",
-      "size_bytes": 2746
+      "sha256": "32e24a9ef67f9e0c2b7e4f6366c901789393c52f7e1b18129562d949e6d9ff49",
+      "size_bytes": 3565
     },
     {
       "path": "artifacts/staging/v0.1.0/site/assets/app.js",
-      "sha256": "dd05e9e78bcd57d41786f68d645e08db6ccf7b7b21d058985d61e03e63646099",
-      "size_bytes": 2197
+      "sha256": "66ba0eb584a46043eaf880e973505ee58082f5ae8736bfa89d1aedbe734195bf",
+      "size_bytes": 1902
     },
     {
       "path": "artifacts/staging/v0.1.0/site/assets/characters/chakchaki-guide.webp",
@@ -1042,48 +1042,73 @@
     },
     {
       "path": "artifacts/staging/v0.1.0/site/index.html",
-      "sha256": "ad79a4c1e91dddcbb18d3bc834e130b0cd158f33dc19c41922a88125102bfc6a",
-      "size_bytes": 6943
+      "sha256": "1e3fd0c1cf074efdded30fa5a031ec890da8500848efe7b12f666276afe4a7f1",
+      "size_bytes": 6763
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/en.json",
-      "sha256": "ab893468a49ba4cf453592810df239a921b58bfb35e15256e6f6e58a2bdd8940",
-      "size_bytes": 1866
+      "sha256": "f8971b851654091fa0c464d395f281eb91dd461681f08a5427fa99d64d9d5d58",
+      "size_bytes": 1793
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/es.json",
-      "sha256": "27ad3f1cb6e47e6bfead6358ff8610b0641baf81d4cfb3a815a2ea1934ff7006",
-      "size_bytes": 1961
+      "sha256": "e6f672118f238c2367ac115c02f56fba3246f3fd33b3f83e153336fca8a8681e",
+      "size_bytes": 1898
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/fr.json",
-      "sha256": "b16c2331ffbe7ae9fcab5d99559f5abacf863a3c29ac4e9c9aadbf0f0fdf28fd",
-      "size_bytes": 2025
+      "sha256": "a4b559f6ca09f3631a2381e7b86f371b05658c33ebbfae17755087146b46951a",
+      "size_bytes": 1968
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/it.json",
-      "sha256": "27fc645dfb08c745c48b5a2b8efbaba5a859de4b398dccc3ee810e2a6a74d6f8",
-      "size_bytes": 1931
+      "sha256": "dee9c896fa60433153ada523d6809a0b5b4fe81b2cd32611cb12d2f79b58e112",
+      "size_bytes": 1869
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/ja.json",
-      "sha256": "0d14df4ae36dca67e9e62de41de763a117a38ce1a18c058fef9ffced234d12e2",
-      "size_bytes": 1952
+      "sha256": "e538458752367f26a0d73b4284099a3ba1a8f758987fd99a0783000f369bccab",
+      "size_bytes": 1885
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/ko.json",
-      "sha256": "a4946d03b1d95dd3a2b7dc02ea085e8584387a5e80d52e761b50f9da3ad2915a",
-      "size_bytes": 1910
+      "sha256": "57d21350b8a0e2fb94c8c07e5265b65165874cca78f63444311f7d4dd04fdf8e",
+      "size_bytes": 1845
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/ru.json",
-      "sha256": "035c5f78decc93c2b2285bdaffdd8f64b1104a518be38ca32f703074f0723245",
-      "size_bytes": 2856
+      "sha256": "ba8eac41149aab67d83b48878f9ca46cea5e94d43f7be6551ba58698bf37b7ed",
+      "size_bytes": 2770
     },
     {
       "path": "artifacts/staging/v0.1.0/site/locales/zh-CN.json",
-      "sha256": "856928eff9c9727a425440010e696434fbceacd52c4004d659fd67c7a28c7b3f",
-      "size_bytes": 1706
+      "sha256": "434c779a47f5b5ccc756813c0f051342d465f11ca031d1467860fd5d93e384c6",
+      "size_bytes": 1642
+    },
+    {
+      "path": "artifacts/staging/v0.1.0/site/math-learning/app.js",
+      "sha256": "770c19d19c3b57a40ec03422e685a5cbae96100bd788d2294ad72cbd115fb88a",
+      "size_bytes": 10660
+    },
+    {
+      "path": "artifacts/staging/v0.1.0/site/math-learning/index.html",
+      "sha256": "513de65f5f83d1807cc05f9f568dddaa2e3e04536c44da945c6fcc35fb9bb4ee",
+      "size_bytes": 4899
+    },
+    {
+      "path": "artifacts/staging/v0.1.0/site/math-learning/messages.mjs",
+      "sha256": "6841be2089f3605bfda6595c55d939deb2ee69ef66328dde223dfac2a8b41d55",
+      "size_bytes": 14249
+    },
+    {
+      "path": "artifacts/staging/v0.1.0/site/math-learning/model.mjs",
+      "sha256": "a98d584faacbad721d793f66389c5568c40e027fe741df01a546f5bc153ca57e",
+      "size_bytes": 1240
+    },
+    {
+      "path": "artifacts/staging/v0.1.0/site/math-learning/styles.css",
+      "sha256": "26820effa4362d52e3a13f56c4fb4b7be5cf61fec0ea503c7b3e957940f00823",
+      "size_bytes": 9680
     },
     {
       "path": "assets/stage8/2d-pet-motion-v1.0.css",
@@ -1122,53 +1147,78 @@
     },
     {
       "path": "client/i18n/messages/en.json",
-      "sha256": "ab893468a49ba4cf453592810df239a921b58bfb35e15256e6f6e58a2bdd8940",
-      "size_bytes": 1866
+      "sha256": "f8971b851654091fa0c464d395f281eb91dd461681f08a5427fa99d64d9d5d58",
+      "size_bytes": 1793
     },
     {
       "path": "client/i18n/messages/es.json",
-      "sha256": "27ad3f1cb6e47e6bfead6358ff8610b0641baf81d4cfb3a815a2ea1934ff7006",
-      "size_bytes": 1961
+      "sha256": "e6f672118f238c2367ac115c02f56fba3246f3fd33b3f83e153336fca8a8681e",
+      "size_bytes": 1898
     },
     {
       "path": "client/i18n/messages/fr.json",
-      "sha256": "b16c2331ffbe7ae9fcab5d99559f5abacf863a3c29ac4e9c9aadbf0f0fdf28fd",
-      "size_bytes": 2025
+      "sha256": "a4b559f6ca09f3631a2381e7b86f371b05658c33ebbfae17755087146b46951a",
+      "size_bytes": 1968
     },
     {
       "path": "client/i18n/messages/it.json",
-      "sha256": "27fc645dfb08c745c48b5a2b8efbaba5a859de4b398dccc3ee810e2a6a74d6f8",
-      "size_bytes": 1931
+      "sha256": "dee9c896fa60433153ada523d6809a0b5b4fe81b2cd32611cb12d2f79b58e112",
+      "size_bytes": 1869
     },
     {
       "path": "client/i18n/messages/ja.json",
-      "sha256": "0d14df4ae36dca67e9e62de41de763a117a38ce1a18c058fef9ffced234d12e2",
-      "size_bytes": 1952
+      "sha256": "e538458752367f26a0d73b4284099a3ba1a8f758987fd99a0783000f369bccab",
+      "size_bytes": 1885
     },
     {
       "path": "client/i18n/messages/ko.json",
-      "sha256": "a4946d03b1d95dd3a2b7dc02ea085e8584387a5e80d52e761b50f9da3ad2915a",
-      "size_bytes": 1910
+      "sha256": "57d21350b8a0e2fb94c8c07e5265b65165874cca78f63444311f7d4dd04fdf8e",
+      "size_bytes": 1845
     },
     {
       "path": "client/i18n/messages/ru.json",
-      "sha256": "035c5f78decc93c2b2285bdaffdd8f64b1104a518be38ca32f703074f0723245",
-      "size_bytes": 2856
+      "sha256": "ba8eac41149aab67d83b48878f9ca46cea5e94d43f7be6551ba58698bf37b7ed",
+      "size_bytes": 2770
     },
     {
       "path": "client/i18n/messages/zh-CN.json",
-      "sha256": "856928eff9c9727a425440010e696434fbceacd52c4004d659fd67c7a28c7b3f",
-      "size_bytes": 1706
+      "sha256": "434c779a47f5b5ccc756813c0f051342d465f11ca031d1467860fd5d93e384c6",
+      "size_bytes": 1642
+    },
+    {
+      "path": "client/math-learning/app.js",
+      "sha256": "770c19d19c3b57a40ec03422e685a5cbae96100bd788d2294ad72cbd115fb88a",
+      "size_bytes": 10660
+    },
+    {
+      "path": "client/math-learning/index.html",
+      "sha256": "c2253a39ba03ebb6efe5c61f12a29395eae21c7bc951ae91d6e90afa9a8cbbe0",
+      "size_bytes": 5068
+    },
+    {
+      "path": "client/math-learning/messages.mjs",
+      "sha256": "6841be2089f3605bfda6595c55d939deb2ee69ef66328dde223dfac2a8b41d55",
+      "size_bytes": 14249
+    },
+    {
+      "path": "client/math-learning/model.mjs",
+      "sha256": "a98d584faacbad721d793f66389c5568c40e027fe741df01a546f5bc153ca57e",
+      "size_bytes": 1240
+    },
+    {
+      "path": "client/math-learning/styles.css",
+      "sha256": "26820effa4362d52e3a13f56c4fb4b7be5cf61fec0ea503c7b3e957940f00823",
+      "size_bytes": 9680
     },
     {
       "path": "client/mock/app.js",
-      "sha256": "2ecf6ad106dbaddd9765c43cff221e04792816d5a0d57864e43b1e85dfcd215d",
-      "size_bytes": 2204
+      "sha256": "1324ef95ae9988b4c32f481c5a01fcabc000be58a0804375be7abb13a13d12ca",
+      "size_bytes": 1909
     },
     {
       "path": "client/mock/index.html",
-      "sha256": "51a44e7bbee3769321775acb914fcb25d55be02734916bf5a0ea0c38e23b43f0",
-      "size_bytes": 7092
+      "sha256": "6947bdd407dcfd3fd466df3a6285b92c6e1b93211355b256febfc2951b240252",
+      "size_bytes": 6918
     },
     {
       "path": "client/mock/styles.css",
@@ -1182,13 +1232,13 @@
     },
     {
       "path": "developer/contracts/feature-contract.json",
-      "sha256": "9cd6e043ec17fd9e81d85936c7da684bfb677d052c541a0c899e1179a7b984c8",
-      "size_bytes": 2610
+      "sha256": "19ace80bbfc5d9523e45de678d6373a44a8eabf3cb4eb269b416d0680cabae7b",
+      "size_bytes": 2611
     },
     {
       "path": "developer/contracts/feature-implementation.json",
-      "sha256": "90838e68a3f26fa7ecfce8205350df75eaf6e3ee85c3ceb9e3e654dff1d52e4a",
-      "size_bytes": 1729
+      "sha256": "1013a030ac3ffefc126abee470164e3efb75c2a3610459d2729f903f55933bc5",
+      "size_bytes": 1730
     },
     {
       "path": "developer/README.md",
@@ -1222,8 +1272,8 @@
     },
     {
       "path": "developer/src/api/index.mjs",
-      "sha256": "912340e9f800bca32a35d7f9bc278722f0118086e3a0ed82564bb3e77685b12a",
-      "size_bytes": 1163
+      "sha256": "302665c52600cd674ad264d886b6404cba6e11144037fa077b21e11f268d36e9",
+      "size_bytes": 1289
     },
     {
       "path": "developer/src/api/metrics.mjs",
@@ -1232,8 +1282,8 @@
     },
     {
       "path": "developer/src/api/repository.mjs",
-      "sha256": "087b9531a3b4dcf5aa5e73b85c5d153bd6b90f4f0772045edfe161024c9c7585",
-      "size_bytes": 17406
+      "sha256": "5632ca3579b582d1215fc04945d8bd1197cf6d89d099ba1e037e46bfc5806cac",
+      "size_bytes": 33398
     },
     {
       "path": "developer/src/api/scoring.mjs",
@@ -1242,8 +1292,8 @@
     },
     {
       "path": "developer/src/api/server.mjs",
-      "sha256": "1af551e93bc0a530a2178a468cf8cf65a30666b48462dd1133fcbee4dbb215d8",
-      "size_bytes": 7633
+      "sha256": "484c8b26e40fbe133eedc876ca3360ef10a4863bfbdf23a18b70a961169711ba",
+      "size_bytes": 11590
     },
     {
       "path": "developer/src/auth/role-policy.mjs",
@@ -1261,9 +1311,19 @@
       "size_bytes": 1048
     },
     {
+      "path": "developer/src/learning/formula-learning.mjs",
+      "sha256": "688572fc2fcdc0a6d97ad783d6ca33c21d59afaaf38d6c6511f57aa6bc0a5213",
+      "size_bytes": 3411
+    },
+    {
       "path": "developer/src/learning/session-machine.mjs",
       "sha256": "583ba6d060c804d689b9846c8b43cebe57ec47782d5871078c6ed8a3b48b6c1e",
       "size_bytes": 1484
+    },
+    {
+      "path": "developer/src/math/rational.mjs",
+      "sha256": "bf85ee56c5fc0f96cf2b51b2c4433f3df7885ac97eb7abf190960f53253b1331",
+      "size_bytes": 1860
     },
     {
       "path": "developer/src/observability/event-schema.mjs",
@@ -1381,6 +1441,11 @@
       "size_bytes": 2199
     },
     {
+      "path": "docs/client/design/MATH_FORMULA_LESSON_SCREEN_v1.0.md",
+      "sha256": "e72e043904e3fecf1e9aa5a58f78ae7fcfa4baea45a25d6d9dd48336edcd3644",
+      "size_bytes": 2614
+    },
+    {
       "path": "docs/client/design/SCREEN_ARCHITECTURE_v1.0.md",
       "sha256": "67d4eff1f9d483eb66e50d621f7eba80570414828f1c90f009266f442649ea8d",
       "size_bytes": 3649
@@ -1394,6 +1459,11 @@
       "path": "docs/client/requirements/LOCALIZATION_REQUIREMENTS_v1.0.md",
       "sha256": "a59db22728a0ba07b3b12c2e70f69d90171dafb0ed9982ffa7cc22bf8f9a2964",
       "size_bytes": 3471
+    },
+    {
+      "path": "docs/client/requirements/MATH_LEARNING_REQUIREMENTS_ADDENDUM_v1.0.md",
+      "sha256": "3933a345e7f320068011e6e2eb00e4b8f5fb942423f63da0538370a858aa3ce8",
+      "size_bytes": 2367
     },
     {
       "path": "docs/client/requirements/PRODUCT_REQUIREMENTS_v1.0.md",
@@ -1436,6 +1506,11 @@
       "size_bytes": 56474
     },
     {
+      "path": "docs/developer/productization/API_CONTRACT_MATH_LEARNING_ADDENDUM_v1.0.md",
+      "sha256": "7ffc40851fe5cc0f8844f6f87242c50d06a8461d1c7b13808f18da81bf285e56",
+      "size_bytes": 1190
+    },
+    {
       "path": "docs/developer/productization/API_CONTRACT_v1.0.md",
       "sha256": "9db3e5f03eb4aed4fb3c4ffd851bb2801e5b5ea8f39287ad732ca5d34c9f32e8",
       "size_bytes": 2375
@@ -1474,6 +1549,11 @@
       "path": "docs/developer/productization/INFRASTRUCTURE_DESIGN_v1.0.md",
       "sha256": "0165adffb9f13103ea32ed1fd423d95862f09bb9bcc976d3abae8304e39044f7",
       "size_bytes": 4458
+    },
+    {
+      "path": "docs/developer/productization/MATH_FORMULA_LEARNING_DESIGN_v1.0.md",
+      "sha256": "309bc8577f3bdfe46454bc5471388e750779a25c468614e7633611c19a35d548",
+      "size_bytes": 4622
     },
     {
       "path": "docs/developer/productization/OPERATIONS_AND_MAINTENANCE_v1.0.md",
@@ -1536,6 +1616,16 @@
       "size_bytes": 50112
     },
     {
+      "path": "docs/productization/evidence/PHASE_10_MATH_FORMULA_LEARNING_QA.json",
+      "sha256": "c1dd058918fa8a2847651f81d16c74c213576dc0211a0dc96f0b137a499d7f48",
+      "size_bytes": 1024
+    },
+    {
+      "path": "docs/productization/evidence/PHASE_11_STUDENT_FORMULA_UI_QA.json",
+      "sha256": "33d5389df4ab8fcb52fb745abb4a0288e49fd54c974b6b9cb29d0703f36bab3e",
+      "size_bytes": 910
+    },
+    {
       "path": "docs/productization/evidence/PHASE_4_POSTGRES_RUNTIME_QA.json",
       "sha256": "abed3494fd507047b2799c0a0f3a9210a9dc0f9454e6c686473f7d8ac9d70f73",
       "size_bytes": 1162
@@ -1547,8 +1637,8 @@
     },
     {
       "path": "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json",
-      "sha256": "9ce281ed90d1920850f73c3b4c47e92a436b577879db49d94bc15f4fff2c3670",
-      "size_bytes": 2137
+      "sha256": "ed06cb13c2feedf4e8fbccd6d5d81a3b7967eede76c2d511554861848c16bd5e",
+      "size_bytes": 2170
     },
     {
       "path": "docs/productization/evidence/PHASE_8_INTEGRATION_QA.json",
@@ -1566,6 +1656,16 @@
       "size_bytes": 1640
     },
     {
+      "path": "docs/productization/prompts/PHASE_10_MATH_FORMULA_LEARNING_METAPROMPT_v1.0.md",
+      "sha256": "51edf8b72caaed5ecb1f33cd1a221bd9225b2100b43c062877b0bc90b5495429",
+      "size_bytes": 2396
+    },
+    {
+      "path": "docs/productization/prompts/PHASE_11_STUDENT_FORMULA_UI_METAPROMPT_v1.0.md",
+      "sha256": "b6958c444375a1bc04d2a22112e6e0add8c4ba72b9c64454489ed6524480b492",
+      "size_bytes": 2918
+    },
+    {
       "path": "docs/productization/prompts/PHASE_7_STAGING_DEPLOYMENT_METAPROMPT_v1.0.md",
       "sha256": "1ef922ee170ece672043859761a566b60ab3116453c99c6db01dede6c6961c26",
       "size_bytes": 3216
@@ -1581,9 +1681,24 @@
       "size_bytes": 2835
     },
     {
+      "path": "docs/productization/reports/MATH_LEARNING_GAP_AUDIT_v1.0.md",
+      "sha256": "5b433ec10134ff719fbdafdb7bb1b8232c86180ddee25bc581ffaac5c907096c",
+      "size_bytes": 1204
+    },
+    {
       "path": "docs/productization/reports/PHASE_0_PROJECT_FOUNDATION_REPORT.md",
       "sha256": "99968b221c09fc1d3bcc1ceefc01469f794faeb3cfb081d5dec0984519ae0974",
       "size_bytes": 1539
+    },
+    {
+      "path": "docs/productization/reports/PHASE_10_MATH_FORMULA_LEARNING_REPORT.md",
+      "sha256": "67d8c26b4b56ab6a6d703f98283ff7ab222dae58fac2bee4d152091ae2a1af84",
+      "size_bytes": 1549
+    },
+    {
+      "path": "docs/productization/reports/PHASE_11_STUDENT_FORMULA_UI_REPORT.md",
+      "sha256": "d239ee087980a48f0d2220469de7daa3f8362fa442b39952693af6cb3fcae510",
+      "size_bytes": 1891
     },
     {
       "path": "docs/productization/reports/PHASE_1_REQUIREMENTS_REPORT.md",
@@ -1636,14 +1751,19 @@
       "size_bytes": 1449
     },
     {
+      "path": "docs/productization/reports/PRESENTATION_METADATA_REMOVAL_REPORT.md",
+      "sha256": "262d7afcf70da2902fdaeb3d085cefa47ecb6695fc1813ed8a206c5e111f8369",
+      "size_bytes": 1661
+    },
+    {
       "path": "docs/productization/REQUIREMENT_TRACEABILITY_v1.0.md",
       "sha256": "2243c0899619e36eb932df210260284313ed82f10b90e2ad75db8e3cb259ca28",
       "size_bytes": 2098
     },
     {
       "path": "docs/productization/STATUS.json",
-      "sha256": "7526bf661b1e6c2de2fc7547dc69b56e7cbb3cd1e69ee7f51f46968bef4a40b5",
-      "size_bytes": 2530
+      "sha256": "547203dc71454b19df214fcadd8b75a67737d355af4341b8ac4a260cbb670a79",
+      "size_bytes": 3225
     },
     {
       "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
@@ -1832,8 +1952,8 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
-      "sha256": "8c2b3f37e0a12191aa4a04112e9abe1961f8274064e531420b03ee2a5529118f",
-      "size_bytes": 2375
+      "sha256": "7eee0746aa3e2ccb81fea1e79ed5f86f1cf973bb6597e5bae35f5f1277f70227",
+      "size_bytes": 2514
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_AUTOMATED_QA_v1.0.json",
@@ -1842,8 +1962,8 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MANUAL_REVIEW_v1.0.json",
-      "sha256": "14d05264de691ae8247230a273e114d26d92d6a8dfe547b4dbec7d8502d6d73d",
-      "size_bytes": 1144
+      "sha256": "588e9defc479acff2275aec6ebedb8792f6d393d02bb50dee383186ae6fefbad",
+      "size_bytes": 1309
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
@@ -1862,7 +1982,7 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_SINGLE_APPROVER_POLICY_v1.0.json",
-      "sha256": "fe0532ee4d35abd2245d97a289c714346ec1295107b0032d8dfc7300bbac8138",
+      "sha256": "3f77d13cd6ec965210c9a871cb68498284cf744c1052f07b45fb738180b76078",
       "size_bytes": 1444
     },
     {
@@ -1877,8 +1997,8 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/gate3-review/index.html",
-      "sha256": "d77591ca52022d881645aecd5f20958780e26a4ccc4d1578f8d9b8cb2f34a5ba",
-      "size_bytes": 4610
+      "sha256": "94c3c756b3d29b68bb27afb5f25e9ff3481eeafd79e0909f4abf344517d2b5b0",
+      "size_bytes": 2939
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE3_2D_PET_AUTOMATED_QA_v1.0.json",
@@ -1892,8 +2012,8 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/gate4-review/index.html",
-      "sha256": "4b2f225ab33f671a9a79eddab0f30cc1aa7085b9d4c24558fb5d256d47ce7b8b",
-      "size_bytes": 6812
+      "sha256": "ed30d09b29a358ea6d8860c2fe8bd86025fed5c3f17e353f400ba7a9c30e7d17",
+      "size_bytes": 4314
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
@@ -1902,7 +2022,7 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_MOTION_AUTOMATED_QA_v1.0.json",
-      "sha256": "791792db896a51cfbbca3c5b0f32556c39defc87eb619054394096e72106cbcf",
+      "sha256": "b42aa8c3df848dcbfcd143c42b87fa97c416a1a06ff42650c3fad5860459e0ff",
       "size_bytes": 2369
     },
     {
@@ -1912,12 +2032,12 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/gate5-review/index.html",
-      "sha256": "06fdec68a1ddcfa529f453783d09967b35184ce3050aa2d3aa2f7b06c04a1fd5",
-      "size_bytes": 10219
+      "sha256": "9404b22d2b6b94220c55df8fd00f9c322f4bc83b5aca8e5c5931bbc9b94d08f0",
+      "size_bytes": 6739
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_AUTOMATED_QA_v1.0.json",
-      "sha256": "e78d1eb93055c326b0fff4150421ab3f28a715b6cba5666449eda6ad0298cb37",
+      "sha256": "a77bbb8054cea1f50cf3427309b828966607181a039194f893aba02fcf63ff76",
       "size_bytes": 2812
     },
     {
@@ -1937,18 +2057,18 @@
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
-      "size_bytes": 1762247
+      "sha256": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+      "size_bytes": 1737325
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
-      "size_bytes": 1653526
+      "sha256": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c",
+      "size_bytes": 1628604
     },
     {
       "path": "docs/stage8/evidence/2d-pet/v1.0/review/index.html",
-      "sha256": "709084704ab42f2061e44090cc53a6d2bfaeefd059499baed1a6facd18e6b696",
-      "size_bytes": 4770
+      "sha256": "0891685e2f4a524ea542844f9e7ae3cb1311c9f97e9dd9ddb7accbf14f8ed1bc",
+      "size_bytes": 2953
     },
     {
       "path": "docs/stage8/evidence/ACTIVE_CHARACTER_REFERENCE_REGISTER_v1.0.json",
@@ -2626,6 +2746,11 @@
       "size_bytes": 611
     },
     {
+      "path": "infra/database/math-learning-contract.json",
+      "sha256": "49cc8b1c3b4571f05b95e9cef5d1086a65d8bdd53696f31f59415e1ffe26b55a",
+      "size_bytes": 1243
+    },
+    {
       "path": "infra/database/migrations/0001_initial.sql",
       "sha256": "b25d03be6b2f4abec7489111d80bbf233b0f5ce548a08a797800b2ada3994816",
       "size_bytes": 10224
@@ -2636,6 +2761,16 @@
       "size_bytes": 960
     },
     {
+      "path": "infra/database/migrations/0002_formula_learning.sql",
+      "sha256": "83a56d5870ee4e92e3110bfbe1e34802c97621e03baa5efdb1196deaf130e37b",
+      "size_bytes": 5819
+    },
+    {
+      "path": "infra/database/migrations/0002_formula_learning_rollback.sql",
+      "sha256": "5e5088c7fa5c66fc7b8bd82f0a884358f208cbfcb0efbc6df7945e20e9961243",
+      "size_bytes": 444
+    },
+    {
       "path": "infra/database/schema-contract.json",
       "sha256": "bd65c99e82cff7d7b874b7cad2684033c8a1838bfab3c669103bb81192e5364d",
       "size_bytes": 3202
@@ -2644,6 +2779,11 @@
       "path": "infra/database/seeds/0001_staging_seed.sql",
       "sha256": "f94f198a9643bfabe0fd2fec03f159ddc350d3bac083d8297bcf7427acfefa08",
       "size_bytes": 1291
+    },
+    {
+      "path": "infra/database/seeds/0002_fraction_formula_lesson.sql",
+      "sha256": "d48f68798dd904329f90d44e7c16ebc15a928e0ee99f71a5c0ddfe941e8c43fb",
+      "size_bytes": 13213
     },
     {
       "path": "infra/database/tests/0001_smoke.sql",
@@ -2657,8 +2797,8 @@
     },
     {
       "path": "infra/deployment/compose.api-staging.yaml",
-      "sha256": "3215f25a8b9663be708993f429f8dde9b53795fbac39310154a4e2d6c3026fe1",
-      "size_bytes": 1539
+      "sha256": "d59e09b269e909baf53c0a403efcd3445bfd2ed799f669b6d169eaf1fa626972",
+      "size_bytes": 2284
     },
     {
       "path": "infra/deployment/Dockerfile.api",
@@ -2677,8 +2817,8 @@
     },
     {
       "path": "infra/deployment/nginx.staging.conf",
-      "sha256": "e7b520d6f3eb8ac0bec89e14261933dc5b76f7d60a9d5bff5dc3a107a3d863c3",
-      "size_bytes": 834
+      "sha256": "5093a63c37425f6bf7915550f9ce7a08db228c9e5a667066b16caf88079dc537",
+      "size_bytes": 1340
     },
     {
       "path": "infra/deployment/staging-contract.json",
@@ -2707,8 +2847,8 @@
     },
     {
       "path": "mock.html",
-      "sha256": "25ccdbcd601ce62eecba1cf4e36ac1d8242df33fdd136071eb09efa4c9ef6ab4",
-      "size_bytes": 32600
+      "sha256": "48841114868db02ffdba92c24b6dd7aff01e4b1e803c4924a4d9420511cb1017",
+      "size_bytes": 31012
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/alpha-sheets/Chakchaki_Shaded2D_PoseSheet_Alpha_v1.0.png",
@@ -2722,13 +2862,13 @@
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/chroma/Chakchaki_Shaded2D_PoseSheet_Chroma_v1.0.png",
-      "sha256": "a9703d3585f8c91dd9993268eb949be31f7784aaa5ae8811ed37981004916ece",
-      "size_bytes": 1769050
+      "sha256": "7ecb1f19b55469ced233bbd1c63af5e16569aff197933f868bf8ee97b68cebda",
+      "size_bytes": 1744128
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/chroma/Gongsickyi_Shaded2D_PoseSheet_Chroma_v1.0.png",
-      "sha256": "ce37980e2bfe69cf73ab71442c99c5264c3be9e617d778891044d4b962f51cc4",
-      "size_bytes": 1667157
+      "sha256": "7149eef90b882436b77ace9ffd81e9b7ef4c36cce0f2d4ed780f2b899e57edef",
+      "size_bytes": 1642235
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/POSE_EXTRACTION_BUILD_RECORD_v1.0.json",
@@ -2897,13 +3037,13 @@
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
-      "size_bytes": 1762247
+      "sha256": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+      "size_bytes": 1737325
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
-      "size_bytes": 1653526
+      "sha256": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c",
+      "size_bytes": 1628604
     },
     {
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Canonical_View_Register_v5.2.0.xlsx",
@@ -3057,8 +3197,8 @@
     },
     {
       "path": "package.json",
-      "sha256": "43344525d6683eb8f504f5a2f48cfd71cbc9bc7eb07b72deab7c18c5aefdbf33",
-      "size_bytes": 2025
+      "sha256": "5471d9f742120bde97335501524e37a5f5dde89cf3710d6576f6e4310c61cc72",
+      "size_bytes": 2712
     },
     {
       "path": "README.md",
@@ -3132,8 +3272,8 @@
     },
     {
       "path": "scripts/harness/audit_gate4_2d_pet_motion.py",
-      "sha256": "010917139224ceafb62b540d5f9703d00607c07c0125338bb085d1079c1662b8",
-      "size_bytes": 13394
+      "sha256": "ab394bacbb950d80ca3036e9e7c129f19387bc88f967a3f2bf61aa18814c875d",
+      "size_bytes": 13503
     },
     {
       "path": "scripts/harness/audit_gate5_ai_behavior.py",
@@ -3187,13 +3327,18 @@
     },
     {
       "path": "scripts/productization/build_staging.mjs",
-      "sha256": "8256d0be45d64073e0f2872d643cf42a0c682fd8abc9749692feb174b2459da6",
-      "size_bytes": 3590
+      "sha256": "8ab306897474029ee2f74c4ffb87fec11de1b0e563f3d55ba84b2540501939e6",
+      "size_bytes": 4480
     },
     {
       "path": "scripts/productization/check_operations_runtime.mjs",
       "sha256": "4fbbb2d451d949240b1ae535e2dc9317dfc1421b0dfde72d7cbed44a424526ac",
       "size_bytes": 1486
+    },
+    {
+      "path": "scripts/productization/strip_presentation_metadata.py",
+      "sha256": "8ae7ba1af4c1139107e7777d33f11e23c81bf52ade9b2c27938ef46d6389fa4b",
+      "size_bytes": 1845
     },
     {
       "path": "scripts/productization/validate_database_design.mjs",
@@ -3221,14 +3366,29 @@
       "size_bytes": 4198
     },
     {
+      "path": "scripts/productization/validate_math_learning.mjs",
+      "sha256": "1ac97197c3d9bcd0c7ac7a54d82530ed931a5c00958ffb983d3ac8fa12675c8d",
+      "size_bytes": 2919
+    },
+    {
+      "path": "scripts/productization/validate_math_learning_ui.mjs",
+      "sha256": "98db37517ed2639834885a8278392f527c1b8fd0fecb9a911785c326fd5ea95b",
+      "size_bytes": 3271
+    },
+    {
       "path": "scripts/productization/validate_operations.mjs",
       "sha256": "92276b91d52665b53b882d0ea1fcc3eabd0446e2bf0096a44866de06c3a941e5",
       "size_bytes": 3000
     },
     {
       "path": "scripts/productization/validate_phase0.mjs",
-      "sha256": "845e59a4393a529f3ddf58d135247382afb0060fe0693dc920271e53fbe40e92",
-      "size_bytes": 2229
+      "sha256": "bd1c26f6007100982aec94c97cda51e14582be8460ecad378aec740aba38c246",
+      "size_bytes": 2308
+    },
+    {
+      "path": "scripts/productization/validate_presentation_metadata.mjs",
+      "sha256": "833de7a28b3400ccea022ccea3149898cc0eaca4c6a996fbb1e1cc1c12a4e550",
+      "size_bytes": 3255
     },
     {
       "path": "scripts/productization/validate_requirements.mjs",
@@ -3301,6 +3461,16 @@
       "size_bytes": 7268
     },
     {
+      "path": "tests/integration/api-formula-learning.test.mjs",
+      "sha256": "d920ecca0fc257c180f7a31bf2782db71ecf9d72a4563e41103fb339b78123f4",
+      "size_bytes": 5538
+    },
+    {
+      "path": "tests/integration/web-formula-learning.test.mjs",
+      "sha256": "5027aff76ea6a1d9c598a67f491e2c70424154d1aaab7fb95d78fcbad4c973bc",
+      "size_bytes": 2759
+    },
+    {
       "path": "tests/unit/agent/feedback-policy.test.mjs",
       "sha256": "51da0cb2274dc7dbac7f41e966310e977afbe8c2d96d09e827e4250694d4dfb6",
       "size_bytes": 504
@@ -3331,6 +3501,16 @@
       "size_bytes": 798
     },
     {
+      "path": "tests/unit/client/math-learning-app.test.mjs",
+      "sha256": "d3db5459ca7edf07aef230eed1e682bbd2bd1b2be8ac9c47f268d381db161567",
+      "size_bytes": 699
+    },
+    {
+      "path": "tests/unit/client/math-learning-model.test.mjs",
+      "sha256": "72247d73c5c2caa4d25d264f5b9b52fff9d4133e3daadbe0e8ffcf64b21ccccf",
+      "size_bytes": 1099
+    },
+    {
       "path": "tests/unit/diagnosis/diagnosis-service.test.mjs",
       "sha256": "e20e00b4a128d6be559f0c3dd8e6298ecbe5905fd91bd942c35c7180790ecc6d",
       "size_bytes": 905
@@ -3341,9 +3521,19 @@
       "size_bytes": 729
     },
     {
+      "path": "tests/unit/learning/formula-learning.test.mjs",
+      "sha256": "1aeae03b91268db0c7c045cc3efdeb38db666e03db74c28d25348b6b5003996c",
+      "size_bytes": 1990
+    },
+    {
       "path": "tests/unit/learning/session-machine.test.mjs",
       "sha256": "acda23167a8fd60cd58a2bf332109544bf68c2d943a0c1542afce853d7f8274c",
       "size_bytes": 922
+    },
+    {
+      "path": "tests/unit/math/rational.test.mjs",
+      "sha256": "08d2f20f94d2c7fcf6d8d6a354561b5e59504e10593fb4c6b22aa07cbde70a06",
+      "size_bytes": 657
     },
     {
       "path": "tests/unit/observability/event-schema.test.mjs",

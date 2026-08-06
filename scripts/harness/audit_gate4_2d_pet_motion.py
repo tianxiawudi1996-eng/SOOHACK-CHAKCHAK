@@ -178,9 +178,11 @@ def main() -> int:
     for marker in ("pet-motion-image-stage", "pet-motion-preparing", "pet-motion-incoming", "pet-motion-outgoing", "pet-motion-settling", "pet-pose-prepare", "pet-pose-enter", "pet-pose-exit", "pet-pose-settle", "pet-ground-shadow"):
         if marker not in css:
             failures.append(f"POSE_TO_POSE_CSS_MISSING:{marker}")
+    if landing.count("data-pet-state-trigger=") != 0:
+        failures.append("LANDING_DEVELOPMENT_STATE_CONTROLS_PRESENT")
+    if review_page.count("data-pet-state-trigger=") != 8:
+        failures.append("REVIEW_STATE_CONTROLS_NOT_8")
     for page_name, page in (("landing", landing), ("review", review_page)):
-        if page.count("data-pet-state-trigger=") != 8:
-            failures.append(f"{page_name.upper()}_STATE_CONTROLS_NOT_8")
         if page.count("data-pet-character=") != 2:
             failures.append(f"{page_name.upper()}_PET_CONTROLLERS_NOT_2")
         if page.count("data-pet-image-stage") != 2:

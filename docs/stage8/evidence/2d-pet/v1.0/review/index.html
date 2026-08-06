@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>수학착착 2D 펫 포즈 검토</title>
+  <title>수학착착 캐릭터 컨셉아트</title>
   <style>
     :root { color-scheme: light; --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --paper:#fff; --bg:#f4f7fb; --muted:#63708a; }
     * { box-sizing: border-box; }
@@ -12,9 +12,6 @@
     header h1 { margin:0 0 6px; font-size:24px; }
     header p { margin:0; opacity:.85; font-size:14px; }
     main { max-width:1500px; margin:0 auto; padding:24px; }
-    .status { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
-    .badge { padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:white; font-size:13px; font-weight:700; }
-    .pending { color:#865600; background:#fff8df; border-color:#f3d777; }
     section { margin:0 0 28px; padding:22px; border:1px solid var(--line); border-radius:20px; background:var(--paper); box-shadow:0 10px 32px #263c6b0c; }
     section h2 { margin:0 0 6px; font-size:22px; }
     section > p { margin:0 0 18px; color:var(--muted); font-size:14px; }
@@ -22,32 +19,21 @@
     figure { margin:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:#f8faff; }
     figcaption { padding:11px 14px; border-bottom:1px solid var(--line); font-size:13px; font-weight:800; background:white; }
     img { display:block; width:100%; height:auto; background:#f5f7fb; }
-    .checks { display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:10px; padding:0; margin:18px 0 0; list-style:none; }
-    .checks li { min-height:52px; padding:12px; border-radius:12px; background:#f4f7ff; color:#304162; font-size:13px; }
-    footer { padding:6px 4px 30px; color:var(--muted); font-size:13px; }
-    @media (max-width:900px) { .compare { grid-template-columns:1fr; } .checks { grid-template-columns:1fr 1fr; } }
+    @media (max-width:900px) { .compare { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <header>
-    <h1>수학착착 음영 2D 펫 포즈 검토</h1>
-    <p>승인 원본과 8포즈 후보를 비교하는 Gate 2 수동 검토 화면</p>
+    <h1>수학착착 캐릭터 컨셉아트</h1>
+    <p>착착이와 공식이의 다양한 표정과 학습 포즈</p>
   </header>
   <main>
-    <div class="status">
-      <span class="badge">자동 QA: PASS</span>
-      <span class="badge">시트: 2/2</span>
-      <span class="badge">포즈: 16/16</span>
-      <span class="badge pending">수동 승인: 0/1 PENDING</span>
-      <span class="badge pending">Gate 2: NOT_VERIFIED</span>
-    </div>
-
     <section>
       <h2>착착이</h2>
       <p>파란 S 모자, 짙은 갈색 머리, 큰 갈색 눈, 흰 후드, 파란 반바지·배낭·운동화를 확인합니다.</p>
       <div class="compare">
-        <figure><figcaption>승인 원본</figcaption><img src="../../../../../../ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png" alt="착착이 승인 원본"></figure>
-        <figure><figcaption>음영 2D 8포즈 후보</figcaption><img src="Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png" alt="착착이 음영 2D 8포즈 후보"></figure>
+        <figure><figcaption>기본 모습</figcaption><img src="../../../../../../ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png" alt="착착이 기본 모습"></figure>
+        <figure><figcaption>학습 포즈</figcaption><img src="Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png" alt="착착이 학습 포즈"></figure>
       </div>
     </section>
 
@@ -55,25 +41,11 @@
       <h2>공식이</h2>
       <p>둥근 노란 몸체, 큰 갈색 눈, 남색 원형 안경·학사모, 짧은 갈색 발과 별 지시봉을 확인합니다.</p>
       <div class="compare">
-        <figure><figcaption>승인 원본</figcaption><img src="../../../../../../ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png" alt="공식이 승인 원본"></figure>
-        <figure><figcaption>음영 2D 8포즈 후보</figcaption><img src="Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png" alt="공식이 음영 2D 8포즈 후보"></figure>
+        <figure><figcaption>기본 모습</figcaption><img src="../../../../../../ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png" alt="공식이 기본 모습"></figure>
+        <figure><figcaption>학습 포즈</figcaption><img src="Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png" alt="공식이 학습 포즈"></figure>
       </div>
     </section>
 
-    <section>
-      <h2>승인 체크 항목</h2>
-      <ul class="checks">
-        <li>원본과 같은 캐릭터로 즉시 식별되는가?</li>
-        <li>얼굴·실루엣·비율이 유지됐는가?</li>
-        <li>의상·소품·색상이 일관되는가?</li>
-        <li>음영이 2D로 보이고 저폴리 느낌이 없는가?</li>
-        <li>각 캐릭터의 8포즈가 모두 존재하는가?</li>
-        <li>포즈의 학습 상태 의미가 명확한가?</li>
-        <li>작은 UI에서도 표정과 행동이 읽히는가?</li>
-        <li>손·날개·발·소품의 형태 오류가 없는가?</li>
-      </ul>
-    </section>
-    <footer>이 페이지는 검토 전용입니다. 승인 기록은 2D_PET_MANUAL_REVIEW_v1.0.json에 별도로 고정됩니다.</footer>
   </main>
 </body>
 </html>

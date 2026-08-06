@@ -25,7 +25,7 @@
       "character": "Chakchaki",
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
       "review_copy": "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "91a80d6666d1567df68ba9916bbcc6226147e2600240ff9353e5b906b5a06447",
+      "sha256": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
       "width": 1536,
       "height": 1024,
       "expected_pose_count": 8,
@@ -36,7 +36,7 @@
       "character": "Gongsickyi",
       "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
       "review_copy": "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
-      "sha256": "f6871819cecf1696d98358e7bfabf8ceea180e04ae6203756eac28629e514100",
+      "sha256": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c",
       "width": 1536,
       "height": 1024,
       "expected_pose_count": 8,
@@ -44,6 +44,11 @@
       "source_reference": "Gongsickyi"
     }
   ],
+  "metadata_policy": {
+    "presentation_metadata_removed": true,
+    "removed_png_chunks": ["caBX"],
+    "pixel_data_changed": false
+  },
   "pose_order": [
     {"pose_id": "P01", "state": "IDLE_LISTEN", "index": 1},
     {"pose_id": "P02", "state": "WELCOME", "index": 2},
