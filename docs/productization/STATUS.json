@@ -12,13 +12,16 @@
     "6": {"name": "feature_development", "status": "VERIFIED", "progress": "15/15", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:features", "npm.cmd run test:productization"]},
     "7": {"name": "staging_deployment", "status": "VERIFIED", "scope": "LOCAL_ISOLATED", "tests": ["npm.cmd run build:staging", "npm.cmd run test:productization:staging", "container health PASS", "locale HTTP 8/8", "security headers 6/6", "rollback rehearsal PASS"]},
     "8": {"name": "integration_testing", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "tests": ["npm.cmd run test:productization:integration", "npm.cmd run test:integration:api", "browser locale 8/8", "browser desktop+mobile", "API restart persistence PASS", "PostgreSQL 16 API path PASS"]},
-    "9": {"name": "operations_maintenance", "status": "READY", "tests": []}
+    "9": {"name": "operations_maintenance", "status": "PARTIAL_VERIFIED", "scope": "LOCAL_OPERATIONS_PASS_EXTERNAL_BLOCKED", "tests": ["npm.cmd run test:productization:operations", "npm.cmd run test:operations:runtime", "npm.cmd run test:integration:api", "PostgreSQL backup+restore rehearsal", "npm.cmd audit --audit-level=moderate"]}
   },
   "stage8_dependency": {
     "gate5_status": "VERIFIED",
     "gate5_approval": "1/1",
     "gate6_entry_allowed": true
   },
-  "blockers": [],
-  "last_updated": "2026-08-06T13:58:34+09:00"
+  "blockers": [
+    "External deployment target and authorization are not configured",
+    "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
+  ],
+  "last_updated": "2026-08-06T15:30:47+09:00"
 }

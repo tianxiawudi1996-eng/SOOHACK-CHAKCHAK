@@ -46,7 +46,7 @@ if (contract.scope.api_runtime !== true || contract.scope.database_runtime !== t
 if (!compose.includes('127.0.0.1:4181:8080') || /^\s+ports:\s*\n\s+-.*5432/m.test(compose)) fail('API loopback or database exposure policy invalid');
 if (!server.includes('/api/v1/diagnostics') || !server.includes('/api/v1/learning-sessions') || !server.includes('/progress')) fail('core API surface missing');
 if (packageJson.dependencies?.pg !== '^8.16.3' || !packageJson.scripts['test:integration:api']) fail('runtime dependency or test command missing');
-if (status.phases['8'].status !== 'VERIFIED' || status.phases['9'].status !== 'READY') fail('productization status boundary invalid');
+if (status.phases['8'].status !== 'VERIFIED' || !['READY','PARTIAL_VERIFIED','VERIFIED'].includes(status.phases['9'].status)) fail('productization status boundary invalid');
 
 console.log('INTEGRATION_FULL_STACK_PASS');
 console.log('frontend_locales=8/8');

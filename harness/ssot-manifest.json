@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T06:07:11.175836+00:00",
+  "generated_at": "2026-08-06T06:33:41.141971+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -1206,19 +1206,29 @@
       "size_bytes": 388
     },
     {
+      "path": "developer/src/api/auth.mjs",
+      "sha256": "994f04d20b25d63e097fc3df1505aec7b5d0a13fbe6f01d85a43a683de248df4",
+      "size_bytes": 3049
+    },
+    {
       "path": "developer/src/api/errors.mjs",
       "sha256": "859517a2341b565863d904fe5ba9b7f94c3289d0e57bff47f932359020fc038d",
       "size_bytes": 671
     },
     {
       "path": "developer/src/api/http.mjs",
-      "sha256": "1e8adb1934f57ca535a887775ddd7896dc8bca5e142d3fb55b420648c7b2cc4f",
-      "size_bytes": 3010
+      "sha256": "c85c275aadc5feb74fed11491b8da69ae112faa80524f8ce894e6ba6f913ce43",
+      "size_bytes": 3314
     },
     {
       "path": "developer/src/api/index.mjs",
-      "sha256": "9220ef475bd79232339286c6c755ef5a9f6b53ccd4f819f604404bef4eb0c766",
-      "size_bytes": 859
+      "sha256": "912340e9f800bca32a35d7f9bc278722f0118086e3a0ed82564bb3e77685b12a",
+      "size_bytes": 1163
+    },
+    {
+      "path": "developer/src/api/metrics.mjs",
+      "sha256": "ad7f5e519f7531ecf843a3a4f3d8af4223237aa6475355cc20b16d92cb26123e",
+      "size_bytes": 1853
     },
     {
       "path": "developer/src/api/repository.mjs",
@@ -1232,8 +1242,8 @@
     },
     {
       "path": "developer/src/api/server.mjs",
-      "sha256": "8ddaa6d8483ce0142a21c44cfe9807f7748ef2628ea0050e92a60a4f1a1637c4",
-      "size_bytes": 7020
+      "sha256": "1af551e93bc0a530a2178a468cf8cf65a30666b48462dd1133fcbee4dbb215d8",
+      "size_bytes": 7633
     },
     {
       "path": "developer/src/auth/role-policy.mjs",
@@ -1432,8 +1442,8 @@
     },
     {
       "path": "docs/developer/productization/API_RUNTIME_v1.0.md",
-      "sha256": "b32238139f5fff8b5200834dc04b6fd0e9b51d29775e3bd42e886aa786612a7d",
-      "size_bytes": 1324
+      "sha256": "3d7076069d9c10948b1ed5b9036bbd0ceb1b926e235dfb819944b6c6e303c6c7",
+      "size_bytes": 1637
     },
     {
       "path": "docs/developer/productization/DATA_RETENTION_AND_ACCESS_v1.0.md",
@@ -1464,6 +1474,11 @@
       "path": "docs/developer/productization/INFRASTRUCTURE_DESIGN_v1.0.md",
       "sha256": "0165adffb9f13103ea32ed1fd423d95862f09bb9bcc976d3abae8304e39044f7",
       "size_bytes": 4458
+    },
+    {
+      "path": "docs/developer/productization/OPERATIONS_AND_MAINTENANCE_v1.0.md",
+      "sha256": "a27945cc35fb6ec12779c0244d110d8c74e8a87970764303af709c7645f7ad46",
+      "size_bytes": 2428
     },
     {
       "path": "docs/developer/productization/SECURITY_OPERATIONS_BASELINE_v1.0.md",
@@ -1541,6 +1556,11 @@
       "size_bytes": 3499
     },
     {
+      "path": "docs/productization/evidence/PHASE_9_OPERATIONS_QA.json",
+      "sha256": "2b09419bf9fb1d527e8616267eb5bd62c6dc284a53b63ff492ea5b17e2a3d5a1",
+      "size_bytes": 2976
+    },
+    {
       "path": "docs/productization/PHASE_ROADMAP.md",
       "sha256": "ea72b90abe8314811dd18b83620ad44923e1673eb5bdd1ff1a77f1af6875c2cb",
       "size_bytes": 1640
@@ -1611,14 +1631,19 @@
       "size_bytes": 1928
     },
     {
+      "path": "docs/productization/reports/PHASE_9_OPERATIONS_REPORT.md",
+      "sha256": "1697c0201c7e6d7e1a40957ef2d3bfa20ee92d2bf16ebf630b5b0e80cffc95e1",
+      "size_bytes": 1449
+    },
+    {
       "path": "docs/productization/REQUIREMENT_TRACEABILITY_v1.0.md",
       "sha256": "2243c0899619e36eb932df210260284313ed82f10b90e2ad75db8e3cb259ca28",
       "size_bytes": 2098
     },
     {
       "path": "docs/productization/STATUS.json",
-      "sha256": "2cc5fa6e1894d5272e4e57beb0809afb509869cc42e77fca081635f7c1cb85cc",
-      "size_bytes": 2078
+      "sha256": "7526bf661b1e6c2de2fc7547dc69b56e7cbb3cd1e69ee7f51f46968bef4a40b5",
+      "size_bytes": 2530
     },
     {
       "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
@@ -2596,6 +2621,11 @@
       "size_bytes": 1387
     },
     {
+      "path": "infra/database/maintenance/retention_audit.sql",
+      "sha256": "f0b769571a4d3e3ddeadb2d5ef67b8253f887c16818d01748723509fb4603619",
+      "size_bytes": 611
+    },
+    {
       "path": "infra/database/migrations/0001_initial.sql",
       "sha256": "b25d03be6b2f4abec7489111d80bbf233b0f5ce548a08a797800b2ada3994816",
       "size_bytes": 10224
@@ -2622,13 +2652,13 @@
     },
     {
       "path": "infra/deployment/API_STAGING_RUNBOOK.md",
-      "sha256": "eb7d266f797a4fcc82ac63057bcd3901a896a6b13751a992e83fba06d2ed8c8f",
-      "size_bytes": 1211
+      "sha256": "4d587b5c2347ff0e75d9cd1889caa99e30af3cd806761422ad8a242fd7754c22",
+      "size_bytes": 1930
     },
     {
       "path": "infra/deployment/compose.api-staging.yaml",
-      "sha256": "9c5653d1af0f153d42ab7bb0df9a7d0b4b28b96c20eb5af5e126d09ef6a556ab",
-      "size_bytes": 1386
+      "sha256": "3215f25a8b9663be708993f429f8dde9b53795fbac39310154a4e2d6c3026fe1",
+      "size_bytes": 1539
     },
     {
       "path": "infra/deployment/Dockerfile.api",
@@ -2659,6 +2689,21 @@
       "path": "infra/deployment/staging.env.example",
       "sha256": "18c718aaf0815f9ce4cef74add192f0a99ee3534a84a54f8fa82de1ed986667b",
       "size_bytes": 486
+    },
+    {
+      "path": "infra/operations/alert-rules.json",
+      "sha256": "1718e43a159e2b635b9249ef51e4e032cddad6ae3653d86de9b5861b118d14db",
+      "size_bytes": 787
+    },
+    {
+      "path": "infra/operations/maintenance-contract.json",
+      "sha256": "b85ae215e1faacdde8b2126b0c2656603355750b93587f0139070a0592d5bcdf",
+      "size_bytes": 1060
+    },
+    {
+      "path": "infra/operations/slo-contract.json",
+      "sha256": "093279364e75b3f64f247864f7a90946cc0d65683721da7f42e68a16203dff0a",
+      "size_bytes": 669
     },
     {
       "path": "mock.html",
@@ -3012,8 +3057,8 @@
     },
     {
       "path": "package.json",
-      "sha256": "9ba306ad780994c103458c97324edc12b058542366f6831c4b5d27973171d706",
-      "size_bytes": 1799
+      "sha256": "43344525d6683eb8f504f5a2f48cfd71cbc9bc7eb07b72deab7c18c5aefdbf33",
+      "size_bytes": 2025
     },
     {
       "path": "README.md",
@@ -3146,6 +3191,11 @@
       "size_bytes": 3590
     },
     {
+      "path": "scripts/productization/check_operations_runtime.mjs",
+      "sha256": "4fbbb2d451d949240b1ae535e2dc9317dfc1421b0dfde72d7cbed44a424526ac",
+      "size_bytes": 1486
+    },
+    {
       "path": "scripts/productization/validate_database_design.mjs",
       "sha256": "a68647ca37db3d69402c95ad074de8217bdf5cfec0ed4a64f13dd7336f1c0fc2",
       "size_bytes": 4785
@@ -3167,8 +3217,13 @@
     },
     {
       "path": "scripts/productization/validate_integration.mjs",
-      "sha256": "90cc68ccba0acb721c85cf71b3da2c1127acc9706893faa288a718f21f5e8d22",
-      "size_bytes": 4159
+      "sha256": "d4b9a07a7c80a6106a50253613863ddc7b20858e896da8531ef280a39b602491",
+      "size_bytes": 4198
+    },
+    {
+      "path": "scripts/productization/validate_operations.mjs",
+      "sha256": "92276b91d52665b53b882d0ea1fcc3eabd0446e2bf0096a44866de06c3a941e5",
+      "size_bytes": 3000
     },
     {
       "path": "scripts/productization/validate_phase0.mjs",
@@ -3242,8 +3297,8 @@
     },
     {
       "path": "tests/integration/api-core-journey.test.mjs",
-      "sha256": "574e0da703ab262b210d1f77be81bb6a153b2cf52c6662f1ca9f106d32090935",
-      "size_bytes": 6521
+      "sha256": "67f44d967520dcbf0cc661f467ca39edeab17314ea3655175cc4a218f34d91ec",
+      "size_bytes": 7268
     },
     {
       "path": "tests/unit/agent/feedback-policy.test.mjs",
@@ -3254,6 +3309,16 @@
       "path": "tests/unit/agent/hint-policy.test.mjs",
       "sha256": "6a7bb942283ad83f664e4449a2a09664e5ed4a8fdcc3eb0488d14bf04e6f5b5b",
       "size_bytes": 554
+    },
+    {
+      "path": "tests/unit/api/auth.test.mjs",
+      "sha256": "b4e7eef3a67232a8f71cb63f3cadc00536a0e341633d186f2673d4a64487257d",
+      "size_bytes": 976
+    },
+    {
+      "path": "tests/unit/api/metrics.test.mjs",
+      "sha256": "fd3932d0afded4025ae23d413e24858a762793ca3a767c0c03f3c84e552c02f6",
+      "size_bytes": 639
     },
     {
       "path": "tests/unit/api/scoring.test.mjs",

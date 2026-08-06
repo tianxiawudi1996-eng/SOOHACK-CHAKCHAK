@@ -16,8 +16,10 @@
     "build:staging": "node scripts/productization/build_staging.mjs",
     "test:productization:staging": "node scripts/productization/validate_staging_readiness.mjs",
     "test:productization:integration": "node scripts/productization/validate_integration.mjs",
+    "test:productization:operations": "node scripts/productization/validate_operations.mjs",
+    "test:operations:runtime": "node scripts/productization/check_operations_runtime.mjs",
     "test:integration:api": "node --test tests/integration/api-core-journey.test.mjs",
-    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features && npm run test:productization:staging && npm run test:productization:integration",
+    "test:productization": "npm run test:productization:phase0 && npm run test:productization:requirements && npm run test:productization:functions && npm run test:productization:infrastructure && npm run test:productization:database && npm run test:productization:screens && npm run test:productization:features && npm run test:productization:staging && npm run test:productization:integration && npm run test:productization:operations",
     "test": "npm run test:productization"
   },
   "engines": {
