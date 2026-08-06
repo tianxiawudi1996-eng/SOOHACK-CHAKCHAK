@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import pg from 'pg';
+import {selectAdaptiveRoute} from '../learning/adaptive-routing.mjs';
 import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
@@ -52,6 +53,9 @@ function mapFormulaSession(row) {
     status: row.status,
     current_step_no: row.current_step_no,
     mastery_score: Number(row.mastery_score),
+    adaptive_route: row.adaptive_route,
+    starting_hint_level: row.starting_hint_level,
+    target_difficulty: row.target_difficulty,
     started_at: row.started_at,
     completed_at: row.completed_at,
     updated_at: row.updated_at
@@ -244,20 +248,39 @@ export class MathChakChakRepository {
         [diagnosticId]
       );
       if (summary.rows[0].answered === 0) throw conflict('DIAGNOSTIC_NOT_COMPLETABLE');
+      const recommendation = selectAdaptiveRoute({
+        answered: summary.rows[0].answered,
+        correct: summary.rows[0].correct
+      });
       await client.query("UPDATE mathchakchak.diagnostic_session SET status = 'COMPLETED', completed_at = now() WHERE id = $1", [diagnosticId]);
       const pathId = crypto.randomUUID();
       const pathItemId = crypto.randomUUID();
       await client.query(
         `INSERT INTO mathchakchak.learning_path
           (id, student_profile_id, source_diagnostic_id, status, algorithm_version)
-         VALUES ($1, $2, $3, 'ACTIVE', 'diagnostic-v1')`,
+         VALUES ($1, $2, $3, 'ACTIVE', 'adaptive-v1')`,
         [pathId, actor.studentId, diagnosticId]
       );
       await client.query(
         `INSERT INTO mathchakchak.learning_path_item
-          (id, learning_path_id, topic_id, sequence_no, status)
-         VALUES ($1, $2, $3, 1, 'READY')`,
-        [pathItemId, pathId, summary.rows[0].topic_id]
+          (id, learning_path_id, topic_id, sequence_no, status, adaptive_route,
+           starting_hint_level, target_difficulty, review_after_days)
+         VALUES ($1, $2, $3, 1, 'READY', $4, $5, $6, $7)`,
+        [pathItemId,pathId,summary.rows[0].topic_id,recommendation.route,
+         recommendation.starting_hint_level,recommendation.target_difficulty,
+         recommendation.review_after_days]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.adaptive_learning_decision
+          (id, diagnostic_session_id, student_profile_id, topic_id, learning_path_item_id,
+           route, accuracy, confidence, starting_hint_level, target_difficulty,
+           review_after_days, rationale_code, algorithm_version, evidence)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,'adaptive-v1',$13)`,
+        [crypto.randomUUID(),diagnosticId,actor.studentId,summary.rows[0].topic_id,pathItemId,
+         recommendation.route,recommendation.accuracy,recommendation.confidence,
+         recommendation.starting_hint_level,recommendation.target_difficulty,
+         recommendation.review_after_days,recommendation.rationale_code,
+         {answered:summary.rows[0].answered,correct:summary.rows[0].correct}]
       );
       await this.saveIdempotency(client, {actor, scope, key, hash, reference: pathItemId, status: 200});
       return {...await this.diagnosticCompletionResult(client, diagnosticId, pathItemId), replayed: false};
@@ -272,7 +295,61 @@ export class MathChakChakRepository {
       [diagnosticId]
     );
     const {answered, correct} = summary.rows[0];
-    return {diagnostic_id: diagnosticId, status: 'COMPLETED', answered, correct, accuracy: answered ? correct / answered : null, learning_path_item_id: pathItemId};
+    const decision = await client.query(
+      `SELECT route, accuracy, confidence, starting_hint_level, target_difficulty,
+              review_after_days, rationale_code, algorithm_version
+         FROM mathchakchak.adaptive_learning_decision
+        WHERE diagnostic_session_id = $1 AND learning_path_item_id = $2`,
+      [diagnosticId, pathItemId]
+    );
+    return {
+      diagnostic_id: diagnosticId,
+      status: 'COMPLETED',
+      answered,
+      correct,
+      accuracy: answered ? correct / answered : null,
+      learning_path_item_id: pathItemId,
+      recommendation: decision.rowCount ? {
+        ...decision.rows[0],
+        accuracy:Number(decision.rows[0].accuracy),
+        confidence:Number(decision.rows[0].confidence)
+      } : null
+    };
+  }
+
+  async getAdaptiveRecommendation({actor, studentId}) {
+    const client = await this.pool.connect();
+    try {
+      await this.assertStudentOwner(client, actor);
+      if (actor.studentId !== studentId) throw forbidden();
+      const result = await client.query(
+        `SELECT ald.diagnostic_session_id, ald.learning_path_item_id, ald.topic_id,
+                ald.route, ald.accuracy, ald.confidence, ald.starting_hint_level,
+                ald.target_difficulty, ald.review_after_days, ald.rationale_code,
+                ald.algorithm_version, ald.created_at,
+                stm.mastery_score, stm.evidence_count, stm.updated_at AS mastery_updated_at,
+                ri.interval_days AS scheduled_review_days, ri.due_at AS scheduled_review_at
+           FROM mathchakchak.adaptive_learning_decision ald
+           LEFT JOIN mathchakchak.student_topic_mastery stm
+             ON stm.student_profile_id = ald.student_profile_id AND stm.topic_id = ald.topic_id
+           LEFT JOIN mathchakchak.review_item ri
+             ON ri.student_profile_id = ald.student_profile_id AND ri.topic_id = ald.topic_id
+            AND ri.status IN ('SCHEDULED','DUE')
+          WHERE ald.student_profile_id = $1
+          ORDER BY ald.created_at DESC LIMIT 1`,
+        [studentId]
+      );
+      if (!result.rowCount) throw notFound();
+      const row = result.rows[0];
+      return {
+        ...row,
+        accuracy:Number(row.accuracy),
+        confidence:Number(row.confidence),
+        mastery_score:row.mastery_score === null ? null : Number(row.mastery_score)
+      };
+    } finally {
+      client.release();
+    }
   }
 
   async createLearningSession({actor, pathItemId, locale, key, hash}) {
@@ -411,7 +488,8 @@ export class MathChakChakRepository {
     return this.withTransaction(async (client) => {
       await this.assertStudentOwner(client, actor);
       const learning = await client.query(
-        `SELECT ls.*, lpi.topic_id
+        `SELECT ls.*, lpi.topic_id, lpi.adaptive_route, lpi.starting_hint_level,
+                lpi.target_difficulty, lpi.review_after_days
            FROM mathchakchak.learning_session ls
            JOIN mathchakchak.learning_path_item lpi ON lpi.id = ls.learning_path_item_id
           WHERE ls.id = $1 AND ls.student_profile_id = $2 FOR UPDATE`,
@@ -443,9 +521,12 @@ export class MathChakChakRepository {
       const id = crypto.randomUUID();
       await client.query(
         `INSERT INTO mathchakchak.formula_learning_session
-          (id, learning_session_id, lesson_definition_id, student_profile_id, locale, status)
-         VALUES ($1, $2, $3, $4, $5, 'IN_PROGRESS')`,
-        [id, learningSessionId, definition.rows[0].id, actor.studentId, learning.rows[0].locale]
+          (id, learning_session_id, lesson_definition_id, student_profile_id, locale, status,
+           adaptive_route, starting_hint_level, target_difficulty)
+         VALUES ($1, $2, $3, $4, $5, 'IN_PROGRESS', $6, $7, $8)`,
+        [id,learningSessionId,definition.rows[0].id,actor.studentId,learning.rows[0].locale,
+         learning.rows[0].adaptive_route,learning.rows[0].starting_hint_level,
+         learning.rows[0].target_difficulty]
       );
       await this.saveIdempotency(client, {actor, scope, key, hash, reference:id, status:201});
       return {...await this.formulaSessionResult(client, {actor, formulaSessionId:id}),replayed:false};
@@ -488,7 +569,9 @@ export class MathChakChakRepository {
       );
       if (!stepResult.rowCount) throw conflict('FORMULA_LESSON_STEP_MISSING');
       const step = stepResult.rows[0];
-      const evaluation = evaluateFormulaResponse(step, responseValue, {hintLevel:hintLevel ?? 0});
+      const requestedHintLevel = hintLevel ?? 0;
+      const effectiveHintLevel = Math.max(requestedHintLevel, session.rows[0].starting_hint_level ?? 0);
+      const evaluation = evaluateFormulaResponse(step, responseValue, {hintLevel:effectiveHintLevel});
       const attempts = await client.query(
         `SELECT count(*)::integer + 1 AS next FROM mathchakchak.formula_learning_response
           WHERE formula_learning_session_id = $1 AND lesson_step_id = $2`,
@@ -502,7 +585,7 @@ export class MathChakChakRepository {
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
          RETURNING id, lesson_step_id, attempt_no, outcome, misconception_code, hint_level, duration_ms, created_at`,
         [id,formulaSessionId,step.id,attempts.rows[0].next,responseValue,evaluation.outcome,
-         evaluation.misconception_code,hintLevel ?? 0,durationMs ?? null]
+         evaluation.misconception_code,evaluation.outcome === 'INCORRECT' ? effectiveHintLevel : requestedHintLevel,durationMs ?? null]
       );
       if (evaluation.outcome === 'CORRECT') {
         await client.query(
@@ -537,7 +620,7 @@ export class MathChakChakRepository {
         );
       }
       await this.saveIdempotency(client, {actor, scope, key, hash, reference:id, status:201});
-      const hintIndex = Math.min(hintLevel ?? 0, Math.max(0, step.hint_ladder.length - 1));
+      const hintIndex = Math.min(effectiveHintLevel, Math.max(0, step.hint_ladder.length - 1));
       return {
         ...inserted.rows[0],
         mastery_score:completion.mastery,
@@ -551,9 +634,12 @@ export class MathChakChakRepository {
     return this.withTransaction(async (client) => {
       await this.assertStudentOwner(client, actor);
       const session = await client.query(
-        `SELECT fls.*, ld.mastery_threshold
+        `SELECT fls.*, ld.mastery_threshold, c.topic_id, lpi.review_after_days
            FROM mathchakchak.formula_learning_session fls
            JOIN mathchakchak.lesson_definition ld ON ld.id = fls.lesson_definition_id
+           JOIN mathchakchak.math_concept c ON c.id = ld.concept_id
+           JOIN mathchakchak.learning_session ls ON ls.id = fls.learning_session_id
+           JOIN mathchakchak.learning_path_item lpi ON lpi.id = ls.learning_path_item_id
           WHERE fls.id = $1 AND fls.student_profile_id = $2 FOR UPDATE`,
         [formulaSessionId, actor.studentId]
       );
@@ -577,6 +663,27 @@ export class MathChakChakRepository {
                 completed_at = now(), updated_at = now()
           WHERE id = $1`,
         [formulaSessionId,result.mastery]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.student_topic_mastery
+          (student_profile_id, topic_id, mastery_score, evidence_count, last_formula_session_id)
+         VALUES ($1,$2,$3,1,$4)
+         ON CONFLICT (student_profile_id, topic_id) DO UPDATE
+           SET mastery_score = EXCLUDED.mastery_score,
+               evidence_count = mathchakchak.student_topic_mastery.evidence_count + 1,
+               last_formula_session_id = EXCLUDED.last_formula_session_id,
+               updated_at = now()`,
+        [actor.studentId,session.rows[0].topic_id,result.mastery,formulaSessionId]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.review_item
+          (id, student_profile_id, topic_id, due_at, interval_days, status)
+         VALUES ($1,$2,$3,now() + make_interval(days => $4),$4,'SCHEDULED')
+         ON CONFLICT (student_profile_id, topic_id, status) DO UPDATE
+           SET due_at = EXCLUDED.due_at,
+               interval_days = EXCLUDED.interval_days,
+               updated_at = now()`,
+        [crypto.randomUUID(),actor.studentId,session.rows[0].topic_id,session.rows[0].review_after_days]
       );
       await this.saveIdempotency(client, {actor, scope, key, hash, reference:formulaSessionId, status:200});
       return {...await this.formulaSessionResult(client, {actor, formulaSessionId}),replayed:false};

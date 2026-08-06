@@ -95,6 +95,13 @@ test('formula lesson runs five stages and persists misconception and mastery in 
   assert.equal(completed.payload.data.status, 'COMPLETED');
   assert.equal(completed.payload.data.mastery_score, 1);
 
+  const recommendation = await api(`/api/v1/students/${studentId}/adaptive-recommendation`);
+  assert.equal(recommendation.response.status, 200);
+  assert.equal(recommendation.payload.data.mastery_score, 1);
+  assert.ok(recommendation.payload.data.evidence_count >= 1);
+  assert.equal(recommendation.payload.data.scheduled_review_days, 1);
+  assert.ok(recommendation.payload.data.scheduled_review_at);
+
   const learningComplete = await api(`/api/v1/learning-sessions/${learning.payload.data.id}/complete`, {method:'POST',key:key('learning-complete'),body:{}});
   assert.equal(learningComplete.response.status, 200);
   assert.equal(learningComplete.payload.data.status, 'COMPLETED');
