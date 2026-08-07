@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 18,
+  "current_phase": 19,
   "phases": {
+    "19": {"name": "formula_catalog_recall_i18n", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "formulas_72/72_locales_8/8_source_rows_72/72_translated_rows_504/504_revision_rows_576/576_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-catalog-i18n", "npm.cmd run test:integration:formula-catalog-i18n", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN catalog + ru collaboration/recall", "npm.cmd run test:productization"]},
     "18": {"name": "formula_application_i18n_expansion", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "formulas_72/72_expanded_60/60_items_216/216_locales_8/8_translations_1728/1728", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-application-i18n", "npm.cmd run test:integration:formula-application-i18n", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN non-unit+unit application UI"]},
     "17": {"name": "formula_application_mastery", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_representative_formulas_12/12_application_items_36/36", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-application", "npm.cmd run test:integration:formula-application", "PostgreSQL 16 migration rollback+reapply", "browser collaboration+recall+application 3/3"]},
     "16": {"name": "formula_recall_check", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_formula_items_72/72_choices_4/4_server_scoring", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-recall", "npm.cmd run test:integration:formula-recall", "PostgreSQL 16 migration rollback+reapply", "browser collaboration 5/5 + recall result"]},
@@ -32,5 +33,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T08:54:35+09:00"
+  "last_updated": "2026-08-07T10:01:10+09:00"
 }

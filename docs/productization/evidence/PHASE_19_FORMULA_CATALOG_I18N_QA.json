@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 19,
+  "tested_at": "2026-08-07T10:01:10+09:00",
+  "status": "AUTO_QA_PASS_HUMAN_REVIEW_REQUIRED",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "coverage": {
+    "grades": "12/12",
+    "formulas": "72/72",
+    "locales": "8/8",
+    "source_rows": "72/72",
+    "translated_rows": "504/504",
+    "revision_rows": "576/576",
+    "formula_browser_fields_without_hangul": "18/18",
+    "recall_browser_fields_without_hangul": "5/5"
+  },
+  "security": {
+    "answer_schema_exposed": false,
+    "accepted_values_exposed": false,
+    "human_translation_approval_inferred": false,
+    "manual_translation_approvals": "0/7"
+  },
+  "tests": {
+    "unit": "45/45 PASS",
+    "static_phase19": "PASS",
+    "full_productization_regression": "PHASE_0_TO_19 PASS",
+    "integration_journeys": "11/11 PASS",
+    "postgres_counts": "576/576 PASS",
+    "migration_rollback_reapply": "PASS",
+    "learning_attempts_preserved": true,
+    "browser_zh_cn_catalog": "PASS",
+    "browser_ru_collaboration_title": "PASS",
+    "browser_ru_recall": "PASS",
+    "presentation_metadata": "PASS"
+  },
+  "database_runtime": {
+    "engine": "PostgreSQL 16",
+    "database_container_id": "ca834d0aac7f494ff1a159f65137534c5ed41736a62bb4a1b4f27a1e276a8150",
+    "api_container_id": "11254adf2e4341dd8c2404a2e0e9d5b103d7839e09a9f2faa4ad6d37c54ebcf7",
+    "web_container_id": "5b2d578bb0b724384f1825565d6810ceccd949eb1037fc7464de4a191102d6c0",
+    "verification_status_length": 32,
+    "rollback_source_rows": 72,
+    "restored_rows": 576
+  },
+  "defects_fixed": [
+    "한국어 원본 시드보다 먼저 신규 컬럼 NOT NULL을 적용하던 순서를 전체 적재 후 제약 확정으로 변경",
+    "27자 검증 상태 enum을 24자 varchar에 저장할 수 없던 기존 스키마를 varchar(32)로 확장",
+    "회상 선택지 라벨을 요청 로케일의 display_notation으로 일괄 조회",
+    "K12 회귀 테스트의 한국어 폴백 기대값을 실제 번역 리비전 상태로 갱신"
+  ],
+  "remaining_scope": [
+    "학단·교과 경로·공식 출처 메타데이터의 8개 언어 표시",
+    "착착이·공식이 역할 및 협업 5단계 문구의 8개 언어 표시",
+    "7개 비한국어 로케일의 언어 전문가 검토"
+  ],
+  "external_deployment_performed": false
+}

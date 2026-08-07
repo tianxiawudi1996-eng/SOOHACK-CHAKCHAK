@@ -165,34 +165,61 @@ export class MathChakChakRepository {
       if(!grade.rowCount) throw notFound();
       const formulas=await client.query(
         `SELECT gfc.id,gfc.grade_code,gfc.sequence_no,gfc.strand,gfc.knowledge_type,
-                gfc.semantic_key,gfc.title_ko AS title,gfc.notation,gfc.explanation_ko AS explanation,
+                gfc.semantic_key,coalesce(requested.title,korean.title,gfc.title_ko) AS title,
+                coalesce(requested.display_notation,korean.display_notation,gfc.notation) AS notation,
+                coalesce(requested.explanation,korean.explanation,gfc.explanation_ko) AS explanation,
                 gfc.source_standard_codes,gfc.course_name,gfc.content_version,
                 cr.notice_code,cr.annex,cr.official_url,
-                fer.revision_no,fer.verification_status
+                coalesce(requested.revision_no,korean.revision_no) AS revision_no,
+                coalesce(requested.verification_status,korean.verification_status,'SOURCE_ALIGNED') AS verification_status,
+                CASE WHEN requested.formula_catalog_id IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale
            FROM mathchakchak.grade_formula_catalog gfc
            JOIN mathchakchak.curriculum_reference cr ON cr.id=gfc.curriculum_reference_id
-           JOIN LATERAL (
-             SELECT revision_no,verification_status
+           LEFT JOIN LATERAL (
+             SELECT formula_catalog_id,revision_no,title,display_notation,explanation,verification_status
+               FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale=$2
+              ORDER BY revision_no DESC LIMIT 1
+           ) requested ON true
+           LEFT JOIN LATERAL (
+             SELECT formula_catalog_id,revision_no,title,display_notation,explanation,verification_status
                FROM mathchakchak.formula_explanation_revision
               WHERE formula_catalog_id=gfc.id AND locale='ko'
               ORDER BY revision_no DESC LIMIT 1
-           ) fer ON true
+           ) korean ON true
           WHERE gfc.grade_code=$1 AND gfc.active=true
           ORDER BY gfc.sequence_no`,
-        [gradeCode]
+        [gradeCode,requestedLocale]
       );
+      const contentLocale=formulas.rows.every((formula)=>formula.content_locale===requestedLocale)?requestedLocale:'ko';
+      const publicFormulas=formulas.rows.map(({content_locale,...formula})=>formula);
       return {
-        grade:grade.rows[0],formulas:formulas.rows,requested_locale:requestedLocale,
-        content_locale:'ko',translation_status:requestedLocale==='ko'?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'
+        grade:grade.rows[0],formulas:publicFormulas,requested_locale:requestedLocale,
+        content_locale:contentLocale,translation_status:contentLocale===requestedLocale?(requestedLocale==='ko'?'SOURCE_ALIGNED':'TRANSLATION_REVIEW_REQUIRED'):'CANONICAL_KO_FALLBACK'
       };
     } finally { client.release(); }
   }
 
   async collaborationPlanResult(client,{actor,sessionId}) {
     const result=await client.query(
-      `SELECT fcs.*,gfc.grade_code,gfc.knowledge_type,gfc.notation,gfc.title_ko AS title
+      `SELECT fcs.*,gfc.grade_code,gfc.knowledge_type,
+              coalesce(requested.display_notation,korean.display_notation,gfc.notation) AS notation,
+              coalesce(requested.title,korean.title,gfc.title_ko) AS title,
+              CASE WHEN requested.formula_catalog_id IS NOT NULL THEN fcs.content_locale ELSE 'ko' END AS resolved_content_locale,
+              CASE WHEN requested.formula_catalog_id IS NOT NULL
+                   THEN requested.verification_status
+                   WHEN fcs.content_locale='ko' THEN coalesce(korean.verification_status,'SOURCE_ALIGNED')
+                   ELSE 'CANONICAL_KO_FALLBACK' END AS translation_status
          FROM mathchakchak.formula_collaboration_session fcs
          JOIN mathchakchak.grade_formula_catalog gfc ON gfc.id=fcs.formula_catalog_id
+         LEFT JOIN LATERAL (
+           SELECT formula_catalog_id,title,display_notation,verification_status FROM mathchakchak.formula_explanation_revision
+            WHERE formula_catalog_id=gfc.id AND locale=fcs.content_locale ORDER BY revision_no DESC LIMIT 1
+         ) requested ON true
+         LEFT JOIN LATERAL (
+           SELECT formula_catalog_id,title,display_notation,verification_status FROM mathchakchak.formula_explanation_revision
+            WHERE formula_catalog_id=gfc.id AND locale='ko' ORDER BY revision_no DESC LIMIT 1
+         ) korean ON true
         WHERE fcs.id=$1 AND fcs.student_profile_id=$2`,
       [sessionId,actor.studentId]
     );
@@ -209,7 +236,7 @@ export class MathChakChakRepository {
         id:row.id,status:row.status,current_phase_no:row.current_phase_no,evidence_score:row.evidence_score,
         created_at:row.created_at,started_at:row.started_at,completed_at:row.completed_at
       },
-      formula:{id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation,title:row.title},
+      formula:{id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation,title:row.title,content_locale:row.resolved_content_locale,translation_status:row.translation_status},
       plan:buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version}),
       evidence:evidence.rows
     };
@@ -223,7 +250,7 @@ export class MathChakChakRepository {
     } finally { client.release(); }
   }
 
-  async createCurriculumCollaborationPlan({actor,formulaCatalogId,route,key,hash}) {
+  async createCurriculumCollaborationPlan({actor,formulaCatalogId,route,requestedLocale,key,hash}) {
     return this.withTransaction(async(client)=>{
       await this.assertStudentOwner(client,actor);
       const scope='curriculum.collaboration-plans.create';
@@ -234,9 +261,9 @@ export class MathChakChakRepository {
       const id=crypto.randomUUID();
       await client.query(
         `INSERT INTO mathchakchak.formula_collaboration_session
-          (id,student_profile_id,formula_catalog_id,adaptive_route,policy_version,status)
-         VALUES ($1,$2,$3,$4,'pet-collab-v1','PLANNED')`,
-        [id,actor.studentId,formulaCatalogId,route]
+          (id,student_profile_id,formula_catalog_id,adaptive_route,policy_version,status,content_locale)
+         VALUES ($1,$2,$3,$4,'pet-collab-v1','PLANNED',$5)`,
+        [id,actor.studentId,formulaCatalogId,route,requestedLocale]
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.collaborationPlanResult(client,{actor,sessionId:id}),replayed:false};
@@ -323,17 +350,53 @@ export class MathChakChakRepository {
     try{
       await this.assertStudentOwner(client,actor);
       const result=await client.query(
-        `SELECT fri.id,fri.formula_catalog_id,fri.prompt_ko AS prompt,fri.choices,fri.assessment_kind,
-                gfc.grade_code,gfc.title_ko AS formula_title,
+        `SELECT fri.id,fri.formula_catalog_id,coalesce(requested.recall_prompt,korean.recall_prompt,fri.prompt_ko) AS prompt,
+                fri.choices,fri.assessment_kind,gfc.grade_code,
+                coalesce(requested.title,korean.title,gfc.title_ko) AS formula_title,
+                CASE WHEN requested.formula_catalog_id IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale,
+                coalesce(requested.verification_status,korean.verification_status,'SOURCE_ALIGNED') AS verification_status,
                 EXISTS (SELECT 1 FROM mathchakchak.formula_application_item fai WHERE fai.formula_catalog_id=fri.formula_catalog_id AND fai.active=true) AS application_available
            FROM mathchakchak.formula_recall_item fri
            JOIN mathchakchak.grade_formula_catalog gfc ON gfc.id=fri.formula_catalog_id
+           LEFT JOIN LATERAL (
+             SELECT formula_catalog_id,title,display_notation,recall_prompt,verification_status
+               FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale=$2 ORDER BY revision_no DESC LIMIT 1
+           ) requested ON true
+           LEFT JOIN LATERAL (
+             SELECT formula_catalog_id,title,display_notation,recall_prompt,verification_status
+               FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale='ko' ORDER BY revision_no DESC LIMIT 1
+           ) korean ON true
           WHERE fri.formula_catalog_id=$1 AND fri.active=true
           ORDER BY fri.content_version DESC LIMIT 1`,
-        [formulaCatalogId]
+        [formulaCatalogId,requestedLocale]
       );
       if(!result.rowCount) throw notFound();
-      return {...result.rows[0],requested_locale:requestedLocale,content_locale:'ko',translation_status:requestedLocale==='ko'?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'};
+      const row=result.rows[0];
+      const choiceKeys=row.choices.map((choice)=>choice.value);
+      const localizedChoices=await client.query(
+        `SELECT gfc.semantic_key,
+                coalesce(requested.display_notation,korean.display_notation,gfc.notation) AS label
+           FROM mathchakchak.grade_formula_catalog gfc
+           LEFT JOIN LATERAL (
+             SELECT display_notation FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale=$2 ORDER BY revision_no DESC LIMIT 1
+           ) requested ON true
+           LEFT JOIN LATERAL (
+             SELECT display_notation FROM mathchakchak.formula_explanation_revision
+              WHERE formula_catalog_id=gfc.id AND locale='ko' ORDER BY revision_no DESC LIMIT 1
+           ) korean ON true
+          WHERE gfc.semantic_key=ANY($1::text[])`,
+        [choiceKeys,requestedLocale]
+      );
+      const labelByKey=new Map(localizedChoices.rows.map((choice)=>[choice.semantic_key,choice.label]));
+      const choices=row.choices.map((choice)=>({...choice,label:labelByKey.get(choice.value)??choice.label}));
+      const {verification_status,...publicRow}=row;
+      return {
+        ...publicRow,choices,requested_locale:requestedLocale,
+        translation_status:row.content_locale===requestedLocale?verification_status:'CANONICAL_KO_FALLBACK'
+      };
     } finally { client.release(); }
   }
 

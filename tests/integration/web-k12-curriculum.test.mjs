@@ -15,7 +15,8 @@ test('K12 curriculum UI exposes 12 grades, canonical formulas, and a five-phase 
   assert.equal(grades.response.status,200);assert.equal(grades.payload.data.grades.length,12);
   assert.ok(grades.payload.data.grades.every((grade)=>grade.formula_count>=6));
   const early=await request('/api/v1/curriculum/grades/E1/formulas?locale=en',{token});
-  assert.equal(early.response.status,200);assert.equal(early.payload.data.translation_status,'CANONICAL_KO_FALLBACK');
+  assert.equal(early.response.status,200);assert.equal(early.payload.data.translation_status,'TRANSLATION_REVIEW_REQUIRED');
+  assert.equal(early.payload.data.content_locale,'en');
   assert.ok(early.payload.data.formulas.some((formula)=>formula.knowledge_type==='RELATION'));
   const high=await request('/api/v1/curriculum/grades/H3/formulas?locale=ko',{token});
   assert.equal(high.response.status,200);assert.equal(high.payload.data.formulas.length,6);

@@ -194,10 +194,11 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if (match.name === 'createCurriculumCollaborationPlan') {
     const routeName=body.adaptive_route??'CORE';
     if(!['REMEDIATE','CORE','EXTEND'].includes(routeName)) throw badRequest('INVALID_ADAPTIVE_ROUTE','error.invalid_adaptive_route');
+    const requestedLocale=normalizeRequestedLocale(body.locale??'ko');
     const data=await repository.createCurriculumCollaborationPlan({
-      actor,formulaCatalogId:requireUuid(body.formula_catalog_id,'formula_catalog_id'),route:routeName,key,hash
+      actor,formulaCatalogId:requireUuid(body.formula_catalog_id,'formula_catalog_id'),route:routeName,requestedLocale,key,hash
     });
-    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+    return success(data,{requestId,locale:requestedLocale,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }
   if (match.name === 'addCurriculumCollaborationEvidence') {
     const phaseNo=body.phase_no;
