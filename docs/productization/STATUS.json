@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 22,
+  "current_phase": 23,
   "phases": {
+    "23": {"name": "core_web_vitals_and_static_delivery_performance", "status": "AUTO_VERIFIED_LOCAL_LAB", "scope": "LOCAL_ISOLATED_LIGHTHOUSE", "progress": "surfaces_4/4_lighthouse_core_median_97_accessibility_100_best_practices_100_lcp_2417ms_cls_0.045_tbt_15ms_cache_waste_3.1KiB", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:performance", "Lighthouse mobile 3-run median", "four-surface Lighthouse cross-check", "gzip/cache header smoke", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "npm.cmd run test:productization"]},
     "22": {"name": "keyboard_focus_contrast_screen_reader_accessibility", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "surfaces_4/4_skip_focus_contracts_4/4_dynamic_focus_targets_7/7_contrast_pairs_12/12_integration_14/14_manual_accessibility_approvals_0/1", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:accessibility-interaction", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "browser diagnostic + lesson + curriculum focus transitions", "npm.cmd run test:productization"]},
     "21": {"name": "accessibility_i18n_and_linguistic_review_packets", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "surfaces_4/4_locales_8/8_accessibility_keys_31/31_values_248/248_review_packets_7/7_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:accessibility-i18n", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "browser zh-CN landing + ja diagnostic + fr lesson + ru curriculum", "npm.cmd run test:productization"]},
     "20": {"name": "curriculum_collaboration_i18n", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_grade_rows_96/96_reference_rows_8/8_role_rows_8/8_phase_rows_40/40_locales_8/8_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:curriculum-collaboration-i18n", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN five-phase + ru metadata/roles", "npm.cmd run test:productization"]},
@@ -33,10 +34,11 @@
     "gate6_entry_allowed": true
   },
   "blockers": [
+    "Production field Core Web Vitals including 75th-percentile INP require external deployment and real-user traffic",
     "Product-owner keyboard and screen-reader review is pending (0/1)",
     "Human linguistic review is pending for seven non-Korean locales (0/7)",
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T12:59:04+09:00"
+  "last_updated": "2026-08-07T16:57:23+09:00"
 }

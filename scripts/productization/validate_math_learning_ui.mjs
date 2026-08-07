@@ -34,7 +34,11 @@ if (!app.includes('/api/v1/local-demo/session') || !app.includes('/formula-lesso
 if (/localStorage|sessionStorage|document\.cookie/.test(app)) fail('session token persistence is forbidden');
 if (app.includes("addEventListener('submit'") || !app.includes('elements.form.onsubmit=null')) fail('step submit handler replacement missing');
 if (!/@media\s*\(prefers-reduced-motion:\s*reduce\)/.test(css) || !/@media\s*\(max-width:\s*560px\)/.test(css)) fail('accessibility or mobile fallback missing');
-if (!nginx.includes('location /api/') || !nginx.includes('application/javascript') || !nginx.includes('\\.mjs$')) fail('same-origin API or module MIME policy missing');
+if (
+  !nginx.includes('location /api/') ||
+  !nginx.includes('application/javascript') ||
+  !(nginx.includes('\\.mjs$') || nginx.includes('(?:mjs|js)'))
+) fail('same-origin API or module MIME policy missing');
 if (!compose.includes('127.0.0.1:4180:80') || !compose.includes('ENABLE_LOCAL_DEMO_SESSION: "true"')) fail('local-isolated deployment boundary missing');
 if ((seed.match(/\[{"ko":/g) || []).length < 5) fail('localized hint ladders incomplete');
 

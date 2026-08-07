@@ -22,7 +22,11 @@ for (const marker of ['수학착착', 'client/', 'developer/', 'agent/', 'ko', '
 const status = JSON.parse(await readFile(resolve(root, 'docs/productization/STATUS.json'), 'utf8'));
 const phaseKeys = Object.keys(status.phases || {}).map(Number).sort((a,b) => a-b);
 const expectedPhaseKeys = Array.from({length:Number(status.current_phase) + 1}, (_,index) => index);
-const validCurrentStatuses = new Set(['VERIFIED', 'AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED']);
+const validCurrentStatuses = new Set([
+  'VERIFIED',
+  'AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED',
+  'AUTO_VERIFIED_LOCAL_LAB'
+]);
 if (
   status.project !== 'MathChakChak' ||
   !Number.isInteger(status.current_phase) ||
