@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-a11y-text="common.skip">Skip to content</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#top" aria-label="MathChakChak home">
+      <a class="brand" href="#top" data-a11y-aria="landing.brandHome">
         <span class="brand-mark" aria-hidden="true">착</span>
         <span><strong>수학착착</strong><small>MATH CHAKCHAK</small></span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
+      <nav class="nav" data-a11y-aria="landing.primaryNav">
         <a href="#method" data-i18n="nav.method">How it works</a>
         <a href="#report" data-i18n="nav.progress">Progress report</a>
         <a href="curriculum/index.html" data-i18n="nav.curriculum">Grade formulas</a>
@@ -23,7 +23,7 @@
       <div class="header-actions">
         <label class="locale-control">
           <span class="sr-only" data-i18n="locale.label">Language</span>
-          <select id="localeSelect" aria-label="Language">
+          <select id="localeSelect" data-a11y-aria="common.language">
             <option value="ko">한국어</option>
             <option value="zh-CN">简体中文</option>
             <option value="ja">日本語</option>
@@ -53,25 +53,25 @@
           <p class="assurance"><span aria-hidden="true">✓</span><span data-i18n="hero.note">Start without entering a payment card.</span></p>
         </div>
 
-        <div class="product-stage" aria-label="MathChakChak learning preview">
+        <div class="product-stage" data-a11y-aria="landing.learningPreview">
           <figure class="pet pet-chakchaki">
-            <img src="assets/characters/chakchaki-guide.webp" alt="Chakchaki guiding the learner">
+            <img src="assets/characters/chakchaki-guide.webp" data-a11y-alt="landing.chakchakiGuide" alt="">
           </figure>
           <article class="lesson-card">
             <div class="lesson-top"><span data-i18n="preview.label">Today's personalized lesson</span></div>
             <div class="chat chat-tutor"><span class="avatar">착</span><p data-i18n="preview.tutor">What changes when we make the denominators the same?</p></div>
-            <div class="fraction" aria-label="one half plus one third"><span>1<small>2</small></span><b>+</b><span>1<small>3</small></span><b>=</b><span>?</span></div>
+            <div class="fraction" data-a11y-aria="landing.fractionPreview"><span>1<small>2</small></span><b>+</b><span>1<small>3</small></span><b>=</b><span>?</span></div>
             <div class="chat chat-student"><p data-i18n="preview.student">The pieces become equal in size, so we can add them!</p></div>
             <div class="lesson-progress"><span data-i18n="preview.progress">Concept understanding 72%</span><div><i></i></div></div>
           </article>
           <figure class="pet pet-gongsickyi">
-            <img src="assets/characters/gongsickyi-praise.webp" alt="Gongsickyi celebrating progress">
+            <img src="assets/characters/gongsickyi-praise.webp" data-a11y-alt="landing.gongsickyiCelebrate" alt="">
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="proof" aria-label="Product highlights">
+    <section class="proof" data-a11y-aria="landing.productHighlights">
       <div class="shell proof-grid">
         <div><span aria-hidden="true">◷</span><strong data-i18n="proof.diagnostic">3-minute check</strong></div>
         <div><span aria-hidden="true">✦</span><strong data-i18n="proof.personal">1:1 explanations</strong></div>
@@ -87,21 +87,21 @@
           <p data-i18n="method.body">Before revealing an answer, we point learners in the right direction.</p>
         </div>
         <ol class="steps">
-          <li><span>01</span><strong data-i18n="method.step1">Check current understanding</strong><b aria-label="complete">✓</b></li>
-          <li class="active"><span>02</span><strong data-i18n="method.step2">Explain in your own words</strong><b aria-label="current">●</b></li>
-          <li><span>03</span><strong data-i18n="method.step3">Apply to a new problem</strong><b aria-label="next">→</b></li>
+          <li><span>01</span><strong data-i18n="method.step1">Check current understanding</strong><b data-a11y-aria="landing.complete">✓</b></li>
+          <li class="active"><span>02</span><strong data-i18n="method.step2">Explain in your own words</strong><b data-a11y-aria="landing.current">●</b></li>
+          <li><span>03</span><strong data-i18n="method.step3">Apply to a new problem</strong><b data-a11y-aria="landing.next">→</b></li>
         </ol>
       </div>
     </section>
 
     <section class="report section" id="report">
       <div class="shell report-grid">
-        <div class="report-card" aria-label="Weekly progress report">
+        <div class="report-card" data-a11y-aria="landing.weeklyReport">
           <div class="score-ring"><strong>78</strong><small>/100</small></div>
           <div class="metrics">
-            <p><span>Concept</span><b>84%</b></p><div><i style="--value:84%"></i></div>
-            <p><span>Recall</span><b>72%</b></p><div><i style="--value:72%"></i></div>
-            <p><span>Apply</span><b>63%</b></p><div><i style="--value:63%"></i></div>
+            <p><span data-a11y-text="landing.metricConcept">Concept</span><b>84%</b></p><div><i style="--value:84%"></i></div>
+            <p><span data-a11y-text="landing.metricRecall">Recall</span><b>72%</b></p><div><i style="--value:72%"></i></div>
+            <p><span data-a11y-text="landing.metricApply">Apply</span><b>63%</b></p><div><i style="--value:63%"></i></div>
           </div>
         </div>
         <div class="section-copy">
@@ -122,6 +122,6 @@
 
   <footer><div class="shell"><span>© 2026 MathChakChak</span></div></footer>
   <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
-  <script type="module" src="assets/app.js"></script>
+  <script type="module" src="assets/app.js?v=0.1.0-phase21"></script>
 </body>
 </html>

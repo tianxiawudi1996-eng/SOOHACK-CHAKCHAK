@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 20,
+  "current_phase": 21,
   "phases": {
+    "21": {"name": "accessibility_i18n_and_linguistic_review_packets", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "surfaces_4/4_locales_8/8_accessibility_keys_31/31_values_248/248_review_packets_7/7_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:accessibility-i18n", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "browser zh-CN landing + ja diagnostic + fr lesson + ru curriculum", "npm.cmd run test:productization"]},
     "20": {"name": "curriculum_collaboration_i18n", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "grades_12/12_grade_rows_96/96_reference_rows_8/8_role_rows_8/8_phase_rows_40/40_locales_8/8_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:curriculum-collaboration-i18n", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN five-phase + ru metadata/roles", "npm.cmd run test:productization"]},
     "19": {"name": "formula_catalog_recall_i18n", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "formulas_72/72_locales_8/8_source_rows_72/72_translated_rows_504/504_revision_rows_576/576_manual_translation_approvals_0/7", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-catalog-i18n", "npm.cmd run test:integration:formula-catalog-i18n", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN catalog + ru collaboration/recall", "npm.cmd run test:productization"]},
     "18": {"name": "formula_application_i18n_expansion", "status": "VERIFIED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "formulas_72/72_expanded_60/60_items_216/216_locales_8/8_translations_1728/1728", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:formula-application-i18n", "npm.cmd run test:integration:formula-application-i18n", "PostgreSQL 16 migration rollback+reapply", "browser zh-CN non-unit+unit application UI"]},
@@ -31,8 +32,9 @@
     "gate6_entry_allowed": true
   },
   "blockers": [
+    "Human linguistic review is pending for seven non-Korean locales (0/7)",
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T10:53:05+09:00"
+  "last_updated": "2026-08-07T11:45:22+09:00"
 }

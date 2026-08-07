@@ -1,5 +1,6 @@
 import {buildStepResponse,createIdempotencyKey,stageProgress,STAGES} from './model.mjs?v=1.0.0';
 import {UI_MESSAGES} from './messages.mjs?v=1.0.0';
+import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
 
 const supported = ['ko','zh-CN','ja','en','es','fr','it','ru'];
 const fallback = 'en';
@@ -8,7 +9,7 @@ const byId = (id) => document.getElementById(id);
 const elements = {
   locale:byId('localeSelect'),intro:byId('introPanel'),lesson:byId('lessonPanel'),complete:byId('completePanel'),
   start:byId('startButton'),stages:byId('stageList'),stageNumber:byId('stageNumber'),stageName:byId('stageName'),
-  mastery:byId('masteryLabel'),progress:byId('progressBar'),formulaTitle:byId('formulaTitle'),notation:byId('formulaNotation'),
+  mastery:byId('masteryLabel'),progress:byId('progressBar'),progressTrack:byId('stageProgress'),formulaTitle:byId('formulaTitle'),notation:byId('formulaNotation'),
   memoryCue:byId('memoryCue'),prompt:byId('stepPrompt'),visual:byId('visualModel'),form:byId('answerForm'),
   feedback:byId('feedback'),continue:byId('continueButton'),completeSummary:byId('completeSummary')
 };
@@ -29,7 +30,10 @@ function message(key) { return state.messages[key] ?? UI_MESSAGES.en[key] ?? key
 
 function applyMessages() {
   document.documentElement.lang = state.locale;
+  document.title=accessibilityMessage(state.locale,'lesson.pageTitle');
   document.querySelectorAll('[data-message]').forEach((node) => { node.textContent = message(node.dataset.message); });
+  document.querySelectorAll('[data-a11y-text]').forEach((node)=>{node.textContent=accessibilityMessage(state.locale,node.dataset.a11yText);});
+  document.querySelectorAll('[data-a11y-aria]').forEach((node)=>{node.setAttribute('aria-label',accessibilityMessage(state.locale,node.dataset.a11yAria));});
   elements.locale.value = state.locale;
   renderStageList(null);
 }
@@ -129,6 +133,7 @@ function renderStep() {
   elements.stageName.textContent=message('stages')[progress-1];
   elements.mastery.textContent=`${Math.round(session.mastery_score*100)}%`;
   elements.progress.style.width=`${progress*20}%`;
+  elements.progressTrack.setAttribute('aria-valuenow',String(progress*20));
   elements.prompt.textContent=step.content.prompt;
   renderVisual(step.content);
   elements.form.onsubmit=null;elements.form.replaceChildren();elements.feedback.hidden=true;elements.continue.hidden=true;

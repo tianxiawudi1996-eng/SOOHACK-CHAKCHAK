@@ -1,5 +1,6 @@
 import {CURRICULUM_MESSAGES} from './messages.mjs?v=0.1.0-phase20';
 import {STRAND_KEYS,createIdempotencyKey,groupGrades,normalizeGrade} from './model.mjs';
+import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
 
 const supported=['ko','zh-CN','ja','en','es','fr','it','ru'];
 const phaseSignals={
@@ -40,7 +41,7 @@ const elements={
 function normalizeLocale(value=''){const candidate=String(value??'');const exact=supported.find((item)=>item.toLowerCase()===candidate.toLowerCase());if(exact)return exact;const language=candidate.split('-')[0].toLowerCase();return supported.find((item)=>item.split('-')[0].toLowerCase()===language)||null;}
 function resolveLocale(){return normalizeLocale(new URLSearchParams(location.search).get('locale'))||normalizeLocale(navigator.language)||'ko';}
 function message(key,values={}){let output=collaborationRuntimeMessages[state.locale]?.[key]??runtimeMessages[state.locale]?.[key]??state.messages[key]??CURRICULUM_MESSAGES.en[key]??runtimeMessages.en[key]??key;for(const [name,value] of Object.entries(values))output=output.replace(`{${name}}`,String(value));return output;}
-function applyMessages(){document.documentElement.lang=state.locale;elements.locale.value=state.locale;document.querySelectorAll('[data-message]').forEach((node)=>{node.textContent=message(node.dataset.message);});}
+function applyMessages(){document.documentElement.lang=state.locale;document.title=accessibilityMessage(state.locale,'curriculum.pageTitle');elements.locale.value=state.locale;document.querySelectorAll('[data-message]').forEach((node)=>{node.textContent=message(node.dataset.message);});document.querySelectorAll('[data-a11y-text]').forEach((node)=>{node.textContent=accessibilityMessage(state.locale,node.dataset.a11yText);});document.querySelectorAll('[data-a11y-aria]').forEach((node)=>{node.setAttribute('aria-label',accessibilityMessage(state.locale,node.dataset.a11yAria));});}
 async function request(path,{method='GET',body,authenticated=true}={}){const response=await fetch(path,{method,headers:{...(authenticated&&state.token?{authorization:`Bearer ${state.token}`} : {}),...(body===undefined?{}:{'content-type':'application/json'}),...(method==='POST'&&authenticated?{'idempotency-key':createIdempotencyKey('curriculum-ui')}:{})},body:body===undefined?undefined:JSON.stringify(body)});const payload=await response.json();if(!response.ok)throw new Error(payload.error?.code||'REQUEST_FAILED');return payload.data;}
 function gradeLabel(grade){return grade.label??grade.grade_code;}
 function setGradeUrl(gradeCode){const url=new URL(location.href);url.searchParams.set('locale',state.locale);url.searchParams.set('grade',gradeCode);history.replaceState(null,'',url);}

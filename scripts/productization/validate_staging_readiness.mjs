@@ -26,7 +26,7 @@ for (const file of manifest.files) {
 const html = fs.readFileSync(path.join(root, 'artifacts/staging/v0.1.0/site/index.html'), 'utf8');
 const app = fs.readFileSync(path.join(root, 'artifacts/staging/v0.1.0/site/assets/app.js'), 'utf8');
 if (/\.\.\//.test(html) || !html.includes('assets/characters/chakchaki-guide.webp') || !html.includes('assets/characters/gongsickyi-praise.webp')) fail('staging asset paths invalid');
-if (!app.includes('./locales/')) fail('staging locale path invalid');
+if (!app.includes('../locales/')) fail('staging locale path invalid');
 for (const locale of manifest.supported_locales) {
   const messages = JSON.parse(fs.readFileSync(path.join(root, 'artifacts/staging/v0.1.0/site/locales', `${locale}.json`), 'utf8'));
   if (!messages['meta.title'] || !messages['hero.primary']) fail(`locale smoke failed: ${locale}`);

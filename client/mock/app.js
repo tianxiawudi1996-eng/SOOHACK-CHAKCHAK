@@ -1,3 +1,5 @@
+import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
+
 const supported = ['ko', 'zh-CN', 'ja', 'en', 'es', 'fr', 'it', 'ru'];
 const fallback = 'en';
 const select = document.querySelector('#localeSelect');
@@ -40,6 +42,9 @@ async function applyLocale(locale, persist = false) {
     const translated = messages[element.dataset.i18n];
     if (translated) element.textContent = translated;
   });
+  document.querySelectorAll('[data-a11y-text]').forEach((element) => { element.textContent=accessibilityMessage(applied,element.dataset.a11yText); });
+  document.querySelectorAll('[data-a11y-aria]').forEach((element) => { element.setAttribute('aria-label',accessibilityMessage(applied,element.dataset.a11yAria)); });
+  document.querySelectorAll('[data-a11y-alt]').forEach((element) => { element.setAttribute('alt',accessibilityMessage(applied,element.dataset.a11yAlt)); });
   select.value = applied;
 
   if (persist) {

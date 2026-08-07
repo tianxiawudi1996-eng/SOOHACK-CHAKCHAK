@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 21,
+  "tested_at": "2026-08-07T11:45:22+09:00",
+  "status": "AUTO_QA_PASS_HUMAN_REVIEW_REQUIRED",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "coverage": {
+    "surfaces": "4/4",
+    "locales": "8/8",
+    "accessibility_keys_per_locale": "31/31",
+    "accessibility_values": "248/248",
+    "review_packets": "7/7",
+    "manual_linguistic_approvals": "0/7"
+  },
+  "tests": {
+    "unit": "49/49 PASS",
+    "static_phase21": "PASS",
+    "integration_journeys": "13/13 PASS",
+    "staging_artifact_responses": "30/30 PASS",
+    "staging_locale_routes": "8/8 PASS",
+    "browser_zh_cn_landing": "PASS",
+    "browser_ja_diagnostic_progressbar": "PASS",
+    "browser_fr_formula_lesson": "PASS",
+    "browser_ru_curriculum": "PASS",
+    "browser_console_warnings_errors": "0",
+    "full_productization_regression": "PHASE_0_TO_21 PASS",
+    "presentation_metadata": "PASS"
+  },
+  "staging_runtime": {
+    "database_engine": "PostgreSQL 16",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "api_container_id": "5ce688b1fc3befc82a2879cb02b7431f81be0aeca6016ed263678395fb116f1b",
+    "web_container_id": "743c0dc7d868048f0b7333f0be08ba0adefbef531624f2f689300c22246b064c",
+    "staging_manifest_sha256": "55a1fd031c71edc213828eb97a6ba758c2f8580c92230e83ae031726f5ff658a",
+    "web_image_digest": "sha256:9c877ba3b9c2388809528d1fb5410e35898d21d5b32479bb93b37d1f79f7fd9c",
+    "web_health": "healthy",
+    "api_health": "healthy"
+  },
+  "review_governance": {
+    "package_id": "phase21-linguistic-review-c8d37c29a42c",
+    "manifest": "docs/productization/reviews/phase21/manifest.json",
+    "human_approval_inferred": false,
+    "reviewer_identity_inferred": false,
+    "external_dispatch_performed": false
+  },
+  "defects_fixed": [
+    "Localized hardcoded skip links and accessibility names across four core screens",
+    "Added progressbar semantics to diagnostic and formula lesson flows",
+    "Corrected staging landing module relocation with versioned script URLs",
+    "Corrected staging landing locale JSON path relative to the relocated module"
+  ],
+  "remaining_scope": [
+    "Human linguistic review for seven non-Korean locales",
+    "Keyboard, focus-order, contrast, and screen-reader smoke audit",
+    "External production deployment and managed-service configuration"
+  ]
+}
