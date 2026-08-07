@@ -10,11 +10,12 @@ if (!artifactRoot.startsWith(allowedRoot)) throw new Error('UNSAFE_ARTIFACT_PATH
 
 fs.rmSync(artifactRoot, {recursive:true, force:true});
 const site = path.join(artifactRoot, 'site');
-for (const directory of ['assets', 'assets/characters', 'i18n', 'locales', 'diagnostic', 'math-learning', 'curriculum']) fs.mkdirSync(path.join(site, directory), {recursive:true});
+for (const directory of ['accessibility', 'assets', 'assets/characters', 'i18n', 'locales', 'diagnostic', 'math-learning', 'curriculum']) fs.mkdirSync(path.join(site, directory), {recursive:true});
 
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 let html = read('client/mock/index.html')
   .replace('../design/tokens.css', 'assets/tokens.css')
+  .replace('../accessibility/interaction.css', 'accessibility/interaction.css')
   .replace('href="styles.css"', 'href="assets/styles.css"')
   .replace('src="app.js', 'src="assets/app.js')
   .replace('../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp', 'assets/characters/chakchaki-guide.webp')
@@ -26,6 +27,7 @@ fs.writeFileSync(path.join(site, 'index.html'), html, 'utf8');
 fs.writeFileSync(path.join(site, 'assets', 'app.js'), app, 'utf8');
 fs.copyFileSync(path.join(root, 'client/design/tokens.css'), path.join(site, 'assets/tokens.css'));
 fs.copyFileSync(path.join(root, 'client/mock/styles.css'), path.join(site, 'assets/styles.css'));
+fs.copyFileSync(path.join(root, 'client/accessibility/interaction.css'), path.join(site, 'accessibility/interaction.css'));
 
 const lessonHtml = read('client/math-learning/index.html')
   .replace('../design/tokens.css', '../assets/tokens.css')
@@ -61,6 +63,7 @@ for (const locale of ['ko','zh-CN','ja','en','es','fr','it','ru']) {
   fs.copyFileSync(path.join(root, 'client/i18n/messages', `${locale}.json`), path.join(site, 'locales', `${locale}.json`));
 }
 fs.copyFileSync(path.join(root, 'client/i18n/accessibility.mjs'), path.join(site, 'i18n/accessibility.mjs'));
+fs.copyFileSync(path.join(root, 'client/accessibility/interaction.mjs'), path.join(site, 'accessibility/interaction.mjs'));
 fs.copyFileSync(path.join(root, 'outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp'), path.join(site, 'assets/characters/chakchaki-guide.webp'));
 fs.copyFileSync(path.join(root, 'outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp'), path.join(site, 'assets/characters/gongsickyi-praise.webp'));
 

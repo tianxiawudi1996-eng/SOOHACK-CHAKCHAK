@@ -7,6 +7,7 @@
   <title>수학착착 공식 학습</title>
   <link rel="stylesheet" href="../design/tokens.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
 </head>
 <body>
   <a class="skip-link" href="#lessonMain" data-a11y-text="common.skip">본문으로 건너뛰기</a>
@@ -26,7 +27,7 @@
     </div>
   </header>
 
-  <main id="lessonMain" class="lesson-shell">
+  <main id="lessonMain" class="lesson-shell" tabindex="-1">
     <aside class="journey-card" aria-labelledby="journeyTitle">
       <p class="eyebrow" data-message="journeyEyebrow">오늘의 학습</p>
       <h1 id="journeyTitle" data-message="journeyTitle">공식을 이해하고 직접 써 봐요</h1>
@@ -67,7 +68,7 @@
         </article>
         <div class="prompt-block">
           <p class="prompt-label" data-message="question">생각해 볼 문제</p>
-          <h2 id="stepPrompt"></h2>
+          <h2 id="stepPrompt" tabindex="-1"></h2>
           <div id="visualModel" class="visual-model" hidden></div>
         </div>
         <form id="answerForm" class="answer-form"></form>
@@ -78,13 +79,13 @@
       <div id="completePanel" class="panel complete-panel" hidden>
         <div class="celebration" aria-hidden="true">★</div>
         <p class="eyebrow" data-message="completeEyebrow">학습 완료</p>
-        <h2 data-message="completeTitle">공식을 이해하고 새 문제에 적용했어요!</h2>
+        <h2 id="completeTitle" tabindex="-1" data-message="completeTitle">공식을 이해하고 새 문제에 적용했어요!</h2>
         <p id="completeSummary"></p>
         <figure class="pet-complete"><img src="../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp" alt="" aria-hidden="true"></figure>
         <a class="primary-button" href="../mock/index.html" data-message="finish">학습 홈으로 돌아가기</a>
       </div>
     </section>
   </main>
-  <script type="module" src="app.js?v=1.0.2-phase21"></script>
+  <script type="module" src="app.js?v=1.0.2-phase22"></script>
 </body>
 </html>

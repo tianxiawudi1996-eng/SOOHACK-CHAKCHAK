@@ -6,6 +6,7 @@
   <title>수학착착 진단</title>
   <link rel="stylesheet" href="../assets/tokens.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
 </head>
 <body>
   <a class="skip-link" href="#main" data-a11y-text="common.skip">Skip to content</a>
@@ -19,26 +20,26 @@
       </select>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section id="introPanel" class="card intro-card">
       <div>
         <p class="eyebrow" data-message="eyebrow">3분 진단</p>
         <h1 data-message="title">지금 필요한 분수 학습을 찾아봐요</h1>
         <p class="lead" data-message="intro">세 문제를 풀면 알맞은 길을 추천해 드려요.</p>
         <button id="startButton" class="primary-button" data-message="start">진단 시작</button>
-        <p id="errorMessage" class="error" hidden aria-live="polite"></p>
+        <p id="errorMessage" class="error" role="status" hidden aria-live="polite"></p>
       </div>
       <img src="../assets/characters/chakchaki-guide.webp" alt="" aria-hidden="true">
     </section>
     <section id="questionPanel" class="card question-card" hidden aria-live="polite" data-a11y-aria="diagnostic.question">
       <div class="progress-row"><strong id="questionCount"></strong><div id="diagnosticProgress" class="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-a11y-aria="diagnostic.progress"><span id="progressBar"></span></div></div>
-      <h1 id="questionPrompt"></h1>
+      <h1 id="questionPrompt" tabindex="-1"></h1>
       <div id="choiceList" class="choices"></div>
     </section>
     <section id="resultPanel" class="card result-card" hidden aria-live="polite" data-a11y-aria="diagnostic.result">
       <div>
         <p class="eyebrow" data-message="result">진단 결과</p>
-        <h1 id="resultTitle"></h1>
+        <h1 id="resultTitle" tabindex="-1"></h1>
         <p id="scoreText"></p>
         <p id="resultDescription" class="lead"></p>
         <button id="learnButton" class="primary-button" data-message="learn">추천 학습 시작</button>
@@ -46,6 +47,6 @@
       <img src="../assets/characters/gongsickyi-praise.webp" alt="" aria-hidden="true">
     </section>
   </main>
-  <script type="module" src="app.js?v=0.1.0-phase21"></script>
+  <script type="module" src="app.js?v=0.1.0-phase22"></script>
 </body>
 </html>

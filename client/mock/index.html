@@ -6,6 +6,7 @@
   <title>MathChakChak</title>
   <link rel="stylesheet" href="../design/tokens.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
 </head>
 <body>
   <a class="skip-link" href="#main" data-a11y-text="common.skip">Skip to content</a>
@@ -39,7 +40,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" id="top">
       <div class="shell hero-grid">
         <div class="hero-copy">
@@ -122,6 +123,6 @@
 
   <footer><div class="shell"><span>© 2026 MathChakChak</span></div></footer>
   <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
-  <script type="module" src="app.js?v=0.1.0-phase21"></script>
+  <script type="module" src="app.js?v=0.1.0-phase22"></script>
 </body>
 </html>

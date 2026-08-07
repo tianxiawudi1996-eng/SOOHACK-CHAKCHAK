@@ -6,6 +6,7 @@
   <title>수학착착 학년별 공식</title>
   <link rel="stylesheet" href="../assets/tokens.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
 </head>
 <body>
   <a class="skip-link" href="#main" data-a11y-text="common.skip">Skip to content</a>
@@ -20,7 +21,7 @@
       </select>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero">
       <p class="eyebrow" data-message="eyebrow"></p><h1 data-message="title"></h1>
       <p data-message="intro"></p><p class="canonical" data-message="canonical"></p>
@@ -30,7 +31,7 @@
     <section data-a11y-aria="curriculum.formulaList"><div id="formulaGrid" class="formula-grid" aria-live="polite"></div><p id="statusText" class="status" data-message="loading">불러오는 중…</p></section>
     <section id="collaborationPanel" class="collaboration" hidden aria-live="polite" data-a11y-aria="curriculum.collaboration">
       <div class="collab-head">
-        <div><p class="eyebrow" data-message="route"></p><h2 id="collabTitle"></h2></div>
+        <div><p class="eyebrow" data-message="route"></p><h2 id="collabTitle" tabindex="-1"></h2></div>
         <label><span class="sr-only" data-message="route"></span><select id="routeSelect"><option value="REMEDIATE" data-message="remediate"></option><option value="CORE" data-message="core" selected></option><option value="EXTEND" data-message="extend"></option></select></label>
       </div>
       <div class="pet-roles">
@@ -39,12 +40,12 @@
       </div>
       <ol id="phaseList" class="phase-list"></ol>
       <div id="activityPanel" class="activity-panel" data-a11y-aria="curriculum.activity">
-        <p id="activityStep" class="eyebrow"></p><h3 id="activityTitle"></h3><p id="activityPrompt"></p>
-        <div id="signalChoices" class="signal-choices"></div><p id="activityResult" class="activity-result" hidden></p>
+        <p id="activityStep" class="eyebrow"></p><h3 id="activityTitle" tabindex="-1"></h3><p id="activityPrompt"></p>
+        <div id="signalChoices" class="signal-choices"></div><p id="activityResult" class="activity-result" role="status" hidden></p>
       </div>
       <div id="recallPanel" class="recall-panel" hidden data-a11y-aria="curriculum.recall">
         <p class="eyebrow" data-message="recallEyebrow"></p>
-        <h3 id="recallTitle"></h3>
+        <h3 id="recallTitle" tabindex="-1"></h3>
         <p id="recallPrompt"></p>
         <div id="recallChoices" class="recall-choices"></div>
         <p id="recallResult" class="recall-result" hidden aria-live="polite"></p>
@@ -64,6 +65,6 @@
       </div>
     </section>
   </main>
-  <script type="module" src="app.js?v=0.1.0-phase21"></script>
+  <script type="module" src="app.js?v=0.1.0-phase22"></script>
 </body>
 </html>

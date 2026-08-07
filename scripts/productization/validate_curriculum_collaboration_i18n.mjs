@@ -113,7 +113,7 @@ if (
 if (!client.includes('runtimeMessages[state.locale]?.[key]??state.messages[key]')) {
   fail('curriculum metadata message priority');
 }
-if (!client.includes("./messages.mjs?v=0.1.0-phase20") || !clientHtml.includes('app.js?v=0.1.0-phase21')) {
+if (!client.includes("./messages.mjs?v=0.1.0-phase20") || !clientHtml.includes('app.js?v=0.1.0-phase22')) {
   fail('curriculum module cache version');
 }
 

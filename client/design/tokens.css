@@ -3,6 +3,7 @@
   --color-brand-700: #2046d9;
   --color-brand-100: #e9eeff;
   --color-mint-500: #20bfa9;
+  --color-mint-700: #087f70;
   --color-mint-100: #e7faf6;
   --color-sun-500: #ffb84d;
   --color-sun-100: #fff4de;
@@ -31,7 +32,8 @@
   --radius-lg: 1.75rem;
   --radius-pill: 999px;
   --shadow-card: 0 18px 45px rgba(39, 58, 115, 0.12);
-  --focus-ring: 0 0 0 4px rgba(47, 91, 255, 0.22);
+  --focus-color: #102a73;
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 6px var(--focus-color);
   --content-max: 72rem;
   --label-max: 38ch;
 }

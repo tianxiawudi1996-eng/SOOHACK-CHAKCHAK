@@ -17,9 +17,19 @@
   "approved_character_assets": 2,
   "files": [
     {
+      "path": "site/accessibility/interaction.css",
+      "bytes": 683,
+      "sha256": "fe2123d62b5a5f402b9b3612259f08aab43bdaff650d07920e591d3540a0a943"
+    },
+    {
+      "path": "site/accessibility/interaction.mjs",
+      "bytes": 336,
+      "sha256": "07d46ce3e7c089f2931052c4b37685d1667637750a5b750e4eee2be3f438c98c"
+    },
+    {
       "path": "site/assets/app.js",
-      "bytes": 2458,
-      "sha256": "e27a14f9bcf930f2331cf6b003ce00276d4eae02f16c33781a0de31f3f029d85"
+      "bytes": 2569,
+      "sha256": "1a2a982fe7f8640e45df9b02f93650c572cf92e1f7cb24e4e86837469242ba81"
     },
     {
       "path": "site/assets/characters/chakchaki-guide.webp",
@@ -33,23 +43,23 @@
     },
     {
       "path": "site/assets/styles.css",
-      "bytes": 13178,
-      "sha256": "919bc5dbab6a2733fc79b4221407791784d2b5962f84831111ffa4b5b05207f0"
+      "bytes": 13307,
+      "sha256": "9182c930e4f2372c248c5fe98ba9a7797dbe1f01bfb0435b221b675665e350fb"
     },
     {
       "path": "site/assets/tokens.css",
-      "bytes": 999,
-      "sha256": "110ada12855d382f2fcff5e14f5f9b0bb23428e81e902d576a13077adee12547"
+      "bytes": 1068,
+      "sha256": "a8d8a24fc9f79634ecf9aa8ceaef581309395a63b3787008aea929ffe22e65d8"
     },
     {
       "path": "site/curriculum/app.js",
-      "bytes": 34175,
-      "sha256": "33a5ced7d0e643467b423c7668bd0e862f1256821343d59474b825dcd5843eb0"
+      "bytes": 34446,
+      "sha256": "bef63ad94fd65ac19d4b956d073e70a11650e9c06073c6b2aa38f76023236a98"
     },
     {
       "path": "site/curriculum/index.html",
-      "bytes": 4477,
-      "sha256": "d9b57291a663c653910eb070fda55131b8810698c2841282eed79e1680cd3a56"
+      "bytes": 4613,
+      "sha256": "74081bfdd06d7e1a2b0728364e171db4944ec42cd1abb7427a17563124325569"
     },
     {
       "path": "site/curriculum/messages.mjs",
@@ -68,13 +78,13 @@
     },
     {
       "path": "site/diagnostic/app.js",
-      "bytes": 5978,
-      "sha256": "dbf6890d968abefec87bb3e7dc9d7927fa077705586b8d1626ffcb72a8598332"
+      "bytes": 6181,
+      "sha256": "470cc75406baccc75532e5b2c3d774e694f167129660defc6fa5fff9ef9a74a6"
     },
     {
       "path": "site/diagnostic/index.html",
-      "bytes": 2740,
-      "sha256": "a34365fed6069c725d48a216e53b83ada3dab99d8350c08a83c806e152e66aa3"
+      "bytes": 2862,
+      "sha256": "b44bd918d07a4ee6f133d93b98491c62ce662646020543a745f5b5413b6edb48"
     },
     {
       "path": "site/diagnostic/messages.mjs",
@@ -98,8 +108,8 @@
     },
     {
       "path": "site/index.html",
-      "bytes": 7095,
-      "sha256": "0fcfc161d826fb359d00b520a22473d262feab26fca258c4d36c1d4f10d7605b"
+      "bytes": 7172,
+      "sha256": "563b1ba1f971a9fe6f7e51a0bbf15382e1c077c8201500901cb0aff35408be48"
     },
     {
       "path": "site/locales/en.json",
@@ -143,13 +153,13 @@
     },
     {
       "path": "site/math-learning/app.js",
-      "bytes": 11852,
-      "sha256": "efc1036c15e97b9b265b533898bb99cfdf9419b5965499fb979c499abf359107"
+      "bytes": 12111,
+      "sha256": "ba3e1b7ce3eade8e2c215dc0d045db24815d87a6f7c4b8331d982e3addc40fec"
     },
     {
       "path": "site/math-learning/index.html",
-      "bytes": 5095,
-      "sha256": "b2780996601de01c22b649ea4f67f6a1f0e83795dd8692394ab2ae5217545e56"
+      "bytes": 5222,
+      "sha256": "3a30679c3c35740a80e4df5d2a193175e7c7ea42d82394f45aa25086611f3363"
     },
     {
       "path": "site/math-learning/messages.mjs",
@@ -167,7 +177,7 @@
       "sha256": "26820effa4362d52e3a13f56c4fb4b7be5cf61fec0ea503c7b3e957940f00823"
     }
   ],
-  "file_count": 30,
+  "file_count": 32,
   "external_deployment": {
     "performed": false,
     "url": null,

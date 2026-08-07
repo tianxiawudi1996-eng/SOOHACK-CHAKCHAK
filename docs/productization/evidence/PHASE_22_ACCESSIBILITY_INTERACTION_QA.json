@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 22,
+  "tested_at": "2026-08-07T12:59:04+09:00",
+  "status": "AUTO_QA_PASS_MANUAL_REVIEW_REQUIRED",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "coverage": {
+    "surfaces": "4/4",
+    "skip_focus_contracts": "4/4",
+    "dynamic_focus_targets": "7/7",
+    "contrast_pairs": "12/12",
+    "reduced_motion_contracts": "4/4",
+    "positive_tabindex": 0,
+    "keyboard_traps_detected": 0,
+    "manual_accessibility_approvals": "0/1"
+  },
+  "tests": {
+    "unit": "51/51 PASS",
+    "static_phase22": "PASS",
+    "integration_journeys": "14/14 PASS",
+    "staging_artifact_responses": "32/32 PASS",
+    "browser_diagnostic_question_focus": "PASS",
+    "browser_diagnostic_next_question_focus": "PASS",
+    "browser_diagnostic_result_focus": "PASS",
+    "browser_formula_lesson_step_focus": "PASS",
+    "browser_curriculum_collaboration_focus": "PASS",
+    "browser_curriculum_next_phase_focus": "PASS",
+    "browser_focus_indicator": "3px solid rgb(16, 42, 115)",
+    "browser_console_warnings_errors": "0",
+    "full_productization_regression": "PHASE_0_TO_22 PASS",
+    "presentation_metadata": "HTML_6/6_CONCEPT_ART_40/40_METADATA_0 PASS"
+  },
+  "staging_runtime": {
+    "database_engine": "PostgreSQL 16",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "api_container_id": "7ea81549c399a6811022685d670a6c6c92bfa4cf519990455e2a830a8cf0021c",
+    "web_container_id": "2e8f5f383fdebc3155aff1f34b33d5c1d0a9e028ba895649183254ca3111c035",
+    "staging_manifest_sha256": "5a6bff0dd5d5b6f7ff1d23cb417d4fbfa97865823673635f8e701679444850f0",
+    "web_image_digest": "sha256:f2867183c53d83c8c375de6d76478604d0a4d3cfe2b4406aa8b3365375a3d658",
+    "web_health": "healthy",
+    "api_health": "healthy"
+  },
+  "manual_review": {
+    "manifest": "docs/productization/reviews/phase22/manifest.json",
+    "packet": "docs/productization/reviews/phase22/ACCESSIBILITY_MANUAL_REVIEW.md",
+    "status": "READY_FOR_MANUAL_ACCESSIBILITY_REVIEW",
+    "human_approval_inferred": false,
+    "reviewer_identity_inferred": false
+  },
+  "defects_fixed": [
+    "Added explicit focus targets for every skip link",
+    "Restored visible high-contrast focus indicators instead of a translucent shadow-only ring",
+    "Moved focus to diagnostic question and result headings after asynchronous transitions",
+    "Moved focus to formula lesson and curriculum collaboration headings after asynchronous transitions",
+    "Darkened small mint and curriculum secondary text that did not meet the intended contrast threshold",
+    "Applied reduced-motion behavior to all four core screens"
+  ],
+  "remaining_scope": [
+    "Product-owner keyboard and screen-reader manual review",
+    "Seven non-Korean locale linguistic reviews",
+    "External production deployment and managed-service configuration"
+  ]
+}

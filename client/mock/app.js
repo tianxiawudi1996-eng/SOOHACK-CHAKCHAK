@@ -1,4 +1,5 @@
 import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
+import {installSkipLinkFocus} from '../accessibility/interaction.mjs?v=0.1.0-phase22';
 
 const supported = ['ko', 'zh-CN', 'ja', 'en', 'es', 'fr', 'it', 'ru'];
 const fallback = 'en';
@@ -55,6 +56,7 @@ async function applyLocale(locale, persist = false) {
   }
 }
 
+installSkipLinkFocus();
 select.addEventListener('change', () => applyLocale(select.value, true));
 
 applyLocale(resolveLocale());

@@ -1,6 +1,7 @@
 import {buildStepResponse,createIdempotencyKey,stageProgress,STAGES} from './model.mjs?v=1.0.0';
 import {UI_MESSAGES} from './messages.mjs?v=1.0.0';
 import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
+import {installSkipLinkFocus} from '../accessibility/interaction.mjs?v=0.1.0-phase22';
 
 const supported = ['ko','zh-CN','ja','en','es','fr','it','ru'];
 const fallback = 'en';
@@ -11,7 +12,7 @@ const elements = {
   start:byId('startButton'),stages:byId('stageList'),stageNumber:byId('stageNumber'),stageName:byId('stageName'),
   mastery:byId('masteryLabel'),progress:byId('progressBar'),progressTrack:byId('stageProgress'),formulaTitle:byId('formulaTitle'),notation:byId('formulaNotation'),
   memoryCue:byId('memoryCue'),prompt:byId('stepPrompt'),visual:byId('visualModel'),form:byId('answerForm'),
-  feedback:byId('feedback'),continue:byId('continueButton'),completeSummary:byId('completeSummary')
+  feedback:byId('feedback'),continue:byId('continueButton'),completeTitle:byId('completeTitle'),completeSummary:byId('completeSummary')
 };
 
 function normalizeLocale(value='') {
@@ -96,7 +97,6 @@ function fractionForm(step) {
   const submit=document.createElement('button');submit.type='submit';submit.className='primary-button submit-answer';submit.textContent=message('submit');
   elements.form.append(wrapper,submit);
   elements.form.onsubmit=(event)=>{event.preventDefault();const data=new FormData(elements.form);submitResponse({numerator:data.get('numerator'),denominator:data.get('denominator')});};
-  numerator.focus();
 }
 
 function selectField(name,labelKey,options) {
@@ -141,6 +141,7 @@ function renderStep() {
     elements.form.append(...step.content.choices.map(optionButton));
   } else if (step.interaction_type==='GUIDED_FRACTION' || step.interaction_type==='APPLICATION_FRACTION') fractionForm(step);
   else if (step.interaction_type==='FORMULA_RECALL') recallForm();
+  elements.prompt.focus({preventScroll:true});
 }
 
 async function submitResponse(values) {
@@ -152,6 +153,7 @@ async function submitResponse(values) {
     if (result.outcome==='CORRECT') {
       showFeedback('correct',message('correct'));
       elements.continue.hidden=false;
+      elements.continue.focus();
     } else {
       showFeedback('incorrect',`${message('incorrect')} ${result.hint || ''}`);
       elements.form.querySelectorAll('button,input,select').forEach((node)=>node.disabled=false);
@@ -171,6 +173,7 @@ async function completeLesson() {
   elements.lesson.hidden=true;elements.complete.hidden=false;
   elements.completeSummary.textContent=message('completeSummary').replace('{score}',String(Math.round(completed.mastery_score*100)));
   elements.locale.disabled=false;
+  elements.completeTitle.focus({preventScroll:true});
 }
 
 async function startLesson() {
@@ -200,7 +203,7 @@ async function startLesson() {
 const fragment=new URLSearchParams(location.hash.slice(1));
 state.handoffCode=/^[0-9a-f]{64}$/.test(fragment.get('handoff') || '') ? fragment.get('handoff') : null;
 if (state.handoffCode) history.replaceState(null,'',`${location.pathname}${location.search}`);
-state.locale=resolveLocale();state.messages=UI_MESSAGES[state.locale] || UI_MESSAGES.en;applyMessages();
+installSkipLinkFocus();state.locale=resolveLocale();state.messages=UI_MESSAGES[state.locale] || UI_MESSAGES.en;applyMessages();
 elements.start.addEventListener('click',startLesson);
 elements.continue.addEventListener('click',loadFormulaSession);
 elements.locale.addEventListener('change',()=>{const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
