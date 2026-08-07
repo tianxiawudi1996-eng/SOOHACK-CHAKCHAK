@@ -133,8 +133,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     return success(data, {requestId, locale});
   }
   if (match.name === 'getCurriculumGrades') {
-    const data=await repository.getCurriculumGrades({actor});
-    return success(data,{requestId,locale:'ko'});
+    const url=new URL(request.url,'http://localhost');
+    const requestedLocale=normalizeRequestedLocale(url.searchParams.get('locale')||'ko');
+    const data=await repository.getCurriculumGrades({actor,requestedLocale});
+    return success(data,{requestId,locale:requestedLocale});
   }
   if (match.name === 'getGradeFormulas') {
     const url=new URL(request.url,'http://localhost');
@@ -144,7 +146,7 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   }
   if (match.name === 'getCurriculumCollaborationPlan') {
     const data=await repository.getCurriculumCollaborationPlan({actor,sessionId:requireUuid(match.collaborationSessionId,'collaboration_session_id')});
-    return success(data,{requestId,locale:'ko'});
+    return success(data,{requestId,locale:data.plan.content_locale});
   }
   if (match.name === 'getFormulaRecallCheck') {
     const url=new URL(request.url,'http://localhost');

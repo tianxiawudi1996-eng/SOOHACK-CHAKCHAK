@@ -22,11 +22,12 @@ for (const marker of ['수학착착', 'client/', 'developer/', 'agent/', 'ko', '
 const status = JSON.parse(await readFile(resolve(root, 'docs/productization/STATUS.json'), 'utf8'));
 const phaseKeys = Object.keys(status.phases || {}).map(Number).sort((a,b) => a-b);
 const expectedPhaseKeys = Array.from({length:Number(status.current_phase) + 1}, (_,index) => index);
+const validCurrentStatuses = new Set(['VERIFIED', 'AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED']);
 if (
   status.project !== 'MathChakChak' ||
   !Number.isInteger(status.current_phase) ||
   JSON.stringify(phaseKeys) !== JSON.stringify(expectedPhaseKeys) ||
-  status.phases?.[String(status.current_phase)]?.status !== 'VERIFIED'
+  !validCurrentStatuses.has(status.phases?.[String(status.current_phase)]?.status)
 ) failures.push('PHASE_STATUS_INVALID');
 const gate5Review = JSON.parse(await readFile(resolve(root, 'docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json'), 'utf8'));
 const gate5Approved = gate5Review.status === 'APPROVED' && gate5Review.decision === 'APPROVE' && gate5Review.approval_applied === true;

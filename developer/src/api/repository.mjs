@@ -138,22 +138,30 @@ export class MathChakChakRepository {
     }
   }
 
-  async getCurriculumGrades({actor}) {
+  async getCurriculumGrades({actor,requestedLocale}) {
     const client=await this.pool.connect();
     try {
       await this.assertStudentOwner(client,actor);
       const result=await client.query(
-        `SELECT cg.grade_code,cg.school_level,cg.grade_number,cg.label_ko,cg.official_band,
-                cg.implementation_year,cg.placement_basis,cg.course_path,
-                count(gfc.id)::integer AS formula_count
+        `SELECT cg.grade_code,cg.school_level,cg.grade_number,
+                coalesce(requested.label,korean.label,cg.label_ko) AS label,
+                coalesce(requested.official_band,korean.official_band,cg.official_band) AS official_band,
+                cg.implementation_year,cg.placement_basis,
+                coalesce(requested.course_path,korean.course_path,cg.course_path) AS course_path,
+                (SELECT count(*)::integer FROM mathchakchak.grade_formula_catalog gfc
+                  WHERE gfc.grade_code=cg.grade_code AND gfc.active=true) AS formula_count,
+                CASE WHEN requested.grade_code IS NOT NULL THEN $1 ELSE 'ko' END AS content_locale
            FROM mathchakchak.curriculum_grade cg
-           LEFT JOIN mathchakchak.grade_formula_catalog gfc
-             ON gfc.grade_code=cg.grade_code AND gfc.active=true
-          GROUP BY cg.grade_code,cg.school_level,cg.grade_number,cg.label_ko,cg.official_band,
-                   cg.implementation_year,cg.placement_basis,cg.course_path,cg.sequence_no
-          ORDER BY cg.sequence_no`
+           LEFT JOIN mathchakchak.curriculum_grade_translation requested
+             ON requested.grade_code=cg.grade_code AND requested.locale=$1
+           LEFT JOIN mathchakchak.curriculum_grade_translation korean
+             ON korean.grade_code=cg.grade_code AND korean.locale='ko'
+          ORDER BY cg.sequence_no`,
+        [requestedLocale]
       );
-      return {grades:result.rows,canonical_content_locale:'ko'};
+      const contentLocale=result.rows.every((grade)=>grade.content_locale===requestedLocale)?requestedLocale:'ko';
+      const grades=result.rows.map(({content_locale,...grade})=>grade);
+      return {grades,requested_locale:requestedLocale,content_locale:contentLocale,translation_status:contentLocale===requestedLocale?(requestedLocale==='ko'?'SOURCE_ALIGNED':'TRANSLATION_REVIEW_REQUIRED'):'CANONICAL_KO_FALLBACK'};
     } finally { client.release(); }
   }
 
@@ -161,7 +169,20 @@ export class MathChakChakRepository {
     const client=await this.pool.connect();
     try {
       await this.assertStudentOwner(client,actor);
-      const grade=await client.query('SELECT * FROM mathchakchak.curriculum_grade WHERE grade_code=$1',[gradeCode]);
+      const grade=await client.query(
+        `SELECT cg.grade_code,cg.school_level,cg.grade_number,
+                coalesce(requested.label,korean.label,cg.label_ko) AS label,
+                coalesce(requested.official_band,korean.official_band,cg.official_band) AS official_band,
+                cg.implementation_year,cg.placement_basis,
+                coalesce(requested.course_path,korean.course_path,cg.course_path) AS course_path
+           FROM mathchakchak.curriculum_grade cg
+           LEFT JOIN mathchakchak.curriculum_grade_translation requested
+             ON requested.grade_code=cg.grade_code AND requested.locale=$2
+           LEFT JOIN mathchakchak.curriculum_grade_translation korean
+             ON korean.grade_code=cg.grade_code AND korean.locale='ko'
+          WHERE cg.grade_code=$1`,
+        [gradeCode,requestedLocale]
+      );
       if(!grade.rowCount) throw notFound();
       const formulas=await client.query(
         `SELECT gfc.id,gfc.grade_code,gfc.sequence_no,gfc.strand,gfc.knowledge_type,
@@ -170,11 +191,16 @@ export class MathChakChakRepository {
                 coalesce(requested.explanation,korean.explanation,gfc.explanation_ko) AS explanation,
                 gfc.source_standard_codes,gfc.course_name,gfc.content_version,
                 cr.notice_code,cr.annex,cr.official_url,
+                coalesce(requested_reference.citation,korean_reference.citation,cr.notice_code||' '||cr.annex) AS source_citation,
                 coalesce(requested.revision_no,korean.revision_no) AS revision_no,
                 coalesce(requested.verification_status,korean.verification_status,'SOURCE_ALIGNED') AS verification_status,
                 CASE WHEN requested.formula_catalog_id IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale
            FROM mathchakchak.grade_formula_catalog gfc
            JOIN mathchakchak.curriculum_reference cr ON cr.id=gfc.curriculum_reference_id
+           LEFT JOIN mathchakchak.curriculum_reference_translation requested_reference
+             ON requested_reference.curriculum_reference_id=cr.id AND requested_reference.locale=$2
+           LEFT JOIN mathchakchak.curriculum_reference_translation korean_reference
+             ON korean_reference.curriculum_reference_id=cr.id AND korean_reference.locale='ko'
            LEFT JOIN LATERAL (
              SELECT formula_catalog_id,revision_no,title,display_notation,explanation,verification_status
                FROM mathchakchak.formula_explanation_revision
@@ -231,13 +257,42 @@ export class MathChakChakRepository {
         WHERE collaboration_session_id=$1 ORDER BY phase_no`,
       [sessionId]
     );
+    const roles=await client.query(
+      `SELECT coalesce(requested.chakchaki_role,korean.chakchaki_role) AS chakchaki,
+              coalesce(requested.gongsickyi_role,korean.gongsickyi_role) AS gongsickyi,
+              CASE WHEN requested.policy_version IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale
+         FROM mathchakchak.character_collaboration_policy_definition definition
+         LEFT JOIN mathchakchak.character_collaboration_role_translation requested
+           ON requested.policy_version=definition.policy_version AND requested.locale=$2
+         LEFT JOIN mathchakchak.character_collaboration_role_translation korean
+           ON korean.policy_version=definition.policy_version AND korean.locale='ko'
+        WHERE definition.policy_version=$1`,
+      [row.policy_version,row.content_locale]
+    );
+    const localizedPhases=await client.query(
+      `SELECT policy.phase_no,
+              coalesce(requested.phase_title,korean.phase_title,policy.phase_code) AS phase_title,
+              coalesce(requested.objective,korean.objective,policy.objective_ko) AS objective,
+              CASE WHEN requested.policy_version IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale
+         FROM mathchakchak.character_collaboration_policy policy
+         LEFT JOIN mathchakchak.character_collaboration_phase_translation requested
+           ON requested.policy_version=policy.policy_version AND requested.phase_no=policy.phase_no AND requested.locale=$2
+         LEFT JOIN mathchakchak.character_collaboration_phase_translation korean
+           ON korean.policy_version=policy.policy_version AND korean.phase_no=policy.phase_no AND korean.locale='ko'
+        WHERE policy.policy_version=$1 ORDER BY policy.phase_no`,
+      [row.policy_version,row.content_locale]
+    );
+    const basePlan=buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version});
+    const phaseByNumber=new Map(localizedPhases.rows.map((phase)=>[phase.phase_no,phase]));
+    const roleDescriptions=roles.rows[0]??{chakchaki:'',gongsickyi:'',content_locale:'ko'};
+    const plan={...basePlan,content_locale:roleDescriptions.content_locale,role_descriptions:{CHAKCHAKI:roleDescriptions.chakchaki,GONGSICKYI:roleDescriptions.gongsickyi},phases:basePlan.phases.map((phase)=>{const localized=phaseByNumber.get(phase.phase_no);return {...phase,title:localized?.phase_title??phase.phase_code,objective:localized?.objective??phase.objective};})};
     return {
       session:{
         id:row.id,status:row.status,current_phase_no:row.current_phase_no,evidence_score:row.evidence_score,
         created_at:row.created_at,started_at:row.started_at,completed_at:row.completed_at
       },
       formula:{id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation,title:row.title,content_locale:row.resolved_content_locale,translation_status:row.translation_status},
-      plan:buildCurriculumCollaborationPlan({id:row.formula_catalog_id,grade_code:row.grade_code,knowledge_type:row.knowledge_type,notation:row.notation},{route:row.adaptive_route,policyVersion:row.policy_version}),
+      plan,
       evidence:evidence.rows
     };
   }

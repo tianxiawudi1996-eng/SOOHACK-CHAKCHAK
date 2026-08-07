@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0.0",
+  "phase":20,
+  "automatic_status":"AUTO_QA_PASS",
+  "tested_at":"2026-08-07T10:53:05+09:00",
+  "manual_translation_approvals":"0/7",
+  "coverage":{"grade_rows":96,"reference_rows":8,"role_rows":8,"phase_rows":40,"locales":8},
+  "translated_locales":["zh-CN","ja","en","es","fr","it","ru"],
+  "translated_status":"HUMAN_REVIEW_REQUIRED",
+  "human_approval_inferred":false
+}
