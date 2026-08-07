@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 24,
+  "tested_at": "2026-08-07T18:03:09+09:00",
+  "status": "AUTO_QA_PASS_LOCAL_SECURITY",
+  "scope": "LOCAL_ISOLATED_FULL_STACK_SECURITY",
+  "requirements": ["P24-SEC-001", "P24-SEC-002", "P24-SEC-003", "P24-SEC-004", "P24-SEC-005", "P24-SEC-006"],
+  "baseline": {
+    "signed_hmac_session": true,
+    "ownership_enforcement": true,
+    "npm_known_vulnerabilities": 0,
+    "missing_web_headers": ["Cross-Origin-Resource-Policy", "X-Permitted-Cross-Domain-Policies"],
+    "missing_api_headers": ["Permissions-Policy", "Cross-Origin-Opener-Policy", "Cross-Origin-Resource-Policy", "X-Permitted-Cross-Domain-Policies"],
+    "origin_allowlist_enforced": false,
+    "json_media_type_enforced": false
+  },
+  "controls": {
+    "session_token_max_bytes": 4096,
+    "session_token_max_lifetime_seconds": 900,
+    "session_token_exp_after_iat_required": true,
+    "request_body_max_bytes": 65536,
+    "json_media_types_only_when_body_present": true,
+    "unsafe_origin_allowlist": ["http://127.0.0.1:4180", "http://localhost:4180"],
+    "trusted_headers_test_only": true,
+    "idempotency_key_length": {"min": 8, "max": 128},
+    "local_hsts_emitted": false,
+    "local_hsts_policy": "CORRECT_HTTP_ONLY_BEHAVIOR",
+    "external_https_hsts_required": true
+  },
+  "tests": {
+    "unit": "59/59 PASS",
+    "token_negative_conditions": "PASS",
+    "origin_negative_conditions": "PASS",
+    "mime_and_size_negative_conditions": "PASS",
+    "idempotency_negative_conditions": "PASS"
+  },
+  "integration": {
+    "security_boundary": "1/1 PASS",
+    "postgresql_regression": "15/15 PASS",
+    "full_productization": "PHASE_0_TO_24 PASS"
+  },
+  "headers": {
+    "web": "8/8 PASS",
+    "api": "8/8 PASS",
+    "web_health": 200,
+    "api_health": 200,
+    "hsts_local_http": "ABSENT_AS_REQUIRED"
+  },
+  "npm_audit": {
+    "dependencies": 14,
+    "vulnerabilities": {"info": 0, "low": 0, "moderate": 0, "high": 0, "critical": 0, "total": 0}
+  },
+  "secret_scan": {
+    "scope": ["client", "developer/src", "agent", "infra", "scripts/productization"],
+    "findings": 0
+  },
+  "runtime": {
+    "web_container_id": "dd93df00c233420b6d5671f1cff7ef9bb3b65969234e82b9cf9bf5ba7f8f52d9",
+    "web_image_digest": "sha256:22a5cb0818eb4f40aad35672a957e59c89419f3475f0a6dd587ebfc6ad63362e",
+    "api_container_id": "22348ef0ed5f7b0cbcf97980a8a6bd15798de614198aeb4382e8335cd13f26df",
+    "api_image_digest": "sha256:65a6cc2a839f3d3abce4fa3b79da8c13fba00abbbbbfbb6627b29cad4dbaa6dd",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "database_health": "healthy"
+  },
+  "external_security": {
+    "status": "BLOCKED_EXTERNAL_CONFIGURATION",
+    "performed": false,
+    "pending": ["production HTTPS and HSTS", "managed identity provider", "central secret manager", "WAF and distributed rate limiting", "authorized penetration test"]
+  }
+}

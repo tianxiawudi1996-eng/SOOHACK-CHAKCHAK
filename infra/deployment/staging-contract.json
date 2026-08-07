@@ -33,7 +33,9 @@
       "X-Frame-Options",
       "Referrer-Policy",
       "Permissions-Policy",
-      "Cross-Origin-Opener-Policy"
+      "Cross-Origin-Opener-Policy",
+      "Cross-Origin-Resource-Policy",
+      "X-Permitted-Cross-Domain-Policies"
     ]
   },
   "feature_flags": {

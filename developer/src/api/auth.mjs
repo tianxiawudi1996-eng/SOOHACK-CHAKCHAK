@@ -5,6 +5,7 @@ const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3
 const TOKEN_VERSION = 'mcs1';
 const EXPECTED_ISSUER = 'mathchakchak-session-gateway';
 const EXPECTED_AUDIENCE = 'mathchakchak-api';
+const MAX_TOKEN_BYTES = 4096;
 
 function unauthenticated() {
   return new ApiError(401, 'UNAUTHENTICATED', 'error.unauthenticated');
@@ -36,6 +37,7 @@ export function createSessionToken({userId, studentId, role = 'STUDENT', expires
 
 export function verifySessionToken(token, secret, {now = Math.floor(Date.now() / 1000)} = {}) {
   assertSecret(secret);
+  if (typeof token !== 'string' || Buffer.byteLength(token) > MAX_TOKEN_BYTES) throw unauthenticated();
   const parts = token?.split('.') ?? [];
   if (parts.length !== 3 || parts[0] !== TOKEN_VERSION) throw unauthenticated();
   const input = `${parts[0]}.${parts[1]}`;
@@ -59,6 +61,7 @@ export function verifySessionToken(token, secret, {now = Math.floor(Date.now() /
     !Number.isInteger(claims.exp) ||
     claims.iat > now + 30 ||
     claims.exp <= now ||
+    claims.exp <= claims.iat ||
     claims.exp - claims.iat > 900
   ) throw unauthenticated();
   return {userId: claims.sub, studentId: claims.student_id, role: claims.role};
@@ -66,8 +69,9 @@ export function verifySessionToken(token, secret, {now = Math.floor(Date.now() /
 
 export function authenticatedRequestContext(request, {sessionSecret, allowTrustedHeaders = false, now} = {}) {
   const authorization = request.headers.authorization;
-  if (typeof authorization === 'string' && authorization.startsWith('Bearer ')) {
-    return verifySessionToken(authorization.slice(7), sessionSecret, {now});
+  const bearer = typeof authorization === 'string' ? authorization.match(/^Bearer ([^\s]+)$/i) : null;
+  if (bearer) {
+    return verifySessionToken(bearer[1], sessionSecret, {now});
   }
   if (allowTrustedHeaders) {
     const userId = request.headers['x-user-id'];

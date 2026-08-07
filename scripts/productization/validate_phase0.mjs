@@ -25,7 +25,8 @@ const expectedPhaseKeys = Array.from({length:Number(status.current_phase) + 1}, 
 const validCurrentStatuses = new Set([
   'VERIFIED',
   'AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED',
-  'AUTO_VERIFIED_LOCAL_LAB'
+  'AUTO_VERIFIED_LOCAL_LAB',
+  'AUTO_VERIFIED_LOCAL_SECURITY'
 ]);
 if (
   status.project !== 'MathChakChak' ||

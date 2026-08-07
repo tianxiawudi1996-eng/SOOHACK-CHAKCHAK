@@ -26,8 +26,9 @@
 | 21 | 핵심 화면 접근성 국제화·언어 검토 패킷 | 접근성 키 대칭·진행률 의미·스테이징·브라우저 검사 | 화면 4/4, 로케일 8/8, 키 31/31, 값 248/248, 검토 패킷 7/7, 수동 승인 0/7 |
 | 22 | 키보드·초점·대비·스크린리더 접근성 | Tab 계약·동적 초점·WCAG 대비·reduced-motion·브라우저 검사 | 화면 4/4, 초점 대상 7/7, 대비 12/12, 통합 14/14, 수동 접근성 승인 0/1 |
 | 23 | Core Web Vitals·정적 전달 성능 | Lighthouse·gzip·캐시·레이아웃 안정성 검사 | 성능 97, LCP 2.417초, CLS 0.045, TBT 15ms, 운영 INP 대기 |
+| 24 | 세션·API·공급망 제품 보안 | 토큰·Origin·MIME·크기·헤더·npm·Secret 역조건 검사 | 단위 59/59, 통합 15/15, 헤더 16/16, 알려진 취약점 0건 |
 
-현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`이다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능, 외부 운영 배포·관리형 서비스 연결은 별도 승인·권한 대기다.
+현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능, 외부 HTTPS·IdP·Secret Manager·WAF·운영 배포는 별도 승인·권한 대기다.
 
 ## 공통 규칙
 

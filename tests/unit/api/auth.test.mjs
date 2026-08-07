@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createSessionToken, verifySessionToken} from '../../../developer/src/api/auth.mjs';
+import {authenticatedRequestContext, createSessionToken, verifySessionToken} from '../../../developer/src/api/auth.mjs';
 
 const secret = 'phase9-unit-test-secret-material-32-bytes-minimum';
 const claims = {
@@ -23,4 +23,18 @@ test('signed session token rejects tampering and expiry', () => {
   const token = createSessionToken(claims, secret);
   assert.throws(() => verifySessionToken(`${token.slice(0,-1)}x`, secret, {now:1100}), /UNAUTHENTICATED/);
   assert.throws(() => verifySessionToken(token, secret, {now:1300}), /UNAUTHENTICATED/);
+});
+
+test('signed session token rejects invalid lifetime and oversized input', () => {
+  const invalidLifetime = createSessionToken({...claims, issuedAt:1200, expiresAt:1199}, secret);
+  assert.throws(() => verifySessionToken(invalidLifetime, secret, {now:1100}), /UNAUTHENTICATED/);
+  assert.throws(() => verifySessionToken('x'.repeat(4097), secret, {now:1100}), /UNAUTHENTICATED/);
+});
+
+test('authorization scheme is exact, whitespace-safe, and case-insensitive', () => {
+  const token = createSessionToken(claims, secret);
+  assert.deepEqual(authenticatedRequestContext({headers:{authorization:`bearer ${token}`}}, {sessionSecret:secret, now:1100}), {
+    userId:claims.userId, studentId:claims.studentId, role:'STUDENT'
+  });
+  assert.throws(() => authenticatedRequestContext({headers:{authorization:`Bearer ${token} extra`}}, {sessionSecret:secret, now:1100}), /UNAUTHENTICATED/);
 });

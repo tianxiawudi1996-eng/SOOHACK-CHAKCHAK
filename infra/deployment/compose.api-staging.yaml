@@ -48,6 +48,7 @@ services:
       PORT: "8080"
       SESSION_HMAC_SECRET: ${MATHCHAKCHAK_STAGE_SESSION_SECRET:?MATHCHAKCHAK_STAGE_SESSION_SECRET is required}
       ALLOW_TRUSTED_TEST_HEADERS: "false"
+      ALLOWED_BROWSER_ORIGINS: "http://127.0.0.1:4180,http://localhost:4180"
       ENABLE_LOCAL_DEMO_SESSION: "true"
     depends_on:
       database:

@@ -5,8 +5,38 @@ import {authenticatedRequestContext} from './auth.mjs';
 
 const MAX_BODY_BYTES = 64 * 1024;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const IDEMPOTENCY_KEY_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
+const JSON_MEDIA_TYPE_PATTERN = /^application\/(?:[a-z0-9!#$&^_.+-]+\+)?json$/i;
+const API_SECURITY_HEADERS = Object.freeze({
+  'Cache-Control': 'no-store',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'no-referrer',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
+  'Permissions-Policy': 'camera=(), geolocation=(), microphone=(), payment=(), usb=()',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+  'Cross-Origin-Resource-Policy': 'same-origin',
+  'X-Permitted-Cross-Domain-Policies': 'none'
+});
+
+export function isJsonMediaType(value) {
+  if (typeof value !== 'string') return false;
+  return JSON_MEDIA_TYPE_PATTERN.test(value.split(';', 1)[0].trim());
+}
 
 export async function readJson(request) {
+  const rawLength = request.headers['content-length'];
+  const declaredLength = rawLength === undefined ? null : Number(rawLength);
+  if (declaredLength !== null && (!Number.isSafeInteger(declaredLength) || declaredLength < 0)) {
+    throw badRequest('INVALID_CONTENT_LENGTH', 'error.invalid_content_length');
+  }
+  if (declaredLength !== null && declaredLength > MAX_BODY_BYTES) {
+    throw new ApiError(413, 'PAYLOAD_TOO_LARGE', 'error.payload_too_large');
+  }
+  const hasBody = (declaredLength !== null && declaredLength > 0) || request.headers['transfer-encoding'] !== undefined;
+  if (hasBody && !isJsonMediaType(request.headers['content-type'])) {
+    throw new ApiError(415, 'UNSUPPORTED_MEDIA_TYPE', 'error.unsupported_media_type');
+  }
   const chunks = [];
   let size = 0;
   for await (const chunk of request) {
@@ -32,7 +62,7 @@ export function requestContext(request, auth) {
 
 export function requireIdempotencyKey(request) {
   const key = request.headers['idempotency-key'];
-  if (typeof key !== 'string' || key.length < 8 || key.length > 191) {
+  if (typeof key !== 'string' || !IDEMPOTENCY_KEY_PATTERN.test(key)) {
     throw badRequest('IDEMPOTENCY_KEY_REQUIRED', 'error.idempotency_key_required');
   }
   return key;
@@ -51,14 +81,10 @@ export function requestHash(value) {
 export function sendJson(response, status, payload, {requestId, locale = 'en'} = {}) {
   const body = JSON.stringify(payload);
   response.writeHead(status, {
+    ...API_SECURITY_HEADERS,
     'Content-Type': 'application/json; charset=utf-8',
     'Content-Length': Buffer.byteLength(body),
     'Content-Language': locale,
-    'Cache-Control': 'no-store',
-    'X-Content-Type-Options': 'nosniff',
-    'X-Frame-Options': 'DENY',
-    'Referrer-Policy': 'no-referrer',
-    'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
     'X-Request-Id': requestId
   });
   response.end(body);
@@ -66,10 +92,9 @@ export function sendJson(response, status, payload, {requestId, locale = 'en'} =
 
 export function sendText(response, status, body, {requestId, contentType = 'text/plain; charset=utf-8'} = {}) {
   response.writeHead(status, {
+    ...API_SECURITY_HEADERS,
     'Content-Type': contentType,
     'Content-Length': Buffer.byteLength(body),
-    'Cache-Control': 'no-store',
-    'X-Content-Type-Options': 'nosniff',
     'X-Request-Id': requestId
   });
   response.end(body);

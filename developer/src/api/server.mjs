@@ -16,6 +16,7 @@ import {
   success
 } from './http.mjs';
 import {OperationsMetrics} from './metrics.mjs';
+import {assertAllowedRequestOrigin} from './security.mjs';
 
 const UUID_PATTERN = '[0-9a-fA-F-]{36}';
 const COLLABORATION_PHASE_SIGNALS={
@@ -342,6 +343,7 @@ export function createMathChakChakServer({repository, auth, metrics = new Operat
     let status = 500;
     try {
       const url = new URL(request.url, 'http://localhost');
+      assertAllowedRequestOrigin(request, auth.allowedOrigins);
       const matched = route(request.method, url.pathname);
       if (!matched) throw notFound();
       const result = await execute(repository, request, matched, requestId, {auth, metrics});
