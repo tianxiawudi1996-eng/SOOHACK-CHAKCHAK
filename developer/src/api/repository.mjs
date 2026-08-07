@@ -419,11 +419,20 @@ export class MathChakChakRepository {
       );
       if(!gate.rowCount) throw conflict('COMPLETED_RECALL_REQUIRED');
       const items=await client.query(
-        `SELECT id,formula_catalog_id,sequence_no,assessment_kind,prompt_ko AS prompt,response_type,difficulty
-           FROM mathchakchak.formula_application_item
-          WHERE formula_catalog_id=$1 AND active=true
-          ORDER BY sequence_no`,
-        [formulaCatalogId]
+        `SELECT fai.id,fai.formula_catalog_id,fai.sequence_no,fai.assessment_kind,
+                coalesce(requested.prompt,korean.prompt,fai.prompt_ko) AS prompt,
+                coalesce(requested.value_label,korean.value_label,'Answer') AS value_label,
+                coalesce(requested.unit_label,korean.unit_label,'Unit') AS unit_label,
+                fai.response_type,fai.difficulty,fai.unit_required,
+                CASE WHEN requested.application_item_id IS NOT NULL THEN $2 ELSE 'ko' END AS content_locale
+           FROM mathchakchak.formula_application_item fai
+           LEFT JOIN mathchakchak.formula_application_item_translation requested
+             ON requested.application_item_id=fai.id AND requested.locale=$2
+           LEFT JOIN mathchakchak.formula_application_item_translation korean
+             ON korean.application_item_id=fai.id AND korean.locale='ko'
+          WHERE fai.formula_catalog_id=$1 AND fai.active=true
+          ORDER BY fai.sequence_no`,
+        [formulaCatalogId,requestedLocale]
       );
       if(!items.rowCount) throw notFound();
       const progress=await client.query(
@@ -432,7 +441,9 @@ export class MathChakChakRepository {
           WHERE student_profile_id=$1 AND formula_catalog_id=$2`,
         [actor.studentId,formulaCatalogId]
       );
-      return {formula_catalog_id:formulaCatalogId,items:items.rows,progress:progress.rows[0]??null,requested_locale:requestedLocale,content_locale:'ko',translation_status:requestedLocale==='ko'?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'};
+      const contentLocale=items.rows.every((item)=>item.content_locale===requestedLocale)?requestedLocale:'ko';
+      const publicItems=items.rows.map(({content_locale,...item})=>item);
+      return {formula_catalog_id:formulaCatalogId,items:publicItems,progress:progress.rows[0]??null,requested_locale:requestedLocale,content_locale:contentLocale,translation_status:contentLocale===requestedLocale?'SOURCE_ALIGNED':'CANONICAL_KO_FALLBACK'};
     } finally { client.release(); }
   }
 

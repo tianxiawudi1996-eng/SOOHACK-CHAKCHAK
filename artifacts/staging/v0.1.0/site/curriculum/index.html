@@ -55,8 +55,8 @@
         <h3 id="applicationTitle"></h3>
         <p id="applicationPrompt"></p>
         <form id="applicationForm">
-          <label><span data-message="applicationValue"></span><input id="applicationValue" name="value" autocomplete="off" required></label>
-          <label><span data-message="applicationUnit"></span><input id="applicationUnit" name="unit" autocomplete="off"></label>
+          <label><span id="applicationValueLabel" data-message="applicationValue"></span><input id="applicationValue" name="value" autocomplete="off" required></label>
+          <label id="applicationUnitField"><span id="applicationUnitLabel" data-message="applicationUnit"></span><input id="applicationUnit" name="unit" autocomplete="off"></label>
           <button type="submit" data-message="applicationSubmit"></button>
         </form>
         <p id="applicationResult" class="application-result" hidden aria-live="polite"></p>

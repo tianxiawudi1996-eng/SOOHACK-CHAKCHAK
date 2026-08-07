@@ -43,13 +43,13 @@
     },
     {
       "path": "site/curriculum/app.js",
-      "bytes": 21146,
-      "sha256": "0b5dd3259801d9f8cd6e30ca1014b2303478bee3a495a54b90f3450306cd0a06"
+      "bytes": 25326,
+      "sha256": "7f109226064fb85ab0162b28f571f887529afe54e719398c470cc03d68b63ac7"
     },
     {
       "path": "site/curriculum/index.html",
-      "bytes": 4134,
-      "sha256": "dd9ea1ce1de6732eb7b3f649f3d67ed47657819991a90866350e266936db8716"
+      "bytes": 4213,
+      "sha256": "3d58993bb44ec869aa0dd2dc27e54b7acfd50166a75038cba75987bee913b846"
     },
     {
       "path": "site/curriculum/messages.mjs",
