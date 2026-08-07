@@ -92,6 +92,8 @@ Phase 27의 `0013_privacy_operations.sql`은 요청 배정·증적 해시·승�
 
 Phase 28의 `0014_fulfilment_controls.sql`은 운영 역할·dry-run 계획·영향 평가·법적 보류·이중 승인을 추가한다. 계획은 요청당 하나, 활성 보류는 요청당 하나이며 계획별 승인 역할과 승인자는 각각 UNIQUE다. 모든 FK는 운영 증적 보존을 위해 `ON DELETE RESTRICT`를 사용한다.
 
+Phase 29의 `0015_fulfilment_package_manifest.sql`은 불변 이행 매니페스트와 무변경 복구 체크포인트를 추가한다. 매니페스트는 계획별 증가 리비전과 단일 선행·후속 관계를 가지며 SHA-256으로 영향·승인·유효기간을 결합한다. 두 테이블의 `BEFORE UPDATE OR DELETE` 트리거는 변경을 거부하고 재검증은 새 행만 추가한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

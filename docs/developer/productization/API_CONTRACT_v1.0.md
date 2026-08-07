@@ -74,6 +74,17 @@
 
 이중 승인 상태는 실행 허가가 아니다. API는 파괴적 이행 엔드포인트를 제공하지 않으며 기존 `COMPLETED` 전이도 계속 차단한다.
 
+## Phase 29 불변 개인정보 이행 패키지
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy-operations/fulfilment-plans/{id}/package-manifests` | OPERATOR | 승인 계획 봉인 | dual-approved+hash |
+| GET | `/privacy-operations/package-manifests/{id}` | 운영 역할 | 패키지 생명주기 조회 | student 403 |
+| POST | `/privacy-operations/package-manifests/{id}/recovery-checkpoints` | OPERATOR | 무변경 복구 기준점 | valid+immutable |
+| POST | `/privacy-operations/package-manifests/{id}/revalidate` | OPERATOR | 만료 패키지 후속 리비전 | unchanged hashes+no hold |
+
+패키지 봉인과 재검증은 실제 실행이 아니다. 유효기간 만료·활성 법적 보존·영향 또는 승인 해시 변경 시 409를 반환하며 파괴적 실행 API는 존재하지 않는다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

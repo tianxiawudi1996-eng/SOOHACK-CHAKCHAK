@@ -17,7 +17,10 @@ const auth = {
 if (!auth.allowTrustedHeaders && (!auth.sessionSecret || Buffer.byteLength(auth.sessionSecret) < 32)) {
   throw new Error('SESSION_HMAC_SECRET_REQUIRED');
 }
-const repository = new MathChakChakRepository({connectionString: process.env.DATABASE_URL});
+const repository = new MathChakChakRepository({
+  connectionString: process.env.DATABASE_URL,
+  fulfilmentPackageValiditySeconds:process.env.FULFILMENT_PACKAGE_VALIDITY_SECONDS
+});
 const server = createMathChakChakServer({repository, auth});
 
 server.listen(port, host, () => {

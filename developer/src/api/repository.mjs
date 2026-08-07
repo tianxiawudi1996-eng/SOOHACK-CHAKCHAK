@@ -10,6 +10,10 @@ import {buildLearningQualitySnapshot} from '../analytics/learning-quality.mjs';
 import {canRequesterCancel,mapPrivacyRequest,privacyRequestBoundary} from '../privacy/data-rights.mjs';
 import {mapPrivacyOperationsItem,privacyOperationsBoundary,validateOperatorTransition} from '../privacy/privacy-operations.mjs';
 import {fulfilmentControlBoundary,mapFulfilmentPlan} from '../privacy/fulfilment-controls.mjs';
+import {
+  DEFAULT_PACKAGE_VALIDITY_SECONDS,buildPackageManifestPayload,
+  fulfilmentPackageBoundary,hashApprovalBundle,hashCanonical,hashImpactSnapshot,mapFulfilmentPackage
+} from '../privacy/fulfilment-package.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -70,8 +74,13 @@ function mapFormulaSession(row) {
 }
 
 export class MathChakChakRepository {
-  constructor({connectionString}) {
+  constructor({connectionString,fulfilmentPackageValiditySeconds=DEFAULT_PACKAGE_VALIDITY_SECONDS}) {
     if (!connectionString) throw new Error('DATABASE_URL_REQUIRED');
+    const parsedValidity=Number.parseInt(String(fulfilmentPackageValiditySeconds),10);
+    if(!Number.isInteger(parsedValidity)||parsedValidity<1||parsedValidity>DEFAULT_PACKAGE_VALIDITY_SECONDS){
+      throw new Error('INVALID_FULFILMENT_PACKAGE_VALIDITY_SECONDS');
+    }
+    this.fulfilmentPackageValiditySeconds=parsedValidity;
     this.pool = new Pool({
       connectionString,
       application_name: 'mathchakchak-api',
@@ -1744,7 +1753,7 @@ export class MathChakChakRepository {
         [studentId,plan.rows[0].privacy_request_id]
       );
       const impact=counts.rows[0];
-      const assessmentSha256=crypto.createHash('sha256').update(JSON.stringify(impact)).digest('hex');
+      const assessmentSha256=hashImpactSnapshot(impact);
       await client.query(
         `INSERT INTO mathchakchak.privacy_impact_assessment
           (fulfilment_plan_id,assessed_by_user_id,profile_rows,diagnostic_sessions,learning_sessions,review_items,
@@ -1832,6 +1841,202 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:planId,status:200});
       return {...await this.loadFulfilmentPlan(client,planId),boundary:fulfilmentControlBoundary(),replayed:false};
+    });
+  }
+
+  async loadFulfilmentPackage(client,manifestId){
+    const manifest=await client.query(
+      `SELECT m.*,successor.id AS successor_manifest_id,
+              EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                       WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold
+         FROM mathchakchak.privacy_fulfilment_package_manifest m
+         LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor
+           ON successor.predecessor_manifest_id=m.id
+        WHERE m.id=$1`,[manifestId]
+    );
+    if(!manifest.rowCount)throw notFound();
+    const checkpoint=await client.query(
+      `SELECT id,recovery_mode,checkpoint_sha256,recorded_at
+         FROM mathchakchak.privacy_fulfilment_recovery_checkpoint WHERE package_manifest_id=$1`,[manifestId]
+    );
+    return mapFulfilmentPackage(manifest.rows[0],{checkpoint:checkpoint.rows[0]??null});
+  }
+
+  async getFulfilmentPackage({actor,manifestId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadFulfilmentPackage(client,manifestId),boundary:fulfilmentPackageBoundary()};
+    }finally{client.release();}
+  }
+
+  async sealFulfilmentPackage({actor,planId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR']);
+      const scope=`privacy.package.seal.${planId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPackage(client,replay),boundary:fulfilmentPackageBoundary(),replayed:true};
+      const plan=await client.query(
+        `SELECT p.*,a.assessment_sha256
+           FROM mathchakchak.privacy_fulfilment_plan p
+           JOIN mathchakchak.privacy_impact_assessment a ON a.fulfilment_plan_id=p.id
+          WHERE p.id=$1 FOR UPDATE OF p`,[planId]
+      );
+      if(!plan.rowCount)throw notFound();
+      const row=plan.rows[0];
+      if(row.created_by_user_id!==actor.userId)throw forbidden();
+      if(row.status!=='DUAL_APPROVED')throw conflict('FULFILMENT_PLAN_NOT_DUAL_APPROVED');
+      const hold=await client.query(
+        "SELECT 1 FROM mathchakchak.privacy_legal_hold WHERE privacy_request_id=$1 AND status='ACTIVE'",[row.privacy_request_id]
+      );
+      if(hold.rowCount)throw conflict('ACTIVE_LEGAL_HOLD');
+      const existing=await client.query(
+        'SELECT 1 FROM mathchakchak.privacy_fulfilment_package_manifest WHERE fulfilment_plan_id=$1',[planId]
+      );
+      if(existing.rowCount)throw conflict('FULFILMENT_PACKAGE_ALREADY_SEALED');
+      const approvals=await client.query(
+        `SELECT approval_role,decision,reason_code,decided_at
+           FROM mathchakchak.privacy_fulfilment_approval
+          WHERE fulfilment_plan_id=$1 AND decision='APPROVE' ORDER BY approval_role`,[planId]
+      );
+      if(approvals.rowCount!==2)throw conflict('FULFILMENT_PACKAGE_APPROVAL_BUNDLE_INCOMPLETE');
+      const id=crypto.randomUUID();
+      const sealedAt=new Date();
+      const expiresAt=new Date(sealedAt.getTime()+this.fulfilmentPackageValiditySeconds*1000);
+      const approvalBundleSha256=hashApprovalBundle(approvals.rows);
+      const payload=buildPackageManifestPayload({
+        id,planId,requestId:row.privacy_request_id,requestType:row.request_type,policyVersion:row.policy_version,
+        executionMode:row.execution_mode,assessmentSha256:row.assessment_sha256,approvalBundleSha256,
+        revision:1,sealedAt,expiresAt
+      });
+      const manifestSha256=hashCanonical(payload);
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_fulfilment_package_manifest
+          (id,fulfilment_plan_id,privacy_request_id,request_type,revision,policy_version,execution_mode,
+           assessment_sha256,approval_bundle_sha256,manifest_payload,manifest_sha256,sealed_by_user_id,sealed_at,expires_at)
+         VALUES ($1,$2,$3,$4,1,$5,$6,$7,$8,$9::jsonb,$10,$11,$12,$13)`,
+        [id,planId,row.privacy_request_id,row.request_type,row.policy_version,row.execution_mode,row.assessment_sha256,
+         approvalBundleSha256,JSON.stringify(payload),manifestSha256,actor.userId,sealedAt,expiresAt]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadFulfilmentPackage(client,id),boundary:fulfilmentPackageBoundary(),replayed:false};
+    });
+  }
+
+  async recordFulfilmentRecoveryCheckpoint({actor,manifestId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR']);
+      const scope=`privacy.package.checkpoint.${manifestId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPackage(client,replay),boundary:fulfilmentPackageBoundary(),replayed:true};
+      const manifest=await client.query(
+        `SELECT m.*,p.created_by_user_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                         WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_fulfilment_package_manifest m
+           JOIN mathchakchak.privacy_fulfilment_plan p ON p.id=m.fulfilment_plan_id
+          WHERE m.id=$1 FOR UPDATE OF m`,[manifestId]
+      );
+      if(!manifest.rowCount)throw notFound();
+      const row=manifest.rows[0];
+      if(row.created_by_user_id!==actor.userId)throw forbidden();
+      if(row.active_legal_hold)throw conflict('ACTIVE_LEGAL_HOLD');
+      if(new Date(row.expires_at).getTime()<=Date.now())throw conflict('FULFILMENT_PACKAGE_EXPIRED');
+      const existing=await client.query(
+        'SELECT 1 FROM mathchakchak.privacy_fulfilment_recovery_checkpoint WHERE package_manifest_id=$1',[manifestId]
+      );
+      if(existing.rowCount)throw conflict('RECOVERY_CHECKPOINT_ALREADY_RECORDED');
+      const id=crypto.randomUUID();
+      const checkpointPayload={
+        schema_version:'1.0.0',checkpoint_id:id,package_manifest_id:manifestId,
+        recovery_mode:'NO_MUTATION_BASELINE',manifest_sha256:row.manifest_sha256,
+        assessment_sha256:row.assessment_sha256,source_mutations:0,destructive_executor_enabled:false
+      };
+      const checkpointSha256=hashCanonical(checkpointPayload);
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_fulfilment_recovery_checkpoint
+          (id,package_manifest_id,recorded_by_user_id,recovery_mode,manifest_sha256,assessment_sha256,
+           checkpoint_payload,checkpoint_sha256)
+         VALUES ($1,$2,$3,'NO_MUTATION_BASELINE',$4,$5,$6::jsonb,$7)`,
+        [id,manifestId,actor.userId,row.manifest_sha256,row.assessment_sha256,JSON.stringify(checkpointPayload),checkpointSha256]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:manifestId,status:201});
+      return {...await this.loadFulfilmentPackage(client,manifestId),boundary:fulfilmentPackageBoundary(),replayed:false};
+    });
+  }
+
+  async revalidateFulfilmentPackage({actor,manifestId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR']);
+      const scope=`privacy.package.revalidate.${manifestId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPackage(client,replay),boundary:fulfilmentPackageBoundary(),replayed:true};
+      const manifest=await client.query(
+        `SELECT m.*,p.created_by_user_id,p.status AS plan_status,pr.student_profile_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                         WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_fulfilment_package_manifest m
+           JOIN mathchakchak.privacy_fulfilment_plan p ON p.id=m.fulfilment_plan_id
+           JOIN mathchakchak.privacy_request pr ON pr.id=m.privacy_request_id
+          WHERE m.id=$1 FOR UPDATE OF m,p`,[manifestId]
+      );
+      if(!manifest.rowCount)throw notFound();
+      const row=manifest.rows[0];
+      if(row.created_by_user_id!==actor.userId)throw forbidden();
+      if(row.plan_status!=='DUAL_APPROVED')throw conflict('FULFILMENT_PLAN_NOT_DUAL_APPROVED');
+      if(row.active_legal_hold)throw conflict('ACTIVE_LEGAL_HOLD');
+      if(new Date(row.expires_at).getTime()>Date.now())throw conflict('FULFILMENT_PACKAGE_NOT_EXPIRED');
+      const successor=await client.query(
+        'SELECT 1 FROM mathchakchak.privacy_fulfilment_package_manifest WHERE predecessor_manifest_id=$1',[manifestId]
+      );
+      if(successor.rowCount)throw conflict('FULFILMENT_PACKAGE_ALREADY_REVALIDATED');
+      const checkpoint=await client.query(
+        'SELECT 1 FROM mathchakchak.privacy_fulfilment_recovery_checkpoint WHERE package_manifest_id=$1',[manifestId]
+      );
+      if(!checkpoint.rowCount)throw conflict('RECOVERY_CHECKPOINT_REQUIRED');
+      const counts=await client.query(
+        `SELECT
+          (SELECT count(*)::integer FROM mathchakchak.student_profile WHERE id=$1) AS profile_rows,
+          (SELECT count(*)::integer FROM mathchakchak.diagnostic_session WHERE student_profile_id=$1) AS diagnostic_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.learning_session WHERE student_profile_id=$1) AS learning_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.review_item WHERE student_profile_id=$1) AS review_items,
+          (SELECT count(*)::integer FROM mathchakchak.formula_learning_session WHERE student_profile_id=$1) AS formula_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.privacy_request WHERE student_profile_id=$1) AS preserved_privacy_records,
+          false AS active_legal_hold`,[row.student_profile_id]
+      );
+      if(hashImpactSnapshot(counts.rows[0])!==row.assessment_sha256){
+        throw conflict('FULFILMENT_PACKAGE_IMPACT_CHANGED_REAPPROVAL_REQUIRED');
+      }
+      const approvals=await client.query(
+        `SELECT approval_role,decision,reason_code,decided_at
+           FROM mathchakchak.privacy_fulfilment_approval
+          WHERE fulfilment_plan_id=$1 AND decision='APPROVE' ORDER BY approval_role`,[row.fulfilment_plan_id]
+      );
+      if(approvals.rowCount!==2||hashApprovalBundle(approvals.rows)!==row.approval_bundle_sha256){
+        throw conflict('FULFILMENT_PACKAGE_APPROVAL_CHANGED_REAPPROVAL_REQUIRED');
+      }
+      const id=crypto.randomUUID();
+      const sealedAt=new Date();
+      const expiresAt=new Date(sealedAt.getTime()+this.fulfilmentPackageValiditySeconds*1000);
+      const revision=Number(row.revision)+1;
+      const payload=buildPackageManifestPayload({
+        id,planId:row.fulfilment_plan_id,requestId:row.privacy_request_id,requestType:row.request_type,
+        policyVersion:row.policy_version,executionMode:row.execution_mode,assessmentSha256:row.assessment_sha256,
+        approvalBundleSha256:row.approval_bundle_sha256,revision,predecessorManifestId:manifestId,sealedAt,expiresAt
+      });
+      const manifestSha256=hashCanonical(payload);
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_fulfilment_package_manifest
+          (id,fulfilment_plan_id,privacy_request_id,request_type,revision,predecessor_manifest_id,policy_version,
+           execution_mode,assessment_sha256,approval_bundle_sha256,manifest_payload,manifest_sha256,
+           sealed_by_user_id,sealed_at,expires_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb,$12,$13,$14,$15)`,
+        [id,row.fulfilment_plan_id,row.privacy_request_id,row.request_type,revision,manifestId,row.policy_version,
+         row.execution_mode,row.assessment_sha256,row.approval_bundle_sha256,JSON.stringify(payload),manifestSha256,
+         actor.userId,sealedAt,expiresAt]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadFulfilmentPackage(client,id),boundary:fulfilmentPackageBoundary(),replayed:false};
     });
   }
 }

@@ -1,0 +1,12 @@
+{
+  "schema_version":"1.0.0",
+  "status":"AUTO_QA_PASS_LOCAL_FULFILMENT_PACKAGE",
+  "scope":"LOCAL_SYNTHETIC_IMMUTABLE_DRY_RUN_PACKAGE",
+  "database":{"tables":"2/2","immutable_triggers":"2/2 BLOCKED","forward_rollback_reapply":"PASS","post_reapply_manifests_checkpoints":"2/1"},
+  "tests":{"unit":"81/81 PASS","phase29_static":"PASS","fulfilment_package":"1/1 PASS","postgresql_regression":"20/20 PASS"},
+  "controls":{"initial_revision":1,"revalidated_revision":2,"validity_harness_seconds":2,"expiry_detected":true,"predecessor_status":"SUPERSEDED"},
+  "authorization":{"student_package_access":"403 PASS","operator_mutations":"3/3","approver_read_only":true},
+  "integrity":{"manifest_hash":"SHA-256","impact_hash_revalidated":true,"approval_bundle_hash_revalidated":true,"append_only":true},
+  "safety":{"source_data_mutations":0,"recovery_mode":"NO_MUTATION_BASELINE","destructive_executor_enabled":false,"completion_transition":"409 BLOCKED","legal_compliance_certified":false},
+  "external":{"managed_identity_ready":false,"production_backup_restore_verified":false,"production_execution":"BLOCKED_EXTERNAL_IDENTITY_POLICY"}
+}

@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 28,
+  "current_phase": 29,
   "phases": {
+    "29": {"name":"immutable_fulfilment_package_expiry_revalidation_recovery","status":"AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE","scope":"LOCAL_SYNTHETIC_IMMUTABLE_DRY_RUN_PACKAGE","progress":"package_tables_2/2_unit_81/81_fulfilment_package_1/1_postgresql_regression_20/20_immutable_triggers_2/2_revision_1_to_2_source_mutations_0_migration_PASS","tests":["npm.cmd run test:unit","npm.cmd run test:productization:fulfilment-package","node --test --test-concurrency=1 tests/integration/*.test.mjs","PostgreSQL 16 migration forward+rollback+reapply","immutable UPDATE+DELETE inverse tests","npm.cmd run test:productization"]},
     "28": {"name":"privacy_fulfilment_dry_run_legal_hold_dual_approval","status":"AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS","scope":"LOCAL_SYNTHETIC_DRY_RUN_ONLY","progress":"control_tables_5/5_unit_74/74_fulfilment_controls_1/1_postgresql_regression_19/19_legal_hold_409_dual_approval_2/2_source_mutations_0_migration_PASS","tests":["npm.cmd run test:unit","npm.cmd run test:productization:fulfilment-controls","node --test --test-concurrency=1 tests/integration/*.test.mjs","PostgreSQL 16 migration forward+rollback+reapply","npm.cmd run test:productization"]},
     "27": {"name":"privacy_operator_queue_decision_evidence","status":"AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS","scope":"LOCAL_SYNTHETIC_ADMIN_REVIEW","progress":"operator_tables_3/3_unit_71/71_privacy_operations_1/1_postgresql_regression_18/18_student_queue_403_completion_409_migration_forward_rollback_reapply_PASS","tests":["npm.cmd run test:unit","npm.cmd run test:productization:privacy-operations","node --test --test-concurrency=1 tests/integration/*.test.mjs","PostgreSQL 16 migration forward+rollback+reapply","npm.cmd run test:productization"]},
     "26": {"name": "student_data_rights_request_workflow", "status": "AUTO_VERIFIED_LOCAL_DATA_RIGHTS", "scope": "LOCAL_SYNTHETIC_STUDENT_SELF_SERVICE", "progress": "request_types_6/6_unit_66/66_data_rights_1/1_postgresql_regression_17/17_migration_forward_rollback_reapply_PASS_identifier_findings_0_guardian_channel_EXTERNAL_BLOCKED", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:data-rights", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "PostgreSQL 16 migration forward+rollback+reapply", "npm.cmd run test:productization"]},
@@ -48,5 +49,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T20:43:38+09:00"
+  "last_updated": "2026-08-07T21:10:33+09:00"
 }

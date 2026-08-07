@@ -57,6 +57,14 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'assessFulfilmentImpact',fulfilmentPlanId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/fulfilment-plans/(${UUID_PATTERN})/approvals$`));
   if(method==='POST'&&operationsMatch)return {name:'decideFulfilmentApproval',fulfilmentPlanId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/fulfilment-plans/(${UUID_PATTERN})/package-manifests$`));
+  if(method==='POST'&&operationsMatch)return {name:'sealFulfilmentPackage',fulfilmentPlanId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/package-manifests/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getFulfilmentPackage',packageManifestId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/package-manifests/(${UUID_PATTERN})/recovery-checkpoints$`));
+  if(method==='POST'&&operationsMatch)return {name:'recordFulfilmentRecoveryCheckpoint',packageManifestId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/package-manifests/(${UUID_PATTERN})/revalidate$`));
+  if(method==='POST'&&operationsMatch)return {name:'revalidateFulfilmentPackage',packageManifestId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -244,6 +252,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getFulfilmentPlan({actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getFulfilmentPackage'){
+    const data=await repository.getFulfilmentPackage({actor,manifestId:requireUuid(match.packageManifestId,'package_manifest_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -300,6 +312,24 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id'),decision:body.decision,reasonCode:body.reason_code,key,hash
     });
     return success(data,{requestId,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='sealFulfilmentPackage'){
+    const data=await repository.sealFulfilmentPackage({
+      actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='recordFulfilmentRecoveryCheckpoint'){
+    const data=await repository.recordFulfilmentRecoveryCheckpoint({
+      actor,manifestId:requireUuid(match.packageManifestId,'package_manifest_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='revalidateFulfilmentPackage'){
+    const data=await repository.revalidateFulfilmentPackage({
+      actor,manifestId:requireUuid(match.packageManifestId,'package_manifest_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }
 
   if (match.name === 'createDiagnostic') {
