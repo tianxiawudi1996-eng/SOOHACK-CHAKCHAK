@@ -9,6 +9,7 @@ import {buildProgressReport} from '../report/progress-report.mjs';
 import {buildLearningQualitySnapshot} from '../analytics/learning-quality.mjs';
 import {canRequesterCancel,mapPrivacyRequest,privacyRequestBoundary} from '../privacy/data-rights.mjs';
 import {mapPrivacyOperationsItem,privacyOperationsBoundary,validateOperatorTransition} from '../privacy/privacy-operations.mjs';
+import {fulfilmentControlBoundary,mapFulfilmentPlan} from '../privacy/fulfilment-controls.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -129,7 +130,32 @@ export class MathChakChakRepository {
        ON CONFLICT (id) DO UPDATE SET role='ADMIN',status='ACTIVE',deleted_at=NULL,updated_at=now()`,
       [userId]
     );
+    await this.pool.query(
+      `INSERT INTO mathchakchak.privacy_operator_authorization (user_id,operation_role,active)
+       VALUES ($1,'OPERATOR',true)
+       ON CONFLICT (user_id) DO UPDATE SET operation_role='OPERATOR',active=true,updated_at=now()`,
+      [userId]
+    );
     return {userId};
+  }
+
+  async createLocalDemoPrivacyApprover({approvalRole}){
+    const byRole={PRIVACY_APPROVER:'44444444-4444-4444-8444-444444444444',SECURITY_APPROVER:'55555555-5555-4555-8555-555555555555'};
+    const userId=byRole[approvalRole];
+    if(!userId)throw forbidden();
+    await this.pool.query(
+      `INSERT INTO mathchakchak.app_user (id,auth_subject,role,status)
+       VALUES ($1,$2,'ADMIN','ACTIVE')
+       ON CONFLICT (id) DO UPDATE SET role='ADMIN',status='ACTIVE',deleted_at=NULL,updated_at=now()`,
+      [userId,`local-${approvalRole.toLowerCase()}-001`]
+    );
+    await this.pool.query(
+      `INSERT INTO mathchakchak.privacy_operator_authorization (user_id,operation_role,active)
+       VALUES ($1,$2,true)
+       ON CONFLICT (user_id) DO UPDATE SET operation_role=EXCLUDED.operation_role,active=true,updated_at=now()`,
+      [userId,approvalRole]
+    );
+    return {userId,approvalRole};
   }
 
   async getDiagnosticItems({actor, locale}) {
@@ -757,6 +783,17 @@ export class MathChakChakRepository {
       [actor.userId]
     );
     if(result.rowCount!==1)throw forbidden();
+  }
+
+  async assertPrivacyOperationRole(client,actor,allowedRoles){
+    await this.assertPrivacyOperator(client,actor);
+    const result=await client.query(
+      `SELECT operation_role FROM mathchakchak.privacy_operator_authorization
+        WHERE user_id=$1 AND active=true AND operation_role=ANY($2::varchar[])`,
+      [actor.userId,allowedRoles]
+    );
+    if(result.rowCount!==1)throw forbidden();
+    return result.rows[0].operation_role;
   }
 
   async findIdempotency(client, {actor, scope, key, hash}) {
@@ -1625,6 +1662,176 @@ export class MathChakChakRepository {
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:requestId,status:200});
       return {...mapPrivacyOperationsItem(updated.rows[0]),boundary:privacyOperationsBoundary(),replayed:false};
+    });
+  }
+
+  async loadFulfilmentPlan(client,planId){
+    const plan=await client.query(
+      `SELECT p.*,a.profile_rows,a.diagnostic_sessions,a.learning_sessions,a.review_items,a.formula_sessions,
+              a.preserved_privacy_records,a.active_legal_hold,a.assessment_sha256
+         FROM mathchakchak.privacy_fulfilment_plan p
+         LEFT JOIN mathchakchak.privacy_impact_assessment a ON a.fulfilment_plan_id=p.id
+        WHERE p.id=$1`,[planId]
+    );
+    if(!plan.rowCount)throw notFound();
+    const approvals=await client.query(
+      `SELECT approval_role,decision,reason_code,decided_at
+         FROM mathchakchak.privacy_fulfilment_approval WHERE fulfilment_plan_id=$1 ORDER BY approval_role`,[planId]
+    );
+    return mapFulfilmentPlan(plan.rows[0],{approvals:approvals.rows});
+  }
+
+  async getFulfilmentPlan({actor,planId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadFulfilmentPlan(client,planId),boundary:fulfilmentControlBoundary()};
+    }finally{client.release();}
+  }
+
+  async createFulfilmentPlan({actor,requestId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR']);
+      const scope=`privacy.plan.create.${requestId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPlan(client,replay),boundary:fulfilmentControlBoundary(),replayed:true};
+      const request=await client.query(
+        `SELECT pr.request_type,pra.operator_user_id,pra.status AS assignment_status
+           FROM mathchakchak.privacy_request pr
+           JOIN mathchakchak.privacy_request_assignment pra ON pra.privacy_request_id=pr.id
+          WHERE pr.id=$1 AND pr.status='APPROVED' FOR UPDATE OF pr,pra`,[requestId]
+      );
+      if(!request.rowCount)throw conflict('PRIVACY_REQUEST_NOT_APPROVED');
+      if(request.rows[0].operator_user_id!==actor.userId||request.rows[0].assignment_status!=='ASSIGNED')throw forbidden();
+      const existingPlan=await client.query('SELECT 1 FROM mathchakchak.privacy_fulfilment_plan WHERE privacy_request_id=$1',[requestId]);
+      if(existingPlan.rowCount)throw conflict('FULFILMENT_PLAN_ALREADY_EXISTS');
+      const id=crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_fulfilment_plan
+          (id,privacy_request_id,created_by_user_id,request_type,status,execution_mode,policy_version)
+         VALUES ($1,$2,$3,$4,'DRAFT','DRY_RUN_ONLY','fulfilment-controls-v1')`,
+        [id,requestId,actor.userId,request.rows[0].request_type]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadFulfilmentPlan(client,id),boundary:fulfilmentControlBoundary(),replayed:false};
+    });
+  }
+
+  async assessFulfilmentImpact({actor,planId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR']);
+      const scope=`privacy.plan.assess.${planId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPlan(client,replay),boundary:fulfilmentControlBoundary(),replayed:true};
+      const plan=await client.query(
+        `SELECT p.*,pr.student_profile_id FROM mathchakchak.privacy_fulfilment_plan p
+         JOIN mathchakchak.privacy_request pr ON pr.id=p.privacy_request_id
+         WHERE p.id=$1 FOR UPDATE OF p`,[planId]
+      );
+      if(!plan.rowCount)throw notFound();
+      if(plan.rows[0].created_by_user_id!==actor.userId)throw forbidden();
+      if(plan.rows[0].status!=='DRAFT')throw conflict('IMPACT_ASSESSMENT_ALREADY_RECORDED');
+      const studentId=plan.rows[0].student_profile_id;
+      const counts=await client.query(
+        `SELECT
+          (SELECT count(*)::integer FROM mathchakchak.student_profile WHERE id=$1) AS profile_rows,
+          (SELECT count(*)::integer FROM mathchakchak.diagnostic_session WHERE student_profile_id=$1) AS diagnostic_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.learning_session WHERE student_profile_id=$1) AS learning_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.review_item WHERE student_profile_id=$1) AS review_items,
+          (SELECT count(*)::integer FROM mathchakchak.formula_learning_session WHERE student_profile_id=$1) AS formula_sessions,
+          (SELECT count(*)::integer FROM mathchakchak.privacy_request WHERE student_profile_id=$1) AS preserved_privacy_records,
+          EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold WHERE privacy_request_id=$2 AND status='ACTIVE') AS active_legal_hold`,
+        [studentId,plan.rows[0].privacy_request_id]
+      );
+      const impact=counts.rows[0];
+      const assessmentSha256=crypto.createHash('sha256').update(JSON.stringify(impact)).digest('hex');
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_impact_assessment
+          (fulfilment_plan_id,assessed_by_user_id,profile_rows,diagnostic_sessions,learning_sessions,review_items,
+           formula_sessions,preserved_privacy_records,active_legal_hold,assessment_sha256)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
+        [planId,actor.userId,impact.profile_rows,impact.diagnostic_sessions,impact.learning_sessions,impact.review_items,
+         impact.formula_sessions,impact.preserved_privacy_records,impact.active_legal_hold,assessmentSha256]
+      );
+      await client.query("UPDATE mathchakchak.privacy_fulfilment_plan SET status='IMPACT_ASSESSED',updated_at=now() WHERE id=$1",[planId]);
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:planId,status:200});
+      return {...await this.loadFulfilmentPlan(client,planId),boundary:fulfilmentControlBoundary(),replayed:false};
+    });
+  }
+
+  async setPrivacyLegalHold({actor,requestId,reasonCode,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['PRIVACY_APPROVER']);
+      const scope=`privacy.hold.set.${requestId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {id:replay,status:'ACTIVE',boundary:fulfilmentControlBoundary(),replayed:true};
+      const exists=await client.query("SELECT 1 FROM mathchakchak.privacy_request WHERE id=$1 AND status='APPROVED' FOR UPDATE",[requestId]);
+      if(!exists.rowCount)throw conflict('PRIVACY_REQUEST_NOT_APPROVED');
+      const active=await client.query("SELECT 1 FROM mathchakchak.privacy_legal_hold WHERE privacy_request_id=$1 AND status='ACTIVE'",[requestId]);
+      if(active.rowCount)throw conflict('ACTIVE_LEGAL_HOLD_ALREADY_EXISTS');
+      const id=crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_legal_hold (id,privacy_request_id,reason_code,set_by_user_id)
+         VALUES ($1,$2,$3,$4)`,[id,requestId,reasonCode,actor.userId]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {id,status:'ACTIVE',reason_code:reasonCode,boundary:fulfilmentControlBoundary(),replayed:false};
+    });
+  }
+
+  async releasePrivacyLegalHold({actor,holdId,reasonCode,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['PRIVACY_APPROVER']);
+      const scope=`privacy.hold.release.${holdId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {id:replay,status:'RELEASED',boundary:fulfilmentControlBoundary(),replayed:true};
+      const updated=await client.query(
+        `UPDATE mathchakchak.privacy_legal_hold
+            SET status='RELEASED',released_by_user_id=$2,release_reason_code=$3,released_at=now()
+          WHERE id=$1 AND status='ACTIVE' RETURNING id`,[holdId,actor.userId,reasonCode]
+      );
+      if(!updated.rowCount)throw notFound();
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:holdId,status:200});
+      return {id:holdId,status:'RELEASED',reason_code:reasonCode,boundary:fulfilmentControlBoundary(),replayed:false};
+    });
+  }
+
+  async decideFulfilmentApproval({actor,planId,decision,reasonCode,key,hash}){
+    return this.withTransaction(async(client)=>{
+      const approvalRole=await this.assertPrivacyOperationRole(client,actor,['PRIVACY_APPROVER','SECURITY_APPROVER']);
+      const scope=`privacy.plan.approve.${planId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadFulfilmentPlan(client,replay),boundary:fulfilmentControlBoundary(),replayed:true};
+      const plan=await client.query('SELECT * FROM mathchakchak.privacy_fulfilment_plan WHERE id=$1 FOR UPDATE',[planId]);
+      if(!plan.rowCount)throw notFound();
+      if(plan.rows[0].status!=='IMPACT_ASSESSED')throw conflict('PLAN_NOT_READY_FOR_APPROVAL');
+      const hold=await client.query(
+        `SELECT 1 FROM mathchakchak.privacy_legal_hold h
+         JOIN mathchakchak.privacy_fulfilment_plan p ON p.privacy_request_id=h.privacy_request_id
+         WHERE p.id=$1 AND h.status='ACTIVE'`,[planId]
+      );
+      if(hold.rowCount)throw conflict('ACTIVE_LEGAL_HOLD');
+      const existingApproval=await client.query(
+        `SELECT 1 FROM mathchakchak.privacy_fulfilment_approval
+          WHERE fulfilment_plan_id=$1 AND (approval_role=$2 OR approver_user_id=$3)`,
+        [planId,approvalRole,actor.userId]
+      );
+      if(existingApproval.rowCount)throw conflict('DUAL_APPROVAL_DISTINCT_APPROVER_REQUIRED');
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_fulfilment_approval
+          (id,fulfilment_plan_id,approver_user_id,approval_role,decision,reason_code)
+         VALUES ($1,$2,$3,$4,$5,$6)`,[crypto.randomUUID(),planId,actor.userId,approvalRole,decision,reasonCode]
+      );
+      if(decision==='REJECT'){
+        await client.query("UPDATE mathchakchak.privacy_fulfilment_plan SET status='INVALIDATED',updated_at=now() WHERE id=$1",[planId]);
+      }else{
+        const approved=await client.query(
+          "SELECT count(*)::integer AS count FROM mathchakchak.privacy_fulfilment_approval WHERE fulfilment_plan_id=$1 AND decision='APPROVE'",[planId]
+        );
+        if(approved.rows[0].count===2)await client.query("UPDATE mathchakchak.privacy_fulfilment_plan SET status='DUAL_APPROVED',updated_at=now() WHERE id=$1",[planId]);
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:planId,status:200});
+      return {...await this.loadFulfilmentPlan(client,planId),boundary:fulfilmentControlBoundary(),replayed:false};
     });
   }
 }

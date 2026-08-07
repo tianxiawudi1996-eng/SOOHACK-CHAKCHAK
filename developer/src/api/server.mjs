@@ -40,9 +40,23 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/session') return {name: 'localDemoSession'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/privacy-operator/session') return {name:'localDemoPrivacyOperatorSession'};
+  let approverMatch=pathname.match(/^\/api\/v1\/local-demo\/privacy-approver\/(privacy|security)\/session$/);
+  if(method==='POST'&&approverMatch)return {name:'localDemoPrivacyApproverSession',approvalRole:approverMatch[1]==='privacy'?'PRIVACY_APPROVER':'SECURITY_APPROVER'};
   if (method === 'GET' && pathname === '/api/v1/privacy-operations/requests') return {name:'listPrivacyOperationsQueue'};
   let operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/requests/(${UUID_PATTERN})/transition$`));
   if(method==='POST'&&operationsMatch)return {name:'transitionPrivacyOperation',privacyRequestId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/requests/(${UUID_PATTERN})/fulfilment-plans$`));
+  if(method==='POST'&&operationsMatch)return {name:'createFulfilmentPlan',privacyRequestId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/requests/(${UUID_PATTERN})/legal-holds$`));
+  if(method==='POST'&&operationsMatch)return {name:'setPrivacyLegalHold',privacyRequestId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/legal-holds/(${UUID_PATTERN})/release$`));
+  if(method==='POST'&&operationsMatch)return {name:'releasePrivacyLegalHold',legalHoldId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/fulfilment-plans/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getFulfilmentPlan',fulfilmentPlanId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/fulfilment-plans/(${UUID_PATTERN})/impact-assessment$`));
+  if(method==='POST'&&operationsMatch)return {name:'assessFulfilmentImpact',fulfilmentPlanId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/fulfilment-plans/(${UUID_PATTERN})/approvals$`));
+  if(method==='POST'&&operationsMatch)return {name:'decideFulfilmentApproval',fulfilmentPlanId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -136,6 +150,14 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       token_type:'Bearer',expires_in:300,role:'ADMIN',environment:'LOCAL_SYNTHETIC_ONLY'
     },{requestId,status:201});
   }
+  if(match.name==='localDemoPrivacyApproverSession'){
+    if(!auth.localDemoEnabled)throw notFound();
+    const context=await repository.createLocalDemoPrivacyApprover({approvalRole:match.approvalRole});
+    return success({
+      access_token:createSessionToken({userId:context.userId,role:'ADMIN'},auth.sessionSecret),
+      token_type:'Bearer',expires_in:300,role:'ADMIN',operation_role:context.approvalRole,environment:'LOCAL_SYNTHETIC_ONLY'
+    },{requestId,status:201});
+  }
   if (match.name === 'consumeLocalDemoHandoff') {
     if (!auth.localDemoEnabled) throw notFound();
     const codeHash = crypto.createHash('sha256').update(match.code).digest('hex');
@@ -218,6 +240,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getPrivacyRequest({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id')});
     return success(data,{requestId,locale:data.locale});
   }
+  if(match.name==='getFulfilmentPlan'){
+    const data=await repository.getFulfilmentPlan({actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -248,6 +274,32 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       evidenceSha256:body.evidence_sha256??null,key,hash
     });
     return success(data,{requestId,locale:data.locale,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createFulfilmentPlan'){
+    const data=await repository.createFulfilmentPlan({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id'),key,hash});
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='assessFulfilmentImpact'){
+    const data=await repository.assessFulfilmentImpact({actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id'),key,hash});
+    return success(data,{requestId,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='setPrivacyLegalHold'){
+    if(!isReasonCode(body.reason_code))throw badRequest('LEGAL_HOLD_REASON_REQUIRED','error.legal_hold_reason_required');
+    const data=await repository.setPrivacyLegalHold({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id'),reasonCode:body.reason_code,key,hash});
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='releasePrivacyLegalHold'){
+    if(!isReasonCode(body.reason_code))throw badRequest('LEGAL_HOLD_RELEASE_REASON_REQUIRED','error.legal_hold_release_reason_required');
+    const data=await repository.releasePrivacyLegalHold({actor,holdId:requireUuid(match.legalHoldId,'legal_hold_id'),reasonCode:body.reason_code,key,hash});
+    return success(data,{requestId,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='decideFulfilmentApproval'){
+    if(!['APPROVE','REJECT'].includes(body.decision))throw badRequest('INVALID_APPROVAL_DECISION','error.invalid_approval_decision');
+    if(!isReasonCode(body.reason_code))throw badRequest('APPROVAL_REASON_REQUIRED','error.approval_reason_required');
+    const data=await repository.decideFulfilmentApproval({
+      actor,planId:requireUuid(match.fulfilmentPlanId,'fulfilment_plan_id'),decision:body.decision,reasonCode:body.reason_code,key,hash
+    });
+    return success(data,{requestId,extraMeta:{replayed:data.replayed}});
   }
 
   if (match.name === 'createDiagnostic') {

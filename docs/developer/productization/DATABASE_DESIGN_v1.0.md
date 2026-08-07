@@ -90,6 +90,8 @@ Phase 26의 `0012_data_rights.sql`은 권리 요청과 append-only 상태 이력
 
 Phase 27의 `0013_privacy_operations.sql`은 요청 배정·증적 해시·승인/반려 결정을 분리 저장한다. 운영 FK는 `ON DELETE RESTRICT`, 상태 전이는 요청 행 잠금과 단일 트랜잭션을 사용하며 실제 이행 전에는 완료 상태를 생성하지 않는다.
 
+Phase 28의 `0014_fulfilment_controls.sql`은 운영 역할·dry-run 계획·영향 평가·법적 보류·이중 승인을 추가한다. 계획은 요청당 하나, 활성 보류는 요청당 하나이며 계획별 승인 역할과 승인자는 각각 UNIQUE다. 모든 FK는 운영 증적 보존을 위해 `ON DELETE RESTRICT`를 사용한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

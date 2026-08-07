@@ -62,6 +62,18 @@
 
 운영 큐는 관리형 신원이 준비되기 전까지 로컬 합성 환경에서만 검증한다. `COMPLETED` 전이는 이행 실행기와 별도 승인 게이트가 준비될 때까지 409로 차단한다.
 
+## Phase 28 개인정보 이행 통제 엔드포인트
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy-operations/requests/{id}/fulfilment-plans` | OPERATOR | dry-run 계획 | approved+assignment |
+| POST | `/privacy-operations/fulfilment-plans/{id}/impact-assessment` | OPERATOR | 영향 집계 | aggregate+hash |
+| POST | `/privacy-operations/requests/{id}/legal-holds` | PRIVACY_APPROVER | 법적 보류 | unique active hold |
+| POST | `/privacy-operations/legal-holds/{id}/release` | PRIVACY_APPROVER | 보류 해제 | reason+audit fields |
+| POST | `/privacy-operations/fulfilment-plans/{id}/approvals` | 승인자 2인 | 개인정보·보안 승인 | distinct users+roles |
+
+이중 승인 상태는 실행 허가가 아니다. API는 파괴적 이행 엔드포인트를 제공하지 않으며 기존 `COMPLETED` 전이도 계속 차단한다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

@@ -30,8 +30,9 @@
 | 25 | 학습 품질 KPI·개인정보 최소화 분석 | PostgreSQL 집계·소유권·이벤트 허용목록·원답 미노출 검사 | Primary 3/3, Driver 2/2, 단위 62/62, 통합 16/16, 운영 목표 대기 |
 | 26 | 학생 개인정보 권리 요청 | PostgreSQL 요청·상태 이력·소유권·멱등성·롤백 검사 | 요청 유형 6/6, 단위 66/66, 통합 17/17, 보호자 채널 외부 차단 |
 | 27 | 개인정보 운영자 처리 큐 | ADMIN 권한·배정·증적·결정·상태 전이·완료 차단 검사 | 운영 테이블 3/3, 단위 71/71, 통합 18/18, 완료 실행기 비활성 |
+| 28 | 개인정보 이행 dry-run 통제 | 영향 집계·법적 보류·직무 분리·서로 다른 승인자·실행 차단 검사 | 통제 테이블 5/5, 단위 74/74, 통합 19/19, 원본 변경 0건 |
 
-현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`, Phase 26 `AUTO_VERIFIED_LOCAL_DATA_RIGHTS`, Phase 27 `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 관리형 운영 신원과 실제 권리 이행 정책, 외부 운영 서비스는 별도 승인·권한 대기다.
+현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`, Phase 26 `AUTO_VERIFIED_LOCAL_DATA_RIGHTS`, Phase 27 `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS`, Phase 28 `AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 관리형 운영 신원·법적 보존 정책·실제 이행 실행기는 별도 승인·권한 대기다.
 
 ## 공통 규칙
 
