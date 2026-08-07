@@ -22,6 +22,7 @@ services:
       - ../database/migrations/0010_formula_catalog_i18n.sql:/docker-entrypoint-initdb.d/010-formula-catalog-i18n.sql:ro
       - ../database/migrations/0011_curriculum_collaboration_i18n.sql:/docker-entrypoint-initdb.d/011-curriculum-collaboration-i18n.sql:ro
       - ../database/migrations/0012_data_rights.sql:/docker-entrypoint-initdb.d/012-data-rights.sql:ro
+      - ../database/migrations/0013_privacy_operations.sql:/docker-entrypoint-initdb.d/013-privacy-operations.sql:ro
       - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
       - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
       - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro

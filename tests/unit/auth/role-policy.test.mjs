@@ -13,3 +13,8 @@ test('parent report requires active link and consent', () => {
   assert.equal(authorize({...base,consentActive:false}).reason, 'CONSENT_REQUIRED');
   assert.equal(authorize({...base,consentActive:true}).allowed, true);
 });
+
+test('privacy operations permission is exclusive to admin',()=>{
+  assert.equal(authorize({role:'ADMIN',permission:'privacy:operate'}).allowed,true);
+  assert.equal(authorize({role:'STUDENT',permission:'privacy:operate'}).reason,'PERMISSION_DENIED');
+});

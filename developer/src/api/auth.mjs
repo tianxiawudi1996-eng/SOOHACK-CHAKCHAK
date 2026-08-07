@@ -6,6 +6,7 @@ const TOKEN_VERSION = 'mcs1';
 const EXPECTED_ISSUER = 'mathchakchak-session-gateway';
 const EXPECTED_AUDIENCE = 'mathchakchak-api';
 const MAX_TOKEN_BYTES = 4096;
+const SESSION_ROLES=new Set(['STUDENT','ADMIN']);
 
 function unauthenticated() {
   return new ApiError(401, 'UNAUTHENTICATED', 'error.unauthenticated');
@@ -54,9 +55,10 @@ export function verifySessionToken(token, secret, {now = Math.floor(Date.now() /
   if (
     claims.iss !== EXPECTED_ISSUER ||
     claims.aud !== EXPECTED_AUDIENCE ||
-    claims.role !== 'STUDENT' ||
+    !SESSION_ROLES.has(claims.role) ||
     !UUID_PATTERN.test(claims.sub || '') ||
-    !UUID_PATTERN.test(claims.student_id || '') ||
+    (claims.role==='STUDENT'&&!UUID_PATTERN.test(claims.student_id || '')) ||
+    (claims.role==='ADMIN'&&claims.student_id!==undefined) ||
     !Number.isInteger(claims.iat) ||
     !Number.isInteger(claims.exp) ||
     claims.iat > now + 30 ||
@@ -64,7 +66,9 @@ export function verifySessionToken(token, secret, {now = Math.floor(Date.now() /
     claims.exp <= claims.iat ||
     claims.exp - claims.iat > 900
   ) throw unauthenticated();
-  return {userId: claims.sub, studentId: claims.student_id, role: claims.role};
+  return claims.role==='STUDENT'
+    ? {userId:claims.sub,studentId:claims.student_id,role:claims.role}
+    : {userId:claims.sub,role:claims.role};
 }
 
 export function authenticatedRequestContext(request, {sessionSecret, allowTrustedHeaders = false, now} = {}) {

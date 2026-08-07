@@ -1,7 +1,7 @@
 const permissions = Object.freeze({
   STUDENT: new Set(['diagnostic:create', 'diagnostic:answer:self', 'learning:write:self', 'progress:read:self', 'review:write:self', 'privacy:request:self']),
   PARENT: new Set(['diagnostic:create:linked', 'learning:read:linked', 'progress:read:linked', 'report:read:linked', 'privacy:request:linked']),
-  ADMIN: new Set(['content:manage', 'support:read:redacted', 'audit:read']),
+  ADMIN: new Set(['content:manage', 'support:read:redacted', 'audit:read', 'privacy:operate']),
   SERVICE: new Set(['diagnostic:process', 'learning:process', 'report:generate', 'event:write'])
 });
 

@@ -54,7 +54,12 @@ export async function readJson(request) {
 
 export function requestContext(request, auth) {
   const context = authenticatedRequestContext(request, auth);
-  if (!UUID_PATTERN.test(context.userId) || !UUID_PATTERN.test(context.studentId)) {
+  if (
+    !UUID_PATTERN.test(context.userId) ||
+    !['STUDENT','ADMIN'].includes(context.role) ||
+    (context.role==='STUDENT'&&!UUID_PATTERN.test(context.studentId)) ||
+    (context.role==='ADMIN'&&context.studentId!==undefined)
+  ) {
     throw new ApiError(401, 'UNAUTHENTICATED', 'error.unauthenticated');
   }
   return context;

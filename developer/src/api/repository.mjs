@@ -8,6 +8,7 @@ import {applicationReviewDays,evaluateFormulaApplication} from '../learning/form
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {buildLearningQualitySnapshot} from '../analytics/learning-quality.mjs';
 import {canRequesterCancel,mapPrivacyRequest,privacyRequestBoundary} from '../privacy/data-rights.mjs';
+import {mapPrivacyOperationsItem,privacyOperationsBoundary,validateOperatorTransition} from '../privacy/privacy-operations.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -118,6 +119,17 @@ export class MathChakChakRepository {
       );
       return {userId,studentId,conceptId,learningPathItemId:pathItemId};
     });
+  }
+
+  async createLocalDemoPrivacyOperator(){
+    const userId='33333333-3333-4333-8333-333333333333';
+    await this.pool.query(
+      `INSERT INTO mathchakchak.app_user (id,auth_subject,role,status)
+       VALUES ($1,'local-privacy-operator-001','ADMIN','ACTIVE')
+       ON CONFLICT (id) DO UPDATE SET role='ADMIN',status='ACTIVE',deleted_at=NULL,updated_at=now()`,
+      [userId]
+    );
+    return {userId};
   }
 
   async getDiagnosticItems({actor, locale}) {
@@ -735,6 +747,16 @@ export class MathChakChakRepository {
       [actor.studentId, actor.userId]
     );
     if (result.rowCount !== 1) throw forbidden();
+  }
+
+  async assertPrivacyOperator(client,actor){
+    if(actor.role!=='ADMIN')throw forbidden();
+    const result=await client.query(
+      `SELECT 1 FROM mathchakchak.app_user
+        WHERE id=$1 AND role='ADMIN' AND status='ACTIVE'`,
+      [actor.userId]
+    );
+    if(result.rowCount!==1)throw forbidden();
   }
 
   async findIdempotency(client, {actor, scope, key, hash}) {
@@ -1518,6 +1540,91 @@ export class MathChakChakRepository {
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:requestId,status:200});
       return {...mapPrivacyRequest(updated.rows[0]),boundary:privacyRequestBoundary(),replayed:false};
+    });
+  }
+
+  async listPrivacyOperationsQueue({actor}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperator(client,actor);
+      const result=await client.query(
+        `SELECT pr.*,
+                (a.operator_user_id=$1 AND a.status='ASSIGNED') AS assigned_to_current_operator
+           FROM mathchakchak.privacy_request pr
+           LEFT JOIN mathchakchak.privacy_request_assignment a ON a.privacy_request_id=pr.id
+          WHERE pr.status IN ('RECEIVED','IDENTITY_VERIFIED','IN_REVIEW','APPROVED')
+          ORDER BY pr.submitted_at,pr.id LIMIT 100`,
+        [actor.userId]
+      );
+      return {requests:result.rows.map(mapPrivacyOperationsItem),boundary:privacyOperationsBoundary()};
+    }finally{client.release();}
+  }
+
+  async transitionPrivacyOperation({actor,requestId,toStatus,reasonCode,evidenceReference,evidenceSha256,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperator(client,actor);
+      const scope=`privacy.transition.${requestId}`;
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference){
+        const replay=await client.query('SELECT *,true AS assigned_to_current_operator FROM mathchakchak.privacy_request WHERE id=$1',[replayReference]);
+        if(!replay.rowCount)throw notFound();
+        return {...mapPrivacyOperationsItem(replay.rows[0]),boundary:privacyOperationsBoundary(),replayed:true};
+      }
+      const current=await client.query('SELECT * FROM mathchakchak.privacy_request WHERE id=$1 FOR UPDATE',[requestId]);
+      if(!current.rowCount)throw notFound();
+      const check=validateOperatorTransition({
+        fromStatus:current.rows[0].status,toStatus,reasonCode,evidenceReference,evidenceSha256
+      });
+      if(!check.allowed)throw conflict(check.reason);
+
+      const assignment=await client.query(
+        'SELECT operator_user_id,status FROM mathchakchak.privacy_request_assignment WHERE privacy_request_id=$1 FOR UPDATE',
+        [requestId]
+      );
+      if(assignment.rowCount&&assignment.rows[0].status==='ASSIGNED'&&assignment.rows[0].operator_user_id!==actor.userId){
+        throw conflict('PRIVACY_REQUEST_ASSIGNED_TO_ANOTHER_OPERATOR');
+      }
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_request_assignment
+          (privacy_request_id,operator_user_id,status)
+         VALUES ($1,$2,'ASSIGNED')
+         ON CONFLICT (privacy_request_id) DO UPDATE
+          SET operator_user_id=EXCLUDED.operator_user_id,status='ASSIGNED',released_at=NULL,updated_at=now()`,
+        [requestId,actor.userId]
+      );
+
+      if(evidenceReference&&evidenceSha256){
+        const evidenceType=toStatus==='IDENTITY_VERIFIED'?'IDENTITY_VERIFICATION':'DECISION_SUPPORT';
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_request_evidence
+            (id,privacy_request_id,operator_user_id,evidence_type,evidence_reference,evidence_sha256)
+           VALUES ($1,$2,$3,$4,$5,$6)`,
+          [crypto.randomUUID(),requestId,actor.userId,evidenceType,evidenceReference,evidenceSha256]
+        );
+      }
+      if(['APPROVED','REJECTED'].includes(toStatus)){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_request_decision
+            (privacy_request_id,operator_user_id,decision,reason_code)
+           VALUES ($1,$2,$3,$4)`,
+          [requestId,actor.userId,toStatus,reasonCode]
+        );
+      }
+      const updated=await client.query(
+        `UPDATE mathchakchak.privacy_request
+            SET status=$2::varchar(24),decision_reason_code=CASE WHEN $2::varchar(24) IN ('APPROVED','REJECTED') THEN $3::varchar(64) ELSE decision_reason_code END,
+                updated_at=now()
+          WHERE id=$1 RETURNING *,true AS assigned_to_current_operator`,
+        [requestId,toStatus,reasonCode]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_request_event
+          (id,privacy_request_id,actor_user_id,event_type,from_status,to_status,reason_code)
+         VALUES ($1,$2,$3,'STATUS_CHANGED',$4,$5,$6)`,
+        [crypto.randomUUID(),requestId,actor.userId,current.rows[0].status,toStatus,reasonCode]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:requestId,status:200});
+      return {...mapPrivacyOperationsItem(updated.rows[0]),boundary:privacyOperationsBoundary(),replayed:false};
     });
   }
 }

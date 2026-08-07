@@ -52,6 +52,16 @@
 
 보호자 대리 접수는 관리형 신원·활성 연결·대리권 검증이 준비되기 전까지 제공하지 않는다. 삭제 또는 동의 철회 요청 접수는 실제 데이터 삭제·동의 변경을 자동 실행하지 않는다.
 
+## Phase 27 개인정보 운영 엔드포인트
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/local-demo/privacy-operator/session` | 로컬 전용 | 합성 ADMIN 토큰 | local-demo gate |
+| GET | `/privacy-operations/requests` | ADMIN | 운영 처리 큐 | role+redaction |
+| POST | `/privacy-operations/requests/{id}/transition` | ADMIN | 배정·증적·결정·상태 전이 | lock+idempotency |
+
+운영 큐는 관리형 신원이 준비되기 전까지 로컬 합성 환경에서만 검증한다. `COMPLETED` 전이는 이행 실행기와 별도 승인 게이트가 준비될 때까지 409로 차단한다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

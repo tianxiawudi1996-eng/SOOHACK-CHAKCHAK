@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 26,
+  "current_phase": 27,
   "phases": {
+    "27": {"name":"privacy_operator_queue_decision_evidence","status":"AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS","scope":"LOCAL_SYNTHETIC_ADMIN_REVIEW","progress":"operator_tables_3/3_unit_71/71_privacy_operations_1/1_postgresql_regression_18/18_student_queue_403_completion_409_migration_forward_rollback_reapply_PASS","tests":["npm.cmd run test:unit","npm.cmd run test:productization:privacy-operations","node --test --test-concurrency=1 tests/integration/*.test.mjs","PostgreSQL 16 migration forward+rollback+reapply","npm.cmd run test:productization"]},
     "26": {"name": "student_data_rights_request_workflow", "status": "AUTO_VERIFIED_LOCAL_DATA_RIGHTS", "scope": "LOCAL_SYNTHETIC_STUDENT_SELF_SERVICE", "progress": "request_types_6/6_unit_66/66_data_rights_1/1_postgresql_regression_17/17_migration_forward_rollback_reapply_PASS_identifier_findings_0_guardian_channel_EXTERNAL_BLOCKED", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:data-rights", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "PostgreSQL 16 migration forward+rollback+reapply", "npm.cmd run test:productization"]},
     "25": {"name": "learning_quality_kpi_privacy_minimized_analytics", "status": "AUTO_VERIFIED_LOCAL_ANALYTICS", "scope": "LOCAL_SYNTHETIC_POSTGRESQL_AGGREGATES", "progress": "primary_kpi_3/3_driver_metrics_2/2_unit_62/62_learning_quality_1/1_postgresql_regression_16/16_identifier_findings_0_raw_answer_findings_0", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:learning-quality", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "privacy response inspection", "npm.cmd run test:productization"]},
     "24": {"name": "session_api_supply_chain_security_hardening", "status": "AUTO_VERIFIED_LOCAL_SECURITY", "scope": "LOCAL_ISOLATED_FULL_STACK_SECURITY", "progress": "unit_59/59_security_integration_1/1_postgresql_regression_15/15_web_headers_8/8_api_headers_8/8_npm_vulnerabilities_0_secret_findings_0", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:security", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "npm.cmd audit --json", "Web/API header smoke", "npm.cmd run test:productization"]},
@@ -46,5 +47,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T19:54:46+09:00"
+  "last_updated": "2026-08-07T20:17:27+09:00"
 }

@@ -1,0 +1,12 @@
+{
+  "schema_version":"1.0.0",
+  "status":"AUTO_QA_PASS_LOCAL_PRIVACY_OPERATIONS",
+  "scope":"LOCAL_SYNTHETIC_ADMIN_REVIEW",
+  "database":{"tables":"3/3","transactional_transition":"PASS","forward_rollback_reapply":"PASS","post_reapply_assignment_evidence_decision":"1/1/1"},
+  "tests":{"unit":"71/71 PASS","privacy_operations":"1/1 PASS","postgresql_regression":"18/18 PASS"},
+  "authorization":{"student_queue_access":"403 PASS","inactive_or_non_admin":"FORBIDDEN_BY_CONTRACT","local_admin_only":true},
+  "workflow":{"identity_evidence_required":true,"decision_reason_required":true,"assignment_conflict_guard":true,"idempotency":true},
+  "safety":{"direct_identifiers_in_queue":0,"destructive_fulfilment_enabled":false,"completion_transition":"409 BLOCKED","legal_compliance_certified":false},
+  "failure_and_fix":{"observed":"PostgreSQL parameter type inference conflict on status update","fix":"explicit varchar casts","reverification":"PASS"},
+  "external":{"managed_identity_ready":false,"privacy_officer_policy_approved":false,"production_access":"BLOCKED_EXTERNAL_IDENTITY_POLICY"}
+}

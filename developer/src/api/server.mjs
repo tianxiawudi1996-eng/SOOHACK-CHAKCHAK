@@ -18,6 +18,7 @@ import {
 import {OperationsMetrics} from './metrics.mjs';
 import {assertAllowedRequestOrigin} from './security.mjs';
 import {isPrivacyRequestType} from '../privacy/data-rights.mjs';
+import {isReasonCode,isReference,isSha256} from '../privacy/privacy-operations.mjs';
 
 const UUID_PATTERN = '[0-9a-fA-F-]{36}';
 const COLLABORATION_PHASE_SIGNALS={
@@ -38,6 +39,10 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/session') return {name: 'localDemoSession'};
+  if (method === 'POST' && pathname === '/api/v1/local-demo/privacy-operator/session') return {name:'localDemoPrivacyOperatorSession'};
+  if (method === 'GET' && pathname === '/api/v1/privacy-operations/requests') return {name:'listPrivacyOperationsQueue'};
+  let operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/requests/(${UUID_PATTERN})/transition$`));
+  if(method==='POST'&&operationsMatch)return {name:'transitionPrivacyOperation',privacyRequestId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -123,6 +128,14 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
       environment:'LOCAL_SYNTHETIC_ONLY'
     }, {requestId, locale:'en', status:201});
   }
+  if(match.name==='localDemoPrivacyOperatorSession'){
+    if(!auth.localDemoEnabled)throw notFound();
+    const context=await repository.createLocalDemoPrivacyOperator();
+    return success({
+      access_token:createSessionToken({userId:context.userId,role:'ADMIN'},auth.sessionSecret),
+      token_type:'Bearer',expires_in:300,role:'ADMIN',environment:'LOCAL_SYNTHETIC_ONLY'
+    },{requestId,status:201});
+  }
   if (match.name === 'consumeLocalDemoHandoff') {
     if (!auth.localDemoEnabled) throw notFound();
     const codeHash = crypto.createHash('sha256').update(match.code).digest('hex');
@@ -197,6 +210,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.listPrivacyRequests({actor});
     return success(data,{requestId});
   }
+  if(match.name==='listPrivacyOperationsQueue'){
+    const data=await repository.listPrivacyOperationsQueue({actor});
+    return success(data,{requestId});
+  }
   if(match.name==='getPrivacyRequest'){
     const data=await repository.getPrivacyRequest({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id')});
     return success(data,{requestId,locale:data.locale});
@@ -218,6 +235,18 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   }
   if(match.name==='cancelPrivacyRequest'){
     const data=await repository.cancelPrivacyRequest({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id'),key,hash});
+    return success(data,{requestId,locale:data.locale,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='transitionPrivacyOperation'){
+    if(['APPROVED','REJECTED'].includes(body.to_status)&&!isReasonCode(body.reason_code))throw badRequest('DECISION_REASON_REQUIRED','error.decision_reason_required');
+    if((body.evidence_reference===undefined)!==(body.evidence_sha256===undefined))throw badRequest('EVIDENCE_PAIR_REQUIRED','error.evidence_pair_required');
+    if(body.evidence_reference!==undefined&&!isReference(body.evidence_reference))throw badRequest('INVALID_EVIDENCE_REFERENCE','error.invalid_evidence_reference');
+    if(body.evidence_sha256!==undefined&&!isSha256(body.evidence_sha256))throw badRequest('INVALID_EVIDENCE_HASH','error.invalid_evidence_hash');
+    const data=await repository.transitionPrivacyOperation({
+      actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id'),toStatus:body.to_status,
+      reasonCode:body.reason_code??null,evidenceReference:body.evidence_reference??null,
+      evidenceSha256:body.evidence_sha256??null,key,hash
+    });
     return success(data,{requestId,locale:data.locale,extraMeta:{replayed:data.replayed}});
   }
 

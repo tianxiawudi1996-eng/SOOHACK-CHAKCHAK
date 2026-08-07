@@ -19,6 +19,14 @@ test('signed session token verifies required claims', () => {
   });
 });
 
+test('signed admin token omits student scope and rejects mixed admin claims',()=>{
+  const adminClaims={userId:'33333333-3333-4333-8333-333333333333',role:'ADMIN',issuedAt:1000,expiresAt:1300};
+  const token=createSessionToken(adminClaims,secret);
+  assert.deepEqual(verifySessionToken(token,secret,{now:1100}),{userId:adminClaims.userId,role:'ADMIN'});
+  const mixed=createSessionToken({...adminClaims,studentId:claims.studentId},secret);
+  assert.throws(()=>verifySessionToken(mixed,secret,{now:1100}),/UNAUTHENTICATED/);
+});
+
 test('signed session token rejects tampering and expiry', () => {
   const token = createSessionToken(claims, secret);
   assert.throws(() => verifySessionToken(`${token.slice(0,-1)}x`, secret, {now:1100}), /UNAUTHENTICATED/);
