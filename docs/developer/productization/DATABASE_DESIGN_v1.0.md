@@ -86,6 +86,8 @@ erDiagram
 4. 실패하면 트랜잭션을 중단한다. 적용 후 되돌림이 필요하면 백업 확인 후 `0001_rollback.sql`을 사용한다.
 5. 운영에는 동일 해시의 검증된 migration만 적용한다.
 
+Phase 26의 `0012_data_rights.sql`은 권리 요청과 append-only 상태 이력을 추가한다. 요청자·정보주체·학생 프로필 FK는 `ON DELETE RESTRICT`로 두어 이행 전 요청 증적이 연쇄 삭제되지 않게 하며, `0012_data_rights_rollback.sql`로 로컬 전진→롤백→재적용을 검증한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

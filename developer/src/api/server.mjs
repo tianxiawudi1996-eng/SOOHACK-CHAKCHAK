@@ -17,6 +17,7 @@ import {
 } from './http.mjs';
 import {OperationsMetrics} from './metrics.mjs';
 import {assertAllowedRequestOrigin} from './security.mjs';
+import {isPrivacyRequestType} from '../privacy/data-rights.mjs';
 
 const UUID_PATTERN = '[0-9a-fA-F-]{36}';
 const COLLABORATION_PHASE_SIGNALS={
@@ -37,6 +38,12 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/session') return {name: 'localDemoSession'};
+  if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
+  if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
+  let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
+  if(method==='POST'&&privacyMatch)return {name:'cancelPrivacyRequest',privacyRequestId:privacyMatch[1]};
+  privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})$`));
+  if(method==='GET'&&privacyMatch)return {name:'getPrivacyRequest',privacyRequestId:privacyMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/diagnostic-items') return {name: 'getDiagnosticItems'};
   if (method === 'POST' && pathname === '/api/v1/local-demo/handoffs') return {name: 'createLocalDemoHandoff'};
   let match = pathname.match(/^\/api\/v1\/local-demo\/handoffs\/([0-9a-f]{64})\/consume$/);
@@ -186,6 +193,14 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getLearningQuality({actor,studentId:requireUuid(match.studentId,'student_id')});
     return success(data,{requestId});
   }
+  if(match.name==='listPrivacyRequests'){
+    const data=await repository.listPrivacyRequests({actor});
+    return success(data,{requestId});
+  }
+  if(match.name==='getPrivacyRequest'){
+    const data=await repository.getPrivacyRequest({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id')});
+    return success(data,{requestId,locale:data.locale});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -194,6 +209,17 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   const key = requireIdempotencyKey(request);
   const body = await readJson(request);
   const hash = requestHash({path: request.url, body});
+
+  if(match.name==='createPrivacyRequest'){
+    if(!isPrivacyRequestType(body.request_type))throw badRequest('INVALID_PRIVACY_REQUEST_TYPE','error.invalid_privacy_request_type');
+    const locale=normalizeRequestedLocale(body.locale??'ko');
+    const data=await repository.createPrivacyRequest({actor,requestType:body.request_type,locale,key,hash});
+    return success(data,{requestId,locale,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='cancelPrivacyRequest'){
+    const data=await repository.cancelPrivacyRequest({actor,requestId:requireUuid(match.privacyRequestId,'privacy_request_id'),key,hash});
+    return success(data,{requestId,locale:data.locale,extraMeta:{replayed:data.replayed}});
+  }
 
   if (match.name === 'createDiagnostic') {
     const locale = normalizeRequestedLocale(body.locale);

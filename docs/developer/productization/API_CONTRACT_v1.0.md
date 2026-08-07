@@ -41,6 +41,17 @@
 | GET | `/students/{id}/progress` | 학생/연결 학부모 | 성장 요약 | role projection |
 | GET | `/students/{id}/parent-report` | 연결 학부모 | 학부모 리포트 | consent+redaction |
 
+## Phase 26 데이터 권리 엔드포인트
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy/requests` | 학생 본인 | 권리 요청 접수 | ownership+idempotency |
+| GET | `/privacy/requests` | 학생 본인 | 본인 요청 목록 | identifier redaction |
+| GET | `/privacy/requests/{id}` | 학생 본인 | 요청·상태 이력 조회 | ownership |
+| POST | `/privacy/requests/{id}/cancel` | 학생 본인 | 초기 상태 요청 취소 | state transition+idempotency |
+
+보호자 대리 접수는 관리형 신원·활성 연결·대리권 검증이 준비되기 전까지 제공하지 않는다. 삭제 또는 동의 철회 요청 접수는 실제 데이터 삭제·동의 변경을 자동 실행하지 않는다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

@@ -5,6 +5,7 @@ import {authorize} from '../../../developer/src/auth/role-policy.mjs';
 test('student access is limited to owned records', () => {
   assert.equal(authorize({role:'STUDENT',permission:'progress:read:self',actorUserId:'u1',ownerUserId:'u1'}).allowed, true);
   assert.equal(authorize({role:'STUDENT',permission:'progress:read:self',actorUserId:'u1',ownerUserId:'u2'}).reason, 'OWNERSHIP_REQUIRED');
+  assert.equal(authorize({role:'STUDENT',permission:'privacy:request:self',actorUserId:'u1',ownerUserId:'u1'}).allowed, true);
 });
 
 test('parent report requires active link and consent', () => {

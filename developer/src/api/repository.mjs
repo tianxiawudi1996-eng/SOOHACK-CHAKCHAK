@@ -7,6 +7,7 @@ import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/for
 import {applicationReviewDays,evaluateFormulaApplication} from '../learning/formula-application.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
 import {buildLearningQualitySnapshot} from '../analytics/learning-quality.mjs';
+import {canRequesterCancel,mapPrivacyRequest,privacyRequestBoundary} from '../privacy/data-rights.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -1412,5 +1413,111 @@ export class MathChakChakRepository {
       );
       return buildLearningQualitySnapshot(result.rows[0]);
     }finally{client.release();}
+  }
+
+  async createPrivacyRequest({actor,requestType,locale,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const scope='privacy-requests.create';
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference){
+        const replay=await client.query(
+          `SELECT * FROM mathchakchak.privacy_request
+            WHERE id=$1 AND requester_user_id=$2 AND student_profile_id=$3`,
+          [replayReference,actor.userId,actor.studentId]
+        );
+        if(!replay.rowCount)throw notFound();
+        return {...mapPrivacyRequest(replay.rows[0]),boundary:privacyRequestBoundary(),replayed:true};
+      }
+      const id=crypto.randomUUID();
+      const created=await client.query(
+        `INSERT INTO mathchakchak.privacy_request
+          (id,requester_user_id,subject_user_id,student_profile_id,request_type,status,locale,
+           source_channel,identity_assurance,policy_version)
+         VALUES ($1,$2,$2,$3,$4,'RECEIVED',$5,'STUDENT_SELF_SERVICE','SESSION_AUTHENTICATED','privacy-rights-v1')
+         RETURNING *`,
+        [id,actor.userId,actor.studentId,requestType,locale]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_request_event
+          (id,privacy_request_id,actor_user_id,event_type,from_status,to_status,reason_code)
+         VALUES ($1,$2,$3,'RECEIVED',NULL,'RECEIVED','STUDENT_SELF_SERVICE')`,
+        [crypto.randomUUID(),id,actor.userId]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...mapPrivacyRequest(created.rows[0]),boundary:privacyRequestBoundary(),replayed:false};
+    });
+  }
+
+  async listPrivacyRequests({actor}) {
+    const client=await this.pool.connect();
+    try{
+      await this.assertStudentOwner(client,actor);
+      const result=await client.query(
+        `SELECT * FROM mathchakchak.privacy_request
+          WHERE requester_user_id=$1 AND student_profile_id=$2
+          ORDER BY submitted_at DESC,id DESC LIMIT 50`,
+        [actor.userId,actor.studentId]
+      );
+      return {requests:result.rows.map(mapPrivacyRequest),boundary:privacyRequestBoundary()};
+    }finally{client.release();}
+  }
+
+  async getPrivacyRequest({actor,requestId}) {
+    const client=await this.pool.connect();
+    try{
+      await this.assertStudentOwner(client,actor);
+      const result=await client.query(
+        `SELECT * FROM mathchakchak.privacy_request
+          WHERE id=$1 AND requester_user_id=$2 AND student_profile_id=$3`,
+        [requestId,actor.userId,actor.studentId]
+      );
+      if(!result.rowCount)throw notFound();
+      const events=await client.query(
+        `SELECT event_type,from_status,to_status,reason_code,occurred_at
+           FROM mathchakchak.privacy_request_event
+          WHERE privacy_request_id=$1 ORDER BY occurred_at,id`,
+        [requestId]
+      );
+      return {...mapPrivacyRequest(result.rows[0]),events:events.rows,boundary:privacyRequestBoundary()};
+    }finally{client.release();}
+  }
+
+  async cancelPrivacyRequest({actor,requestId,key,hash}) {
+    return this.withTransaction(async(client)=>{
+      await this.assertStudentOwner(client,actor);
+      const scope=`privacy-requests.cancel.${requestId}`;
+      const replayReference=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replayReference){
+        const replay=await client.query(
+          `SELECT * FROM mathchakchak.privacy_request
+            WHERE id=$1 AND requester_user_id=$2 AND student_profile_id=$3`,
+          [replayReference,actor.userId,actor.studentId]
+        );
+        if(!replay.rowCount)throw notFound();
+        return {...mapPrivacyRequest(replay.rows[0]),boundary:privacyRequestBoundary(),replayed:true};
+      }
+      const current=await client.query(
+        `SELECT * FROM mathchakchak.privacy_request
+          WHERE id=$1 AND requester_user_id=$2 AND student_profile_id=$3 FOR UPDATE`,
+        [requestId,actor.userId,actor.studentId]
+      );
+      if(!current.rowCount)throw notFound();
+      if(!canRequesterCancel(current.rows[0].status))throw conflict('PRIVACY_REQUEST_NOT_CANCELLABLE');
+      const updated=await client.query(
+        `UPDATE mathchakchak.privacy_request
+            SET status='CANCELLED',cancelled_at=now(),updated_at=now()
+          WHERE id=$1 RETURNING *`,
+        [requestId]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_request_event
+          (id,privacy_request_id,actor_user_id,event_type,from_status,to_status,reason_code)
+         VALUES ($1,$2,$3,'REQUESTER_CANCELLED',$4,'CANCELLED','REQUESTER_CANCELLED')`,
+        [crypto.randomUUID(),requestId,actor.userId,current.rows[0].status]
+      );
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:requestId,status:200});
+      return {...mapPrivacyRequest(updated.rows[0]),boundary:privacyRequestBoundary(),replayed:false};
+    });
   }
 }
