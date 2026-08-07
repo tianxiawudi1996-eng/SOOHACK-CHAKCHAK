@@ -10,7 +10,7 @@ function iso(value){
 }
 
 export function hashCanonical(value){
-  return crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
+  return crypto.createHash('sha256').update(canonicalManifest(value)).digest('hex');
 }
 
 export function impactSnapshot(value){

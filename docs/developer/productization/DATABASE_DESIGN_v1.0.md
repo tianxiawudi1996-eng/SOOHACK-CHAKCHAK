@@ -94,6 +94,8 @@ Phase 28의 `0014_fulfilment_controls.sql`은 운영 역할·dry-run 계획·영
 
 Phase 29의 `0015_fulfilment_package_manifest.sql`은 불변 이행 매니페스트와 무변경 복구 체크포인트를 추가한다. 매니페스트는 계획별 증가 리비전과 단일 선행·후속 관계를 가지며 SHA-256으로 영향·승인·유효기간을 결합한다. 두 테이블의 `BEFORE UPDATE OR DELETE` 트리거는 변경을 거부하고 재검증은 새 행만 추가한다.
 
+Phase 30의 `0016_execution_readiness.sql`은 준비도 검토 리비전과 외부 필수 조건 6종을 추가한다. 검토는 `BLOCKED_LOCAL_PREREQUISITE` 또는 `BLOCKED_EXTERNAL`만 허용하고 중단 스위치 true·실행 승인 false를 CHECK로 강제한다. 검토와 조건은 UPDATE·DELETE 트리거로 변경할 수 없으며 재평가는 새 리비전으로만 남긴다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

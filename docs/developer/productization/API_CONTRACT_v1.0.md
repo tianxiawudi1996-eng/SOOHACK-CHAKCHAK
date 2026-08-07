@@ -85,6 +85,15 @@
 
 패키지 봉인과 재검증은 실제 실행이 아니다. 유효기간 만료·활성 법적 보존·영향 또는 승인 해시 변경 시 409를 반환하며 파괴적 실행 API는 존재하지 않는다.
 
+## Phase 30 개인정보 실행 준비도
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy-operations/package-manifests/{id}/execution-readiness-reviews` | SECURITY_APPROVER | 준비도 검토 리비전 생성 | operator 403+blocked |
+| GET | `/privacy-operations/execution-readiness-reviews/{id}` | 운영 역할 | 로컬·외부 차단 조회 | student 403 |
+
+준비도 검토는 실행 권한을 생성하지 않는다. 외부 증거 입력, 중단 스위치 해제, 실행 승인 또는 실행 엔드포인트는 없으며 모든 현재 검토는 `BLOCKED_LOCAL_PREREQUISITE` 또는 `BLOCKED_EXTERNAL`만 반환한다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

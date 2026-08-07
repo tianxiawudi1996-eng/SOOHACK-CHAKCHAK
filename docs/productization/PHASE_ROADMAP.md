@@ -32,8 +32,9 @@
 | 27 | 개인정보 운영자 처리 큐 | ADMIN 권한·배정·증적·결정·상태 전이·완료 차단 검사 | 운영 테이블 3/3, 단위 71/71, 통합 18/18, 완료 실행기 비활성 |
 | 28 | 개인정보 이행 dry-run 통제 | 영향 집계·법적 보류·직무 분리·서로 다른 승인자·실행 차단 검사 | 통제 테이블 5/5, 단위 74/74, 통합 19/19, 원본 변경 0건 |
 | 29 | 불변 개인정보 이행 패키지 | 매니페스트 해시·만료·재검증·복구 기준점·UPDATE/DELETE 역조건 검사 | 패키지 테이블 2/2, 단위 81/81, 통합 20/20, 불변 트리거 2/2 |
+| 30 | 개인정보 실행 준비도 외부 차단 | 로컬 선행 조건·외부 증거 6종·중단 스위치·append-only 검토 | 준비도 테이블 2/2, 단위 85/85, 통합 21/21, 실행 승인 false |
 
-현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`, Phase 26 `AUTO_VERIFIED_LOCAL_DATA_RIGHTS`, Phase 27 `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS`, Phase 28 `AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS`, Phase 29 `AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 관리형 운영 신원·법적 보존 정책·실제 이행 실행기는 별도 승인·권한 대기다.
+현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`, Phase 26 `AUTO_VERIFIED_LOCAL_DATA_RIGHTS`, Phase 27 `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS`, Phase 28 `AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS`, Phase 29 `AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE`, Phase 30 `AUTO_VERIFIED_LOCAL_EXECUTION_READINESS_BLOCKED_EXTERNAL`이다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 관리형 운영 신원·법적 보존 정책·실제 이행 실행기는 별도 승인·권한 대기다.
 
 ## 공통 규칙
 

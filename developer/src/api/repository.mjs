@@ -14,6 +14,7 @@ import {
   DEFAULT_PACKAGE_VALIDITY_SECONDS,buildPackageManifestPayload,
   fulfilmentPackageBoundary,hashApprovalBundle,hashCanonical,hashImpactSnapshot,mapFulfilmentPackage
 } from '../privacy/fulfilment-package.mjs';
+import {evaluateExecutionReadiness,executionReadinessBoundary,mapExecutionReadinessReview} from '../privacy/execution-readiness.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -2037,6 +2038,83 @@ export class MathChakChakRepository {
       );
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadFulfilmentPackage(client,id),boundary:fulfilmentPackageBoundary(),replayed:false};
+    });
+  }
+
+  async loadExecutionReadinessReview(client,reviewId){
+    const review=await client.query(
+      'SELECT * FROM mathchakchak.privacy_execution_readiness_review WHERE id=$1',[reviewId]
+    );
+    if(!review.rowCount)throw notFound();
+    const controls=await client.query(
+      `SELECT control_key,status,evidence_reference,verified_at
+         FROM mathchakchak.privacy_execution_readiness_control
+        WHERE readiness_review_id=$1 ORDER BY control_key`,[reviewId]
+    );
+    return mapExecutionReadinessReview(review.rows[0],{controls:controls.rows});
+  }
+
+  async getExecutionReadinessReview({actor,reviewId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadExecutionReadinessReview(client,reviewId),boundary:executionReadinessBoundary()};
+    }finally{client.release();}
+  }
+
+  async createExecutionReadinessReview({actor,manifestId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.execution.readiness.${manifestId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExecutionReadinessReview(client,replay),boundary:executionReadinessBoundary(),replayed:true};
+      const manifest=await client.query(
+        `SELECT m.*,p.status AS plan_status,successor.id AS successor_manifest_id,
+                checkpoint.id AS recovery_checkpoint_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                         WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold,
+                (SELECT count(*)::integer FROM mathchakchak.privacy_fulfilment_approval a
+                  WHERE a.fulfilment_plan_id=m.fulfilment_plan_id AND a.decision='APPROVE') AS approval_count
+           FROM mathchakchak.privacy_fulfilment_package_manifest m
+           JOIN mathchakchak.privacy_fulfilment_plan p ON p.id=m.fulfilment_plan_id
+           LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id
+           LEFT JOIN mathchakchak.privacy_fulfilment_recovery_checkpoint checkpoint ON checkpoint.package_manifest_id=m.id
+          WHERE m.id=$1 FOR UPDATE OF m,p`,[manifestId]
+      );
+      if(!manifest.rowCount)throw notFound();
+      const row=manifest.rows[0];
+      const evaluation=evaluateExecutionReadiness({
+        latest_package:!row.successor_manifest_id,
+        package_not_expired:new Date(row.expires_at).getTime()>Date.now(),
+        no_active_legal_hold:!row.active_legal_hold,
+        recovery_checkpoint_present:Boolean(row.recovery_checkpoint_id),
+        dual_approval_present:row.plan_status==='DUAL_APPROVED'&&Number(row.approval_count)===2,
+        manifest_hash_bound:hashCanonical(row.manifest_payload)===row.manifest_sha256
+      });
+      const previous=await client.query(
+        `SELECT id,revision FROM mathchakchak.privacy_execution_readiness_review
+          WHERE package_manifest_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[manifestId]
+      );
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1;
+      const predecessorReviewId=previous.rows[0]?.id??null;
+      const id=crypto.randomUUID();
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_execution_readiness_review
+          (id,package_manifest_id,revision,predecessor_review_id,evaluated_by_user_id,status,
+           package_manifest_sha256,local_checks,local_blockers,kill_switch_engaged,execution_authorized)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9::jsonb,true,false)`,
+        [id,manifestId,revision,predecessorReviewId,actor.userId,evaluation.status,row.manifest_sha256,
+         JSON.stringify(evaluation.local_checks),JSON.stringify(evaluation.local_blockers)]
+      );
+      for(const control of evaluation.external_controls){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_execution_readiness_control
+            (id,readiness_review_id,control_key,status,evidence_reference,verified_at)
+           VALUES ($1,$2,$3,'MISSING_EXTERNAL',NULL,NULL)`,[crypto.randomUUID(),id,control.control_key]
+        );
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadExecutionReadinessReview(client,id),boundary:executionReadinessBoundary(),replayed:false};
     });
   }
 }
