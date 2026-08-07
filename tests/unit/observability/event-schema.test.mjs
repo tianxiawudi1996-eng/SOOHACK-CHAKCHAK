@@ -10,3 +10,12 @@ test('event schema accepts safe properties and rejects answer text', () => {
   assert.equal(denied.valid, false);
   assert.ok(denied.errors.includes('SENSITIVE_PROPERTY_DENIED'));
 });
+
+test('event schema rejects direct identifiers and uncontracted nested properties',()=>{
+  const identified=validateEvent({...envelope,properties:{student_id:'student-1'}});
+  assert.equal(identified.valid,false);
+  assert.ok(identified.errors.includes('SENSITIVE_PROPERTY_DENIED'));
+  const unknown=validateEvent({...envelope,properties:{custom:{value:1}}});
+  assert.equal(unknown.valid,false);
+  assert.ok(unknown.errors.includes('PROPERTY_NOT_ALLOWED'));
+});

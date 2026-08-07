@@ -87,6 +87,8 @@ function route(method, pathname) {
 
   match = pathname.match(new RegExp(`^/api/v1/students/(${UUID_PATTERN})/progress$`));
   if (method === 'GET' && match) return {name: 'getProgress', studentId: match[1]};
+  match = pathname.match(new RegExp(`^/api/v1/students/(${UUID_PATTERN})/learning-quality$`));
+  if (method === 'GET' && match) return {name:'getLearningQuality',studentId:match[1]};
   match = pathname.match(new RegExp(`^/api/v1/students/(${UUID_PATTERN})/adaptive-recommendation$`));
   if (method === 'GET' && match) return {name: 'getAdaptiveRecommendation', studentId: match[1]};
   return null;
@@ -179,6 +181,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if (match.name === 'getProgress') {
     const data = await repository.getProgress({actor, studentId: requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
+  }
+  if(match.name==='getLearningQuality'){
+    const data=await repository.getLearningQuality({actor,studentId:requireUuid(match.studentId,'student_id')});
+    return success(data,{requestId});
   }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});

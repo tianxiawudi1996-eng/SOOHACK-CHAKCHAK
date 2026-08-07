@@ -1,8 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 24,
+  "current_phase": 25,
   "phases": {
+    "25": {"name": "learning_quality_kpi_privacy_minimized_analytics", "status": "AUTO_VERIFIED_LOCAL_ANALYTICS", "scope": "LOCAL_SYNTHETIC_POSTGRESQL_AGGREGATES", "progress": "primary_kpi_3/3_driver_metrics_2/2_unit_62/62_learning_quality_1/1_postgresql_regression_16/16_identifier_findings_0_raw_answer_findings_0", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:learning-quality", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "privacy response inspection", "npm.cmd run test:productization"]},
     "24": {"name": "session_api_supply_chain_security_hardening", "status": "AUTO_VERIFIED_LOCAL_SECURITY", "scope": "LOCAL_ISOLATED_FULL_STACK_SECURITY", "progress": "unit_59/59_security_integration_1/1_postgresql_regression_15/15_web_headers_8/8_api_headers_8/8_npm_vulnerabilities_0_secret_findings_0", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:security", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "npm.cmd audit --json", "Web/API header smoke", "npm.cmd run test:productization"]},
     "23": {"name": "core_web_vitals_and_static_delivery_performance", "status": "AUTO_VERIFIED_LOCAL_LAB", "scope": "LOCAL_ISOLATED_LIGHTHOUSE", "progress": "surfaces_4/4_lighthouse_core_median_97_accessibility_100_best_practices_100_lcp_2417ms_cls_0.045_tbt_15ms_cache_waste_3.1KiB", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:performance", "Lighthouse mobile 3-run median", "four-surface Lighthouse cross-check", "gzip/cache header smoke", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "npm.cmd run test:productization"]},
     "22": {"name": "keyboard_focus_contrast_screen_reader_accessibility", "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED", "scope": "LOCAL_ISOLATED_FULL_STACK", "progress": "surfaces_4/4_skip_focus_contracts_4/4_dynamic_focus_targets_7/7_contrast_pairs_12/12_integration_14/14_manual_accessibility_approvals_0/1", "tests": ["npm.cmd run test:unit", "npm.cmd run test:productization:accessibility-interaction", "node --test --test-concurrency=1 tests/integration/*.test.mjs", "browser diagnostic + lesson + curriculum focus transitions", "npm.cmd run test:productization"]},
@@ -35,6 +36,7 @@
     "gate6_entry_allowed": true
   },
   "blockers": [
+    "Production learning KPI targets and cohort comparisons require real traffic, consent/deletion policy, minimum cohort rules, and grade-level distribution review",
     "Production HTTPS/HSTS, managed identity, central secret storage, WAF/distributed rate limiting, and penetration testing require external configuration and authorization",
     "Production field Core Web Vitals including 75th-percentile INP require external deployment and real-user traffic",
     "Product-owner keyboard and screen-reader review is pending (0/1)",
@@ -42,5 +44,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-07T18:03:09+09:00"
+  "last_updated": "2026-08-07T19:28:42+09:00"
 }

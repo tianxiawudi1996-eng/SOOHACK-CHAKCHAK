@@ -27,8 +27,9 @@
 | 22 | 키보드·초점·대비·스크린리더 접근성 | Tab 계약·동적 초점·WCAG 대비·reduced-motion·브라우저 검사 | 화면 4/4, 초점 대상 7/7, 대비 12/12, 통합 14/14, 수동 접근성 승인 0/1 |
 | 23 | Core Web Vitals·정적 전달 성능 | Lighthouse·gzip·캐시·레이아웃 안정성 검사 | 성능 97, LCP 2.417초, CLS 0.045, TBT 15ms, 운영 INP 대기 |
 | 24 | 세션·API·공급망 제품 보안 | 토큰·Origin·MIME·크기·헤더·npm·Secret 역조건 검사 | 단위 59/59, 통합 15/15, 헤더 16/16, 알려진 취약점 0건 |
+| 25 | 학습 품질 KPI·개인정보 최소화 분석 | PostgreSQL 집계·소유권·이벤트 허용목록·원답 미노출 검사 | Primary 3/3, Driver 2/2, 단위 62/62, 통합 16/16, 운영 목표 대기 |
 
-현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능, 외부 HTTPS·IdP·Secret Manager·WAF·운영 배포는 별도 승인·권한 대기다.
+현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 개인정보 동의·코호트 기준, 외부 운영 서비스는 별도 승인·권한 대기다.
 
 ## 공통 규칙
 

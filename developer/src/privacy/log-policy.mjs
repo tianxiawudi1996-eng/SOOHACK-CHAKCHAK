@@ -1,4 +1,8 @@
-const denied = new Set(['answer', 'answerText', 'answer_text', 'problemText', 'problem_text', 'password', 'token', 'recoveryCode', 'recovery_code', 'contactReference']);
+const denied = new Set([
+  'answer','answerText','answer_text','response_value','problemText','problem_text',
+  'password','token','authorization','cookie','recoveryCode','recovery_code','contactReference',
+  'userId','user_id','studentId','student_id','email','name','ip','ip_address'
+]);
 
 export function sanitizeTelemetry(value) {
   if (Array.isArray(value)) return value.map(sanitizeTelemetry);

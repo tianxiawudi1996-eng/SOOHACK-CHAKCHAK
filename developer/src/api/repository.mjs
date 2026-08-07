@@ -6,6 +6,7 @@ import {evaluateCollaborationEvidence,nextCollaborationPhase,summarizeCollaborat
 import {canCompleteFormulaLesson, evaluateFormulaResponse} from '../learning/formula-learning.mjs';
 import {applicationReviewDays,evaluateFormulaApplication} from '../learning/formula-application.mjs';
 import {buildProgressReport} from '../report/progress-report.mjs';
+import {buildLearningQualitySnapshot} from '../analytics/learning-quality.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -1388,5 +1389,28 @@ export class MathChakChakRepository {
     } finally {
       client.release();
     }
+  }
+
+  async getLearningQuality({actor, studentId}) {
+    const client=await this.pool.connect();
+    try{
+      await this.assertStudentOwner(client,actor);
+      if(studentId!==actor.studentId)throw forbidden();
+      const result=await client.query(
+        `SELECT
+           (SELECT count(*)::integer FROM mathchakchak.formula_learning_session WHERE student_profile_id=$1) AS formula_sessions_started,
+           (SELECT count(*)::integer FROM mathchakchak.formula_learning_session WHERE student_profile_id=$1 AND status='COMPLETED') AS formula_sessions_completed,
+           (SELECT count(*)::integer FROM mathchakchak.student_formula_application_progress WHERE student_profile_id=$1 AND attempted_items>0) AS formulas_assessed,
+           (SELECT count(*)::integer FROM mathchakchak.student_formula_application_progress WHERE student_profile_id=$1 AND mastered=true) AS formulas_mastered,
+           (SELECT count(*)::integer FROM mathchakchak.formula_recall_attempt WHERE student_profile_id=$1) AS recall_attempts,
+           (SELECT count(*)::integer FROM mathchakchak.formula_recall_attempt WHERE student_profile_id=$1 AND outcome='CORRECT') AS recall_correct,
+           (SELECT count(*)::integer FROM mathchakchak.formula_learning_response flr JOIN mathchakchak.formula_learning_session fls ON fls.id=flr.formula_learning_session_id WHERE fls.student_profile_id=$1) AS formula_responses,
+           (SELECT count(*)::integer FROM mathchakchak.formula_learning_response flr JOIN mathchakchak.formula_learning_session fls ON fls.id=flr.formula_learning_session_id WHERE fls.student_profile_id=$1 AND flr.hint_level>0) AS hinted_responses,
+           (SELECT count(*)::integer FROM mathchakchak.collaboration_phase_evidence cpe JOIN mathchakchak.formula_collaboration_session fcs ON fcs.id=cpe.collaboration_session_id WHERE fcs.student_profile_id=$1) AS collaboration_phases,
+           (SELECT count(*)::integer FROM mathchakchak.collaboration_phase_evidence cpe JOIN mathchakchak.formula_collaboration_session fcs ON fcs.id=cpe.collaboration_session_id WHERE fcs.student_profile_id=$1 AND cpe.outcome='PASS') AS collaboration_passes`,
+        [studentId]
+      );
+      return buildLearningQualitySnapshot(result.rows[0]);
+    }finally{client.release();}
   }
 }

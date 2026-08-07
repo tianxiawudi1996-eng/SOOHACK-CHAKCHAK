@@ -26,7 +26,8 @@ const validCurrentStatuses = new Set([
   'VERIFIED',
   'AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED',
   'AUTO_VERIFIED_LOCAL_LAB',
-  'AUTO_VERIFIED_LOCAL_SECURITY'
+  'AUTO_VERIFIED_LOCAL_SECURITY',
+  'AUTO_VERIFIED_LOCAL_ANALYTICS'
 ]);
 if (
   status.project !== 'MathChakChak' ||
