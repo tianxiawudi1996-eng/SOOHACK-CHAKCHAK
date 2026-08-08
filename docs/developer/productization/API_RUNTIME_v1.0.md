@@ -34,3 +34,10 @@
 ## 인증 인계
 
 API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급·만료시각, 사용자·학생 UUID를 검증한다. 서명 비밀값은 최소 32바이트이며 저장소에 저장하지 않는다. 로컬 스테이징에서도 원시 `x-user-id`, `x-student-id`, `x-role` 헤더는 거부한다. 외부 배포에서는 실제 identity provider 또는 인증 게이트웨이가 이 단기 토큰을 발급하고 비밀값을 관리형 secret manager에서 공급해야 한다.
+
+## Phase 33 외부 증거 수신 어댑터 계약
+
+- `POST /api/v1/privacy-operations/evidence-validation-contracts/{id}/intake-adapter-contracts`
+- `GET /api/v1/privacy-operations/intake-adapter-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이며 최신 Phase 32 계약, 패키지 만료·후속 리비전·법적 보존·SHA-256을 검증한다. 결과는 6개 포트의 외부 미구성 계약만 append-only로 기록한다. 네트워크 연결, 증거 제출, 격리 해제, retry, 실행 승인 경로는 구현하지 않는다.

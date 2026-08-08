@@ -100,6 +100,8 @@ Phase 31의 `0017_execution_handoff_packet.sql`은 외부 운영 증거 인계 �
 
 Phase 32의 `0018_external_evidence_validation_contract.sql`은 외부 증거 검증 정책과 조건별 규칙을 추가한다. 상태 8종·전이 13종, 최소 메타데이터 6종, 금지 필드 7종, 서로 다른 개인정보·보안 검토자, 만료·철회 확인을 정의한다. 실제 증거와 최대 유효기간은 저장하지 않고 정책·규칙 UPDATE·DELETE를 거부한다.
 
+Phase 33의 `0019_external_evidence_intake_adapter_contract.sql`은 외부 증거 수신 어댑터 계약과 통제별 포트를 추가한다. 여섯 포트 모두 endpoint와 transport identity를 NULL, 연결을 false로 강제하고 mTLS·서명·발급자 신뢰·replay guard·격리·이중 승인 재처리를 필수로 선언한다. 외부 정책이 없는 서명 알고리즘·신뢰목록·replay window·격리·retry·dead-letter 경로는 `MISSING_EXTERNAL`로 유지하며 원문 저장과 자동 해제를 금지한다. 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
