@@ -1,0 +1,29 @@
+{
+  "schema_version":"1.0.0",
+  "phase":31,
+  "status":"AUTO_QA_PASS_LOCAL_HANDOFF_PACKET_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_HANDOFF_INSTRUCTIONS_ONLY",
+  "controls":{
+    "external_requirements":"6/6 EXTERNAL_SUBMISSION_REQUIRED",
+    "required_evidence_types":"12/12 DEFINED",
+    "owner_roles":"6/6 DEFINED",
+    "required_approver_roles":"2/2 DEFINED",
+    "submission_routes":"6/6 MISSING_EXTERNAL"
+  },
+  "tests":{
+    "unit":"89/89 PASS",
+    "phase_integration":"1/1 PASS",
+    "postgresql_regression":"22/22 PASS",
+    "append_only_inverse":"2/2 BLOCKED",
+    "migration":"FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety":{
+    "external_submission_write_enabled":false,
+    "external_evidence_verification_enabled":false,
+    "kill_switch_engaged":true,
+    "execution_authorized":false,
+    "destructive_executor_enabled":false,
+    "source_data_mutations":0
+  },
+  "manual_or_external_status":"BLOCKED_EXTERNAL_CONFIGURATION_AND_AUTHORITY"
+}

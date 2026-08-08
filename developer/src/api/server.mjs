@@ -69,6 +69,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExecutionReadinessReview',packageManifestId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/execution-readiness-reviews/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExecutionReadinessReview',readinessReviewId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/execution-readiness-reviews/(${UUID_PATTERN})/handoff-packets$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExecutionHandoffPacket',readinessReviewId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/execution-handoff-packets/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExecutionHandoffPacket',handoffPacketId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -264,6 +268,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExecutionReadinessReview({actor,reviewId:requireUuid(match.readinessReviewId,'readiness_review_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExecutionHandoffPacket'){
+    const data=await repository.getExecutionHandoffPacket({actor,packetId:requireUuid(match.handoffPacketId,'handoff_packet_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -342,6 +350,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExecutionReadinessReview'){
     const data=await repository.createExecutionReadinessReview({
       actor,manifestId:requireUuid(match.packageManifestId,'package_manifest_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExecutionHandoffPacket'){
+    const data=await repository.createExecutionHandoffPacket({
+      actor,reviewId:requireUuid(match.readinessReviewId,'readiness_review_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

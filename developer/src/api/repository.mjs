@@ -15,6 +15,7 @@ import {
   fulfilmentPackageBoundary,hashApprovalBundle,hashCanonical,hashImpactSnapshot,mapFulfilmentPackage
 } from '../privacy/fulfilment-package.mjs';
 import {evaluateExecutionReadiness,executionReadinessBoundary,mapExecutionReadinessReview} from '../privacy/execution-readiness.mjs';
+import {buildExecutionHandoffPacket,executionHandoffBoundary,mapExecutionHandoffPacket} from '../privacy/execution-handoff.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -2115,6 +2116,95 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadExecutionReadinessReview(client,id),boundary:executionReadinessBoundary(),replayed:false};
+    });
+  }
+
+  async loadExecutionHandoffPacket(client,packetId){
+    const packet=await client.query(
+      'SELECT * FROM mathchakchak.privacy_execution_handoff_packet WHERE id=$1',[packetId]
+    );
+    if(!packet.rowCount)throw notFound();
+    const requirements=await client.query(
+      `SELECT control_key,owner_role,required_evidence,required_approver_roles,
+              submission_route_policy,submission_route_status,status,evidence_reference,submitted_at,verified_at
+         FROM mathchakchak.privacy_execution_handoff_requirement
+        WHERE handoff_packet_id=$1 ORDER BY control_key`,[packetId]
+    );
+    return mapExecutionHandoffPacket(packet.rows[0],{requirements:requirements.rows});
+  }
+
+  async getExecutionHandoffPacket({actor,packetId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadExecutionHandoffPacket(client,packetId),boundary:executionHandoffBoundary()};
+    }finally{client.release();}
+  }
+
+  async createExecutionHandoffPacket({actor,reviewId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.execution.handoff.${reviewId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExecutionHandoffPacket(client,replay),boundary:executionHandoffBoundary(),replayed:true};
+      const review=await client.query(
+        `SELECT r.*,m.expires_at,successor.id AS successor_manifest_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_readiness_review newer
+                        WHERE newer.package_manifest_id=r.package_manifest_id AND newer.revision>r.revision) AS superseded,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                        WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_execution_readiness_review r
+           JOIN mathchakchak.privacy_fulfilment_package_manifest m ON m.id=r.package_manifest_id
+           LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id
+          WHERE r.id=$1 FOR UPDATE OF r,m`,[reviewId]
+      );
+      if(!review.rowCount)throw notFound();
+      const reviewRow=review.rows[0];
+      if(reviewRow.superseded)throw conflict('EXECUTION_HANDOFF_READINESS_SUPERSEDED');
+      if(reviewRow.successor_manifest_id)throw conflict('EXECUTION_HANDOFF_PACKAGE_SUPERSEDED');
+      if(new Date(reviewRow.expires_at).getTime()<=Date.now())throw conflict('EXECUTION_HANDOFF_PACKAGE_EXPIRED');
+      if(reviewRow.active_legal_hold)throw conflict('EXECUTION_HANDOFF_LEGAL_HOLD_ACTIVE');
+      const controls=await client.query(
+        `SELECT control_key,status,evidence_reference,verified_at
+           FROM mathchakchak.privacy_execution_readiness_control
+          WHERE readiness_review_id=$1 ORDER BY control_key`,[reviewId]
+      );
+      const readinessReview={...mapExecutionReadinessReview(reviewRow,{controls:controls.rows}),is_latest_review:true};
+      const previous=await client.query(
+        `SELECT id,revision FROM mathchakchak.privacy_execution_handoff_packet
+          WHERE readiness_review_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[reviewId]
+      );
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1;
+      const predecessorPacketId=previous.rows[0]?.id??null;
+      const id=crypto.randomUUID();
+      let handoff;
+      try{
+        handoff=buildExecutionHandoffPacket({
+          packet_id:id,revision,predecessor_packet_id:predecessorPacketId,readiness_review:readinessReview
+        });
+      }catch(error){
+        throw conflict(error.message.split(':')[0]);
+      }
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_execution_handoff_packet
+          (id,readiness_review_id,package_manifest_id,revision,predecessor_packet_id,schema_version,status,
+           packet_manifest,packet_sha256,created_by_user_id,kill_switch_engaged,execution_authorized)
+         VALUES ($1,$2,$3,$4,$5,'1.0.0',$6,$7::jsonb,$8,$9,true,false)`,
+        [id,reviewId,readinessReview.package_manifest_id,revision,predecessorPacketId,handoff.status,
+         JSON.stringify(handoff.packet_manifest),handoff.packet_sha256,actor.userId]
+      );
+      for(const requirement of handoff.requirements){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_execution_handoff_requirement
+            (id,handoff_packet_id,control_key,owner_role,required_evidence,required_approver_roles,
+             submission_route_policy,submission_route_status,status,evidence_reference,submitted_at,verified_at)
+           VALUES ($1,$2,$3,$4,$5::jsonb,$6::jsonb,$7,'MISSING_EXTERNAL','EXTERNAL_SUBMISSION_REQUIRED',NULL,NULL,NULL)`,
+          [crypto.randomUUID(),id,requirement.control_key,requirement.owner_role,
+           JSON.stringify(requirement.required_evidence),JSON.stringify(requirement.required_approver_roles),requirement.submission_route_policy]
+        );
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadExecutionHandoffPacket(client,id),boundary:executionHandoffBoundary(),replayed:false};
     });
   }
 }

@@ -96,6 +96,8 @@ Phase 29의 `0015_fulfilment_package_manifest.sql`은 불변 이행 매니페스
 
 Phase 30의 `0016_execution_readiness.sql`은 준비도 검토 리비전과 외부 필수 조건 6종을 추가한다. 검토는 `BLOCKED_LOCAL_PREREQUISITE` 또는 `BLOCKED_EXTERNAL`만 허용하고 중단 스위치 true·실행 승인 false를 CHECK로 강제한다. 검토와 조건은 UPDATE·DELETE 트리거로 변경할 수 없으며 재평가는 새 리비전으로만 남긴다.
 
+Phase 31의 `0017_execution_handoff_packet.sql`은 외부 운영 증거 인계 패킷과 조건별 요구사항을 추가한다. 여섯 조건마다 책임 역할, 필수 증거 2종, 개인정보·보안 이중 검토 역할, 제출 경로 정책을 저장한다. 실제 제출 값은 NULL, 경로는 `MISSING_EXTERNAL`, 실행 승인은 false로 고정하며 두 테이블 모두 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

@@ -94,6 +94,15 @@
 
 준비도 검토는 실행 권한을 생성하지 않는다. 외부 증거 입력, 중단 스위치 해제, 실행 승인 또는 실행 엔드포인트는 없으며 모든 현재 검토는 `BLOCKED_LOCAL_PREREQUISITE` 또는 `BLOCKED_EXTERNAL`만 반환한다.
 
+## Phase 31 외부 운영 증거 인계 패킷
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy-operations/execution-readiness-reviews/{id}/handoff-packets` | SECURITY_APPROVER | 인계 패킷 리비전 생성 | operator 403+blocked |
+| GET | `/privacy-operations/execution-handoff-packets/{id}` | 운영 역할 | 책임·증거·경로 정책 조회 | student 403 |
+
+인계 패킷은 외부 증거를 제출하거나 승인하는 기능이 아니다. 증거 쓰기·검증·Kill Switch 해제·실행 승인 엔드포인트는 없고, 모든 요구사항은 `EXTERNAL_SUBMISSION_REQUIRED`로 유지된다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.
