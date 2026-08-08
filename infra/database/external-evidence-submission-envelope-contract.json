@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 36,
+  "contract_tables": 2,
+  "control_rules": 6,
+  "required_envelope_fields": 10,
+  "reference_scheme_approval_steps": 4,
+  "allowed_reference_schemes": 0,
+  "rejection_reason_codes": 10,
+  "submission_id_format": "UUID_V4",
+  "ingress_validation_mode": "REJECT_ALL_UNTIL_ALLOWLIST_APPROVED",
+  "metadata_submission_enabled": false,
+  "external_reference_fetch_enabled": false,
+  "raw_payload_storage_allowed": false,
+  "credential_material_storage_allowed": false,
+  "secret_material_storage_allowed": false,
+  "automatic_promotion_allowed": false,
+  "connection_authorized": false,
+  "execution_authorized": false
+}

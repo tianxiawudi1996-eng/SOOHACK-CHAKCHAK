@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TRIGGER IF EXISTS privacy_external_evidence_submission_envelope_rule_immutable ON mathchakchak.privacy_external_evidence_submission_envelope_rule;
+DROP TRIGGER IF EXISTS privacy_external_evidence_submission_envelope_contract_immutable ON mathchakchak.privacy_external_evidence_submission_envelope_contract;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_evidence_submission_envelope_rule;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_evidence_submission_envelope_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_evidence_submission_envelope_mutation();
+
+COMMIT;

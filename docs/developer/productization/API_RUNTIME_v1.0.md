@@ -55,3 +55,10 @@ API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급
 - `GET /api/v1/privacy-operations/configuration-evidence-queue-contracts/{id}`
 
 생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 34 패킷과 패키지·법적 보존·SHA-256을 검증하고 불변 참조·해시 메타데이터 슬롯만 만든다. 증적 제출, 외부 참조 fetch, enqueue, 검토 결정, 자동 승격과 활성화 경로는 구현하지 않는다.
+
+## Phase 36 외부 증적 제출 envelope 정책
+
+- `POST /api/v1/privacy-operations/configuration-evidence-queue-contracts/{id}/submission-envelope-contracts`
+- `GET /api/v1/privacy-operations/submission-envelope-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 35 계약과 패키지 유효성·법적 보존·SHA-256을 검증하고 필수 envelope 필드 10개, scheme 승인 4단계, UUID v4 멱등 범위, 거부 사유 10개를 기록한다. 허용 scheme은 비어 있으며 제출, allowlist 쓰기·활성화, 외부 참조 fetch와 연결·실행 경로는 구현하지 않는다.

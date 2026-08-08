@@ -31,6 +31,7 @@ services:
       - ../database/migrations/0019_external_evidence_intake_adapter_contract.sql:/docker-entrypoint-initdb.d/019-external-evidence-intake-adapter-contract.sql:ro
       - ../database/migrations/0020_external_connection_acceptance_packet.sql:/docker-entrypoint-initdb.d/020-external-connection-acceptance-packet.sql:ro
       - ../database/migrations/0021_external_configuration_evidence_queue_contract.sql:/docker-entrypoint-initdb.d/021-external-configuration-evidence-queue-contract.sql:ro
+      - ../database/migrations/0022_external_evidence_submission_envelope_contract.sql:/docker-entrypoint-initdb.d/022-external-evidence-submission-envelope-contract.sql:ro
       - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
       - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
       - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro
