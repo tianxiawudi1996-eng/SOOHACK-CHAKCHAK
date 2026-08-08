@@ -98,6 +98,8 @@ Phase 30의 `0016_execution_readiness.sql`은 준비도 검토 리비전과 외�
 
 Phase 31의 `0017_execution_handoff_packet.sql`은 외부 운영 증거 인계 패킷과 조건별 요구사항을 추가한다. 여섯 조건마다 책임 역할, 필수 증거 2종, 개인정보·보안 이중 검토 역할, 제출 경로 정책을 저장한다. 실제 제출 값은 NULL, 경로는 `MISSING_EXTERNAL`, 실행 승인은 false로 고정하며 두 테이블 모두 UPDATE·DELETE를 거부한다.
 
+Phase 32의 `0018_external_evidence_validation_contract.sql`은 외부 증거 검증 정책과 조건별 규칙을 추가한다. 상태 8종·전이 13종, 최소 메타데이터 6종, 금지 필드 7종, 서로 다른 개인정보·보안 검토자, 만료·철회 확인을 정의한다. 실제 증거와 최대 유효기간은 저장하지 않고 정책·규칙 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

@@ -103,6 +103,15 @@
 
 인계 패킷은 외부 증거를 제출하거나 승인하는 기능이 아니다. 증거 쓰기·검증·Kill Switch 해제·실행 승인 엔드포인트는 없고, 모든 요구사항은 `EXTERNAL_SUBMISSION_REQUIRED`로 유지된다.
 
+## Phase 32 외부 증거 검증 정책
+
+| Method | Path | 역할 | 기능 | 핵심 테스트 |
+|---|---|---|---|---|
+| POST | `/privacy-operations/execution-handoff-packets/{id}/evidence-validation-contracts` | SECURITY_APPROVER | 검증 정책 리비전 생성 | operator 403+stale block |
+| GET | `/privacy-operations/evidence-validation-contracts/{id}` | 운영 역할 | 상태·전이·최소필드 정책 조회 | student 403 |
+
+검증 정책은 증거 또는 승인 결정을 받지 않는다. 제출·상태 전이·검토 결정·외부 저장소 조회·Kill Switch 해제·실행 승인 엔드포인트는 제공하지 않는다.
+
 ## 버전·호환성
 
 - breaking change는 `/v2` 또는 명시적 schema version을 사용한다.

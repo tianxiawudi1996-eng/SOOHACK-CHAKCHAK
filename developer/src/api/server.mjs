@@ -73,6 +73,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExecutionHandoffPacket',readinessReviewId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/execution-handoff-packets/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExecutionHandoffPacket',handoffPacketId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/execution-handoff-packets/(${UUID_PATTERN})/evidence-validation-contracts$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalEvidenceValidationContract',handoffPacketId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/evidence-validation-contracts/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalEvidenceValidationContract',validationContractId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -272,6 +276,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExecutionHandoffPacket({actor,packetId:requireUuid(match.handoffPacketId,'handoff_packet_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExternalEvidenceValidationContract'){
+    const data=await repository.getExternalEvidenceValidationContract({actor,contractId:requireUuid(match.validationContractId,'validation_contract_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -356,6 +364,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExecutionHandoffPacket'){
     const data=await repository.createExecutionHandoffPacket({
       actor,reviewId:requireUuid(match.readinessReviewId,'readiness_review_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExternalEvidenceValidationContract'){
+    const data=await repository.createExternalEvidenceValidationContract({
+      actor,packetId:requireUuid(match.handoffPacketId,'handoff_packet_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

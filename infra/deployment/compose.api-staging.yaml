@@ -27,6 +27,7 @@ services:
       - ../database/migrations/0015_fulfilment_package_manifest.sql:/docker-entrypoint-initdb.d/015-fulfilment-package-manifest.sql:ro
       - ../database/migrations/0016_execution_readiness.sql:/docker-entrypoint-initdb.d/016-execution-readiness.sql:ro
       - ../database/migrations/0017_execution_handoff_packet.sql:/docker-entrypoint-initdb.d/017-execution-handoff-packet.sql:ro
+      - ../database/migrations/0018_external_evidence_validation_contract.sql:/docker-entrypoint-initdb.d/018-external-evidence-validation-contract.sql:ro
       - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
       - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
       - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro

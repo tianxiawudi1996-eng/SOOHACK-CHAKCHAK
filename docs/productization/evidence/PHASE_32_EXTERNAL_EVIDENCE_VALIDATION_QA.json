@@ -1,0 +1,33 @@
+{
+  "schema_version":"1.0.0",
+  "phase":32,
+  "status":"AUTO_QA_PASS_LOCAL_EVIDENCE_VALIDATION_POLICY_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_VALIDATION_POLICY_ONLY",
+  "contract":{
+    "states":"8/8 DEFINED",
+    "transitions":"13/13 DEFINED",
+    "rules":"6/6 AWAITING_EXTERNAL_CHANNEL",
+    "allowed_metadata_fields":"6/6 DEFINED",
+    "forbidden_fields":"7/7 DEFINED",
+    "required_approver_roles":"2/2 DEFINED",
+    "expiry_policy":"6/6 MISSING_EXTERNAL",
+    "submission_channels":"6/6 MISSING_EXTERNAL"
+  },
+  "tests":{
+    "unit":"93/93 PASS",
+    "phase_integration":"1/1 PASS",
+    "postgresql_regression":"23/23 PASS",
+    "append_only_inverse":"2/2 BLOCKED",
+    "migration":"FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety":{
+    "evidence_submission_enabled":false,
+    "evidence_state_transition_enabled":false,
+    "reviewer_decision_write_enabled":false,
+    "raw_content_storage_allowed":false,
+    "kill_switch_engaged":true,
+    "execution_authorized":false,
+    "source_data_mutations":0
+  },
+  "manual_or_external_status":"BLOCKED_EXTERNAL_CHANNEL_POLICY_AND_AUTHORITY"
+}
