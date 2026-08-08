@@ -81,6 +81,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExternalEvidenceIntakeAdapterContract',validationContractId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/intake-adapter-contracts/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExternalEvidenceIntakeAdapterContract',intakeAdapterContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/intake-adapter-contracts/(${UUID_PATTERN})/connection-acceptance-packets$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalConnectionAcceptancePacket',intakeAdapterContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/connection-acceptance-packets/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalConnectionAcceptancePacket',connectionAcceptancePacketId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -288,6 +292,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExternalEvidenceIntakeAdapterContract({actor,contractId:requireUuid(match.intakeAdapterContractId,'intake_adapter_contract_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExternalConnectionAcceptancePacket'){
+    const data=await repository.getExternalConnectionAcceptancePacket({actor,packetId:requireUuid(match.connectionAcceptancePacketId,'connection_acceptance_packet_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -384,6 +392,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExternalEvidenceIntakeAdapterContract'){
     const data=await repository.createExternalEvidenceIntakeAdapterContract({
       actor,validationContractId:requireUuid(match.validationContractId,'validation_contract_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExternalConnectionAcceptancePacket'){
+    const data=await repository.createExternalConnectionAcceptancePacket({
+      actor,adapterContractId:requireUuid(match.intakeAdapterContractId,'intake_adapter_contract_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

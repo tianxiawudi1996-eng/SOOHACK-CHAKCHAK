@@ -102,6 +102,8 @@ Phase 32의 `0018_external_evidence_validation_contract.sql`은 외부 증거 �
 
 Phase 33의 `0019_external_evidence_intake_adapter_contract.sql`은 외부 증거 수신 어댑터 계약과 통제별 포트를 추가한다. 여섯 포트 모두 endpoint와 transport identity를 NULL, 연결을 false로 강제하고 mTLS·서명·발급자 신뢰·replay guard·격리·이중 승인 재처리를 필수로 선언한다. 외부 정책이 없는 서명 알고리즘·신뢰목록·replay window·격리·retry·dead-letter 경로는 `MISSING_EXTERNAL`로 유지하며 원문 저장과 자동 해제를 금지한다. 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 34의 `0020_external_connection_acceptance_packet.sql`은 사전 연결 수락 패킷과 요구사항을 추가한다. 인증서 수명주기·신뢰 저장소·키 회전·접속 허가·실패 복구·운영 수락의 책임 역할 6개와 증적 12종을 정의하고, 증적 참조·해시·검증 시각은 NULL로 유지한다. 개인정보·보안 이중 승인과 외부 테스트를 요구하지만 테스트·결정은 미수행 상태이며 자격·비밀 저장, 연결 허용, 연결·실행 승인은 false로 강제한다. 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

@@ -41,3 +41,10 @@ API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급
 - `GET /api/v1/privacy-operations/intake-adapter-contracts/{id}`
 
 생성 경로는 `SECURITY_APPROVER` 전용이며 최신 Phase 32 계약, 패키지 만료·후속 리비전·법적 보존·SHA-256을 검증한다. 결과는 6개 포트의 외부 미구성 계약만 append-only로 기록한다. 네트워크 연결, 증거 제출, 격리 해제, retry, 실행 승인 경로는 구현하지 않는다.
+
+## Phase 34 외부 연결 사전 수락 패킷
+
+- `POST /api/v1/privacy-operations/intake-adapter-contracts/{id}/connection-acceptance-packets`
+- `GET /api/v1/privacy-operations/connection-acceptance-packets/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 33 어댑터 계약과 패키지 유효성·법적 보존·SHA-256을 확인하고 인증서·신뢰 저장소·키 회전·접속 허가·복구·운영 수락 요구사항만 기록한다. 구성 제출, 승인, 외부 테스트, 연결 경로는 구현하지 않는다.

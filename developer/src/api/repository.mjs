@@ -18,6 +18,7 @@ import {evaluateExecutionReadiness,executionReadinessBoundary,mapExecutionReadin
 import {buildExecutionHandoffPacket,executionHandoffBoundary,mapExecutionHandoffPacket} from '../privacy/execution-handoff.mjs';
 import {buildExternalEvidenceValidationContract,externalEvidenceValidationBoundary,mapExternalEvidenceValidationContract} from '../privacy/external-evidence-validation.mjs';
 import {buildExternalEvidenceIntakeAdapterContract,externalEvidenceIntakeAdapterBoundary,mapExternalEvidenceIntakeAdapterContract} from '../privacy/external-evidence-intake-adapter.mjs';
+import {buildExternalConnectionAcceptancePacket,externalConnectionAcceptanceBoundary,mapExternalConnectionAcceptancePacket} from '../privacy/external-connection-acceptance.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -2420,6 +2421,121 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadExternalEvidenceIntakeAdapterContract(client,id),boundary:externalEvidenceIntakeAdapterBoundary(),replayed:false};
+    });
+  }
+
+  async loadExternalConnectionAcceptancePacket(client,packetId){
+    const packet=await client.query(
+      `SELECT id,intake_adapter_contract_id,package_manifest_id,revision,predecessor_packet_id,schema_version,status,
+              packet_manifest,packet_sha256,kill_switch_engaged,connection_authorized,execution_authorized,created_at
+         FROM mathchakchak.privacy_external_connection_acceptance_packet WHERE id=$1`,[packetId]
+    );
+    if(!packet.rowCount)throw notFound();
+    const requirements=await client.query(
+      `SELECT control_key,owner_role,required_evidence,required_approver_roles,status,configuration_status,
+              artifact_reference,artifact_sha256,verified_at,dual_approval_required,credential_material_storage_allowed,
+              secret_material_storage_allowed,external_test_required,external_test_status,acceptance_decision_status,
+              connection_enablement_allowed
+         FROM mathchakchak.privacy_external_connection_acceptance_requirement
+        WHERE acceptance_packet_id=$1 ORDER BY control_key`,[packetId]
+    );
+    return mapExternalConnectionAcceptancePacket(packet.rows[0],{requirements:requirements.rows});
+  }
+
+  async getExternalConnectionAcceptancePacket({actor,packetId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadExternalConnectionAcceptancePacket(client,packetId),boundary:externalConnectionAcceptanceBoundary()};
+    }finally{client.release();}
+  }
+
+  async createExternalConnectionAcceptancePacket({actor,adapterContractId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.connection.accept.${adapterContractId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExternalConnectionAcceptancePacket(client,replay),boundary:externalConnectionAcceptanceBoundary(),replayed:true};
+      const source=await client.query(
+        `SELECT a.*,v.handoff_packet_id,m.expires_at,r.revision AS readiness_revision,
+                successor.id AS successor_manifest_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_intake_adapter_contract newer_adapter
+                        WHERE newer_adapter.validation_contract_id=a.validation_contract_id AND newer_adapter.revision>a.revision) AS superseded_adapter,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_validation_contract newer_validation
+                        WHERE newer_validation.handoff_packet_id=v.handoff_packet_id AND newer_validation.revision>v.revision) AS superseded_validation,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_handoff_packet newer_handoff
+                        WHERE newer_handoff.readiness_review_id=p.readiness_review_id AND newer_handoff.revision>p.revision) AS superseded_handoff,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_readiness_review newer_review
+                        WHERE newer_review.package_manifest_id=a.package_manifest_id AND newer_review.revision>r.revision) AS superseded_readiness,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold h
+                        WHERE h.privacy_request_id=m.privacy_request_id AND h.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_external_evidence_intake_adapter_contract a
+           JOIN mathchakchak.privacy_external_evidence_validation_contract v ON v.id=a.validation_contract_id
+           JOIN mathchakchak.privacy_execution_handoff_packet p ON p.id=v.handoff_packet_id
+           JOIN mathchakchak.privacy_execution_readiness_review r ON r.id=p.readiness_review_id
+           JOIN mathchakchak.privacy_fulfilment_package_manifest m ON m.id=a.package_manifest_id
+           LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id
+          WHERE a.id=$1 FOR UPDATE OF a,m`,[adapterContractId]
+      );
+      if(!source.rowCount)throw notFound();
+      const sourceRow=source.rows[0];
+      if(sourceRow.superseded_adapter)throw conflict('CONNECTION_ACCEPTANCE_ADAPTER_SUPERSEDED');
+      if(sourceRow.superseded_validation)throw conflict('CONNECTION_ACCEPTANCE_VALIDATION_SUPERSEDED');
+      if(sourceRow.superseded_handoff)throw conflict('CONNECTION_ACCEPTANCE_HANDOFF_SUPERSEDED');
+      if(sourceRow.superseded_readiness)throw conflict('CONNECTION_ACCEPTANCE_READINESS_SUPERSEDED');
+      if(sourceRow.successor_manifest_id)throw conflict('CONNECTION_ACCEPTANCE_PACKAGE_SUPERSEDED');
+      if(new Date(sourceRow.expires_at).getTime()<=Date.now())throw conflict('CONNECTION_ACCEPTANCE_PACKAGE_EXPIRED');
+      if(sourceRow.active_legal_hold)throw conflict('CONNECTION_ACCEPTANCE_LEGAL_HOLD_ACTIVE');
+      if(hashCanonical(sourceRow.contract_manifest)!==sourceRow.contract_sha256)throw conflict('CONNECTION_ACCEPTANCE_ADAPTER_HASH_MISMATCH');
+      const ports=await client.query(
+        `SELECT control_key,port_status,endpoint_reference,transport_identity_reference,network_connection_enabled,
+                mtls_required,transport_policy_status,signature_verification_required,signature_policy_status,
+                accepted_signature_algorithms,trusted_issuer_list_status,trusted_issuer_count,replay_guard_required,
+                submission_id_required,content_hash_required,replay_window_status,replay_window_seconds,quarantine_required,
+                quarantine_route_status,automatic_release_allowed,reprocess_dual_approval_required,retry_policy_status,
+                dead_letter_route_status,raw_payload_storage_allowed
+           FROM mathchakchak.privacy_external_evidence_intake_port
+          WHERE intake_adapter_contract_id=$1 ORDER BY control_key`,[adapterContractId]
+      );
+      const intakeAdapter={...mapExternalEvidenceIntakeAdapterContract(sourceRow,{ports:ports.rows}),is_latest_intake_adapter_contract:true};
+      const previous=await client.query(
+        `SELECT id,revision FROM mathchakchak.privacy_external_connection_acceptance_packet
+          WHERE intake_adapter_contract_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[adapterContractId]
+      );
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1;
+      const predecessorPacketId=previous.rows[0]?.id??null;
+      const id=crypto.randomUUID();
+      let acceptance;
+      try{
+        acceptance=buildExternalConnectionAcceptancePacket({
+          packet_id:id,revision,predecessor_packet_id:predecessorPacketId,intake_adapter_contract:intakeAdapter
+        });
+      }catch(error){
+        throw conflict(error.message.split(':')[0]);
+      }
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_external_connection_acceptance_packet
+          (id,intake_adapter_contract_id,package_manifest_id,revision,predecessor_packet_id,schema_version,status,
+           packet_manifest,packet_sha256,created_by_user_id,kill_switch_engaged,connection_authorized,execution_authorized)
+         VALUES ($1,$2,$3,$4,$5,'1.0.0',$6,$7::jsonb,$8,$9,true,false,false)`,
+        [id,adapterContractId,intakeAdapter.package_manifest_id,revision,predecessorPacketId,acceptance.status,
+         JSON.stringify(acceptance.packet_manifest),acceptance.packet_sha256,actor.userId]
+      );
+      for(const requirement of acceptance.requirements){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_external_connection_acceptance_requirement
+            (id,acceptance_packet_id,control_key,owner_role,required_evidence,required_approver_roles,status,
+             configuration_status,artifact_reference,artifact_sha256,verified_at,dual_approval_required,
+             credential_material_storage_allowed,secret_material_storage_allowed,external_test_required,
+             external_test_status,acceptance_decision_status,connection_enablement_allowed)
+           VALUES ($1,$2,$3,$4,$5::jsonb,$6::jsonb,'EXTERNAL_CONFIGURATION_REQUIRED','MISSING_EXTERNAL',NULL,NULL,NULL,
+                   true,false,false,true,'NOT_RUN_EXTERNAL','NOT_REVIEWED_EXTERNAL',false)`,
+          [crypto.randomUUID(),id,requirement.control_key,requirement.owner_role,JSON.stringify(requirement.required_evidence),
+           JSON.stringify(requirement.required_approver_roles)]
+        );
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadExternalConnectionAcceptancePacket(client,id),boundary:externalConnectionAcceptanceBoundary(),replayed:false};
     });
   }
 }
