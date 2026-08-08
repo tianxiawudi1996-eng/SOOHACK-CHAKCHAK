@@ -85,6 +85,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExternalConnectionAcceptancePacket',intakeAdapterContractId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/connection-acceptance-packets/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExternalConnectionAcceptancePacket',connectionAcceptancePacketId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/connection-acceptance-packets/(${UUID_PATTERN})/configuration-evidence-queue-contracts$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalConfigurationEvidenceQueueContract',connectionAcceptancePacketId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/configuration-evidence-queue-contracts/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalConfigurationEvidenceQueueContract',configurationEvidenceQueueContractId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -296,6 +300,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExternalConnectionAcceptancePacket({actor,packetId:requireUuid(match.connectionAcceptancePacketId,'connection_acceptance_packet_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExternalConfigurationEvidenceQueueContract'){
+    const data=await repository.getExternalConfigurationEvidenceQueueContract({actor,contractId:requireUuid(match.configurationEvidenceQueueContractId,'configuration_evidence_queue_contract_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -398,6 +406,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExternalConnectionAcceptancePacket'){
     const data=await repository.createExternalConnectionAcceptancePacket({
       actor,adapterContractId:requireUuid(match.intakeAdapterContractId,'intake_adapter_contract_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExternalConfigurationEvidenceQueueContract'){
+    const data=await repository.createExternalConfigurationEvidenceQueueContract({
+      actor,acceptancePacketId:requireUuid(match.connectionAcceptancePacketId,'connection_acceptance_packet_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

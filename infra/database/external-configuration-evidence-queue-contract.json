@@ -1,0 +1,23 @@
+{
+  "schema_version":"1.0.0",
+  "migration":"infra/database/migrations/0021_external_configuration_evidence_queue_contract.sql",
+  "rollback":"infra/database/migrations/0021_external_configuration_evidence_queue_contract_rollback.sql",
+  "tables":["privacy_external_configuration_evidence_queue_contract","privacy_external_configuration_evidence_queue_slot"],
+  "queue_stages":7,
+  "slots":6,
+  "allowed_evidence_types":12,
+  "queue_status":"AWAITING_EXTERNAL_SUBMISSION_CHANNEL",
+  "submission_channel_status":"MISSING_EXTERNAL",
+  "reference_policy_status":"MISSING_EXTERNAL",
+  "validation_status":"NOT_SUBMITTED",
+  "immutable_reference_required":true,
+  "sha256_required":true,
+  "issuer_provenance_required":true,
+  "duplicate_guard_required":true,
+  "raw_payload_storage_allowed":false,
+  "credential_material_storage_allowed":false,
+  "secret_material_storage_allowed":false,
+  "automatic_promotion_allowed":false,
+  "connection_authorized":false,
+  "execution_authorized":false
+}

@@ -104,6 +104,8 @@ Phase 33의 `0019_external_evidence_intake_adapter_contract.sql`은 외부 증�
 
 Phase 34의 `0020_external_connection_acceptance_packet.sql`은 사전 연결 수락 패킷과 요구사항을 추가한다. 인증서 수명주기·신뢰 저장소·키 회전·접속 허가·실패 복구·운영 수락의 책임 역할 6개와 증적 12종을 정의하고, 증적 참조·해시·검증 시각은 NULL로 유지한다. 개인정보·보안 이중 승인과 외부 테스트를 요구하지만 테스트·결정은 미수행 상태이며 자격·비밀 저장, 연결 허용, 연결·실행 승인은 false로 강제한다. 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 35의 `0021_external_configuration_evidence_queue_contract.sql`은 구성 증적 메타데이터 대기열 계약과 슬롯을 추가한다. 슬롯 6개는 증적 종류 12개를 참조하며 불변 참조·SHA-256·발급자 출처·중복 방지를 필수로 선언한다. 실제 참조·해시·submission ID·queue ID·제출 시각과 검토 TTL은 NULL이고 검증 상태는 `NOT_SUBMITTED`다. 원문·자격·비밀 저장과 자동 승격, 연결·실행 승인을 금지하며 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
