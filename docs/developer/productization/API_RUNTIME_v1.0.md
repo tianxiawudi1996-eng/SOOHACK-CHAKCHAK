@@ -16,6 +16,13 @@
 
 실제 결과 수신·검증·조정·release 경로는 제공하지 않는다.
 
+## Phase 44 Release decision 준비 API
+
+- `POST /api/v1/privacy-operations/scan-attestation-contracts/{id}/release-decision-contracts`
+- `GET /api/v1/privacy-operations/release-decision-contracts/{id}`
+
+실제 reviewer 배정·결정·release 경로는 제공하지 않는다.
+
 - Node.js 24 HTTP server
 - PostgreSQL 16 via `pg`
 - JSON UTF-8 `/api/v1`

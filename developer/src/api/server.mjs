@@ -121,6 +121,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceProofScanAttestationContract',scannerReadinessContractId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/scan-attestation-contracts/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceProofScanAttestationContract',scanAttestationContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/scan-attestation-contracts/(${UUID_PATTERN})/release-decision-contracts$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceProofReleaseDecisionContract',scanAttestationContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/release-decision-contracts/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceProofReleaseDecisionContract',releaseDecisionContractId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -367,6 +371,7 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='getExternalReferenceProofScanAttestationContract'){
     const data=await repository.getExternalReferenceProofScanAttestationContract({actor,contractId:requireUuid(match.scanAttestationContractId,'scan_attestation_contract_id')});return success(data,{requestId});
   }
+  if(match.name==='getExternalReferenceProofReleaseDecisionContract'){const data=await repository.getExternalReferenceProofReleaseDecisionContract({actor,contractId:requireUuid(match.releaseDecisionContractId,'release_decision_contract_id')});return success(data,{requestId});}
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -523,6 +528,7 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExternalReferenceProofScanAttestationContract'){
     const data=await repository.createExternalReferenceProofScanAttestationContract({actor,scannerReadinessContractId:requireUuid(match.scannerReadinessContractId,'scanner_readiness_contract_id'),key,hash});return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }
+  if(match.name==='createExternalReferenceProofReleaseDecisionContract'){const data=await repository.createExternalReferenceProofReleaseDecisionContract({actor,scanAttestationContractId:requireUuid(match.scanAttestationContractId,'scan_attestation_contract_id'),key,hash});return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});}
 
   if (match.name === 'createDiagnostic') {
     const locale = normalizeRequestedLocale(body.locale);

@@ -1,5 +1,9 @@
 # 수학착착 데이터베이스 설계 v1.0
 
+## Phase 44 PostgreSQL 0030
+
+사람의 release 결정 준비 계약과 통제별 요건을 append-only로 저장한다. reviewer·decision·시각은 NULL이며 assignment·decision·release는 false다.
+
 ## Phase 43 PostgreSQL 0029
 
 Scan attestation 계약과 통제별 요건을 append-only로 저장한다. 결과·attestation·조정·release 근거는 NULL이며 입력·검증·조정·release 권한은 false다.

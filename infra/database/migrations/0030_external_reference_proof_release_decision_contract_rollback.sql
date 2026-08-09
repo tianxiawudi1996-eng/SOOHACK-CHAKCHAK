@@ -1,0 +1,5 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_release_decision_requirement;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_release_decision_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_proof_release_mutation();
+COMMIT;

@@ -2,6 +2,7 @@
 
 | Phase | 산출물 | 자동 검증 | 완료 조건 |
 |---:|---|---|---|
+| 44 | 사람의 quarantine release 결정 준비 | 검토 필드·결정·거부·직무분리·append-only 검증 | 테이블 2/2, 단위 141/141, 통합 35/35, reviewer·decision 0개 외부 대기 |
 | 43 | Scan 결과 attestation 검증·조정 준비 | 결과 enum·해시 결합·다중 엔진·release guard 검증 | 테이블 2/2, 단위 137/137, 통합 34/34, 결과·attestation·결정 0개 외부 대기 |
 | 42 | 외부 참조 증명 scanner 실행 준비 정책 | 신뢰·서명 DB·격리·다중 엔진·attestation·append-only 검증 | scanner 테이블 2/2, 단위 133/133, 통합 33/33, 승인 engine·object·result·attestation 0개 외부 대기 |
 | 0 | 프로젝트 구조·역할 폴더·AGENTS.md | 구조 검사 | 필수 경로와 작업 규칙 100% 존재 |
