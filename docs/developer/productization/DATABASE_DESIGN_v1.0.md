@@ -114,6 +114,8 @@ Phase 38의 `0024_external_reference_target_validation_contract.sql`은 외부 �
 
 Phase 39의 `0025_external_reference_proof_handoff_contract.sql`은 소유권 증명·DNS 무결성 인계 계약과 통제별 요건을 추가한다. 요건 6개는 proof 필드 12개, issuer trust 8개, 생명주기 7개, 재검증 트리거 8개와 DNS snapshot 필드 8개를 정의한다. 메타데이터 전용·불변 참조·서명·만료·철회 확인과 issuer/reviewer 분리를 요구한다. 실제 proof·issuer·evidence·signature·DNS·시각과 TTL·SLA는 NULL이며 원문·자격·비밀 저장과 proof intake·DNS·철회 polling·allowlist·연결·실행은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 40의 `0026_external_reference_proof_intake_contract.sql`은 증명 intake 상태기계 계약과 통제별 규칙을 추가한다. 규칙 6개는 상태 9개, 전이 14개, 거절 코드 12개, replay 통제 6개와 검토 결정 3개를 정의한다. quarantine 선행, 중복·replay·서명·issuer 검사와 서로 다른 2인 검토를 요구한다. 실제 채널·proof·evidence·signature·issuer·nonce·검토자·결정·시각과 보존 기간·replay window·SLA는 NULL이며 submission·quarantine write·상태 전이·검증·검토·release·allowlist·연결·실행은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS

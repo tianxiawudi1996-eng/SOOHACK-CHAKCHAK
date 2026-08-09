@@ -83,3 +83,10 @@ API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급
 - `GET /api/v1/privacy-operations/reference-proof-handoff-contracts/{id}`
 
 생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 38 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 증명 필드 12개, issuer trust 8개, 생명주기 7개, 재검증 트리거 8개와 DNS snapshot 필드 8개를 기록한다. 실제 proof 제출·issuer 결정·서명 검증·DNS snapshot·철회 polling·allowlist 쓰기·외부 접속 경로는 구현하지 않는다.
+
+## Phase 40 외부 참조 증명 intake 상태기계 정책
+
+- `POST /api/v1/privacy-operations/reference-proof-handoff-contracts/{id}/reference-proof-intake-contracts`
+- `GET /api/v1/privacy-operations/reference-proof-intake-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 39 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 intake 상태 9개, 허용 전이 14개, 거절 코드 12개, replay 통제 6개와 2인 검토 정책을 기록한다. 실제 증명 제출·quarantine 쓰기·중복/replay/서명/issuer 검사·검토 결정·quarantine 해제·allowlist 활성화 경로는 구현하지 않는다.
