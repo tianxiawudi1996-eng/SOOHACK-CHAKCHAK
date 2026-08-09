@@ -101,6 +101,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceTargetValidationContract',referenceSchemeGovernanceContractId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/reference-target-validation-contracts/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceTargetValidationContract',referenceTargetValidationContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/reference-target-validation-contracts/(${UUID_PATTERN})/reference-proof-handoff-contracts$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceProofHandoffContract',referenceTargetValidationContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/reference-proof-handoff-contracts/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceProofHandoffContract',referenceProofHandoffContractId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -328,6 +332,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExternalReferenceTargetValidationContract({actor,contractId:requireUuid(match.referenceTargetValidationContractId,'reference_target_validation_contract_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExternalReferenceProofHandoffContract'){
+    const data=await repository.getExternalReferenceProofHandoffContract({actor,contractId:requireUuid(match.referenceProofHandoffContractId,'reference_proof_handoff_contract_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -454,6 +462,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExternalReferenceTargetValidationContract'){
     const data=await repository.createExternalReferenceTargetValidationContract({
       actor,governanceContractId:requireUuid(match.referenceSchemeGovernanceContractId,'reference_scheme_governance_contract_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExternalReferenceProofHandoffContract'){
+    const data=await repository.createExternalReferenceProofHandoffContract({
+      actor,targetValidationContractId:requireUuid(match.referenceTargetValidationContractId,'reference_target_validation_contract_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

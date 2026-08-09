@@ -23,6 +23,7 @@ import {buildExternalConfigurationEvidenceQueueContract,externalConfigurationEvi
 import {buildExternalEvidenceSubmissionEnvelopeContract,externalEvidenceSubmissionEnvelopeBoundary,mapExternalEvidenceSubmissionEnvelopeContract} from '../privacy/external-evidence-submission-envelope.mjs';
 import {buildExternalReferenceSchemeGovernanceContract,externalReferenceSchemeGovernanceBoundary,mapExternalReferenceSchemeGovernanceContract} from '../privacy/external-reference-scheme-governance.mjs';
 import {buildExternalReferenceTargetValidationContract,externalReferenceTargetValidationBoundary,mapExternalReferenceTargetValidationContract} from '../privacy/external-reference-target-validation.mjs';
+import {buildExternalReferenceProofHandoffContract,externalReferenceProofHandoffBoundary,mapExternalReferenceProofHandoffContract} from '../privacy/external-reference-proof-handoff.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -3084,6 +3085,178 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadExternalReferenceTargetValidationContract(client,id),boundary:externalReferenceTargetValidationBoundary(),replayed:false};
+    });
+  }
+
+  async loadExternalReferenceProofHandoffContract(client,contractId){
+    const contract=await client.query(
+      `SELECT id,target_validation_contract_id,package_manifest_id,revision,predecessor_contract_id,
+              schema_version,status,contract_manifest,contract_sha256,kill_switch_engaged,
+              proof_intake_authorized,dns_resolution_authorized,network_connection_authorized,
+              execution_authorized,created_at
+         FROM mathchakchak.privacy_external_reference_proof_handoff_contract WHERE id=$1`,[contractId]
+    );
+    if(!contract.rowCount)throw notFound();
+    const requirements=await client.query(
+      `SELECT control_key,owner_role,proof_required_fields,issuer_trust_requirements,lifecycle_states,
+              revalidation_triggers,dns_snapshot_required_fields,handoff_status,evidence_status,
+              issuer_trust_status,dns_snapshot_status,ttl_policy_status,revocation_channel_status,
+              revalidation_sla_status,metadata_only,immutable_reference_required,signature_required,
+              expiry_required,revocation_check_required,issuer_must_differ_from_reviewer,
+              raw_evidence_storage_allowed,credential_material_storage_allowed,secret_material_storage_allowed,
+              maximum_proof_ttl_seconds,minimum_dns_ttl_seconds,revalidation_sla_seconds,
+              revocation_poll_interval_seconds,proof_id,proof_type,target_scope_reference,
+              issuer_identity_reference,evidence_reference,evidence_sha256,signature_reference,
+              signature_algorithm,revocation_endpoint_reference,nonce,dns_snapshot_reference,
+              dns_snapshot_sha256,issued_at,expires_at,received_at,verified_at,revoked_at,
+              handoff_submission_allowed,proof_validation_execution_allowed,dns_snapshot_capture_allowed,
+              revocation_polling_allowed,allowlist_write_allowed,automatic_promotion_allowed
+         FROM mathchakchak.privacy_external_reference_proof_handoff_requirement
+        WHERE handoff_contract_id=$1 ORDER BY control_key`,[contractId]
+    );
+    return mapExternalReferenceProofHandoffContract(contract.rows[0],{requirements:requirements.rows});
+  }
+
+  async getExternalReferenceProofHandoffContract({actor,contractId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadExternalReferenceProofHandoffContract(client,contractId),boundary:externalReferenceProofHandoffBoundary()};
+    }finally{client.release();}
+  }
+
+  async createExternalReferenceProofHandoffContract({actor,targetValidationContractId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.proof.handoff.${targetValidationContractId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExternalReferenceProofHandoffContract(client,replay),boundary:externalReferenceProofHandoffBoundary(),replayed:true};
+      const source=await client.query(
+        `SELECT t.*,g.envelope_contract_id,e.queue_contract_id,q.acceptance_packet_id,
+                a.intake_adapter_contract_id,ia.validation_contract_id,v.handoff_packet_id,
+                m.expires_at AS package_expires_at,r.revision AS readiness_revision,
+                successor.id AS successor_manifest_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_target_validation_contract newer_target
+                        WHERE newer_target.governance_contract_id=t.governance_contract_id AND newer_target.revision>t.revision) AS superseded_target_validation,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_scheme_governance_contract newer_governance
+                        WHERE newer_governance.envelope_contract_id=g.envelope_contract_id AND newer_governance.revision>g.revision) AS superseded_governance,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_submission_envelope_contract newer_envelope
+                        WHERE newer_envelope.queue_contract_id=e.queue_contract_id AND newer_envelope.revision>e.revision) AS superseded_envelope,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_configuration_evidence_queue_contract newer_queue
+                        WHERE newer_queue.acceptance_packet_id=q.acceptance_packet_id AND newer_queue.revision>q.revision) AS superseded_queue,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_connection_acceptance_packet newer_acceptance
+                        WHERE newer_acceptance.intake_adapter_contract_id=a.intake_adapter_contract_id AND newer_acceptance.revision>a.revision) AS superseded_acceptance,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_intake_adapter_contract newer_adapter
+                        WHERE newer_adapter.validation_contract_id=ia.validation_contract_id AND newer_adapter.revision>ia.revision) AS superseded_adapter,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_validation_contract newer_validation
+                        WHERE newer_validation.handoff_packet_id=v.handoff_packet_id AND newer_validation.revision>v.revision) AS superseded_validation,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_handoff_packet newer_handoff
+                        WHERE newer_handoff.readiness_review_id=p.readiness_review_id AND newer_handoff.revision>p.revision) AS superseded_handoff,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_readiness_review newer_review
+                        WHERE newer_review.package_manifest_id=t.package_manifest_id AND newer_review.revision>r.revision) AS superseded_readiness,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold hold
+                        WHERE hold.privacy_request_id=m.privacy_request_id AND hold.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_external_reference_target_validation_contract t
+           JOIN mathchakchak.privacy_external_reference_scheme_governance_contract g ON g.id=t.governance_contract_id
+           JOIN mathchakchak.privacy_external_evidence_submission_envelope_contract e ON e.id=g.envelope_contract_id
+           JOIN mathchakchak.privacy_external_configuration_evidence_queue_contract q ON q.id=e.queue_contract_id
+           JOIN mathchakchak.privacy_external_connection_acceptance_packet a ON a.id=q.acceptance_packet_id
+           JOIN mathchakchak.privacy_external_evidence_intake_adapter_contract ia ON ia.id=a.intake_adapter_contract_id
+           JOIN mathchakchak.privacy_external_evidence_validation_contract v ON v.id=ia.validation_contract_id
+           JOIN mathchakchak.privacy_execution_handoff_packet p ON p.id=v.handoff_packet_id
+           JOIN mathchakchak.privacy_execution_readiness_review r ON r.id=p.readiness_review_id
+           JOIN mathchakchak.privacy_fulfilment_package_manifest m ON m.id=t.package_manifest_id
+           LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id
+          WHERE t.id=$1 FOR UPDATE OF t,m`,[targetValidationContractId]
+      );
+      if(!source.rowCount)throw notFound();
+      const sourceRow=source.rows[0];
+      if(sourceRow.superseded_target_validation)throw conflict('PROOF_HANDOFF_TARGET_VALIDATION_SUPERSEDED');
+      if(sourceRow.superseded_governance)throw conflict('PROOF_HANDOFF_GOVERNANCE_SUPERSEDED');
+      if(sourceRow.superseded_envelope)throw conflict('PROOF_HANDOFF_ENVELOPE_SUPERSEDED');
+      if(sourceRow.superseded_queue)throw conflict('PROOF_HANDOFF_QUEUE_SUPERSEDED');
+      if(sourceRow.superseded_acceptance)throw conflict('PROOF_HANDOFF_ACCEPTANCE_SUPERSEDED');
+      if(sourceRow.superseded_adapter)throw conflict('PROOF_HANDOFF_ADAPTER_SUPERSEDED');
+      if(sourceRow.superseded_validation)throw conflict('PROOF_HANDOFF_EVIDENCE_VALIDATION_SUPERSEDED');
+      if(sourceRow.superseded_handoff)throw conflict('PROOF_HANDOFF_EXECUTION_HANDOFF_SUPERSEDED');
+      if(sourceRow.superseded_readiness)throw conflict('PROOF_HANDOFF_READINESS_SUPERSEDED');
+      if(sourceRow.successor_manifest_id)throw conflict('PROOF_HANDOFF_PACKAGE_SUPERSEDED');
+      if(new Date(sourceRow.package_expires_at).getTime()<=Date.now())throw conflict('PROOF_HANDOFF_PACKAGE_EXPIRED');
+      if(sourceRow.active_legal_hold)throw conflict('PROOF_HANDOFF_LEGAL_HOLD_ACTIVE');
+      if(hashCanonical(sourceRow.contract_manifest)!==sourceRow.contract_sha256)throw conflict('PROOF_HANDOFF_TARGET_VALIDATION_HASH_MISMATCH');
+      const rules=await client.query(
+        `SELECT control_key,owner_role,normalization_steps,rejection_rules,ownership_proof_types,
+                forbidden_address_classes,validation_status,target_status,dns_proof_status,region_proof_status,
+                ownership_proof_status,fail_closed,single_parse_required,idna_ascii_required,
+                unicode_confusable_check_required,wildcard_allowed,userinfo_allowed,ip_literal_allowed,
+                path_traversal_allowed,encoded_separator_allowed,redirect_allowed,maximum_redirects,
+                dns_rebinding_guard_required,private_network_allowed,port_policy_status,allowed_ports,
+                normalized_scheme,normalized_authority,normalized_bucket_or_container,normalized_path_prefix,
+                normalized_region,normalized_tenant_reference,ownership_evidence_reference,
+                ownership_evidence_sha256,dns_snapshot_reference,dns_snapshot_sha256,validated_at,
+                proposal_validation_execution_allowed,dns_lookup_allowed,external_reference_fetch_allowed,
+                allowlist_write_allowed
+           FROM mathchakchak.privacy_external_reference_target_validation_rule
+          WHERE validation_contract_id=$1 ORDER BY control_key`,[targetValidationContractId]
+      );
+      const targetValidationContract={...mapExternalReferenceTargetValidationContract(sourceRow,{rules:rules.rows}),is_latest_target_validation_contract:true};
+      const previous=await client.query(
+        `SELECT id,revision FROM mathchakchak.privacy_external_reference_proof_handoff_contract
+          WHERE target_validation_contract_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[targetValidationContractId]
+      );
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1;
+      const predecessorContractId=previous.rows[0]?.id??null;
+      const id=crypto.randomUUID();
+      let handoff;
+      try{
+        handoff=buildExternalReferenceProofHandoffContract({
+          contract_id:id,revision,predecessor_contract_id:predecessorContractId,
+          target_validation_contract:targetValidationContract
+        });
+      }catch(error){
+        throw conflict(error.message.split(':')[0]);
+      }
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_external_reference_proof_handoff_contract
+          (id,target_validation_contract_id,package_manifest_id,revision,predecessor_contract_id,
+           schema_version,status,contract_manifest,contract_sha256,created_by_user_id,kill_switch_engaged,
+           proof_intake_authorized,dns_resolution_authorized,network_connection_authorized,execution_authorized)
+         VALUES ($1,$2,$3,$4,$5,'1.0.0',$6,$7::jsonb,$8,$9,true,false,false,false,false)`,
+        [id,targetValidationContractId,targetValidationContract.package_manifest_id,revision,predecessorContractId,
+         handoff.status,JSON.stringify(handoff.contract_manifest),handoff.contract_sha256,actor.userId]
+      );
+      for(const requirement of handoff.requirements){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_external_reference_proof_handoff_requirement
+            (id,handoff_contract_id,control_key,owner_role,proof_required_fields,issuer_trust_requirements,
+             lifecycle_states,revalidation_triggers,dns_snapshot_required_fields,handoff_status,evidence_status,
+             issuer_trust_status,dns_snapshot_status,ttl_policy_status,revocation_channel_status,
+             revalidation_sla_status,metadata_only,immutable_reference_required,signature_required,
+             expiry_required,revocation_check_required,issuer_must_differ_from_reviewer,
+             raw_evidence_storage_allowed,credential_material_storage_allowed,secret_material_storage_allowed,
+             maximum_proof_ttl_seconds,minimum_dns_ttl_seconds,revalidation_sla_seconds,
+             revocation_poll_interval_seconds,proof_id,proof_type,target_scope_reference,
+             issuer_identity_reference,evidence_reference,evidence_sha256,signature_reference,
+             signature_algorithm,revocation_endpoint_reference,nonce,dns_snapshot_reference,
+             dns_snapshot_sha256,issued_at,expires_at,received_at,verified_at,revoked_at,
+             handoff_submission_allowed,proof_validation_execution_allowed,dns_snapshot_capture_allowed,
+             revocation_polling_allowed,allowlist_write_allowed,automatic_promotion_allowed)
+           VALUES ($1,$2,$3,$4,$5::jsonb,$6::jsonb,$7::jsonb,$8::jsonb,$9::jsonb,
+                   'POLICY_DEFINED_EVIDENCE_MISSING','MISSING_EXTERNAL','MISSING_EXTERNAL','MISSING_EXTERNAL',
+                   'MISSING_EXTERNAL','MISSING_EXTERNAL','MISSING_EXTERNAL',true,true,true,true,true,true,
+                   false,false,false,
+                   NULL,NULL,NULL,NULL,
+                   NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,
+                   NULL,NULL,NULL,NULL,NULL,
+                   false,false,false,false,false,false)`,
+          [crypto.randomUUID(),id,requirement.control_key,requirement.owner_role,
+           JSON.stringify(requirement.proof_required_fields),JSON.stringify(requirement.issuer_trust_requirements),
+           JSON.stringify(requirement.lifecycle_states),JSON.stringify(requirement.revalidation_triggers),
+           JSON.stringify(requirement.dns_snapshot_required_fields)]
+        );
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadExternalReferenceProofHandoffContract(client,id),boundary:externalReferenceProofHandoffBoundary(),replayed:false};
     });
   }
 }
