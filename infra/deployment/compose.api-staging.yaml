@@ -38,6 +38,7 @@ services:
       - ../database/migrations/0026_external_reference_proof_intake_contract.sql:/docker-entrypoint-initdb.d/026-external-reference-proof-intake-contract.sql:ro
       - ../database/migrations/0027_external_reference_proof_quarantine_readiness_contract.sql:/docker-entrypoint-initdb.d/027-external-reference-proof-quarantine-readiness-contract.sql:ro
       - ../database/migrations/0028_external_reference_proof_scanner_readiness_contract.sql:/docker-entrypoint-initdb.d/028-external-reference-proof-scanner-readiness-contract.sql:ro
+      - ../database/migrations/0029_external_reference_proof_scan_attestation_contract.sql:/docker-entrypoint-initdb.d/029-external-reference-proof-scan-attestation-contract.sql:ro
       - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
       - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
       - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro

@@ -9,6 +9,13 @@
 
 생성은 `SECURITY_APPROVER` 전용이다. 최신 Phase 41 계약, 패키지 유효기간·후속 패키지·법적 보류·SHA-256을 검증하고 스캐너 신뢰 8개, 서명 DB 최신성 7개, 실행 단계 9개, 실패 정책 10개와 attestation 필드 12개를 기록한다. 승인 엔진은 0개이며 object read·scan·retry·failover·attestation·release endpoint는 제공하지 않는다.
 
+## Phase 43 Scan attestation 준비 API
+
+- `POST /api/v1/privacy-operations/scanner-readiness-contracts/{id}/scan-attestation-contracts`
+- `GET /api/v1/privacy-operations/scan-attestation-contracts/{id}`
+
+실제 결과 수신·검증·조정·release 경로는 제공하지 않는다.
+
 - Node.js 24 HTTP server
 - PostgreSQL 16 via `pg`
 - JSON UTF-8 `/api/v1`

@@ -27,6 +27,7 @@ import {buildExternalReferenceProofHandoffContract,externalReferenceProofHandoff
 import {buildExternalReferenceProofIntakeContract,externalReferenceProofIntakeBoundary,mapExternalReferenceProofIntakeContract} from '../privacy/external-reference-proof-intake.mjs';
 import {buildExternalReferenceProofQuarantineReadinessContract,externalReferenceProofQuarantineReadinessBoundary,mapExternalReferenceProofQuarantineReadinessContract} from '../privacy/external-reference-proof-quarantine-readiness.mjs';
 import {buildExternalReferenceProofScannerReadinessContract,externalReferenceProofScannerReadinessBoundary,mapExternalReferenceProofScannerReadinessContract} from '../privacy/external-reference-proof-scanner-readiness.mjs';
+import {buildExternalReferenceProofScanAttestationContract,externalReferenceProofScanAttestationBoundary,mapExternalReferenceProofScanAttestationContract} from '../privacy/external-reference-proof-scan-attestation.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -3727,6 +3728,33 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadExternalReferenceProofScannerReadinessContract(client,id),boundary:externalReferenceProofScannerReadinessBoundary(),replayed:false};
+    });
+  }
+
+  async loadExternalReferenceProofScanAttestationContract(client,contractId){
+    const contract=await client.query(`SELECT id,scanner_readiness_contract_id,package_manifest_id,revision,predecessor_contract_id,schema_version,status,contract_manifest,contract_sha256,kill_switch_engaged,result_intake_authorized,attestation_validation_authorized,release_decision_authorized,execution_authorized,created_at FROM mathchakchak.privacy_external_reference_proof_scan_attestation_contract WHERE id=$1`,[contractId]);
+    if(!contract.rowCount)throw notFound();
+    const requirements=await client.query(`SELECT control_key,owner_role,verification_steps,result_enums,reconciliation_rules,failure_codes,release_guards,accepted_attestations,readiness_status,result_status,attestation_status,reconciliation_status,release_guard_status,metadata_only,fail_closed,dual_engine_required,human_release_required,raw_evidence_storage_allowed,credential_material_storage_allowed,secret_material_storage_allowed,object_reference,object_sha256,primary_attestation_reference,secondary_attestation_reference,reconciliation_reference,release_guard_evidence_reference,verified_at,reconciled_at,result_intake_allowed,attestation_validation_execution_allowed,result_reconciliation_allowed,release_guard_write_allowed,release_decision_write_allowed,quarantine_release_allowed,automatic_promotion_allowed FROM mathchakchak.privacy_external_reference_proof_scan_attestation_requirement WHERE attestation_contract_id=$1 ORDER BY control_key`,[contractId]);
+    return mapExternalReferenceProofScanAttestationContract(contract.rows[0],{requirements:requirements.rows});
+  }
+
+  async getExternalReferenceProofScanAttestationContract({actor,contractId}){const client=await this.pool.connect();try{await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);return {...await this.loadExternalReferenceProofScanAttestationContract(client,contractId),boundary:externalReferenceProofScanAttestationBoundary()};}finally{client.release();}}
+
+  async createExternalReferenceProofScanAttestationContract({actor,scannerReadinessContractId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.attest.${scannerReadinessContractId}`;const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExternalReferenceProofScanAttestationContract(client,replay),boundary:externalReferenceProofScanAttestationBoundary(),replayed:true};
+      const source=await client.query(`SELECT s.*,m.expires_at AS package_expires_at,successor.id AS successor_manifest_id,EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_proof_scanner_readiness_contract newer WHERE newer.quarantine_readiness_contract_id=s.quarantine_readiness_contract_id AND newer.revision>s.revision) AS superseded_scanner,EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold hold WHERE hold.privacy_request_id=m.privacy_request_id AND hold.status='ACTIVE') AS active_legal_hold FROM mathchakchak.privacy_external_reference_proof_scanner_readiness_contract s JOIN mathchakchak.privacy_fulfilment_package_manifest m ON m.id=s.package_manifest_id LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id WHERE s.id=$1 FOR UPDATE OF s,m`,[scannerReadinessContractId]);
+      if(!source.rowCount)throw notFound();const row=source.rows[0];
+      if(row.superseded_scanner)throw conflict('SCAN_ATTESTATION_SCANNER_SUPERSEDED');if(row.successor_manifest_id)throw conflict('SCAN_ATTESTATION_PACKAGE_SUPERSEDED');if(new Date(row.package_expires_at).getTime()<=Date.now())throw conflict('SCAN_ATTESTATION_PACKAGE_EXPIRED');if(row.active_legal_hold)throw conflict('SCAN_ATTESTATION_LEGAL_HOLD_ACTIVE');if(hashCanonical(row.contract_manifest)!==row.contract_sha256)throw conflict('SCAN_ATTESTATION_SCANNER_HASH_MISMATCH');
+      const scanner={...await this.loadExternalReferenceProofScannerReadinessContract(client,scannerReadinessContractId),is_latest_scanner_readiness_contract:true};
+      const previous=await client.query(`SELECT id,revision FROM mathchakchak.privacy_external_reference_proof_scan_attestation_contract WHERE scanner_readiness_contract_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[scannerReadinessContractId]);
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1,predecessorContractId=previous.rows[0]?.id??null,id=crypto.randomUUID();let built;
+      try{built=buildExternalReferenceProofScanAttestationContract({contract_id:id,revision,predecessor_contract_id:predecessorContractId,scanner_readiness_contract:scanner});}catch(error){throw conflict(error.message.split(':')[0]);}
+      await client.query(`INSERT INTO mathchakchak.privacy_external_reference_proof_scan_attestation_contract(id,scanner_readiness_contract_id,package_manifest_id,revision,predecessor_contract_id,schema_version,status,contract_manifest,contract_sha256,created_by_user_id) VALUES($1,$2,$3,$4,$5,'1.0.0',$6,$7::jsonb,$8,$9)`,[id,scannerReadinessContractId,scanner.package_manifest_id,revision,predecessorContractId,built.status,JSON.stringify(built.contract_manifest),built.contract_sha256,actor.userId]);
+      for(const item of built.requirements)await client.query(`INSERT INTO mathchakchak.privacy_external_reference_proof_scan_attestation_requirement(id,attestation_contract_id,control_key,owner_role,verification_steps,result_enums,reconciliation_rules,failure_codes,release_guards,accepted_attestations,readiness_status) VALUES($1,$2,$3,$4,$5::jsonb,$6::jsonb,$7::jsonb,$8::jsonb,$9::jsonb,'[]'::jsonb,'POLICY_DEFINED_EXTERNAL_RESULTS_MISSING')`,[crypto.randomUUID(),id,item.control_key,item.owner_role,JSON.stringify(item.verification_steps),JSON.stringify(item.result_enums),JSON.stringify(item.reconciliation_rules),JSON.stringify(item.failure_codes),JSON.stringify(item.release_guards)]);
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});return {...await this.loadExternalReferenceProofScanAttestationContract(client,id),boundary:externalReferenceProofScanAttestationBoundary(),replayed:false};
     });
   }
 }

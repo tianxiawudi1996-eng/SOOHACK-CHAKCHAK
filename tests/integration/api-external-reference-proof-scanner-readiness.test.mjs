@@ -1,16 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 import {hashCanonical} from '../../developer/src/privacy/fulfilment-package.mjs';
 
-const baseUrl=process.env.API_BASE_URL||'http://127.0.0.1:4181';
+export const baseUrl=process.env.API_BASE_URL||'http://127.0.0.1:4181';
 const key=(label)=>`phase42-${label}-${crypto.randomUUID()}`;
-const post=async(path,authorization,label,body={})=>{
+export const post=async(path,authorization,label,body={})=>{
   const response=await fetch(`${baseUrl}${path}`,{method:'POST',headers:{authorization,'content-type':'application/json','idempotency-key':key(label)},body:JSON.stringify(body)});
   return {response,payload:await response.json()};
 };
 
-async function prepareQuarantineContract(){
+export async function prepareQuarantineContract(){
   const studentIssued=await post('/api/v1/local-demo/session','','student-session');
   const studentAuth=`Bearer ${studentIssued.payload.data.access_token}`;
   const request=await post('/api/v1/privacy/requests',studentAuth,'request',{request_type:'EXPORT',locale:'ko'});
@@ -50,7 +51,7 @@ async function prepareQuarantineContract(){
   return {studentAuth,operatorAuth,securityAuth,transition,intakeId:intake.payload.data.id,quarantine};
 }
 
-test('scanner readiness defines fail-closed scanner policy without reading, scanning, attesting, or releasing content',async()=>{
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)test('scanner readiness defines fail-closed scanner policy without reading, scanning, attesting, or releasing content',async()=>{
   const context=await prepareQuarantineContract();
   const quarantineId=context.quarantine.payload.data.id;
   const path=`/api/v1/privacy-operations/quarantine-readiness-contracts/${quarantineId}/scanner-readiness-contracts`;

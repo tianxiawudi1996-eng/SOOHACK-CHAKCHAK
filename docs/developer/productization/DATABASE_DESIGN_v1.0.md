@@ -1,5 +1,9 @@
 # 수학착착 데이터베이스 설계 v1.0
 
+## Phase 43 PostgreSQL 0029
+
+Scan attestation 계약과 통제별 요건을 append-only로 저장한다. 결과·attestation·조정·release 근거는 NULL이며 입력·검증·조정·release 권한은 false다.
+
 ## Phase 42 PostgreSQL 0028
 
 `0028_external_reference_proof_scanner_readiness_contract.sql`은 스캐너 준비 계약과 통제별 요건 테이블을 추가한다. 승인된 엔진 목록은 빈 JSON 배열로 고정하고 scanner·signature DB·object·result·attestation 참조와 실행 수치는 NULL로 강제한다. object read·scan·retry·failover·attestation·release 권한은 false이며 두 테이블의 UPDATE·DELETE는 append-only trigger로 거부한다. rollback은 두 테이블과 전용 trigger function만 제거한다.
