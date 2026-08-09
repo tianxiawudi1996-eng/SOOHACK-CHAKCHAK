@@ -69,3 +69,10 @@ API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급
 - `GET /api/v1/privacy-operations/reference-scheme-governance-contracts/{id}`
 
 생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 36 계약과 패키지 유효성·법적 보존·SHA-256을 검증하고 제안 필드 10개, 대상 제한 6개, 생명주기 7개, 재승인 트리거 6개와 직무분리 정책만 기록한다. 실제 제안·승인·allowlist 등록·활성화·철회·증적 제출 경로는 구현하지 않는다.
+
+## Phase 38 외부 참조 대상 정규화·SSRF 방어 계약
+
+- `POST /api/v1/privacy-operations/reference-scheme-governance-contracts/{id}/reference-target-validation-contracts`
+- `GET /api/v1/privacy-operations/reference-target-validation-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 37 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 정규화 8단계, 거부 규칙 14개, 소유권 증명 유형 6개, 금지 주소 클래스 8개를 기록한다. 실제 target 입력·DNS 조회·증명 제출·redirect·allowlist 쓰기·외부 fetch·네트워크 접속 경로는 구현하지 않는다.

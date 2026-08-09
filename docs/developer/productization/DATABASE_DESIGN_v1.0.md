@@ -110,6 +110,8 @@ Phase 36의 `0022_external_evidence_submission_envelope_contract.sql`은 제출 
 
 Phase 37의 `0023_external_reference_scheme_governance_contract.sql`은 참조 scheme 거버넌스 계약과 통제별 정책을 추가한다. 정책 6개는 제안 필드 10개, 대상 제한 필드 6개, 생명주기 7개와 재승인 트리거 6개를 정의한다. 제안자·개인정보·보안 승인자 직무분리와 정확한 대상 범위를 요구하고 wildcard authority·무제한 path를 금지한다. 실제 scheme·대상·승인자·시각과 최대 유효기간은 NULL이며 allowlist·제출·자동 승격·연결·실행 승인은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 38의 `0024_external_reference_target_validation_contract.sql`은 외부 참조 대상 검증 계약과 통제별 규칙을 추가한다. 규칙 6개는 정규화 단계 8개, 거부 규칙 14개, 소유권 증명 유형 6개와 금지 주소 클래스 8개를 정의한다. strict single parse, IDNA ASCII, Unicode confusable 검사, 경로 탈출·인코딩 우회·userinfo·IP literal·wildcard 거부와 DNS 재바인딩·사설망 차단을 요구한다. 실제 대상·증명·DNS snapshot·검증 시각은 NULL이고 허용 포트는 빈 배열이며 redirect·DNS lookup·allowlist write·fetch·연결·실행은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
