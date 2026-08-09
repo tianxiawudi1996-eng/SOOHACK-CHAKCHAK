@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 42,
+  "status": "AUTO_QA_PASS_LOCAL_SCANNER_READINESS_POLICY_BLOCKED_EXTERNAL",
+  "scope": "LOCAL_SYNTHETIC_SCANNER_READINESS_POLICY_ONLY",
+  "contract": {
+    "contract_tables": "2/2 DEFINED",
+    "control_requirements": "6/6 DEFINED",
+    "trust_requirements": "8/8 DEFINED",
+    "signature_freshness_controls": "7/7 DEFINED",
+    "execution_stages": "9/9 DEFINED",
+    "failure_policies": "10/10 DEFINED",
+    "attestation_required_fields": "12/12 DEFINED",
+    "approved_scanner_engines": "0 EXTERNAL_APPROVAL_MISSING",
+    "objects": "0 OBJECT_READ_DISABLED",
+    "scan_results": "0 SCAN_EXECUTION_DISABLED",
+    "attestations": "0 ATTESTATION_WRITE_DISABLED"
+  },
+  "tests": {
+    "unit": "133/133 PASS",
+    "phase_integration": "1/1 PASS",
+    "postgresql_regression": "33/33 PASS",
+    "append_only_inverse": "2/2 BLOCKED",
+    "migration": "TRANSACTIONAL_FORWARD_ROLLBACK_REAPPLY PASS",
+    "full_productization": "PASS",
+    "runtime_readiness": "20/20 PASS p95 6.40ms database_ready"
+  },
+  "safety": {
+    "object_read_enabled": false,
+    "scanner_identity_validation_enabled": false,
+    "signature_database_update_enabled": false,
+    "primary_scan_execution_enabled": false,
+    "secondary_scan_execution_enabled": false,
+    "retry_execution_enabled": false,
+    "failover_execution_enabled": false,
+    "result_reconciliation_enabled": false,
+    "attestation_write_enabled": false,
+    "release_decision_write_enabled": false,
+    "quarantine_release_enabled": false,
+    "network_connection_authorized": false,
+    "execution_authorized": false,
+    "source_data_mutations": 0
+  },
+  "first_full_integration_attempt": {
+    "status": "ENVIRONMENT_CONFIGURATION_FAILURE",
+    "result": "30/33 PASS",
+    "cause": "TEST_SESSION_HMAC_SECRET was absent for three legacy integration files",
+    "fix": "Injected the local isolated test secret into the process environment only and reran all tests",
+    "retest": "33/33 PASS",
+    "secret_written_to_repository": false
+  },
+  "health_path_correction": {
+    "initial_path": "/health",
+    "initial_result": "404 EXPECTED_UNROUTED_PATH",
+    "correct_path": "/readyz",
+    "retest": "200 PASS",
+    "runtime_probe": "20/20 PASS"
+  },
+  "manual_or_external_status": "BLOCKED_EXTERNAL_SCANNER_TRUST_SIGNATURE_DATABASE_ISOLATION_SECONDARY_ENGINE_AND_ATTESTATION_SINK"
+}

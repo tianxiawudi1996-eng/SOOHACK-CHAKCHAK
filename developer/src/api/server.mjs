@@ -113,6 +113,10 @@ function route(method, pathname) {
   if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceProofQuarantineReadinessContract',referenceProofIntakeContractId:operationsMatch[1]};
   operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/quarantine-readiness-contracts/(${UUID_PATTERN})$`));
   if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceProofQuarantineReadinessContract',quarantineReadinessContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/quarantine-readiness-contracts/(${UUID_PATTERN})/scanner-readiness-contracts$`));
+  if(method==='POST'&&operationsMatch)return {name:'createExternalReferenceProofScannerReadinessContract',quarantineReadinessContractId:operationsMatch[1]};
+  operationsMatch=pathname.match(new RegExp(`^/api/v1/privacy-operations/scanner-readiness-contracts/(${UUID_PATTERN})$`));
+  if(method==='GET'&&operationsMatch)return {name:'getExternalReferenceProofScannerReadinessContract',scannerReadinessContractId:operationsMatch[1]};
   if (method === 'GET' && pathname === '/api/v1/privacy/requests') return {name:'listPrivacyRequests'};
   if (method === 'POST' && pathname === '/api/v1/privacy/requests') return {name:'createPrivacyRequest'};
   let privacyMatch=pathname.match(new RegExp(`^/api/v1/privacy/requests/(${UUID_PATTERN})/cancel$`));
@@ -352,6 +356,10 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
     const data=await repository.getExternalReferenceProofQuarantineReadinessContract({actor,contractId:requireUuid(match.quarantineReadinessContractId,'quarantine_readiness_contract_id')});
     return success(data,{requestId});
   }
+  if(match.name==='getExternalReferenceProofScannerReadinessContract'){
+    const data=await repository.getExternalReferenceProofScannerReadinessContract({actor,contractId:requireUuid(match.scannerReadinessContractId,'scanner_readiness_contract_id')});
+    return success(data,{requestId});
+  }
   if (match.name === 'getAdaptiveRecommendation') {
     const data = await repository.getAdaptiveRecommendation({actor, studentId:requireUuid(match.studentId, 'student_id')});
     return success(data, {requestId});
@@ -496,6 +504,12 @@ async function execute(repository, request, match, requestId, {auth, metrics}) {
   if(match.name==='createExternalReferenceProofQuarantineReadinessContract'){
     const data=await repository.createExternalReferenceProofQuarantineReadinessContract({
       actor,proofIntakeContractId:requireUuid(match.referenceProofIntakeContractId,'reference_proof_intake_contract_id'),key,hash
+    });
+    return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
+  }
+  if(match.name==='createExternalReferenceProofScannerReadinessContract'){
+    const data=await repository.createExternalReferenceProofScannerReadinessContract({
+      actor,quarantineReadinessContractId:requireUuid(match.quarantineReadinessContractId,'quarantine_readiness_contract_id'),key,hash
     });
     return success(data,{requestId,status:data.replayed?200:201,extraMeta:{replayed:data.replayed}});
   }

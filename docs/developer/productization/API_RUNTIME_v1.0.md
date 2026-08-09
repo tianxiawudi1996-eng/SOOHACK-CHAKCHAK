@@ -2,6 +2,13 @@
 
 ## 런타임
 
+## Phase 42 외부 참조 증명 스캐너 실행 준비
+
+- `POST /api/v1/privacy-operations/quarantine-readiness-contracts/{id}/scanner-readiness-contracts`
+- `GET /api/v1/privacy-operations/scanner-readiness-contracts/{id}`
+
+생성은 `SECURITY_APPROVER` 전용이다. 최신 Phase 41 계약, 패키지 유효기간·후속 패키지·법적 보류·SHA-256을 검증하고 스캐너 신뢰 8개, 서명 DB 최신성 7개, 실행 단계 9개, 실패 정책 10개와 attestation 필드 12개를 기록한다. 승인 엔진은 0개이며 object read·scan·retry·failover·attestation·release endpoint는 제공하지 않는다.
+
 - Node.js 24 HTTP server
 - PostgreSQL 16 via `pg`
 - JSON UTF-8 `/api/v1`

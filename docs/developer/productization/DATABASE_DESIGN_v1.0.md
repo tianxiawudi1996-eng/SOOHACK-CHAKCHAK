@@ -1,5 +1,9 @@
 # 수학착착 데이터베이스 설계 v1.0
 
+## Phase 42 PostgreSQL 0028
+
+`0028_external_reference_proof_scanner_readiness_contract.sql`은 스캐너 준비 계약과 통제별 요건 테이블을 추가한다. 승인된 엔진 목록은 빈 JSON 배열로 고정하고 scanner·signature DB·object·result·attestation 참조와 실행 수치는 NULL로 강제한다. object read·scan·retry·failover·attestation·release 권한은 false이며 두 테이블의 UPDATE·DELETE는 append-only trigger로 거부한다. rollback은 두 테이블과 전용 trigger function만 제거한다.
+
 ## 1. Goal Framing
 
 - 사용자: 학생, 연결된 학부모, 교육 콘텐츠 운영자, 개인정보·서비스 운영 책임자
