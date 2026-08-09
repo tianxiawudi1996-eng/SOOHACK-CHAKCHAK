@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 41,
+  "status": "AUTO_QA_PASS_LOCAL_QUARANTINE_READINESS_POLICY_BLOCKED_EXTERNAL",
+  "scope": "LOCAL_SYNTHETIC_QUARANTINE_READINESS_POLICY_ONLY",
+  "contract": {
+    "contract_tables": "2/2 DEFINED",
+    "control_requirements": "6/6 DEFINED",
+    "storage_security_controls": "8/8 DEFINED",
+    "content_inspection_stages": "8/8 DEFINED",
+    "content_rejection_codes": "12/12 DEFINED",
+    "retention_lifecycle_events": "7/7 DEFINED",
+    "audit_required_fields": "10/10 DEFINED",
+    "allowed_content_types": "0 EXTERNAL_APPROVAL_MISSING",
+    "objects": "0 STORAGE_MISSING_EXTERNAL",
+    "scan_results": "0 SCANNER_MISSING_EXTERNAL"
+  },
+  "tests": {
+    "unit": "129/129 PASS",
+    "phase_integration": "1/1 PASS",
+    "postgresql_regression": "32/32 PASS",
+    "append_only_inverse": "2/2 BLOCKED",
+    "migration": "FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety": {
+    "proof_upload_enabled": false,
+    "quarantine_storage_write_enabled": false,
+    "content_inspection_execution_enabled": false,
+    "malware_scan_execution_enabled": false,
+    "retention_timer_write_enabled": false,
+    "deletion_execution_enabled": false,
+    "audit_event_write_enabled": false,
+    "quarantine_release_enabled": false,
+    "network_connection_authorized": false,
+    "execution_authorized": false,
+    "source_data_mutations": 0
+  },
+  "manual_or_external_status": "BLOCKED_EXTERNAL_STORAGE_SCANNER_CONTENT_RETENTION_DELETION_AND_AUDIT_POLICY"
+}

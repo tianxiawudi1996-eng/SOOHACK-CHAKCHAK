@@ -25,6 +25,7 @@ import {buildExternalReferenceSchemeGovernanceContract,externalReferenceSchemeGo
 import {buildExternalReferenceTargetValidationContract,externalReferenceTargetValidationBoundary,mapExternalReferenceTargetValidationContract} from '../privacy/external-reference-target-validation.mjs';
 import {buildExternalReferenceProofHandoffContract,externalReferenceProofHandoffBoundary,mapExternalReferenceProofHandoffContract} from '../privacy/external-reference-proof-handoff.mjs';
 import {buildExternalReferenceProofIntakeContract,externalReferenceProofIntakeBoundary,mapExternalReferenceProofIntakeContract} from '../privacy/external-reference-proof-intake.mjs';
+import {buildExternalReferenceProofQuarantineReadinessContract,externalReferenceProofQuarantineReadinessBoundary,mapExternalReferenceProofQuarantineReadinessContract} from '../privacy/external-reference-proof-quarantine-readiness.mjs';
 import {conflict, forbidden, notFound} from './errors.mjs';
 import {scoreResponse} from './scoring.mjs';
 
@@ -3412,6 +3413,163 @@ export class MathChakChakRepository {
       }
       await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
       return {...await this.loadExternalReferenceProofIntakeContract(client,id),boundary:externalReferenceProofIntakeBoundary(),replayed:false};
+    });
+  }
+
+  async loadExternalReferenceProofQuarantineReadinessContract(client,contractId){
+    const contract=await client.query(
+      `SELECT id,proof_intake_contract_id,package_manifest_id,revision,predecessor_contract_id,
+              schema_version,status,contract_manifest,contract_sha256,kill_switch_engaged,
+              quarantine_storage_authorized,inspection_execution_authorized,network_connection_authorized,
+              execution_authorized,created_at
+         FROM mathchakchak.privacy_external_reference_proof_quarantine_readiness_contract WHERE id=$1`,[contractId]
+    );
+    if(!contract.rowCount)throw notFound();
+    const requirements=await client.query(
+      `SELECT control_key,owner_role,storage_security_controls,content_inspection_stages,
+              content_rejection_codes,retention_lifecycle_events,audit_required_fields,allowed_content_types,
+              readiness_status,storage_status,scanner_status,retention_policy_status,deletion_policy_status,
+              audit_sink_status,metadata_only,fail_closed,encryption_at_rest_required,deny_public_access_required,
+              object_lock_required,malware_scan_required,content_type_allowlist_required,
+              deletion_attestation_required,immutable_audit_required,raw_evidence_storage_allowed,
+              credential_material_storage_allowed,secret_material_storage_allowed,maximum_object_bytes,
+              maximum_archive_depth,quarantine_retention_seconds,deletion_sla_seconds,
+              storage_namespace_reference,storage_policy_evidence_reference,storage_policy_evidence_sha256,
+              scanner_identity_reference,scanner_policy_reference,retention_policy_reference,
+              deletion_policy_reference,audit_sink_reference,object_reference,object_sha256,
+              scan_result_reference,deletion_attestation_reference,stored_at,scanned_at,
+              retention_expires_at,deleted_at,storage_write_allowed,content_inspection_execution_allowed,
+              malware_scan_execution_allowed,retention_timer_write_allowed,deletion_execution_allowed,
+              deletion_attestation_write_allowed,audit_event_write_allowed,quarantine_release_allowed,
+              automatic_promotion_allowed
+         FROM mathchakchak.privacy_external_reference_proof_quarantine_requirement
+        WHERE readiness_contract_id=$1 ORDER BY control_key`,[contractId]
+    );
+    return mapExternalReferenceProofQuarantineReadinessContract(contract.rows[0],{requirements:requirements.rows});
+  }
+
+  async getExternalReferenceProofQuarantineReadinessContract({actor,contractId}){
+    const client=await this.pool.connect();
+    try{
+      await this.assertPrivacyOperationRole(client,actor,['OPERATOR','PRIVACY_APPROVER','SECURITY_APPROVER']);
+      return {...await this.loadExternalReferenceProofQuarantineReadinessContract(client,contractId),boundary:externalReferenceProofQuarantineReadinessBoundary()};
+    }finally{client.release();}
+  }
+
+  async createExternalReferenceProofQuarantineReadinessContract({actor,proofIntakeContractId,key,hash}){
+    return this.withTransaction(async(client)=>{
+      await this.assertPrivacyOperationRole(client,actor,['SECURITY_APPROVER']);
+      const scope=`privacy.quarantine.${proofIntakeContractId}`;
+      const replay=await this.findIdempotency(client,{actor,scope,key,hash});
+      if(replay)return {...await this.loadExternalReferenceProofQuarantineReadinessContract(client,replay),boundary:externalReferenceProofQuarantineReadinessBoundary(),replayed:true};
+      const source=await client.query(
+        `SELECT i.*,h.target_validation_contract_id,t.governance_contract_id,g.envelope_contract_id,
+                e.queue_contract_id,q.acceptance_packet_id,a.intake_adapter_contract_id,
+                ia.validation_contract_id,v.handoff_packet_id,m.expires_at AS package_expires_at,
+                r.revision AS readiness_revision,successor.id AS successor_manifest_id,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_proof_intake_contract newer_intake
+                        WHERE newer_intake.proof_handoff_contract_id=i.proof_handoff_contract_id AND newer_intake.revision>i.revision) AS superseded_proof_intake,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_proof_handoff_contract newer_handoff
+                        WHERE newer_handoff.target_validation_contract_id=h.target_validation_contract_id AND newer_handoff.revision>h.revision) AS superseded_proof_handoff,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_target_validation_contract newer_target
+                        WHERE newer_target.governance_contract_id=t.governance_contract_id AND newer_target.revision>t.revision) AS superseded_target_validation,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_reference_scheme_governance_contract newer_governance
+                        WHERE newer_governance.envelope_contract_id=g.envelope_contract_id AND newer_governance.revision>g.revision) AS superseded_governance,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_submission_envelope_contract newer_envelope
+                        WHERE newer_envelope.queue_contract_id=e.queue_contract_id AND newer_envelope.revision>e.revision) AS superseded_envelope,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_configuration_evidence_queue_contract newer_queue
+                        WHERE newer_queue.acceptance_packet_id=q.acceptance_packet_id AND newer_queue.revision>q.revision) AS superseded_queue,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_connection_acceptance_packet newer_acceptance
+                        WHERE newer_acceptance.intake_adapter_contract_id=a.intake_adapter_contract_id AND newer_acceptance.revision>a.revision) AS superseded_acceptance,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_intake_adapter_contract newer_adapter
+                        WHERE newer_adapter.validation_contract_id=ia.validation_contract_id AND newer_adapter.revision>ia.revision) AS superseded_adapter,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_external_evidence_validation_contract newer_validation
+                        WHERE newer_validation.handoff_packet_id=v.handoff_packet_id AND newer_validation.revision>v.revision) AS superseded_validation,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_handoff_packet newer_execution_handoff
+                        WHERE newer_execution_handoff.readiness_review_id=p.readiness_review_id AND newer_execution_handoff.revision>p.revision) AS superseded_execution_handoff,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_execution_readiness_review newer_review
+                        WHERE newer_review.package_manifest_id=i.package_manifest_id AND newer_review.revision>r.revision) AS superseded_readiness,
+                EXISTS(SELECT 1 FROM mathchakchak.privacy_legal_hold hold
+                        WHERE hold.privacy_request_id=m.privacy_request_id AND hold.status='ACTIVE') AS active_legal_hold
+           FROM mathchakchak.privacy_external_reference_proof_intake_contract i
+           JOIN mathchakchak.privacy_external_reference_proof_handoff_contract h ON h.id=i.proof_handoff_contract_id
+           JOIN mathchakchak.privacy_external_reference_target_validation_contract t ON t.id=h.target_validation_contract_id
+           JOIN mathchakchak.privacy_external_reference_scheme_governance_contract g ON g.id=t.governance_contract_id
+           JOIN mathchakchak.privacy_external_evidence_submission_envelope_contract e ON e.id=g.envelope_contract_id
+           JOIN mathchakchak.privacy_external_configuration_evidence_queue_contract q ON q.id=e.queue_contract_id
+           JOIN mathchakchak.privacy_external_connection_acceptance_packet a ON a.id=q.acceptance_packet_id
+           JOIN mathchakchak.privacy_external_evidence_intake_adapter_contract ia ON ia.id=a.intake_adapter_contract_id
+           JOIN mathchakchak.privacy_external_evidence_validation_contract v ON v.id=ia.validation_contract_id
+           JOIN mathchakchak.privacy_execution_handoff_packet p ON p.id=v.handoff_packet_id
+           JOIN mathchakchak.privacy_execution_readiness_review r ON r.id=p.readiness_review_id
+           JOIN mathchakchak.privacy_fulfilment_package_manifest m ON m.id=i.package_manifest_id
+           LEFT JOIN mathchakchak.privacy_fulfilment_package_manifest successor ON successor.predecessor_manifest_id=m.id
+          WHERE i.id=$1 FOR UPDATE OF i,m`,[proofIntakeContractId]
+      );
+      if(!source.rowCount)throw notFound();
+      const sourceRow=source.rows[0];
+      if(sourceRow.superseded_proof_intake)throw conflict('QUARANTINE_READINESS_INTAKE_SUPERSEDED');
+      if(sourceRow.superseded_proof_handoff)throw conflict('QUARANTINE_READINESS_HANDOFF_SUPERSEDED');
+      if(sourceRow.superseded_target_validation)throw conflict('QUARANTINE_READINESS_TARGET_VALIDATION_SUPERSEDED');
+      if(sourceRow.superseded_governance)throw conflict('QUARANTINE_READINESS_GOVERNANCE_SUPERSEDED');
+      if(sourceRow.superseded_envelope)throw conflict('QUARANTINE_READINESS_ENVELOPE_SUPERSEDED');
+      if(sourceRow.superseded_queue)throw conflict('QUARANTINE_READINESS_QUEUE_SUPERSEDED');
+      if(sourceRow.superseded_acceptance)throw conflict('QUARANTINE_READINESS_ACCEPTANCE_SUPERSEDED');
+      if(sourceRow.superseded_adapter)throw conflict('QUARANTINE_READINESS_ADAPTER_SUPERSEDED');
+      if(sourceRow.superseded_validation)throw conflict('QUARANTINE_READINESS_EVIDENCE_VALIDATION_SUPERSEDED');
+      if(sourceRow.superseded_execution_handoff)throw conflict('QUARANTINE_READINESS_EXECUTION_HANDOFF_SUPERSEDED');
+      if(sourceRow.superseded_readiness)throw conflict('QUARANTINE_READINESS_READINESS_SUPERSEDED');
+      if(sourceRow.successor_manifest_id)throw conflict('QUARANTINE_READINESS_PACKAGE_SUPERSEDED');
+      if(new Date(sourceRow.package_expires_at).getTime()<=Date.now())throw conflict('QUARANTINE_READINESS_PACKAGE_EXPIRED');
+      if(sourceRow.active_legal_hold)throw conflict('QUARANTINE_READINESS_LEGAL_HOLD_ACTIVE');
+      if(hashCanonical(sourceRow.contract_manifest)!==sourceRow.contract_sha256)throw conflict('QUARANTINE_READINESS_INTAKE_HASH_MISMATCH');
+      const proofIntakeContract={
+        ...await this.loadExternalReferenceProofIntakeContract(client,proofIntakeContractId),
+        is_latest_proof_intake_contract:true
+      };
+      const previous=await client.query(
+        `SELECT id,revision FROM mathchakchak.privacy_external_reference_proof_quarantine_readiness_contract
+          WHERE proof_intake_contract_id=$1 ORDER BY revision DESC LIMIT 1 FOR UPDATE`,[proofIntakeContractId]
+      );
+      const revision=previous.rowCount?Number(previous.rows[0].revision)+1:1;
+      const predecessorContractId=previous.rows[0]?.id??null;
+      const id=crypto.randomUUID();
+      let readiness;
+      try{
+        readiness=buildExternalReferenceProofQuarantineReadinessContract({
+          contract_id:id,revision,predecessor_contract_id:predecessorContractId,
+          proof_intake_contract:proofIntakeContract
+        });
+      }catch(error){
+        throw conflict(error.message.split(':')[0]);
+      }
+      await client.query(
+        `INSERT INTO mathchakchak.privacy_external_reference_proof_quarantine_readiness_contract
+          (id,proof_intake_contract_id,package_manifest_id,revision,predecessor_contract_id,
+           schema_version,status,contract_manifest,contract_sha256,created_by_user_id,kill_switch_engaged,
+           quarantine_storage_authorized,inspection_execution_authorized,network_connection_authorized,execution_authorized)
+         VALUES ($1,$2,$3,$4,$5,'1.0.0',$6,$7::jsonb,$8,$9,true,false,false,false,false)`,
+        [id,proofIntakeContractId,proofIntakeContract.package_manifest_id,revision,predecessorContractId,
+         readiness.status,JSON.stringify(readiness.contract_manifest),readiness.contract_sha256,actor.userId]
+      );
+      for(const requirement of readiness.requirements){
+        await client.query(
+          `INSERT INTO mathchakchak.privacy_external_reference_proof_quarantine_requirement
+            (id,readiness_contract_id,control_key,owner_role,storage_security_controls,
+             content_inspection_stages,content_rejection_codes,retention_lifecycle_events,
+             audit_required_fields,allowed_content_types,readiness_status,storage_status,scanner_status,
+             retention_policy_status,deletion_policy_status,audit_sink_status)
+           VALUES ($1,$2,$3,$4,$5::jsonb,$6::jsonb,$7::jsonb,$8::jsonb,$9::jsonb,'[]'::jsonb,
+                   'POLICY_DEFINED_EXTERNAL_CONTROLS_MISSING','MISSING_EXTERNAL','MISSING_EXTERNAL',
+                   'MISSING_EXTERNAL','MISSING_EXTERNAL','MISSING_EXTERNAL')`,
+          [crypto.randomUUID(),id,requirement.control_key,requirement.owner_role,
+           JSON.stringify(requirement.storage_security_controls),JSON.stringify(requirement.content_inspection_stages),
+           JSON.stringify(requirement.content_rejection_codes),JSON.stringify(requirement.retention_lifecycle_events),
+           JSON.stringify(requirement.audit_required_fields)]
+        );
+      }
+      await this.saveIdempotency(client,{actor,scope,key,hash,reference:id,status:201});
+      return {...await this.loadExternalReferenceProofQuarantineReadinessContract(client,id),boundary:externalReferenceProofQuarantineReadinessBoundary(),replayed:false};
     });
   }
 }

@@ -116,6 +116,8 @@ Phase 39의 `0025_external_reference_proof_handoff_contract.sql`은 소유권 �
 
 Phase 40의 `0026_external_reference_proof_intake_contract.sql`은 증명 intake 상태기계 계약과 통제별 규칙을 추가한다. 규칙 6개는 상태 9개, 전이 14개, 거절 코드 12개, replay 통제 6개와 검토 결정 3개를 정의한다. quarantine 선행, 중복·replay·서명·issuer 검사와 서로 다른 2인 검토를 요구한다. 실제 채널·proof·evidence·signature·issuer·nonce·검토자·결정·시각과 보존 기간·replay window·SLA는 NULL이며 submission·quarantine write·상태 전이·검증·검토·release·allowlist·연결·실행은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 41의 `0027_external_reference_proof_quarantine_readiness_contract.sql`은 격리 저장·콘텐츠 검사·보존·삭제·감사 운영 준비 계약과 통제별 요구사항을 추가한다. 요구사항 6개는 저장소 보안 8개, 검사 단계 8개, 거절 코드 12개, 보존 이벤트 7개, 감사 필드 10개를 정의한다. 허용 content type은 빈 배열이고 저장소·scanner·정책·object·scan·삭제 증명·시각과 크기·기간은 NULL이다. storage·inspection·scan·retention·deletion·audit·release·promotion은 false이며 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
