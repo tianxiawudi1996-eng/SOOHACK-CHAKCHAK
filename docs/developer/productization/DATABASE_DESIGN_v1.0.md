@@ -108,6 +108,8 @@ Phase 35의 `0021_external_configuration_evidence_queue_contract.sql`은 구성 
 
 Phase 36의 `0022_external_evidence_submission_envelope_contract.sql`은 제출 envelope 정책 계약과 통제별 규칙을 추가한다. 규칙 6개는 필수 필드 10개, 참조 scheme 승인 4단계, UUID v4 submission ID, 슬롯 단위 멱등 범위와 거부 사유 10개를 정의한다. 허용 scheme은 빈 배열, 제출 상태는 `NOT_ACCEPTING`, 실제 제출 메타데이터와 멱등 보존기간은 NULL이다. 원문·자격·비밀 저장과 allowlist 활성화·자동 승격·연결·실행 승인을 금지하며 두 테이블은 UPDATE·DELETE를 거부한다.
 
+Phase 37의 `0023_external_reference_scheme_governance_contract.sql`은 참조 scheme 거버넌스 계약과 통제별 정책을 추가한다. 정책 6개는 제안 필드 10개, 대상 제한 필드 6개, 생명주기 7개와 재승인 트리거 6개를 정의한다. 제안자·개인정보·보안 승인자 직무분리와 정확한 대상 범위를 요구하고 wildcard authority·무제한 path를 금지한다. 실제 scheme·대상·승인자·시각과 최대 유효기간은 NULL이며 allowlist·제출·자동 승격·연결·실행 승인은 false다. 두 테이블은 UPDATE·DELETE를 거부한다.
+
 ## 9. 검증 결과
 
 - 자동 검증: 계약 JSON, 테이블/관계/제약/인덱스, 트랜잭션, rollback 대칭성, 금지 필드 PASS
