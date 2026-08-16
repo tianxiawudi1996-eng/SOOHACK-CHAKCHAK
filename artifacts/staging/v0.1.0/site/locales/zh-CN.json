@@ -1,4 +1,5 @@
 {
+  "nav.academy": "专业学习设计",
   "nav.curriculum": "年级公式",
   "meta.title": "MathChakChak — 把理解带到下一道题",
   "nav.method": "学习方法",
@@ -29,5 +30,14 @@
   "report.title": "不只看分数，更看成长的原因。",
   "report.body": "学生和已关联的家长可以一起查看本周变化、困难概念和下一步推荐学习。",
   "cta.title": "今天，让数学重新顺畅起来。",
-  "cta.body": "通过免费诊断，找到适合孩子的第一种讲解。"
+  "cta.body": "通过免费诊断，找到适合孩子的第一种讲解。",
+  "preview.sample": "示例学习数据",
+  "duet.kicker": "双导师系统",
+  "duet.title": "两位伙伴用不同方式帮助思考。",
+  "duet.body": "Chakchaki 引导孩子表达想法，Gongsickyi 核对数学规则与依据。",
+  "duet.chakchaki.role": "通过提问帮助学习者说明自己的思考。",
+  "duet.gongsickyi.role": "核对公式、计算和数学依据。",
+  "duet.flow.ask": "引出学习者的思考",
+  "duet.flow.verify": "核对公式与计算",
+  "duet.flow.review": "连接下一次复习"
 }

@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0.0",
+  "phase":61,
+  "status":"LOCAL_LIMITED_PRODUCTION_EXPANSION_PLAN_ONLY",
+  "source_requirement":{"phase":60,"status":"LIMITED_PRODUCTION_EXPANSION_HANDOFF_ACCEPTED","source_hash_binding_required":true},
+  "mathchakchak_local_plan":{"audience":"APPROVED_INTERNAL_ADULT_STAFF_ONLY","synthetic_data_only":true,"locales":["ko","zh-CN","ja","en","es","fr","it","ru"],"maximum_internal_staff_accounts":25,"maximum_requests":64,"maximum_requests_per_locale":8,"maximum_duration_minutes":60,"maximum_concurrency":2,"automatic_retries":0,"raw_content_retention_days":0,"reference_metadata_retention_days":30},
+  "required_controls":["SOURCE_DECISION_ACCEPTED","MODEL_PROMPT_PINNED","INTERNAL_ADULT_AUDIENCE_ONLY","SYNTHETIC_DATA_ONLY","DIRECT_IDENTIFIERS_PROHIBITED","RAW_CONTENT_PERSISTENCE_DISABLED","MONITORING_ALERTS_READY","SAFETY_ESCALATION_READY","REFERENCE_DELETION_READY","INCIDENT_ROUTE_READY","KILL_SWITCH_ARMED","ROLLBACK_READY","FEATURE_FLAG_DEFAULT_OFF","STUDENT_AND_PUBLIC_TRAFFIC_DENIED"],
+  "decision_policy":{"all_plan_controls_verified":"READY_FOR_EXPANSION_PLAN_REVIEW","single_product_owner_review":true,"automatic_execution":false,"automatic_public_traffic":false,"automatic_student_traffic":false,"automatic_production_promotion":false}
+}

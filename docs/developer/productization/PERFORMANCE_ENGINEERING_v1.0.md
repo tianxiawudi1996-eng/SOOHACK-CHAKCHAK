@@ -9,7 +9,8 @@
 - Lighthouse 모바일 성능 점수 90 이상
 - LCP 2,500ms 이하, CLS 0.1 이하, TBT 200ms 이하
 - FCP 1,800ms 이하, Speed Index 3,400ms 이하
-- 초기 전송량 350KB 이하, 단일 자산 100KB 이하
+- 실제 초기 경로 전송량 400KB 이하, 초기 단일 자산 100KB 이하
+- 승인 포즈의 WebP·PNG fallback 전체 Artifact 라이브러리는 4MB 이하, 개별 보존 자산은 140KB 이하
 - 승인 캐릭터 이미지 내용과 해시는 변경하지 않음
 - 네 화면의 주 모듈을 문서 head에서 조기 발견
 - Nginx 텍스트 압축, 이미지 1년·코드 7일 캐시, HTML 재검증

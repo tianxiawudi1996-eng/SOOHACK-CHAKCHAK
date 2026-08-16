@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 37,
+  "contract_tables": 2,
+  "control_policies": 6,
+  "proposal_required_fields": 10,
+  "target_restriction_fields": 6,
+  "lifecycle_states": 7,
+  "reapproval_triggers": 6,
+  "proposals_present": 0,
+  "allowlist_activation_enabled": false,
+  "metadata_submission_enabled": false,
+  "external_reference_fetch_enabled": false,
+  "automatic_promotion_allowed": false,
+  "connection_authorized": false,
+  "execution_authorized": false
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 58,
+  "status": "LOCAL_LIMITED_PRODUCTION_SAFETY_HANDOFF_ONLY",
+  "source_requirement": {
+    "phase": 57,
+    "status": "CONTROLLED_ROLLOUT_ACCEPTED_FOR_LIMITED_PRODUCTION_HANDOFF",
+    "source_hash_binding_required": true
+  },
+  "audience": "APPROVED_INTERNAL_ADULT_STAFF_ONLY",
+  "required_controls": [
+    "SOURCE_ACCEPTED",
+    "MODEL_PROMPT_PINNED",
+    "ADULT_INTERNAL_AUDIENCE_ONLY",
+    "SYNTHETIC_DATA_ONLY",
+    "DIRECT_IDENTIFIERS_PROHIBITED",
+    "RAW_CONTENT_PERSISTENCE_DISABLED",
+    "REFERENCE_METADATA_RETENTION_LIMITED",
+    "DELETION_ROUTE_READY",
+    "INCIDENT_ROUTE_READY",
+    "SAFETY_ESCALATION_READY",
+    "MONITORING_ALERTS_READY",
+    "KILL_SWITCH_ARMED",
+    "ROLLBACK_READY",
+    "FEATURE_FLAG_DEFAULT_OFF",
+    "RATE_AND_SPEND_LIMITS_READY",
+    "STUDENT_AND_PUBLIC_TRAFFIC_DENIED"
+  ],
+  "mathchakchak_local_policy": {
+    "maximum_requests": 8,
+    "maximum_duration_minutes": 15,
+    "maximum_concurrency": 1,
+    "automatic_retries": 0,
+    "reference_metadata_retention_days": 30,
+    "raw_content_retention_days": 0
+  },
+  "decision_policy": {
+    "all_controls_and_window_verified": "READY_FOR_LIMITED_PRODUCTION_SAFETY_REVIEW",
+    "any_control_rejected": "LIMITED_PRODUCTION_SAFETY_HANDOFF_REJECTED",
+    "single_product_owner_review": true,
+    "automatic_execution": false,
+    "automatic_public_traffic": false,
+    "automatic_student_traffic": false,
+    "automatic_production_promotion": false
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 54,
+  "generated_at": "2026-08-10T15:29:11.991Z",
+  "status": "AUTO_QA_PASS_LOCAL_EXTENDED_STAGING_RESULTS_BLOCKED_EXTERNAL",
+  "current_result_intake": {
+    "status": "BLOCKED_EXTERNAL",
+    "recommendation": "HOLD",
+    "source_status": "BLOCKED_EXTERNAL",
+    "source_accepted": false,
+    "complete": false,
+    "per_locale": {
+      "ko": 0,
+      "zh-CN": 0,
+      "ja": 0,
+      "en": 0,
+      "es": 0,
+      "fr": 0,
+      "it": 0,
+      "ru": 0
+    },
+    "records_received": 0,
+    "schema_success_rate": 0,
+    "safety_violation_count": 0,
+    "answer_leak_count": 0,
+    "pii_detection_count": 0,
+    "role_separation_success_rate": 0,
+    "locale_success_rate": 0,
+    "version_mismatch_count": 0,
+    "budget_breach_count": 0,
+    "kill_switch_failure_count": 0,
+    "provider_error_rate": 0,
+    "fallback_rate": 0,
+    "latency_p95_ms": null,
+    "threshold_failures": [
+      "schema_success_rate_min",
+      "role_separation_success_rate_min",
+      "locale_success_rate_min"
+    ],
+    "thresholds_pass": false,
+    "kill_switch_rearmed": false,
+    "rollback_complete": false,
+    "promotion_review_status": "NOT_REQUESTED",
+    "blockers": [
+      "PHASE53_OBSERVATION_HANDOFF_NOT_READY",
+      "OBSERVATION_RESULTS_PENDING"
+    ],
+    "validation_failures": [],
+    "execution_authorized": false,
+    "production_promotion_allowed": false
+  },
+  "summary": {
+    "scenarios": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-results-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE53_OBSERVATION_HANDOFF_NOT_READY",
+          "OBSERVATION_RESULTS_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "ready-handoff-awaits-results",
+      "passed": true,
+      "observed": {
+        "status": "AWAITING_OBSERVATION_RESULTS"
+      }
+    },
+    {
+      "id": "partial-results-held",
+      "passed": true,
+      "observed": {
+        "status": "OBSERVATION_RESULTS_INCOMPLETE",
+        "received": 79
+      }
+    },
+    {
+      "id": "safe-results-ready-for-review",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_PRODUCTION_PROMOTION_REVIEW",
+        "thresholds_pass": true
+      }
+    },
+    {
+      "id": "single-review-produces-handoff-only",
+      "passed": true,
+      "observed": {
+        "status": "EXTENDED_STAGING_ACCEPTED_FOR_PRODUCTION_HANDOFF"
+      }
+    },
+    {
+      "id": "threshold-failure-requires-rollback",
+      "passed": true,
+      "observed": {
+        "pending": true,
+        "rejected": "EXTENDED_STAGING_REJECTED_AUTOMATICALLY"
+      }
+    },
+    {
+      "id": "operational-thresholds-enforced",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "provider_error_rate_max",
+          "fallback_rate_max",
+          "latency_p95_ms_max"
+        ]
+      }
+    },
+    {
+      "id": "content-secret-duplicate-and-hash-drift-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "SOURCE_HASH_MISMATCH",
+          "DUPLICATE_SCENARIO_REFERENCE",
+          "OBSERVATION_REFERENCE_REQUIRED:A",
+          "LOCALE_INVALID:A",
+          "SAMPLE_INVALID:A",
+          "SCENARIO_REFERENCE_INVALID:A",
+          "TIME_INVALID:A",
+          "OUTCOME_INVALID:A",
+          "PROVIDER_REFERENCE_INVALID:A",
+          "VERSION_PIN_MISMATCH:A",
+          "METRIC_INVALID:input_tokens:A",
+          "METRIC_INVALID:output_tokens:A",
+          "METRIC_INVALID:latency_ms:A",
+          "GATE_INVALID:schema_valid:A",
+          "GATE_INVALID:safety_valid:A",
+          "GATE_INVALID:answer_leak_detected:A",
+          "GATE_INVALID:pii_detected:A",
+          "GATE_INVALID:role_separation_valid:A",
+          "GATE_INVALID:locale_valid:A",
+          "GATE_INVALID:version_pinned:A",
+          "GATE_INVALID:budget_breached:A",
+          "GATE_INVALID:kill_switch_failed:A",
+          "GATE_INVALID:provider_error:A",
+          "GATE_INVALID:fallback_used:A",
+          "FALLBACK_REASON_MUST_BE_NULL:A",
+          "OBSERVATION_REFERENCE_REQUIRED:B",
+          "LOCALE_INVALID:B",
+          "SAMPLE_INVALID:B",
+          "SCENARIO_REFERENCE_INVALID:B",
+          "TIME_INVALID:B",
+          "OUTCOME_INVALID:B",
+          "PROVIDER_REFERENCE_INVALID:B",
+          "VERSION_PIN_MISMATCH:B",
+          "METRIC_INVALID:input_tokens:B",
+          "METRIC_INVALID:output_tokens:B",
+          "METRIC_INVALID:latency_ms:B",
+          "GATE_INVALID:schema_valid:B",
+          "GATE_INVALID:safety_valid:B",
+          "GATE_INVALID:answer_leak_detected:B",
+          "GATE_INVALID:pii_detected:B",
+          "GATE_INVALID:role_separation_valid:B",
+          "GATE_INVALID:locale_valid:B",
+          "GATE_INVALID:version_pinned:B",
+          "GATE_INVALID:budget_breached:B",
+          "GATE_INVALID:kill_switch_failed:B",
+          "GATE_INVALID:provider_error:B",
+          "GATE_INVALID:fallback_used:B",
+          "FALLBACK_REASON_MUST_BE_NULL:B",
+          "NO_OBSERVATION_CONTRADICTION",
+          "FORBIDDEN_CONTENT_KEY:response_text",
+          "SECRET_MATERIAL_DETECTED"
+        ]
+      }
+    }
+  ],
+  "contract_sha256": "a9dd12a9c9c53ae6b84c21b9570c8915f57569eafa8eaabf00fa4d67d831c3b4",
+  "source_observation_register_sha256": "f08b5185e69d080b08102d8b1aea9649bf1f6d2b87728ed69e05513b4e20848e",
+  "result_register_sha256": "5b74acd5baa6bc730319efe4f143814274d901250c235d2876b89c1c843cfcd9",
+  "external_actions": {
+    "provider_live_tested": false,
+    "api_key_accessed": false,
+    "observation_observed": false,
+    "student_traffic": false,
+    "production_traffic": false,
+    "production_promotion": false,
+    "external_deployment_performed": false
+  },
+  "next_authorized_action": "WAIT_FOR_READY_PHASE53_HANDOFF_AND_REFERENCE_ONLY_OBSERVATION_RESULTS"
+}

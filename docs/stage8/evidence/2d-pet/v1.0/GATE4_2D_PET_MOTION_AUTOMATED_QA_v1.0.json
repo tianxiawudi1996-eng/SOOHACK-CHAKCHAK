@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-06T13:35:31.278779+00:00",
+  "generated_at": "2026-08-15T13:04:41.546196+00:00",
   "gate": 4,
   "status": "VERIFIED",
   "automated_status": "PASS",
   "motion_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
-  "motion_manifest_sha256": "19430e0e8047b21942012f08c8be28c01e2b570e2eb02ecd507e55652bd54bb0",
+  "motion_manifest_sha256": "8fbfed70bfc21ec1e34f03991c743cf10d504d2efc1618065376cb4597d290ab",
   "state_pass_count": 8,
   "state_expected_count": 8,
   "reduced_motion_pass_count": 8,

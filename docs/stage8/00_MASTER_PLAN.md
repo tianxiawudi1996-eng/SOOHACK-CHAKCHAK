@@ -15,10 +15,20 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 3. Gate 2: 음영 2D 다중 포즈 시트 — `VERIFIED`
 4. Gate 3: 개별 포즈 추출·투명 배경·레이어/피벗 — `VERIFIED`
 5. Gate 4: 2D 상태 전환·펫 모션·reduced-motion — `VERIFIED`
-6. Gate 5: AI Behavior 상태·이벤트·말풍선 연결 — `BLOCKED` (자동 QA PASS, 수동 승인 대기)
-7. Gate 6: Product Integration — `NOT_STARTED`
-8. Gate 7: QA — `NOT_STARTED`
-9. Gate 8: Deployment — `NOT_STARTED`
+6. Gate 5: AI Behavior 상태·이벤트·말풍선 연결 — `VERIFIED` (자동 QA PASS, 제품 책임자 승인 1/1)
+7. Gate 6: Product Integration — `VERIFIED` (반응형·정적 품질·내용 주소 RC)
+8. Gate 7: QA — `VERIFIED` (명령 14/14, 단위 336/336, 통합 61/61, P0 0)
+9. Gate 8: Deployment — `BLOCKED` (로컬 배포·Health·Smoke·Rollback PASS, 외부 대상·권한 미설정)
+
+## Gate 6 제품화 증거 매핑
+
+- Phase 5: 승인 캐릭터 2/2, 로케일 8/8, 360·768·1024·1200 화면 PASS
+- Phase 6: 기능 개발 `VERIFIED`, 기능 체크리스트 15/15
+- Phase 7: 로컬 스테이징 Artifact 78/78, 승인 포즈 32/32, rollback PASS, 외부 배포 false
+- Phase 8: Frontend→API→PostgreSQL 핵심 사용자 여정 PASS
+- 고정 증거: `docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json`
+
+Gate 6 종료 증거 3/3과 RC SHA-256 `3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd`가 고정됐다.
 
 ## 2D 전환 원칙
 
@@ -47,5 +57,8 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 - Gate 4는 제품 책임자의 친근함·반복 피로도·화면 잘림·학습 방해 검토 1/1 승인으로 `VERIFIED`다.
 - Gate 5는 Stage 7 정본의 상태 15/15·이벤트 15/15·말풍선 13/13을 승인된 8개 시각 상태에 연결했다.
 - 실제 Edge에서 우선순위 선점·입력 보호·단일 대기열·로그 개인정보 최소화·캐릭터 숨김·반응형·reduced-motion 검사가 모두 PASS했다.
-- Gate 5 제품 책임자 1인 수동 승인 0/1이 남아 `BLOCKED`이며 Gate 6는 시작하지 않는다.
+- Gate 5는 제품 책임자 1인 수동 승인 1/1과 승격 감사를 거쳐 `VERIFIED`다.
+- Gate 6는 제품화 Phase 5~8 증거, 실제 Chromium 4개 뷰포트, lint·런타임 타입 계약, 불변 RC로 `VERIFIED`다.
+- Gate 7은 출시 차단 QA 14/14, 단위 336/336, PostgreSQL 통합 61/61, 접근성 6/6, P0 0으로 `VERIFIED`다.
+- Gate 8은 로컬 Docker Artifact 78/78·로케일 8/8·Health·Smoke·보안 헤더·rollback이 PASS했으나 외부 배포 대상·권한이 없어 `BLOCKED`다.
 - 민감한 `github-recovery-codes.txt`는 읽거나 추적하지 않는다.

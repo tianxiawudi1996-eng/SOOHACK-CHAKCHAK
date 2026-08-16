@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "curriculum": {
+    "jurisdiction": "KR",
+    "authority": "대한민국 교육부",
+    "notice_code": "교육부 고시 제2022-33호",
+    "annex": "별책 8 수학과 교육과정",
+    "official_url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0",
+    "source_sha256": "aab8eed59ecf244223d04afad75f4cf5ac5085fadcfc3cf52c2f6d54ddfc7856",
+    "verified_on": "2026-08-06"
+  },
+  "grades": ["E1","E2","E3","E4","E5","E6","M1","M2","M3","H1","H2","H3"],
+  "placement_policy": "OFFICIAL_BAND_PRODUCT_SEQUENCE",
+  "canonical_content_locale": "ko",
+  "supported_shell_locales": ["ko","zh-CN","ja","en","es","fr","it","ru"],
+  "minimum_formula_clusters_per_grade": 6,
+  "collaboration_policy_version": "pet-collab-v1",
+  "migration": "infra/database/migrations/0005_k12_curriculum_collaboration.sql",
+  "rollback": "infra/database/migrations/0005_k12_curriculum_collaboration_rollback.sql",
+  "catalog": "infra/database/catalog/k12-formulas.ko.json",
+  "seed": "infra/database/seeds/0004_k12_curriculum_catalog.sql"
+}

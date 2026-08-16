@@ -2,10 +2,19 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-05T22:58:51+09:00",
-  "head_commit": "f64ba94",
+  "updated_at": "2026-08-15T13:51:43.212Z",
+  "head_commit": "27af9f0",
   "branch": "codex/stage8-harness-continuation",
-  "allowed_statuses": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"],
+  "working_tree_clean": false,
+  "release_candidate_fixed": true,
+  "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+  "allowed_statuses": [
+    "NOT_STARTED",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "NOT_VERIFIED",
+    "VERIFIED"
+  ],
   "gate0": {
     "status": "VERIFIED",
     "evidence": [
@@ -168,24 +177,63 @@
     "entry_allowed": true
   },
   "gate6": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md"],
+    "status": "VERIFIED",
+    "evidence": [
+      "docs/stage8/prompts/GATE6_PRODUCT_INTEGRATION.md",
+      "docs/stage8/prompts/GATE6_TO_GATE8_COMPLETION_EXECUTION_METAPROMPT_v1.0.md",
+      "docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json",
+      "docs/stage8/evidence/gate6/GATE6_RESPONSIVE_RUNTIME_QA_v1.0.json",
+      "docs/stage8/evidence/gate6/GATE6_STATIC_QUALITY_v1.0.json",
+      "docs/stage8/audits/GATE6_PRODUCT_INTEGRATION_AUDIT.md",
+      "artifacts/release-candidate/stage8-v1.0/release-manifest.json",
+      "docs/productization/evidence/PHASE_5_BROWSER_QA.json",
+      "docs/productization/reports/PHASE_6_FEATURE_DEVELOPMENT_REPORT.md",
+      "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json",
+      "docs/productization/evidence/PHASE_8_INTEGRATION_QA.json"
+    ],
     "blockers": [],
     "entry_allowed": true
   },
   "gate7": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE7_QA.md"],
-    "blockers": ["Gate 6 must be VERIFIED; no product build or QA environment exists"],
-    "entry_allowed": false
+    "status": "VERIFIED",
+    "evidence": [
+      "docs/stage8/prompts/GATE7_QA.md",
+      "artifacts/release-candidate/stage8-v1.0/release-manifest.json",
+      "docs/stage8/evidence/gate7/GATE7_RELEASE_BLOCKING_QA_v1.0.json",
+      "docs/stage8/evidence/gate7/GATE7_BROWSER_ACCESSIBILITY_QA_v1.0.json",
+      "docs/stage8/evidence/gate7/GATE7_RELEASE_CANDIDATE_AUDIT_v1.0.json",
+      "docs/stage8/audits/GATE7_RELEASE_BLOCKING_QA_AUDIT.md"
+    ],
+    "blockers": [],
+    "entry_allowed": true
   },
   "gate8": {
-    "status": "NOT_STARTED",
-    "evidence": ["docs/stage8/prompts/GATE8_DEPLOYMENT.md"],
-    "blockers": ["Gate 7 must be VERIFIED; no deployment target or authorization is configured"],
-    "entry_allowed": false
+    "status": "BLOCKED",
+    "evidence": [
+      "docs/stage8/prompts/GATE8_DEPLOYMENT.md",
+      "docs/stage8/prompts/GATE8_AUTONOMOUS_EXTERNAL_COMPLETION_METAPROMPT_v1.0.md",
+      "docs/stage8/evidence/gate8/GATE8_LOCAL_DEPLOYMENT_QA_v1.0.json",
+      "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
+      "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
+      "docs/stage8/evidence/gate8/GATE8_DEPLOYMENT_AUDIT_v1.0.json",
+      "docs/stage8/audits/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT.md",
+      "docs/stage8/audits/GATE8_DEPLOYMENT_AUDIT.md",
+      "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json"
+    ],
+    "blockers": [
+      "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+      "EXTERNAL_DEPLOYMENT_AUTHORIZATION_REFERENCE",
+      "EXTERNAL_DEPLOYMENT_ADAPTER",
+      "EXTERNAL_HTTPS_BASE_URL",
+      "ORIGIN_REPOSITORY_WRITE_PERMISSION",
+      "PROTECTED_DEPLOYMENT_ENVIRONMENT"
+    ],
+    "entry_allowed": true
   },
   "warnings": [
-    "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read"
+    "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read",
+    "working tree remains dirty; an isolated content-addressed release candidate is fixed without resetting user changes",
+    "external deployment and product release remain unauthorized",
+    "GitHub preflight: authenticated account visionlab-coder has pull=true and push=false for tianxiawudi1996-eng/SOOHACK-CHAKCHAK; Pages is disabled and deployment environments=0"
   ]
 }

@@ -1,6 +1,7 @@
 import {buildStepResponse,createIdempotencyKey,stageProgress,STAGES} from './model.mjs?v=1.0.0';
 import {UI_MESSAGES} from './messages.mjs?v=1.0.0';
 import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
+import {readPreferredLocale,writePreferredLocale} from '../i18n/preferred-locale.mjs?v=0.1.0-phase22';
 import {installSkipLinkFocus} from '../accessibility/interaction.mjs?v=0.1.0-phase22';
 
 const supported = ['ko','zh-CN','ja','en','es','fr','it','ru'];
@@ -12,7 +13,9 @@ const elements = {
   start:byId('startButton'),stages:byId('stageList'),stageNumber:byId('stageNumber'),stageName:byId('stageName'),
   mastery:byId('masteryLabel'),progress:byId('progressBar'),progressTrack:byId('stageProgress'),formulaTitle:byId('formulaTitle'),notation:byId('formulaNotation'),
   memoryCue:byId('memoryCue'),prompt:byId('stepPrompt'),visual:byId('visualModel'),form:byId('answerForm'),
-  feedback:byId('feedback'),continue:byId('continueButton'),completeTitle:byId('completeTitle'),completeSummary:byId('completeSummary')
+  feedback:byId('feedback'),tutor:byId('tutorPanel'),chakchakiTutor:byId('chakchakiTutorText'),
+  gongsickyiTutor:byId('gongsickyiTutorText'),tutorMode:byId('tutorMode'),continue:byId('continueButton'),
+  completeTitle:byId('completeTitle'),completeSummary:byId('completeSummary')
 };
 
 function normalizeLocale(value='') {
@@ -24,7 +27,7 @@ function normalizeLocale(value='') {
 }
 
 function resolveLocale() {
-  return normalizeLocale(new URLSearchParams(location.search).get('locale')) || normalizeLocale(navigator.language) || fallback;
+  return normalizeLocale(new URLSearchParams(location.search).get('locale')) || normalizeLocale(readPreferredLocale()) || normalizeLocale(navigator.language) || fallback;
 }
 
 function message(key) { return state.messages[key] ?? UI_MESSAGES.en[key] ?? key; }
@@ -76,6 +79,13 @@ function showFeedback(kind,text) {
   elements.feedback.className=`feedback ${kind}`;
   elements.feedback.textContent=text;
   elements.feedback.hidden=false;
+}
+
+function renderTutorTurn(turn){
+  elements.chakchakiTutor.textContent=turn.chakchaki;
+  elements.gongsickyiTutor.textContent=turn.gongsickyi;
+  elements.tutorMode.textContent=turn.mode==='GENERATIVE_ASSISTED'?'AI 보조 설명 · 서버 판정 유지':'안전 규칙 설명 · 서버 판정 유지';
+  elements.tutor.hidden=false;
 }
 
 function optionButton(choice) {
@@ -136,7 +146,7 @@ function renderStep() {
   elements.progressTrack.setAttribute('aria-valuenow',String(progress*20));
   elements.prompt.textContent=step.content.prompt;
   renderVisual(step.content);
-  elements.form.onsubmit=null;elements.form.replaceChildren();elements.feedback.hidden=true;elements.continue.hidden=true;
+  elements.form.onsubmit=null;elements.form.replaceChildren();elements.feedback.hidden=true;elements.tutor.hidden=true;elements.continue.hidden=true;
   if (step.interaction_type==='CONCEPT_CHOICE' || step.interaction_type==='VISUAL_CHOICE') {
     elements.form.append(...step.content.choices.map(optionButton));
   } else if (step.interaction_type==='GUIDED_FRACTION' || step.interaction_type==='APPLICATION_FRACTION') fractionForm(step);
@@ -150,6 +160,10 @@ async function submitResponse(values) {
     elements.form.querySelectorAll('button,input,select').forEach((node)=>node.disabled=true);
     const responseValue=buildStepResponse(step.interaction_type,values);
     const result=await request(`/api/v1/formula-lessons/${state.formulaSession.id}/responses`,{method:'POST',body:{response_value:responseValue,hint_level:0}});
+    try{
+      const turn=await request(`/api/v1/formula-lessons/${state.formulaSession.id}/responses/${result.id}/tutor-feedback`,{method:'POST',body:{}});
+      renderTutorTurn(turn);
+    }catch{elements.tutor.hidden=true;}
     if (result.outcome==='CORRECT') {
       showFeedback('correct',message('correct'));
       elements.continue.hidden=false;
@@ -206,4 +220,4 @@ if (state.handoffCode) history.replaceState(null,'',`${location.pathname}${locat
 installSkipLinkFocus();state.locale=resolveLocale();state.messages=UI_MESSAGES[state.locale] || UI_MESSAGES.en;applyMessages();
 elements.start.addEventListener('click',startLesson);
 elements.continue.addEventListener('click',loadFormulaSession);
-elements.locale.addEventListener('change',()=>{const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
+elements.locale.addEventListener('change',()=>{writePreferredLocale(elements.locale.value);const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});

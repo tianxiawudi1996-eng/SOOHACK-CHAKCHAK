@@ -1,5 +1,13 @@
 # Stage 8 Change Log
 
+## 2026-08-15 — Gate 5 상태 동기화와 Gate 6 제품화 증거 매핑
+
+- Gate 5 제품 책임자 승인 1/1과 기존 자동·브라우저 QA를 현재 상태 문서에 반영해 `VERIFIED`로 통일했다.
+- Gate 6를 `IN_PROGRESS`로 열고 제품화 Phase 5~8의 화면·기능·스테이징·전체 통합 증거 4/4를 SHA-256으로 매핑했다.
+- Gate 6 종료 공백을 360·768·1024·1200px 수동 검토, lint·typecheck, 불변 Release Candidate 기준선으로 고정했다.
+- Gate 7~8은 `NOT_STARTED`로 유지하고 외부 배포·제품 출시를 승인하지 않았다.
+- 제품화 Phase 0~75 로드맵, 외부 실행 대장 `next_authorized_input`, `STATUS.json`, Harness, README의 현재 상태를 같은 계약으로 정렬했다.
+
 ## 2026-08-05 — Gate 5 AI 행동 후보와 실제 Edge QA
 
 - 8단계 실행 메타프롬프트를 작성하고 Stage 7 정본의 15개 상태·15개 이벤트·13개 말풍선·10개 중재 규칙을 결정적 브라우저 런타임으로 구현했다.

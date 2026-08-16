@@ -1,4 +1,5 @@
 {
+  "nav.academy": "전문 학습 설계",
   "nav.curriculum": "학년별 공식",
   "meta.title": "수학착착 — 이해가 다음 문제로 이어지는 수학",
   "nav.method": "학습 방법",
@@ -29,5 +30,14 @@
   "report.title": "점수보다 성장의 이유를 보여드려요.",
   "report.body": "이번 주의 변화, 어려웠던 개념, 다음 추천 학습을 학생과 연결된 보호자가 함께 확인합니다.",
   "cta.title": "오늘, 수학을 다시 착착 시작해요.",
-  "cta.body": "아이에게 맞는 첫 설명을 무료 진단으로 찾아보세요."
+  "cta.body": "아이에게 맞는 첫 설명을 무료 진단으로 찾아보세요.",
+  "preview.sample": "예시 학습 데이터",
+  "duet.kicker": "DUAL TUTOR SYSTEM",
+  "duet.title": "두 친구가 서로 다른 방식으로 생각을 도와요.",
+  "duet.body": "착착이는 아이의 생각을 끌어내고, 공식이는 수학 규칙과 근거를 확인합니다.",
+  "duet.chakchaki.role": "질문으로 아이가 자기 생각을 설명하도록 도와요.",
+  "duet.gongsickyi.role": "공식, 계산, 수학적 근거를 정확하게 확인해요.",
+  "duet.flow.ask": "아이의 생각을 끌어내기",
+  "duet.flow.verify": "공식과 계산 검증하기",
+  "duet.flow.review": "다음 복습으로 연결하기"
 }

@@ -1,0 +1,37 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+
+const root=process.cwd();
+const registerPath=path.resolve(root,'docs/productization/evidence/EXTERNAL_EXECUTION_READINESS_REGISTER_v1.0.json');
+const statusPath=path.resolve(root,'docs/productization/STATUS.json');
+const register=JSON.parse(await fs.readFile(registerPath,'utf8'));
+const projectStatus=JSON.parse(await fs.readFile(statusPath,'utf8'));
+const failures=[];
+const expectedIds=['D80-02','D80-03','D80-04','D80-05','D80-06','D80-07','D80-08','D80-09','D80-10'];
+const expectedStatuses=new Set(['NOT_REQUESTED','READY_FOR_EXTERNAL_SUBMISSION','SUBMITTED','VERIFIED','REJECTED','EXPIRED','REVOKED']);
+const forbidden=/raw_document|raw_payload|payment_token|backup_payload|personal_contact|student_identity|academy_identity|secret|token/i;
+const ids=register.workstreams.map(item=>item.id);
+const roles=register.workstreams.map(item=>item.owner_role);
+if(!['EXTERNAL_EXECUTION_PREPARED_WAITING_FOR_AUTHORIZED_INPUT','D80_10_READY_FOR_EXTERNAL_SUBMISSION_PENDING_ROUTE_CONNECTION'].includes(register.status)) failures.push('STATUS_INVALID');
+if(JSON.stringify(ids)!==JSON.stringify(expectedIds)) failures.push('WORKSTREAM_SET_INVALID');
+if(new Set(ids).size!==ids.length) failures.push('DUPLICATE_WORKSTREAM');
+if(new Set(roles).size!==roles.length) failures.push('DUPLICATE_OWNER_ROLE');
+if(register.workstreams.some(item=>(item.id==='D80-10'? !['NOT_REQUESTED','READY_FOR_EXTERNAL_SUBMISSION'].includes(item.status) : item.status!=='NOT_REQUESTED')||item.evidence_count!==0)) failures.push('FABRICATED_EXTERNAL_STATUS');
+if(register.workstreams.some(item=>!item.owner_role||!item.review_role||!item.prerequisites?.length||!item.evidence_types?.length||!item.blocking_reasons?.length)) failures.push('WORKSTREAM_FIELDS_INCOMPLETE');
+if(Object.entries(register).filter(([key])=>forbidden.test(key)).length) failures.push('FORBIDDEN_TOP_LEVEL_FIELD');
+if(register.privacy_boundary?.raw_legal_documents_stored!==false||register.privacy_boundary?.payment_tokens_stored!==false||register.privacy_boundary?.backup_payloads_stored!==false||register.privacy_boundary?.personal_contact_details_stored!==false||register.privacy_boundary?.student_or_academy_identity_stored!==false) failures.push('PRIVACY_BOUNDARY_INVALID');
+for(const key of ['execution_authorized','dispatch_performed','evidence_submission_enabled','verification_enabled','production_release_authorized','market_claims_authorized']) if(register[key]!==false) failures.push(`UNSAFE_FLAG:${key}`);
+if(register.submission_policy?.allowed_initial_status!=='NOT_REQUESTED'||register.submission_policy?.external_submission_route!=='FORMAT_AND_BINDING_VALIDATED_PENDING_CONNECTION_EVIDENCE'||register.submission_policy?.verification_route!=='MISSING_EXTERNAL'||register.submission_policy?.append_only!==true) failures.push('SUBMISSION_POLICY_INVALID');
+const routeReference=register.input_confirmations?.approved_submission_route_reference;
+if(!routeReference||routeReference.reference!=='OPS-EVIDENCE-ROUTE-2026-001'||!['USER_PROVIDED_REFERENCE_PENDING_CONNECTION_VALIDATION','FORMAT_AND_BINDING_VALIDATED_PENDING_CONNECTION_EVIDENCE'].includes(routeReference.status)||routeReference.external_submission_enabled!==false) failures.push('ROUTE_REFERENCE_INVALID');
+if(register.next_authorized_input?.type!=='EXTERNAL_ROUTE_CONNECTION_EVIDENCE_REFERENCE'||register.next_authorized_input?.workstream_id!=='D80-10'||JSON.stringify(register.next_authorized_input?.required_fields)!==JSON.stringify(['internal_reference','evidence_sha256','verified_at','review_role_code'])||register.next_authorized_input?.required_review_role_code!=='SECURITY_AND_PRODUCT_REVIEW_BOARD'||register.next_authorized_input?.accepted_evidence_count!==0) failures.push('NEXT_INPUT_CONTRACT_INVALID');
+if(projectStatus.current_phase!==75||projectStatus.phases?.['75']?.status!=='LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED') failures.push('SOURCE_PHASE_STATUS_DRIFT');
+const contractBytes=await fs.readFile(path.resolve(root,'developer/contracts/commercial-operations-readiness-v1.0.json'));
+const contractSha256=crypto.createHash('sha256').update(contractBytes).digest('hex');
+console.log(`EXTERNAL_EXECUTION_READINESS_STATIC_${failures.length?'FAIL':'PASS'}`);
+console.log(`workstreams=${register.workstreams.length}/${expectedIds.length}`);
+console.log(`external_evidence=${register.workstreams.reduce((sum,item)=>sum+item.evidence_count,0)}`);
+console.log(`commercial_contract_sha256=${contractSha256}`);
+console.log('dispatch=false verification=false release=false');
+if(failures.length){for(const failure of failures) console.error(failure);process.exit(1);}

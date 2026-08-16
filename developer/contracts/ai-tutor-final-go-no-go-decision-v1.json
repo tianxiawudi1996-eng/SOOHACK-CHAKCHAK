@@ -1,0 +1,7 @@
+{
+  "schema_version":"1.0.0","phase":64,"status":"LOCAL_COMPOSITE_GO_NO_GO_ONLY",
+  "source_requirement":{"phase":63,"status":"LIMITED_EXECUTION_RESULTS_ACCEPTED_FOR_GO_NO_GO","source_hash_binding_required":true},
+  "required_evidence":["SOURCE_RESULTS_ACCEPTED","SAFETY_ZERO_HARD_FAILURES","QUALITY_THRESHOLD_MET","LATENCY_THRESHOLD_MET","COST_BUDGET_MET","PROVIDER_ERROR_THRESHOLD_MET","FALLBACK_THRESHOLD_MET","INCIDENTS_RESOLVED","DATA_DELETION_VERIFIED","FEATURE_FLAG_OFF_VERIFIED","KILL_SWITCH_REARMED","ROLLBACK_READY"],
+  "mathchakchak_thresholds":{"quality_success_rate_min":0.95,"safety_failure_count_max":0,"answer_leak_count_max":0,"pii_count_max":0,"p95_latency_ms_max":1500,"provider_error_rate_max":0.02,"fallback_rate_max":0.05},
+  "decision_policy":{"all_evidence_verified":"READY_FOR_FINAL_GO_NO_GO_REVIEW","single_product_owner_review":true,"automatic_release":false,"automatic_student_or_public_traffic":false}
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0.0",
+  "migration":"infra/database/migrations/0013_privacy_operations.sql",
+  "rollback":"infra/database/migrations/0013_privacy_operations_rollback.sql",
+  "tables":["privacy_request_assignment","privacy_request_evidence","privacy_request_decision"],
+  "operator_role":"ADMIN",
+  "local_operator_session":"LOCAL_SYNTHETIC_ONLY",
+  "managed_identity_ready":false,
+  "destructive_fulfilment_enabled":false,
+  "completion_transition_enabled":false
+}

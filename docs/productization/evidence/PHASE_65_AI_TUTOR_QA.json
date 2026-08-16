@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 65,
+  "generated_at": "2026-08-10T15:30:52.668Z",
+  "status": "AUTO_QA_PASS_PHASE65_LOCAL_BLOCKED_EXTERNAL",
+  "current": {
+    "status": "BLOCKED_EXTERNAL",
+    "recommendation": "HOLD",
+    "source_accepted": false,
+    "controls_required": 10,
+    "controls_verified": 0,
+    "controls_rejected": 0,
+    "review_status": "NOT_REQUESTED",
+    "validation_failures": [],
+    "local_chain_terminal": true,
+    "additional_local_phase_allowed": false,
+    "release_authorized": false,
+    "deployment_allowed": false,
+    "student_traffic_allowed": false,
+    "public_traffic_allowed": false
+  },
+  "summary": {
+    "scenarios": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL"
+      }
+    },
+    {
+      "id": "accepted-source-incomplete",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "id": "ten-controls-ready",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "id": "approval-closes-local-chain-only",
+      "passed": true,
+      "observed": {
+        "status": "LOCAL_PRODUCTIZATION_CHAIN_COMPLETE_EXTERNAL_RELEASE_BLOCKED"
+      }
+    },
+    {
+      "id": "false-deployment-secret-rejected",
+      "passed": true,
+      "observed": {}
+    }
+  ],
+  "contract_sha256": "539b14ad94defc642fa3b25789a1a6e27142c6a81dfe8d7c90bcaad8ed16ff39",
+  "source_register_sha256": "f0f4d2ec8def2c45f8272586120574c5d74bc150f1706a4648295bee3aa55891",
+  "register_sha256": "03cd49dcaa70389bd857e23b661e6c8bfab94810f3545154db302b1b20dabc74",
+  "external_actions": {
+    "deployment_performed": false,
+    "release_performed": false,
+    "feature_flag_changed": false,
+    "student_traffic": false,
+    "public_traffic": false,
+    "production_release": false
+  },
+  "next_authorized_action": "LOCAL_PHASE_CHAIN_TERMINAL_WAIT_FOR_EXTERNAL_MANUAL_RELEASE_EVIDENCE"
+}

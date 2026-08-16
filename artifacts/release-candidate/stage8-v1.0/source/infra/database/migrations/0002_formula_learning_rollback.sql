@@ -1,0 +1,10 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.formula_learning_response;
+DROP TABLE IF EXISTS mathchakchak.formula_learning_session;
+DROP TABLE IF EXISTS mathchakchak.lesson_step;
+DROP TABLE IF EXISTS mathchakchak.lesson_definition;
+DROP TABLE IF EXISTS mathchakchak.worked_example;
+DROP TABLE IF EXISTS mathchakchak.formula_localization;
+DROP TABLE IF EXISTS mathchakchak.formula_definition;
+DROP TABLE IF EXISTS mathchakchak.math_concept;
+COMMIT;

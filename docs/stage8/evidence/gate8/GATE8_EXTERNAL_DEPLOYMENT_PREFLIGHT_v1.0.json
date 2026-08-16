@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "collected_at": "2026-08-15T14:20:49.563Z",
+  "decision": "HOLD",
+  "status": "HOLD_EXTERNAL_TARGET_AND_AUTHORIZATION",
+  "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+  "source_control": {
+    "origin_repository": "tianxiawudi1996-eng/SOOHACK-CHAKCHAK",
+    "branch": "codex/stage8-harness-continuation",
+    "head_commit": "27af9f0b16c813d1b84494807115474c4feeac7a",
+    "authenticated_account_reference": "github:tianxiawudi1996-eng",
+    "repository_visibility": "public",
+    "default_branch": "main",
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "pull": true,
+      "push": true,
+      "triage": true
+    }
+  },
+  "provider_configuration": {
+    "pages_configured": false,
+    "pages_probe_status": 1,
+    "deployment_environment_count": 0,
+    "deployment_environment_names": [],
+    "target_reference_configured": true,
+    "authorization_reference_configured": true,
+    "deployment_adapter_configured": true,
+    "https_base_url_configured": false,
+    "https_hostname_sha256": null,
+    "external_docker_context_configured": false
+  },
+  "gates": {
+    "release_candidate_fixed": true,
+    "local_gate8_verified": true,
+    "route_connection_verified": true,
+    "target_reference_configured": true,
+    "authorization_reference_configured": true,
+    "deployment_adapter_configured": true,
+    "https_base_url_configured": false,
+    "deployment_runtime_context_configured": false,
+    "provider_account_authenticated": true,
+    "origin_repository_resolved": true,
+    "origin_push_permission": true,
+    "deployment_environment_configured": false,
+    "provider_audit_metadata_readable": true
+  },
+  "blockers": [
+    "EXTERNAL_HTTPS_BASE_URL",
+    "EXTERNAL_DOCKER_CONTEXT",
+    "PROTECTED_DEPLOYMENT_ENVIRONMENT"
+  ],
+  "next_input": "EXTERNAL_HTTPS_BASE_URL",
+  "external_actions": {
+    "repository_write_performed": false,
+    "deployment_environment_created": false,
+    "pages_enabled": false,
+    "secret_created_or_read": false,
+    "deployment_performed": false,
+    "canary_performed": false,
+    "production_release_performed": false
+  },
+  "credential_boundary": {
+    "credential_value_accessed": false,
+    "credential_value_stored": false,
+    "raw_endpoint_stored": false
+  }
+}

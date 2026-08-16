@@ -1,0 +1,5 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_quarantine_requirement;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_quarantine_readiness_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_reference_proof_quarantine_mutation();
+COMMIT;

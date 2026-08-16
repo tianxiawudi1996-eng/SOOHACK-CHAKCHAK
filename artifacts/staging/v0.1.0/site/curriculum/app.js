@@ -1,6 +1,7 @@
 import {CURRICULUM_MESSAGES} from './messages.mjs?v=0.1.0-phase20';
 import {STRAND_KEYS,createIdempotencyKey,groupGrades,normalizeGrade} from './model.mjs';
 import {accessibilityMessage} from '../i18n/accessibility.mjs?v=0.1.0-phase21';
+import {readPreferredLocale,writePreferredLocale} from '../i18n/preferred-locale.mjs?v=0.1.0-phase22';
 import {installSkipLinkFocus} from '../accessibility/interaction.mjs?v=0.1.0-phase22';
 
 const supported=['ko','zh-CN','ja','en','es','fr','it','ru'];
@@ -40,7 +41,7 @@ const elements={
 };
 
 function normalizeLocale(value=''){const candidate=String(value??'');const exact=supported.find((item)=>item.toLowerCase()===candidate.toLowerCase());if(exact)return exact;const language=candidate.split('-')[0].toLowerCase();return supported.find((item)=>item.split('-')[0].toLowerCase()===language)||null;}
-function resolveLocale(){return normalizeLocale(new URLSearchParams(location.search).get('locale'))||normalizeLocale(navigator.language)||'ko';}
+function resolveLocale(){return normalizeLocale(new URLSearchParams(location.search).get('locale'))||normalizeLocale(readPreferredLocale())||normalizeLocale(navigator.language)||'en';}
 function message(key,values={}){let output=collaborationRuntimeMessages[state.locale]?.[key]??runtimeMessages[state.locale]?.[key]??state.messages[key]??CURRICULUM_MESSAGES.en[key]??runtimeMessages.en[key]??key;for(const [name,value] of Object.entries(values))output=output.replace(`{${name}}`,String(value));return output;}
 function applyMessages(){document.documentElement.lang=state.locale;document.title=accessibilityMessage(state.locale,'curriculum.pageTitle');elements.locale.value=state.locale;document.querySelectorAll('[data-message]').forEach((node)=>{node.textContent=message(node.dataset.message);});document.querySelectorAll('[data-a11y-text]').forEach((node)=>{node.textContent=accessibilityMessage(state.locale,node.dataset.a11yText);});document.querySelectorAll('[data-a11y-aria]').forEach((node)=>{node.setAttribute('aria-label',accessibilityMessage(state.locale,node.dataset.a11yAria));});}
 async function request(path,{method='GET',body,authenticated=true}={}){const response=await fetch(path,{method,headers:{...(authenticated&&state.token?{authorization:`Bearer ${state.token}`} : {}),...(body===undefined?{}:{'content-type':'application/json'}),...(method==='POST'&&authenticated?{'idempotency-key':createIdempotencyKey('curriculum-ui')}:{})},body:body===undefined?undefined:JSON.stringify(body)});const payload=await response.json();if(!response.ok)throw new Error(payload.error?.code||'REQUEST_FAILED');return payload.data;}
@@ -70,7 +71,7 @@ function nextApplicationItem(){state.applicationIndex+=1;renderApplicationItem()
 
 async function boot(){state.locale=resolveLocale();state.messages=CURRICULUM_MESSAGES[state.locale]||CURRICULUM_MESSAGES.en;state.gradeCode=normalizeGrade(new URLSearchParams(location.search).get('grade'));applyMessages();try{const bootstrap=await request('/api/v1/local-demo/session',{method:'POST',body:{},authenticated:false});state.token=bootstrap.access_token;const data=await request(`/api/v1/curriculum/grades?locale=${encodeURIComponent(state.locale)}`);state.grades=data.grades;if(state.grades.length!==12)throw new Error('GRADE_COUNT');renderGradeGroups();await selectGrade(state.gradeCode);}catch{elements.status.textContent=message('error');}}
 
-installSkipLinkFocus();elements.locale.addEventListener('change',()=>{const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
+installSkipLinkFocus();elements.locale.addEventListener('change',()=>{writePreferredLocale(elements.locale.value);const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
 elements.route.addEventListener('change',()=>{if(state.formula)openCollaboration(state.formula);});
 elements.applicationStart.addEventListener('click',openApplicationChecks);
 elements.applicationForm.addEventListener('submit',submitApplication);

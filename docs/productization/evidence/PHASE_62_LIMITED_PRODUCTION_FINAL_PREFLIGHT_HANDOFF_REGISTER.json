@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 62,
+  "status": "BLOCKED_EXTERNAL",
+  "api_key_accessed": false,
+  "preflight_executed": false,
+  "handoff_dispatched": false,
+  "provider_live_tested": false,
+  "feature_flag_changed": false,
+  "student_traffic": false,
+  "public_traffic": false,
+  "production_promotion_allowed": false,
+  "source_plan": {
+    "phase": 61,
+    "register_path": "docs/productization/evidence/PHASE_61_LIMITED_PRODUCTION_EXPANSION_PLAN_REGISTER.json",
+    "register_sha256": "1257d94b2bf47fbce3389980f2b75a08288be0c587ce63f9526e933a1322fb9a"
+  },
+  "version_pins": {
+    "model_reference": "gpt-5.6-sol",
+    "prompt_version": "mathchakchak-tutor-duo-v1.0.0"
+  },
+  "limits": {
+    "maximum_requests": 64,
+    "maximum_requests_per_locale": 8,
+    "maximum_duration_minutes": 60,
+    "maximum_concurrency": 2,
+    "automatic_retries": 0,
+    "raw_content_retention_days": 0,
+    "reference_metadata_retention_days": 30
+  },
+  "handoff_packets": [
+    {"packet_id":"FINAL-HANDOFF-ko","locale":"ko","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-ko","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-zh-CN","locale":"zh-CN","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-zh-CN","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-ja","locale":"ja","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-ja","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-en","locale":"en","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-en","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-es","locale":"es","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-es","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-fr","locale":"fr","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-fr","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-it","locale":"it","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-it","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"},
+    {"packet_id":"FINAL-HANDOFF-ru","locale":"ru","scenario_reference":"EXPANSION-INTERNAL-SYNTHETIC-ru","maximum_requests":8,"status":"DRAFT_NON_DISPATCHING"}
+  ],
+  "preflight_records": [
+    {"control_id":"SOURCE_PLAN_ACCEPTED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"SOURCE_HASH_PINNED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"MODEL_PROMPT_PIN_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"PRODUCTION_PROJECT_ISOLATED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"SECRET_MANAGER_BOUNDARY_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"RATE_AND_SPEND_LIMITS_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"INTERNAL_ADULT_ALLOWLIST_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"SYNTHETIC_DATASET_HASH_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"RAW_RETENTION_ZERO_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"REFERENCE_DELETION_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"MONITORING_ALERTS_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"SAFETY_ESCALATION_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"INCIDENT_ROUTE_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"KILL_SWITCH_REHEARSAL_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"ROLLBACK_REHEARSAL_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null},
+    {"control_id":"STUDENT_PUBLIC_ROUTE_DENY_VERIFIED","status":"PENDING_EXTERNAL","evidence_reference":null,"verified_at":null}
+  ],
+  "operator_assignment": {
+    "status": "PENDING_EXTERNAL",
+    "operator_reference": null,
+    "authorized_channel_reference": null,
+    "assigned_at": null,
+    "acknowledged_at": null,
+    "conflict_declaration": null,
+    "approval_inferred": false
+  },
+  "final_review": {
+    "status": "NOT_REQUESTED",
+    "review_reference": null,
+    "reviewed_at": null,
+    "approval_inferred": false
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 56,
+  "generated_at": "2026-08-10T15:29:13.304Z",
+  "status": "AUTO_QA_PASS_LOCAL_CONTROLLED_PRODUCTION_ROLLOUT_BLOCKED_EXTERNAL",
+  "current_rollout": {
+    "status": "BLOCKED_EXTERNAL",
+    "source_status": "BLOCKED_EXTERNAL",
+    "source_accepted": false,
+    "preflight_verified": 0,
+    "preflight_required": 8,
+    "window_approved": false,
+    "product_owner_authorized": false,
+    "locales": 8,
+    "planned_requests": 8,
+    "blockers": [
+      "PHASE55_PRODUCTION_HANDOFF_NOT_READY",
+      "ROLLOUT_PREFLIGHT_PENDING",
+      "EXECUTION_WINDOW_PENDING",
+      "PRODUCT_OWNER_AUTHORIZATION_PENDING"
+    ],
+    "validation_failures": [],
+    "execution_authorized": false,
+    "dispatch_performed": false,
+    "feature_flag_changed": false,
+    "external_deployment_performed": false,
+    "production_promotion_allowed": false
+  },
+  "summary": {
+    "scenarios": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-rollout-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE55_PRODUCTION_HANDOFF_NOT_READY",
+          "ROLLOUT_PREFLIGHT_PENDING",
+          "EXECUTION_WINDOW_PENDING",
+          "PRODUCT_OWNER_AUTHORIZATION_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "source-alone-insufficient",
+      "passed": true,
+      "observed": {
+        "blockers": [
+          "ROLLOUT_PREFLIGHT_PENDING",
+          "EXECUTION_WINDOW_PENDING",
+          "PRODUCT_OWNER_AUTHORIZATION_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "preflight-alone-insufficient",
+      "passed": true,
+      "observed": {
+        "blockers": [
+          "EXECUTION_WINDOW_PENDING",
+          "PRODUCT_OWNER_AUTHORIZATION_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "eight-locale-dry-run-never-dispatches",
+      "passed": true,
+      "observed": {
+        "requests": 8
+      }
+    },
+    {
+      "id": "preflight-integrity-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "PREFLIGHT_SET_MISMATCH",
+          "DUPLICATE_PREFLIGHT_ID",
+          "PENDING_PREFLIGHT_EVIDENCE_MUST_BE_NULL:SOURCE_HANDOFF_VALID"
+        ]
+      }
+    },
+    {
+      "id": "false-execution-claims-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "DISPATCH_PERFORMED_MUST_REMAIN_FALSE",
+          "FEATURE_FLAG_CHANGED_MUST_REMAIN_FALSE",
+          "STUDENT_TRAFFIC_MUST_REMAIN_FALSE",
+          "PUBLIC_TRAFFIC_MUST_REMAIN_FALSE",
+          "PRE_EXECUTION_RESULTS_MUST_REMAIN_EMPTY"
+        ]
+      }
+    },
+    {
+      "id": "plan-window-hash-secret-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "SOURCE_HASH_MISMATCH",
+          "ROLLOUT_PLAN_CHANGED",
+          "EXECUTION_WINDOW_TOO_LONG",
+          "SECRET_MATERIAL_DETECTED"
+        ]
+      }
+    }
+  ],
+  "contract_sha256": "fba4c0f8c678a0a072ef29fb9ada709002802ca87a0025c2fc024ca38aa18771",
+  "source_handoff_register_sha256": "0c9cbe15a6f48fb8f0a2762e9782c0a37e0fcf046fcbc9cd6a91f5487154df6e",
+  "rollout_register_sha256": "0b1adcc1a00986cb67c6ac144a306570d5648e6d70147e11544c4f776c1319ec",
+  "external_actions": {
+    "api_key_accessed": false,
+    "execution_authorized": false,
+    "dispatch_performed": false,
+    "feature_flag_changed": false,
+    "external_deployment_performed": false,
+    "student_traffic": false,
+    "public_traffic": false,
+    "production_promotion": false
+  },
+  "next_authorized_action": "WAIT_FOR_READY_PHASE55_HANDOFF_AND_EIGHT_EXTERNAL_PREFLIGHT_REFERENCES"
+}

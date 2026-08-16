@@ -1,6 +1,6 @@
 # 수학착착 Stage 8 남은 작업 보고서 v1.0
 
-작성일: 2026-08-05
+작성일: 2026-08-15
 기준 브랜치: `codex/stage8-harness-continuation`
 
 ## 1. Goal Framing
@@ -28,8 +28,10 @@
 | Gate 3 개별 포즈 | `VERIFIED` | PNG 16/16, WebP 16/16 자동 QA PASS, 수동 승인 1/1 |
 | 랜딩페이지 캐릭터 배치 | `PROTOTYPE_COMPLETE` | 첫 화면·대화 아바타·성장 리포트에 공식 2D 자산 연결 |
 | Gate 4 모션 | `VERIFIED` | 상태·reduced-motion 8/8, Edge 런타임 7/7, 수동 승인 1/1 |
-| Gate 5 AI Behavior | `BLOCKED` | 상태 15/15·이벤트 15/15·말풍선 13/13, 브라우저 QA PASS, 수동 승인 0/1 |
-| Gate 6~8 | `NOT_STARTED` | Gate 5 승인 후 제품 통합부터 순차 구현 필요 |
+| Gate 5 AI Behavior | `VERIFIED` | 상태 15/15·이벤트 15/15·말풍선 13/13, 브라우저 QA PASS, 수동 승인 1/1 |
+| Gate 6 Product Integration | `VERIFIED` | 반응형 4/4, 정적 품질 PASS, 내용 주소 RC 고정 |
+| Gate 7 QA | `VERIFIED` | 명령 14/14, 단위 336/336, 통합 61/61, 접근성 6/6, P0 0 |
+| Gate 8 Deployment | `BLOCKED` | 로컬 배포·Health·Smoke·Rollback PASS, 외부 대상·권한 미설정 |
 
 ### 최종 완료 기준
 
@@ -61,40 +63,44 @@
 
 - Gate 3 감사기는 파일 해시, 512×512 크기, 투명 모서리, 피벗, 원본 셀 픽셀 일치, PNG/WebP 동등성을 확인한다.
 - Gate 3 승인 기록과 포즈 해시가 유지되는 동안에만 Gate 4 진입을 허용한다.
-- 랜딩페이지 배치는 현재 제품 콘셉트 프로토타입이며 Gate 6 제품 통합 완료로 계산하지 않는다.
+- 랜딩페이지는 승인 캐릭터·모션·AI 행동 런타임과 함께 제품 Artifact에 통합되어 Gate 6·7 검증 대상에 포함됐다.
 - 민감 파일과 복구 코드는 읽거나 추적하지 않는다.
 
 ## 5. Prompt Engineering — 남은 실행 작업
 
-### 우선순위 1: Gate 5 제품 책임자 검토·승인
+### 완료: Gate 6 종료 증거
 
-- 아동 친화 문구, 정답 비노출 힌트, 비난 없는 오답 흐름을 검토한다.
-- 우선순위·입력 보호·반복·쿨다운·주연/보조 역할과 캐릭터 숨김을 검토한다.
-- 승인 전에는 Gate 6 진입을 허용하지 않는다.
+- 실제 제품 화면 360·768·1024·1200px 검토 `4/4 PASS`
+- Gate 6 범위 lint·JavaScript 런타임 타입 계약 `PASS`
+- 사용자 작업 트리를 보존한 격리 RC `3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd`
+- 매핑 정본은 `docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json`이다.
 
-### 우선순위 2: Gate 6 제품 통합
+### 완료·차단: Gate 7~8 QA와 배포
 
-- 현재 긴 증거 경로를 실제 앱의 안정적인 자산 경로로 이전한다.
-- 랜딩페이지와 학습 화면에서 공통 캐릭터 컴포넌트를 사용한다.
-- 진단 폼을 실제 서비스 흐름과 연결하고 로딩·오류·빈 상태를 구현한다.
+- 모바일·태블릿·데스크톱, 키보드, 접근성 트리, 200% 확대, reduced-motion, PNG fallback 검사를 완료했다.
+- 성능 예산·보안·개인정보·학습 안전·PostgreSQL 회귀 검사를 완료했다.
+- 외부 자율 완료 메타프롬프트를 8/8·경고 0건으로 고정하고 live GitHub 사전점검 실행기를 추가했다.
+- 현재 인증 계정 `github:visionlab-coder`는 원격 저장소 `tianxiawudi1996-eng/SOOHACK-CHAKCHAK`에 `pull=true`, `push=false`다.
+- GitHub Pages는 비활성이고 보호된 배포 Environment는 0개이며 외부 Development·Staging·Canary·Production 대상과 권한 참조도 없다.
+- GitHub 읽기 전용 경로 연결을 실제 호출로 검증하고 증거 SHA-256 `1257d15a6d16296058edad07b64e62157c017fffc0722bb7035d217fd52fafec`을 대장에 승격했다.
+- 외부 변경 없이 정확히 `HOLD`로 중단했으며 사전점검의 첫 다음 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`다.
 
-### 우선순위 3: Gate 7~8 QA와 배포
+### 우선순위 3: 제품화 외부 증거
 
-- 모바일·태블릿·데스크톱, 키보드, 화면 읽기, 느린 네트워크, 자산 누락을 검사한다.
-- 성능 예산과 캐시 정책을 확인한다.
-- 실제 배포 대상, 환경 변수, 모니터링, 롤백 절차를 확정한다.
+- Phase 75는 로컬 플랫폼 PASS이며 외부 출시는 `BLOCKED_EXTERNAL`이다.
+- 외부 실행 대장의 경로 연결 증거는 `1/1 VERIFIED_READ_ONLY_ROUTE_CONNECTION`이다.
+- 다음 허용 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`다.
+- 필수 필드는 `target_reference`, `provider_code`, `environment_code`, `connection_reference` 네 개이며 첫 환경은 `DEVELOPMENT`다.
+- dispatch·submission·verification·release는 모두 false다.
 
 ## 6. Workflow Engineering
 
 ```text
-Gate 3 VERIFIED
-→ Gate 4 상태 전환·모션
-→ Gate 4 승인
-→ Gate 5 AI 이벤트 연결·자동 QA
-→ Gate 5 제품 책임자 승인
-→ Gate 6 실제 제품 통합
-→ Gate 7 기기·접근성·회귀 QA
-→ Gate 8 배포·모니터링·롤백 검증
+Gate 0~7 VERIFIED
+→ Gate 8 로컬 배포·Health·Smoke·Rollback VERIFIED
+→ 외부 경로 연결 증거 검증
+→ 외부 배포 대상·권한·어댑터·HTTPS URL·쓰기 권한·보호 Environment 확인
+→ Development → Staging → Canary → Production 승인 실행
 ```
 
 ## 7. Memory Engineering
@@ -118,8 +124,8 @@ Gate 3 VERIFIED
 
 - 각 Gate마다 `구현 → 자동 QA → 시각 검토 → 1인 승인 → 상태 승격`을 반복한다.
 - 실패하면 해당 포즈·상태·기기 단위로 원인을 좁혀 최소 수정 후 전체 회귀 검사를 다시 실행한다.
-- 종료 조건은 Gate 8 배포 검증과 롤백 가능 상태가 모두 확인된 때다.
+- 로컬 종료 조건은 충족했다. Stage 8 전체 종료는 승인된 외부 환경의 배포·Canary·사후 Smoke·rollback 증거가 추가될 때다.
 
 ## 현재 결론
 
-랜딩페이지 캐릭터 배치와 Gate 2·3·4 승인은 완료됐고, Gate 5 AI Behavior 구현과 자동 QA도 완료됐다. 전체 Stage 8은 완료되지 않았으며, 다음 실행 작업은 Gate 5 제품 책임자 1인 수동 검토·승인이다. 승인 후 Gate 6 제품 통합으로 진행한다.
+Gate 0~7은 `VERIFIED`다. Gate 8은 로컬 배포·Health·Smoke·Rollback과 GitHub 읽기 전용 경로 연결 증거까지 검증됐다. 다만 실제 배포 대상·권한·쓰기 권한·보호 Environment가 없으므로 전체 Stage 8은 아직 `BLOCKED`다. 다음 READY 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`이며, 이를 검증한 뒤 승인 참조를 수용한다.

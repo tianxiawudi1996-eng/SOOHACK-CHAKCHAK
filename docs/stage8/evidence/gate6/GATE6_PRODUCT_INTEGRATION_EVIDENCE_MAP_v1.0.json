@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "project": "SOOHACK-CHAKCHAK",
+  "stage": 8,
+  "gate": 6,
+  "generated_at": "2026-08-15T22:06:06+09:00",
+  "workflow_status": "VERIFIED",
+  "result": "PASS",
+  "prerequisite": {
+    "gate5_status": "VERIFIED",
+    "gate5_approval": "1/1",
+    "manual_review_path": "docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json",
+    "manual_review_sha256": "d1ec84cdad7c1d4bc19d0a448b93ef8fcc7292922ac45a8b9cf655db519e4c79",
+    "audit_path": "docs/stage8/audits/GATE5_AI_BEHAVIOR_AUDIT.md",
+    "audit_sha256": "e0c721a6d3ca76877f0c632b7e002fecfab172b91daabcd55dd44f313e031512"
+  },
+  "phase_mappings": [
+    {
+      "phase": 5,
+      "gate6_concern": "approved_character_visual_accessibility_and_i18n_integration",
+      "status": "PASS_WITH_GATE6_RESPONSIVE_CLOSURE",
+      "evidence_path": "docs/productization/evidence/PHASE_5_BROWSER_QA.json",
+      "evidence_sha256": "3ca106e032970cd99fbbca89fcb31a4bcfbcefde32a43f03b9643afe64a296d4",
+      "observed": [
+        "approved_character_images_2_of_2",
+        "locales_8_of_8",
+        "desktop_1440_pass",
+        "mobile_390_pass",
+        "console_errors_0",
+        "gate6_responsive_runtime_360_768_1024_1200_pass"
+      ]
+    },
+    {
+      "phase": 6,
+      "gate6_concern": "product_source_feature_and_runtime_contract_integration",
+      "status": "PASS",
+      "evidence_path": "docs/productization/reports/PHASE_6_FEATURE_DEVELOPMENT_REPORT.md",
+      "evidence_sha256": "7770b0742f82be35986607089af12bfbcace0e558e42b7afcac0c73d0a04b20b",
+      "observed": [
+        "phase_status_verified",
+        "feature_checklist_15_of_15",
+        "unit_and_static_feature_evidence_present"
+      ]
+    },
+    {
+      "phase": 7,
+      "gate6_concern": "immutable_local_staging_artifact_health_and_rollback",
+      "status": "PASS_LOCAL_STAGING",
+      "evidence_path": "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json",
+      "evidence_sha256": "aefcca1e730ea18278875528357c9b8336409d3e5809f9d8fedb13b816b11f07",
+      "observed": [
+        "artifact_hashes_pass",
+        "locales_8_of_8",
+        "approved_character_assets_2_of_2",
+        "local_http_78_of_78",
+        "approved_pose_assets_32_of_32",
+        "rollback_rehearsal_pass",
+        "external_deployment_false"
+      ]
+    },
+    {
+      "phase": 8,
+      "gate6_concern": "frontend_api_postgresql_core_user_flow_integration",
+      "status": "PASS_LOCAL_ISOLATED",
+      "evidence_path": "docs/productization/evidence/PHASE_8_INTEGRATION_QA.json",
+      "evidence_sha256": "4f7c7768c9e68c8f5209a8d0bb94fee794ff8fc7395642d1801d32a859c7f23c",
+      "observed": [
+        "web_api_database_healthy",
+        "approved_character_images_2_of_2",
+        "core_user_journey_pass",
+        "ownership_and_idempotency_pass",
+        "postgresql_persistence_pass"
+      ]
+    }
+  ],
+  "satisfied_gate6_evidence": [
+    "GATE5_PREREQUISITE_VERIFIED",
+    "APPROVED_CHARACTER_ASSETS_IN_PRODUCT",
+    "EIGHT_LOCALES_RENDERED",
+    "PRODUCT_SOURCE_AND_FEATURE_CONTRACT_PRESENT",
+    "LOCAL_STAGING_ARTIFACT_AND_ROLLBACK_PASS",
+    "CORE_FRONTEND_API_POSTGRESQL_FLOW_PASS",
+    "ACCESSIBILITY_BASELINE_PRESENT",
+    "RESPONSIVE_RUNTIME_4_OF_4_PASS",
+    "LINT_AND_RUNTIME_TYPE_CONTRACT_PASS",
+    "CONTENT_ADDRESSED_RELEASE_CANDIDATE_FROZEN"
+  ],
+  "closure_evidence": [
+    {
+      "id": "GATE6_RESPONSIVE_RUNTIME_360_768_1024_1200",
+      "status": "PASS",
+      "evidence_path": "docs/stage8/evidence/gate6/GATE6_RESPONSIVE_RUNTIME_QA_v1.0.json",
+      "evidence_sha256": "ff22f92e78f97f35d291c7a141e93370425d01bb4e0837b1e7881b8326151207",
+      "observed": "actual Chromium automation plus agent visual inspection; viewports 4/4, horizontal overflow 0, console errors 0, approved characters 2/2, initial resource transfer 260727 bytes"
+    },
+    {
+      "id": "GATE6_LINT_AND_RUNTIME_TYPE_CONTRACT",
+      "status": "PASS",
+      "evidence_path": "docs/stage8/evidence/gate6/GATE6_STATIC_QUALITY_v1.0.json",
+      "evidence_sha256": "29dd491fb8286f5bdf6a4ab92952c8950b1e3be72c4b0f0b9b3a3a74917966e5",
+      "observed": "source text 406, JavaScript syntax 350, JSON 39, runtime contract assertions 467; no TypeScript compiler claim"
+    },
+    {
+      "id": "GATE6_CONTENT_ADDRESSED_RELEASE_CANDIDATE",
+      "status": "PASS",
+      "evidence_path": "artifacts/release-candidate/stage8-v1.0/release-manifest.json",
+      "evidence_sha256": "43beca4993d3a545eb2d41102074e5e7aad359d195d25efed8d09759e86760a1",
+      "rc_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+      "observed": "isolated content-addressed product source and test copy 567 files and immutable staging artifact 78 files; user working tree not reset or rewritten"
+    }
+  ],
+  "gate7_entry_allowed": true,
+  "external_deployment_performed": false,
+  "product_release_authorized": false
+}

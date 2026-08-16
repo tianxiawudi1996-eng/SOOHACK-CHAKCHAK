@@ -1,0 +1,89 @@
+:root {
+  --tap-target: 2.75rem;
+  --shell-line: rgba(179, 192, 226, 0.72);
+}
+
+.product-page {
+  min-width: 20rem;
+  background-color: var(--color-canvas, #f6f8ff);
+}
+
+.product-page .brand {
+  min-height: var(--tap-target);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.72rem;
+  color: var(--color-ink-900, #17213b);
+  text-decoration: none;
+}
+
+.product-page .brand-mark {
+  flex: 0 0 2.45rem;
+  width: 2.45rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 0.85rem;
+  color: #fff;
+  background: linear-gradient(145deg, var(--color-brand-600, #2f5bff), #163ed0);
+  font-weight: 900;
+  transform: rotate(-7deg);
+  box-shadow: 0 8px 18px rgba(47, 91, 255, 0.24);
+}
+
+.product-page .brand strong,
+.product-page .brand small {
+  display: block;
+}
+
+.product-page .brand small {
+  color: var(--color-ink-600, #5d6984);
+  font-size: 0.56rem;
+  letter-spacing: 0.15em;
+}
+
+.product-page :is(button, select, input, textarea, [role="button"]) {
+  min-height: var(--tap-target);
+}
+
+.product-page > header a,
+.product-page > header label {
+  min-height: var(--tap-target);
+}
+
+.product-page > header a {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--tap-target);
+  justify-content: center;
+}
+
+.product-page > header select {
+  min-height: var(--tap-target);
+  border-color: var(--shell-line);
+}
+
+.product-page .surface-note {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(47, 91, 255, 0.16);
+  border-radius: 999px;
+  color: var(--color-brand-700, #2147c7);
+  background: var(--color-brand-100, #e9eeff);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+@media (max-width: 640px) {
+  .product-page .brand { min-width: var(--tap-target); }
+  .product-page .brand-mark { flex-basis: 2.35rem; width: 2.35rem; }
+  .product-page > header { gap: 0.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-page *,
+  .product-page *::before,
+  .product-page *::after { scroll-behavior: auto !important; }
+}

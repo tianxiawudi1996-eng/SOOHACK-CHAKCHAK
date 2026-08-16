@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 59,
+  "generated_at": "2026-08-10T15:29:15.572Z",
+  "status": "AUTO_QA_PASS_LOCAL_LIMITED_PRODUCTION_OBSERVATION_RESULTS_BLOCKED_EXTERNAL",
+  "current_result_intake": {
+    "status": "BLOCKED_EXTERNAL",
+    "recommendation": "HOLD",
+    "source_status": "BLOCKED_EXTERNAL",
+    "source_accepted": false,
+    "records_received": 0,
+    "records_required": 8,
+    "passed_records": 0,
+    "failed_records": 0,
+    "complete": false,
+    "kill_switch_rearmed": false,
+    "feature_flag_restored_off": false,
+    "reference_deletion_complete": false,
+    "incident_resolved": false,
+    "rollback_complete": false,
+    "review_status": "NOT_REQUESTED",
+    "blockers": [
+      "PHASE58_SAFETY_HANDOFF_NOT_ACCEPTED",
+      "OBSERVATION_RESULTS_PENDING"
+    ],
+    "validation_failures": [],
+    "student_traffic_allowed": false,
+    "public_traffic_allowed": false,
+    "production_promotion_allowed": false
+  },
+  "summary": {
+    "scenarios": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-results-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE58_SAFETY_HANDOFF_NOT_ACCEPTED",
+          "OBSERVATION_RESULTS_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "accepted-source-awaits-results",
+      "passed": true,
+      "observed": {
+        "status": "AWAITING_OBSERVATION_RESULTS"
+      }
+    },
+    {
+      "id": "partial-results-held",
+      "passed": true,
+      "observed": {
+        "status": "OBSERVATION_RESULTS_INCOMPLETE"
+      }
+    },
+    {
+      "id": "safe-results-ready-for-review",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_LIMITED_PRODUCTION_OBSERVATION_REVIEW"
+      }
+    },
+    {
+      "id": "single-review-next-handoff-only",
+      "passed": true,
+      "observed": {
+        "status": "LIMITED_PRODUCTION_OBSERVATION_ACCEPTED_FOR_NEXT_HANDOFF"
+      }
+    },
+    {
+      "id": "hard-failure-requires-rollback",
+      "passed": true,
+      "observed": {
+        "pending": true,
+        "status": "LIMITED_PRODUCTION_OBSERVATION_REJECTED_AUTOMATICALLY"
+      }
+    },
+    {
+      "id": "integrity-limits-raw-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "DUPLICATE_LOCALE_RESULT",
+          "SCENARIO_REFERENCE_INVALID:SYNTHETIC-OBS-2",
+          "PASS_GATE_CONTRADICTION:SYNTHETIC-OBS-3",
+          "INPUT_TOKEN_BUDGET_EXCEEDED",
+          "OBSERVATION_DURATION_EXCEEDED"
+        ]
+      }
+    },
+    {
+      "id": "raw-secret-drift-false-claim-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "SOURCE_HASH_MISMATCH",
+          "NO_OBSERVATION_CONTRADICTION",
+          "FORBIDDEN_CONTENT_KEY:response_text",
+          "SECRET_MATERIAL_DETECTED"
+        ]
+      }
+    }
+  ],
+  "contract_sha256": "daf39ad77b483ed7e76850b9e41599bbd0a50c640e600381e7772591d98499ce",
+  "source_handoff_register_sha256": "d014e67ac5a204b638a39976ff752c912dc62b288fd2e241c6d541a643c21406",
+  "result_register_sha256": "f1ff6766f24eb06beb5cdfa03080a9b5892ccccb2de6c3a0953a4b2798f2b463",
+  "external_actions": {
+    "api_key_accessed": false,
+    "observation_observed": false,
+    "execution_observed": false,
+    "dispatch_observed": false,
+    "provider_live_tested": false,
+    "feature_flag_changed": false,
+    "student_traffic": false,
+    "public_traffic": false,
+    "production_promotion": false
+  },
+  "next_authorized_action": "WAIT_FOR_ACCEPTED_PHASE58_HANDOFF_AND_EIGHT_REFERENCE_ONLY_OBSERVATION_RESULTS"
+}

@@ -1,4 +1,5 @@
 {
+  "nav.academy": "専門学習設計",
   "nav.curriculum": "学年別公式",
   "meta.title": "MathChakChak — 理解を次の問題へつなげる算数",
   "nav.method": "学習方法",
@@ -29,5 +30,14 @@
   "report.title": "点数だけでなく、成長した理由を伝えます。",
   "report.body": "今週の変化、難しかった概念、次のおすすめ学習を生徒と連携した保護者が確認できます。",
   "cta.title": "今日、算数をもう一度すっきり始めよう。",
-  "cta.body": "無料診断で、お子さまに合う最初の説明を見つけましょう。"
+  "cta.body": "無料診断で、お子さまに合う最初の説明を見つけましょう。",
+  "preview.sample": "サンプル学習データ",
+  "duet.kicker": "デュアルチューターシステム",
+  "duet.title": "2人の仲間が異なる方法で考えを支えます。",
+  "duet.body": "チャクチャキは考えを引き出し、ゴンシギは数学の規則と根拠を確認します。",
+  "duet.chakchaki.role": "質問を通して、自分の考えを説明できるよう支えます。",
+  "duet.gongsickyi.role": "公式、計算、数学的な根拠を確認します。",
+  "duet.flow.ask": "学習者の考えを引き出す",
+  "duet.flow.verify": "公式と計算を確認する",
+  "duet.flow.review": "次の復習につなげる"
 }

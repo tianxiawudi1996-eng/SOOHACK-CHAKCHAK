@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TRIGGER IF EXISTS privacy_external_reference_scheme_governance_policy_immutable ON mathchakchak.privacy_external_reference_scheme_governance_policy;
+DROP TRIGGER IF EXISTS privacy_external_reference_scheme_governance_contract_immutable ON mathchakchak.privacy_external_reference_scheme_governance_contract;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_scheme_governance_policy;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_scheme_governance_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_reference_scheme_governance_mutation();
+
+COMMIT;

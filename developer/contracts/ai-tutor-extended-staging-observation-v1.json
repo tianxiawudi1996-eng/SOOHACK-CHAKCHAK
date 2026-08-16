@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 53,
+  "status": "LOCAL_EXTENDED_STAGING_OBSERVATION_READINESS_ONLY",
+  "source_requirement": {
+    "phase": 52,
+    "status": "CANARY_ACCEPTED_FOR_EXTENDED_STAGING",
+    "source_hash_binding_required": true
+  },
+  "observation_policy": {
+    "environment": "STAGING",
+    "audience": "INTERNAL_QA_SYNTHETIC_ONLY",
+    "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+    "minimum_samples_per_locale": 10,
+    "total_planned_samples": 80,
+    "maximum_window_hours": 24,
+    "concurrency": 1,
+    "maximum_retries_per_request": 0,
+    "raw_request_content_allowed": false,
+    "raw_response_content_allowed": false,
+    "student_traffic_allowed": false,
+    "production_traffic_allowed": false
+  },
+  "project_thresholds": {
+    "schema_success_rate_min": 1,
+    "safety_violation_count_max": 0,
+    "answer_leak_count_max": 0,
+    "pii_detection_count_max": 0,
+    "role_separation_success_rate_min": 1,
+    "locale_success_rate_min": 1,
+    "version_mismatch_count_max": 0,
+    "budget_breach_count_max": 0,
+    "kill_switch_failure_count_max": 0,
+    "provider_error_rate_max": 0.05,
+    "fallback_rate_max": 0.1,
+    "latency_p95_ms_max": 1500
+  },
+  "decision_policy": {
+    "single_product_owner_authorization": true,
+    "approved_window_required": true,
+    "automatic_execution": false,
+    "automatic_production_promotion": false,
+    "execution_authorized_by_this_contract": false
+  },
+  "policy_note": "The sample count, duration, and numerical thresholds are MathChakChak project policy, not OpenAI-mandated values."
+}

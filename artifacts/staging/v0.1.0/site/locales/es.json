@@ -1,4 +1,5 @@
 {
+  "nav.academy": "Estudio avanzado",
   "nav.curriculum": "Fórmulas por curso",
   "meta.title": "MathChakChak — comprensión que llega al siguiente problema",
   "nav.method": "Cómo funciona",
@@ -29,5 +30,14 @@
   "report.title": "Muestra el motivo del progreso, no solo una nota.",
   "report.body": "El estudiante y sus padres vinculados revisan los cambios, los conceptos difíciles y la próxima recomendación.",
   "cta.title": "Haz que las matemáticas vuelvan a encajar hoy.",
-  "cta.body": "Encuentra la primera explicación adecuada con un diagnóstico gratuito."
+  "cta.body": "Encuentra la primera explicación adecuada con un diagnóstico gratuito.",
+  "preview.sample": "Datos de aprendizaje de ejemplo",
+  "duet.kicker": "SISTEMA DE DOBLE TUTOR",
+  "duet.title": "Dos compañeros ayudan a pensar de formas diferentes.",
+  "duet.body": "Chakchaki ayuda a expresar el razonamiento y Gongsickyi comprueba la regla y la evidencia matemática.",
+  "duet.chakchaki.role": "Hace preguntas para que el estudiante explique su razonamiento.",
+  "duet.gongsickyi.role": "Comprueba fórmulas, cálculos y evidencia matemática.",
+  "duet.flow.ask": "Descubrir el razonamiento",
+  "duet.flow.verify": "Comprobar fórmula y cálculo",
+  "duet.flow.review": "Conectar el próximo repaso"
 }

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 62,
+  "status": "LOCAL_FINAL_PREFLIGHT_HANDOFF_ONLY",
+  "source_requirement": {
+    "phase": 61,
+    "status": "EXPANSION_PLAN_ACCEPTED_FOR_EXECUTION_HANDOFF",
+    "source_hash_binding_required": true
+  },
+  "version_pins": {
+    "model_reference": "gpt-5.6-sol",
+    "prompt_version": "mathchakchak-tutor-duo-v1.0.0"
+  },
+  "inherited_limits": {
+    "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+    "maximum_requests": 64,
+    "maximum_requests_per_locale": 8,
+    "maximum_duration_minutes": 60,
+    "maximum_concurrency": 2,
+    "automatic_retries": 0,
+    "raw_content_retention_days": 0,
+    "reference_metadata_retention_days": 30
+  },
+  "required_preflight_controls": [
+    "SOURCE_PLAN_ACCEPTED",
+    "SOURCE_HASH_PINNED",
+    "MODEL_PROMPT_PIN_VERIFIED",
+    "PRODUCTION_PROJECT_ISOLATED",
+    "SECRET_MANAGER_BOUNDARY_VERIFIED",
+    "RATE_AND_SPEND_LIMITS_VERIFIED",
+    "INTERNAL_ADULT_ALLOWLIST_VERIFIED",
+    "SYNTHETIC_DATASET_HASH_VERIFIED",
+    "RAW_RETENTION_ZERO_VERIFIED",
+    "REFERENCE_DELETION_VERIFIED",
+    "MONITORING_ALERTS_VERIFIED",
+    "SAFETY_ESCALATION_VERIFIED",
+    "INCIDENT_ROUTE_VERIFIED",
+    "KILL_SWITCH_REHEARSAL_VERIFIED",
+    "ROLLBACK_REHEARSAL_VERIFIED",
+    "STUDENT_PUBLIC_ROUTE_DENY_VERIFIED"
+  ],
+  "decision_policy": {
+    "all_preflight_controls_verified": "READY_FOR_FINAL_HANDOFF_REVIEW",
+    "single_product_owner_review": true,
+    "automatic_execution": false,
+    "automatic_dispatch": false,
+    "automatic_feature_flag_change": false,
+    "automatic_student_or_public_traffic": false,
+    "automatic_production_promotion": false
+  }
+}

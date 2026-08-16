@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "requirement_id": "D80-02",
+  "target_published_items": 30000,
+  "required_metadata": [
+    "license_id",
+    "source_reference",
+    "grade_code",
+    "concept_key",
+    "problem_type",
+    "difficulty",
+    "skill_tags",
+    "misconception_tags",
+    "content_sha256"
+  ],
+  "publication_gates": [
+    "ACTIVE_LICENSE",
+    "KOREAN_CANONICAL_REVISION_HASH_MATCH",
+    "TWO_DISTINCT_MATH_APPROVALS",
+    "RIGHTS_APPROVAL",
+    "NO_OPEN_ERROR_OR_CRITICAL_FINDING"
+  ],
+  "review_decisions": ["APPROVE", "REJECT"],
+  "publication_states": ["DRAFT", "IN_REVIEW", "APPROVED", "PUBLISHED", "REJECTED", "RETIRED"],
+  "supported_locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "batch_policy": {
+    "recommended_rows_per_batch": 1000,
+    "deep_pagination": "KEYSET_BY_STATUS_GRADE_DIFFICULTY_ID",
+    "automatic_publication": false
+  },
+  "truth_boundary": {
+    "licensed_items_currently_supplied": 0,
+    "synthetic_items_count_as_target": false,
+    "learning_effectiveness_proven_by_volume": false,
+    "daechi_fit_proven_by_volume": false
+  }
+}

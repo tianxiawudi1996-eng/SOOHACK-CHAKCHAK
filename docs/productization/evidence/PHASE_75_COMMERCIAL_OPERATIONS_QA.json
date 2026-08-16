@@ -1,0 +1,12 @@
+{
+  "schema_version":"1.0.0",
+  "phase":75,
+  "requirement_id":"D80-10",
+  "status":"LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED",
+  "verified_at":"2026-08-12T17:34:13+09:00",
+  "scope":"LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+  "coverage":{"controls":"10/10","database_tables":"6/6","environments":"4/4","actual_verified_controls":0,"actual_recovery_drills":0,"actual_product_reviews":0},
+  "database":{"engine":"PostgreSQL 16","migration":"0040_commercial_operations_readiness.sql","forward":"PASS","rollback":"PASS","reapply":"PASS","smoke":"PASS","append_only":true,"public_privileges_revoked":true},
+  "verification":{"prompt_contract":"8/8 PASS","phase_unit":"7/7 PASS","full_unit":"336/336 PASS","target_integration":"2/2 PASS","file_isolated_integration":"61/61 PASS","security":"PASS; secret_files_scanned=374; known_vulnerabilities=0","operations_runtime":"20/20 PASS; p95_ms=6.12; server_errors=0; database_ready=PASS","staging":"43/43 PASS; locales=8/8; hashes=PASS; rollback_rehearsal=PASS","phase0":"PASS"},
+  "truth_boundary":{"actual_external_evidence":false,"legal_approval_proven":false,"commercial_readiness_proven":false,"production_release_authorized":false,"external_deployment_performed":false,"market_score_80_confirmed":false}
+}

@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 7,
+  "tested_at": "2026-08-15T13:05:58.809Z",
+  "status": "PASS",
+  "result": "RELEASE_BLOCKING_QA_PASS",
+  "release_candidate": {
+    "id": "stage8-v1.0",
+    "rc_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+    "frozen": true,
+    "source_file_count": 567,
+    "artifact_file_count": 78,
+    "workspace_source_match_before": true,
+    "workspace_source_match_after": true,
+    "drift_before": [],
+    "drift_after": []
+  },
+  "frozen_gate6_evidence": {
+    "static_quality": "PASS",
+    "responsive_runtime": "PASS"
+  },
+  "command_results": [
+    {
+      "id": "unit",
+      "command": "C:\\Program Files\\nodejs\\node.exe --test tests/unit/**/*.test.mjs",
+      "started_at": "2026-08-15T13:04:38.826Z",
+      "duration_ms": 1779,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "c1686e776b2d323faa1a951b92e03006ffaf9078a482116d29972f9cec18d0fa",
+      "output_tail": [
+        "✔ rule engines and disconnected automation remain explicitly labelled (0.4236ms)",
+        "✔ progress report calculates rates and difficult topics (0.9131ms)",
+        "✔ same idempotency key replays once and rejects changed requests (1.1071ms)",
+        "✔ review schedule expands on recall and resets on miss (3.2033ms)",
+        "ℹ tests 336",
+        "ℹ suites 0",
+        "ℹ pass 336",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1702.121"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "functional",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_feature_implementation.mjs",
+      "started_at": "2026-08-15T13:04:40.606Z",
+      "duration_ms": 76,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "b1121f0e2e66c318b6d19fccfcb4b68cc568e3b507322b13954050184f6f6951",
+      "output_tail": [
+        "FEATURE_CAPABILITY_TRUTH_PASS",
+        "features=15/15",
+        "end_user_verified_local=3/15",
+        "production_ready=0/15",
+        "rule_engine_only=0/15",
+        "human_review_required=2/15"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "regression",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_integration.mjs",
+      "started_at": "2026-08-15T13:04:40.683Z",
+      "duration_ms": 115,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "a7c3067b3eed74e26f21a32958710fb6a51fb6c264598cb1a2cdc74fb61037d2",
+      "output_tail": [
+        "INTEGRATION_FULL_STACK_PASS",
+        "frontend_locales=8/8",
+        "api_core_journey=PASS",
+        "postgres_api_path=PASS",
+        "idempotency_and_ownership=PASS",
+        "restart_persistence=PASS",
+        "phase9_entry=ALLOWED"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "accessibility_i18n",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_accessibility_i18n.mjs",
+      "started_at": "2026-08-15T13:04:40.798Z",
+      "duration_ms": 110,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "ac9ae5ba3d7f9d730c9bdfcc291603263231aa635380a7b017c4097c4e7f306b",
+      "output_tail": [
+        "ACCESSIBILITY_I18N_STATIC_PASS",
+        "surfaces=4/4",
+        "locales=8/8",
+        "accessibility_keys=31/31",
+        "review_packets=7/7",
+        "manual_approvals=0/7"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "accessibility_interaction",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_accessibility_interaction.mjs",
+      "started_at": "2026-08-15T13:04:40.909Z",
+      "duration_ms": 122,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "9da12e9c02c71aba3b9695aa26161a28559037819fd1bd4dc53d8b34a589de45",
+      "output_tail": [
+        "ACCESSIBILITY_INTERACTION_STATIC_PASS",
+        "surfaces=4/4",
+        "keyboard_focus_contracts=4/4",
+        "contrast_pairs=12/12",
+        "manual_accessibility_approvals=0/1"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "performance",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_performance_phase23.mjs",
+      "started_at": "2026-08-15T13:04:41.031Z",
+      "duration_ms": 84,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "2ba1bebb40eeafbc5c550f29025a2971b527ee793e4167eb041f2f15c9c8abb8",
+      "output_tail": [
+        "PHASE23_PERFORMANCE_STATIC_PASS",
+        "pages=4/4",
+        "artifact_files=78",
+        "artifact_total_bytes=3787427",
+        "largest_asset_bytes=135536",
+        "artifact_library_budget_bytes=4000000",
+        "compression_cache_contracts=PASS"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "security_privacy",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_security_phase24.mjs",
+      "started_at": "2026-08-15T13:04:41.115Z",
+      "duration_ms": 160,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "417bf131206814ac6ffb03469b923f20fe2ee39a3fc66218abca95f0c47d4ca0",
+      "output_tail": [
+        "PHASE24_SECURITY_STATIC_PASS",
+        "token_boundaries=PASS",
+        "request_boundaries=PASS",
+        "web_api_headers=PASS",
+        "secret_files_scanned=377",
+        "known_vulnerabilities=0"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "learning_safety",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_learning_quality_phase25.mjs",
+      "started_at": "2026-08-15T13:04:41.276Z",
+      "duration_ms": 68,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "f9b46e2be745a8fe4170cb3048ae2f3623d66dfbd50cc84f585a2e12726dc098",
+      "output_tail": [
+        "PHASE25_LEARNING_QUALITY_STATIC_PASS",
+        "primary_kpis=3/3",
+        "driver_metrics=2/2",
+        "privacy_contracts=PASS",
+        "field_targets=PROVISIONAL"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "data_rights",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_data_rights_phase26.mjs",
+      "started_at": "2026-08-15T13:04:41.344Z",
+      "duration_ms": 61,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "0aaa0e3af4b8bd5840991b0450808de8bb0471c2f650919b98d1f428db1d7c25",
+      "output_tail": [
+        "PHASE26_DATA_RIGHTS_STATIC_PASS",
+        "request_types=6/6",
+        "student_self_service=PASS",
+        "automatic_deletion=DISABLED",
+        "guardian_channel=EXTERNAL_BLOCKED"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "privacy_operations",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/validate_privacy_operations_phase27.mjs",
+      "started_at": "2026-08-15T13:04:41.405Z",
+      "duration_ms": 74,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "39f4856ea97ff6781025b7e5a7ccdc99d0f1bdd048da831a29f990f911411381",
+      "output_tail": [
+        "PHASE27_PRIVACY_OPERATIONS_STATIC_PASS",
+        "operator_tables=3/3",
+        "unit=71/71",
+        "postgresql_integration=18/18",
+        "fulfilment_executor=DISABLED"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "gate4_motion",
+      "command": "python scripts/harness/audit_gate4_2d_pet_motion.py",
+      "started_at": "2026-08-15T13:04:41.478Z",
+      "duration_ms": 77,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "759eddb78a36b3a0febed196321d5e6374ef1051e7d1a238208ef544ebdb3d50",
+      "output_tail": [
+        "GATE4_2D_PET_MOTION_AUDIT_WRITTEN",
+        "status=VERIFIED",
+        "automated_status=PASS",
+        "states=8/8",
+        "reduced_motion=8/8",
+        "manual_approval=1/1"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "gate5_behavior",
+      "command": "python scripts/harness/audit_gate5_ai_behavior.py",
+      "started_at": "2026-08-15T13:04:41.555Z",
+      "duration_ms": 75,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "44ad68f70b51a4516cecaf3c71a74724d682c9e74ee7900083cb2231c037169f",
+      "output_tail": [
+        "GATE5_AI_BEHAVIOR_AUDIT_WRITTEN",
+        "status=VERIFIED",
+        "automated_status=PASS",
+        "states=15/15 events=15/15 bubbles=13/13",
+        "manual_approval=1/1"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "browser_accessibility",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/harness/audit_gate7_browser_accessibility.mjs",
+      "started_at": "2026-08-15T13:04:41.631Z",
+      "duration_ms": 3723,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "0d91a92ff05079b07ce4f86fbbca797c90da6a059429f48cd464cf75efe6f0a4",
+      "output_tail": [
+        "GATE7_BROWSER_ACCESSIBILITY_PASS",
+        "checks=6/6",
+        "failures=0"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "full_integration",
+      "command": "C:\\Program Files\\nodejs\\node.exe --test --test-concurrency=1 tests/integration/*.test.mjs",
+      "started_at": "2026-08-15T13:04:45.353Z",
+      "duration_ms": 73382,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "00554497cc0c967586f9bcc7f1271900c9bc3d8b96f6d50ae6a4beadc38c4b36",
+      "output_tail": [
+        "✔ student formula screen uses same-origin web to PostgreSQL API journey (139.5414ms)",
+        "✔ formula recall check stays gated, server-scored, and updates recall progress (127.418ms)",
+        "✔ K12 curriculum UI exposes 12 grades, canonical formulas, and a five-phase pet collaboration plan (69.0675ms)",
+        "✔ staged operations screen serves role-aware teacher and parent aggregate views (65.3515ms)",
+        "ℹ tests 61",
+        "ℹ suites 0",
+        "ℹ pass 61",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 73314.6046"
+      ],
+      "spawn_error": null
+    }
+  ],
+  "summary": {
+    "command_pass_count": 14,
+    "command_expected_count": 14,
+    "unit_tests": "336/336 PASS",
+    "integration_tests": "61/61 PASS",
+    "browser_accessibility_checks": "6/6 PASS",
+    "p0_defects": 0
+  },
+  "data_boundary": {
+    "actual_child_data_used": false,
+    "synthetic_local_database_only": true,
+    "external_deployment_performed": false
+  },
+  "claim_boundary": {
+    "automated_qa_is_product_owner_release_approval": false,
+    "automated_accessibility_is_human_screen_reader_approval": false
+  },
+  "failures": []
+}

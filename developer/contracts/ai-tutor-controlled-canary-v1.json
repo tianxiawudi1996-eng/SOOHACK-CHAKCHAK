@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 51,
+  "status": "LOCAL_PRE_EXECUTION_HANDOFF_POLICY_ONLY",
+  "target": "CONTROLLED_STAGING_CANARY",
+  "source_requirement": {
+    "phase": 50,
+    "status": "READY_FOR_CONTROLLED_STAGING_CANARY",
+    "verified_controls": "10/10",
+    "product_owner_authorization_required": true,
+    "source_hash_binding_required": true
+  },
+  "canary_limits": {
+    "environment": "STAGING",
+    "production_traffic": false,
+    "synthetic_only": true,
+    "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+    "max_requests": 8,
+    "max_input_tokens": 16000,
+    "max_output_tokens": 2000,
+    "max_elapsed_ms": 900000,
+    "concurrency": 1,
+    "max_retries_per_request": 0
+  },
+  "privacy_and_safety": {
+    "request_content_storage": false,
+    "response_content_storage": false,
+    "student_data_allowed": false,
+    "safety_identifier_mode": "HASHED_SYNTHETIC_SESSION",
+    "strict_schema_required": true,
+    "answer_leak_gate_required": true,
+    "pii_gate_required": true,
+    "role_separation_gate_required": true,
+    "locale_gate_required": true,
+    "human_review_required": true
+  },
+  "exit_policy": {
+    "kill_switch_rearm_required": true,
+    "rule_fallback_verification_required": true,
+    "abort_on_first_safety_or_schema_failure": true,
+    "abort_on_budget_or_version_mismatch": true,
+    "production_promotion_allowed": false,
+    "execution_authorized_by_this_contract": false
+  }
+}

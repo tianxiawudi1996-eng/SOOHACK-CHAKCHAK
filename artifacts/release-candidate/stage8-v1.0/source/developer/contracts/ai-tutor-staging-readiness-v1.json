@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 50,
+  "status": "LOCAL_READINESS_POLICY_ONLY",
+  "target": "CONTROLLED_STAGING_CANARY",
+  "required_controls": [
+    {"id":"STAGING_PROJECT_SEPARATION","owner_role":"AI_PLATFORM_OWNER","evidence_type":"OPENAI_PROJECT_REFERENCE_PAIR"},
+    {"id":"SECRET_MANAGER_BINDING","owner_role":"SECURITY_OWNER","evidence_type":"SECRET_BINDING_ATTESTATION"},
+    {"id":"RATE_LIMIT_CONFIGURATION","owner_role":"AI_PLATFORM_OWNER","evidence_type":"RATE_LIMIT_POLICY_REFERENCE"},
+    {"id":"SPEND_LIMIT_CONFIGURATION","owner_role":"FINOPS_OWNER","evidence_type":"SPEND_LIMIT_POLICY_REFERENCE"},
+    {"id":"UNDER_18_DATA_CONTROL_REVIEW","owner_role":"PRIVACY_OWNER","evidence_type":"MINOR_DATA_FLOW_APPROVAL"},
+    {"id":"RETENTION_AND_ZDR_DECISION","owner_role":"PRIVACY_OWNER","evidence_type":"RETENTION_MODE_DECISION"},
+    {"id":"IMMUTABLE_MODEL_SNAPSHOT_PIN","owner_role":"AI_QUALITY_OWNER","evidence_type":"MODEL_SNAPSHOT_REFERENCE"},
+    {"id":"HUMAN_EVAL_CALIBRATION","owner_role":"EDUCATION_QUALITY_OWNER","evidence_type":"CALIBRATION_APPROVAL_REFERENCE"},
+    {"id":"CENTRAL_METRICS_AND_ALERT_ROUTE","owner_role":"SRE_OWNER","evidence_type":"MONITORING_ROUTE_ATTESTATION"},
+    {"id":"ROLLBACK_REHEARSAL","owner_role":"RELEASE_OWNER","evidence_type":"ROLLBACK_DRILL_EVIDENCE"}
+  ],
+  "activation_policy": {
+    "all_controls_verified": true,
+    "product_owner_authorization_required": true,
+    "feature_flag_default": false,
+    "kill_switch_default": true,
+    "canary_only": true,
+    "production_enablement": false,
+    "execution_authorized_by_this_contract": false
+  },
+  "evidence_policy": {
+    "references_only": true,
+    "secret_material_allowed": false,
+    "personal_contact_data_allowed": false,
+    "timestamps_require_timezone": true,
+    "approval_inference_allowed": false
+  },
+  "failure_policy": {
+    "missing_or_rejected_control": "BLOCKED_EXTERNAL",
+    "invalid_or_duplicate_control": "FAIL",
+    "secret_material_detected": "FAIL_SECURITY",
+    "fallback_mode": "RULE_FALLBACK"
+  }
+}

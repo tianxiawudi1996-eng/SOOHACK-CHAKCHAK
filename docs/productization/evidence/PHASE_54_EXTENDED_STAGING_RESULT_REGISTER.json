@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 54,
+  "status": "BLOCKED_EXTERNAL",
+  "api_key_accessed": false,
+  "student_traffic": false,
+  "production_traffic": false,
+  "production_promotion_allowed": false,
+  "execution_authorized": false,
+  "observation_observed": false,
+  "dispatch_observed": false,
+  "provider_live_tested": false,
+  "source_observation": {
+    "phase": 53,
+    "register_path": "docs/productization/evidence/PHASE_53_EXTENDED_STAGING_OBSERVATION_REGISTER.json",
+    "register_sha256": "f08b5185e69d080b08102d8b1aea9649bf1f6d2b87728ed69e05513b4e20848e"
+  },
+  "result_records": [],
+  "kill_switch": {
+    "status": "NOT_STARTED",
+    "evidence_reference": null,
+    "rearmed_at": null
+  },
+  "rollback": {
+    "status": "NOT_STARTED",
+    "evidence_reference": null,
+    "completed_at": null
+  },
+  "promotion_review": {
+    "status": "NOT_REQUESTED",
+    "review_reference": null,
+    "reviewed_at": null,
+    "approval_inferred": false
+  }
+}

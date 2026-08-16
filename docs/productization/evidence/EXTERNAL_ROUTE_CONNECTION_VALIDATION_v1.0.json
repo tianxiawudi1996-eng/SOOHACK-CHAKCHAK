@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "workstream_id": "D80-10",
+  "route_reference": "OPS-EVIDENCE-ROUTE-2026-001",
+  "status": "VERIFIED_READ_ONLY_ROUTE_CONNECTION",
+  "reference_format_valid": true,
+  "workstream_binding_valid": true,
+  "owner_role_confirmation": "OPERATIONS_OWNER",
+  "review_role_confirmation": "SECURITY_AND_PRODUCT_REVIEW_BOARD",
+  "actual_connection_evidence": 1,
+  "connection_verified": true,
+  "dispatch_performed": false,
+  "evidence_submission_enabled": false,
+  "verification_enabled": false,
+  "production_release_authorized": false,
+  "next_required_input": {
+    "type": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "fields": [
+      "target_reference",
+      "provider_code",
+      "environment_code",
+      "connection_reference"
+    ],
+    "required_environment_code": "DEVELOPMENT",
+    "raw_endpoint_stored": false,
+    "secret_stored": false,
+    "personal_contact_stored": false
+  },
+  "evidence_references": [
+    {
+      "internal_reference": "GITHUB-ROUTE-CONNECTION-20260815T135143212Z",
+      "evidence_sha256": "1257d15a6d16296058edad07b64e62157c017fffc0722bb7035d217fd52fafec",
+      "verified_at": "2026-08-15T13:51:43.212Z",
+      "review_role_code": "SECURITY_AND_PRODUCT_REVIEW_BOARD",
+      "source_path": "docs/productization/evidence/route-connections/GITHUB_ROUTE_CONNECTION_PROBE_20260815T135143212Z.json",
+      "provider": "github",
+      "connection_scope": "READ_ONLY_REPOSITORY_METADATA",
+      "status": "VERIFIED_READ_ONLY_CONNECTION"
+    }
+  ]
+}

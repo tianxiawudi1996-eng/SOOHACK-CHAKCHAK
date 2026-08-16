@@ -1,0 +1,12 @@
+{
+  "schema_version":"1.0.0",
+  "migration":"infra/database/migrations/0014_fulfilment_controls.sql",
+  "rollback":"infra/database/migrations/0014_fulfilment_controls_rollback.sql",
+  "tables":["privacy_operator_authorization","privacy_fulfilment_plan","privacy_impact_assessment","privacy_legal_hold","privacy_fulfilment_approval"],
+  "execution_mode":"DRY_RUN_ONLY",
+  "approval_roles":["PRIVACY_APPROVER","SECURITY_APPROVER"],
+  "distinct_approvers_required":true,
+  "active_legal_hold_blocks_approval":true,
+  "destructive_executor_enabled":false,
+  "completion_transition_enabled":false
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 51,
+  "generated_at": "2026-08-10T15:29:09.731Z",
+  "status": "AUTO_QA_PASS_LOCAL_CANARY_HANDOFF_BLOCKED_EXTERNAL",
+  "current_handoff": {
+    "status": "BLOCKED_EXTERNAL",
+    "handoff_ready": false,
+    "readiness_status": "BLOCKED_EXTERNAL",
+    "readiness_verified_controls": 0,
+    "execution_window_approved": false,
+    "requests_planned": 8,
+    "blockers": [
+      "PHASE50_READINESS_BLOCKED",
+      "EXECUTION_WINDOW_PENDING"
+    ],
+    "validation_failures": [],
+    "execution_authorized": false,
+    "dispatch_performed": false,
+    "provider_live_tested": false
+  },
+  "summary": {
+    "scenarios": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-handoff-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE50_READINESS_BLOCKED",
+          "EXECUTION_WINDOW_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "window-required",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "EXECUTION_WINDOW_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "synthetic-handoff-ready",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_CANARY_HANDOFF",
+        "slots": 8,
+        "dispatch_performed": false
+      }
+    },
+    {
+      "id": "budget-and-concurrency-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "LIMIT_MISMATCH:max_requests",
+          "LIMIT_MISMATCH:concurrency"
+        ]
+      }
+    },
+    {
+      "id": "raw-content-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "FORBIDDEN_CONTENT_KEY:response_text"
+        ]
+      }
+    },
+    {
+      "id": "secret-rejected",
+      "passed": true,
+      "observed": {
+        "secret_material_detected": true
+      }
+    },
+    {
+      "id": "source-hash-drift-rejected",
+      "passed": true,
+      "observed": {
+        "source_hash_mismatch": true
+      }
+    }
+  ],
+  "contract_sha256": "e97f9d7a80bb6bbca26959a8558117e78feedcfee3500ac1b51df9aa54b82f93",
+  "readiness_register_sha256": "fd0521b600fb373441386c353b353a9a1fda7dc8479ef37bfc6b9b48e2531a43",
+  "canary_register_sha256": "60dacc7e387053a83aff6cadc720095312a2f171cb58a122e456e9090c8d38e1",
+  "external_actions": {
+    "provider_live_tested": false,
+    "api_key_accessed": false,
+    "dispatch_performed": false,
+    "external_deployment_performed": false
+  },
+  "next_authorized_action": "COMPLETE_PHASE50_CONTROLS_THEN_SUPPLY_APPROVED_CANARY_WINDOW_REFERENCE"
+}

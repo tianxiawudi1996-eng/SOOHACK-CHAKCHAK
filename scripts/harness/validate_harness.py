@@ -54,6 +54,7 @@ REQUIRED_STRUCTURE = [
     "scripts/harness/audit_gate4_2d_pet_browser_runtime.mjs",
     "scripts/harness/audit_gate5_ai_behavior.py",
     "scripts/harness/audit_gate5_ai_behavior_browser_runtime.mjs",
+    "scripts/harness/audit_gate6_product_integration.mjs",
     "scripts/blender/build_stage8_high_fidelity_characters.py",
     "scripts/harness/validate_harness.py",
     "docs/stage8/00_MASTER_PLAN.md",
@@ -146,7 +147,9 @@ REQUIRED_STRUCTURE = [
     "docs/stage8/audits/GATE3_2D_PET_POSE_AUDIT.md",
     "docs/stage8/audits/GATE4_2D_PET_MOTION_AUDIT.md",
     "docs/stage8/audits/GATE5_AI_BEHAVIOR_AUDIT.md",
+    "docs/stage8/audits/GATE6_PRODUCT_INTEGRATION_AUDIT.md",
     "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
+    "docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Rig_Skeleton.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Deformation_Review.png",
     "docs/stage8/evidence/rejected/procedural-low-fidelity/gate3-previews/Chakchaki_Pose_Socket_Review.png",
@@ -1188,6 +1191,41 @@ def main() -> int:
             if gates[6].get("entry_allowed") is not True:
                 fail("gate5 VERIFIED without enabling Gate 6 entry")
 
+    if gates[6].get("status") != "NOT_STARTED":
+        if gates[5].get("status") != "VERIFIED":
+            fail("gate6 started before gate5 VERIFIED")
+        gate6_map = load_json(ROOT / "docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json")
+        expected_gate6_blockers = [
+            "GATE6_RESPONSIVE_MANUAL_REVIEW_360_768_1024_1200_PENDING",
+            "GATE6_LINT_AND_TYPECHECK_EVIDENCE_MISSING",
+            "GATE6_RELEASE_CANDIDATE_BASELINE_NOT_FIXED",
+        ]
+        if gate6_map.get("stage") != 8 or gate6_map.get("gate") != 6:
+            fail("gate6 evidence map identity is invalid")
+        if len(gate6_map.get("phase_mappings", [])) != 4 or [item.get("phase") for item in gate6_map.get("phase_mappings", [])] != [5, 6, 7, 8]:
+            fail("gate6 Phase 5-8 evidence mapping is incomplete")
+        for item in gate6_map.get("phase_mappings", []):
+            source_path = ROOT / item.get("evidence_path", "")
+            if not source_path.is_file() or hashlib.sha256(source_path.read_bytes()).hexdigest().lower() != item.get("evidence_sha256", "").lower():
+                fail(f"gate6 Phase {item.get('phase')} evidence hash is missing or stale")
+        closure_ids = [item.get("id") for item in gate6_map.get("closure_evidence", [])]
+        if gates[6].get("status") == "IN_PROGRESS":
+            if gate6_map.get("workflow_status") != "IN_PROGRESS" or gate6_map.get("result") != "PARTIAL_PASS_PENDING_CLOSURE_EVIDENCE":
+                fail("gate6 IN_PROGRESS status disagrees with evidence map")
+            if gates[6].get("blockers") != expected_gate6_blockers or closure_ids != expected_gate6_blockers:
+                fail("gate6 closure blockers are incomplete or out of sync")
+            if any(item.get("status") != "MISSING" for item in gate6_map.get("closure_evidence", [])):
+                fail("gate6 missing closure evidence is incorrectly marked complete")
+            if gates[7].get("entry_allowed") is not False or gate6_map.get("gate7_entry_allowed") is not False:
+                fail("gate7 entry allowed while gate6 is IN_PROGRESS")
+        if gates[6].get("status") == "VERIFIED":
+            if gate6_map.get("workflow_status") != "VERIFIED" or gate6_map.get("result") != "PASS" or gates[6].get("blockers"):
+                fail("gate6 VERIFIED without complete closure evidence")
+            if gate6_map.get("gate7_entry_allowed") is not True or gates[7].get("entry_allowed") is not True:
+                fail("gate6 VERIFIED without enabling Gate 7 entry")
+        if gate6_map.get("external_deployment_performed") is not False or gate6_map.get("product_release_authorized") is not False:
+            fail("gate6 evidence map contains an unsupported external release claim")
+
     if missing_exact:
         fail("missing exact Stage 7 originals: " + ", ".join(missing_exact))
     if conflicts:
@@ -1200,6 +1238,9 @@ def main() -> int:
     print(f"gate3={gates[3].get('status')}")
     print(f"gate4={gates[4].get('status')}")
     print(f"gate5={gates[5].get('status')}")
+    print(f"gate6={gates[6].get('status')}")
+    print(f"gate7={gates[7].get('status')}")
+    print(f"gate8={gates[8].get('status')}")
     print(f"manifest_status={manifest.get('status')}")
     for warning in sensitive_warnings:
         print(f"HARNESS_WARNING: ignored untracked sensitive-looking file not read: {warning}")

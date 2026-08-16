@@ -77,6 +77,13 @@ button,select,input { font: inherit; }
 .feedback { margin:1rem 0;padding:1rem;border-radius:.9rem;font-weight:750; }
 .feedback.correct { color:#086759;background:#e2faf4; }
 .feedback.incorrect { color:#8b3d12;background:#fff1e8; }
+.tutor-duet { display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0; }
+.tutor-card { min-height:7rem;padding:1rem;border:1px solid var(--color-line);border-radius:1rem;background:white; }
+.tutor-card p { margin:.45rem 0 0;color:var(--color-ink-900);font-weight:720; }
+.tutor-role { color:var(--color-brand-700);font-size:.74rem;font-weight:900;letter-spacing:.03em; }
+.chakchaki-card { background:linear-gradient(145deg,#f1f4ff,#fff); }
+.gongsickyi-card { background:linear-gradient(145deg,#fff8db,#fff); }
+.tutor-mode { grid-column:1/-1;color:var(--color-ink-600);font-size:.68rem; }
 .complete-panel { position:relative;overflow:hidden;text-align:center; }
 .celebration { width:4.5rem;aspect-ratio:1;display:grid;place-items:center;margin:0 auto;border-radius:50%;color:#8a5a00;background:var(--color-sun-100);font-size:2rem; }
 .complete-panel h2 { margin-inline:auto; }
@@ -86,3 +93,4 @@ button,select,input { font: inherit; }
 @media (max-width:850px) { .lesson-shell{grid-template-columns:1fr}.journey-card{position:static}.stage-list{grid-template-columns:repeat(5,1fr)}.stage-list li{display:grid;grid-template-columns:1fr;justify-items:center;text-align:center;font-size:.7rem}.stage-list li::after{display:none}.pet-guide{display:none}.panel{min-height:auto}.formula-fields{grid-template-columns:1fr} }
 @media (max-width:560px) { .lesson-header{padding:.7rem}.brand small,.quiet-link{display:none}.lesson-shell{width:calc(100% - 1rem);margin:.7rem auto 2rem;gap:.7rem}.journey-card{padding:1rem}.journey-card h1{font-size:1.2rem}.stage-list{gap:.2rem;margin:.8rem 0 0}.stage-list li{padding:.25rem}.stage-list li span:not(.stage-index){display:none}.panel{padding:1.15rem;border-radius:1.2rem}.lesson-facts{grid-template-columns:1fr}.preview-formula{gap:.65rem}.fraction-entry{justify-content:center}.primary-button{width:100%} }
 @media (prefers-reduced-motion:reduce) { *{scroll-behavior:auto!important;transition:none!important;animation:none!important} }
+@media (max-width:560px) { .tutor-duet{grid-template-columns:1fr} }

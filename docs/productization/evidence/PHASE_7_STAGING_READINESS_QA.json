@@ -1,33 +1,34 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "tested_at": "2026-08-07T12:59:04+09:00",
+  "tested_at": "2026-08-15T22:02:43+09:00",
   "status": "PASS_LOCAL_STAGING",
   "release": "0.1.0",
   "artifact": {
     "path": "artifacts/staging/v0.1.0/site",
     "manifest": "artifacts/staging/v0.1.0/manifest.json",
-    "manifest_sha256": "5a6bff0dd5d5b6f7ff1d23cb417d4fbfa97865823673635f8e701679444850f0",
-    "file_count": 32,
+    "manifest_sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d",
+    "file_count": 78,
     "hashes": "PASS",
     "locales": "8/8",
-    "approved_character_assets": "2/2"
+    "approved_character_assets": "2/2",
+    "approved_pose_assets": "32/32"
   },
   "local_http_smoke": {
     "base_url": "http://127.0.0.1:4180/",
     "status": "PASS",
-    "artifact_responses_200": "32/32",
+    "artifact_responses_200": "78/78",
     "locale_routes_200": "8/8"
   },
   "local_deployment": {
     "performed": true,
     "type": "DOCKER_LOCAL_ISOLATED",
     "container_name": "mathchakchak-staging-v010",
-    "container_id": "2e8f5f383fdebc3155aff1f34b33d5c1d0a9e028ba895649183254ca3111c035",
+    "container_id": "ad4a8b22ca2344a09173d21e13fec87fa4147adb3879ca5d1766c72206e71c61",
     "image": "mathchakchak-api-staging-web:latest",
-    "image_digest": "sha256:f2867183c53d83c8c375de6d76478604d0a4d3cfe2b4406aa8b3365375a3d658",
+    "image_digest": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
     "health": "healthy",
-    "url": "http://127.0.0.1:4180/curriculum/index.html?locale=ko&grade=E1",
+    "url": "http://127.0.0.1:4180/?locale=ko",
     "production_data_used": false,
     "production_traffic_used": false
   },
@@ -42,11 +43,12 @@
   },
   "rollback_rehearsal": {
     "status": "PASS",
-    "target_state": "NO_DEPLOYMENT_BEFORE_INITIAL_RELEASE",
+    "target_state": "LOCAL_STACK_REMOVED_PORTS_CLOSED_SAME_IMAGES_REDEPLOYED",
     "container_removed": true,
     "port_closed": true,
     "same_image_redeployed": true,
-    "post_redeploy_health": "healthy"
+    "post_redeploy_health": "healthy",
+    "same_images_redeployed": true
   },
   "external_deployment": {
     "performed": false,

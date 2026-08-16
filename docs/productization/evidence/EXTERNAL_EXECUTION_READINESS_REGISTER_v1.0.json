@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0.0",
+  "register_id": "MCC-EXTERNAL-EXECUTION-READINESS-20260813",
+  "status": "D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET",
+  "source_phase": 75,
+  "source_status": "LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED",
+  "execution_authorized": false,
+  "dispatch_performed": false,
+  "evidence_submission_enabled": false,
+  "verification_enabled": false,
+  "production_release_authorized": false,
+  "market_claims_authorized": false,
+  "input_confirmations": {
+    "owner_role_confirmation": {
+      "workstream_id": "D80-10",
+      "role_code": "OPERATIONS_OWNER",
+      "status": "CONFIRMED",
+      "source": "USER_PROVIDED",
+      "external_execution_authorized": false
+    },
+    "review_role_confirmation": {
+      "workstream_id": "D80-10",
+      "role_code": "SECURITY_AND_PRODUCT_REVIEW_BOARD",
+      "status": "CONFIRMED",
+      "source": "USER_PROVIDED",
+      "external_execution_authorized": false
+    },
+    "approved_submission_route_reference": {
+      "workstream_id": "D80-10",
+      "reference": "OPS-EVIDENCE-ROUTE-2026-001",
+      "status": "READ_ONLY_CONNECTION_VERIFIED_SUBMISSION_DISABLED",
+      "external_submission_enabled": false
+    }
+  },
+  "route_validation": {
+    "status": "VERIFIED_READ_ONLY_ROUTE_CONNECTION",
+    "reference_format_valid": true,
+    "workstream_binding_valid": true,
+    "actual_connection_evidence": 1,
+    "connection_verified": true,
+    "evidence_references": [
+      {
+        "internal_reference": "GITHUB-ROUTE-CONNECTION-20260815T135143212Z",
+        "evidence_sha256": "1257d15a6d16296058edad07b64e62157c017fffc0722bb7035d217fd52fafec",
+        "verified_at": "2026-08-15T13:51:43.212Z",
+        "review_role_code": "SECURITY_AND_PRODUCT_REVIEW_BOARD",
+        "source_path": "docs/productization/evidence/route-connections/GITHUB_ROUTE_CONNECTION_PROBE_20260815T135143212Z.json",
+        "provider": "github",
+        "connection_scope": "READ_ONLY_REPOSITORY_METADATA",
+        "status": "VERIFIED_READ_ONLY_CONNECTION"
+      }
+    ],
+    "next_required_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
+  },
+  "privacy_boundary": {
+    "raw_legal_documents_stored": false,
+    "payment_tokens_stored": false,
+    "backup_payloads_stored": false,
+    "personal_contact_details_stored": false,
+    "student_or_academy_identity_stored": false
+  },
+  "workstreams": [
+    {
+      "id": "D80-02",
+      "name": "LICENSED_CONTENT_CORPUS",
+      "owner_role": "CONTENT_RIGHTS_OWNER_PENDING",
+      "review_role": "MATH_REVIEW_BOARD_PENDING",
+      "prerequisites": [
+        "CONTENT_SCOPE_APPROVED",
+        "SUBMISSION_CHANNEL_APPROVED"
+      ],
+      "evidence_types": [
+        "LICENSE_SCOPE_REFERENCE",
+        "CONTENT_REVIEW_AGGREGATE",
+        "DUPLICATE_AUDIT_AGGREGATE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "LICENSED_ITEMS_MISSING",
+        "EXTERNAL_OWNER_PENDING"
+      ]
+    },
+    {
+      "id": "D80-03",
+      "name": "OCR_RECOGNITION_BENCHMARK",
+      "owner_role": "OCR_PROVIDER_OWNER_PENDING",
+      "review_role": "MATH_LINGUISTIC_CALIBRATION_REVIEWER_PENDING",
+      "prerequisites": [
+        "PROVIDER_APPROVED",
+        "CONSENTED_BENCHMARK_SCOPE_APPROVED"
+      ],
+      "evidence_types": [
+        "PROVIDER_REFERENCE",
+        "BENCHMARK_AGGREGATE",
+        "CALIBRATION_AGGREGATE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "OCR_PROVIDER_MISSING",
+        "BENCHMARK_NOT_RUN"
+      ]
+    },
+    {
+      "id": "D80-04",
+      "name": "ACADEMY_TRACK_CONTENT_REVIEW",
+      "owner_role": "CURRICULUM_OWNER_PENDING",
+      "review_role": "INDEPENDENT_MATH_EXPERT_BOARD_PENDING",
+      "prerequisites": [
+        "48_PLANS_REGISTERED",
+        "REVIEW_PROTOCOL_ACCEPTED"
+      ],
+      "evidence_types": [
+        "PLAN_REVIEW_AGGREGATE",
+        "LICENSE_REFERENCE",
+        "DISAGREEMENT_RESOLUTION_AGGREGATE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "EXPERT_REVIEW_0_OF_48",
+        "LICENSE_EVIDENCE_MISSING"
+      ]
+    },
+    {
+      "id": "D80-05",
+      "name": "TEACHER_PARENT_OPERATIONS",
+      "owner_role": "IDENTITY_AND_GUARDIAN_OPERATIONS_OWNER_PENDING",
+      "review_role": "PRIVACY_AND_FIELD_VALIDATION_REVIEWER_PENDING",
+      "prerequisites": [
+        "MANAGED_IDENTITY_APPROVED",
+        "INSTITUTION_ROSTER_APPROVED",
+        "GUARDIAN_LINK_POLICY_APPROVED"
+      ],
+      "evidence_types": [
+        "IDENTITY_CONFIGURATION_REFERENCE",
+        "GUARDIAN_CONSENT_AGGREGATE",
+        "FIELD_VALIDATION_REFERENCE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "MANAGED_IDENTITY_MISSING",
+        "INSTITUTION_ROSTER_MISSING",
+        "FIELD_VALIDATION_NOT_RUN"
+      ]
+    },
+    {
+      "id": "D80-06",
+      "name": "LEARNING_EFFECT_PILOT",
+      "owner_role": "PILOT_COORDINATOR_PENDING",
+      "review_role": "INDEPENDENT_ANALYSIS_REVIEWER_PENDING",
+      "prerequisites": [
+        "PILOT_PROTOCOL_APPROVED",
+        "CONSENT_AND_PRIVACY_APPROVED",
+        "COHORTS_RECRUITED"
+      ],
+      "evidence_types": [
+        "CONSENT_AGGREGATE",
+        "OBSERVATION_AGGREGATE",
+        "INDEPENDENT_ANALYSIS_REFERENCE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "PARTICIPANTS_0_OF_100",
+        "OBSERVED_WEEKS_0_OF_8"
+      ]
+    },
+    {
+      "id": "D80-07",
+      "name": "INDEPENDENT_MATH_EXPERT_REVIEW",
+      "owner_role": "MATH_REVIEW_COORDINATOR_PENDING",
+      "review_role": "INDEPENDENT_ADJUDICATOR_PENDING",
+      "prerequisites": [
+        "REVIEWER_INDEPENDENCE_DECLARED",
+        "REVIEW_TARGETS_REGISTERED"
+      ],
+      "evidence_types": [
+        "REVIEW_COMPLETION_AGGREGATE",
+        "DISAGREEMENT_AGGREGATE",
+        "ADJUDICATION_REFERENCE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "VERIFIED_EXPERTS_0",
+        "REVIEW_TARGETS_0"
+      ]
+    },
+    {
+      "id": "D80-08",
+      "name": "AI_TUTOR_EXTERNAL_MODEL_EVIDENCE",
+      "owner_role": "AI_MODEL_OPERATIONS_OWNER_PENDING",
+      "review_role": "AI_SAFETY_AND_EDUCATION_REVIEW_BOARD_PENDING",
+      "prerequisites": [
+        "MODEL_PROMPT_DATASET_PINS_APPROVED",
+        "AUTHORIZED_PROVIDER_WINDOW_APPROVED",
+        "DATA_RETENTION_POLICY_APPROVED"
+      ],
+      "evidence_types": [
+        "MODEL_RUN_AGGREGATE",
+        "HUMAN_CALIBRATION_AGGREGATE",
+        "SAFETY_INCIDENT_AGGREGATE",
+        "INDEPENDENT_APPROVAL_REFERENCE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "LIVE_MODEL_RUNS_0",
+        "HUMAN_CALIBRATION_0",
+        "INDEPENDENT_APPROVAL_0"
+      ]
+    },
+    {
+      "id": "D80-09",
+      "name": "DAECHI_FIELD_PILOT",
+      "owner_role": "ACADEMY_PARTNERSHIP_OWNER_PENDING",
+      "review_role": "FIELD_VALIDATION_REVIEWER_PENDING",
+      "prerequisites": [
+        "ACADEMY_AGREEMENTS_APPROVED",
+        "PARTICIPANT_CONSENT_APPROVED",
+        "PILOT_PROTOCOL_LOCKED"
+      ],
+      "evidence_types": [
+        "ACADEMY_COUNT_AGGREGATE",
+        "OBSERVATION_AGGREGATE",
+        "INDEPENDENT_RESULT_REFERENCE",
+        "PRODUCT_REVIEW_REFERENCE"
+      ],
+      "status": "NOT_REQUESTED",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "ACADEMIES_0_OF_2",
+        "ACTUAL_STUDENTS_0",
+        "INDEPENDENT_RESULTS_0"
+      ]
+    },
+    {
+      "id": "D80-10",
+      "name": "COMMERCIAL_OPERATIONS_AND_RECOVERY",
+      "owner_role": "OPERATIONS_OWNER",
+      "review_role": "SECURITY_AND_PRODUCT_REVIEW_BOARD",
+      "prerequisites": [
+        "LEGAL_POLICY_APPROVED",
+        "RECOVERY_DRILL_WINDOW_APPROVED",
+        "PRODUCTION_CHANGE_WINDOW_APPROVED"
+      ],
+      "evidence_types": [
+        "CONTROL_EVIDENCE_REFERENCE",
+        "BACKUP_RESTORE_DRILL_REFERENCE",
+        "MIGRATION_ROLLBACK_DRILL_REFERENCE",
+        "PRODUCT_REVIEW_REFERENCE"
+      ],
+      "status": "READY_FOR_EXTERNAL_SUBMISSION",
+      "evidence_count": 0,
+      "blocking_reasons": [
+        "CONTROLS_VERIFIED_0_OF_10",
+        "RECOVERY_DRILLS_0",
+        "PRODUCT_REVIEWS_0"
+      ]
+    }
+  ],
+  "submission_policy": {
+    "accepted_fields": [
+      "internal_reference",
+      "evidence_sha256",
+      "status",
+      "submitted_at",
+      "verified_at",
+      "expires_at",
+      "rejection_code"
+    ],
+    "forbidden_fields": [
+      "raw_document",
+      "raw_payload",
+      "secret",
+      "token",
+      "personal_contact",
+      "student_identity",
+      "academy_identity"
+    ],
+    "allowed_initial_status": "NOT_REQUESTED",
+    "external_submission_route": "READ_ONLY_CONNECTION_VERIFIED_SUBMISSION_DISABLED",
+    "verification_route": "MISSING_EXTERNAL",
+    "append_only": true,
+    "reviewer_separation_required": true
+  },
+  "next_authorized_input": {
+    "type": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "workstream_id": "D80-10",
+    "required_fields": [
+      "target_reference",
+      "provider_code",
+      "environment_code",
+      "connection_reference"
+    ],
+    "required_environment_code": "DEVELOPMENT",
+    "accepted_evidence_count": 0,
+    "not_required_in_repository": [
+      "raw_endpoint",
+      "token",
+      "secret",
+      "personal_contact"
+    ]
+  }
+}

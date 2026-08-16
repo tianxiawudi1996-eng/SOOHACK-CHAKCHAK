@@ -1,0 +1,15 @@
+BEGIN;
+DROP TRIGGER IF EXISTS ai_tutor_protocol_lock_guard ON mathchakchak.ai_tutor_evidence_protocol;
+DROP TRIGGER IF EXISTS ai_tutor_calibration_append_only ON mathchakchak.ai_tutor_model_human_calibration;
+DROP TRIGGER IF EXISTS ai_tutor_summary_append_only ON mathchakchak.ai_tutor_model_evaluation_summary;
+DROP TRIGGER IF EXISTS ai_tutor_run_append_only ON mathchakchak.ai_tutor_model_evaluation_run;
+DROP TRIGGER IF EXISTS ai_tutor_pin_append_only ON mathchakchak.ai_tutor_model_evidence_pin;
+DROP FUNCTION IF EXISTS mathchakchak.prevent_locked_ai_tutor_protocol_mutation();
+DROP FUNCTION IF EXISTS mathchakchak.prevent_ai_tutor_evidence_history_mutation();
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_model_human_calibration;
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_model_evaluation_summary;
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_model_evaluation_run;
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_model_evidence_pin;
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_evidence_criterion;
+DROP TABLE IF EXISTS mathchakchak.ai_tutor_evidence_protocol;
+COMMIT;

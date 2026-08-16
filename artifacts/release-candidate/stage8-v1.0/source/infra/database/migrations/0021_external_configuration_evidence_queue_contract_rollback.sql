@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TRIGGER IF EXISTS privacy_external_configuration_evidence_queue_slot_immutable ON mathchakchak.privacy_external_configuration_evidence_queue_slot;
+DROP TRIGGER IF EXISTS privacy_external_configuration_evidence_queue_contract_immutable ON mathchakchak.privacy_external_configuration_evidence_queue_contract;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_configuration_evidence_queue_slot;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_configuration_evidence_queue_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_configuration_evidence_queue_mutation();
+
+COMMIT;

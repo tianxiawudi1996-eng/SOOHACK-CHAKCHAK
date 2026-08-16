@@ -1,0 +1,10 @@
+BEGIN;
+DROP TRIGGER IF EXISTS learning_effect_pilot_protocol_lock_guard ON mathchakchak.learning_effect_pilot_protocol;
+DROP FUNCTION IF EXISTS mathchakchak.prevent_locked_pilot_protocol_mutation();
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_analysis_result;
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_measurement;
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_participant;
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_metric;
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_cohort;
+DROP TABLE IF EXISTS mathchakchak.learning_effect_pilot_protocol;
+COMMIT;

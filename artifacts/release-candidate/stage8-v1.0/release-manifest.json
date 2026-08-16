@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 6,
+  "release_candidate_id": "stage8-v1.0",
+  "generated_at": "2026-08-15T13:04:16.430Z",
+  "status": "FROZEN",
+  "rc_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+  "source_snapshot": {
+    "type": "ISOLATED_CONTENT_ADDRESSED_COPY",
+    "git_head": "27af9f0b16c813d1b84494807115474c4feeac7a",
+    "git_worktree_clean": false,
+    "git_dirty_entry_count_at_freeze": 422,
+    "user_worktree_mutated_or_reset": false,
+    "manifest_path": "source-manifest.json",
+    "manifest_sha256": "6dd5c0152605d4273087b38b33c3ddee2ab121fb239819024fd924823e039173",
+    "file_count": 567
+  },
+  "artifact": {
+    "type": "IMMUTABLE_FRONTEND_PREVIEW",
+    "path": "artifact/v0.1.0",
+    "manifest_path": "artifact/v0.1.0/manifest.json",
+    "manifest_sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d",
+    "file_count": 78,
+    "approved_pose_assets": 32,
+    "all_manifest_entries_verified": true
+  },
+  "gate6_evidence": {
+    "responsive_status": "PASS",
+    "static_quality_status": "PASS",
+    "source_manifest_sha256": "6dd5c0152605d4273087b38b33c3ddee2ab121fb239819024fd924823e039173",
+    "artifact_manifest_sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d",
+    "responsive_evidence_sha256": "ff22f92e78f97f35d291c7a141e93370425d01bb4e0837b1e7881b8326151207",
+    "static_quality_evidence_sha256": "29dd491fb8286f5bdf6a4ab92952c8950b1e3be72c4b0f0b9b3a3a74917966e5"
+  },
+  "external_deployment": {
+    "performed": false,
+    "claimed": false
+  }
+}

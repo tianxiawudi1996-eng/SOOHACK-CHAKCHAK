@@ -1,0 +1,55 @@
+{
+  "contract_version": "1.0",
+  "requirement_id": "D80-09",
+  "pilot": {
+    "minimum_academies": 2,
+    "maximum_academies": 3,
+    "minimum_planned_weeks": 1,
+    "maximum_planned_weeks": 12,
+    "required_metrics": [
+      "TEACHER_CORE_WORKFLOW_COMPLETION_RATE",
+      "STUDENT_LEARNING_PLAN_COMPLETION_RATE",
+      "PARENT_REPORT_COMPREHENSION_RATE",
+      "REUSE_INTENT_RATE",
+      "PURCHASE_INTENT_RATE",
+      "CRITICAL_INCIDENT_COUNT"
+    ]
+  },
+  "evidence": {
+    "academy_identity_reference_only": true,
+    "academy_agreement_reference_required": true,
+    "privacy_acceptance_reference_required": true,
+    "student_consent_aggregate_required": true,
+    "weekly_aggregate_observation_required": true,
+    "independent_result_required": true,
+    "product_owner_review_required": true
+  },
+  "privacy": {
+    "academy_name": false,
+    "academy_address": false,
+    "personal_contact": false,
+    "student_identifier": false,
+    "raw_answer": false,
+    "raw_survey_response": false,
+    "aggregate_metrics_only": true
+  },
+  "hard_gates": {
+    "open_high_or_critical_issue_max": 0,
+    "agreements_complete": true,
+    "privacy_acceptance_complete": true,
+    "student_consent_complete": true,
+    "observation_complete": true,
+    "automatic_market_approval": false
+  },
+  "truth_boundary": {
+    "actual_academies": 0,
+    "actual_agreements": 0,
+    "actual_students": 0,
+    "actual_observed_weeks": 0,
+    "actual_independent_results": 0,
+    "actual_product_approvals": 0,
+    "daechi_fit_proven": false,
+    "market_score_80_confirmed": false,
+    "external_deployment_performed": false
+  }
+}

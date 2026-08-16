@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 55,
+  "status": "LOCAL_PRODUCTION_PROMOTION_HANDOFF_ONLY",
+  "source_requirement": {
+    "phase": 54,
+    "status": "EXTENDED_STAGING_ACCEPTED_FOR_PRODUCTION_HANDOFF",
+    "source_hash_binding_required": true
+  },
+  "required_controls": [
+    "PRODUCTION_PROJECT_SEPARATION",
+    "CENTRAL_SECRET_MANAGER",
+    "MINOR_DATA_RETENTION_AND_CONSENT",
+    "AGE_APPROPRIATE_SAFETY_FILTERING",
+    "HUMAN_OVERSIGHT_AND_ESCALATION",
+    "PROVIDER_RATE_LIMITS",
+    "PROVIDER_SPEND_LIMITS",
+    "MODEL_AND_PROMPT_IMMUTABLE_PIN",
+    "CENTRAL_DURABLE_BUDGET_COUNTER",
+    "MONITORING_AND_ALERT_ROUTES",
+    "ROLLBACK_AND_KILL_SWITCH_REHEARSAL",
+    "INCIDENT_RESPONSE_AND_DATA_RIGHTS"
+  ],
+  "rollout_policy": {
+    "target_environment": "PRODUCTION",
+    "audience": "INTERNAL_STAFF_ONLY",
+    "initial_traffic_percent": 0,
+    "feature_flag_default": "OFF",
+    "maximum_deployment_window_minutes": 30,
+    "student_traffic_allowed": false,
+    "automatic_promotion": false
+  },
+  "decision_policy": {
+    "all_controls_verified": true,
+    "approved_window_required": true,
+    "single_product_owner_authorization": true,
+    "automatic_deployment": false,
+    "automatic_production_promotion": false,
+    "deployment_authorized_by_this_contract": false
+  }
+}

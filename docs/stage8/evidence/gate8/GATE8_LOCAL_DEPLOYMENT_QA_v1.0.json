@@ -1,0 +1,477 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "tested_at": "2026-08-15T13:07:50.907Z",
+  "status": "PASS_LOCAL_DEPLOYMENT",
+  "result": "LOCAL_DEPLOYMENT_HEALTH_SMOKE_ROLLBACK_PASS",
+  "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+  "target": {
+    "type": "DOCKER_LOCAL_ISOLATED",
+    "web_url": "http://127.0.0.1:4180/?locale=ko",
+    "api_url": "http://127.0.0.1:4181",
+    "production_data_used": false,
+    "production_traffic_used": false
+  },
+  "commands": [
+    {
+      "id": "initial_isolated_reset",
+      "command": "docker compose -f infra/deployment/compose.api-staging.yaml down",
+      "duration_ms": 1764,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "eb3338fdeae5788733a4364e4a2a8a7b2a178cc98c3c5a7e6328dbc6e4fea262",
+      "output_tail": [
+        " Container mathchakchak-api-staging-api-1 Stopping ",
+        " Container mathchakchak-api-staging-api-1 Stopped ",
+        " Container mathchakchak-api-staging-api-1 Removing ",
+        " Container mathchakchak-api-staging-api-1 Removed ",
+        " Container mathchakchak-api-staging-database-1 Stopping ",
+        " Container mathchakchak-api-staging-database-1 Stopped ",
+        " Container mathchakchak-api-staging-database-1 Removing ",
+        " Container mathchakchak-api-staging-database-1 Removed ",
+        " Network mathchakchak-api-staging_runtime Removing ",
+        " Network mathchakchak-api-staging_runtime Removed"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "local_deploy",
+      "command": "docker compose -f infra/deployment/compose.api-staging.yaml up -d",
+      "duration_ms": 9327,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "764d46e659019a6068be2efe0f37602ee3713113b7afb26e47ddfdf172fc6485",
+      "output_tail": [
+        " Container mathchakchak-api-staging-database-1 Starting ",
+        " Container mathchakchak-api-staging-database-1 Started ",
+        " Container mathchakchak-api-staging-database-1 Waiting ",
+        " Container mathchakchak-api-staging-database-1 Healthy ",
+        " Container mathchakchak-api-staging-api-1 Starting ",
+        " Container mathchakchak-api-staging-api-1 Started ",
+        " Container mathchakchak-api-staging-api-1 Waiting ",
+        " Container mathchakchak-api-staging-api-1 Healthy ",
+        " Container mathchakchak-staging-v010 Starting ",
+        " Container mathchakchak-staging-v010 Started"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "operations_runtime",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/check_operations_runtime.mjs",
+      "duration_ms": 162,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "c36565c2fbfc329064696b4d19d5ac6b4996fd6496d1008cee253a45a1f03dea",
+      "output_tail": [
+        "OPERATIONS_RUNTIME_PASS",
+        "samples=20",
+        "readiness_success=20/20",
+        "p95_ms=5.88",
+        "server_errors=0",
+        "database_ready=PASS"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "core_user_journey",
+      "command": "C:\\Program Files\\nodejs\\node.exe --test tests/integration/api-core-journey.test.mjs",
+      "duration_ms": 296,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "b4b00b4e4045abc1a52b4e54fec4a810ebc69026fde29657e44ff7d21c7d08bf",
+      "output_tail": [
+        "✔ diagnostic to learning progress core journey persists through PostgreSQL (165.32ms)",
+        "ℹ tests 1",
+        "ℹ suites 0",
+        "ℹ pass 1",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 236.6923"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "rc_integrity",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/harness/audit_gate6_release_candidate.mjs",
+      "duration_ms": 153,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "abe7195b32d3bd009c6a36b85a989172a077fd8e88c5f9afd94a15a28f96cbce",
+      "output_tail": [
+        "GATE6_RELEASE_CANDIDATE_AUDIT_PASS rc_sha256=3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd source_files=567 artifact_files=78"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "rollback_remove_local_stack",
+      "command": "docker compose -f infra/deployment/compose.api-staging.yaml down",
+      "duration_ms": 1690,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "eb3338fdeae5788733a4364e4a2a8a7b2a178cc98c3c5a7e6328dbc6e4fea262",
+      "output_tail": [
+        " Container mathchakchak-api-staging-api-1 Stopping ",
+        " Container mathchakchak-api-staging-api-1 Stopped ",
+        " Container mathchakchak-api-staging-api-1 Removing ",
+        " Container mathchakchak-api-staging-api-1 Removed ",
+        " Container mathchakchak-api-staging-database-1 Stopping ",
+        " Container mathchakchak-api-staging-database-1 Stopped ",
+        " Container mathchakchak-api-staging-database-1 Removing ",
+        " Container mathchakchak-api-staging-database-1 Removed ",
+        " Network mathchakchak-api-staging_runtime Removing ",
+        " Network mathchakchak-api-staging_runtime Removed"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "rollback_redeploy_same_images",
+      "command": "docker compose -f infra/deployment/compose.api-staging.yaml up -d",
+      "duration_ms": 8810,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "764d46e659019a6068be2efe0f37602ee3713113b7afb26e47ddfdf172fc6485",
+      "output_tail": [
+        " Container mathchakchak-api-staging-database-1 Starting ",
+        " Container mathchakchak-api-staging-database-1 Started ",
+        " Container mathchakchak-api-staging-database-1 Waiting ",
+        " Container mathchakchak-api-staging-database-1 Healthy ",
+        " Container mathchakchak-api-staging-api-1 Starting ",
+        " Container mathchakchak-api-staging-api-1 Started ",
+        " Container mathchakchak-api-staging-api-1 Waiting ",
+        " Container mathchakchak-api-staging-api-1 Healthy ",
+        " Container mathchakchak-staging-v010 Starting ",
+        " Container mathchakchak-staging-v010 Started"
+      ],
+      "spawn_error": null
+    },
+    {
+      "id": "post_rollback_operations_runtime",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/productization/check_operations_runtime.mjs",
+      "duration_ms": 164,
+      "exit_code": 0,
+      "status": "PASS",
+      "output_sha256": "f6e672c8be14de4ebbe20f7e87d69eab9c139f23d60828f4b76328252f718f15",
+      "output_tail": [
+        "OPERATIONS_RUNTIME_PASS",
+        "samples=20",
+        "readiness_success=20/20",
+        "p95_ms=5.50",
+        "server_errors=0",
+        "database_ready=PASS"
+      ],
+      "spawn_error": null
+    }
+  ],
+  "initial_health": {
+    "http": {
+      "status": "PASS",
+      "attempts": [
+        {
+          "attempt": 1,
+          "api": 200,
+          "web": 200
+        }
+      ]
+    },
+    "containers": {
+      "status": "PASS",
+      "attempts": [
+        {
+          "attempt": 1,
+          "containers": [
+            {
+              "name": "mathchakchak-staging-v010",
+              "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+              "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+              "health": "starting",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-api-1",
+              "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+              "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-database-1",
+              "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+              "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+              "health": "healthy",
+              "status": "PASS"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "containers": [
+            {
+              "name": "mathchakchak-staging-v010",
+              "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+              "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+              "health": "starting",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-api-1",
+              "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+              "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-database-1",
+              "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+              "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+              "health": "healthy",
+              "status": "PASS"
+            }
+          ]
+        },
+        {
+          "attempt": 3,
+          "containers": [
+            {
+              "name": "mathchakchak-staging-v010",
+              "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+              "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+              "health": "starting",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-api-1",
+              "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+              "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-database-1",
+              "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+              "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+              "health": "healthy",
+              "status": "PASS"
+            }
+          ]
+        },
+        {
+          "attempt": 4,
+          "containers": [
+            {
+              "name": "mathchakchak-staging-v010",
+              "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+              "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+              "health": "starting",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-api-1",
+              "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+              "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-database-1",
+              "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+              "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+              "health": "healthy",
+              "status": "PASS"
+            }
+          ]
+        },
+        {
+          "attempt": 5,
+          "containers": [
+            {
+              "name": "mathchakchak-staging-v010",
+              "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+              "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-api-1",
+              "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+              "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+              "health": "healthy",
+              "status": "PASS"
+            },
+            {
+              "name": "mathchakchak-api-staging-database-1",
+              "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+              "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+              "health": "healthy",
+              "status": "PASS"
+            }
+          ]
+        }
+      ],
+      "containers": [
+        {
+          "name": "mathchakchak-staging-v010",
+          "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+          "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+          "health": "healthy",
+          "status": "PASS"
+        },
+        {
+          "name": "mathchakchak-api-staging-api-1",
+          "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+          "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+          "health": "healthy",
+          "status": "PASS"
+        },
+        {
+          "name": "mathchakchak-api-staging-database-1",
+          "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+          "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+          "health": "healthy",
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "containers_before_rollback": [
+    {
+      "name": "mathchakchak-staging-v010",
+      "container_id": "6ac1a24bed27cba9a42cff769b075c5d5c890521c82412cc4e1c147e7db86b05",
+      "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+      "health": "healthy",
+      "status": "PASS"
+    },
+    {
+      "name": "mathchakchak-api-staging-api-1",
+      "container_id": "4500132db0e08cd4e9e0e851721264a985a22b6e9f2d20c7a845ed7e7b98c2e6",
+      "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+      "health": "healthy",
+      "status": "PASS"
+    },
+    {
+      "name": "mathchakchak-api-staging-database-1",
+      "container_id": "60cc318e9cc4350c81b27d9dd6b3ad4a075754beddf07dcea2c1f918a4d82647",
+      "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+      "health": "healthy",
+      "status": "PASS"
+    }
+  ],
+  "locale_smoke": {
+    "status": "PASS",
+    "results": [
+      {
+        "locale": "ko",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "zh-CN",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "ja",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "en",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "es",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "fr",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "it",
+        "status_code": 200,
+        "status": "PASS"
+      },
+      {
+        "locale": "ru",
+        "status_code": 200,
+        "status": "PASS"
+      }
+    ]
+  },
+  "security_headers": {
+    "status": "PASS",
+    "content_security_policy": true,
+    "x_content_type_options": "nosniff",
+    "x_frame_options": "DENY",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "permissions_policy": true,
+    "cross_origin_opener_policy": "same-origin"
+  },
+  "deployed_artifact": {
+    "status": "PASS",
+    "verified": 78,
+    "expected": 78,
+    "failures": []
+  },
+  "rollback_rehearsal": {
+    "status": "PASS",
+    "ports_after_down": {
+      "web": {
+        "closed": true,
+        "error": "TypeError"
+      },
+      "api": {
+        "closed": true,
+        "error": "TypeError"
+      }
+    },
+    "same_images_redeployed": true,
+    "post_redeploy_health": {
+      "http": "PASS",
+      "containers": "PASS"
+    },
+    "containers_after_redeploy": [
+      {
+        "name": "mathchakchak-staging-v010",
+        "container_id": "85ceaf86a63e390672f4b373519d70d306f8d44df99b5cd51fc874b42d6a94ac",
+        "image_id": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+        "health": "healthy",
+        "status": "PASS"
+      },
+      {
+        "name": "mathchakchak-api-staging-api-1",
+        "container_id": "22a24a67c29800a0c2b4f7d06d0fafc8ddc6b5b8e4be31c0c633b71c342a3764",
+        "image_id": "sha256:dc790d1dad451ce9bfa2fa5de4213a05f3daf065d0024c6819610309eb746cba",
+        "health": "healthy",
+        "status": "PASS"
+      },
+      {
+        "name": "mathchakchak-api-staging-database-1",
+        "container_id": "5d1d91a2ba4e829ff725300baadec5940d0301d25592151ee330577c6709a7ee",
+        "image_id": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+        "health": "healthy",
+        "status": "PASS"
+      }
+    ]
+  },
+  "external_deployment": {
+    "performed": false,
+    "target_reference": null,
+    "authorization_reference": null,
+    "canary_result": null,
+    "production_release_authorized": false,
+    "blocker": "EXTERNAL_DEPLOYMENT_TARGET_AND_AUTHORIZATION_NOT_CONFIGURED"
+  },
+  "secret_handling": {
+    "ephemeral_secret_generated_in_memory": true,
+    "secret_written_to_file": false,
+    "secret_included_in_evidence": false
+  },
+  "failures": []
+}

@@ -1,0 +1,100 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {hashCanonical} from '../../developer/src/privacy/fulfilment-package.mjs';
+
+const baseUrl=process.env.API_BASE_URL||'http://127.0.0.1:4181';
+const key=(label)=>`phase40-${label}-${crypto.randomUUID()}`;
+const post=async(path,authorization,label,body={})=>{
+  const response=await fetch(`${baseUrl}${path}`,{
+    method:'POST',headers:{authorization,'content-type':'application/json','idempotency-key':key(label)},body:JSON.stringify(body)
+  });
+  return {response,payload:await response.json()};
+};
+
+test('reference proof intake defines quarantine and dual-review policy without accepting a proof',async()=>{
+  const studentIssued=await post('/api/v1/local-demo/session','','student-session');
+  const studentAuth=`Bearer ${studentIssued.payload.data.access_token}`;
+  const request=await post('/api/v1/privacy/requests',studentAuth,'request',{request_type:'EXPORT',locale:'ko'});
+  assert.equal(request.response.status,201);
+  const requestId=request.payload.data.id;
+  const operatorIssued=await post('/api/v1/local-demo/privacy-operator/session','','operator-session');
+  const operatorAuth=`Bearer ${operatorIssued.payload.data.access_token}`;
+  const transition=(to_status,body={})=>post(`/api/v1/privacy-operations/requests/${requestId}/transition`,operatorAuth,to_status,{to_status,...body});
+  assert.equal((await transition('IDENTITY_VERIFIED',{evidence_reference:'LOCAL-EVIDENCE/phase40-identity',evidence_sha256:'d'.repeat(64)})).response.status,200);
+  assert.equal((await transition('IN_REVIEW')).response.status,200);
+  assert.equal((await transition('APPROVED',{reason_code:'REQUEST_AND_SCOPE_VERIFIED'})).response.status,200);
+  const plan=await post(`/api/v1/privacy-operations/requests/${requestId}/fulfilment-plans`,operatorAuth,'plan');
+  const planId=plan.payload.data.id;
+  assert.equal((await post(`/api/v1/privacy-operations/fulfilment-plans/${planId}/impact-assessment`,operatorAuth,'impact')).response.status,200);
+  const privacyIssued=await post('/api/v1/local-demo/privacy-approver/privacy/session','','privacy-session');
+  const securityIssued=await post('/api/v1/local-demo/privacy-approver/security/session','','security-session');
+  const privacyAuth=`Bearer ${privacyIssued.payload.data.access_token}`;
+  const securityAuth=`Bearer ${securityIssued.payload.data.access_token}`;
+  assert.equal((await post(`/api/v1/privacy-operations/fulfilment-plans/${planId}/approvals`,privacyAuth,'privacy-approval',{decision:'APPROVE',reason_code:'PRIVACY_SCOPE_VERIFIED'})).response.status,200);
+  assert.equal((await post(`/api/v1/privacy-operations/fulfilment-plans/${planId}/approvals`,securityAuth,'security-approval',{decision:'APPROVE',reason_code:'SECURITY_SCOPE_VERIFIED'})).payload.data.status,'DUAL_APPROVED');
+  const sealed=await post(`/api/v1/privacy-operations/fulfilment-plans/${planId}/package-manifests`,operatorAuth,'seal');
+  const manifestId=sealed.payload.data.id;
+  assert.equal((await post(`/api/v1/privacy-operations/package-manifests/${manifestId}/recovery-checkpoints`,operatorAuth,'checkpoint')).response.status,201);
+  const readiness=await post(`/api/v1/privacy-operations/package-manifests/${manifestId}/execution-readiness-reviews`,securityAuth,'readiness');
+  const executionHandoff=await post(`/api/v1/privacy-operations/execution-readiness-reviews/${readiness.payload.data.id}/handoff-packets`,securityAuth,'execution-handoff');
+  const validation=await post(`/api/v1/privacy-operations/execution-handoff-packets/${executionHandoff.payload.data.id}/evidence-validation-contracts`,securityAuth,'validation');
+  const adapter=await post(`/api/v1/privacy-operations/evidence-validation-contracts/${validation.payload.data.id}/intake-adapter-contracts`,securityAuth,'adapter');
+  const acceptance=await post(`/api/v1/privacy-operations/intake-adapter-contracts/${adapter.payload.data.id}/connection-acceptance-packets`,securityAuth,'acceptance');
+  const queue=await post(`/api/v1/privacy-operations/connection-acceptance-packets/${acceptance.payload.data.id}/configuration-evidence-queue-contracts`,securityAuth,'queue');
+  const envelope=await post(`/api/v1/privacy-operations/configuration-evidence-queue-contracts/${queue.payload.data.id}/submission-envelope-contracts`,securityAuth,'envelope');
+  const governance=await post(`/api/v1/privacy-operations/submission-envelope-contracts/${envelope.payload.data.id}/reference-scheme-governance-contracts`,securityAuth,'governance');
+  const targetValidation=await post(`/api/v1/privacy-operations/reference-scheme-governance-contracts/${governance.payload.data.id}/reference-target-validation-contracts`,securityAuth,'target-validation');
+  const proofHandoff=await post(`/api/v1/privacy-operations/reference-target-validation-contracts/${targetValidation.payload.data.id}/reference-proof-handoff-contracts`,securityAuth,'proof-handoff');
+  assert.equal(proofHandoff.response.status,201);
+  const proofHandoffId=proofHandoff.payload.data.id;
+
+  const operatorDenied=await post(`/api/v1/privacy-operations/reference-proof-handoff-contracts/${proofHandoffId}/reference-proof-intake-contracts`,operatorAuth,'operator-denied');
+  assert.equal(operatorDenied.response.status,403);
+  const first=await post(`/api/v1/privacy-operations/reference-proof-handoff-contracts/${proofHandoffId}/reference-proof-intake-contracts`,securityAuth,'intake-1');
+  assert.equal(first.response.status,201);
+  assert.equal(first.payload.data.status,'PROOF_INTAKE_POLICY_ONLY_CHANNEL_MISSING_EXTERNAL');
+  assert.equal(first.payload.data.revision,1);
+  assert.equal(hashCanonical(first.payload.data.contract_manifest),first.payload.data.contract_sha256);
+  assert.equal(first.payload.data.contract_manifest.intake_states.length,9);
+  assert.equal(first.payload.data.contract_manifest.allowed_transitions.length,14);
+  assert.equal(first.payload.data.contract_manifest.rejection_codes.length,12);
+  assert.equal(first.payload.data.contract_manifest.replay_controls.length,6);
+  assert.equal(first.payload.data.contract_manifest.review_decisions.length,3);
+  assert.equal(first.payload.data.rules.length,6);
+  assert.equal(first.payload.data.rules.every((rule)=>rule.current_state==='NOT_ACCEPTING'&&rule.intake_channel_status==='MISSING_EXTERNAL'),true);
+  assert.equal(first.payload.data.rules.every((rule)=>rule.fail_closed&&rule.quarantine_required&&rule.duplicate_check_required&&rule.replay_check_required),true);
+  assert.equal(first.payload.data.rules.every((rule)=>rule.signature_check_required&&rule.issuer_check_required&&rule.two_distinct_reviewers_required),true);
+  assert.equal(first.payload.data.rules.every((rule)=>rule.proof_id===null&&rule.evidence_reference===null&&rule.first_reviewer_identity_reference===null),true);
+  assert.equal(first.payload.data.rules.every((rule)=>!rule.proof_submission_allowed&&!rule.quarantine_write_allowed&&!rule.intake_state_transition_allowed&&!rule.review_decision_write_allowed&&!rule.automatic_activation_allowed),true);
+  assert.equal(first.payload.data.boundary.proof_submission_enabled,false);
+  assert.equal(first.payload.data.boundary.quarantine_write_enabled,false);
+  assert.equal(first.payload.data.boundary.signature_validation_execution_enabled,false);
+  assert.equal(first.payload.data.proof_intake_authorized,false);
+  assert.equal(first.payload.data.validation_execution_authorized,false);
+  assert.equal(first.payload.data.network_connection_authorized,false);
+  assert.equal(first.payload.data.execution_authorized,false);
+
+  const second=await post(`/api/v1/privacy-operations/reference-proof-handoff-contracts/${proofHandoffId}/reference-proof-intake-contracts`,securityAuth,'intake-2');
+  assert.equal(second.response.status,201);
+  assert.equal(second.payload.data.revision,2);
+  assert.equal(second.payload.data.predecessor_contract_id,first.payload.data.id);
+  const newerHandoff=await post(`/api/v1/privacy-operations/reference-target-validation-contracts/${targetValidation.payload.data.id}/reference-proof-handoff-contracts`,securityAuth,'newer-handoff');
+  assert.equal(newerHandoff.response.status,201);
+  const staleIntake=await post(`/api/v1/privacy-operations/reference-proof-handoff-contracts/${proofHandoffId}/reference-proof-intake-contracts`,securityAuth,'stale-intake');
+  assert.equal(staleIntake.response.status,409);
+  assert.equal(staleIntake.payload.error.code,'PROOF_INTAKE_HANDOFF_SUPERSEDED');
+
+  const operatorRead=await fetch(`${baseUrl}/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}`,{headers:{authorization:operatorAuth}});
+  assert.equal(operatorRead.status,200);
+  const studentDenied=await fetch(`${baseUrl}/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}`,{headers:{authorization:studentAuth}});
+  assert.equal(studentDenied.status,403);
+  assert.equal((await post(`/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}/submissions`,securityAuth,'unsupported-submission')).response.status,404);
+  assert.equal((await post(`/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}/transitions`,securityAuth,'unsupported-transition')).response.status,404);
+  assert.equal((await post(`/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}/reviews`,securityAuth,'unsupported-review')).response.status,404);
+  assert.equal((await post(`/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}/release`,securityAuth,'unsupported-release')).response.status,404);
+  assert.equal((await post(`/api/v1/privacy-operations/reference-proof-intake-contracts/${second.payload.data.id}/activate`,securityAuth,'unsupported-activate')).response.status,404);
+  const completion=await transition('COMPLETED',{reason_code:'INTAKE_POLICY_PRESENT',evidence_reference:'LOCAL-EVIDENCE/no-execution-phase40',evidence_sha256:'4'.repeat(64)});
+  assert.equal(completion.response.status,409);
+  assert.equal(completion.payload.error.code,'PRIVACY_FULFILMENT_EXECUTOR_DISABLED');
+});

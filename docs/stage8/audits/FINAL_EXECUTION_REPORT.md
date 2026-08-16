@@ -1,4 +1,6 @@
-# Stage 8 현재 실행 보고
+# Stage 8 과거 실행 보고 — 2026-08-05
+
+> 현재 상태 공지(2026-08-15): 아래 본문은 2026-08-05 당시 실행 이력으로 보존한다. 현재 정본은 `harness/status.json`이며 Gate 5는 `VERIFIED`, Gate 6는 `IN_PROGRESS`, Gate 7~8은 `NOT_STARTED`다. 현재 보고는 `docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md`를 따른다.
 
 ## 결과
 

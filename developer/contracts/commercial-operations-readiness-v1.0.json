@@ -1,0 +1,21 @@
+{
+  "contract_version":"1.0",
+  "requirement_id":"D80-10",
+  "required_controls":[
+    "PRIVACY_CHILD_CONSENT",
+    "CONTENT_RIGHTS",
+    "PAYMENT_REFUND",
+    "SLA_SUPPORT",
+    "INCIDENT_RESPONSE",
+    "MONITORING_ALERTS",
+    "BACKUP_RESTORE",
+    "MIGRATION_ROLLBACK",
+    "DEPLOYMENT_HEALTHCHECK",
+    "SECURITY_ACCESS_REVIEW"
+  ],
+  "protocol":{"environments":["local","dev","staging","production"],"automatic_deployment":false,"automatic_release":false},
+  "evidence":{"reference_only":true,"sha256_required":true,"expiry_required":true,"append_only":true},
+  "privacy":{"legal_document_storage":false,"payment_token_storage":false,"backup_payload_storage":false,"personal_contact_storage":false,"aggregate_status_only":true},
+  "hard_gates":{"controls_complete":true,"backup_restore_verified":true,"migration_rollback_verified":true,"open_high_or_critical_issues_max":0,"product_owner_review_required":true},
+  "truth_boundary":{"actual_verified_controls":0,"actual_recovery_drills":0,"actual_product_reviews":0,"legal_approval_proven":false,"commercial_readiness_proven":false,"production_release_authorized":false,"market_score_80_confirmed":false,"external_deployment_performed":false}
+}

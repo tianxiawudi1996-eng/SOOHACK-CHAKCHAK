@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 50,
+  "generated_at": "2026-08-10T15:29:09.031Z",
+  "status": "AUTO_QA_PASS_LOCAL_STAGING_PACKET_BLOCKED_EXTERNAL",
+  "current_readiness": {
+    "status": "BLOCKED_EXTERNAL",
+    "ready_for_canary": false,
+    "verified_controls": 0,
+    "required_controls": 10,
+    "pending_controls": [
+      "STAGING_PROJECT_SEPARATION",
+      "SECRET_MANAGER_BINDING",
+      "RATE_LIMIT_CONFIGURATION",
+      "SPEND_LIMIT_CONFIGURATION",
+      "UNDER_18_DATA_CONTROL_REVIEW",
+      "RETENTION_AND_ZDR_DECISION",
+      "IMMUTABLE_MODEL_SNAPSHOT_PIN",
+      "HUMAN_EVAL_CALIBRATION",
+      "CENTRAL_METRICS_AND_ALERT_ROUTE",
+      "ROLLBACK_REHEARSAL"
+    ],
+    "rejected_controls": [],
+    "authorization_valid": false,
+    "validation_failures": [],
+    "execution_authorized": false,
+    "provider_live_tested": false
+  },
+  "summary": {
+    "scenarios": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-register-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "verified": "0/10",
+        "pending": 10
+      }
+    },
+    {
+      "id": "authorization-required",
+      "passed": true,
+      "observed": {
+        "verified": "10/10",
+        "authorization_valid": false
+      }
+    },
+    {
+      "id": "synthetic-complete-packet-canary-ready",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_CONTROLLED_STAGING_CANARY",
+        "execution_authorized": false
+      }
+    },
+    {
+      "id": "duplicate-control-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "DUPLICATE_CONTROL_ID",
+          "MISSING_CONTROL:SECRET_MANAGER_BINDING"
+        ]
+      }
+    },
+    {
+      "id": "secret-material-rejected",
+      "passed": true,
+      "observed": {
+        "secret_material_detected": true
+      }
+    },
+    {
+      "id": "staging-compose-fail-closed",
+      "passed": true,
+      "observed": {
+        "markers": 4,
+        "literal_secret": false
+      }
+    }
+  ],
+  "contract_sha256": "1385ac3dd4f22282801c906db940beb0ab5bdba6369c99cca93a43c872a1f079",
+  "register_sha256": "fd0521b600fb373441386c353b353a9a1fda7dc8479ef37bfc6b9b48e2531a43",
+  "external_actions": {
+    "provider_live_tested": false,
+    "api_key_accessed": false,
+    "openai_project_configured": false,
+    "external_deployment_performed": false
+  },
+  "next_authorized_action": "COLLECT_REFERENCE_ONLY_EVIDENCE_FOR_10_CONTROLS"
+}

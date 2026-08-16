@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "source_locale": "ko",
+  "default_locale": "en",
+  "fallback_locale": "en",
+  "supported_locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "resolution_order": ["url", "authenticated_user", "locale_cookie", "accept_language", "default_locale"],
+  "route_pattern": "/{locale}/...",
+  "persist_explicit_choice": true,
+  "ip_geolocation_required": false,
+  "missing_key_policy": "FALLBACK_AND_DIAGNOSTIC_EVENT",
+  "additional_locale_policy": "ADD_AFTER_TRANSLATION_AND_QA_MATRIX_PASS"
+}

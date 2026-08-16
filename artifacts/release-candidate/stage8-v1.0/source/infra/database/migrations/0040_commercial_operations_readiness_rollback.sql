@@ -1,0 +1,15 @@
+BEGIN;
+DROP TRIGGER IF EXISTS commercial_ops_protocol_lock_guard ON mathchakchak.commercial_ops_protocol;
+DROP TRIGGER IF EXISTS commercial_ops_evidence_append_only ON mathchakchak.commercial_ops_evidence;
+DROP TRIGGER IF EXISTS commercial_ops_recovery_append_only ON mathchakchak.commercial_ops_recovery_drill;
+DROP TRIGGER IF EXISTS commercial_ops_incident_append_only ON mathchakchak.commercial_ops_incident;
+DROP TRIGGER IF EXISTS commercial_ops_product_review_append_only ON mathchakchak.commercial_ops_product_review;
+DROP FUNCTION IF EXISTS mathchakchak.prevent_locked_commercial_ops_protocol_mutation();
+DROP FUNCTION IF EXISTS mathchakchak.prevent_commercial_ops_evidence_history_mutation();
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_product_review;
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_incident;
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_recovery_drill;
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_evidence;
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_control;
+DROP TABLE IF EXISTS mathchakchak.commercial_ops_protocol;
+COMMIT;

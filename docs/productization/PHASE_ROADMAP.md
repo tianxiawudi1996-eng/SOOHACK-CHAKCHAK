@@ -1,60 +1,106 @@
-# 수학착착 제품화 Phase 로드맵
+# 수학착착 제품화 Phase 0~75 로드맵
 
-| Phase | 산출물 | 자동 검증 | 완료 조건 |
-|---:|---|---|---|
-| 45 | 외부 활성화 인계·제품화 종료 감사 | Phase 0~45 상태·차단·운영 인계·전체 회귀 | 로컬 개발 체인 완료, 외부 실행·수동 승인·운영 배포는 명시적 BLOCKED_EXTERNAL |
-| 44 | 사람의 quarantine release 결정 준비 | 검토 필드·결정·거부·직무분리·append-only 검증 | 테이블 2/2, 단위 141/141, 통합 35/35, reviewer·decision 0개 외부 대기 |
-| 43 | Scan 결과 attestation 검증·조정 준비 | 결과 enum·해시 결합·다중 엔진·release guard 검증 | 테이블 2/2, 단위 137/137, 통합 34/34, 결과·attestation·결정 0개 외부 대기 |
-| 42 | 외부 참조 증명 scanner 실행 준비 정책 | 신뢰·서명 DB·격리·다중 엔진·attestation·append-only 검증 | scanner 테이블 2/2, 단위 133/133, 통합 33/33, 승인 engine·object·result·attestation 0개 외부 대기 |
-| 0 | 프로젝트 구조·역할 폴더·AGENTS.md | 구조 검사 | 필수 경로와 작업 규칙 100% 존재 |
-| 1 | 요구사항·로케일·브랜드 계약 | 요구사항 검사 | P0 요구사항과 8개 로케일 정의 완료 |
-| 2 | 기능·API·이벤트 설계 | 추적성 검사 | 모든 P0 요구사항을 기능·테스트에 연결 |
-| 3 | 인프라·환경·보안·관측성 설계 | 인프라 정책 검사 | 개발·스테이징·운영·복구 기준 확정 |
-| 4 | PostgreSQL ERD·스키마·migration | DB 정적·런타임 검사 | 무결성·권한·rollback 검증 통과 |
-| 5 | 브랜드·화면 설계·8개 언어 mock | 시각·접근성·i18n 검사 | 8개 로케일 핵심 화면 검증 |
-| 6 | P0 기능 구현 | 단위·정적 검사 | 기능 체크리스트와 테스트 전부 통과 |
-| 7 | 격리 스테이징 배포 | 빌드·health·rollback 검사 | 로컬 스테이징 URL과 복구 증거 확보 |
-| 8 | 전체 통합 테스트 | API·DB·브라우저 검사 | 주요 여정과 8개 언어 통과 |
-| 9 | 운영·유지보수 | 운영 준비도 검사 | 로컬 운영 통과, 외부 구성은 권한 대기 |
-| 10 | 실제 수학 공식 학습 엔진 | 공식·DB·API 검사 | 분수 공식 5단계 수직 기능 통과 |
-| 11 | 학생용 공식 학습 UI | UI·API·DB·모바일 검사 | 랜딩에서 5단계 학습 완료 가능 |
-| 12 | 진단 기반 적응형 학습 경로 | 단위·PostgreSQL·소유권 검사 | 보충·기본·도전 경로 3/3과 숙달도 저장 |
-| 13 | 학생용 진단 UI·교육과정 콘텐츠 확장 | 브라우저·콘텐츠·E2E 검사 | 진단 결과를 화면에 설명하고 복수 공식 제공 |
-| 14 | 초1~고3 교육과정·공식·캐릭터 협업 확장 | 교육과정·PostgreSQL·API·브라우저 검사 | 12개 학년, 72개 핵심 항목, 협업 5단계 제공 |
-| 15 | 착착이·공식이 협업 학습 런타임 | 단계·소유권·PostgreSQL·브라우저 검사 | 5단계 증거와 완료 진행·복습일 저장 |
-| 16 | 72개 공식 회상 확인 | 시드·서버채점·PostgreSQL·브라우저 검사 | 공식별 4지선다 1개, 회상 점수와 복습일 저장 |
-| 17 | 학년별 대표 공식 적용 숙달도 | 계산·문장제·단위·오개념·브라우저 검사 | 12개 대표 공식, 36문항, 최신 3개 증거 기반 숙달 판정 |
-| 18 | 72개 공식 적용 문제·8개 언어 확장 | 전수 시드·번역·PostgreSQL·API·브라우저 검사 | 공식 72/72, 문제 216/216, 번역 1,728/1,728 |
-| 19 | 공식 카탈로그·회상 8개 언어 확장 | 번역 리비전·PostgreSQL·API·브라우저·롤백 검사 | 원본 72/72, 번역 504/504, 전체 리비전 576/576, 수동 언어 검토 0/7 |
-| 20 | 교육과정 메타데이터·캐릭터 협업 8개 언어 확장 | PostgreSQL 번역 테이블·API fallback·5단계 브라우저 검사 | 학년 96/96, 출처 8/8, 역할 8/8, 협업 단계 40/40, 수동 언어 검토 0/7 |
-| 21 | 핵심 화면 접근성 국제화·언어 검토 패킷 | 접근성 키 대칭·진행률 의미·스테이징·브라우저 검사 | 화면 4/4, 로케일 8/8, 키 31/31, 값 248/248, 검토 패킷 7/7, 수동 승인 0/7 |
-| 22 | 키보드·초점·대비·스크린리더 접근성 | Tab 계약·동적 초점·WCAG 대비·reduced-motion·브라우저 검사 | 화면 4/4, 초점 대상 7/7, 대비 12/12, 통합 14/14, 수동 접근성 승인 0/1 |
-| 23 | Core Web Vitals·정적 전달 성능 | Lighthouse·gzip·캐시·레이아웃 안정성 검사 | 성능 97, LCP 2.417초, CLS 0.045, TBT 15ms, 운영 INP 대기 |
-| 24 | 세션·API·공급망 제품 보안 | 토큰·Origin·MIME·크기·헤더·npm·Secret 역조건 검사 | 단위 59/59, 통합 15/15, 헤더 16/16, 알려진 취약점 0건 |
-| 25 | 학습 품질 KPI·개인정보 최소화 분석 | PostgreSQL 집계·소유권·이벤트 허용목록·원답 미노출 검사 | Primary 3/3, Driver 2/2, 단위 62/62, 통합 16/16, 운영 목표 대기 |
-| 26 | 학생 개인정보 권리 요청 | PostgreSQL 요청·상태 이력·소유권·멱등성·롤백 검사 | 요청 유형 6/6, 단위 66/66, 통합 17/17, 보호자 채널 외부 차단 |
-| 27 | 개인정보 운영자 처리 큐 | ADMIN 권한·배정·증적·결정·상태 전이·완료 차단 검사 | 운영 테이블 3/3, 단위 71/71, 통합 18/18, 완료 실행기 비활성 |
-| 28 | 개인정보 이행 dry-run 통제 | 영향 집계·법적 보류·직무 분리·서로 다른 승인자·실행 차단 검사 | 통제 테이블 5/5, 단위 74/74, 통합 19/19, 원본 변경 0건 |
-| 29 | 불변 개인정보 이행 패키지 | 매니페스트 해시·만료·재검증·복구 기준점·UPDATE/DELETE 역조건 검사 | 패키지 테이블 2/2, 단위 81/81, 통합 20/20, 불변 트리거 2/2 |
-| 30 | 개인정보 실행 준비도 외부 차단 | 로컬 선행 조건·외부 증거 6종·중단 스위치·append-only 검토 | 준비도 테이블 2/2, 단위 85/85, 통합 21/21, 실행 승인 false |
-| 31 | 외부 운영 증거 인계 패킷 | 책임 역할·필수 증거 12종·제출 경로 정책·이중 검토 계약 | 인계 테이블 2/2, 단위 89/89, 통합 22/22, 외부 제출 6/6 대기 |
-| 32 | 외부 증거 검증 상태기계 정책 | 만료·철회·이중 검토·민감정보 최소화·append-only 정책 | 정책 테이블 2/2, 단위 93/93, 통합 23/23, 제출·전이 비활성화 |
-| 33 | 외부 증거 수신 어댑터 계약 | mTLS·서명·발급자 신뢰·replay·격리·실패 복구 fail-closed 검사 | 어댑터 테이블 2/2, 단위 97/97, 통합 24/24, 포트 6/6 외부 대기 |
-| 34 | 외부 연결 사전 수락 패킷 | 인증서·신뢰 저장소·키 회전·접속 허가·복구·운영 수락 계약 | 수락 테이블 2/2, 단위 101/101, 통합 25/25, 요구사항 6/6 외부 대기 |
-| 35 | 외부 구성 증적 메타데이터 대기열 계약 | 불변 참조·SHA-256·발급자 출처·중복 방지·격리·이중 검토 계약 | 대기열 테이블 2/2, 단위 105/105, 통합 26/26, 슬롯 6/6 외부 대기 |
-| 36 | 외부 증적 제출 envelope·참조 scheme 승인 계약 | 필수 필드·멱등 submission ID·allowlist 승인·거부 사유·append-only 검사 | envelope 테이블 2/2, 단위 109/109, 통합 27/27, 허용 scheme 0개 외부 승인 대기 |
-| 37 | 외부 참조 scheme 제안·승인·철회 거버넌스 | 직무분리·대상 범위·만료·철회·재승인·append-only 검사 | 거버넌스 테이블 2/2, 단위 113/113, 통합 28/28, 제안 0개 외부 대기 |
-| 38 | 외부 참조 대상 정규화·SSRF 방어 계약 | 단일 파싱·IDNA·동형문자·경로 탈출·DNS 재바인딩·사설망·redirect 차단 검사 | 대상 검증 테이블 2/2, 단위 117/117, 통합 29/29, 대상·증명·DNS 0개 외부 대기 |
-| 39 | 외부 참조 소유권 증명·DNS 무결성 인계 계약 | 증명 메타데이터·issuer trust·TTL·철회·재검증·DNS snapshot 계약 검사 | 증명 인계 테이블 2/2, 단위 121/121, 통합 30/30, proof·issuer·DNS 0개 외부 대기 |
-| 40 | 외부 참조 증명 intake 상태기계 정책 | quarantine·중복·replay·서명·issuer·2인 검토·append-only 검사 | intake 테이블 2/2, 단위 125/125, 통합 31/31, submission·decision 0개 외부 대기 |
-| 41 | 외부 참조 증명 quarantine 운영 준비 정책 | 격리 저장·형식·malware 검사·보존·삭제·감사·append-only 검사 | quarantine 테이블 2/2, 단위 129/129, 통합 32/32, content type·object·scan result 0개 외부 대기 |
+최종 동기화: 2026-08-15T20:00:18+09:00
+기계 판정 단일 정본: `docs/productization/STATUS.json`
 
-현재 자동 검증 상태: Phase 0~18 `VERIFIED`, Phase 19~22 `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED`, Phase 23 `AUTO_VERIFIED_LOCAL_LAB`, Phase 24 `AUTO_VERIFIED_LOCAL_SECURITY`, Phase 25 `AUTO_VERIFIED_LOCAL_ANALYTICS`, Phase 26 `AUTO_VERIFIED_LOCAL_DATA_RIGHTS`, Phase 27 `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS`, Phase 28 `AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS`, Phase 29 `AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE`, Phase 30 `AUTO_VERIFIED_LOCAL_EXECUTION_READINESS_BLOCKED_EXTERNAL`, Phase 31 `AUTO_VERIFIED_LOCAL_HANDOFF_PACKET_BLOCKED_EXTERNAL`, Phase 32 `AUTO_VERIFIED_LOCAL_EVIDENCE_VALIDATION_POLICY_BLOCKED_EXTERNAL`, Phase 33 `AUTO_VERIFIED_LOCAL_INTAKE_ADAPTER_CONTRACT_BLOCKED_EXTERNAL`, Phase 34 `AUTO_VERIFIED_LOCAL_PRE_CONNECTION_ACCEPTANCE_BLOCKED_EXTERNAL`, Phase 35 `AUTO_VERIFIED_LOCAL_CONFIGURATION_EVIDENCE_QUEUE_BLOCKED_EXTERNAL`, Phase 36 `AUTO_VERIFIED_LOCAL_SUBMISSION_ENVELOPE_POLICY_BLOCKED_EXTERNAL`, Phase 37 `AUTO_VERIFIED_LOCAL_REFERENCE_SCHEME_GOVERNANCE_BLOCKED_EXTERNAL`, Phase 38 `AUTO_VERIFIED_LOCAL_TARGET_VALIDATION_POLICY_BLOCKED_EXTERNAL`, Phase 39 `AUTO_VERIFIED_LOCAL_PROOF_HANDOFF_BLOCKED_EXTERNAL`, Phase 40 `AUTO_VERIFIED_LOCAL_PROOF_INTAKE_POLICY_BLOCKED_EXTERNAL`, Phase 41 `AUTO_VERIFIED_LOCAL_QUARANTINE_READINESS_POLICY_BLOCKED_EXTERNAL`이다. 7개 비한국어 번역의 언어 전문가 검토, 수동 접근성 승인, 운영 필드 성능·학습 KPI 기준선, 관리형 운영 신원·법적 보존 정책·실제 이행 실행기는 별도 승인·권한 대기다.
+이 문서는 전체 Phase의 사람이 읽는 색인이다. 상태 문자열은 `STATUS.json`과 동일하게 유지하며, 로컬 자동 검증 PASS를 외부 승인·현장 검증·운영 출시로 해석하지 않는다.
 
-## 공통 규칙
+| Phase | 작업 ID | 현재 상태 |
+|---:|---|---|
+| 0 | `project_foundation` | `VERIFIED` |
+| 1 | `requirements` | `VERIFIED` |
+| 2 | `functional_design` | `VERIFIED` |
+| 3 | `infrastructure_design` | `VERIFIED` |
+| 4 | `database_design` | `VERIFIED` |
+| 5 | `screen_and_brand_design` | `VERIFIED` |
+| 6 | `feature_development` | `VERIFIED` |
+| 7 | `staging_deployment` | `VERIFIED` |
+| 8 | `integration_testing` | `VERIFIED` |
+| 9 | `operations_maintenance` | `PARTIAL_VERIFIED` |
+| 10 | `math_formula_learning_correction` | `VERIFIED` |
+| 11 | `student_formula_learning_ui` | `VERIFIED` |
+| 12 | `diagnostic_adaptive_learning` | `VERIFIED` |
+| 13 | `student_diagnostic_curriculum_ui` | `VERIFIED` |
+| 14 | `k12_curriculum_character_collaboration` | `VERIFIED` |
+| 15 | `character_collaboration_learning_runtime` | `VERIFIED` |
+| 16 | `formula_recall_check` | `VERIFIED` |
+| 17 | `formula_application_mastery` | `VERIFIED` |
+| 18 | `formula_application_i18n_expansion` | `VERIFIED` |
+| 19 | `formula_catalog_recall_i18n` | `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED` |
+| 20 | `curriculum_collaboration_i18n` | `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED` |
+| 21 | `accessibility_i18n_and_linguistic_review_packets` | `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED` |
+| 22 | `keyboard_focus_contrast_screen_reader_accessibility` | `AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED` |
+| 23 | `core_web_vitals_and_static_delivery_performance` | `AUTO_VERIFIED_LOCAL_LAB` |
+| 24 | `session_api_supply_chain_security_hardening` | `AUTO_VERIFIED_LOCAL_SECURITY` |
+| 25 | `learning_quality_kpi_privacy_minimized_analytics` | `AUTO_VERIFIED_LOCAL_ANALYTICS` |
+| 26 | `student_data_rights_request_workflow` | `AUTO_VERIFIED_LOCAL_DATA_RIGHTS` |
+| 27 | `privacy_operator_queue_decision_evidence` | `AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS` |
+| 28 | `privacy_fulfilment_dry_run_legal_hold_dual_approval` | `AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS` |
+| 29 | `immutable_fulfilment_package_expiry_revalidation_recovery` | `AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE` |
+| 30 | `pre_execution_operational_readiness_external_block` | `AUTO_VERIFIED_LOCAL_EXECUTION_READINESS_BLOCKED_EXTERNAL` |
+| 31 | `external_operational_evidence_handoff_packet` | `AUTO_VERIFIED_LOCAL_HANDOFF_PACKET_BLOCKED_EXTERNAL` |
+| 32 | `external_evidence_validation_state_machine_policy` | `AUTO_VERIFIED_LOCAL_EVIDENCE_VALIDATION_POLICY_BLOCKED_EXTERNAL` |
+| 33 | `external_evidence_intake_adapter_contract` | `AUTO_VERIFIED_LOCAL_INTAKE_ADAPTER_CONTRACT_BLOCKED_EXTERNAL` |
+| 34 | `external_connection_pre_acceptance_packet` | `AUTO_VERIFIED_LOCAL_PRE_CONNECTION_ACCEPTANCE_BLOCKED_EXTERNAL` |
+| 35 | `external_configuration_evidence_metadata_queue_contract` | `AUTO_VERIFIED_LOCAL_CONFIGURATION_EVIDENCE_QUEUE_BLOCKED_EXTERNAL` |
+| 36 | `external_evidence_submission_envelope_policy` | `AUTO_VERIFIED_LOCAL_SUBMISSION_ENVELOPE_POLICY_BLOCKED_EXTERNAL` |
+| 37 | `external_reference_scheme_governance` | `AUTO_VERIFIED_LOCAL_REFERENCE_SCHEME_GOVERNANCE_BLOCKED_EXTERNAL` |
+| 38 | `external_reference_target_validation_policy` | `AUTO_VERIFIED_LOCAL_TARGET_VALIDATION_POLICY_BLOCKED_EXTERNAL` |
+| 39 | `external_reference_proof_handoff_contract` | `AUTO_VERIFIED_LOCAL_PROOF_HANDOFF_BLOCKED_EXTERNAL` |
+| 40 | `external_reference_proof_intake_state_machine_policy` | `AUTO_VERIFIED_LOCAL_PROOF_INTAKE_POLICY_BLOCKED_EXTERNAL` |
+| 41 | `external_reference_proof_quarantine_readiness_policy` | `AUTO_VERIFIED_LOCAL_QUARANTINE_READINESS_POLICY_BLOCKED_EXTERNAL` |
+| 42 | `external_reference_proof_scanner_readiness_policy` | `AUTO_VERIFIED_LOCAL_SCANNER_READINESS_POLICY_BLOCKED_EXTERNAL` |
+| 43 | `external_reference_proof_scan_attestation_policy` | `AUTO_VERIFIED_LOCAL_SCAN_ATTESTATION_POLICY_BLOCKED_EXTERNAL` |
+| 44 | `external_reference_proof_release_decision_policy` | `AUTO_VERIFIED_LOCAL_RELEASE_DECISION_POLICY_BLOCKED_EXTERNAL` |
+| 45 | `productization_external_chain_closure_audit` | `AUTO_VERIFIED_LOCAL_CHAIN_CLOSED_BLOCKED_EXTERNAL` |
+| 46 | `product_truth_ui_differentiation_redteam_remediation` | `AUTO_VERIFIED_LOCAL_P0_COMPLETE` |
+| 47 | `privacy_minimized_dual_character_ai_tutor_kernel` | `AUTO_VERIFIED_LOCAL_AI_TUTOR_FALLBACK_EXTERNAL_MODEL_BLOCKED` |
+| 48 | `ai_tutor_quality_safety_evaluation_harness` | `AUTO_VERIFIED_LOCAL_AI_EVAL_HUMAN_CALIBRATION_AND_EXTERNAL_MODEL_BLOCKED` |
+| 49 | `ai_tutor_operational_control_plane` | `AUTO_VERIFIED_LOCAL_AI_OPERATIONS_EXTERNAL_ENABLEMENT_BLOCKED` |
+| 50 | `ai_tutor_staging_promotion_readiness` | `AUTO_VERIFIED_LOCAL_AI_STAGING_PACKET_BLOCKED_EXTERNAL` |
+| 51 | `ai_tutor_controlled_staging_canary_handoff` | `AUTO_VERIFIED_LOCAL_AI_CANARY_HANDOFF_BLOCKED_EXTERNAL` |
+| 52 | `ai_tutor_canary_result_intake_and_adjudication` | `AUTO_VERIFIED_LOCAL_AI_CANARY_RESULTS_BLOCKED_EXTERNAL` |
+| 53 | `ai_tutor_extended_staging_observation_readiness` | `AUTO_VERIFIED_LOCAL_AI_EXTENDED_STAGING_OBSERVATION_BLOCKED_EXTERNAL` |
+| 54 | `ai_tutor_extended_staging_result_intake_and_adjudication` | `AUTO_VERIFIED_LOCAL_AI_EXTENDED_STAGING_RESULTS_BLOCKED_EXTERNAL` |
+| 55 | `ai_tutor_production_promotion_handoff` | `AUTO_VERIFIED_LOCAL_AI_PRODUCTION_PROMOTION_HANDOFF_BLOCKED_EXTERNAL` |
+| 56 | `ai_tutor_controlled_production_rollout_handoff` | `AUTO_VERIFIED_LOCAL_AI_CONTROLLED_PRODUCTION_ROLLOUT_BLOCKED_EXTERNAL` |
+| 57 | `ai_tutor_controlled_production_rollout_result_intake_and_adjudication` | `AUTO_VERIFIED_LOCAL_AI_CONTROLLED_PRODUCTION_ROLLOUT_RESULTS_BLOCKED_EXTERNAL` |
+| 58 | `ai_tutor_limited_production_final_safety_handoff` | `AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_SAFETY_HANDOFF_BLOCKED_EXTERNAL` |
+| 59 | `ai_tutor_limited_production_observation_result_intake_and_adjudication` | `AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_OBSERVATION_RESULTS_BLOCKED_EXTERNAL` |
+| 60 | `ai_tutor_limited_production_expansion_composite_decision_handoff` | `AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_EXPANSION_DECISION_BLOCKED_EXTERNAL` |
+| 61 | `ai_tutor_limited_production_expansion_non_executing_plan` | `AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_EXPANSION_PLAN_BLOCKED_EXTERNAL` |
+| 62 | `ai_tutor_limited_production_final_preflight_non_dispatching_handoff` | `AUTO_VERIFIED_LOCAL_AI_FINAL_PREFLIGHT_HANDOFF_BLOCKED_EXTERNAL` |
+| 63 | `ai_tutor_limited_execution_result_intake_and_adjudication` | `AUTO_VERIFIED_LOCAL_AI_LIMITED_EXECUTION_RESULTS_BLOCKED_EXTERNAL` |
+| 64 | `ai_tutor_final_composite_go_no_go_decision` | `AUTO_VERIFIED_LOCAL_AI_FINAL_GO_NO_GO_BLOCKED_EXTERNAL` |
+| 65 | `productization_final_operations_handoff_and_local_chain_closure` | `LOCAL_PRODUCTIZATION_CHAIN_COMPLETE_EXTERNAL_RELEASE_BLOCKED` |
+| 66 | `daechi_80_specialization_foundation` | `LOCAL_SPECIALIZATION_FOUNDATION_PASS_FIELD_EVIDENCE_BLOCKED` |
+| 67 | `licensed_professional_content_corpus_foundation` | `LOCAL_CONTENT_CORPUS_PLATFORM_PASS_LICENSED_ITEMS_BLOCKED_EXTERNAL` |
+| 68 | `solution_recognition_confidence_and_manual_fallback` | `LOCAL_SOLUTION_RECOGNITION_PLATFORM_PASS_OCR_BENCHMARK_BLOCKED_EXTERNAL` |
+| 69 | `evidence_gated_academy_track_curriculum` | `LOCAL_ACADEMY_CURRICULUM_PLATFORM_PASS_EXPERT_LICENSE_FIELD_EVIDENCE_BLOCKED` |
+| 70 | `teacher_parent_learning_operations_console` | `LOCAL_TEACHER_PARENT_OPERATIONS_AUTOMATED_PASS_VISUAL_MANAGED_IDENTITY_FIELD_EVIDENCE_BLOCKED` |
+| 71 | `learning_effect_pilot_readiness_platform` | `LOCAL_PILOT_READINESS_PLATFORM_PASS_ACTUAL_PILOT_BLOCKED_EXTERNAL` |
+| 72 | `independent_math_expert_dual_review_platform` | `LOCAL_MATH_EXPERT_DUAL_REVIEW_PLATFORM_PASS_ACTUAL_EXPERT_EVIDENCE_BLOCKED_EXTERNAL` |
+| 73 | `ai_tutor_external_model_evidence_platform` | `LOCAL_AI_TUTOR_EVIDENCE_PLATFORM_PASS_ACTUAL_MODEL_EVIDENCE_BLOCKED_EXTERNAL` |
+| 74 | `daechi_field_pilot_readiness_platform` | `LOCAL_FIELD_PILOT_PLATFORM_PASS_ACTUAL_ACADEMY_EVIDENCE_BLOCKED_EXTERNAL` |
+| 75 | `commercial_operations_readiness_platform` | `LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED` |
 
-- 선행 Phase가 `VERIFIED`가 아니면 다음 Phase를 완료하지 않는다.
-- 자동 검증과 제품 책임자의 수동 판단을 분리한다.
-- 기존 Stage 8 승인 자산과 행동 계약을 제품화 과정에서 훼손하지 않는다.
-- 실패는 항목 단위로 수정한 뒤 해당 Phase 전체 검사를 다시 실행한다.
-- 외부 배포·인증·비밀관리·알림 권한이 없으면 성공을 추정하지 않고 외부 범위만 차단한다.
+## 현재 해석
+
+- Phase 0~18: 로컬 구현·검증 기준 완료. Phase 9는 운영 외부 구성이 남아 `PARTIAL_VERIFIED`다.
+- Phase 19~22: 자동 검증은 통과했으나 7개 비한국어 언어 전문가 검토와 접근성 수동 승인 대기다.
+- Phase 23~29: 로컬 성능·보안·분석·개인정보 통제 증거가 있다. 운영 실트래픽·관리형 신원은 포함하지 않는다.
+- Phase 30~45: 외부 증거 수신·검증 계약은 로컬 PASS이며 실제 외부 실행은 차단되어 있다.
+- Phase 46~64: UI 차별화와 AI 튜터 운영 계약의 로컬 증거가 있다. 실제 모델·사람 교정·운영 실행은 차단되어 있다.
+- Phase 65: 원래 로컬 체인의 종료점이었다. 이후 2026-08-11 사용자의 명시적 고도화 지시로 Phase 66~75를 별도 D80 체인으로 재개했다.
+- Phase 66~75: 제품 기반과 외부 증거 수용 플랫폼은 로컬 PASS지만 라이선스 콘텐츠·OCR 벤치마크·전문가·학생·학원·법률·복구 훈련·출시 승인은 실제 증거 0건이다.
+
+## Stage 8 연계 상태
+
+- Gate 5: `VERIFIED`, 제품 책임자 승인 `1/1`
+- Gate 6: `IN_PROGRESS`, 제품화 Phase 5~8 매핑 `4/4`
+- Gate 6 종료 공백: 360·768·1024·1200 수동 반응형 검토, lint/typecheck, 불변 RC 기준선
+- Gate 7~8: `NOT_STARTED`
+
+## 다음 READY 작업
+
+Gate 6 종료 증거 세 항목 중 첫 번째인 실제 제품 화면 360·768·1024·1200px 수동 반응형 검토를 수행하고 결과를 고정한다. 이 작업 전후에도 외부 배포·제품 출시 권한은 부여되지 않는다.

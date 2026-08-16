@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 49,
+  "generated_at": "2026-08-10T15:29:08.021Z",
+  "status": "AUTO_QA_PASS_LOCAL_OPERATIONS_CONTROL",
+  "external_provider_live_tested": false,
+  "openai_api_key_accessed": false,
+  "external_deployment_performed": false,
+  "contract_sha256": "b3cdcb89ebdd2f51fa1e9fcbccbc6bee869123b6a2170c2ad9d2f3e680a095e3",
+  "summary": {
+    "scenarios": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "feature-default-off",
+      "passed": true,
+      "observed": {
+        "mode": "RULE_FALLBACK",
+        "reason": "FEATURE_DISABLED",
+        "provider_calls": 0
+      }
+    },
+    {
+      "id": "emergency-kill-switch",
+      "passed": true,
+      "observed": {
+        "reason": "EMERGENCY_KILL_SWITCH",
+        "provider_calls": 0
+      }
+    },
+    {
+      "id": "version-pin-mismatch",
+      "passed": true,
+      "observed": {
+        "reason": "VERSION_PIN_MISMATCH",
+        "provider_calls": 0
+      }
+    },
+    {
+      "id": "daily-budget-envelope",
+      "passed": true,
+      "observed": {
+        "first": "GENERATIVE_ASSISTED",
+        "second_reason": "BUDGET_EXHAUSTED",
+        "provider_calls": 1
+      }
+    },
+    {
+      "id": "circuit-opens-after-threshold",
+      "passed": true,
+      "observed": {
+        "state": "OPEN",
+        "blocked_reason": "CIRCUIT_OPEN",
+        "provider_calls": 3
+      }
+    },
+    {
+      "id": "half-open-probe-recovery",
+      "passed": true,
+      "observed": {
+        "mode": "GENERATIVE_ASSISTED",
+        "state": "CLOSED",
+        "provider_calls": 4
+      }
+    },
+    {
+      "id": "unsafe-output-fallback-and-signal",
+      "passed": true,
+      "observed": {
+        "mode": "RULE_FALLBACK",
+        "safety_rejections": 1
+      }
+    }
+  ],
+  "controls": {
+    "feature_flag_default_off": true,
+    "emergency_kill_switch": true,
+    "version_pins": 3,
+    "request_and_token_budgets": 3,
+    "circuit_states": 3,
+    "automatic_application_retries": 0,
+    "deterministic_fallback": true,
+    "personal_data_metric_labels": false
+  },
+  "external_blockers": [
+    "APPROVED_OPENAI_PROJECT_AND_SECRET_MANAGER",
+    "PLATFORM_RATE_AND_SPEND_LIMITS",
+    "IMMUTABLE_MODEL_SNAPSHOT_CONFIRMATION",
+    "HUMAN_EVAL_CALIBRATION",
+    "UNDER_18_DATA_CONTROL_REVIEW",
+    "CENTRAL_DURABLE_METRICS_AND_ALERT_ROUTE"
+  ]
+}
