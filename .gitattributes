@@ -6,3 +6,8 @@ evidence/**/*.png -text
 
 # Staging release artifacts are hash-addressed and must remain byte-identical.
 artifacts/staging/** -text
+
+# These approved runtime manifests were frozen with CRLF byte hashes. Force the
+# same checkout bytes on Linux CI so the evidence hash remains deterministic.
+docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json text eol=crlf
+artifacts/release-candidate/stage8-v1.0/source/docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json text eol=crlf
