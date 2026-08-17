@@ -1,0 +1,33 @@
+{
+  "schema_version":"1.0.0",
+  "phase":34,
+  "status":"AUTO_QA_PASS_LOCAL_PRE_CONNECTION_ACCEPTANCE_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_PRE_CONNECTION_ACCEPTANCE_PACKET_ONLY",
+  "contract":{
+    "requirements":"6/6 MISSING_EXTERNAL",
+    "owner_roles":"6/6 DEFINED",
+    "required_evidence":"12/12 DEFINED",
+    "dual_approval":"6/6 REQUIRED",
+    "external_tests":"6/6 NOT_RUN_EXTERNAL",
+    "acceptance_decisions":"6/6 NOT_REVIEWED_EXTERNAL",
+    "connection_enablement":"6/6 FALSE"
+  },
+  "tests":{
+    "unit":"101/101 PASS",
+    "phase_integration":"1/1 PASS",
+    "postgresql_regression":"25/25 PASS",
+    "append_only_inverse":"2/2 BLOCKED",
+    "migration":"FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety":{
+    "credential_material_storage_allowed":false,
+    "secret_material_storage_allowed":false,
+    "configuration_write_enabled":false,
+    "acceptance_decision_write_enabled":false,
+    "network_connection_enabled":false,
+    "connection_authorized":false,
+    "execution_authorized":false,
+    "source_data_mutations":0
+  },
+  "manual_or_external_status":"BLOCKED_EXTERNAL_PKI_TRUST_NETWORK_TEST_AND_DUAL_APPROVAL"
+}

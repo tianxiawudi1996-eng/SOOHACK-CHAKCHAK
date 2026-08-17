@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_kind": "EXTERNAL_ROUTE_CONNECTION_PROBE",
+  "provider": "github",
+  "route_reference": "OPS-EVIDENCE-ROUTE-2026-001",
+  "workstream_id": "D80-10",
+  "verified_at": "2026-08-15T13:51:43.212Z",
+  "authenticated_account_reference": "github:visionlab-coder",
+  "resource_reference": "github:tianxiawudi1996-eng/SOOHACK-CHAKCHAK",
+  "connection_scope": "READ_ONLY_REPOSITORY_METADATA",
+  "result": "CONNECTED_READ_ONLY",
+  "observed_capabilities": {
+    "repository_metadata_read": true,
+    "repository_pull": true,
+    "repository_push": false,
+    "repository_admin": false
+  },
+  "resource_metadata": {
+    "visibility": "public",
+    "default_branch": "main"
+  },
+  "external_mutation_performed": false,
+  "secret_value_accessed": false,
+  "secret_value_stored": false,
+  "raw_endpoint_stored": false
+}

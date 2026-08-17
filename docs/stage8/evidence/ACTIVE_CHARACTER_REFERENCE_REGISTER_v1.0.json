@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-05T15:14:16+09:00",
+  "status": "ACTIVE_SHADED_2D_PET_CANDIDATES",
+  "decision_source": "User directive: abandon 3D and replace it with shaded 2D characters in varied poses with a compact desktop-companion experience.",
+  "characters": {
+    "Chakchaki": {
+      "approved_reference_path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+      "approved_reference_sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd",
+      "canonical_turnaround_path": "evidence/gate-1/candidates/Chakchaki_Canonical_Turnaround_Candidate_v3.png",
+      "canonical_turnaround_sha256": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480"
+    },
+    "Gongsickyi": {
+      "approved_reference_path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+      "approved_reference_sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec",
+      "canonical_turnaround_path": "evidence/gate-1/candidates/Gongsickyi_Canonical_Turnaround_Candidate_v4.png",
+      "canonical_turnaround_sha256": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157"
+    }
+  },
+  "actual_3d_source": {
+    "status": "ABANDONED_BY_USER_STRATEGY",
+    "accepted_formats": ["BLEND", "FBX", "GLB", "GLTF", "OBJ"],
+    "workspace_scan_result": "No pre-existing approved 3D source was found. Subsequent authored 3D candidates are retained for audit only and are no longer an active production path."
+  },
+  "new_authored_3d_candidates": {
+    "status": "SUPERSEDED_BY_2D_STRATEGY",
+    "blender_version": "5.2.0 LTS",
+    "chakchaki_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Chakchaki_HighFidelity_v2.0.blend",
+    "gongsickyi_source": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/gate2-high-fidelity/source/Gongsickyi_HighFidelity_v2.0.blend",
+    "automated_qa": "PASS",
+    "gate2_verified": false
+  },
+  "shaded_2d_pet_candidates": {
+    "status": "APPROVED_GATE2",
+    "strategy_record": "docs/stage8/evidence/2d-pet/v1.0/2D_STRATEGY_DECISION_v1.0.json",
+    "asset_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_ASSET_MANIFEST_v1.0.json",
+    "chakchaki_sheet": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "gongsickyi_sheet": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+    "declared_pose_count": 16,
+    "automated_qa": "PASS",
+    "manual_review": "APPROVED",
+    "gate2_verified": true,
+    "runtime_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "runtime_pose_count": 16,
+    "gate3_manual_review": "APPROVED",
+    "gate3_verified": true
+  },
+  "rejected_assets": {
+    "reason": "Canonical identity and production visual quality do not match the approved character references.",
+    "gate2_archive": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate2/",
+    "gate3_archive": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/rejected/procedural-low-fidelity/gate3/",
+    "preview_archive": "docs/stage8/evidence/rejected/procedural-low-fidelity/"
+  },
+  "controls": {
+    "canonical_images_are_active_visual_source": true,
+    "canonical_images_are_not_claimed_as_3d_meshes": true,
+    "procedural_candidates_may_not_be_used_or_promoted": true,
+    "authored_3d_candidates_may_not_be_used_or_promoted": true,
+    "gate2_requires_new_high_fidelity_3d_source_or_authoring": false,
+    "gate2_requires_shaded_2d_pose_sheets": true,
+    "gate2_requires_manual_visual_approval": true,
+    "gate3_requires_gate2_verified": true,
+    "gate3_is_2d_pose_layer_preparation": true,
+    "gate4_is_2d_transition_motion": true
+  }
+}

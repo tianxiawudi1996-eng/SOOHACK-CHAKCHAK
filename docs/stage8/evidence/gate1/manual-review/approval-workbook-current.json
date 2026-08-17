@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T07:21:38.374Z",
+  "mode": "READ_ONLY_INSPECTION",
+  "workbook": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/Gate1_Manual_Approval_Log_v5.2.0.xlsx",
+  "workbook_sha256": "a62ceebe465db9c2626e0a66728b81a708cba0b378459d47d052170e486e3be0",
+  "sheets": [
+    "Summary",
+    "Approvals",
+    "Instructions"
+  ],
+  "summary": {
+    "Gate 1 Manual Approval Log": null,
+    "v5.2.0 | approval cells are intentionally blank until named reviewers sign": null,
+    "Automated QA": "PASS",
+    "Required approvals": 10,
+    "Recorded approvals": 0,
+    "Recorded rejects": 0,
+    "Gate 1 decision": "BLOCKED_EXTERNAL",
+    "No row is pre-approved. A decision is valid only with reviewer name, date/time, and review comment or patch reference.": null
+  },
+  "rows": [
+    {
+      "row_number": 5,
+      "character": "Chakchaki",
+      "role": "Character Art Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 6,
+      "character": "Chakchaki",
+      "role": "3D Technical Art Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 7,
+      "character": "Chakchaki",
+      "role": "UX Brand System Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 8,
+      "character": "Chakchaki",
+      "role": "QA Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 9,
+      "character": "Chakchaki",
+      "role": "Product Owner",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 10,
+      "character": "Gongsickyi",
+      "role": "Character Art Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 11,
+      "character": "Gongsickyi",
+      "role": "3D Technical Art Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 12,
+      "character": "Gongsickyi",
+      "role": "UX Brand System Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 13,
+      "character": "Gongsickyi",
+      "role": "QA Lead",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    },
+    {
+      "row_number": 14,
+      "character": "Gongsickyi",
+      "role": "Product Owner",
+      "decision": "",
+      "reviewer": "",
+      "reviewed_at": "",
+      "evidence_hash": "",
+      "comment": "",
+      "status": "PENDING"
+    }
+  ],
+  "row_count": 10,
+  "pending_count": 10,
+  "populated_decision_count": 0,
+  "formula_error_count": 0
+}

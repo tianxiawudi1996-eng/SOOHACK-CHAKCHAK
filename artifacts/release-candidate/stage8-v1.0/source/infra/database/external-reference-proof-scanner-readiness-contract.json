@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 42,
+  "contract_tables": 2,
+  "control_requirements": 6,
+  "trust_requirements": 8,
+  "signature_freshness_controls": 7,
+  "execution_stages": 9,
+  "failure_policies": 10,
+  "attestation_required_fields": 12,
+  "approved_scanner_engines": 0,
+  "objects_present": 0,
+  "scan_results_present": 0,
+  "attestations_present": 0,
+  "object_read_enabled": false,
+  "scan_execution_enabled": false,
+  "attestation_write_enabled": false,
+  "release_decision_write_enabled": false,
+  "network_connection_authorized": false,
+  "execution_authorized": false
+}

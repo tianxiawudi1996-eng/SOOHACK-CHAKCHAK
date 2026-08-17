@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 49,
+  "status": "LOCAL_CONTROL_PLANE_IMPLEMENTED_EXTERNAL_PROVIDER_DISABLED",
+  "feature_flags": {
+    "TUTOR_AI_ENABLED_default": false,
+    "TUTOR_AI_KILL_SWITCH_default": false,
+    "fail_closed": true,
+    "fallback_mode": "RULE_FALLBACK"
+  },
+  "version_pins": {
+    "approved_model_reference": "gpt-5.6-sol",
+    "approved_prompt_version": "mathchakchak-tutor-duo-v1.0.0",
+    "approved_eval_dataset_version": "tutor-golden-cases.v1.0.0",
+    "eval_dataset_sha256": "ab95afdd3fd1d450e27f33f407d3b8f7ec95904bdc8d49ae8fb75a3652946ee7",
+    "model_resolved_at": "2026-08-10",
+    "immutable_provider_snapshot_verified": false,
+    "change_policy": "EVAL_PASS_AND_PRODUCT_OWNER_APPROVAL_REQUIRED"
+  },
+  "runtime_envelope": {
+    "request_timeout_ms": 1500,
+    "daily_request_limit_per_process": 1000,
+    "daily_input_token_limit_per_process": 1000000,
+    "daily_output_token_limit_per_process": 250000,
+    "monetary_hard_limit": "EXTERNAL_PROJECT_CONFIGURATION_REQUIRED",
+    "automatic_application_retries": 0
+  },
+  "circuit_breaker": {
+    "failure_threshold": 3,
+    "rolling_window_ms": 60000,
+    "cooldown_ms": 30000,
+    "half_open_probe_limit": 1,
+    "states": ["CLOSED", "OPEN", "HALF_OPEN"]
+  },
+  "telemetry": {
+    "personal_data_labels_allowed": false,
+    "signals": [
+      "provider_attempts",
+      "generative_turns",
+      "fallback_turns",
+      "fallback_reason",
+      "safety_rejections",
+      "input_tokens",
+      "output_tokens",
+      "average_provider_latency_ms",
+      "circuit_state"
+    ]
+  },
+  "rollback": {
+    "immediate_action": "SET TUTOR_AI_KILL_SWITCH=true OR TUTOR_AI_ENABLED=false",
+    "student_experience": "CONTINUE_WITH_APPROVED_RULE_FALLBACK",
+    "database_rollback_required": false,
+    "provider_retry_storm_allowed": false
+  },
+  "external_blockers": [
+    "APPROVED_OPENAI_PROJECT_AND_SECRET_MANAGER",
+    "SEPARATE_STAGING_AND_PRODUCTION_PROJECTS",
+    "PLATFORM_RATE_AND_SPEND_LIMITS",
+    "IMMUTABLE_MODEL_SNAPSHOT_CONFIRMATION",
+    "HUMAN_EVAL_CALIBRATION",
+    "UNDER_18_DATA_CONTROL_REVIEW",
+    "CENTRAL_DURABLE_METRICS_AND_ALERT_ROUTE"
+  ]
+}

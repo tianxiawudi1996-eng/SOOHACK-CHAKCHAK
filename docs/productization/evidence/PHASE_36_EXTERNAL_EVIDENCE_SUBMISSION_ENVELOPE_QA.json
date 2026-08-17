@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 36,
+  "status": "AUTO_QA_PASS_LOCAL_SUBMISSION_ENVELOPE_POLICY_BLOCKED_EXTERNAL",
+  "scope": "LOCAL_SYNTHETIC_SUBMISSION_ENVELOPE_POLICY_ONLY",
+  "contract": {
+    "contract_tables": "2/2 DEFINED",
+    "control_rules": "6/6 DEFINED",
+    "required_envelope_fields": "10/10 DEFINED",
+    "reference_scheme_approval_steps": "4/4 DEFINED",
+    "allowed_reference_schemes": "0 EXTERNAL_APPROVAL_MISSING",
+    "rejection_reason_codes": "10/10 DEFINED",
+    "submission_acceptance": "6/6 NOT_ACCEPTING"
+  },
+  "tests": {
+    "unit": "109/109 PASS",
+    "phase_integration": "1/1 PASS",
+    "postgresql_regression": "27/27 PASS",
+    "append_only_inverse": "2/2 BLOCKED",
+    "migration": "FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety": {
+    "metadata_submission_enabled": false,
+    "envelope_acceptance_enabled": false,
+    "reference_scheme_allowlist_write_enabled": false,
+    "allowlist_activation_enabled": false,
+    "external_reference_fetch_enabled": false,
+    "raw_payload_storage_allowed": false,
+    "credential_material_storage_allowed": false,
+    "secret_material_storage_allowed": false,
+    "automatic_promotion_allowed": false,
+    "connection_authorized": false,
+    "execution_authorized": false,
+    "source_data_mutations": 0
+  },
+  "manual_or_external_status": "BLOCKED_EXTERNAL_REFERENCE_SCHEME_APPROVAL_AND_IDEMPOTENCY_RETENTION_POLICY"
+}

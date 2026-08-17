@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 7,
+  "audited_at": "2026-08-15T13:54:10.669Z",
+  "status": "VERIFIED",
+  "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+  "evidence": [
+    {
+      "path": "docs/stage8/evidence/gate7/GATE7_RELEASE_BLOCKING_QA_v1.0.json",
+      "sha256": "d6a5aa6d44721a8ff2b7d1f6d00d916327b8b4e2176bd320edf4f3c5c701e860"
+    },
+    {
+      "path": "docs/stage8/evidence/gate7/GATE7_BROWSER_ACCESSIBILITY_QA_v1.0.json",
+      "sha256": "663af9948a7830fe5fb1b23e89143ef788aae005e8cdd45cb40f3aad548b39f8"
+    },
+    {
+      "path": "artifacts/release-candidate/stage8-v1.0/release-manifest.json",
+      "sha256": "43beca4993d3a545eb2d41102074e5e7aad359d195d25efed8d09759e86760a1"
+    }
+  ],
+  "release_blocking_commands": "14/14",
+  "unit_tests": "336/336 PASS",
+  "integration_tests": "61/61 PASS",
+  "browser_accessibility_checks": "6/6 PASS",
+  "p0_defects": 0,
+  "external_deployment_performed": false,
+  "gate8_entry_allowed": true,
+  "failures": []
+}

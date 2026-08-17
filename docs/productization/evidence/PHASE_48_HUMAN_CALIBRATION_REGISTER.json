@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 48,
+  "status": "PENDING_EXTERNAL_REVIEW",
+  "required_reviews": 1,
+  "completed_reviews": 0,
+  "reviewer_reference": null,
+  "reviewed_at": null,
+  "dataset_version": "1.0.0",
+  "sample_policy": {
+    "minimum_cases": 16,
+    "all_locales_required": true,
+    "safety_failures_required": true,
+    "criteria": [
+      "MATHEMATICAL_ACCURACY",
+      "AGE_APPROPRIATE_TONE",
+      "CHAKCHAKI_ROLE_FIT",
+      "GONGSICKYI_ROLE_FIT",
+      "LOCALE_NATURALNESS",
+      "NO_ANSWER_REVEAL"
+    ]
+  },
+  "approval_inferred": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 2,
+  "status": "APPROVED",
+  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "reviewer": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-05T14:21:53+09:00",
+  "scope_acknowledged": true,
+  "characters": ["Chakchaki", "Gongsickyi"],
+  "candidate_sheet_hashes": {
+    "Chakchaki": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+    "Gongsickyi": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c"
+  },
+  "metadata_scrub": {
+    "authorized_by_user": true,
+    "removed_png_chunks": ["caBX"],
+    "pixel_data_changed": false,
+    "visual_approval_impact": "NONE"
+  },
+  "checks": {
+    "canonical_identity_match": true,
+    "face_and_silhouette_match": true,
+    "clothing_accessory_and_color_match": true,
+    "two_dimensional_shading_quality_acceptable": true,
+    "eight_poses_present_per_character": true,
+    "pose_meanings_are_clear": true,
+    "small_ui_readability_acceptable": true,
+    "no_low_poly_or_unwanted_3d_appearance": true
+  },
+  "comment": "The user reviewed the running UI and explicitly instructed Codex to continue the previously defined Gate 2 approval and transparent-pose workflow.",
+  "patch_id": null,
+  "unresolved_patch": false,
+  "approval_applied": true,
+  "next_gate_allowed": true
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "service": "MathChakChak",
+  "cycles": [
+    {"task":"dependency_vulnerability_audit","frequency":"weekly","command":"npm.cmd audit --audit-level=moderate","owner_role":"security_maintainer"},
+    {"task":"full_product_regression","frequency":"per_release","command":"npm.cmd run test:productization","owner_role":"release_manager"},
+    {"task":"api_core_journey","frequency":"per_release","command":"npm.cmd run test:integration:api","owner_role":"api_owner"},
+    {"task":"backup_freshness_check","frequency":"daily_after_external_launch","owner_role":"database_owner"},
+    {"task":"restore_rehearsal","frequency":"monthly","owner_role":"database_owner"},
+    {"task":"access_and_secret_rotation_review","frequency":"quarterly","owner_role":"security_maintainer"},
+    {"task":"data_retention_audit","frequency":"monthly","owner_role":"privacy_owner"}
+  ],
+  "release_policy": {
+    "staging_first": true,
+    "health_required": true,
+    "rollback_required": true,
+    "manual_product_owner_approval_required": true
+  }
+}

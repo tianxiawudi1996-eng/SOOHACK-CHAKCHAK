@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TRIGGER IF EXISTS privacy_external_connection_acceptance_requirement_immutable ON mathchakchak.privacy_external_connection_acceptance_requirement;
+DROP TRIGGER IF EXISTS privacy_external_connection_acceptance_packet_immutable ON mathchakchak.privacy_external_connection_acceptance_packet;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_connection_acceptance_requirement;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_connection_acceptance_packet;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_connection_acceptance_mutation();
+
+COMMIT;

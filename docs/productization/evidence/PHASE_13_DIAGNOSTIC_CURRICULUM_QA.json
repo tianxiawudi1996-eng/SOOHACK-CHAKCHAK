@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 13,
+  "tested_at": "2026-08-06T23:33:06+09:00",
+  "status": "PASS_LOCAL_ISOLATED",
+  "database": {
+    "engine": "PostgreSQL",
+    "version": 16,
+    "migration": "0004_diagnostic_curriculum.sql",
+    "rollback_reapply": "PASS",
+    "diagnostic_localizations": "24/24",
+    "formula_concepts": "3/3",
+    "formula_localizations": "24/24",
+    "lesson_steps": "15/15"
+  },
+  "security": {
+    "answer_schema_exposed": false,
+    "handoff_ttl_seconds": 180,
+    "handoff_single_use": true,
+    "handoff_database_value": "SHA-256_DIGEST_ONLY",
+    "browser_token_storage": false,
+    "fragment_removed_before_consumption": true
+  },
+  "tests": {
+    "unit": "32/32 PASS",
+    "productization_regression": "PASS",
+    "api_core_journey": "PASS",
+    "formula_learning": "PASS",
+    "adaptive_learning": "PASS",
+    "diagnostic_curriculum": "PASS",
+    "presentation_metadata": "PASS"
+  },
+  "browser": {
+    "landing_to_diagnostic": "PASS",
+    "questions": "3/3",
+    "core_recommendation": "PASS",
+    "handoff_to_selected_formula": "PASS",
+    "selected_formula": "분수의 곱셈",
+    "locales": "8/8",
+    "console_errors_after_fix": 0,
+    "horizontal_overflow_desktop": false,
+    "responsive_390px_static_policy": "PASS"
+  },
+  "staging": {
+    "url": "http://127.0.0.1:4180/diagnostic/index.html?locale=ko",
+    "artifact_files": "24/24",
+    "http_responses": "24/24",
+    "health": "healthy",
+    "external_deployment_performed": false
+  },
+  "defects_fixed": [
+    {
+      "code": "DIAGNOSTIC_NULL_LOCALE",
+      "cause": "URLSearchParams.get returned null when the landing CTA omitted locale",
+      "resolution": "Both student screens normalize null through String(value ?? '')",
+      "regression_test": "tests/unit/client/locale-null-fallback.test.mjs"
+    }
+  ]
+}

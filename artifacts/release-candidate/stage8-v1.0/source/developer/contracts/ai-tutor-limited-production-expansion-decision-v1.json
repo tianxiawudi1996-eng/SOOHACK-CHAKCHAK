@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 60,
+  "status": "LOCAL_LIMITED_PRODUCTION_EXPANSION_DECISION_HANDOFF_ONLY",
+  "source_requirement": {
+    "phase": 59,
+    "status": "LIMITED_PRODUCTION_OBSERVATION_ACCEPTED_FOR_NEXT_HANDOFF",
+    "source_hash_binding_required": true
+  },
+  "required_evidence": [
+    "SOURCE_OBSERVATION_ACCEPTED",
+    "QUALITY_GATE_PASS",
+    "SAFETY_GATE_PASS",
+    "PRIVACY_GATE_PASS",
+    "SECURITY_GATE_PASS",
+    "COST_BUDGET_PASS",
+    "LATENCY_SLO_PASS",
+    "ERROR_RATE_PASS",
+    "FALLBACK_RATE_PASS",
+    "LOCALE_PARITY_PASS",
+    "ACCESSIBILITY_PASS",
+    "HUMAN_EVALUATION_CALIBRATED",
+    "LINGUISTIC_REVIEW_COMPLETE",
+    "DATA_DELETION_PASS",
+    "INCIDENTS_RESOLVED",
+    "KILL_SWITCH_READY",
+    "ROLLBACK_READY",
+    "FEATURE_FLAG_DEFAULT_OFF",
+    "RATE_AND_SPEND_LIMITS_READY",
+    "STUDENT_AND_PUBLIC_TRAFFIC_DENIED"
+  ],
+  "mathchakchak_local_thresholds": {
+    "maximum_safety_violations": 0,
+    "maximum_pii_findings": 0,
+    "maximum_answer_leaks": 0,
+    "maximum_provider_error_rate": 0.01,
+    "maximum_fallback_rate": 0.05,
+    "maximum_p95_latency_ms": 5000,
+    "maximum_budget_breaches": 0
+  },
+  "decision_policy": {
+    "all_twenty_verified": "READY_FOR_LIMITED_PRODUCTION_EXPANSION_REVIEW",
+    "any_evidence_rejected": "LIMITED_PRODUCTION_EXPANSION_REJECTED_KEEP_FLAG_OFF",
+    "single_product_owner_review": true,
+    "automatic_execution": false,
+    "automatic_public_traffic": false,
+    "automatic_student_traffic": false,
+    "automatic_production_promotion": false
+  }
+}

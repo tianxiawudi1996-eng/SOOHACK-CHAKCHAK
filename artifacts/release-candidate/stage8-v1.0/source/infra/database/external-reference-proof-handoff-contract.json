@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 39,
+  "contract_tables": 2,
+  "control_requirements": 6,
+  "proof_required_fields": 12,
+  "issuer_trust_requirements": 8,
+  "lifecycle_states": 7,
+  "revalidation_triggers": 8,
+  "dns_snapshot_required_fields": 8,
+  "proofs_present": 0,
+  "issuers_present": 0,
+  "dns_snapshots_present": 0,
+  "proof_intake_enabled": false,
+  "dns_resolution_enabled": false,
+  "revocation_polling_enabled": false,
+  "allowlist_write_enabled": false,
+  "network_connection_authorized": false,
+  "execution_authorized": false
+}

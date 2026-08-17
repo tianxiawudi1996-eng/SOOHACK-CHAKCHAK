@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 69,
+  "requirement_id": "D80-04",
+  "status": "LOCAL_ACADEMY_CURRICULUM_PLATFORM_PASS_EXPERT_LICENSE_FIELD_EVIDENCE_BLOCKED",
+  "verified_at": "2026-08-12T12:57:12+09:00",
+  "scope": "LOCAL_SYNTHETIC_POSTGRESQL",
+  "coverage": {
+    "grades": {"actual": 12, "expected": 12},
+    "tracks": {"actual": 4, "expected": 4},
+    "plans": {"actual": 48, "expected": 48},
+    "formulas": {"actual": 72, "expected": 72},
+    "formula_assignments": {"actual": 288, "expected": 288},
+    "formulas_per_plan": {"actual": 6, "expected": 6},
+    "recall_items": {"actual": 72, "expected": 72},
+    "application_items": {"actual": 216, "expected": 216},
+    "source_aligned_explanations": {"actual": 72, "expected": 72}
+  },
+  "database": {
+    "engine": "PostgreSQL 16",
+    "migration": "0034_academy_track_curriculum.sql",
+    "forward": "PASS",
+    "rollback": "PASS",
+    "reapply": "PASS",
+    "smoke": "PASS"
+  },
+  "verification": {
+    "phase_unit": "6/6 PASS",
+    "full_unit": "298/298 PASS",
+    "target_integration": "4/4 PASS",
+    "file_isolated_integration": "47/47 PASS",
+    "desktop_browser": "PASS",
+    "mobile_390px": "PASS",
+    "horizontal_overflow": false,
+    "formula_cards": 6,
+    "journey_steps": 4,
+    "cache_mixed_deployment_regression": "FIXED_AND_PASS",
+    "answer_schemas_exposed": false,
+    "cross_student_access": "403 PASS",
+    "invalid_track": "400 PASS"
+  },
+  "external_evidence": {
+    "math_expert_reviewed_plans": 0,
+    "licensed_plans": 0,
+    "field_validated_plans": 0,
+    "production_ready": false,
+    "market_score_80_confirmed": false
+  },
+  "final_gates": {
+    "security": "PASS",
+    "secret_files_scanned": 334,
+    "known_vulnerabilities": 0,
+    "operations_runtime": "20/20 PASS",
+    "server_errors": 0,
+    "database_ready": true,
+    "staging_readiness": "PASS",
+    "integration_status": "PASS",
+    "phase_status_continuity": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "truth_boundary": {
+    "professional_content_claimed": false,
+    "daechi_fit_claimed": false,
+    "learning_effect_claimed": false,
+    "external_deployment_performed": false
+  }
+}

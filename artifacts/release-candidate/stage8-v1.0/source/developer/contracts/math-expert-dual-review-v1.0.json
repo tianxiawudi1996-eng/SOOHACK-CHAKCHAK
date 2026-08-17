@@ -1,0 +1,36 @@
+{
+  "contract_version": "1.0",
+  "requirement_id": "D80-07",
+  "minimum_distinct_reviewers": 2,
+  "criteria": [
+    "FORMULA_ACCURACY",
+    "EXPLANATION_VALIDITY",
+    "ANSWER_CORRECTNESS",
+    "DIFFICULTY_ALIGNMENT"
+  ],
+  "decisions": ["APPROVE", "PATCH_REQUIRED", "REJECT"],
+  "target_states": ["DRAFT", "IN_REVIEW", "DUAL_APPROVED", "DISAGREEMENT", "PATCH_REQUIRED", "REJECTED"],
+  "controls": {
+    "verified_credentials_required": true,
+    "blind_independent_assignment": true,
+    "same_target_hash_required": true,
+    "conflict_declaration_required": true,
+    "independent_adjudicator_required_for_disagreement": true,
+    "decision_history_append_only": true,
+    "automatic_expert_approval": false
+  },
+  "privacy": {
+    "identity_reference_only": true,
+    "reviewer_name_stored": false,
+    "contact_details_stored": false,
+    "credential_document_stored": false
+  },
+  "truth_boundary": {
+    "verified_experts": 0,
+    "review_targets": 0,
+    "dual_approved_targets": 0,
+    "resolved_disagreements": 0,
+    "professional_review_complete": false,
+    "market_score_80_confirmed": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 40,
+  "contract_tables": 2,
+  "control_rules": 6,
+  "intake_states": 9,
+  "allowed_transitions": 14,
+  "rejection_codes": 12,
+  "replay_controls": 6,
+  "review_decisions": 3,
+  "proof_submissions_present": 0,
+  "review_decisions_present": 0,
+  "intake_channel_enabled": false,
+  "quarantine_write_enabled": false,
+  "validation_execution_enabled": false,
+  "allowlist_write_enabled": false,
+  "network_connection_authorized": false,
+  "execution_authorized": false
+}

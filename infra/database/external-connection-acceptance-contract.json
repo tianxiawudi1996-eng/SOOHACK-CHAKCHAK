@@ -1,0 +1,19 @@
+{
+  "schema_version":"1.0.0",
+  "migration":"infra/database/migrations/0020_external_connection_acceptance_packet.sql",
+  "rollback":"infra/database/migrations/0020_external_connection_acceptance_packet_rollback.sql",
+  "tables":["privacy_external_connection_acceptance_packet","privacy_external_connection_acceptance_requirement"],
+  "requirements":6,
+  "required_evidence":12,
+  "required_approver_roles":["PRIVACY_APPROVER","SECURITY_APPROVER"],
+  "configuration_status":"MISSING_EXTERNAL",
+  "external_test_status":"NOT_RUN_EXTERNAL",
+  "acceptance_decision_status":"NOT_REVIEWED_EXTERNAL",
+  "credential_material_storage_allowed":false,
+  "secret_material_storage_allowed":false,
+  "connection_enablement_allowed":false,
+  "network_connection_enabled":false,
+  "kill_switch_engaged":true,
+  "connection_authorized":false,
+  "execution_authorized":false
+}

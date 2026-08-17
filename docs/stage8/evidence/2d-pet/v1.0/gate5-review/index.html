@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 캐릭터 반응</title>
+  <link rel="stylesheet" href="/assets/stage8/2d-pet-motion-v1.0.css">
+  <link rel="stylesheet" href="/assets/stage8/ai-behavior-v1.0.css">
+  <style>
+    :root { --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --bg:#f3f6fb; --muted:#66728a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif; color:var(--navy); background:var(--bg); }
+    header { padding:22px 26px; color:#fff; background:linear-gradient(115deg,#13224b,#2f5bff); }
+    h1 { margin:0 0 6px; font-size:24px; } header p { margin:0; opacity:.88; font-size:13px; }
+    main { max-width:1120px; margin:auto; padding:24px; }
+    .stage { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pet-card { margin:0; min-height:390px; display:grid; grid-template-rows:1fr auto; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:#fff; box-shadow:0 12px 32px #25395f12; }
+    .pet-surface { min-height:320px; display:grid; place-items:center; background:radial-gradient(circle at 50% 35%,#fff 0 24%,#edf2ff 70%); }
+    .pet-surface .pet-motion-image-stage { width:min(300px,88%); }
+    .pet-surface img { width:100%; aspect-ratio:1; object-fit:contain; }
+    figcaption { padding:14px 18px; border-top:1px solid var(--line); font-weight:850; }
+    figcaption span { display:block; color:var(--muted); font-size:12px; font-weight:600; }
+    .card { margin-top:16px; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; }
+    .card h2 { margin:0 0 7px; font-size:17px; } .card p { margin:0 0 13px; color:var(--muted); font-size:12px; line-height:1.55; }
+    .event-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:7px; }
+    .event-grid button,.utility button { min-height:42px; padding:7px 9px; border:1px solid #d7def0; border-radius:10px; color:#40506d; background:#fff; font-size:11px; font-weight:800; cursor:pointer; }
+    .event-grid button:hover,.event-grid button:focus-visible,.utility button:focus-visible { border-color:var(--blue); color:var(--blue); outline:3px solid #e9eeff; }
+    .utility { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; }
+    .utility label { display:flex; align-items:center; gap:7px; min-height:42px; padding:0 11px; border:1px solid var(--line); border-radius:10px; font-size:11px; font-weight:800; }
+    .utility input { min-width:170px; border:0; outline:0; font:inherit; }
+    @media(max-width:800px){.event-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:620px){.stage{grid-template-columns:1fr}.event-grid{grid-template-columns:1fr 1fr}.pet-card{min-height:330px}.pet-surface{min-height:270px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>수학착착 캐릭터 반응</h1>
+    <p>학습 상황을 선택해 착착이와 공식이의 반응을 살펴보세요.</p>
+  </header>
+  <main>
+    <section class="stage" aria-label="AI 행동에 반응하는 캐릭터">
+      <figure class="pet-card" data-pet-character="Chakchaki" data-pet-state="WELCOME" data-pet-phase="steady" data-ai-role="primary">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp" alt="환영하는 착착이"></span></div>
+        <figcaption>착착이<span>학습 흐름·환영·휴식 담당</span></figcaption>
+      </figure>
+      <figure class="pet-card" data-pet-character="Gongsickyi" data-pet-state="WELCOME" data-pet-phase="steady" data-ai-role="support">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp" alt="환영하는 공식이"></span></div>
+        <figcaption>공식이<span>개념 안내·힌트·재도전 담당</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="ai-behavior-panel" data-ai-bubble hidden role="status" aria-live="polite">
+      <span class="ai-behavior-panel__speaker" data-ai-bubble-speaker>착착이</span>
+      <span class="ai-behavior-panel__copy"><strong data-ai-bubble-body>오늘도 한 단계씩 해볼까?</strong></span>
+      <button class="ai-behavior-panel__cta" type="button" data-ai-bubble-cta>학습 시작</button>
+    </div>
+
+    <section class="card">
+      <h2>학습 상황 선택</h2>
+      <p>상황을 선택하면 캐릭터가 알맞은 표정과 말로 반응합니다.</p>
+      <div class="event-grid">
+        <button type="button" data-ai-event-trigger="page.enter.home">홈에 왔어요</button>
+        <button type="button" data-ai-event-trigger="learning.start">학습 시작</button>
+        <button type="button" data-ai-event-trigger="concept.open">개념 보기</button>
+        <button type="button" data-ai-event-trigger="input.started">답 입력</button>
+        <button type="button" data-ai-event-trigger="idle.4s">잠시 생각하기</button>
+        <button type="button" data-ai-event-trigger="hint.request">힌트 요청</button>
+        <button type="button" data-ai-event-trigger="answer.correct">정답</button>
+        <button type="button" data-ai-event-trigger="answer.wrong.first">첫 오답</button>
+        <button type="button" data-ai-event-trigger="answer.wrong.repeated">다시 틀림</button>
+        <button type="button" data-ai-event-trigger="search.loading.5s">찾는 중</button>
+        <button type="button" data-ai-event-trigger="search.empty">결과 없음</button>
+        <button type="button" data-ai-event-trigger="diagnosis.complete">진단 완료</button>
+        <button type="button" data-ai-event-trigger="learning.complete">학습 완료</button>
+        <button type="button" data-ai-event-trigger="network.error">연결 오류</button>
+        <button type="button" data-ai-event-trigger="idle.3m">쉬는 중</button>
+      </div>
+      <div class="utility">
+        <label>메시지 입력 <input name="gate5-input-test" placeholder="메시지를 입력하세요"></label>
+        <button type="button" data-ai-hide-toggle aria-pressed="false">캐릭터 숨기기</button>
+        <button type="button" data-ai-reset>처음으로</button>
+      </div>
+    </section>
+    <span class="sr-only" data-pet-announcer aria-live="polite"></span>
+  </main>
+  <script src="/assets/stage8/2d-pet-motion-v1.0.js"></script>
+  <script src="/assets/stage8/ai-behavior-v1.0.js"></script>
+</body>
+</html>

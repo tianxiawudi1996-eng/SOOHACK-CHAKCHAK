@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T09:07:50+09:00",
+  "gate": 2,
+  "status": "BLOCKED_EXTERNAL",
+  "automated_status": "NOT_RUN",
+  "model_pass_count": 0,
+  "models": [],
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "failures": [],
+  "blockers": [
+    "APPROVED_HIGH_FIDELITY_3D_SOURCE_REQUIRED",
+    "PROCEDURAL_CANDIDATES_REJECTED_IDENTITY_MISMATCH"
+  ],
+  "active_rejected_glbs": [],
+  "ready_for_promotion": false,
+  "gate2_status_change_applied": false,
+  "next_gate_allowed": false
+}

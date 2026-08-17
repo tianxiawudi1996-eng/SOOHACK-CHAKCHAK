@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "gate1-manual-review-916636d0-9c8061af",
+  "status": "DISPATCH_CONFIRMED",
+  "privacy_note": "Store internal identity/contact references only; do not store credentials or private contact details.",
+  "dispatch_performed": true,
+  "dispatch_confirmed_at": "2026-08-04T17:34:20+09:00",
+  "dispatch_confirmation_source": "USER_CONFIRMED_ALL_YES",
+  "approvals_created": 0,
+  "next_gate_allowed": false,
+  "assignments": [
+    {
+      "role": "Character Art Lead",
+      "role_slug": "character_art_lead",
+      "reviewer_name": "김무빈",
+      "reviewer_identity_reference": "USER-ART-01",
+      "contact_reference": "SLACK-USER-ART-01",
+      "assigned_at": "2026-08-04T17:20:00+09:00",
+      "acknowledged_at": "2026-08-04T17:25:00+09:00",
+      "conflict_declaration": "NO_CONFLICT",
+      "conflict_record": "",
+      "status": "ACKNOWLEDGED",
+      "packets": {
+        "Chakchaki": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/character_art_lead.md",
+        "Gongsickyi": "docs/stage8/evidence/gate1/manual-review/packets/Gongsickyi/character_art_lead.md"
+      },
+      "dispatch_request": "docs/stage8/evidence/gate1/manual-review/dispatch/character_art_lead.md"
+    },
+    {
+      "role": "3D Technical Art Lead",
+      "role_slug": "3d_technical_art_lead",
+      "reviewer_name": "Alex",
+      "reviewer_identity_reference": "USER-3D-01",
+      "contact_reference": "SLACK-USER-3D-01",
+      "assigned_at": "2026-08-04T17:20:00+09:00",
+      "acknowledged_at": "2026-08-04T17:25:00+09:00",
+      "conflict_declaration": "NO_CONFLICT",
+      "conflict_record": "",
+      "status": "ACKNOWLEDGED",
+      "packets": {
+        "Chakchaki": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/3d_technical_art_lead.md",
+        "Gongsickyi": "docs/stage8/evidence/gate1/manual-review/packets/Gongsickyi/3d_technical_art_lead.md"
+      },
+      "dispatch_request": "docs/stage8/evidence/gate1/manual-review/dispatch/3d_technical_art_lead.md"
+    },
+    {
+      "role": "UX Brand System Lead",
+      "role_slug": "ux_brand_system_lead",
+      "reviewer_name": "Mickey",
+      "reviewer_identity_reference": "USER-UX-01",
+      "contact_reference": "SLACK-USER-UX-01",
+      "assigned_at": "2026-08-04T17:20:00+09:00",
+      "acknowledged_at": "2026-08-04T17:25:00+09:00",
+      "conflict_declaration": "NO_CONFLICT",
+      "conflict_record": "",
+      "status": "ACKNOWLEDGED",
+      "packets": {
+        "Chakchaki": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/ux_brand_system_lead.md",
+        "Gongsickyi": "docs/stage8/evidence/gate1/manual-review/packets/Gongsickyi/ux_brand_system_lead.md"
+      },
+      "dispatch_request": "docs/stage8/evidence/gate1/manual-review/dispatch/ux_brand_system_lead.md"
+    },
+    {
+      "role": "QA Lead",
+      "role_slug": "qa_lead",
+      "reviewer_name": "Bred",
+      "reviewer_identity_reference": "USER-QA-01",
+      "contact_reference": "SLACK-USER-QA-01",
+      "assigned_at": "2026-08-04T17:20:00+09:00",
+      "acknowledged_at": "2026-08-04T17:25:00+09:00",
+      "conflict_declaration": "NO_CONFLICT",
+      "conflict_record": "",
+      "status": "ACKNOWLEDGED",
+      "packets": {
+        "Chakchaki": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/qa_lead.md",
+        "Gongsickyi": "docs/stage8/evidence/gate1/manual-review/packets/Gongsickyi/qa_lead.md"
+      },
+      "dispatch_request": "docs/stage8/evidence/gate1/manual-review/dispatch/qa_lead.md"
+    },
+    {
+      "role": "Product Owner",
+      "role_slug": "product_owner",
+      "reviewer_name": "Ford",
+      "reviewer_identity_reference": "USER-PO-01",
+      "contact_reference": "SLACK-USER-PO-01",
+      "assigned_at": "2026-08-04T17:20:00+09:00",
+      "acknowledged_at": "2026-08-04T17:25:00+09:00",
+      "conflict_declaration": "NO_CONFLICT",
+      "conflict_record": "",
+      "status": "ACKNOWLEDGED",
+      "packets": {
+        "Chakchaki": "docs/stage8/evidence/gate1/manual-review/packets/Chakchaki/product_owner.md",
+        "Gongsickyi": "docs/stage8/evidence/gate1/manual-review/packets/Gongsickyi/product_owner.md"
+      },
+      "dispatch_request": "docs/stage8/evidence/gate1/manual-review/dispatch/product_owner.md"
+    }
+  ]
+}

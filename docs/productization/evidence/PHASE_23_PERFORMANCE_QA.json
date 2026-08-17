@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 23,
+  "tested_at": "2026-08-07T16:57:23+09:00",
+  "status": "AUTO_QA_PASS_LOCAL_LAB",
+  "scope": "LOCAL_ISOLATED_MOBILE_LIGHTHOUSE",
+  "requirements": ["P23-PERF-001", "P23-PERF-002", "P23-PERF-003", "P23-PERF-004"],
+  "tooling": {
+    "lighthouse": "13.4.1",
+    "chrome": "150.0.0.0 headless",
+    "form_factor": "mobile",
+    "field_data_used": false,
+    "inp_measured": false,
+    "inp_lab_proxy": "Total Blocking Time"
+  },
+  "baseline": {
+    "performance_score": 81,
+    "accessibility_score": 100,
+    "best_practices_score": 100,
+    "fcp_ms": 1501,
+    "lcp_ms": 2567,
+    "tbt_ms": 16,
+    "cls": 0.305,
+    "speed_index_ms": 1501,
+    "transfer_bytes": 271970,
+    "cache_waste_bytes": 182811
+  },
+  "final_curriculum_runs": [
+    {"performance_score":97,"accessibility_score":100,"best_practices_score":100,"fcp_ms":1222,"lcp_ms":2418,"tbt_ms":13,"cls":0.045,"transfer_bytes":215497},
+    {"performance_score":98,"accessibility_score":100,"best_practices_score":100,"fcp_ms":1214,"lcp_ms":2417,"tbt_ms":46,"cls":0,"transfer_bytes":215496},
+    {"performance_score":97,"accessibility_score":100,"best_practices_score":100,"fcp_ms":1212,"lcp_ms":2409,"tbt_ms":15,"cls":0.045,"transfer_bytes":215496}
+  ],
+  "final_median": {
+    "performance_score": 97,
+    "accessibility_score": 100,
+    "best_practices_score": 100,
+    "fcp_ms": 1214,
+    "lcp_ms": 2417,
+    "tbt_ms": 15,
+    "cls": 0.045,
+    "speed_index_ms": 1214,
+    "transfer_bytes": 215496,
+    "cache_waste_bytes": 3110,
+    "budget_status": "PASS"
+  },
+  "cross_surface": {
+    "landing": {"performance":98,"accessibility":100,"best_practices":100,"lcp_ms":2117,"cls":0.062,"console_errors":0},
+    "diagnostic": {"performance":99,"accessibility":100,"best_practices":100,"lcp_ms":2113,"cls":0.001},
+    "math_learning": {"performance":98,"accessibility":100,"best_practices":100,"lcp_ms":2257,"cls":0.054},
+    "curriculum": {"performance_median":97,"accessibility":100,"best_practices":100,"lcp_median_ms":2417,"cls_median":0.045}
+  },
+  "delivery_headers": {
+    "html": {"cache_control":"no-cache","content_encoding":"gzip"},
+    "css": {"cache_control":"max-age=604800","content_encoding":"gzip","content_type":"text/css"},
+    "javascript": {"cache_control":"max-age=604800","content_encoding":"gzip","content_type":"application/javascript"},
+    "approved_webp": {"cache_control":"max-age=31536000","content_type":"image/webp"}
+  },
+  "approved_assets": {
+    "chakchaki_sha256": "cb201e01a5e8809b3b1d64c74683e892031e85334aecd7a5e0a54606b2907f3b",
+    "gongsickyi_sha256": "e68bc9dc587832ab28b16b88d42ba52521fd7a7fa5378d5a802a3792573f1ae1",
+    "identity_changed": false
+  },
+  "artifact": {
+    "file_count": 33,
+    "total_bytes": 346904,
+    "largest_asset_bytes": 91110,
+    "manifest_sha256": "752b1e6eff38a1cede631e376091998dda03fed0f186a313dc263c815155ff06"
+  },
+  "runtime": {
+    "web_container_id": "fe798b5ee04b97973f2c0fa670047cf1d2b0982940a4c9d26cc5f8bc2a3a315e",
+    "web_image_digest": "sha256:bc1eeac077ef1b79b5b3d7fdf5ec946a76bb3b89cbe99bc1b1d61ee5bc971978",
+    "api_container_id": "5845e848f1f07230c0e2fa5792f4c8cfb7f006868f9d861922f0800504675665",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "web_health": "healthy",
+    "api_health": "healthy",
+    "database_health": "healthy"
+  },
+  "regression": {
+    "unit": "53/53 PASS",
+    "phase23_static": "PASS",
+    "postgresql_integration": "14/14 PASS",
+    "full_productization": "PHASE_0_TO_23 PASS"
+  },
+  "limitations": [
+    "Local Lighthouse is lab data and does not replace production 75th-percentile field data",
+    "INP requires real user interaction data; TBT is used only as a lab proxy",
+    "External CDN and production HTTPS behavior are outside this local isolated phase"
+  ]
+}

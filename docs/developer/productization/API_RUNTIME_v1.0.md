@@ -1,0 +1,120 @@
+# 수학착착 API Runtime v1.0
+
+## 런타임
+
+## Phase 42 외부 참조 증명 스캐너 실행 준비
+
+- `POST /api/v1/privacy-operations/quarantine-readiness-contracts/{id}/scanner-readiness-contracts`
+- `GET /api/v1/privacy-operations/scanner-readiness-contracts/{id}`
+
+생성은 `SECURITY_APPROVER` 전용이다. 최신 Phase 41 계약, 패키지 유효기간·후속 패키지·법적 보류·SHA-256을 검증하고 스캐너 신뢰 8개, 서명 DB 최신성 7개, 실행 단계 9개, 실패 정책 10개와 attestation 필드 12개를 기록한다. 승인 엔진은 0개이며 object read·scan·retry·failover·attestation·release endpoint는 제공하지 않는다.
+
+## Phase 43 Scan attestation 준비 API
+
+- `POST /api/v1/privacy-operations/scanner-readiness-contracts/{id}/scan-attestation-contracts`
+- `GET /api/v1/privacy-operations/scan-attestation-contracts/{id}`
+
+실제 결과 수신·검증·조정·release 경로는 제공하지 않는다.
+
+## Phase 44 Release decision 준비 API
+
+- `POST /api/v1/privacy-operations/scan-attestation-contracts/{id}/release-decision-contracts`
+- `GET /api/v1/privacy-operations/release-decision-contracts/{id}`
+
+실제 reviewer 배정·결정·release 경로는 제공하지 않는다.
+
+- Node.js 24 HTTP server
+- PostgreSQL 16 via `pg`
+- JSON UTF-8 `/api/v1`
+- 응답 봉투와 `Content-Language`는 `API_CONTRACT_v1.0.md`를 따른다.
+
+## 구현된 Phase 8 경로
+
+- `GET /healthz`
+- `GET /readyz`
+- `GET /metrics`
+- `GET /api/v1/locales`
+- `POST /api/v1/diagnostics`
+- `POST /api/v1/diagnostics/{id}/responses`
+- `POST /api/v1/diagnostics/{id}/complete`
+- `POST /api/v1/learning-sessions`
+- `GET /api/v1/learning-sessions/{id}`
+- `POST /api/v1/learning-sessions/{id}/answers`
+- `POST /api/v1/learning-sessions/{id}/complete`
+- `GET /api/v1/students/{id}/progress`
+
+## 안전 경계
+
+- 모든 쓰기는 `Idempotency-Key`를 요구한다.
+- 정답 판정은 DB의 `answer_schema`를 이용해 서버에서 수행한다.
+- 학생 소유권은 서명 세션의 사용자 ID와 학생 프로필 관계를 DB에서 확인한다.
+- 로그에는 답안·문제·토큰·비밀번호를 남기지 않는다.
+- API 응답은 `no-store`와 방어 보안 헤더를 사용한다.
+- 운영 메트릭은 요청 수, 5xx 수, 지연시간 histogram, uptime만 포함한다.
+
+## 인증 인계
+
+API는 `mcs1` HMAC-SHA256 단기 세션 토큰의 issuer, audience, role, 발급·만료시각, 사용자·학생 UUID를 검증한다. 서명 비밀값은 최소 32바이트이며 저장소에 저장하지 않는다. 로컬 스테이징에서도 원시 `x-user-id`, `x-student-id`, `x-role` 헤더는 거부한다. 외부 배포에서는 실제 identity provider 또는 인증 게이트웨이가 이 단기 토큰을 발급하고 비밀값을 관리형 secret manager에서 공급해야 한다.
+
+## Phase 33 외부 증거 수신 어댑터 계약
+
+- `POST /api/v1/privacy-operations/evidence-validation-contracts/{id}/intake-adapter-contracts`
+- `GET /api/v1/privacy-operations/intake-adapter-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이며 최신 Phase 32 계약, 패키지 만료·후속 리비전·법적 보존·SHA-256을 검증한다. 결과는 6개 포트의 외부 미구성 계약만 append-only로 기록한다. 네트워크 연결, 증거 제출, 격리 해제, retry, 실행 승인 경로는 구현하지 않는다.
+
+## Phase 34 외부 연결 사전 수락 패킷
+
+- `POST /api/v1/privacy-operations/intake-adapter-contracts/{id}/connection-acceptance-packets`
+- `GET /api/v1/privacy-operations/connection-acceptance-packets/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 33 어댑터 계약과 패키지 유효성·법적 보존·SHA-256을 확인하고 인증서·신뢰 저장소·키 회전·접속 허가·복구·운영 수락 요구사항만 기록한다. 구성 제출, 승인, 외부 테스트, 연결 경로는 구현하지 않는다.
+
+## Phase 35 외부 구성 증적 메타데이터 대기열 계약
+
+- `POST /api/v1/privacy-operations/connection-acceptance-packets/{id}/configuration-evidence-queue-contracts`
+- `GET /api/v1/privacy-operations/configuration-evidence-queue-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 34 패킷과 패키지·법적 보존·SHA-256을 검증하고 불변 참조·해시 메타데이터 슬롯만 만든다. 증적 제출, 외부 참조 fetch, enqueue, 검토 결정, 자동 승격과 활성화 경로는 구현하지 않는다.
+
+## Phase 36 외부 증적 제출 envelope 정책
+
+- `POST /api/v1/privacy-operations/configuration-evidence-queue-contracts/{id}/submission-envelope-contracts`
+- `GET /api/v1/privacy-operations/submission-envelope-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 35 계약과 패키지 유효성·법적 보존·SHA-256을 검증하고 필수 envelope 필드 10개, scheme 승인 4단계, UUID v4 멱등 범위, 거부 사유 10개를 기록한다. 허용 scheme은 비어 있으며 제출, allowlist 쓰기·활성화, 외부 참조 fetch와 연결·실행 경로는 구현하지 않는다.
+
+## Phase 37 외부 참조 scheme 거버넌스
+
+- `POST /api/v1/privacy-operations/submission-envelope-contracts/{id}/reference-scheme-governance-contracts`
+- `GET /api/v1/privacy-operations/reference-scheme-governance-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 36 계약과 패키지 유효성·법적 보존·SHA-256을 검증하고 제안 필드 10개, 대상 제한 6개, 생명주기 7개, 재승인 트리거 6개와 직무분리 정책만 기록한다. 실제 제안·승인·allowlist 등록·활성화·철회·증적 제출 경로는 구현하지 않는다.
+
+## Phase 38 외부 참조 대상 정규화·SSRF 방어 계약
+
+- `POST /api/v1/privacy-operations/reference-scheme-governance-contracts/{id}/reference-target-validation-contracts`
+- `GET /api/v1/privacy-operations/reference-target-validation-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 37 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 정규화 8단계, 거부 규칙 14개, 소유권 증명 유형 6개, 금지 주소 클래스 8개를 기록한다. 실제 target 입력·DNS 조회·증명 제출·redirect·allowlist 쓰기·외부 fetch·네트워크 접속 경로는 구현하지 않는다.
+
+## Phase 39 외부 참조 소유권 증명·DNS 무결성 인계 계약
+
+- `POST /api/v1/privacy-operations/reference-target-validation-contracts/{id}/reference-proof-handoff-contracts`
+- `GET /api/v1/privacy-operations/reference-proof-handoff-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 38 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 증명 필드 12개, issuer trust 8개, 생명주기 7개, 재검증 트리거 8개와 DNS snapshot 필드 8개를 기록한다. 실제 proof 제출·issuer 결정·서명 검증·DNS snapshot·철회 polling·allowlist 쓰기·외부 접속 경로는 구현하지 않는다.
+
+## Phase 40 외부 참조 증명 intake 상태기계 정책
+
+- `POST /api/v1/privacy-operations/reference-proof-handoff-contracts/{id}/reference-proof-intake-contracts`
+- `GET /api/v1/privacy-operations/reference-proof-intake-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 39 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 intake 상태 9개, 허용 전이 14개, 거절 코드 12개, replay 통제 6개와 2인 검토 정책을 기록한다. 실제 증명 제출·quarantine 쓰기·중복/replay/서명/issuer 검사·검토 결정·quarantine 해제·allowlist 활성화 경로는 구현하지 않는다.
+
+## Phase 41 외부 참조 증명 quarantine 운영 준비 계약
+
+- `POST /api/v1/privacy-operations/reference-proof-intake-contracts/{id}/quarantine-readiness-contracts`
+- `GET /api/v1/privacy-operations/quarantine-readiness-contracts/{id}`
+
+생성 경로는 `SECURITY_APPROVER` 전용이다. 최신 Phase 40 계약과 전체 선행 체인, 패키지 유효성·법적 보존·SHA-256을 검증하고 저장소 보안 통제 8개, 콘텐츠 검사 단계 8개, 거절 코드 12개, 보존 이벤트 7개와 감사 필드 10개를 기록한다. 허용 content type은 0개이며 실제 upload·storage write·inspection·malware scan·retention·deletion·audit write·release 경로는 구현하지 않는다.

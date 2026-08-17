@@ -1,0 +1,58 @@
+{
+  "contract_version": "1.0",
+  "requirement_id": "D80-06",
+  "pilot": {
+    "minimum_participants": 100,
+    "minimum_duration_weeks": 8,
+    "maximum_duration_weeks": 12,
+    "cohorts": ["INTERVENTION", "COMPARATOR"],
+    "timepoints": ["PRE", "POST", "RETENTION"],
+    "retention_target_days": 28,
+    "retention_window_days": 7,
+    "primary_population": "INTENTION_TO_TREAT"
+  },
+  "metrics": {
+    "primary": [
+      "ADJUSTED_POST_SCORE_DIFFERENCE",
+      "ADJUSTED_RETENTION_SCORE_DIFFERENCE"
+    ],
+    "drivers": [
+      "LEARNING_PLAN_COMPLETION_RATE",
+      "INDEPENDENT_RESPONSE_RATE"
+    ],
+    "guardrails": [
+      "DROPOUT_RATE_DIFFERENCE",
+      "MISSING_PRIMARY_OUTCOME_RATE",
+      "ADVERSE_LEARNING_EVENT_RATE",
+      "SEVERE_PRIVACY_INCIDENT_COUNT"
+    ]
+  },
+  "privacy": {
+    "pseudonymous_identifier_only": true,
+    "direct_identity_fields": false,
+    "raw_answers": false,
+    "problem_text": false,
+    "external_consent_evidence_reference_only": true,
+    "minimum_cell_size_required": true
+  },
+  "truth_boundary": {
+    "actual_participants": 0,
+    "actual_observed_weeks": 0,
+    "actual_pre_measurements": 0,
+    "actual_post_measurements": 0,
+    "actual_retention_measurements": 0,
+    "independent_analysis_available": false,
+    "learning_effect_proven": false,
+    "daechi_fit_proven": false,
+    "market_score_80_confirmed": false
+  },
+  "external_prerequisites": [
+    "NAMED_RESEARCH_OWNER",
+    "INDEPENDENT_STATISTICIAN",
+    "APPROVED_CONSENT_AND_PRIVACY_REVIEW",
+    "REGISTERED_LOCKED_PROTOCOL",
+    "AUTHORIZED_RECRUITMENT_CHANNEL",
+    "FIELD_MEASUREMENT_EXECUTION",
+    "INDEPENDENT_ANALYSIS_REPORT"
+  ]
+}

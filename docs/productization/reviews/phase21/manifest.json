@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 21,
+  "package_id": "phase21-linguistic-review-c8d37c29a42c",
+  "source_digest_sha256": "c8d37c29a42c4c39639cdf522003b52473de4277c8aaac1c8d6bf3869e91dd7b",
+  "source_files": [
+    "client/i18n/accessibility.mjs",
+    "client/i18n/messages/ko.json",
+    "client/i18n/messages/zh-CN.json",
+    "client/i18n/messages/ja.json",
+    "client/i18n/messages/en.json",
+    "client/i18n/messages/es.json",
+    "client/i18n/messages/fr.json",
+    "client/i18n/messages/it.json",
+    "client/i18n/messages/ru.json",
+    "client/diagnostic/messages.mjs",
+    "client/math-learning/messages.mjs",
+    "client/curriculum/messages.mjs",
+    "scripts/productization/formula-catalog-locales.mjs",
+    "scripts/productization/curriculum-runtime-locales.mjs"
+  ],
+  "packet_count": 7,
+  "manual_approvals": "0/7",
+  "status": "READY_FOR_HUMAN_REVIEW",
+  "human_approval_inferred": false,
+  "packets": [
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-zh-cn",
+      "locale": "zh-CN",
+      "language": "Chinese (Simplified)",
+      "path": "docs/productization/reviews/phase21/zh-CN.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=zh-CN",
+        "http://127.0.0.1:4180/diagnostic/?locale=zh-CN",
+        "http://127.0.0.1:4180/math-learning/?locale=zh-CN",
+        "http://127.0.0.1:4180/curriculum/?locale=zh-CN"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-ja",
+      "locale": "ja",
+      "language": "Japanese",
+      "path": "docs/productization/reviews/phase21/ja.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=ja",
+        "http://127.0.0.1:4180/diagnostic/?locale=ja",
+        "http://127.0.0.1:4180/math-learning/?locale=ja",
+        "http://127.0.0.1:4180/curriculum/?locale=ja"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-en",
+      "locale": "en",
+      "language": "English",
+      "path": "docs/productization/reviews/phase21/en.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=en",
+        "http://127.0.0.1:4180/diagnostic/?locale=en",
+        "http://127.0.0.1:4180/math-learning/?locale=en",
+        "http://127.0.0.1:4180/curriculum/?locale=en"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-es",
+      "locale": "es",
+      "language": "Spanish",
+      "path": "docs/productization/reviews/phase21/es.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=es",
+        "http://127.0.0.1:4180/diagnostic/?locale=es",
+        "http://127.0.0.1:4180/math-learning/?locale=es",
+        "http://127.0.0.1:4180/curriculum/?locale=es"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-fr",
+      "locale": "fr",
+      "language": "French",
+      "path": "docs/productization/reviews/phase21/fr.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=fr",
+        "http://127.0.0.1:4180/diagnostic/?locale=fr",
+        "http://127.0.0.1:4180/math-learning/?locale=fr",
+        "http://127.0.0.1:4180/curriculum/?locale=fr"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-it",
+      "locale": "it",
+      "language": "Italian",
+      "path": "docs/productization/reviews/phase21/it.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=it",
+        "http://127.0.0.1:4180/diagnostic/?locale=it",
+        "http://127.0.0.1:4180/math-learning/?locale=it",
+        "http://127.0.0.1:4180/curriculum/?locale=it"
+      ]
+    },
+    {
+      "packet_id": "phase21-linguistic-review-c8d37c29a42c-ru",
+      "locale": "ru",
+      "language": "Russian",
+      "path": "docs/productization/reviews/phase21/ru.md",
+      "status": "PENDING_HUMAN_REVIEW",
+      "decision": null,
+      "reviewer_identity_reference": null,
+      "reviewed_at": null,
+      "patch_ids": [],
+      "unresolved_patch": null,
+      "urls": [
+        "http://127.0.0.1:4180/?locale=ru",
+        "http://127.0.0.1:4180/diagnostic/?locale=ru",
+        "http://127.0.0.1:4180/math-learning/?locale=ru",
+        "http://127.0.0.1:4180/curriculum/?locale=ru"
+      ]
+    }
+  ]
+}

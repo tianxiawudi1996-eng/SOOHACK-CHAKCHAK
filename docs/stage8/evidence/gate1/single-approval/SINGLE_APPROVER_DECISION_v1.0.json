@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 1,
+  "status": "APPROVED",
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "approver_name": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-04T18:10:59+09:00",
+  "scope_acknowledged": true,
+  "candidate_hashes": {
+    "Chakchaki": "916636d0cb1603ad0eed785cf9e827b693687fe437c1eb24014724a0f1b57480",
+    "Gongsickyi": "9c8061afab5bc381edc02780c0ee9265489d977f3cecfc1e8e52ab6467b01157"
+  },
+  "comment": "John KIM approved both characters and the complete frozen Gate 1 evidence package via explicit user confirmation.",
+  "patch_id": null,
+  "unresolved_patch": false,
+  "approval_applied": true,
+  "next_gate_allowed": true
+}

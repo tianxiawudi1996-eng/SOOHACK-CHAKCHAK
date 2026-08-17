@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 22,
+  "package_id": "phase22-manual-accessibility-review-v1.0",
+  "status": "READY_FOR_MANUAL_ACCESSIBILITY_REVIEW",
+  "manual_approvals": "0/1",
+  "human_approval_inferred": false,
+  "reviewer_identity_reference": null,
+  "decision": null,
+  "packet": "docs/productization/reviews/phase22/ACCESSIBILITY_MANUAL_REVIEW.md",
+  "urls": [
+    "http://127.0.0.1:4180/?locale=ko",
+    "http://127.0.0.1:4180/diagnostic/?locale=ko",
+    "http://127.0.0.1:4180/math-learning/?locale=ko",
+    "http://127.0.0.1:4180/curriculum/?locale=ko&grade=E4"
+  ]
+}

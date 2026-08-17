@@ -1,0 +1,19 @@
+{
+  "schema_version":"1.0.0",
+  "migration":"infra/database/migrations/0017_execution_handoff_packet.sql",
+  "rollback":"infra/database/migrations/0017_execution_handoff_packet_rollback.sql",
+  "tables":["privacy_execution_handoff_packet","privacy_execution_handoff_requirement"],
+  "requirements":6,
+  "required_evidence_per_control":2,
+  "required_approver_roles":["PRIVACY_APPROVER","SECURITY_APPROVER"],
+  "packet_status":"AWAITING_EXTERNAL_SUBMISSION",
+  "requirement_status":"EXTERNAL_SUBMISSION_REQUIRED",
+  "submission_route_status":"MISSING_EXTERNAL",
+  "append_only":true,
+  "external_submission_write_enabled":false,
+  "external_evidence_verification_enabled":false,
+  "kill_switch_engaged":true,
+  "execution_authorized":false,
+  "destructive_executor_enabled":false,
+  "completion_transition_enabled":false
+}

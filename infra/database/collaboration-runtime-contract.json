@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 15,
+  "database": "PostgreSQL",
+  "migration": "infra/database/migrations/0006_collaboration_learning_runtime.sql",
+  "rollback": "infra/database/migrations/0006_collaboration_learning_runtime_rollback.sql",
+  "phase_count": 5,
+  "evidence_kind": "STRUCTURED_SELF_REPORT",
+  "mathematical_mastery_claimed": false,
+  "free_text_collected": false,
+  "completion_score_name": "evidence_score",
+  "routes": ["REMEDIATE","CORE","EXTEND"]
+}

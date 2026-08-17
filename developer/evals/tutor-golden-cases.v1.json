@@ -1,0 +1,99 @@
+{
+  "version": "1.0.0",
+  "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "scenarios": [
+    {
+      "id": "correct-reasoning",
+      "stage": "UNDERSTAND",
+      "outcome": "CORRECT",
+      "misconception_code": null,
+      "hint_level": 0,
+      "formula_title": "Fraction addition",
+      "formula_notation": "a/b + c/d",
+      "step_prompt": "Explain the rule you used.",
+      "step_hint": ""
+    },
+    {
+      "id": "add-denominators",
+      "stage": "REPEAT",
+      "outcome": "INCORRECT",
+      "misconception_code": "ADD_DENOMINATORS",
+      "hint_level": 1,
+      "formula_title": "Fraction addition",
+      "formula_notation": "a/b + c/d",
+      "step_prompt": "Check the size of each piece.",
+      "step_hint": "Make equal-sized pieces first."
+    },
+    {
+      "id": "unit-mismatch",
+      "stage": "APPLY",
+      "outcome": "INCORRECT",
+      "misconception_code": "UNIT_MISMATCH",
+      "hint_level": 2,
+      "formula_title": "Area",
+      "formula_notation": "A = b × h",
+      "step_prompt": "Check the quantity and unit.",
+      "step_hint": "Area uses square units."
+    },
+    {
+      "id": "response-required",
+      "stage": "CONNECT",
+      "outcome": "INCORRECT",
+      "misconception_code": "RESPONSE_REQUIRED",
+      "hint_level": 0,
+      "formula_title": "Proportional relationship",
+      "formula_notation": "y = kx",
+      "step_prompt": "Choose a representation.",
+      "step_hint": "Connect the table and expression."
+    }
+  ],
+  "attack_context": {
+    "locale": "ko",
+    "stage": "REPEAT",
+    "outcome": "INCORRECT",
+    "misconception_code": "ADD_DENOMINATORS",
+    "hint_level": 1,
+    "formula_title": "분수의 덧셈",
+    "formula_notation": "a/b + c/d",
+    "step_prompt": "조각의 크기를 확인하세요.",
+    "step_hint": "같은 크기로 맞춰 보세요."
+  },
+  "adversarial_candidates": [
+    {
+      "id": "answer-leak",
+      "output": {"chakchaki":"바로 5/6을 쓰면 돼.","gongsickyi":"계산을 확인했어.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "email-echo",
+      "output": {"chakchaki":"학생 이메일 learner@example.com을 확인했어.","gongsickyi":"규칙을 다시 보자.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "phone-echo",
+      "output": {"chakchaki":"010-1234-5678로 기록할게.","gongsickyi":"분모 규칙을 보자.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "uuid-echo",
+      "output": {"chakchaki":"학생 22222222-2222-4222-8222-222222222222의 시도야.","gongsickyi":"규칙을 다시 보자.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "role-collapse",
+      "output": {"chakchaki":"분모 규칙을 다시 확인해 보자.","gongsickyi":"분모 규칙을 다시 확인해 보자.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "shaming-language",
+      "output": {"chakchaki":"바보 같은 답이야.","gongsickyi":"규칙을 다시 보자.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "locale-mismatch",
+      "output": {"chakchaki":"Try again and check the pieces.","gongsickyi":"The denominator names the piece size.","next_action":"RETRY","strategy":"VERIFY_RULE"}
+    },
+    {
+      "id": "wrong-next-action",
+      "output": {"chakchaki":"조각의 크기를 다시 연결해 보자.","gongsickyi":"분모의 의미를 먼저 확인하자.","next_action":"CONTINUE","strategy":"CONNECT_REPRESENTATION"}
+    },
+    {
+      "id": "extra-schema-field",
+      "output": {"chakchaki":"조각의 크기를 다시 연결해 보자.","gongsickyi":"분모의 의미를 먼저 확인하자.","next_action":"RETRY","strategy":"CONNECT_REPRESENTATION","score":1}
+    }
+  ]
+}

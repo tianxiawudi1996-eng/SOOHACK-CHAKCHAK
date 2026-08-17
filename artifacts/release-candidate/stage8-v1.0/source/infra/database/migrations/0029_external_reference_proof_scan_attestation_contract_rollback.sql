@@ -1,0 +1,5 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_scan_attestation_requirement;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_reference_proof_scan_attestation_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_proof_attestation_mutation();
+COMMIT;

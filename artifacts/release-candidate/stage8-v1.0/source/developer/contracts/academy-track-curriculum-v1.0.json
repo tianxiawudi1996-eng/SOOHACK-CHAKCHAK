@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "requirement_id": "D80-04",
+  "grades": ["E1", "E2", "E3", "E4", "E5", "E6", "M1", "M2", "M3", "H1", "H2", "H3"],
+  "tracks": ["CONCEPT_RECOVERY", "SCHOOL_EXAM", "ADVANCED_REASONING", "CONTEST_BRIDGE"],
+  "coverage": {
+    "plans": 48,
+    "formulas": 72,
+    "formula_assignments": 288,
+    "recall_items": 72,
+    "application_items": 216,
+    "formulas_per_plan": 6
+  },
+  "evidence_gates": ["ANSWER_SAMPLE", "ACCURACY", "DURABLE_RECALL", "APPLICATION_MASTERY", "INDEPENDENT_RESPONSE"],
+  "journey": ["COLLABORATION_5_PHASES", "FORMULA_RECALL", "APPLICATION_3_LEVELS", "SPACED_REVIEW"],
+  "roles": {
+    "CHAKCHAKI": "REASONING_AND_SCAFFOLDING",
+    "GONGSICKYI": "FORMULA_CALCULATION_UNIT_VERIFICATION"
+  },
+  "truth_boundary": {
+    "content_scope": "LOCAL_SYNTHETIC",
+    "math_expert_reviewed_plans": 0,
+    "licensed_plans": 0,
+    "professional_content_claimed": false,
+    "daechi_fit_claimed": false,
+    "production_ready": false
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T22:40:15+09:00",
+  "gate": 4,
+  "status": "APPROVED",
+  "strategy": "SHADED_2D_PET_TRANSFORM_OPACITY_MOTION",
+  "source_runtime_manifest": {
+    "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "sha256": "957f20566653e5450872b8a134a289c51693de89957edfbf18a573dd3020b07a",
+    "required_status": "APPROVED",
+    "pose_count": 16
+  },
+  "implementation": {
+    "stylesheet": {
+      "path": "assets/stage8/2d-pet-motion-v1.0.css",
+      "sha256": "34982125538f3b01bd848360116caf8c433a3bbc60a57db498b77aee7a7f5f80",
+      "bytes": 8692
+    },
+    "runtime": {
+      "path": "assets/stage8/2d-pet-motion-v1.0.js",
+      "sha256": "50cd52dcfd3d80110e0987369485ee9fd5e029f0d3b8533f33805c3bf964f901",
+      "bytes": 10826,
+      "public_api": "window.mathChakChakPets.setState(state, source)",
+      "event": "mathchakchak:pet-state",
+      "loading_policy": "ON_DEMAND_STATE_ASSET"
+    },
+    "landing_page": "mock.html"
+  },
+  "transition_bridge": {
+    "mode": "DUAL_LAYER_CROSSFADE",
+    "duration_ms": 320,
+    "incoming_layer": "pet-motion-incoming",
+    "outgoing_layer": "pet-motion-outgoing",
+    "properties": ["transform", "opacity"],
+    "direction_profile_per_target_state": true,
+    "rapid_input_policy": "LATEST_TRANSITION_WINS",
+    "reduced_motion": "STATIC_POSE_SWAP"
+  },
+  "natural_choreography": {
+    "phase_order": ["PREPARE", "BRIDGE", "SETTLE", "STEADY"],
+    "prepare_ms": 120,
+    "bridge_ms": 320,
+    "settle_ms": 240,
+    "total_transition_ms": 680,
+    "direction_profile_count": 8,
+    "state_micro_motion_keyframes_min": 4,
+    "character_rhythm_offset_ms": 90,
+    "ground_shadow_breathing": true,
+    "latest_input_cancels_active_choreography": true,
+    "properties": ["transform", "opacity"],
+    "reduced_motion": "STATIC_POSE_SWAP"
+  },
+  "browser_runtime_qa": {
+    "path": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
+    "required_status": "PASS",
+    "test_count": 7,
+    "state_orders": ["FORWARD", "REVERSE", "RAPID_LATEST_WINS"],
+    "viewport_widths": [360, 768, 1440],
+    "maximum_cumulative_layout_shift": 0.01
+  },
+  "allowed_motion_properties": ["transform", "opacity"],
+  "state_count": 8,
+  "states": [
+    {
+      "state": "IDLE_LISTEN",
+      "pose_id": "P01",
+      "duration_ms": 5000,
+      "easing": "ease-in-out",
+      "animation": "pet-idle",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["initial-settle", "listening", "idle"]
+    },
+    {
+      "state": "WELCOME",
+      "pose_id": "P02",
+      "duration_ms": 1000,
+      "easing": "cubic-bezier(.2,.8,.2,1)",
+      "animation": "pet-welcome",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["initialization", "session-start"]
+    },
+    {
+      "state": "GUIDE",
+      "pose_id": "P03",
+      "duration_ms": 1200,
+      "easing": "ease-in-out",
+      "animation": "pet-guide",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["hint", "explanation"]
+    },
+    {
+      "state": "THINK",
+      "pose_id": "P04",
+      "duration_ms": 3000,
+      "easing": "ease-in-out",
+      "animation": "pet-think",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["student-thinking", "answer-wait"]
+    },
+    {
+      "state": "PRAISE_PROGRESS",
+      "pose_id": "P05",
+      "duration_ms": 1200,
+      "easing": "cubic-bezier(.2,.8,.2,1)",
+      "animation": "pet-praise",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["progress", "partial-success"]
+    },
+    {
+      "state": "SEARCH",
+      "pose_id": "P06",
+      "duration_ms": 2500,
+      "easing": "ease-in-out",
+      "animation": "pet-search",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["find-clue", "scan-problem"]
+    },
+    {
+      "state": "CELEBRATE",
+      "pose_id": "P07",
+      "duration_ms": 1300,
+      "easing": "cubic-bezier(.18,.82,.25,1)",
+      "animation": "pet-celebrate",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["correct-answer", "diagnosis-submit"]
+    },
+    {
+      "state": "RETRY",
+      "pose_id": "P08",
+      "duration_ms": 1100,
+      "easing": "ease-in-out",
+      "animation": "pet-retry",
+      "normal_properties": ["transform", "opacity"],
+      "reduced_motion": "STATIC_POSE_SWAP",
+      "triggers": ["incorrect-answer", "retry-request"]
+    }
+  ],
+  "controls": {
+    "layout_shift_allowed": false,
+    "pointer_blocking_allowed": false,
+    "offscreen_clipping_allowed": false,
+    "pause_when_document_hidden": true,
+    "reduced_motion_required": true
+  },
+  "manual_approval_required": 1,
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
+}

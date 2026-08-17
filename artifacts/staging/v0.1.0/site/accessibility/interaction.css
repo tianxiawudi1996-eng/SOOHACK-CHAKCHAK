@@ -1,0 +1,27 @@
+:root {
+  --a11y-focus-color: #102a73;
+  --a11y-focus-offset: #ffffff;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--a11y-focus-color);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--a11y-focus-offset);
+}
+
+[tabindex="-1"]:focus {
+  outline: 3px solid var(--a11y-focus-color);
+  outline-offset: 4px;
+}
+
+.source { color: #5f6a82; }
+.phase-list li.is-pending { color: #56627a; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

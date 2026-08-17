@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 3,
+  "status": "APPROVED",
+  "review_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "reviewer": "John KIM",
+  "decision": "APPROVE",
+  "reviewed_at": "2026-08-05T15:14:16+09:00",
+  "scope_acknowledged": true,
+  "characters": ["Chakchaki", "Gongsickyi"],
+  "pose_count": 16,
+  "checks": {
+    "transparent_edges_clean": true,
+    "identity_preserved_after_background_removal": true,
+    "all_poses_complete_and_uncropped": true,
+    "consistent_canvas_scale_and_baseline": true,
+    "props_and_confetti_preserved": true,
+    "small_ui_readability_acceptable": true,
+    "png_and_webp_render_equivalently": true,
+    "no_green_fringe_or_background_remnant": true
+  },
+  "comment": "The user explicitly approved the Gate 3 transparent-pose review page covering both characters and all 16 poses.",
+  "approval_applied": true,
+  "next_gate_allowed": true
+}

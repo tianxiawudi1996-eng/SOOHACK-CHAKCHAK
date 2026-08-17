@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "service": "MathChakChak",
+  "rules": [
+    {"id":"API_5XX_RATE","severity":"page","condition":"5xx_ratio > 0.02 for 5m","owner_role":"on_call_engineer"},
+    {"id":"API_P95_LATENCY","severity":"ticket","condition":"p95_ms > 2000 for 10m","owner_role":"api_owner"},
+    {"id":"DATABASE_NOT_READY","severity":"page","condition":"database_ready == 0 for 2m","owner_role":"database_owner"},
+    {"id":"BACKUP_STALE","severity":"page","condition":"latest_successful_backup_age_hours > 24","owner_role":"database_owner"},
+    {"id":"LOCALE_FALLBACK_RATE","severity":"ticket","condition":"fallback_ratio > 0.01 for 30m","owner_role":"client_owner"}
+  ],
+  "notification_target": "EXTERNAL_CONFIGURATION_REQUIRED",
+  "production_notifications_enabled": false
+}

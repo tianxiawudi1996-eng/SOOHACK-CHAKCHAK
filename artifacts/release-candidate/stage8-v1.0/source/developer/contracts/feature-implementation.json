@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.1.0",
+  "phase": 46,
+  "status": "TRUTHFUL_CAPABILITY_BASELINE",
+  "summary": {
+    "total": 15,
+    "production_ready": 0,
+    "end_user_verified_local": 3,
+    "human_review_required": 2,
+    "rule_engine_only": 0,
+    "code_only_or_partial": 6,
+    "local_runtime_support": 3,
+    "approved_not_runtime_wired": 1
+  },
+  "status_definitions": {
+    "E2E_VERIFIED_LOCAL": "The end-user flow is connected and verified only in the isolated local environment.",
+    "UI_AVAILABLE_LOCAL": "A local user interface exists, but production identity, traffic, or external services are not connected.",
+    "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED": "Automated checks pass, but the required human review is not complete.",
+    "RULE_ENGINE_ONLY": "Deterministic rules exist; this is not a generative or reasoning AI capability.",
+    "CODED_NOT_AUTOMATED": "A calculation function exists, but no scheduler, queue, worker, or delivery automation is connected.",
+    "CODED_NO_END_USER_UI": "Domain code exists without an end-user surface or completed journey.",
+    "RUNTIME_WIRED_LOCAL_PARTIAL": "A subset of the capability runs locally; required roles or production integrations are missing.",
+    "CODED_LOCAL_CONTROLS": "Local policy controls exist, but managed production enforcement is not connected.",
+    "RUNTIME_VERIFIED_LOCAL": "The local runtime behavior is connected and verified.",
+    "RUNTIME_WIRED_LOCAL_ONLY": "The capability emits or serves local runtime data without production operations.",
+    "APPROVED_NOT_RUNTIME_WIRED": "The asset or behavior was manually approved, but it is not yet connected across the product runtime."
+  },
+  "features": [
+    {"id":"FEAT-I18N-001","status":"AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED","source":"developer/src/i18n/locale-resolver.mjs","production_ready":false,"gap":"Seven non-Korean locales require human linguistic approval."},
+    {"id":"FEAT-LAND-001","status":"UI_AVAILABLE_LOCAL","source":"client/mock/index.html","production_ready":false,"gap":"Sample metrics are not backed by a production learner account."},
+    {"id":"FEAT-AUTH-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/auth/role-policy.mjs","production_ready":false,"gap":"Managed identity and the parent runtime role are not connected."},
+    {"id":"FEAT-DIAG-001","status":"E2E_VERIFIED_LOCAL","source":"developer/src/diagnosis/diagnosis-service.mjs","production_ready":false,"gap":"The current diagnostic is a three-item deterministic local flow."},
+    {"id":"FEAT-LEARN-001","status":"E2E_VERIFIED_LOCAL","source":"developer/src/learning/formula-learning.mjs","production_ready":false,"gap":"Deep lesson coverage is limited to the initial vertical slice."},
+    {"id":"FEAT-HINT-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/agent/tutor-kernel.mjs","production_ready":false,"gap":"Safe local fallback is verified; an approved external model key and live provider verification remain unavailable."},
+    {"id":"FEAT-FEED-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/agent/tutor-service.mjs","production_ready":false,"gap":"Dual-character orchestration is wired locally; broad curriculum coverage and production model evaluation remain pending."},
+    {"id":"FEAT-REVIEW-001","status":"CODED_NOT_AUTOMATED","source":"developer/src/review/review-scheduler.mjs","production_ready":false,"gap":"No job queue, worker, notification route, retry, or dead-letter handling is connected."},
+    {"id":"FEAT-REPORT-001","status":"CODED_NO_END_USER_UI","source":"developer/src/report/progress-report.mjs","production_ready":false,"gap":"No authenticated parent report surface or delivery workflow exists."},
+    {"id":"FEAT-PET-001","status":"APPROVED_NOT_RUNTIME_WIRED","source":"developer/src/pet/behavior-gate.mjs","production_ready":false,"approval_evidence":"docs/stage8/evidence/2d-pet/v1.0/GATE5_AI_BEHAVIOR_MANUAL_REVIEW_v1.0.json","gap":"Approved motion and behavior are not yet connected across all student states."},
+    {"id":"FEAT-A11Y-001","status":"AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED","source":"client/mock/index.html","production_ready":false,"gap":"Product-owner keyboard and screen-reader approval remains pending."},
+    {"id":"FEAT-RWD-001","status":"RUNTIME_VERIFIED_LOCAL","source":"client/design/product-shell.css","production_ready":false,"gap":"Field-device coverage and ongoing visual regression are not yet configured."},
+    {"id":"FEAT-PRIV-001","status":"CODED_LOCAL_CONTROLS","source":"developer/src/privacy/log-policy.mjs","production_ready":false,"gap":"External identity, evidence, fulfilment, and legal approvals remain blocked."},
+    {"id":"FEAT-RES-001","status":"RUNTIME_VERIFIED_LOCAL","source":"developer/src/resilience/idempotency.mjs","production_ready":false,"gap":"Distributed production retry and queue behavior is not connected."},
+    {"id":"FEAT-OBS-001","status":"RUNTIME_WIRED_LOCAL_ONLY","source":"developer/src/observability/event-schema.mjs","production_ready":false,"gap":"Metrics are local and no production alert delivery route is configured."}
+  ]
+}

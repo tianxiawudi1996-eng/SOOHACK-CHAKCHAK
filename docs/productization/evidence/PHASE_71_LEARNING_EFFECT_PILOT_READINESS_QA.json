@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 71,
+  "requirement_id": "D80-06",
+  "status": "LOCAL_PILOT_READINESS_PLATFORM_PASS_ACTUAL_PILOT_BLOCKED_EXTERNAL",
+  "verified_at": "2026-08-12T16:08:42+09:00",
+  "scope": "LOCAL_PROTOCOL_AND_POSTGRESQL_READINESS_ONLY",
+  "protocol": {
+    "code": "MCC-D80-06-PILOT-001",
+    "status": "DRAFT_EXTERNAL_REVIEW",
+    "minimum_participants": 100,
+    "duration_weeks": 10,
+    "allowed_duration_weeks": [8, 12],
+    "cohorts": {"actual": 2, "expected": 2},
+    "metrics": {"primary": 2, "drivers": 2, "guardrails": 4},
+    "analysis_plan_hash_bound": true,
+    "locked_protocol_immutability": "PASS"
+  },
+  "database": {
+    "engine": "PostgreSQL 16",
+    "migration": "0036_learning_effect_pilot.sql",
+    "tables": 6,
+    "forward": "PASS",
+    "rollback": "PASS",
+    "reapply": "PASS",
+    "smoke": "PASS",
+    "duration_inverse_test": "PASS",
+    "locked_mutation_inverse_test": "PASS",
+    "public_privileges_revoked": true
+  },
+  "verification": {
+    "phase_unit": "6/6 PASS",
+    "full_unit": "311/311 PASS",
+    "target_integration": "2/2 PASS",
+    "file_isolated_integration": "53/53 PASS",
+    "admin_readiness": "200 PASS",
+    "student_access": "403 PASS",
+    "direct_identity_fields": 0,
+    "raw_answer_fields": 0,
+    "problem_text_fields": 0,
+    "security": "PASS",
+    "secret_files_scanned": 350,
+    "lockfile_known_vulnerabilities": 0,
+    "operations_runtime": "20/20 PASS",
+    "operations_server_errors": 0,
+    "database_ready": true,
+    "staging": "43/43 PASS",
+    "integration_gate": "PASS",
+    "phase0": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "actual_field_evidence": {
+    "participants": 0,
+    "consented_participants": 0,
+    "observed_weeks": 0,
+    "pre_measurements": 0,
+    "post_measurements": 0,
+    "retention_measurements": 0,
+    "independent_analysis_reports": 0,
+    "learning_effect_proven": false,
+    "daechi_fit_proven": false,
+    "market_score_80_confirmed": false
+  },
+  "external_blockers": [
+    "NAMED_RESEARCH_OWNER",
+    "INDEPENDENT_STATISTICIAN",
+    "APPROVED_CONSENT_AND_PRIVACY_REVIEW",
+    "REGISTERED_LOCKED_PROTOCOL",
+    "AUTHORIZED_RECRUITMENT_CHANNEL",
+    "MINIMUM_100_CONSENTED_PARTICIPANTS",
+    "EIGHT_TO_TWELVE_WEEK_FIELD_EXECUTION",
+    "PRE_POST_RETENTION_MEASUREMENTS",
+    "INDEPENDENT_ANALYSIS_REPORT"
+  ],
+  "truth_boundary": {
+    "real_student_data_used": false,
+    "synthetic_field_results_created": false,
+    "external_deployment_performed": false,
+    "product_release_authorized": false
+  }
+}

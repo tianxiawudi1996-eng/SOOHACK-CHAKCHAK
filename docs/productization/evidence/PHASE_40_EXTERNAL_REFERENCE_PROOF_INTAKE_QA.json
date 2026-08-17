@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 40,
+  "status": "AUTO_QA_PASS_LOCAL_PROOF_INTAKE_POLICY_BLOCKED_EXTERNAL",
+  "scope": "LOCAL_SYNTHETIC_REFERENCE_PROOF_INTAKE_POLICY_ONLY",
+  "contract": {
+    "contract_tables": "2/2 DEFINED",
+    "control_rules": "6/6 DEFINED",
+    "intake_states": "9/9 DEFINED",
+    "allowed_transitions": "14/14 DEFINED",
+    "rejection_codes": "12/12 DEFINED",
+    "replay_controls": "6/6 DEFINED",
+    "review_decisions": "3/3 DEFINED",
+    "proof_submissions": "0 CHANNEL_MISSING_EXTERNAL",
+    "review_decisions_recorded": "0 REVIEWERS_MISSING_EXTERNAL"
+  },
+  "tests": {
+    "unit": "125/125 PASS",
+    "phase_integration": "1/1 PASS",
+    "postgresql_regression": "31/31 PASS",
+    "append_only_inverse": "2/2 BLOCKED",
+    "migration": "FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety": {
+    "proof_submission_enabled": false,
+    "quarantine_write_enabled": false,
+    "intake_state_transition_enabled": false,
+    "duplicate_check_execution_enabled": false,
+    "replay_check_execution_enabled": false,
+    "signature_validation_execution_enabled": false,
+    "issuer_validation_execution_enabled": false,
+    "review_decision_write_enabled": false,
+    "quarantine_release_enabled": false,
+    "allowlist_write_enabled": false,
+    "network_connection_authorized": false,
+    "execution_authorized": false,
+    "source_data_mutations": 0
+  },
+  "manual_or_external_status": "BLOCKED_EXTERNAL_INTAKE_CHANNEL_RETENTION_REPLAY_AND_REVIEW_POLICY"
+}

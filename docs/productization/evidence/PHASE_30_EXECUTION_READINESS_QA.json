@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0.0",
+  "status":"AUTO_QA_PASS_LOCAL_EXECUTION_READINESS_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_PRE_EXECUTION_CONTROLS_ONLY",
+  "database":{"tables":"2/2","review_control_rows":"2/12","append_only_triggers":"2/2 BLOCKED","forward_rollback_reapply":"PASS"},
+  "tests":{"unit":"85/85 PASS","execution_readiness":"1/1 PASS","postgresql_regression":"21/21 PASS"},
+  "authorization":{"security_approver_create":"PASS","operator_create":"403 PASS","student_read":"403 PASS"},
+  "controls":{"local_checks":"6/6","external_controls":"6/6 MISSING_EXTERNAL","review_revision":"1→2","status":"BLOCKED_EXTERNAL"},
+  "safety":{"kill_switch_engaged":true,"execution_authorized":false,"external_evidence_write_enabled":false,"destructive_executor_enabled":false,"completion_transition":"409 BLOCKED","source_data_mutations":0},
+  "external":{"managed_identity":false,"jit_authorization":false,"backup_restore_evidence":false,"change_window":false,"kill_switch_release_authority":false,"audit_export_route":false}
+}

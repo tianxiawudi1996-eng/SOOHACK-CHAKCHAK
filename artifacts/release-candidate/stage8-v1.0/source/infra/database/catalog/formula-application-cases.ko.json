@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {"grade_code":"E1","formula_semantic_key":"kr.e1.addition.meaning","tasks":[
+      {"kind":"CALCULATION","prompt":"8 + 7의 값을 입력하세요.","response_type":"NUMBER","accepted_values":["15"],"difficulty":1,"misconceptions":[{"values":["14"],"code":"COUNTING_ERROR"}]},
+      {"kind":"WORD_PROBLEM","prompt":"연필 6자루에 5자루를 더 받았습니다. 모두 몇 자루인가요?","response_type":"NUMBER","accepted_values":["11"],"accepted_units":["자루"],"difficulty":2,"misconceptions":[{"values":["1"],"code":"SUBTRACTED_INSTEAD"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"□ + 4 = 9에서 □에 들어갈 수를 입력하세요.","response_type":"NUMBER","accepted_values":["5"],"difficulty":3,"misconceptions":[{"values":["13"],"code":"IGNORED_EQUALITY"}]}
+    ]},
+    {"grade_code":"E2","formula_semantic_key":"kr.e2.length.unit","tasks":[
+      {"kind":"UNIT_REASONING","prompt":"3 m는 몇 cm인가요? 값과 단위를 입력하세요.","response_type":"NUMBER","accepted_values":["300"],"accepted_units":["cm"],"difficulty":1,"misconceptions":[{"values":["30"],"code":"UNIT_SCALE_TEN"}]},
+      {"kind":"WORD_PROBLEM","prompt":"125 cm 리본과 75 cm 리본을 이었습니다. 전체 길이를 입력하세요.","response_type":"NUMBER","accepted_values":["200"],"accepted_units":["cm"],"difficulty":2,"misconceptions":[{"values":["50"],"code":"SUBTRACTED_INSTEAD"}]},
+      {"kind":"UNIT_REASONING","prompt":"2 m 30 cm를 cm로만 나타내세요.","response_type":"NUMBER","accepted_values":["230"],"accepted_units":["cm"],"difficulty":3,"misconceptions":[{"values":["32"],"code":"PLACE_VALUE_UNIT_ERROR"}]}
+    ]},
+    {"grade_code":"E3","formula_semantic_key":"kr.e3.division.remainder","tasks":[
+      {"kind":"CALCULATION","prompt":"32 ÷ 4의 몫을 입력하세요.","response_type":"NUMBER","accepted_values":["8"],"difficulty":1,"misconceptions":[{"values":["28"],"code":"SUBTRACTED_ONCE"}]},
+      {"kind":"WORD_PROBLEM","prompt":"사탕 29개를 한 봉지에 4개씩 담으면 가득 찬 봉지는 몇 개인가요?","response_type":"NUMBER","accepted_values":["7"],"accepted_units":["봉지"],"difficulty":2,"misconceptions":[{"values":["8"],"code":"ROUNDED_QUOTIENT_UP"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"29 = 4 × 7 + r에서 나머지 r을 입력하세요.","response_type":"NUMBER","accepted_values":["1"],"difficulty":3,"misconceptions":[{"values":["7"],"code":"QUOTIENT_REMAINDER_CONFUSION"}]}
+    ]},
+    {"grade_code":"E4","formula_semantic_key":"kr.e4.fraction.same.denominator","tasks":[
+      {"kind":"CALCULATION","prompt":"3/8 + 2/8을 기약분수로 입력하세요.","response_type":"FRACTION","accepted_values":["5/8"],"difficulty":1,"misconceptions":[{"values":["5/16"],"code":"ADDED_DENOMINATORS"}]},
+      {"kind":"WORD_PROBLEM","prompt":"한 병의 7/10만큼 있던 물에서 3/10을 마셨습니다. 남은 양을 분수로 입력하세요.","response_type":"FRACTION","accepted_values":["2/5","4/10"],"difficulty":2,"misconceptions":[{"values":["4/20"],"code":"SUBTRACTED_DENOMINATORS"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"□/12 + 5/12 = 11/12에서 □를 입력하세요.","response_type":"NUMBER","accepted_values":["6"],"difficulty":3,"misconceptions":[{"values":["16"],"code":"INVERSE_OPERATION_ERROR"}]}
+    ]},
+    {"grade_code":"E5","formula_semantic_key":"kr.e5.plane.area","tasks":[
+      {"kind":"UNIT_REASONING","prompt":"가로 8 cm, 세로 5 cm인 직사각형의 넓이를 입력하세요.","response_type":"NUMBER","accepted_values":["40"],"accepted_units":["cm²","㎠","cm2"],"difficulty":1,"misconceptions":[{"values":["26"],"code":"USED_PERIMETER"}]},
+      {"kind":"WORD_PROBLEM","prompt":"밑변 10 cm, 높이 6 cm인 삼각형 모양 깃발의 넓이를 입력하세요.","response_type":"NUMBER","accepted_values":["30"],"accepted_units":["cm²","㎠","cm2"],"difficulty":2,"misconceptions":[{"values":["60"],"code":"MISSED_HALF"}]},
+      {"kind":"UNIT_REASONING","prompt":"윗변 6 cm, 아랫변 10 cm, 높이 4 cm인 사다리꼴의 넓이를 입력하세요.","response_type":"NUMBER","accepted_values":["32"],"accepted_units":["cm²","㎠","cm2"],"difficulty":3,"misconceptions":[{"values":["64"],"code":"MISSED_HALF"}]}
+    ]},
+    {"grade_code":"E6","formula_semantic_key":"kr.e6.ratio.rate","tasks":[
+      {"kind":"CALCULATION","prompt":"기준량 20에 대한 비교하는 양 15의 비율을 소수로 입력하세요.","response_type":"NUMBER","accepted_values":["0.75",".75"],"difficulty":1,"misconceptions":[{"values":["1.333","4/3"],"code":"REVERSED_RATE"}]},
+      {"kind":"WORD_PROBLEM","prompt":"30문제 중 18문제를 맞혔습니다. 정답률을 입력하세요.","response_type":"NUMBER","accepted_values":["60"],"accepted_units":["%","퍼센트"],"difficulty":2,"misconceptions":[{"values":["166.7"],"code":"REVERSED_RATE"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"빨강과 파랑의 비가 3:5이고 파랑이 20개라면 빨강은 몇 개인가요?","response_type":"NUMBER","accepted_values":["12"],"accepted_units":["개"],"difficulty":3,"misconceptions":[{"values":["15"],"code":"RATIO_SCALE_ERROR"}]}
+    ]},
+    {"grade_code":"M1","formula_semantic_key":"kr.m1.linear.equation","tasks":[
+      {"kind":"CALCULATION","prompt":"3x + 5 = 20의 해 x를 입력하세요.","response_type":"NUMBER","accepted_values":["5"],"difficulty":1,"misconceptions":[{"values":["25/3"],"code":"MOVED_CONSTANT_WRONG"}]},
+      {"kind":"WORD_PROBLEM","prompt":"같은 가격의 공책 4권과 배송비 2000원의 합이 10000원입니다. 공책 한 권의 가격을 입력하세요.","response_type":"NUMBER","accepted_values":["2000"],"accepted_units":["원"],"difficulty":2,"misconceptions":[{"values":["2500"],"code":"IGNORED_FIXED_COST"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"-2x + 7 = 15의 해 x를 입력하세요.","response_type":"NUMBER","accepted_values":["-4"],"difficulty":3,"misconceptions":[{"values":["4"],"code":"SIGN_ERROR"}]}
+    ]},
+    {"grade_code":"M2","formula_semantic_key":"kr.m2.pythagoras.similarity","tasks":[
+      {"kind":"CALCULATION","prompt":"두 직각변의 길이가 3과 4인 직각삼각형의 빗변 길이를 입력하세요.","response_type":"NUMBER","accepted_values":["5"],"difficulty":1,"misconceptions":[{"values":["7"],"code":"ADDED_SIDE_LENGTHS"}]},
+      {"kind":"WORD_PROBLEM","prompt":"벽에서 6 m 떨어진 곳에 사다리 밑을 두고 높이 8 m 지점에 닿았습니다. 사다리 길이를 입력하세요.","response_type":"NUMBER","accepted_values":["10"],"accepted_units":["m"],"difficulty":2,"misconceptions":[{"values":["14"],"code":"ADDED_SIDE_LENGTHS"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"직각삼각형의 빗변이 13이고 한 변이 5일 때 다른 직각변의 길이를 입력하세요.","response_type":"NUMBER","accepted_values":["12"],"difficulty":3,"misconceptions":[{"values":["18"],"code":"ADDED_SQUARES_WRONG"}]}
+    ]},
+    {"grade_code":"M3","formula_semantic_key":"kr.m3.quadratic.equation","tasks":[
+      {"kind":"CALCULATION","prompt":"x² - 5x + 6 = 0의 두 근을 쉼표로 구분해 입력하세요.","response_type":"TEXT","accepted_values":["2,3","3,2"],"difficulty":1,"misconceptions":[{"values":["-2,-3","-3,-2"],"code":"ROOT_SIGN_ERROR"}]},
+      {"kind":"WORD_PROBLEM","prompt":"가로가 세로보다 2 cm 길고 넓이가 48 cm²인 직사각형의 세로 길이를 입력하세요.","response_type":"NUMBER","accepted_values":["6"],"accepted_units":["cm"],"difficulty":2,"misconceptions":[{"values":["8"],"code":"SELECTED_WIDTH"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"x² + 4x + 5 = 0의 실근 개수를 입력하세요.","response_type":"NUMBER","accepted_values":["0"],"accepted_units":["개"],"difficulty":3,"misconceptions":[{"values":["2"],"code":"IGNORED_NEGATIVE_DISCRIMINANT"}]}
+    ]},
+    {"grade_code":"H1","formula_semantic_key":"kr.h1.permutation.combination","tasks":[
+      {"kind":"CALCULATION","prompt":"서로 다른 5개 중 2개를 순서 없이 고르는 경우의 수를 입력하세요.","response_type":"NUMBER","accepted_values":["10"],"difficulty":1,"misconceptions":[{"values":["20"],"code":"USED_PERMUTATION"}]},
+      {"kind":"WORD_PROBLEM","prompt":"학생 6명 중 대표 3명을 뽑는 방법의 수를 입력하세요.","response_type":"NUMBER","accepted_values":["20"],"accepted_units":["가지"],"difficulty":2,"misconceptions":[{"values":["120"],"code":"USED_PERMUTATION"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"서로 다른 7명 중 회장과 부회장을 한 명씩 뽑는 방법의 수를 입력하세요.","response_type":"NUMBER","accepted_values":["42"],"accepted_units":["가지"],"difficulty":3,"misconceptions":[{"values":["21"],"code":"IGNORED_ORDER"}]}
+    ]},
+    {"grade_code":"H2","formula_semantic_key":"kr.h2.limit.derivative","tasks":[
+      {"kind":"CALCULATION","prompt":"f(x)=x²+3x일 때 f′(2)를 입력하세요.","response_type":"NUMBER","accepted_values":["7"],"difficulty":1,"misconceptions":[{"values":["10"],"code":"SUBSTITUTED_BEFORE_DIFFERENTIATING"}]},
+      {"kind":"WORD_PROBLEM","prompt":"위치가 s(t)=t²+2t(m)일 때 t=3초의 순간속도를 입력하세요.","response_type":"NUMBER","accepted_values":["8"],"accepted_units":["m/s","m초당"],"difficulty":2,"misconceptions":[{"values":["15"],"code":"USED_POSITION_AS_VELOCITY"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"f(x)=x³일 때 x=2에서 접선의 기울기를 입력하세요.","response_type":"NUMBER","accepted_values":["12"],"difficulty":3,"misconceptions":[{"values":["8"],"code":"USED_FUNCTION_VALUE"}]}
+    ]},
+    {"grade_code":"H3","formula_semantic_key":"kr.h3.vector","tasks":[
+      {"kind":"CALCULATION","prompt":"벡터 (1,2)와 (3,4)의 내적을 입력하세요.","response_type":"NUMBER","accepted_values":["11"],"difficulty":1,"misconceptions":[{"values":["10"],"code":"COMPONENT_SUM_ERROR"}]},
+      {"kind":"WORD_PROBLEM","prompt":"힘 벡터 (3,4) N과 이동 벡터 (2,0) m의 내적으로 구한 일을 입력하세요.","response_type":"NUMBER","accepted_values":["6"],"accepted_units":["J","줄"],"difficulty":2,"misconceptions":[{"values":["14"],"code":"ADDED_COMPONENT_PRODUCTS_WRONG"}]},
+      {"kind":"REPRESENTATION_REASONING","prompt":"벡터 (2,-1)과 (1,2)의 내적을 입력하세요. 값이 0이면 두 벡터는 수직입니다.","response_type":"NUMBER","accepted_values":["0"],"difficulty":3,"misconceptions":[{"values":["4"],"code":"SIGN_ERROR"}]}
+    ]}
+  ]
+}

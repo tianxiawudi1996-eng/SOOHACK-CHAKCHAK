@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 17,
+  "tested_at": "2026-08-07T06:58:24+09:00",
+  "status": "PASS_LOCAL_ISOLATED",
+  "assessment_boundary": {
+    "score_name": "application_mastery_score",
+    "recall_score_merged": false,
+    "minimum_distinct_evidence": 3,
+    "mastery_threshold": 0.8,
+    "answer_schema_exposed_to_client": false
+  },
+  "content": {
+    "grades": "12/12",
+    "representative_formulas": "12/12",
+    "application_items": "36/36",
+    "items_per_formula": "3/3",
+    "assessment_kinds": "4/4"
+  },
+  "postgresql": {
+    "version": 16,
+    "migration": "0008 PASS",
+    "seed": "0006 PASS",
+    "rollback_reapply": "PASS",
+    "items_after_restore": 36,
+    "latest_evidence_weighting": "PASS",
+    "retry_correction": "0.6667 to 1.0000 PASS"
+  },
+  "guards": {
+    "before_recall": "409 BLOCKED",
+    "matching_completed_collaboration": "REQUIRED",
+    "student_ownership": "ENFORCED",
+    "server_side_scoring": "ENFORCED",
+    "idempotency": "ENFORCED",
+    "unit_mismatch": "DETECTED"
+  },
+  "tests": {
+    "unit": "40/40 PASS",
+    "static": "PASS",
+    "integration": "1/1 PASS",
+    "browser_collaboration_phases": "5/5",
+    "browser_recall": "PASS",
+    "browser_application_items": "3/3",
+    "browser_application_mastery": "100%",
+    "browser_next_review": "14 days",
+    "browser_answer_schema_visible": false,
+    "presentation_metadata": "PASS"
+  },
+  "runtime": {
+    "url": "http://127.0.0.1:4180/curriculum/index.html?locale=ko&grade=E5",
+    "web_container_id": "b0358bed17a631147a9554c74f45c7fc04c09c38893ca8f071c80d602182caec",
+    "api_container_id": "74a24b29d808a4042b7803878818f85fd0981f08991a34dd87dafea971127162",
+    "database_container_id": "eae67a458496f72bec304bb37fbe6fe0697ca21d41b15180b0ed294b09d967be"
+  },
+  "external_deployment": {"performed": false}
+}

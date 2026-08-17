@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T13:31:00+09:00",
+  "status": "VERIFIED",
+  "automated_status": "PASS",
+  "strategy": "SHADED_2D_PET",
+  "checks": {
+    "canonical_source_hashes_match": true,
+    "sheet_file_count_is_two": true,
+    "sheet_files_decode_as_png": true,
+    "sheet_dimensions_are_1536x1024": true,
+    "sheet_hashes_match_manifest": true,
+    "character_source_isolation_recorded": true,
+    "pose_state_mapping_declares_8_unique_states": true,
+    "three_dimensional_asset_required": false
+  },
+  "files_passed": 2,
+  "files_expected": 2,
+  "declared_pose_count": 16,
+  "failures": [],
+  "manual_approval_required": 1,
+  "manual_approval_count": 1,
+  "blockers": [],
+  "gate2_status_change_applied": true,
+  "next_gate_allowed": true
+}

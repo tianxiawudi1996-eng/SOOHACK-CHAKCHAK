@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "status": "DESIGNED",
+  "environments": ["local", "test", "staging", "production"],
+  "runtime": {
+    "web": "TypeScript web application with server rendering",
+    "api": "TypeScript server API",
+    "database": "PostgreSQL",
+    "object_storage": "S3-compatible private object storage",
+    "cdn": "managed edge CDN",
+    "queue": "managed durable queue when asynchronous work is introduced"
+  },
+  "network": {
+    "public": ["web", "api_gateway"],
+    "private": ["database", "object_storage_origin", "queue"],
+    "tls_required": true
+  },
+  "locale_routing": {
+    "edge_redirect": true,
+    "supported_count": 8,
+    "ip_geolocation_required": false,
+    "fallback_locale": "en"
+  },
+  "security": {
+    "secrets_in_repository": false,
+    "least_privilege": true,
+    "encryption_in_transit": true,
+    "encryption_at_rest": true,
+    "rate_limits": ["authentication", "diagnosis_write", "answer_write", "hint_request"],
+    "pii_log_policy": "DENY_BY_DEFAULT"
+  },
+  "reliability": {
+    "availability_target": "99.9% monthly after production launch",
+    "rpo_hours": 24,
+    "rto_hours": 4,
+    "database_backup": "daily plus point-in-time recovery when production tier is enabled",
+    "deployment_strategy": "staging-first with health check and reversible release"
+  },
+  "feature_flags": {
+    "gate5_ai_pet_behavior_default": false
+  }
+}

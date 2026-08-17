@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 캐릭터 모션</title>
+  <link rel="stylesheet" href="/assets/stage8/2d-pet-motion-v1.0.css">
+  <style>
+    :root { --navy:#172033; --blue:#2f5bff; --line:#dfe6f2; --bg:#f3f6fb; --muted:#66728a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif; color:var(--navy); background:var(--bg); }
+    header { padding:22px 26px; color:#fff; background:linear-gradient(115deg,#13224b,#2f5bff); }
+    h1 { margin:0 0 6px; font-size:24px; } header p { margin:0; opacity:.85; font-size:13px; }
+    main { max-width:1120px; margin:auto; padding:24px; }
+    .stage { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pet-card { margin:0; min-height:470px; display:grid; grid-template-rows:1fr auto; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:#fff; box-shadow:0 12px 32px #25395f12; }
+    .pet-surface { min-height:400px; display:grid; place-items:center; background:radial-gradient(circle at 50% 35%,#fff 0 24%,#edf2ff 70%); }
+    .pet-surface .pet-motion-image-stage { width:min(360px,88%); }
+    .pet-surface img { width:100%; aspect-ratio:1; object-fit:contain; }
+    figcaption { padding:14px 18px; border-top:1px solid var(--line); font-weight:850; }
+    figcaption span { display:block; color:var(--muted); font-size:12px; font-weight:600; }
+    .controls-card { margin-top:16px; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; }
+    @media(max-width:720px){.stage{grid-template-columns:1fr}.pet-card{min-height:390px}.pet-surface{min-height:320px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>수학착착 캐릭터 모션</h1>
+    <p>학습 상황에 따라 자연스럽게 이어지는 착착이와 공식이의 반응</p>
+  </header>
+  <main>
+    <section class="stage" aria-label="캐릭터 자연 연동 모션 검토 무대">
+      <figure class="pet-card" data-pet-character="Chakchaki" data-pet-state="WELCOME" data-pet-phase="steady">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp" alt="반가워요! — Chakchaki"></span></div>
+        <figcaption>착착이<span data-pet-caption>반가워요!</span></figcaption>
+      </figure>
+      <figure class="pet-card" data-pet-character="Gongsickyi" data-pet-state="WELCOME" data-pet-phase="steady">
+        <div class="pet-surface"><span class="pet-motion-image-stage" data-pet-image-stage><img data-pet-image src="/outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp" alt="반가워요! — Gongsickyi"></span></div>
+        <figcaption>공식이<span data-pet-caption>반가워요!</span></figcaption>
+      </figure>
+    </section>
+    <section class="controls-card motion-state-controls" role="group" aria-label="8개 학습 상태와 포즈 연동 모션 선택">
+      <div class="motion-state-controls__label"><span>상태를 선택하세요</span></div>
+      <div class="motion-state-controls__buttons">
+        <button type="button" data-pet-state-trigger="IDLE_LISTEN" aria-pressed="false">대기</button>
+        <button type="button" data-pet-state-trigger="WELCOME" aria-pressed="true">환영</button>
+        <button type="button" data-pet-state-trigger="GUIDE" aria-pressed="false">안내</button>
+        <button type="button" data-pet-state-trigger="THINK" aria-pressed="false">생각</button>
+        <button type="button" data-pet-state-trigger="PRAISE_PROGRESS" aria-pressed="false">칭찬</button>
+        <button type="button" data-pet-state-trigger="SEARCH" aria-pressed="false">탐색</button>
+        <button type="button" data-pet-state-trigger="CELEBRATE" aria-pressed="false">축하</button>
+        <button type="button" data-pet-state-trigger="RETRY" aria-pressed="false">재도전</button>
+      </div>
+      <span class="sr-only" data-pet-announcer aria-live="polite"></span>
+    </section>
+  </main>
+  <script src="/assets/stage8/2d-pet-motion-v1.0.js"></script>
+</body>
+</html>

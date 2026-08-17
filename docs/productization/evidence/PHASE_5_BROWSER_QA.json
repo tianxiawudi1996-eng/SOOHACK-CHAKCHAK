@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-06T00:18:00+09:00",
+  "url": "http://127.0.0.1:4174/client/mock/",
+  "status": "PASS",
+  "desktop": {
+    "viewport_override": {"width": 1440, "height": 1000},
+    "hero_layout": "PASS",
+    "approved_character_images_loaded": "2/2",
+    "horizontal_overflow": false
+  },
+  "mobile": {
+    "viewport_override": {"width": 390, "height": 844},
+    "measured_client_width": 375,
+    "single_column_layout": "PASS",
+    "horizontal_overflow": false
+  },
+  "locales": {
+    "tested": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+    "applied": "8/8",
+    "title_and_heading_updated": "8/8",
+    "horizontal_overflow": "0/8"
+  },
+  "console": {"warnings": 0, "errors": 0},
+  "approval_boundary": {
+    "gate5_ai_behavior_enabled": false,
+    "product_owner_approval_inferred": false
+  }
+}

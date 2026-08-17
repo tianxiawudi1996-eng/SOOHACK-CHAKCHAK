@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "database": "PostgreSQL",
+  "namespace": "mathchakchak",
+  "base_migration": "infra/database/migrations/0001_initial.sql",
+  "extension_migration": "infra/database/migrations/0002_formula_learning.sql",
+  "rollback": "infra/database/migrations/0002_formula_learning_rollback.sql",
+  "extension_tables": [
+    "math_concept",
+    "formula_definition",
+    "formula_localization",
+    "worked_example",
+    "lesson_definition",
+    "lesson_step",
+    "formula_learning_session",
+    "formula_learning_response"
+  ],
+  "learning_stages": ["UNDERSTAND", "CONNECT", "REPEAT", "RECALL", "APPLY"],
+  "supported_locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "first_content": {
+    "concept": "concept.fraction.unlike_denominator_addition",
+    "formula": "formula.fraction.add.unlike",
+    "lesson": "lesson.fraction.add.unlike.v1",
+    "misconception": "ADD_DENOMINATORS"
+  },
+  "invariants": [
+    "formula_notation_is_content_and_is_never_executed",
+    "server_controls_step_order_and_scoring",
+    "expected_responses_are_not_returned_by_read_endpoints",
+    "all_five_stages_require_correct_evidence",
+    "mastery_threshold_is_at_least_0.8",
+    "student_response_rows_are_append_only"
+  ]
+}

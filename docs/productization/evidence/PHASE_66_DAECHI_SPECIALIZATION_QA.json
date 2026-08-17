@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 66,
+  "tested_at": "2026-08-11T08:27:28+09:00",
+  "status": "PASS_LOCAL_FOUNDATION_FIELD_EVIDENCE_BLOCKED",
+  "requirements": {
+    "defined": "10/10",
+    "locally_implemented": ["D80-01", "D80-04", "D80-08-foundation"],
+    "field_evidence_complete": false
+  },
+  "implementation": {
+    "tracks": "4/4",
+    "locales": "8/8",
+    "protected_api": true,
+    "postgresql_aggregate_path": true,
+    "privacy_minimized": true,
+    "approved_character_assets": "2/2"
+  },
+  "tests": {
+    "target_unit": "8/8",
+    "full_unit": "281/281",
+    "target_integration": "2/2",
+    "full_integration": "37/37",
+    "staging_files": "39/39",
+    "security": "PASS",
+    "secret_files_scanned": 318,
+    "known_vulnerabilities": 0,
+    "operations_samples": "20/20",
+    "database_ready": "PASS"
+  },
+  "browser": {
+    "desktop": "PASS_1440x900",
+    "mobile": "PASS_390x844",
+    "four_track_switch": "PASS",
+    "horizontal_overflow": false,
+    "console_errors": 0,
+    "url": "http://127.0.0.1:4180/academy/?locale=ko"
+  },
+  "truth_boundary": {
+    "market_score_80_confirmed": false,
+    "daechi_field_fit_confirmed": false,
+    "external_deployment_performed": false,
+    "remaining_chain": "PHASE_67_TO_75"
+  }
+}

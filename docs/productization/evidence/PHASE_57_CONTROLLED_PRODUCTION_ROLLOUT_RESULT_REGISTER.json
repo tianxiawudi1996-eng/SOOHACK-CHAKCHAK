@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0.0","phase":57,"status":"BLOCKED_EXTERNAL","api_key_accessed":false,"student_traffic":false,"public_traffic":false,"production_promotion_allowed":false,
+  "rollout_observed":false,"dispatch_observed":false,"provider_live_tested":false,"feature_flag_changed":false,"feature_flag_restored_off":false,
+  "source_rollout":{"phase":56,"register_path":"docs/productization/evidence/PHASE_56_CONTROLLED_PRODUCTION_ROLLOUT_REGISTER.json","register_sha256":"0b1adcc1a00986cb67c6ac144a306570d5648e6d70147e11544c4f776c1319ec"},
+  "result_records":[],
+  "kill_switch":{"status":"NOT_STARTED","evidence_reference":null,"rearmed_at":null},
+  "rollback":{"status":"NOT_STARTED","evidence_reference":null,"completed_at":null},
+  "review":{"status":"NOT_REQUESTED","review_reference":null,"reviewed_at":null,"approval_inferred":false}
+}

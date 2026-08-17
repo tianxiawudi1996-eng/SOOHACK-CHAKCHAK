@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const root=process.cwd();
+const read=(relative)=>fs.readFileSync(path.join(root,relative),'utf8');
+const fail=(message)=>{console.error(`FORMULA_APPLICATION_FAIL: ${message}`);process.exit(1);};
+const contract=JSON.parse(read('infra/database/formula-application-contract.json'));
+const cases=JSON.parse(read(contract.catalog));
+const migration=read(contract.migration);const rollback=read(contract.rollback);const seed=read(contract.seed);
+const repository=read('developer/src/api/repository.mjs');const server=read('developer/src/api/server.mjs');const evaluator=read('developer/src/learning/formula-application.mjs');
+const app=read('client/curriculum/app.js');const html=read('client/curriculum/index.html');const compose=read('infra/deployment/compose.api-staging.yaml');
+if(contract.database!=='PostgreSQL'||contract.representative_grades!==12||contract.representative_formulas!==12||contract.item_count!==36||contract.items_per_formula!==3)fail('coverage contract invalid');
+if(contract.score_name!=='application_mastery_score'||contract.mastery_threshold!==0.8||contract.minimum_distinct_evidence!==3||contract.recall_score_merged!==false)fail('mastery boundary invalid');
+if(contract.answer_schema_exposed_to_client!==false)fail('answer exposure boundary invalid');
+if(cases.items.length!==12||new Set(cases.items.map((item)=>item.grade_code)).size!==12||cases.items.some((item)=>item.tasks.length!==3))fail('case catalog invalid');
+for(const table of ['formula_application_item','formula_application_attempt','student_formula_application_progress']){if(!migration.includes(`CREATE TABLE mathchakchak.${table}`))fail(`migration missing ${table}`);if(!rollback.includes(`DROP TABLE IF EXISTS mathchakchak.${table}`))fail(`rollback missing ${table}`);}
+const promptCount=(seed.match(/:application:[123]:v1/g)||[]).length/5;
+if(promptCount!==36)fail(`seed items ${promptCount}/36`);
+for(const kind of contract.assessment_kinds)if(!migration.includes(kind)||!cases.items.some((entry)=>entry.tasks.some((task)=>task.kind===kind)))fail(`assessment kind missing ${kind}`);
+for(const token of ['evaluateFormulaApplication','UNIT_MISMATCH','applicationReviewDays'])if(!evaluator.includes(token))fail(`evaluator rule missing ${token}`);
+for(const method of ['getFormulaApplicationChecks','addFormulaApplicationAttempt'])if(!repository.includes(method))fail(`repository method missing ${method}`);
+for(const endpoint of ['/application-checks','COMPLETED_RECALL_REQUIRED'])if(!`${server}\n${repository}`.includes(endpoint))fail(`API guard missing ${endpoint}`);
+const publicMethod=repository.slice(repository.indexOf('async getFormulaApplicationChecks'),repository.indexOf('async addFormulaApplicationAttempt'));
+if(/answer_schema|misconception_rules|accepted_values|accepted_units/.test(publicMethod))fail('public application query exposes scoring material');
+if(/answer_schema|accepted_values|accepted_units/.test(app))fail('client contains scoring material');
+if(/localStorage|sessionStorage|document\.cookie/.test(app))fail('browser persistence forbidden');
+for(const id of ['applicationPanel','applicationForm','applicationValue','applicationUnit','applicationResult'])if(!html.includes(`id="${id}"`))fail(`application UI missing ${id}`);
+if(!compose.includes('0008_formula_application_mastery.sql')||!compose.includes('0006_formula_application_checks.sql'))fail('compose mount missing');
+for(const doc of ['docs/developer/productization/FORMULA_APPLICATION_MASTERY_DESIGN_v1.0.md','docs/productization/prompts/PHASE_17_FORMULA_APPLICATION_MASTERY_METAPROMPT_v1.0.md'])for(const section of ['Goal Framing','Specification Engineering','Context Engineering','Harness Engineering','Prompt Engineering','Workflow Engineering','Memory Engineering','Loop Engineering'])if(!read(doc).includes(section))fail(`global section missing ${section}`);
+console.log('FORMULA_APPLICATION_STATIC_PASS');
+console.log('grades=12/12');console.log('representative_formulas=12/12');console.log('items=36/36');console.log('answer_exposed=false');console.log('recall_score_merged=false');

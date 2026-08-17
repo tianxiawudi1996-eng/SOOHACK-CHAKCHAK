@@ -1,0 +1,13 @@
+# Preserve approved/canonical source assets byte-for-byte across checkouts.
+ssot/stage7/v1.0/* -text
+
+# Generated and supplied evidence images are binary evidence.
+evidence/**/*.png -text
+
+# Staging release artifacts are hash-addressed and must remain byte-identical.
+artifacts/staging/** -text
+
+# These approved runtime manifests were frozen with mixed newline bytes. Keep
+# them byte-for-byte identical on every platform so their evidence hashes hold.
+docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json -text -diff
+artifacts/release-candidate/stage8-v1.0/source/docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json -text -diff

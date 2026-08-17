@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "requirement_id": "D80-03",
+  "source_types": ["MANUAL_TEXT", "HANDWRITING_IMAGE", "CAMERA_IMAGE"],
+  "decisions": ["STUDENT_CONFIRMATION_REQUIRED", "TEACHER_REVIEW_REQUIRED", "MANUAL_ENTRY_REQUIRED", "REJECTED"],
+  "confidence_thresholds": {
+    "image_quality_min": 0.65,
+    "recognition_confidence_min": 0.75,
+    "math_consistency_min": 0.65,
+    "step_continuity_min": 0.6,
+    "high_confidence": 0.92,
+    "candidate_margin": 0.12
+  },
+  "persistence": {
+    "raw_image": false,
+    "raw_candidate_expression": false,
+    "candidate_sha256": true,
+    "decision_and_reason_codes": true,
+    "audit_metadata_only": true
+  },
+  "safety": {
+    "automatic_scoring": false,
+    "student_confirmation_required": true,
+    "teacher_queue_on_math_uncertainty": true,
+    "manual_fallback_required": true,
+    "client_provider_assertions_trusted": false
+  },
+  "character_roles": {
+    "chakchaki": "ASK_AND_REASSURE",
+    "gongsickyi": "VALIDATE_MATH_STRUCTURE"
+  },
+  "truth_boundary": {
+    "ocr_provider_status": "NOT_CONFIGURED",
+    "photo_recognition_benchmark_completed": false,
+    "manual_text_path_available": true,
+    "image_sources_fail_closed_to_manual_entry": true,
+    "production_ready": false
+  }
+}

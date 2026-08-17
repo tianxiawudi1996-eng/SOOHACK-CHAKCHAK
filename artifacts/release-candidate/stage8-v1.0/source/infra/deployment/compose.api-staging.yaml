@@ -1,0 +1,147 @@
+name: mathchakchak-api-staging
+
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mathchakchak
+      POSTGRES_USER: mathchakchak
+      POSTGRES_HOST_AUTH_METHOD: trust
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ../database/migrations/0001_initial.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+      - ../database/migrations/0002_formula_learning.sql:/docker-entrypoint-initdb.d/002-formula-learning.sql:ro
+      - ../database/migrations/0003_adaptive_learning.sql:/docker-entrypoint-initdb.d/003-adaptive-learning.sql:ro
+      - ../database/migrations/0004_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/004-diagnostic-curriculum.sql:ro
+      - ../database/migrations/0005_k12_curriculum_collaboration.sql:/docker-entrypoint-initdb.d/005-k12-curriculum.sql:ro
+      - ../database/migrations/0006_collaboration_learning_runtime.sql:/docker-entrypoint-initdb.d/006-collaboration-runtime.sql:ro
+      - ../database/migrations/0007_formula_recall_check.sql:/docker-entrypoint-initdb.d/007-formula-recall.sql:ro
+      - ../database/migrations/0008_formula_application_mastery.sql:/docker-entrypoint-initdb.d/008-formula-application.sql:ro
+      - ../database/migrations/0009_formula_application_i18n.sql:/docker-entrypoint-initdb.d/009-formula-application-i18n.sql:ro
+      - ../database/migrations/0010_formula_catalog_i18n.sql:/docker-entrypoint-initdb.d/010-formula-catalog-i18n.sql:ro
+      - ../database/migrations/0011_curriculum_collaboration_i18n.sql:/docker-entrypoint-initdb.d/011-curriculum-collaboration-i18n.sql:ro
+      - ../database/migrations/0012_data_rights.sql:/docker-entrypoint-initdb.d/012-data-rights.sql:ro
+      - ../database/migrations/0013_privacy_operations.sql:/docker-entrypoint-initdb.d/013-privacy-operations.sql:ro
+      - ../database/migrations/0014_fulfilment_controls.sql:/docker-entrypoint-initdb.d/014-fulfilment-controls.sql:ro
+      - ../database/migrations/0015_fulfilment_package_manifest.sql:/docker-entrypoint-initdb.d/015-fulfilment-package-manifest.sql:ro
+      - ../database/migrations/0016_execution_readiness.sql:/docker-entrypoint-initdb.d/016-execution-readiness.sql:ro
+      - ../database/migrations/0017_execution_handoff_packet.sql:/docker-entrypoint-initdb.d/017-execution-handoff-packet.sql:ro
+      - ../database/migrations/0018_external_evidence_validation_contract.sql:/docker-entrypoint-initdb.d/018-external-evidence-validation-contract.sql:ro
+      - ../database/migrations/0019_external_evidence_intake_adapter_contract.sql:/docker-entrypoint-initdb.d/019-external-evidence-intake-adapter-contract.sql:ro
+      - ../database/migrations/0020_external_connection_acceptance_packet.sql:/docker-entrypoint-initdb.d/020-external-connection-acceptance-packet.sql:ro
+      - ../database/migrations/0021_external_configuration_evidence_queue_contract.sql:/docker-entrypoint-initdb.d/021-external-configuration-evidence-queue-contract.sql:ro
+      - ../database/migrations/0022_external_evidence_submission_envelope_contract.sql:/docker-entrypoint-initdb.d/022-external-evidence-submission-envelope-contract.sql:ro
+      - ../database/migrations/0023_external_reference_scheme_governance_contract.sql:/docker-entrypoint-initdb.d/023-external-reference-scheme-governance-contract.sql:ro
+      - ../database/migrations/0024_external_reference_target_validation_contract.sql:/docker-entrypoint-initdb.d/024-external-reference-target-validation-contract.sql:ro
+      - ../database/migrations/0025_external_reference_proof_handoff_contract.sql:/docker-entrypoint-initdb.d/025-external-reference-proof-handoff-contract.sql:ro
+      - ../database/migrations/0026_external_reference_proof_intake_contract.sql:/docker-entrypoint-initdb.d/026-external-reference-proof-intake-contract.sql:ro
+      - ../database/migrations/0027_external_reference_proof_quarantine_readiness_contract.sql:/docker-entrypoint-initdb.d/027-external-reference-proof-quarantine-readiness-contract.sql:ro
+      - ../database/migrations/0028_external_reference_proof_scanner_readiness_contract.sql:/docker-entrypoint-initdb.d/028-external-reference-proof-scanner-readiness-contract.sql:ro
+      - ../database/migrations/0029_external_reference_proof_scan_attestation_contract.sql:/docker-entrypoint-initdb.d/029-external-reference-proof-scan-attestation-contract.sql:ro
+      - ../database/migrations/0030_external_reference_proof_release_decision_contract.sql:/docker-entrypoint-initdb.d/030-external-reference-proof-release-decision-contract.sql:ro
+      - ../database/migrations/0031_ai_tutor_feedback.sql:/docker-entrypoint-initdb.d/031-ai-tutor-feedback.sql:ro
+      - ../database/migrations/0032_content_corpus_governance.sql:/docker-entrypoint-initdb.d/032-content-corpus-governance.sql:ro
+      - ../database/migrations/0033_solution_recognition_confidence.sql:/docker-entrypoint-initdb.d/033-solution-recognition-confidence.sql:ro
+      - ../database/migrations/0034_academy_track_curriculum.sql:/docker-entrypoint-initdb.d/034-academy-track-curriculum.sql:ro
+      - ../database/migrations/0035_teacher_parent_operations.sql:/docker-entrypoint-initdb.d/036-teacher-parent-operations.sql:ro
+      - ../database/migrations/0036_learning_effect_pilot.sql:/docker-entrypoint-initdb.d/038-learning-effect-pilot.sql:ro
+      - ../database/migrations/0037_math_expert_dual_review.sql:/docker-entrypoint-initdb.d/040-math-expert-dual-review.sql:ro
+      - ../database/migrations/0038_ai_tutor_external_evidence.sql:/docker-entrypoint-initdb.d/042-ai-tutor-external-evidence.sql:ro
+      - ../database/migrations/0039_daechi_field_pilot.sql:/docker-entrypoint-initdb.d/044-daechi-field-pilot.sql:ro
+      - ../database/migrations/0040_commercial_operations_readiness.sql:/docker-entrypoint-initdb.d/046-commercial-operations-readiness.sql:ro
+      - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
+      - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
+      - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro
+      - ../database/seeds/0004_k12_curriculum_catalog.sql:/docker-entrypoint-initdb.d/015-k12-curriculum-seed.sql:ro
+      - ../database/seeds/0005_formula_recall_checks.sql:/docker-entrypoint-initdb.d/016-formula-recall-seed.sql:ro
+      - ../database/seeds/0006_formula_application_checks.sql:/docker-entrypoint-initdb.d/017-formula-application-seed.sql:ro
+      - ../database/seeds/0007_formula_application_i18n.sql:/docker-entrypoint-initdb.d/018-formula-application-i18n-seed.sql:ro
+      - ../database/seeds/0008_formula_catalog_i18n.sql:/docker-entrypoint-initdb.d/019-formula-catalog-i18n-seed.sql:ro
+      - ../database/seeds/0009_curriculum_collaboration_i18n.sql:/docker-entrypoint-initdb.d/020-curriculum-collaboration-i18n-seed.sql:ro
+      - ../database/seeds/0010_academy_track_curriculum.sql:/docker-entrypoint-initdb.d/035-academy-track-curriculum-seed.sql:ro
+      - ../database/seeds/0011_teacher_parent_operations.sql:/docker-entrypoint-initdb.d/037-teacher-parent-operations-seed.sql:ro
+      - ../database/seeds/0012_learning_effect_pilot.sql:/docker-entrypoint-initdb.d/039-learning-effect-pilot-seed.sql:ro
+      - ../database/seeds/0013_math_expert_dual_review.sql:/docker-entrypoint-initdb.d/041-math-expert-dual-review-seed.sql:ro
+      - ../database/seeds/0014_ai_tutor_external_evidence.sql:/docker-entrypoint-initdb.d/043-ai-tutor-external-evidence-seed.sql:ro
+      - ../database/seeds/0015_daechi_field_pilot.sql:/docker-entrypoint-initdb.d/045-daechi-field-pilot-seed.sql:ro
+      - ../database/seeds/0016_commercial_operations_readiness.sql:/docker-entrypoint-initdb.d/047-commercial-operations-readiness-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mathchakchak -d mathchakchak"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    networks:
+      - runtime
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infra/deployment/Dockerfile.api
+    environment:
+      DATABASE_URL: postgresql://mathchakchak@database:5432/mathchakchak
+      RUNTIME_ENV: staging-local-isolated
+      PORT: "8080"
+      SESSION_HMAC_SECRET: ${MATHCHAKCHAK_STAGE_SESSION_SECRET:?MATHCHAKCHAK_STAGE_SESSION_SECRET is required}
+      ALLOW_TRUSTED_TEST_HEADERS: "false"
+      ALLOWED_BROWSER_ORIGINS: "http://127.0.0.1:4180,http://localhost:4180"
+      ENABLE_LOCAL_DEMO_SESSION: "true"
+      FULFILMENT_PACKAGE_VALIDITY_SECONDS: "2"
+      TUTOR_AI_ENABLED: ${TUTOR_AI_ENABLED:-false}
+      TUTOR_AI_KILL_SWITCH: ${TUTOR_AI_KILL_SWITCH:-true}
+      TUTOR_AI_MODEL: ${TUTOR_AI_MODEL:-gpt-5.6-sol}
+      TUTOR_AI_PROMPT_VERSION: ${TUTOR_AI_PROMPT_VERSION:-mathchakchak-tutor-duo-v1.0.0}
+      TUTOR_AI_TIMEOUT_MS: ${TUTOR_AI_TIMEOUT_MS:-1500}
+      TUTOR_AI_DAILY_REQUEST_LIMIT: ${TUTOR_AI_DAILY_REQUEST_LIMIT:-1000}
+      TUTOR_AI_DAILY_INPUT_TOKEN_LIMIT: ${TUTOR_AI_DAILY_INPUT_TOKEN_LIMIT:-1000000}
+      TUTOR_AI_DAILY_OUTPUT_TOKEN_LIMIT: ${TUTOR_AI_DAILY_OUTPUT_TOKEN_LIMIT:-250000}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:4181:8080
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/healthz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    networks:
+      - runtime
+
+  web:
+    build:
+      context: ../..
+      dockerfile: infra/deployment/Dockerfile.staging
+    container_name: mathchakchak-staging-v010
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:4180:80
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    networks:
+      - runtime
+
+networks:
+  runtime:
+    driver: bridge

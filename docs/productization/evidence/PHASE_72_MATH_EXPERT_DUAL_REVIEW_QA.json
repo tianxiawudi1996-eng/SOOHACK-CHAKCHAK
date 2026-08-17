@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 72,
+  "requirement_id": "D80-07",
+  "status": "LOCAL_MATH_EXPERT_DUAL_REVIEW_PLATFORM_PASS_ACTUAL_EXPERT_EVIDENCE_BLOCKED_EXTERNAL",
+  "verified_at": "2026-08-12T16:26:52+09:00",
+  "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+  "protocol": {
+    "code": "MCC-D80-07-REVIEW-001",
+    "status": "DRAFT_EXTERNAL_REVIEW",
+    "minimum_distinct_reviewers": 2,
+    "criteria": {"actual": 4, "expected": 4},
+    "blind_review_required": true,
+    "same_hash_required": true,
+    "independent_adjudication_required": true,
+    "design_hash_bound": true
+  },
+  "database": {
+    "engine": "PostgreSQL 16",
+    "migration": "0037_math_expert_dual_review.sql",
+    "tables": 8,
+    "forward": "PASS",
+    "rollback": "PASS",
+    "reapply": "PASS",
+    "smoke": "PASS",
+    "single_reviewer_inverse_test": "PASS",
+    "hash_mismatch_inverse_test": "PASS",
+    "expired_credential_inverse_test": "PASS",
+    "unresolved_rejection_inverse_test": "PASS",
+    "append_only_inverse_test": "PASS",
+    "public_privileges_revoked": true
+  },
+  "verification": {
+    "phase_unit": "6/6 PASS",
+    "full_unit": "317/317 PASS",
+    "target_integration": "2/2 PASS",
+    "file_isolated_integration": "55/55 PASS",
+    "security": "PASS",
+    "secret_files_scanned": 356,
+    "lockfile_known_vulnerabilities": 0,
+    "operations_runtime": "20/20 PASS",
+    "operations_server_errors": 0,
+    "database_ready": true,
+    "staging": "43/43 PASS",
+    "integration_gate": "PASS",
+    "phase0": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "actual_external_evidence": {
+    "verified_experts": 0,
+    "review_targets": 0,
+    "dual_reviewed_targets": 0,
+    "dual_approved_targets": 0,
+    "resolved_disagreements": 0,
+    "professional_review_complete": false,
+    "market_score_80_confirmed": false
+  },
+  "truth_boundary": {
+    "expert_names_or_contacts_stored": false,
+    "credential_documents_stored": false,
+    "synthetic_expert_approvals_created": false,
+    "external_deployment_performed": false
+  }
+}

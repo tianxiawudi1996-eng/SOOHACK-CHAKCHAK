@@ -1,0 +1,1275 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "current_phase": 75,
+  "workflow_state": "IN_PROGRESS",
+  "local_completion_scope": "PHASE_75_LOCAL_PLATFORM_PASS",
+  "release_state": "BLOCKED_EXTERNAL",
+  "canonical_status_sources": {
+    "productization": "docs/productization/STATUS.json",
+    "stage8": "harness/status.json",
+    "roadmap": "docs/productization/PHASE_ROADMAP.md",
+    "external_execution": "docs/productization/evidence/EXTERNAL_EXECUTION_READINESS_REGISTER_v1.0.json"
+  },
+  "phases": {
+    "0": {
+      "name": "project_foundation",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:phase0"
+      ]
+    },
+    "1": {
+      "name": "requirements",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:requirements",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "2": {
+      "name": "functional_design",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:functions",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "3": {
+      "name": "infrastructure_design",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:infrastructure",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "4": {
+      "name": "database_design",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:database",
+        "PostgreSQL 16: initial migration + smoke + rollback"
+      ],
+      "runtime_test": "PASS"
+    },
+    "5": {
+      "name": "screen_and_brand_design",
+      "status": "VERIFIED",
+      "tests": [
+        "npm.cmd run test:productization:screens",
+        "browser: 8 locales + 1440px + 390px"
+      ]
+    },
+    "6": {
+      "name": "feature_development",
+      "status": "VERIFIED",
+      "progress": "15/15",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:features",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "7": {
+      "name": "staging_deployment",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED",
+      "tests": [
+        "npm.cmd run build:staging",
+        "npm.cmd run test:productization:staging",
+        "container health PASS",
+        "locale HTTP 8/8",
+        "security headers 6/6",
+        "rollback rehearsal PASS"
+      ]
+    },
+    "8": {
+      "name": "integration_testing",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "tests": [
+        "npm.cmd run test:productization:integration",
+        "npm.cmd run test:integration:api",
+        "browser locale 8/8",
+        "browser desktop+mobile",
+        "API restart persistence PASS",
+        "PostgreSQL 16 API path PASS"
+      ]
+    },
+    "9": {
+      "name": "operations_maintenance",
+      "status": "PARTIAL_VERIFIED",
+      "scope": "LOCAL_OPERATIONS_PASS_EXTERNAL_BLOCKED",
+      "tests": [
+        "npm.cmd run test:productization:operations",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:integration:api",
+        "PostgreSQL backup+restore rehearsal",
+        "npm.cmd audit --audit-level=moderate"
+      ]
+    },
+    "10": {
+      "name": "math_formula_learning_correction",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "first_vertical_lesson_1/1",
+      "tests": [
+        "npm.cmd run test:productization:math-learning",
+        "npm.cmd run test:integration:math-learning",
+        "npm.cmd run test:integration:api",
+        "PostgreSQL 16 runtime tables 26/26"
+      ]
+    },
+    "11": {
+      "name": "student_formula_learning_ui",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "student_vertical_journey_1/1",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:math-learning-ui",
+        "npm.cmd run test:integration:web-learning",
+        "browser stages 5/5",
+        "browser locales 8/8",
+        "browser mobile 390px"
+      ]
+    },
+    "12": {
+      "name": "diagnostic_adaptive_learning",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "adaptive_routes_3/3",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:adaptive-learning",
+        "npm.cmd run test:integration:adaptive-learning",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser landing to formula stage 1"
+      ]
+    },
+    "13": {
+      "name": "student_diagnostic_curriculum_ui",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "diagnostic_3/3_formula_concepts_3/3_locales_8/8",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:diagnostic-curriculum",
+        "npm.cmd run test:integration:diagnostic-curriculum",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser landing to selected formula"
+      ]
+    },
+    "14": {
+      "name": "k12_curriculum_character_collaboration",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "grades_12/12_formula_clusters_72/72_collaboration_phases_5/5_shell_locales_8/8",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:k12-curriculum",
+        "npm.cmd run test:integration:k12-curriculum",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser grades 12/12 + collaboration phases 5/5 + locales 8/8"
+      ]
+    },
+    "15": {
+      "name": "character_collaboration_learning_runtime",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "phases_5/5_structured_signals_10/10_postgresql_evidence_5/5",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:collaboration-runtime",
+        "npm.cmd run test:integration:collaboration-runtime",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser collaboration phases 5/5 + completion score"
+      ]
+    },
+    "16": {
+      "name": "formula_recall_check",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "grades_12/12_formula_items_72/72_choices_4/4_server_scoring",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:formula-recall",
+        "npm.cmd run test:integration:formula-recall",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser collaboration 5/5 + recall result"
+      ]
+    },
+    "17": {
+      "name": "formula_application_mastery",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "grades_12/12_representative_formulas_12/12_application_items_36/36",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:formula-application",
+        "npm.cmd run test:integration:formula-application",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser collaboration+recall+application 3/3"
+      ]
+    },
+    "18": {
+      "name": "formula_application_i18n_expansion",
+      "status": "VERIFIED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "formulas_72/72_expanded_60/60_items_216/216_locales_8/8_translations_1728/1728",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:formula-application-i18n",
+        "npm.cmd run test:integration:formula-application-i18n",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser zh-CN non-unit+unit application UI"
+      ]
+    },
+    "19": {
+      "name": "formula_catalog_recall_i18n",
+      "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "formulas_72/72_locales_8/8_source_rows_72/72_translated_rows_504/504_revision_rows_576/576_manual_translation_approvals_0/7",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:formula-catalog-i18n",
+        "npm.cmd run test:integration:formula-catalog-i18n",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser zh-CN catalog + ru collaboration/recall",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "20": {
+      "name": "curriculum_collaboration_i18n",
+      "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "grades_12/12_grade_rows_96/96_reference_rows_8/8_role_rows_8/8_phase_rows_40/40_locales_8/8_manual_translation_approvals_0/7",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:curriculum-collaboration-i18n",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration rollback+reapply",
+        "browser zh-CN five-phase + ru metadata/roles",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "21": {
+      "name": "accessibility_i18n_and_linguistic_review_packets",
+      "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "surfaces_4/4_locales_8/8_accessibility_keys_31/31_values_248/248_review_packets_7/7_manual_translation_approvals_0/7",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:accessibility-i18n",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "browser zh-CN landing + ja diagnostic + fr lesson + ru curriculum",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "22": {
+      "name": "keyboard_focus_contrast_screen_reader_accessibility",
+      "status": "AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED",
+      "scope": "LOCAL_ISOLATED_FULL_STACK",
+      "progress": "surfaces_4/4_skip_focus_contracts_4/4_dynamic_focus_targets_7/7_contrast_pairs_12/12_integration_14/14_manual_accessibility_approvals_0/1",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:accessibility-interaction",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "browser diagnostic + lesson + curriculum focus transitions",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "23": {
+      "name": "core_web_vitals_and_static_delivery_performance",
+      "status": "AUTO_VERIFIED_LOCAL_LAB",
+      "scope": "LOCAL_ISOLATED_LIGHTHOUSE",
+      "progress": "surfaces_4/4_lighthouse_core_median_97_accessibility_100_best_practices_100_lcp_2417ms_cls_0.045_tbt_15ms_cache_waste_3.1KiB",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:performance",
+        "Lighthouse mobile 3-run median",
+        "four-surface Lighthouse cross-check",
+        "gzip/cache header smoke",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "24": {
+      "name": "session_api_supply_chain_security_hardening",
+      "status": "AUTO_VERIFIED_LOCAL_SECURITY",
+      "scope": "LOCAL_ISOLATED_FULL_STACK_SECURITY",
+      "progress": "unit_59/59_security_integration_1/1_postgresql_regression_15/15_web_headers_8/8_api_headers_8/8_npm_vulnerabilities_0_secret_findings_0",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:security",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd audit --json",
+        "Web/API header smoke",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "25": {
+      "name": "learning_quality_kpi_privacy_minimized_analytics",
+      "status": "AUTO_VERIFIED_LOCAL_ANALYTICS",
+      "scope": "LOCAL_SYNTHETIC_POSTGRESQL_AGGREGATES",
+      "progress": "primary_kpi_3/3_driver_metrics_2/2_unit_62/62_learning_quality_1/1_postgresql_regression_16/16_identifier_findings_0_raw_answer_findings_0",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:learning-quality",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "privacy response inspection",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "26": {
+      "name": "student_data_rights_request_workflow",
+      "status": "AUTO_VERIFIED_LOCAL_DATA_RIGHTS",
+      "scope": "LOCAL_SYNTHETIC_STUDENT_SELF_SERVICE",
+      "progress": "request_types_6/6_unit_66/66_data_rights_1/1_postgresql_regression_17/17_migration_forward_rollback_reapply_PASS_identifier_findings_0_guardian_channel_EXTERNAL_BLOCKED",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:data-rights",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "27": {
+      "name": "privacy_operator_queue_decision_evidence",
+      "status": "AUTO_VERIFIED_LOCAL_PRIVACY_OPERATIONS",
+      "scope": "LOCAL_SYNTHETIC_ADMIN_REVIEW",
+      "progress": "operator_tables_3/3_unit_71/71_privacy_operations_1/1_postgresql_regression_18/18_student_queue_403_completion_409_migration_forward_rollback_reapply_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:privacy-operations",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "28": {
+      "name": "privacy_fulfilment_dry_run_legal_hold_dual_approval",
+      "status": "AUTO_VERIFIED_LOCAL_FULFILMENT_CONTROLS",
+      "scope": "LOCAL_SYNTHETIC_DRY_RUN_ONLY",
+      "progress": "control_tables_5/5_unit_74/74_fulfilment_controls_1/1_postgresql_regression_19/19_legal_hold_409_dual_approval_2/2_source_mutations_0_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:fulfilment-controls",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "29": {
+      "name": "immutable_fulfilment_package_expiry_revalidation_recovery",
+      "status": "AUTO_VERIFIED_LOCAL_FULFILMENT_PACKAGE",
+      "scope": "LOCAL_SYNTHETIC_IMMUTABLE_DRY_RUN_PACKAGE",
+      "progress": "package_tables_2/2_unit_81/81_fulfilment_package_1/1_postgresql_regression_20/20_immutable_triggers_2/2_revision_1_to_2_source_mutations_0_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:fulfilment-package",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "immutable UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "30": {
+      "name": "pre_execution_operational_readiness_external_block",
+      "status": "AUTO_VERIFIED_LOCAL_EXECUTION_READINESS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_PRE_EXECUTION_CONTROLS_ONLY",
+      "progress": "readiness_tables_2/2_unit_85/85_execution_readiness_1/1_postgresql_regression_21/21_external_controls_6/6_missing_append_only_2/2_kill_switch_engaged_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:execution-readiness",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "readiness UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "31": {
+      "name": "external_operational_evidence_handoff_packet",
+      "status": "AUTO_VERIFIED_LOCAL_HANDOFF_PACKET_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_HANDOFF_INSTRUCTIONS_ONLY",
+      "progress": "handoff_tables_2/2_unit_89/89_execution_handoff_1/1_postgresql_regression_22/22_external_requirements_6/6_evidence_types_12/12_owner_roles_6/6_append_only_2/2_kill_switch_engaged_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:execution-handoff",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "handoff UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "32": {
+      "name": "external_evidence_validation_state_machine_policy",
+      "status": "AUTO_VERIFIED_LOCAL_EVIDENCE_VALIDATION_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_VALIDATION_POLICY_ONLY",
+      "progress": "validation_tables_2/2_unit_93/93_external_evidence_validation_1/1_postgresql_regression_23/23_states_8/8_transitions_13/13_rules_6/6_allowed_fields_6/6_forbidden_fields_7/7_append_only_2/2_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-evidence-validation",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "validation contract UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "33": {
+      "name": "external_evidence_intake_adapter_contract",
+      "status": "AUTO_VERIFIED_LOCAL_INTAKE_ADAPTER_CONTRACT_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_INTAKE_ADAPTER_CONTRACT_ONLY",
+      "progress": "adapter_tables_2/2_unit_97/97_external_evidence_intake_adapter_1/1_postgresql_regression_24/24_pipeline_stages_6/6_ports_6/6_missing_external_append_only_2/2_network_connection_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-evidence-intake-adapter",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "intake adapter contract UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "34": {
+      "name": "external_connection_pre_acceptance_packet",
+      "status": "AUTO_VERIFIED_LOCAL_PRE_CONNECTION_ACCEPTANCE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_PRE_CONNECTION_ACCEPTANCE_PACKET_ONLY",
+      "progress": "acceptance_tables_2/2_unit_101/101_external_connection_acceptance_1/1_postgresql_regression_25/25_requirements_6/6_owner_roles_6/6_evidence_types_12/12_append_only_2/2_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-connection-acceptance",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "connection acceptance packet UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "35": {
+      "name": "external_configuration_evidence_metadata_queue_contract",
+      "status": "AUTO_VERIFIED_LOCAL_CONFIGURATION_EVIDENCE_QUEUE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_CONFIGURATION_EVIDENCE_QUEUE_CONTRACT_ONLY",
+      "progress": "queue_tables_2/2_unit_105/105_external_configuration_evidence_queue_1/1_postgresql_regression_26/26_queue_stages_7/7_slots_6/6_evidence_types_12/12_append_only_2/2_submission_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-configuration-evidence-queue",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "configuration evidence queue UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "36": {
+      "name": "external_evidence_submission_envelope_policy",
+      "status": "AUTO_VERIFIED_LOCAL_SUBMISSION_ENVELOPE_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_SUBMISSION_ENVELOPE_POLICY_ONLY",
+      "progress": "envelope_tables_2/2_unit_109/109_external_evidence_submission_envelope_1/1_postgresql_regression_27/27_control_rules_6/6_required_fields_10/10_approval_steps_4/4_rejection_reasons_10/10_allowed_schemes_0_append_only_2/2_submission_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-evidence-submission-envelope",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "submission envelope contract UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "37": {
+      "name": "external_reference_scheme_governance",
+      "status": "AUTO_VERIFIED_LOCAL_REFERENCE_SCHEME_GOVERNANCE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_SCHEME_GOVERNANCE_ONLY",
+      "progress": "governance_tables_2/2_unit_113/113_external_reference_scheme_governance_1/1_postgresql_regression_28/28_control_policies_6/6_proposal_fields_10/10_target_fields_6/6_lifecycle_states_7/7_reapproval_triggers_6/6_proposals_0_append_only_2/2_allowlist_activation_false_submission_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-scheme-governance",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "reference scheme governance UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "38": {
+      "name": "external_reference_target_validation_policy",
+      "status": "AUTO_VERIFIED_LOCAL_TARGET_VALIDATION_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_TARGET_VALIDATION_POLICY_ONLY",
+      "progress": "target_validation_tables_2/2_unit_117/117_external_reference_target_validation_1/1_postgresql_regression_29/29_control_rules_6/6_normalization_steps_8/8_rejection_rules_14/14_ownership_proof_types_6/6_forbidden_address_classes_8/8_targets_0_proofs_0_dns_snapshots_0_append_only_2/2_dns_resolution_false_redirect_follow_false_allowlist_write_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-target-validation",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "reference target validation UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "39": {
+      "name": "external_reference_proof_handoff_contract",
+      "status": "AUTO_VERIFIED_LOCAL_PROOF_HANDOFF_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_PROOF_HANDOFF_ONLY",
+      "progress": "proof_handoff_tables_2/2_unit_121/121_external_reference_proof_handoff_1/1_postgresql_regression_30/30_control_requirements_6/6_proof_fields_12/12_issuer_trust_8/8_lifecycle_states_7/7_revalidation_triggers_8/8_dns_fields_8/8_proofs_0_issuers_0_dns_snapshots_0_append_only_2/2_proof_intake_false_dns_resolution_false_revocation_polling_false_allowlist_write_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-handoff",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "reference proof handoff UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "40": {
+      "name": "external_reference_proof_intake_state_machine_policy",
+      "status": "AUTO_VERIFIED_LOCAL_PROOF_INTAKE_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_PROOF_INTAKE_POLICY_ONLY",
+      "progress": "proof_intake_tables_2/2_unit_125/125_external_reference_proof_intake_1/1_postgresql_regression_31/31_control_rules_6/6_intake_states_9/9_allowed_transitions_14/14_rejection_codes_12/12_replay_controls_6/6_review_decisions_3/3_submissions_0_decisions_0_append_only_2/2_intake_false_quarantine_write_false_validation_execution_false_review_write_false_allowlist_write_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-intake",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "reference proof intake UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "41": {
+      "name": "external_reference_proof_quarantine_readiness_policy",
+      "status": "AUTO_VERIFIED_LOCAL_QUARANTINE_READINESS_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_QUARANTINE_READINESS_POLICY_ONLY",
+      "progress": "quarantine_tables_2/2_unit_129/129_external_reference_proof_quarantine_1/1_postgresql_regression_32/32_control_requirements_6/6_storage_controls_8/8_inspection_stages_8/8_rejection_codes_12/12_retention_events_7/7_audit_fields_10/10_content_types_0_objects_0_scan_results_0_append_only_2/2_storage_write_false_inspection_false_scan_false_deletion_false_audit_write_false_release_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-quarantine-readiness",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "quarantine readiness UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "42": {
+      "name": "external_reference_proof_scanner_readiness_policy",
+      "status": "AUTO_VERIFIED_LOCAL_SCANNER_READINESS_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_SCANNER_READINESS_POLICY_ONLY",
+      "progress": "scanner_tables_2/2_unit_133/133_external_reference_proof_scanner_1/1_postgresql_regression_33/33_control_requirements_6/6_trust_requirements_8/8_signature_freshness_7/7_execution_stages_9/9_failure_policies_10/10_attestation_fields_12/12_approved_engines_0_objects_0_scan_results_0_attestations_0_append_only_2/2_object_read_false_scan_false_retry_false_failover_false_attestation_write_false_release_false_connection_authorized_false_execution_authorized_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-scanner-readiness",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 transactional rollback+reapply",
+        "scanner readiness UPDATE+DELETE inverse tests",
+        "npm.cmd run test:productization"
+      ]
+    },
+    "43": {
+      "name": "external_reference_proof_scan_attestation_policy",
+      "status": "AUTO_VERIFIED_LOCAL_SCAN_ATTESTATION_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_SCAN_ATTESTATION_POLICY_ONLY",
+      "progress": "attestation_tables_2/2_unit_137/137_phase_1/1_postgresql_34/34_requirements_6/6_verification_10/10_results_4/4_reconciliation_8/8_failures_12/12_guards_10/10_attestations_0_results_0_decisions_0_append_only_2/2_release_false_execution_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-scan-attestation",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL 16 rollback+reapply",
+        "append-only inverse"
+      ]
+    },
+    "44": {
+      "name": "external_reference_proof_release_decision_policy",
+      "status": "AUTO_VERIFIED_LOCAL_RELEASE_DECISION_POLICY_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_HUMAN_RELEASE_DECISION_POLICY_ONLY",
+      "progress": "release_tables_2/2_unit_141/141_phase_1/1_postgresql_35/35_requirements_6/6_fields_12/12_enums_3/3_checks_10/10_rejections_10/10_segregation_6/6_reviewers_0_decisions_0_append_only_2/2_assignment_false_decision_false_release_false_execution_false_migration_PASS",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:external-reference-proof-release-decision",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "PostgreSQL rollback+reapply",
+        "append-only inverse"
+      ]
+    },
+    "45": {
+      "name": "productization_external_chain_closure_audit",
+      "status": "AUTO_VERIFIED_LOCAL_CHAIN_CLOSED_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_PRODUCTIZATION_CHAIN_COMPLETE_EXTERNAL_ACTIONS_BLOCKED",
+      "progress": "phases_0_45_present_local_chain_30_44_verified_unit_141/141_postgresql_35/35_migrations_0030/0030_external_blockers_16/16_recorded_execution_false_release_false_local_development_chain_COMPLETE",
+      "tests": [
+        "npm.cmd run test:productization:chain-closure",
+        "npm.cmd run test:unit",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd run test:productization",
+        "npm.cmd run test:operations:runtime",
+        "git diff --check"
+      ]
+    },
+    "46": {
+      "name": "product_truth_ui_differentiation_redteam_remediation",
+      "status": "AUTO_VERIFIED_LOCAL_P0_COMPLETE",
+      "scope": "LOCAL_TRUTHFUL_CAPABILITY_BASELINE_AND_FOUR_SURFACE_UI_ONLY",
+      "progress": "capabilities_15/15_classified_production_ready_0/15_surfaces_4/4_viewports_2/2_overflow_0_touch_targets_under_44px_0_dual_tutor_roles_2/2_approved_character_assets_2/2_artifact_files_35_bytes_367992",
+      "tests": [
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:screens",
+        "node scripts/productization/validate_feature_implementation.mjs",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:integration",
+        "npm.cmd run test:productization",
+        "browser 4 surfaces x mobile/desktop",
+        "git diff --check"
+      ]
+    },
+    "47": {
+      "name": "privacy_minimized_dual_character_ai_tutor_kernel",
+      "status": "AUTO_VERIFIED_LOCAL_AI_TUTOR_FALLBACK_EXTERNAL_MODEL_BLOCKED",
+      "scope": "LOCAL_RULE_FALLBACK_AND_PROVIDER_ADAPTER_ONLY",
+      "progress": "roles_2/2_locales_8/8_strict_schema_1/1_answer_leak_guard_1/1_unit_152/152_postgresql_migration_0031_forward_rollback_reapply_PASS_formula_integration_1/1_browser_cards_2/2_overflow_0_console_errors_0_provider_live_tested_false",
+      "tests": [
+        "node --test tests/unit/agent/tutor-kernel.test.mjs tests/unit/agent/openai-responses-provider.test.mjs tests/unit/client/math-learning-app.test.mjs",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:unit",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "isolated API formula integration",
+        "npm.cmd run build:staging",
+        "browser static tutor card inspection",
+        "git diff --check"
+      ]
+    },
+    "48": {
+      "name": "ai_tutor_quality_safety_evaluation_harness",
+      "status": "AUTO_VERIFIED_LOCAL_AI_EVAL_HUMAN_CALIBRATION_AND_EXTERNAL_MODEL_BLOCKED",
+      "scope": "LOCAL_SYNTHETIC_GOLDEN_AND_ADVERSARIAL_EVAL_ONLY",
+      "progress": "golden_32/32_locales_8/8_scenarios_4/4_adversarial_9/9_hard_gates_7/7_unit_155/155_dataset_hash_PASS_provider_live_tested_false_human_calibration_0/1",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "node --test tests/unit/agent/tutor-safety.test.mjs tests/unit/agent/tutor-evaluator.test.mjs tests/unit/agent/tutor-kernel.test.mjs",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "49": {
+      "name": "ai_tutor_operational_control_plane",
+      "status": "AUTO_VERIFIED_LOCAL_AI_OPERATIONS_EXTERNAL_ENABLEMENT_BLOCKED",
+      "scope": "LOCAL_IN_PROCESS_CONTROL_AND_SYNTHETIC_FAILURE_DRILLS_ONLY",
+      "progress": "feature_controls_2/2_version_pins_3/3_budget_envelopes_3/3_circuit_states_3/3_operational_drills_7/7_metrics_http_1/1_unit_162/162_security_PASS_known_vulnerabilities_0_provider_live_tested_false_api_key_accessed_false_external_deployment_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:unit",
+        "node --test tests/unit/api/tutor-metrics.test.mjs",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "50": {
+      "name": "ai_tutor_staging_promotion_readiness",
+      "status": "AUTO_VERIFIED_LOCAL_AI_STAGING_PACKET_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_FAIL_CLOSED_READINESS_PACKET_AND_STAGING_DEFAULTS_ONLY",
+      "progress": "controls_defined_10/10_controls_verified_0/10_local_scenarios_6/6_compose_safe_defaults_4/4_unit_168/168_staging_artifacts_35/35_locales_8/8_security_PASS_known_vulnerabilities_0_ready_for_canary_false_execution_authorized_false_provider_live_tested_false_api_key_accessed_false_external_deployment_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "51": {
+      "name": "ai_tutor_controlled_staging_canary_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_CANARY_HANDOFF_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_PRE_EXECUTION_HANDOFF_ONLY",
+      "progress": "source_hash_binding_1/1_locales_8/8_limits_6/6_local_scenarios_7/7_unit_174/174_phase47_51_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase50_controls_verified_0/10_execution_window_PENDING_EXTERNAL_provider_live_tested_false_api_key_accessed_false_dispatch_false_execution_authorized_false_external_deployment_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "52": {
+      "name": "ai_tutor_canary_result_intake_and_adjudication",
+      "status": "AUTO_VERIFIED_LOCAL_AI_CANARY_RESULTS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_RESULT_INTAKE_AND_DECISION_POLICY_ONLY",
+      "progress": "source_hash_binding_1/1_required_results_8_hard_gates_9/9_local_scenarios_8/8_unit_181/181_phase47_52_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_real_results_0/8_provider_live_tested_false_api_key_accessed_false_kill_switch_NOT_STARTED_rollback_NOT_STARTED_human_review_NOT_REQUESTED_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "53": {
+      "name": "ai_tutor_extended_staging_observation_readiness",
+      "status": "AUTO_VERIFIED_LOCAL_AI_EXTENDED_STAGING_OBSERVATION_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_EXTENDED_STAGING_OBSERVATION_POLICY_ONLY",
+      "progress": "source_hash_binding_1/1_locales_8/8_samples_planned_80_thresholds_12/12_local_scenarios_7/7_unit_188/188_phase47_53_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase52_real_results_0/8_observation_window_PENDING_EXTERNAL_product_owner_authorization_NOT_REQUESTED_observation_records_0_provider_live_tested_false_api_key_accessed_false_student_traffic_false_production_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "54": {
+      "name": "ai_tutor_extended_staging_result_intake_and_adjudication",
+      "status": "AUTO_VERIFIED_LOCAL_AI_EXTENDED_STAGING_RESULTS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_EXTENDED_STAGING_RESULT_POLICY_ONLY",
+      "progress": "source_hash_binding_1/1_required_results_80_locales_8/8_per_locale_10_thresholds_12/12_local_scenarios_8/8_unit_196/196_phase47_54_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_real_results_0/80_phase53_BLOCKED_EXTERNAL_provider_live_tested_false_api_key_accessed_false_student_traffic_false_production_traffic_false_promotion_review_NOT_REQUESTED_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "55": {
+      "name": "ai_tutor_production_promotion_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_PRODUCTION_PROMOTION_HANDOFF_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_DEPLOYING_PRODUCTION_HANDOFF_ONLY",
+      "progress": "source_hash_binding_1/1_controls_defined_12/12_controls_verified_0/12_local_scenarios_7/7_unit_203/203_phase47_55_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase54_BLOCKED_EXTERNAL_deployment_window_PENDING_EXTERNAL_product_owner_authorization_NOT_REQUESTED_initial_traffic_0_feature_flag_OFF_api_key_accessed_false_deployment_authorized_false_external_deployment_false_student_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "56": {
+      "name": "ai_tutor_controlled_production_rollout_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_CONTROLLED_PRODUCTION_ROLLOUT_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_DISPATCHING_INTERNAL_STAFF_ROLLOUT_HANDOFF_ONLY",
+      "progress": "source_hash_binding_1/1_preflight_defined_8/8_preflight_verified_0/8_locales_8/8_planned_requests_8_duration_15m_concurrency_1_retries_0_local_scenarios_7/7_unit_210/210_phase47_56_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase55_BLOCKED_EXTERNAL_execution_window_PENDING_EXTERNAL_product_owner_authorization_NOT_REQUESTED_api_key_accessed_false_dispatch_false_feature_flag_changed_false_external_deployment_false_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "57": {
+      "name": "ai_tutor_controlled_production_rollout_result_intake_and_adjudication",
+      "status": "AUTO_VERIFIED_LOCAL_AI_CONTROLLED_PRODUCTION_ROLLOUT_RESULTS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_ONLY_INTERNAL_ROLLOUT_RESULT_POLICY",
+      "progress": "source_hash_binding_1/1_required_results_8_locales_8/8_hard_gates_12/12_local_scenarios_8/8_unit_218/218_phase47_57_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_real_results_0/8_phase56_BLOCKED_EXTERNAL_rollout_observed_false_dispatch_observed_false_provider_live_tested_false_feature_flag_changed_false_feature_flag_restored_off_false_review_NOT_REQUESTED_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "58": {
+      "name": "ai_tutor_limited_production_final_safety_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_SAFETY_HANDOFF_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_EXECUTING_INTERNAL_ADULT_SAFETY_HANDOFF_ONLY",
+      "progress": "source_hash_binding_1/1_controls_defined_16/16_controls_verified_0/16_local_scenarios_8/8_unit_226/226_phase47_58_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase57_BLOCKED_EXTERNAL_execution_window_PENDING_EXTERNAL_product_owner_review_NOT_REQUESTED_api_key_accessed_false_execution_performed_false_dispatch_performed_false_provider_live_tested_false_feature_flag_changed_false_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-limited-production-safety-handoff",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "59": {
+      "name": "ai_tutor_limited_production_observation_result_intake_and_adjudication",
+      "status": "AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_OBSERVATION_RESULTS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_REFERENCE_ONLY_INTERNAL_ADULT_OBSERVATION_RESULT_POLICY",
+      "progress": "source_hash_binding_1/1_required_results_8_locales_8/8_hard_gates_15/15_local_scenarios_8/8_unit_234/234_phase47_59_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_real_results_0/8_phase58_BLOCKED_EXTERNAL_observation_observed_false_execution_observed_false_dispatch_observed_false_provider_live_tested_false_feature_flag_changed_false_feature_flag_restored_off_false_deletion_NOT_STARTED_kill_switch_NOT_STARTED_rollback_NOT_STARTED_incident_NOT_STARTED_review_NOT_REQUESTED_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-limited-production-observation-results",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-safety-handoff",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "60": {
+      "name": "ai_tutor_limited_production_expansion_composite_decision_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_EXPANSION_DECISION_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_EXECUTING_COMPOSITE_EVIDENCE_DECISION_ONLY",
+      "progress": "source_hash_binding_1/1_evidence_defined_20/20_evidence_verified_0/20_thresholds_7/7_local_scenarios_8/8_unit_242/242_phase47_60_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase59_BLOCKED_EXTERNAL_decision_window_PENDING_EXTERNAL_review_NOT_REQUESTED_api_key_accessed_false_expansion_executed_false_dispatch_performed_false_provider_live_tested_false_feature_flag_changed_false_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-limited-production-expansion-decision",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-safety-handoff",
+        "npm.cmd run test:productization:ai-tutor-limited-production-observation-results",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "61": {
+      "name": "ai_tutor_limited_production_expansion_non_executing_plan",
+      "status": "AUTO_VERIFIED_LOCAL_AI_LIMITED_PRODUCTION_EXPANSION_PLAN_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_DISPATCHING_INTERNAL_ADULT_EXPANSION_PLAN_ONLY",
+      "progress": "source_hash_binding_1/1_plan_slots_8/8_requests_64_duration_60m_concurrency_2_retries_0_controls_defined_14/14_controls_verified_0/14_local_scenarios_8/8_unit_250/250_phase47_61_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase60_BLOCKED_EXTERNAL_execution_window_PENDING_EXTERNAL_review_NOT_REQUESTED_api_key_accessed_false_plan_executed_false_dispatch_performed_false_provider_live_tested_false_feature_flag_changed_false_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-limited-production-expansion-plan",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-safety-handoff",
+        "npm.cmd run test:productization:ai-tutor-limited-production-observation-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-expansion-decision",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "62": {
+      "name": "ai_tutor_limited_production_final_preflight_non_dispatching_handoff",
+      "status": "AUTO_VERIFIED_LOCAL_AI_FINAL_PREFLIGHT_HANDOFF_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_SYNTHETIC_NON_DISPATCHING_FINAL_PREFLIGHT_HANDOFF_ONLY",
+      "progress": "source_hash_binding_1/1_handoff_packets_8/8_requests_64_duration_60m_concurrency_2_retries_0_preflight_defined_16/16_preflight_verified_0/16_local_scenarios_8/8_unit_258/258_phase47_62_PASS_staging_artifacts_35/35_security_PASS_secret_files_scanned_309_known_vulnerabilities_0_phase61_BLOCKED_EXTERNAL_operator_PENDING_EXTERNAL_review_NOT_REQUESTED_api_key_accessed_false_preflight_executed_false_handoff_dispatched_false_provider_live_tested_false_feature_flag_changed_false_student_traffic_false_public_traffic_false_production_promotion_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-final-preflight-handoff",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:productization:ai-tutor-kernel",
+        "npm.cmd run test:productization:ai-tutor-evals",
+        "npm.cmd run test:productization:ai-tutor-operations",
+        "npm.cmd run test:productization:ai-tutor-staging-readiness",
+        "npm.cmd run test:productization:ai-tutor-canary-handoff",
+        "npm.cmd run test:productization:ai-tutor-canary-results",
+        "npm.cmd run test:productization:ai-tutor-extended-staging",
+        "npm.cmd run test:productization:ai-tutor-extended-staging-results",
+        "npm.cmd run test:productization:ai-tutor-production-promotion-handoff",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout",
+        "npm.cmd run test:productization:ai-tutor-controlled-production-rollout-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-safety-handoff",
+        "npm.cmd run test:productization:ai-tutor-limited-production-observation-results",
+        "npm.cmd run test:productization:ai-tutor-limited-production-expansion-decision",
+        "npm.cmd run test:productization:ai-tutor-limited-production-expansion-plan",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "63": {
+      "name": "ai_tutor_limited_execution_result_intake_and_adjudication",
+      "status": "AUTO_VERIFIED_LOCAL_AI_LIMITED_EXECUTION_RESULTS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_REFERENCE_ONLY_EIGHT_LOCALE_RESULT_POLICY",
+      "progress": "source_hash_binding_1/1_result_slots_8/8_real_results_0/8_hard_gates_14/14_request_limit_64_duration_60m_local_scenarios_5/5_unit_273/273_phase47_65_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase62_BLOCKED_EXTERNAL_review_NOT_REQUESTED_execution_observed_false_dispatch_observed_false_provider_live_tested_false_feature_flag_changed_false_student_traffic_false_public_traffic_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-remaining-phases",
+        "node --test tests/unit/agent/tutor-limited-execution-results.test.mjs",
+        "npm.cmd run test:unit",
+        "git diff --check"
+      ]
+    },
+    "64": {
+      "name": "ai_tutor_final_composite_go_no_go_decision",
+      "status": "AUTO_VERIFIED_LOCAL_AI_FINAL_GO_NO_GO_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_REFERENCE_ONLY_NON_RELEASING_GO_NO_GO_POLICY",
+      "progress": "source_hash_binding_1/1_thresholds_7/7_evidence_defined_12/12_evidence_verified_0/12_local_scenarios_5/5_unit_273/273_phase47_65_PASS_staging_artifacts_35/35_security_PASS_known_vulnerabilities_0_phase63_BLOCKED_EXTERNAL_decision_window_PENDING_EXTERNAL_review_NOT_REQUESTED_release_executed_false_dispatch_performed_false_feature_flag_changed_false_student_traffic_false_public_traffic_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-remaining-phases",
+        "node --test tests/unit/agent/tutor-final-go-no-go-decision.test.mjs",
+        "npm.cmd run test:unit",
+        "git diff --check"
+      ]
+    },
+    "65": {
+      "name": "productization_final_operations_handoff_and_local_chain_closure",
+      "status": "LOCAL_PRODUCTIZATION_CHAIN_COMPLETE_EXTERNAL_RELEASE_BLOCKED",
+      "scope": "LOCAL_NON_DEPLOYING_TERMINAL_CLOSURE_AUDIT_ONLY",
+      "progress": "remaining_metaprompts_3/3_source_hash_binding_1/1_closure_controls_defined_10/10_closure_controls_verified_0/10_local_scenarios_5/5_remaining_chain_scenarios_15/15_unit_273/273_integration_35/35_browser_core_journey_PASS_operations_runtime_20/20_database_ready_PASS_phase47_65_PASS_staging_artifacts_35/35_security_PASS_secret_files_scanned_312_known_vulnerabilities_0_phase64_BLOCKED_EXTERNAL_final_review_NOT_REQUESTED_local_chain_terminal_true_additional_local_phase_allowed_false_local_staging_api_rebuilt_true_external_deployment_performed_false_release_performed_false_feature_flag_changed_false_student_traffic_false_public_traffic_false",
+      "tests": [
+        "npm.cmd run test:productization:ai-tutor-remaining-phases",
+        "npm.cmd run test:unit",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:integration",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "66": {
+      "name": "daechi_80_specialization_foundation",
+      "status": "LOCAL_SPECIALIZATION_FOUNDATION_PASS_FIELD_EVIDENCE_BLOCKED",
+      "scope": "LOCAL_EVIDENCE_GATED_ACADEMY_TRACK_API_UI_ONLY",
+      "progress": "requirements_10/10_tracks_4/4_locales_8/8_unit_281/281_integration_37/37_target_integration_2/2_staging_artifacts_39/39_browser_desktop_PASS_browser_mobile_PASS_horizontal_overflow_false_security_PASS_secret_files_scanned_318_known_vulnerabilities_0_operations_runtime_20/20_database_ready_PASS_market_score_80_confirmed_false_field_evidence_BLOCKED_EXTERNAL_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:daechi-specialization",
+        "npm.cmd run test:unit",
+        "npm.cmd run test:integration:academy-readiness",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:integration",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:operations:runtime",
+        "browser 1440x900 and 390x844",
+        "git diff --check"
+      ]
+    },
+    "67": {
+      "name": "licensed_professional_content_corpus_foundation",
+      "status": "LOCAL_CONTENT_CORPUS_PLATFORM_PASS_LICENSED_ITEMS_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_POSTGRESQL_LICENSE_REVIEW_PUBLICATION_GOVERNANCE_ONLY",
+      "progress": "corpus_contract_1/1_target_30000_tables_6/6_publication_gates_5/5_migration_forward_6/6_rollback_0/0_reapply_6/6_inverse_publication_gate_PASS_distinct_math_reviews_PASS_rights_review_PASS_revision_immutability_PASS_synthetic_rows_after_test_0_unit_287/287_integration_39/39_target_integration_2/2_staging_artifacts_39/39_security_PASS_secret_files_scanned_323_known_vulnerabilities_0_operations_runtime_20/20_database_ready_PASS_licensed_items_supplied_0/30000_d80_02_complete_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:content-corpus",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL publication inverse smoke",
+        "npm.cmd run test:integration:content-corpus",
+        "npm.cmd run test:unit",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:staging",
+        "node scripts/productization/validate_security_phase24.mjs",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "68": {
+      "name": "solution_recognition_confidence_and_manual_fallback",
+      "status": "LOCAL_SOLUTION_RECOGNITION_PLATFORM_PASS_OCR_BENCHMARK_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_MANUAL_TEXT_POSTGRESQL_CONFIDENCE_GATE_AND_IMAGE_FAIL_CLOSED_FALLBACK",
+      "progress": "requirement_D80_03_contract_1/1_decisions_4/4_tables_3/3_migration_forward_3/3_rollback_0/0_reapply_3/3_db_smoke_PASS_raw_asset_persisted_false_raw_candidates_persisted_false_automatic_scoring_false_manual_confirmation_PASS_image_spoof_fallback_PASS_student_scope_403_idempotency_PASS_phase_unit_7/7_full_unit_294/294_target_integration_4/4_bulk_integration_39/43_isolated_recheck_4/4_effective_integration_43/43_staging_artifacts_39/39_security_PASS_secret_files_scanned_328_known_vulnerabilities_0_operations_runtime_20/20_database_ready_PASS_ocr_provider_NOT_CONFIGURED_accuracy_benchmark_NOT_RUN_d80_03_complete_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:solution-recognition",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL solution recognition smoke",
+        "npm.cmd run test:integration:solution-recognition",
+        "npm.cmd run test:unit",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "four failed bulk files rerun independently",
+        "npm.cmd run test:productization:security",
+        "npm.cmd audit --audit-level=moderate",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:staging",
+        "git diff --check"
+      ]
+    },
+    "69": {
+      "name": "evidence_gated_academy_track_curriculum",
+      "status": "LOCAL_ACADEMY_CURRICULUM_PLATFORM_PASS_EXPERT_LICENSE_FIELD_EVIDENCE_BLOCKED",
+      "scope": "LOCAL_SYNTHETIC_POSTGRESQL_4_TRACK_12_GRADE_FORMULA_ROUTE",
+      "progress": "requirement_D80_04_contract_1/1_grades_12/12_tracks_4/4_plans_48/48_formulas_72/72_assignments_288/288_formulas_per_plan_6/6_recall_items_72/72_application_items_216/216_source_aligned_explanations_72/72_tables_2/2_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_evidence_gated_fallback_PASS_cross_student_403_invalid_track_400_answer_schemas_excluded_true_locales_8/8_browser_desktop_PASS_browser_mobile_390px_PASS_horizontal_overflow_false_cache_mixed_deployment_fixed_PASS_phase_unit_6/6_full_unit_298/298_target_integration_4/4_file_isolated_integration_47/47_staging_artifacts_39/39_math_expert_reviewed_plans_0/48_licensed_plans_0/48_d80_04_complete_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:academy-curriculum",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL academy curriculum smoke",
+        "npm.cmd run test:integration:academy-curriculum",
+        "npm.cmd run test:integration:web-academy-curriculum",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "browser desktop and 390x844",
+        "npm.cmd run test:productization:security",
+        "npm.cmd audit --audit-level=moderate",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "70": {
+      "name": "teacher_parent_learning_operations_console",
+      "status": "LOCAL_TEACHER_PARENT_OPERATIONS_AUTOMATED_PASS_VISUAL_MANAGED_IDENTITY_FIELD_EVIDENCE_BLOCKED",
+      "scope": "LOCAL_SYNTHETIC_POSTGRESQL_ROLE_SCOPED_OPERATIONS_ONLY",
+      "progress": "requirement_D80_05_contract_1/1_roles_2/2_locales_8/8_tables_4/4_teacher_link_1/1_parent_link_1/1_parent_report_consent_1/1_assignment_items_6/6_assignment_forward_transitions_PASS_intervention_PASS_parent_read_only_PASS_cross_student_403_private_learning_fields_exposed_0_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_phase_unit_5/5_full_unit_305/305_target_integration_4/4_file_isolated_integration_51/51_staging_artifacts_43/43_security_PASS_secret_files_scanned_344_lockfile_known_vulnerabilities_0_live_registry_audit_BLOCKED_POLICY_operations_runtime_20/20_database_ready_PASS_browser_automation_BLOCKED_TOOLING_manual_visual_review_PENDING_managed_identity_NOT_CONFIGURED_institution_roster_NOT_CONNECTED_field_validation_NOT_RUN_d80_05_complete_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:teacher-parent-operations",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL teacher-parent operations smoke",
+        "npm.cmd run test:integration:teacher-parent-operations",
+        "npm.cmd run test:integration:web-teacher-parent-operations",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:integration",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "71": {
+      "name": "learning_effect_pilot_readiness_platform",
+      "status": "LOCAL_PILOT_READINESS_PLATFORM_PASS_ACTUAL_PILOT_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+      "progress": "requirement_D80_06_contract_1/1_minimum_participants_100_duration_8_to_12_weeks_cohorts_2/2_metrics_primary_2/2_drivers_2/2_guardrails_4/4_tables_6/6_analysis_plan_hash_bound_PASS_locked_protocol_immutability_PASS_cross_protocol_fk_guards_PASS_direct_identity_fields_0_raw_answer_fields_0_problem_text_fields_0_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_phase_unit_6/6_full_unit_311/311_target_integration_2/2_file_isolated_integration_53/53_admin_readiness_200_student_access_403_security_PASS_secret_files_scanned_350_known_vulnerabilities_0_operations_runtime_20/20_staging_artifacts_43/43_phase0_PASS_actual_participants_0/100_observed_weeks_0/8_pre_0_post_0_retention_0_independent_analysis_0_learning_effect_proven_false_daechi_fit_proven_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:learning-effect-pilot",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL learning effect pilot smoke",
+        "npm.cmd run test:integration:learning-effect-pilot",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "72": {
+      "name": "independent_math_expert_dual_review_platform",
+      "status": "LOCAL_MATH_EXPERT_DUAL_REVIEW_PLATFORM_PASS_ACTUAL_EXPERT_EVIDENCE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+      "progress": "requirement_D80_07_contract_1/1_minimum_distinct_reviewers_2_criteria_4/4_tables_8/8_blind_review_required_true_same_hash_gate_PASS_independent_adjudicator_gate_PASS_append_only_history_PASS_audit_event_chain_PASS_single_reviewer_inverse_PASS_hash_mismatch_inverse_PASS_expired_credential_inverse_PASS_unresolved_rejection_inverse_PASS_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_phase_unit_6/6_full_unit_317/317_target_integration_2/2_file_isolated_integration_55/55_admin_readiness_200_student_access_403_security_PASS_secret_files_scanned_356_known_vulnerabilities_0_operations_runtime_20/20_staging_artifacts_43/43_phase0_PASS_verified_experts_0_review_targets_0_dual_approved_targets_0_resolved_disagreements_0_professional_review_complete_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "npm.cmd run test:productization:math-expert-review",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL math expert dual review smoke",
+        "npm.cmd run test:integration:math-expert-review",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "npm.cmd run test:productization:security",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run test:productization:staging",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "73": {
+      "name": "ai_tutor_external_model_evidence_platform",
+      "status": "LOCAL_AI_TUTOR_EVIDENCE_PLATFORM_PASS_ACTUAL_MODEL_EVIDENCE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+      "progress": "requirement_D80_08_contract_1/1_criteria_8/8_locales_8/8_tables_6/6_model_prompt_dataset_hash_pin_required_true_aggregate_only_storage_PASS_append_only_history_PASS_public_privileges_revoked_PASS_safety_violations_max_0_answer_leaks_max_0_pii_exposures_max_0_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_phase_unit_5/5_full_unit_322/322_target_integration_2/2_file_isolated_integration_57/57_admin_readiness_200_student_access_403_security_PASS_secret_files_scanned_362_known_vulnerabilities_0_operations_runtime_20/20_staging_artifacts_43/43_phase0_PASS_actual_live_runs_0_actual_evaluated_cases_0_human_calibrated_cases_0_independent_approvals_0_provider_live_tested_false_actual_model_quality_proven_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "node scripts/productization/validate_ai_tutor_evidence_phase73.mjs",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL AI tutor external evidence smoke",
+        "npm.cmd run test:integration:ai-tutor-evidence",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "node scripts/productization/validate_security_phase24.mjs",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run build:staging",
+        "node scripts/productization/validate_staging_readiness.mjs",
+        "node scripts/productization/validate_database_design.mjs",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "74": {
+      "name": "daechi_field_pilot_readiness_platform",
+      "status": "LOCAL_FIELD_PILOT_PLATFORM_PASS_ACTUAL_ACADEMY_EVIDENCE_BLOCKED_EXTERNAL",
+      "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+      "progress": "requirement_D80_09_contract_1/1_academy_range_2_to_3_metrics_6/6_requirements_F01_to_F07_7/7_tables_7/7_aggregate_only_storage_PASS_direct_academy_name_address_contact_student_id_raw_response_fields_0_protocol_lock_PASS_append_only_history_PASS_public_privileges_revoked_PASS_tdd_initial_failure_ERR_MODULE_NOT_FOUND_resolved_PASS_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_prompt_contract_8/8_phase_unit_7/7_full_unit_329/329_target_integration_2/2_file_isolated_integration_59/59_admin_readiness_200_student_access_403_security_PASS_secret_files_scanned_368_known_vulnerabilities_0_operations_runtime_20/20_staging_artifacts_43/43_phase0_PASS_actual_academies_0/2_actual_agreements_0_actual_students_0_actual_observed_weeks_0_actual_independent_results_0_actual_product_approvals_0_daechi_fit_proven_false_market_score_80_confirmed_false_external_deployment_performed_false",
+      "tests": [
+        "strict prompt contract validation",
+        "npm.cmd run test:productization:daechi-field-pilot",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL Daechi field pilot smoke",
+        "npm.cmd run test:integration:daechi-field-pilot",
+        "npm.cmd run test:unit",
+        "file-isolated tests/integration/*.test.mjs",
+        "node scripts/productization/validate_security_phase24.mjs",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run build:staging",
+        "node scripts/productization/validate_staging_readiness.mjs",
+        "node scripts/productization/validate_database_design.mjs",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    },
+    "75": {
+      "name": "commercial_operations_readiness_platform",
+      "status": "LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED",
+      "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+      "progress": "requirement_D80_10_contract_1/1_controls_10/10_environments_4/4_tables_6/6_aggregate_only_storage_PASS_direct_legal_document_payment_token_backup_payload_personal_contact_fields_0_protocol_lock_PASS_append_only_history_PASS_public_privileges_revoked_PASS_tdd_initial_failure_ERR_MODULE_NOT_FOUND_resolved_PASS_migration_forward_PASS_rollback_PASS_reapply_PASS_db_smoke_PASS_prompt_contract_8/8_phase_unit_7/7_full_unit_336/336_target_integration_2/2_full_integration_61/61_security_PASS_secret_files_scanned_374_known_vulnerabilities_0_operations_runtime_20/20_staging_artifacts_43/43_phase0_PASS_actual_verified_controls_0/10_actual_recovery_drills_0_actual_product_reviews_0_legal_commercial_release_market_claims_false_external_deployment_performed_false",
+      "tests": [
+        "strict prompt contract validation",
+        "npm.cmd run test:productization:commercial-operations",
+        "PostgreSQL 16 migration forward+rollback+reapply",
+        "PostgreSQL commercial operations smoke",
+        "npm.cmd run test:integration:commercial-operations",
+        "npm.cmd run test:unit",
+        "node --test --test-concurrency=1 tests/integration/*.test.mjs",
+        "node scripts/productization/validate_security_phase24.mjs",
+        "npm.cmd run test:operations:runtime",
+        "npm.cmd run build:staging",
+        "node scripts/productization/validate_staging_readiness.mjs",
+        "node scripts/productization/validate_database_design.mjs",
+        "npm.cmd run test:productization:phase0",
+        "git diff --check"
+      ]
+    }
+  },
+  "external_execution_preparation": {
+    "status": "D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET",
+    "route_validation_status": "VERIFIED_READ_ONLY_ROUTE_CONNECTION",
+    "register": "docs/productization/evidence/EXTERNAL_EXECUTION_READINESS_REGISTER_v1.0.json",
+    "workstreams": "9/9",
+    "actual_external_evidence": 1,
+    "dispatch_performed": false,
+    "verification_enabled": false,
+    "production_release_authorized": false,
+    "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "next_input_fields": [
+      "target_reference",
+      "provider_code",
+      "environment_code",
+      "connection_reference"
+    ],
+    "gate8_external_preflight": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
+    "gate8_external_preflight_decision": "HOLD",
+    "gate8_external_preflight_blockers": 6
+  },
+  "stage8_dependency": {
+    "gate5_status": "VERIFIED",
+    "gate5_approval": "1/1",
+    "gate6_status": "VERIFIED",
+    "gate6_entry_allowed": true,
+    "gate6_evidence_map": "docs/stage8/evidence/gate6/GATE6_PRODUCT_INTEGRATION_EVIDENCE_MAP_v1.0.json",
+    "gate6_blockers": [],
+    "gate6_release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
+    "gate7_status": "VERIFIED",
+    "gate8_status": "BLOCKED",
+    "gate8_preflight_decision": "HOLD",
+    "gate8_next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
+  },
+  "blockers": [
+    "Stage 8 Gate 7, local Gate 8 deployment, and one read-only route connection evidence are VERIFIED; live provider preflight is HOLD because deployment target and authorization references, adapter, HTTPS base URL, origin write permission, and protected deployment environment are not configured",
+    "D80-10 commercial operations readiness remains externally blocked until legal and child-consent policy, content-rights, payment and refund, SLA and support, incident response, monitoring notification, backup and restore, migration rollback, deployment health-check, and security access-review evidence are supplied and a product-owner release review is recorded; local platform PASS does not authorize commercial release or market claims",
+    "D80-09 Daechi field validation remains externally blocked until two to three authorized academies provide agreement, privacy and participant-consent evidence, complete aggregate observations for six preregistered metrics, resolve all high and critical issues, and supply independently verified results plus product-owner review; no academy names, contacts, participants, outcomes, or purchase intent may be invented",
+    "D80-08 AI tutor actual-model evidence remains externally blocked until approved model, prompt and evaluation-dataset pins, authorized provider execution, eight-locale aggregate results, human calibration, independent approval, and deletion or incident evidence are supplied; local rule and synthetic evaluation PASS must not be marketed as live-model quality",
+    "D80-05 teacher-parent operations remains externally blocked until managed identity, institution roster and guardian relationship verification, production consent operations, notification routes, and consented field validation are supplied; automated browser connection also requires recovery before manual visual approval",
+    "D80-04 professional academy curriculum remains externally blocked until 48/48 plans receive independent math-expert review, licensed-content evidence, and consented field validation; local synthetic coverage must not be marketed as Daechi-proven",
+    "D80-03 handwriting and photo recognition remains externally blocked until an approved OCR provider, consented grade-and-item-type benchmark dataset, accuracy thresholds, and expert calibration evidence are supplied",
+    "Final productization closure remains externally blocked because Phase 64 is not accepted, all 10 closure controls are unverified, and no final product-owner release review exists",
+    "AI tutor final Go/No-Go remains blocked because Phase 63 is not accepted, all 12 composite evidence records are unverified, and no approved decision window or product-owner review exists",
+    "AI tutor limited execution result adjudication remains blocked because Phase 62 is not accepted and no eight-locale reference-only result evidence or product-owner review exists",
+    "AI tutor final preflight handoff remains blocked because Phase 61 is not accepted, all 16 final preflight controls are unverified, and no authorized operator or product-owner final review evidence exists",
+    "AI tutor limited-production expansion plan remains blocked because Phase 60 is not accepted, all 14 execution controls are unverified, and no approved execution window or product-owner review evidence exists",
+    "AI tutor limited-production expansion decision remains blocked because Phase 59 is not accepted, all 20 composite evidence records are unverified, and no approved decision window or product-owner review evidence exists",
+    "AI tutor limited-production observation result adjudication remains blocked because Phase 58 is not accepted and no reference-only observation results, reference-deletion, feature-flag restore, kill-switch rearm, rollback, incident-disposition, or product-owner review evidence exists",
+    "AI tutor limited-production safety handoff remains blocked because Phase 57 is not accepted, all 16 external safety controls are unverified, and no approved execution window or product-owner review evidence exists",
+    "AI tutor controlled-production rollout result adjudication remains blocked because Phase 56 is not ready and no reference-only rollout results, feature-flag restore, kill-switch rearm, rollback, or product-owner review evidence exists",
+    "AI tutor controlled-production rollout handoff remains blocked because Phase 55 is not ready, all 8 rollout preflight checkpoints are unverified, and no execution-window or product-owner authorization reference exists",
+    "AI tutor production-promotion handoff remains blocked because Phase 54 is not accepted, all 12 external production controls are unverified, and no deployment-window or product-owner authorization reference exists",
+    "AI tutor extended-staging result adjudication remains blocked because Phase 53 is not ready and no reference-only observation results, kill-switch rearm, rollback, or product-owner promotion-review evidence exists",
+    "AI tutor extended-staging observation remains blocked because Phase 52 has no accepted canary result and no approved internal-QA observation window or product-owner authorization exists",
+    "AI tutor canary result adjudication remains blocked because Phase 51 dispatch has not occurred and no reference-only canary result, kill-switch rearm, rollback, or human-review evidence exists",
+    "AI tutor controlled canary dispatch remains blocked until Phase 50 reaches 10/10 verified controls with product-owner approval and an approved canary execution-window reference is supplied",
+    "AI tutor controlled staging canary remains blocked until all 10 external readiness controls and an explicit product-owner authorization reference are supplied",
+    "AI tutor production enablement requires an approved OpenAI staging and production project, secret manager, platform rate and spend limits, immutable model snapshot confirmation, central durable budget counters, monitoring notification routes, and authorized rollout",
+    "AI tutor automated scoring requires education and linguistic expert calibration before it can be treated as a production quality signal",
+    "AI tutor external model evaluation requires an approved API key, zero-data-retention controls for applicable minors, cost limits, and authorized network execution",
+    "Production learning KPI targets and cohort comparisons require real traffic, approved consent/deletion operations policy, minimum cohort rules, and grade-level distribution review",
+    "Guardian data-right requests require managed identity, active parent-student link reverification, proxy authority policy, and privacy-officer approval",
+    "Production HTTPS/HSTS, managed identity, central secret storage, WAF/distributed rate limiting, and penetration testing require external configuration and authorization",
+    "Production field Core Web Vitals including 75th-percentile INP require external deployment and real-user traffic",
+    "Product-owner keyboard and screen-reader review is pending (0/1)",
+    "Human linguistic review is pending for seven non-Korean locales (0/7)",
+    "External deployment target and authorization are not configured",
+    "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
+  ],
+  "last_updated": "2026-08-15T13:51:43.212Z"
+}

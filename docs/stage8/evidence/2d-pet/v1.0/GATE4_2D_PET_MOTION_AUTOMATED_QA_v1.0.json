@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-15T13:04:41.546196+00:00",
+  "gate": 4,
+  "status": "VERIFIED",
+  "automated_status": "PASS",
+  "motion_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+  "motion_manifest_sha256": "8fbfed70bfc21ec1e34f03991c743cf10d504d2efc1618065376cb4597d290ab",
+  "state_pass_count": 8,
+  "state_expected_count": 8,
+  "reduced_motion_pass_count": 8,
+  "implementation_pass_count": 2,
+  "implementation_expected_count": 2,
+  "pose_bridge_pass": true,
+  "natural_choreography_pass": true,
+  "browser_runtime_pass": true,
+  "browser_runtime_qa": "docs/stage8/evidence/2d-pet/v1.0/GATE4_2D_PET_BROWSER_RUNTIME_QA_v1.0.json",
+  "states": [
+    {
+      "state": "IDLE_LISTEN",
+      "pose_id": "P01",
+      "duration_ms": 5000,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "WELCOME",
+      "pose_id": "P02",
+      "duration_ms": 1000,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "GUIDE",
+      "pose_id": "P03",
+      "duration_ms": 1200,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "THINK",
+      "pose_id": "P04",
+      "duration_ms": 3000,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "PRAISE_PROGRESS",
+      "pose_id": "P05",
+      "duration_ms": 1200,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "SEARCH",
+      "pose_id": "P06",
+      "duration_ms": 2500,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "CELEBRATE",
+      "pose_id": "P07",
+      "duration_ms": 1300,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "state": "RETRY",
+      "pose_id": "P08",
+      "duration_ms": 1100,
+      "status": "PASS",
+      "failures": []
+    }
+  ],
+  "implementations": [
+    {
+      "kind": "stylesheet",
+      "path": "assets/stage8/2d-pet-motion-v1.0.css",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "kind": "runtime",
+      "path": "assets/stage8/2d-pet-motion-v1.0.js",
+      "status": "PASS",
+      "failures": []
+    }
+  ],
+  "failures": [],
+  "manual_approval_required": 1,
+  "manual_approval_count": 1,
+  "blockers": [],
+  "gate4_status_change_applied": true,
+  "next_gate_allowed": true
+}

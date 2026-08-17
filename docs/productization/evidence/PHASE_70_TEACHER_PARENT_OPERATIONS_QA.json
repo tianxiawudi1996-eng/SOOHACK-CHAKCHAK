@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 70,
+  "requirement_id": "D80-05",
+  "status": "LOCAL_TEACHER_PARENT_OPERATIONS_AUTOMATED_PASS_VISUAL_MANAGED_IDENTITY_FIELD_EVIDENCE_BLOCKED",
+  "verified_at": "2026-08-12T15:39:42+09:00",
+  "scope": "LOCAL_SYNTHETIC_POSTGRESQL",
+  "coverage": {
+    "roles": {"actual": 2, "expected": 2},
+    "locales": {"actual": 8, "expected": 8},
+    "database_tables": {"actual": 4, "expected": 4},
+    "teacher_links": {"actual": 1, "expected": 1},
+    "parent_links": {"actual": 1, "expected": 1},
+    "parent_report_consents": {"actual": 1, "expected": 1},
+    "assignment_items_per_plan": {"actual": 6, "expected": 6}
+  },
+  "database": {
+    "engine": "PostgreSQL 16",
+    "migration": "0035_teacher_parent_operations.sql",
+    "forward": "PASS",
+    "rollback": "PASS",
+    "reapply": "PASS",
+    "smoke": "PASS",
+    "constraints_and_indexes": "PASS",
+    "public_privileges_revoked": true
+  },
+  "verification": {
+    "phase_unit": "5/5 PASS",
+    "full_unit": "305/305 PASS",
+    "target_integration": "4/4 PASS",
+    "file_isolated_integration": "51/51 PASS",
+    "assignment_create_and_six_items": "PASS",
+    "assignment_forward_transitions": "PASS",
+    "teacher_intervention": "PASS",
+    "parent_read_only": "403 PASS",
+    "cross_student_access": "403 PASS",
+    "private_learning_fields_exposed": 0,
+    "staging_artifacts": "43/43",
+    "browser_automation": "BLOCKED_TOOLING",
+    "browser_blocker": "Browser control runtime could not create its local kernel assets; no visual PASS was inferred.",
+    "manual_visual_review": "PENDING"
+  },
+  "final_gates": {
+    "security": "PASS",
+    "secret_files_scanned": 344,
+    "lockfile_known_vulnerabilities": 0,
+    "live_registry_audit": "BLOCKED_POLICY_PROJECT_METADATA_DISCLOSURE_NOT_AUTHORIZED",
+    "operations_runtime": "20/20 PASS",
+    "server_errors": 0,
+    "database_ready": true,
+    "integration_status": "PASS"
+  },
+  "external_evidence": {
+    "managed_identity_configured": false,
+    "institution_roster_connected": false,
+    "guardian_relationship_verified": false,
+    "notification_routes_configured": false,
+    "field_validation_completed": false,
+    "production_ready": false,
+    "market_score_80_confirmed": false
+  },
+  "truth_boundary": {
+    "real_teacher_or_parent_data_used": false,
+    "learning_effect_claimed": false,
+    "daechi_fit_claimed": false,
+    "external_deployment_performed": false
+  }
+}

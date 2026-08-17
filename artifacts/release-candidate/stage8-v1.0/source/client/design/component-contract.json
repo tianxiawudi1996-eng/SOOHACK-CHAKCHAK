@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "design_mix": {"bento": 50, "material": 35, "playful": 15},
+  "components": [
+    {"name":"AppHeader","variants":["desktop","mobile"],"states":["default","focus"]},
+    {"name":"LocaleSelector","variants":["compact"],"states":["default","focus","selected"]},
+    {"name":"PrimaryButton","variants":["solid","inverse"],"states":["default","hover","focus","disabled","loading"]},
+    {"name":"SecondaryButton","variants":["outline"],"states":["default","hover","focus","disabled"]},
+    {"name":"FeatureCard","variants":["brand","mint","sun","plain"],"states":["default"]},
+    {"name":"LearningStep","variants":["done","current","next"],"states":["default"]},
+    {"name":"TutorPreview","variants":["student","parent"],"states":["idle","active","complete"]},
+    {"name":"PetPair","variants":["welcome"],"states":["static","motion_allowed"]},
+    {"name":"ProgressMeter","variants":["bar","score"],"states":["default"]},
+    {"name":"Notice","variants":["info","success","error"],"states":["default"]}
+  ],
+  "density": {
+    "student_surface": "low_to_medium",
+    "parent_surface": "medium",
+    "operations_surface": "high",
+    "label_max_characters": 38
+  },
+  "accessibility": {
+    "minimum_target_css_px": 44,
+    "minimum_body_css_px": 16,
+    "keyboard_focus_visible": true,
+    "reduced_motion_supported": true,
+    "color_is_not_only_signal": true
+  },
+  "asset_policy": {
+    "new_character_generation": false,
+    "approved_manifest": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_RUNTIME_MANIFEST_v1.0.json",
+    "approved_pose_count": 16
+  }
+}

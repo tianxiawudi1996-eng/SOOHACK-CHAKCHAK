@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 52,
+  "generated_at": "2026-08-10T15:29:10.346Z",
+  "status": "AUTO_QA_PASS_LOCAL_CANARY_RESULTS_BLOCKED_EXTERNAL",
+  "current_result_intake": {
+    "status": "BLOCKED_EXTERNAL",
+    "recommendation": "HOLD",
+    "handoff_status": "BLOCKED_EXTERNAL",
+    "records_received": 0,
+    "records_required": 8,
+    "passed_records": 0,
+    "failed_records": 0,
+    "kill_switch_rearmed": false,
+    "rollback_complete": false,
+    "human_review_status": "NOT_REQUESTED",
+    "blockers": [
+      "PHASE51_HANDOFF_BLOCKED",
+      "CANARY_RESULTS_PENDING"
+    ],
+    "validation_failures": [],
+    "production_promotion_allowed": false,
+    "execution_authorized": false
+  },
+  "summary": {
+    "scenarios": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-results-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE51_HANDOFF_BLOCKED",
+          "CANARY_RESULTS_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "ready-handoff-awaits-results",
+      "passed": true,
+      "observed": {
+        "status": "AWAITING_RESULTS"
+      }
+    },
+    {
+      "id": "complete-results-ready-for-human-review",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_HUMAN_CANARY_REVIEW",
+        "passed": 8
+      }
+    },
+    {
+      "id": "single-review-extended-staging-only",
+      "passed": true,
+      "observed": {
+        "status": "CANARY_ACCEPTED_FOR_EXTENDED_STAGING",
+        "production_promotion_allowed": false
+      }
+    },
+    {
+      "id": "hard-gate-failure-rejected",
+      "passed": true,
+      "observed": {
+        "status": "CANARY_REJECTED_AUTOMATICALLY",
+        "recommendation": "REJECT_AND_ROLLBACK"
+      }
+    },
+    {
+      "id": "integrity-limits-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "DUPLICATE_LOCALE_RESULT",
+          "SCENARIO_REFERENCE_INVALID:SYNTHETIC-ATTEMPT-2",
+          "INPUT_TOKEN_BUDGET_EXCEEDED",
+          "CANARY_DURATION_EXCEEDED"
+        ]
+      }
+    },
+    {
+      "id": "raw-content-and-secret-rejected",
+      "passed": true,
+      "observed": {
+        "secret_material_detected": true
+      }
+    },
+    {
+      "id": "handoff-hash-drift-rejected",
+      "passed": true,
+      "observed": {
+        "source_hash_mismatch": true
+      }
+    }
+  ],
+  "contract_sha256": "be4d7e4ba32f5972e199dc0645488c8672a16230165a98ef7b0ab1f6ce13888b",
+  "handoff_register_sha256": "60dacc7e387053a83aff6cadc720095312a2f171cb58a122e456e9090c8d38e1",
+  "result_register_sha256": "0e9735206c048cb8f0cddb876dc584ec83b5118a280e01783a1e369891a63b41",
+  "external_actions": {
+    "provider_live_tested": false,
+    "api_key_accessed": false,
+    "dispatch_observed": false,
+    "external_deployment_performed": false
+  },
+  "next_authorized_action": "WAIT_FOR_PHASE51_HANDOFF_AND_REAL_CANARY_RESULT_REFERENCES"
+}

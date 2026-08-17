@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 7,
+  "tested_at": "2026-08-15T13:04:41.704Z",
+  "status": "PASS",
+  "target": "FROZEN_LOCAL_RELEASE_CANDIDATE",
+  "browser": "Google Chrome headless through Playwright",
+  "checks": {
+    "screen_reader_semantics": {
+      "status": "PASS",
+      "observed": {
+        "lang": "ko",
+        "mainCount": 1,
+        "h1Count": 1,
+        "liveRegionCount": 2,
+        "emptyVisibleImageAltCount": 0,
+        "labelledNavigationCount": 1
+      }
+    },
+    "chromium_accessibility_tree": {
+      "status": "PASS",
+      "observed": {
+        "nodeCount": 326,
+        "roleCounts": {
+          "RootWebArea": 1,
+          "none": 64,
+          "link": 10,
+          "banner": 1,
+          "main": 1,
+          "contentinfo": 1,
+          "StaticText": 75,
+          "navigation": 1,
+          "LabelText": 1,
+          "generic": 27,
+          "region": 1,
+          "InlineTextBox": 87,
+          "strong": 9,
+          "combobox": 1,
+          "heading": 7,
+          "paragraph": 12,
+          "list": 2,
+          "MenuListPopup": 1,
+          "LineBreak": 1,
+          "emphasis": 1,
+          "figure": 2,
+          "article": 3,
+          "listitem": 6,
+          "option": 8,
+          "image": 2,
+          "button": 1
+        }
+      }
+    },
+    "keyboard_skip_and_visible_focus": {
+      "status": "PASS",
+      "observed": {
+        "firstFocus": {
+          "className": "skip-link",
+          "href": "#main",
+          "outlineStyle": "solid",
+          "outlineWidth": "3px"
+        },
+        "focusAfterSkip": {
+          "id": "main",
+          "hash": "#main"
+        }
+      }
+    },
+    "zoom_200_percent": {
+      "status": "PASS",
+      "observed": {
+        "visualViewportScale": 2,
+        "mainPresent": true,
+        "horizontalOverflow": false
+      }
+    },
+    "reduced_motion_static_swap": {
+      "status": "PASS",
+      "observed": {
+        "apiReducedMotion": true,
+        "accepted": true,
+        "states": [
+          "THINK",
+          "THINK"
+        ],
+        "phases": [
+          "steady",
+          "steady"
+        ],
+        "transitioningCount": 0,
+        "imageSources": [
+          "http://127.0.0.1:9700/assets/stage8/poses/png/Chakchaki/chakchaki_p04_think_v1.0.png",
+          "http://127.0.0.1:9700/assets/stage8/poses/png/Gongsickyi/gongsickyi_p04_think_v1.0.png"
+        ],
+        "imageLoaded": [
+          true,
+          true
+        ]
+      }
+    },
+    "webp_to_png_fallback": {
+      "status": "PASS",
+      "observed": {
+        "imageSources": [
+          "http://127.0.0.1:9700/assets/stage8/poses/png/Chakchaki/chakchaki_p04_think_v1.0.png",
+          "http://127.0.0.1:9700/assets/stage8/poses/png/Gongsickyi/gongsickyi_p04_think_v1.0.png"
+        ],
+        "imageLoaded": [
+          true,
+          true
+        ]
+      }
+    }
+  },
+  "failures": [],
+  "claim_boundary": "Automated browser and accessibility-tree inspection; no claim of a human screen-reader session.",
+  "target_url": "http://127.0.0.1:9700/?locale=ko"
+}

@@ -1,0 +1,6 @@
+{
+  "schema_version":"1.0.0","phase":65,"status":"LOCAL_PRODUCTIZATION_CLOSURE_ONLY",
+  "source_requirement":{"phase":64,"status":"PRODUCTION_GO_DECISION_ACCEPTED_FOR_MANUAL_RELEASE","source_hash_binding_required":true},
+  "required_closure_controls":["SOURCE_GO_DECISION_ACCEPTED","RELEASE_ARTIFACT_HASH_PINNED","MIGRATION_BACKUP_RESTORE_VERIFIED","RUNBOOK_ROLLBACK_VERIFIED","MONITORING_ONCALL_VERIFIED","SECURITY_PRIVACY_SIGNOFF_VERIFIED","UNDER18_SAFETY_SIGNOFF_VERIFIED","ACCESSIBILITY_LANGUAGE_SIGNOFF_VERIFIED","DATA_RIGHTS_OPERATIONS_VERIFIED","PRODUCT_OWNER_RELEASE_REVIEW_READY"],
+  "closure_policy":{"all_controls_verified":"READY_FOR_PRODUCTIZATION_CLOSURE_REVIEW","single_product_owner_review":true,"local_chain_terminal":true,"automatic_deployment":false,"automatic_release":false,"additional_local_phase_allowed":false}
+}

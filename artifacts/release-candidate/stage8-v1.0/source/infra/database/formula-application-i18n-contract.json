@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 18,
+  "database": "PostgreSQL",
+  "curriculum_basis": "교육부 고시 제2022-33호 별책 8 수학과 교육과정",
+  "curriculum_source": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0",
+  "formula_count": 72,
+  "previously_covered_formulas": 12,
+  "expanded_formulas": 60,
+  "items_per_formula": 3,
+  "item_count": 216,
+  "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "translation_count": 1728,
+  "answer_schema_exposed_to_client": false,
+  "score_name": "application_mastery_score",
+  "recall_score_merged": false,
+  "catalog": "infra/database/catalog/k12-formulas.ko.json",
+  "task_bank": "scripts/productization/formula-application-task-bank.mjs",
+  "locale_templates": "scripts/productization/formula-application-locales.mjs",
+  "migration": "infra/database/migrations/0009_formula_application_i18n.sql",
+  "rollback": "infra/database/migrations/0009_formula_application_i18n_rollback.sql",
+  "seed": "infra/database/seeds/0007_formula_application_i18n.sql"
+}

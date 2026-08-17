@@ -1,0 +1,597 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 6,
+  "tested_at": "2026-08-15T12:45:46.051Z",
+  "status": "PASS",
+  "browser": "Google Chrome headless through Playwright",
+  "target": "LOCAL_ISOLATED_STAGING_ARTIFACT",
+  "viewports": [
+    {
+      "name": "mobile-360",
+      "width": 360,
+      "height": 800,
+      "screenshot": "docs/stage8/evidence/gate6/responsive/landing-360x800.png",
+      "response_status": 200,
+      "observed": {
+        "title": "수학착착 — 이해가 다음 문제로 이어지는 수학",
+        "lang": "ko",
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "bodyScrollWidth": 360,
+        "horizontalOverflow": false,
+        "h1Count": 1,
+        "mainPresent": true,
+        "skipLinkPresent": true,
+        "focusableCount": 7,
+        "petCharacters": [
+          "Chakchaki",
+          "Gongsickyi"
+        ],
+        "petImagesLoaded": [
+          true,
+          true
+        ],
+        "petBoxes": [
+          {
+            "left": 18,
+            "right": 178,
+            "top": 892.5625,
+            "bottom": 1052.5625,
+            "width": 160,
+            "height": 160
+          },
+          {
+            "left": 182,
+            "right": 342,
+            "top": 887.75,
+            "bottom": 1047.75,
+            "width": 160,
+            "height": 160
+          }
+        ],
+        "petBoxesInsideViewport": true,
+        "motionStateCount": 8,
+        "behaviorEventCount": 15,
+        "behaviorBubbleCount": 13,
+        "bubbleVisible": true,
+        "diagnosticHref": "diagnostic/index.html",
+        "curriculumHref": "curriculum/index.html",
+        "resourceCount": 16,
+        "resourceTransferBytes": 260727,
+        "resourceDecodedBodyBytes": 255927,
+        "resources": [
+          {
+            "path": "/assets/app.js",
+            "transferSize": 2976,
+            "decodedBodySize": 2676
+          },
+          {
+            "path": "/assets/tokens.css",
+            "transferSize": 1368,
+            "decodedBodySize": 1068
+          },
+          {
+            "path": "/accessibility/interaction.css",
+            "transferSize": 983,
+            "decodedBodySize": 683
+          },
+          {
+            "path": "/assets/styles.css",
+            "transferSize": 16057,
+            "decodedBodySize": 15757
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.css",
+            "transferSize": 8992,
+            "decodedBodySize": 8692
+          },
+          {
+            "path": "/assets/product-shell.css",
+            "transferSize": 2323,
+            "decodedBodySize": 2023
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.css",
+            "transferSize": 3386,
+            "decodedBodySize": 3086
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+            "transferSize": 86364,
+            "decodedBodySize": 86064
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+            "transferSize": 91198,
+            "decodedBodySize": 90898
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.js",
+            "transferSize": 11083,
+            "decodedBodySize": 10783
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.js",
+            "transferSize": 17790,
+            "decodedBodySize": 17490
+          },
+          {
+            "path": "/i18n/accessibility.mjs",
+            "transferSize": 13695,
+            "decodedBodySize": 13395
+          },
+          {
+            "path": "/accessibility/interaction.mjs",
+            "transferSize": 636,
+            "decodedBodySize": 336
+          },
+          {
+            "path": "/i18n/preferred-locale.mjs",
+            "transferSize": 707,
+            "decodedBodySize": 407
+          },
+          {
+            "path": "/locales/ko.json",
+            "transferSize": 2869,
+            "decodedBodySize": 2569
+          },
+          {
+            "path": "/favicon.ico",
+            "transferSize": 300,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "error_responses": [],
+      "status": "PASS"
+    },
+    {
+      "name": "tablet-768",
+      "width": 768,
+      "height": 1024,
+      "screenshot": "docs/stage8/evidence/gate6/responsive/landing-768x1024.png",
+      "response_status": 200,
+      "observed": {
+        "title": "수학착착 — 이해가 다음 문제로 이어지는 수학",
+        "lang": "ko",
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "bodyScrollWidth": 768,
+        "horizontalOverflow": false,
+        "h1Count": 1,
+        "mainPresent": true,
+        "skipLinkPresent": true,
+        "focusableCount": 8,
+        "petCharacters": [
+          "Chakchaki",
+          "Gongsickyi"
+        ],
+        "petImagesLoaded": [
+          true,
+          true
+        ],
+        "petBoxes": [
+          {
+            "left": 80,
+            "right": 328,
+            "top": 843.828125,
+            "bottom": 1091.828125,
+            "width": 248,
+            "height": 248
+          },
+          {
+            "left": 440,
+            "right": 688,
+            "top": 835.828125,
+            "bottom": 1083.828125,
+            "width": 248,
+            "height": 248
+          }
+        ],
+        "petBoxesInsideViewport": true,
+        "motionStateCount": 8,
+        "behaviorEventCount": 15,
+        "behaviorBubbleCount": 13,
+        "bubbleVisible": true,
+        "diagnosticHref": "diagnostic/index.html",
+        "curriculumHref": "curriculum/index.html",
+        "resourceCount": 16,
+        "resourceTransferBytes": 260727,
+        "resourceDecodedBodyBytes": 255927,
+        "resources": [
+          {
+            "path": "/assets/app.js",
+            "transferSize": 2976,
+            "decodedBodySize": 2676
+          },
+          {
+            "path": "/assets/tokens.css",
+            "transferSize": 1368,
+            "decodedBodySize": 1068
+          },
+          {
+            "path": "/assets/styles.css",
+            "transferSize": 16057,
+            "decodedBodySize": 15757
+          },
+          {
+            "path": "/accessibility/interaction.css",
+            "transferSize": 983,
+            "decodedBodySize": 683
+          },
+          {
+            "path": "/assets/product-shell.css",
+            "transferSize": 2323,
+            "decodedBodySize": 2023
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.css",
+            "transferSize": 8992,
+            "decodedBodySize": 8692
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.css",
+            "transferSize": 3386,
+            "decodedBodySize": 3086
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+            "transferSize": 91198,
+            "decodedBodySize": 90898
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+            "transferSize": 86364,
+            "decodedBodySize": 86064
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.js",
+            "transferSize": 11083,
+            "decodedBodySize": 10783
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.js",
+            "transferSize": 17790,
+            "decodedBodySize": 17490
+          },
+          {
+            "path": "/i18n/preferred-locale.mjs",
+            "transferSize": 707,
+            "decodedBodySize": 407
+          },
+          {
+            "path": "/i18n/accessibility.mjs",
+            "transferSize": 13695,
+            "decodedBodySize": 13395
+          },
+          {
+            "path": "/accessibility/interaction.mjs",
+            "transferSize": 636,
+            "decodedBodySize": 336
+          },
+          {
+            "path": "/locales/ko.json",
+            "transferSize": 2869,
+            "decodedBodySize": 2569
+          },
+          {
+            "path": "/favicon.ico",
+            "transferSize": 300,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "error_responses": [],
+      "status": "PASS"
+    },
+    {
+      "name": "compact-desktop-1024",
+      "width": 1024,
+      "height": 900,
+      "screenshot": "docs/stage8/evidence/gate6/responsive/landing-1024x900.png",
+      "response_status": 200,
+      "observed": {
+        "title": "수학착착 — 이해가 다음 문제로 이어지는 수학",
+        "lang": "ko",
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "horizontalOverflow": false,
+        "h1Count": 1,
+        "mainPresent": true,
+        "skipLinkPresent": true,
+        "focusableCount": 12,
+        "petCharacters": [
+          "Chakchaki",
+          "Gongsickyi"
+        ],
+        "petImagesLoaded": [
+          true,
+          true
+        ],
+        "petBoxes": [
+          {
+            "left": 441.265625,
+            "right": 689.265625,
+            "top": 464,
+            "bottom": 712,
+            "width": 248,
+            "height": 248
+          },
+          {
+            "left": 721.265625,
+            "right": 969.265625,
+            "top": 456,
+            "bottom": 704,
+            "width": 248,
+            "height": 248
+          }
+        ],
+        "petBoxesInsideViewport": true,
+        "motionStateCount": 8,
+        "behaviorEventCount": 15,
+        "behaviorBubbleCount": 13,
+        "bubbleVisible": true,
+        "diagnosticHref": "diagnostic/index.html",
+        "curriculumHref": "curriculum/index.html",
+        "resourceCount": 16,
+        "resourceTransferBytes": 260727,
+        "resourceDecodedBodyBytes": 255927,
+        "resources": [
+          {
+            "path": "/assets/app.js",
+            "transferSize": 2976,
+            "decodedBodySize": 2676
+          },
+          {
+            "path": "/assets/tokens.css",
+            "transferSize": 1368,
+            "decodedBodySize": 1068
+          },
+          {
+            "path": "/assets/styles.css",
+            "transferSize": 16057,
+            "decodedBodySize": 15757
+          },
+          {
+            "path": "/accessibility/interaction.css",
+            "transferSize": 983,
+            "decodedBodySize": 683
+          },
+          {
+            "path": "/assets/product-shell.css",
+            "transferSize": 2323,
+            "decodedBodySize": 2023
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.css",
+            "transferSize": 8992,
+            "decodedBodySize": 8692
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.css",
+            "transferSize": 3386,
+            "decodedBodySize": 3086
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+            "transferSize": 91198,
+            "decodedBodySize": 90898
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+            "transferSize": 86364,
+            "decodedBodySize": 86064
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.js",
+            "transferSize": 11083,
+            "decodedBodySize": 10783
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.js",
+            "transferSize": 17790,
+            "decodedBodySize": 17490
+          },
+          {
+            "path": "/i18n/preferred-locale.mjs",
+            "transferSize": 707,
+            "decodedBodySize": 407
+          },
+          {
+            "path": "/i18n/accessibility.mjs",
+            "transferSize": 13695,
+            "decodedBodySize": 13395
+          },
+          {
+            "path": "/accessibility/interaction.mjs",
+            "transferSize": 636,
+            "decodedBodySize": 336
+          },
+          {
+            "path": "/locales/ko.json",
+            "transferSize": 2869,
+            "decodedBodySize": 2569
+          },
+          {
+            "path": "/favicon.ico",
+            "transferSize": 300,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "error_responses": [],
+      "status": "PASS"
+    },
+    {
+      "name": "desktop-1200",
+      "width": 1200,
+      "height": 900,
+      "screenshot": "docs/stage8/evidence/gate6/responsive/landing-1200x900.png",
+      "response_status": 200,
+      "observed": {
+        "title": "수학착착 — 이해가 다음 문제로 이어지는 수학",
+        "lang": "ko",
+        "innerWidth": 1200,
+        "scrollWidth": 1200,
+        "bodyScrollWidth": 1200,
+        "horizontalOverflow": false,
+        "h1Count": 1,
+        "mainPresent": true,
+        "skipLinkPresent": true,
+        "focusableCount": 12,
+        "petCharacters": [
+          "Chakchaki",
+          "Gongsickyi"
+        ],
+        "petImagesLoaded": [
+          true,
+          true
+        ],
+        "petBoxes": [
+          {
+            "left": 596.46875,
+            "right": 844.46875,
+            "top": 464,
+            "bottom": 712,
+            "width": 248,
+            "height": 248
+          },
+          {
+            "left": 920,
+            "right": 1168,
+            "top": 456,
+            "bottom": 704,
+            "width": 248,
+            "height": 248
+          }
+        ],
+        "petBoxesInsideViewport": true,
+        "motionStateCount": 8,
+        "behaviorEventCount": 15,
+        "behaviorBubbleCount": 13,
+        "bubbleVisible": true,
+        "diagnosticHref": "diagnostic/index.html",
+        "curriculumHref": "curriculum/index.html",
+        "resourceCount": 16,
+        "resourceTransferBytes": 260727,
+        "resourceDecodedBodyBytes": 255927,
+        "resources": [
+          {
+            "path": "/assets/app.js",
+            "transferSize": 2976,
+            "decodedBodySize": 2676
+          },
+          {
+            "path": "/assets/tokens.css",
+            "transferSize": 1368,
+            "decodedBodySize": 1068
+          },
+          {
+            "path": "/assets/styles.css",
+            "transferSize": 16057,
+            "decodedBodySize": 15757
+          },
+          {
+            "path": "/accessibility/interaction.css",
+            "transferSize": 983,
+            "decodedBodySize": 683
+          },
+          {
+            "path": "/assets/product-shell.css",
+            "transferSize": 2323,
+            "decodedBodySize": 2023
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.css",
+            "transferSize": 8992,
+            "decodedBodySize": 8692
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.css",
+            "transferSize": 3386,
+            "decodedBodySize": 3086
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+            "transferSize": 91198,
+            "decodedBodySize": 90898
+          },
+          {
+            "path": "/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+            "transferSize": 86364,
+            "decodedBodySize": 86064
+          },
+          {
+            "path": "/assets/stage8/2d-pet-motion-v1.0.js",
+            "transferSize": 11083,
+            "decodedBodySize": 10783
+          },
+          {
+            "path": "/assets/stage8/ai-behavior-v1.0.js",
+            "transferSize": 17790,
+            "decodedBodySize": 17490
+          },
+          {
+            "path": "/accessibility/interaction.mjs",
+            "transferSize": 636,
+            "decodedBodySize": 336
+          },
+          {
+            "path": "/i18n/preferred-locale.mjs",
+            "transferSize": 707,
+            "decodedBodySize": 407
+          },
+          {
+            "path": "/i18n/accessibility.mjs",
+            "transferSize": 13695,
+            "decodedBodySize": 13395
+          },
+          {
+            "path": "/locales/ko.json",
+            "transferSize": 2869,
+            "decodedBodySize": 2569
+          },
+          {
+            "path": "/favicon.ico",
+            "transferSize": 300,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "console_errors": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "error_responses": [],
+      "status": "PASS"
+    }
+  ],
+  "route_checks": {
+    "diagnostic": {
+      "status_code": 200,
+      "status": "PASS"
+    },
+    "curriculum": {
+      "status_code": 200,
+      "status": "PASS"
+    },
+    "math_learning": {
+      "status_code": 200,
+      "status": "PASS"
+    }
+  },
+  "failures": [],
+  "external_deployment_performed": false,
+  "target_url": "http://127.0.0.1:4154/?locale=ko"
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 38,
+  "contract_tables": 2,
+  "control_rules": 6,
+  "normalization_steps": 8,
+  "rejection_rules": 14,
+  "ownership_proof_types": 6,
+  "forbidden_address_classes": 8,
+  "targets_present": 0,
+  "ownership_proofs_present": 0,
+  "dns_snapshots_present": 0,
+  "dns_resolution_enabled": false,
+  "redirect_follow_enabled": false,
+  "allowlist_write_enabled": false,
+  "external_reference_fetch_enabled": false,
+  "network_connection_authorized": false,
+  "execution_authorized": false
+}

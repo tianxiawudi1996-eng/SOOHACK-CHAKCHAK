@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 6,
+  "scope": "LOCAL_SOURCE_STATIC_QUALITY",
+  "checks": {
+    "lint": {
+      "status": "PASS",
+      "checker": "NODE_SYNTAX_JSON_PARSE_SOURCE_INTEGRITY",
+      "checked_at": "2026-08-15T13:04:15.146Z",
+      "source_roots": [
+        "agent",
+        "assets/stage8",
+        "client",
+        "developer",
+        "scripts/harness",
+        "scripts/productization",
+        "scripts/quality",
+        "tests"
+      ],
+      "text_file_count": 410,
+      "script_file_count": 354,
+      "json_file_count": 39,
+      "integration_marker_count": 5,
+      "failures": []
+    },
+    "runtime_type_contract": {
+      "status": "PASS",
+      "checker": "JAVASCRIPT_RUNTIME_DATA_CONTRACT_TYPECHECK",
+      "claim_boundary": "This validates JavaScript runtime and data contracts; it does not claim a TypeScript compiler run.",
+      "checked_at": "2026-08-15T13:04:15.513Z",
+      "assertion_count": 467,
+      "input_hashes": {
+        "package": {
+          "path": "package.json",
+          "sha256": "39da18a5e9aa9a3d6768d3a12baa2cfff72c68502b33748a525baa2fa09a3d46"
+        },
+        "staging": {
+          "path": "artifacts/staging/v0.1.0/manifest.json",
+          "sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d"
+        },
+        "responsive": {
+          "path": "docs/stage8/evidence/gate6/GATE6_RESPONSIVE_RUNTIME_QA_v1.0.json",
+          "sha256": "ff22f92e78f97f35d291c7a141e93370425d01bb4e0837b1e7881b8326151207"
+        },
+        "motion": {
+          "path": "docs/stage8/evidence/2d-pet/v1.0/2D_PET_MOTION_MANIFEST_v1.0.json",
+          "sha256": "8fbfed70bfc21ec1e34f03991c743cf10d504d2efc1618065376cb4597d290ab"
+        },
+        "behavior": {
+          "path": "docs/stage8/evidence/2d-pet/v1.0/AI_BEHAVIOR_RUNTIME_MANIFEST_v1.0.json",
+          "sha256": "997832950ceecf329b9ea04b76e6903c12536e79033ceb26cefd1712bf06b396"
+        }
+      },
+      "failures": []
+    }
+  },
+  "generated_at": "2026-08-15T13:04:15.513Z",
+  "status": "PASS"
+}

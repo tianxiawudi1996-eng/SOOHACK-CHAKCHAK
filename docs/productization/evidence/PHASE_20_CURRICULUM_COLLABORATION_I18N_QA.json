@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 20,
+  "tested_at": "2026-08-07T10:53:05+09:00",
+  "status": "AUTO_QA_PASS_HUMAN_REVIEW_REQUIRED",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "coverage": {
+    "grades": "12/12",
+    "locales": "8/8",
+    "grade_translation_rows": "96/96",
+    "curriculum_reference_rows": "8/8",
+    "collaboration_role_rows": "8/8",
+    "collaboration_phase_rows": "40/40",
+    "collaboration_phases_per_locale": "5/5"
+  },
+  "tests": {
+    "unit": "47/47 PASS",
+    "static_phase20": "PASS",
+    "integration_journeys": "12/12 PASS",
+    "postgres_counts": "96/8/8/40 PASS",
+    "migration_rollback_reapply": "PASS",
+    "existing_collaboration_sessions_preserved": "8/8",
+    "browser_zh_cn_metadata": "PASS",
+    "browser_zh_cn_phase_transitions": "5/5 PASS",
+    "browser_ru_metadata_roles_phases": "PASS",
+    "browser_console_warnings_errors": "0",
+    "full_productization_regression": "PHASE_0_TO_20 PASS",
+    "presentation_metadata": "PASS"
+  },
+  "database_runtime": {
+    "engine": "PostgreSQL 16",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "api_container_id": "45920e2cee26d842ec8c108e00a7df90942b8436fed046e3acd2136e6b69f446",
+    "web_container_id": "b38d90ea1004b1b08cd9302659e76dcbe752283165018686968e20532d5ba14b",
+    "staging_manifest_sha256": "ba92c0fbad48ea71a512a086c7b13b0e7f0f2dd7879ee2e90c4060ed0b46b52d",
+    "web_image_digest": "sha256:71a531ed2d65d2b5dfc65d411c632bf1ce439f9f64a72934d26f7ed11ed61ee8",
+    "javascript_cache_control": "no-cache",
+    "api_health": 200
+  },
+  "security_and_governance": {
+    "answer_schema_exposed": false,
+    "personal_data_added": false,
+    "human_translation_approval_inferred": false,
+    "manual_translation_approvals": "0/7",
+    "external_deployment_performed": false
+  },
+  "defects_fixed": [
+    "Corrected the static auditor's English collaboration-copy marker and Hangul range",
+    "Localized curriculum metadata before applying the English runtime fallback",
+    "Localized strand, knowledge-type, canonical-source notice, and source labels",
+    "Versioned curriculum modules and disabled staging JavaScript cache reuse",
+    "Allowed the phase auditor to distinguish automatic verification from pending human translation review",
+    "Corrected the rollback rehearsal query to use formula_collaboration_session"
+  ],
+  "remaining_scope": [
+    "Human linguistic review for seven non-Korean locales",
+    "Accessibility-label and skip-link localization audit",
+    "External production deployment and managed-service configuration"
+  ]
+}

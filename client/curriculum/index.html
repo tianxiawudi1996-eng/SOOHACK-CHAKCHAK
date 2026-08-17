@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>수학착착 학년별 공식</title>
+  <link rel="modulepreload" href="app.js?v=0.1.0-phase22">
+  <link rel="stylesheet" href="../design/tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
+  <link rel="stylesheet" href="../design/product-shell.css?v=0.1.0-phase46">
+</head>
+<body class="product-page curriculum-page">
+  <a class="skip-link" href="#main" data-a11y-text="common.skip">Skip to content</a>
+  <header>
+    <a class="brand" href="../mock/index.html"><span class="brand-mark" aria-hidden="true">착</span><span><strong data-message="brand">수학착착</strong><small>MATH CHAKCHAK</small></span></a>
+    <div>
+      <a href="../mock/index.html" data-message="home">홈</a>
+      <select id="localeSelect" data-a11y-aria="common.language">
+        <option value="ko">한국어</option><option value="zh-CN">中文</option><option value="ja">日本語</option>
+        <option value="en">English</option><option value="es">Español</option><option value="fr">Français</option>
+        <option value="it">Italiano</option><option value="ru">Русский</option>
+      </select>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <p class="eyebrow" data-message="eyebrow"></p><h1 data-message="title"></h1>
+      <p data-message="intro"></p><p class="canonical" data-message="canonical"></p>
+    </section>
+    <section data-a11y-aria="curriculum.gradeSelection"><div id="gradeGroups" class="grade-groups"></div></section>
+    <div class="grade-summary-slot"><section id="gradeSummary" class="grade-summary" hidden><div><p id="officialBand"></p><p id="coursePath"></p></div><strong id="formulaCount"></strong></section></div>
+    <section data-a11y-aria="curriculum.formulaList"><div id="formulaGrid" class="formula-grid" aria-live="polite"></div><p id="statusText" class="status" data-message="loading">불러오는 중…</p></section>
+    <section id="collaborationPanel" class="collaboration" hidden aria-live="polite" data-a11y-aria="curriculum.collaboration">
+      <div class="collab-head">
+        <div><p class="eyebrow" data-message="route"></p><h2 id="collabTitle" tabindex="-1"></h2></div>
+        <label><span class="sr-only" data-message="route"></span><select id="routeSelect"><option value="REMEDIATE" data-message="remediate"></option><option value="CORE" data-message="core" selected></option><option value="EXTEND" data-message="extend"></option></select></label>
+      </div>
+      <div class="pet-roles">
+        <article><img src="../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp" alt=""><h3 data-message="chakchaki"></h3><p id="chakchakiRole"></p></article>
+        <article><img src="../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp" alt=""><h3 data-message="gongsickyi"></h3><p id="gongsickyiRole"></p></article>
+      </div>
+      <ol id="phaseList" class="phase-list"></ol>
+      <div id="activityPanel" class="activity-panel" data-a11y-aria="curriculum.activity">
+        <p id="activityStep" class="eyebrow"></p><h3 id="activityTitle" tabindex="-1"></h3><p id="activityPrompt"></p>
+        <div id="signalChoices" class="signal-choices"></div><p id="activityResult" class="activity-result" role="status" hidden></p>
+      </div>
+      <div id="recallPanel" class="recall-panel" hidden data-a11y-aria="curriculum.recall">
+        <p class="eyebrow" data-message="recallEyebrow"></p>
+        <h3 id="recallTitle" tabindex="-1"></h3>
+        <p id="recallPrompt"></p>
+        <div id="recallChoices" class="recall-choices"></div>
+        <p id="recallResult" class="recall-result" hidden aria-live="polite"></p>
+        <button id="applicationStart" class="application-start" type="button" data-message="applicationCta" hidden></button>
+      </div>
+      <div id="applicationPanel" class="application-panel" hidden data-a11y-aria="curriculum.application">
+        <p id="applicationStep" class="eyebrow"></p>
+        <h3 id="applicationTitle"></h3>
+        <p id="applicationPrompt"></p>
+        <form id="applicationForm">
+          <label><span id="applicationValueLabel" data-message="applicationValue"></span><input id="applicationValue" name="value" autocomplete="off" required></label>
+          <label id="applicationUnitField"><span id="applicationUnitLabel" data-message="applicationUnit"></span><input id="applicationUnit" name="unit" autocomplete="off"></label>
+          <button type="submit" data-message="applicationSubmit"></button>
+        </form>
+        <p id="applicationResult" class="application-result" hidden aria-live="polite"></p>
+        <button id="applicationNext" class="application-next" type="button" hidden></button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="app.js?v=0.1.0-phase22"></script>
+</body>
+</html>

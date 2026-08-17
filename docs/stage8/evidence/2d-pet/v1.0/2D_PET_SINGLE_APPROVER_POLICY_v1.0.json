@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "gate": 2,
+  "policy_status": "ACTIVE",
+  "approval_mode": "PROJECT_OWNER_SINGLE_APPROVAL",
+  "approval_required": 1,
+  "approval_scope": "BOTH_CHARACTERS_AND_ALL_EIGHT_POSES_PER_CHARACTER",
+  "approver_role": "Product Owner",
+  "approver_authority_source": "docs/stage8/evidence/gate1/single-approval/SINGLE_APPROVER_DECISION_v1.0.json",
+  "approver_name": "John KIM",
+  "required_decision_fields": [
+    "reviewer",
+    "decision",
+    "reviewed_at",
+    "scope_acknowledged",
+    "candidate_sheet_hashes",
+    "checks"
+  ],
+  "required_checks": [
+    "canonical_identity_match",
+    "face_and_silhouette_match",
+    "clothing_accessory_and_color_match",
+    "two_dimensional_shading_quality_acceptable",
+    "eight_poses_present_per_character",
+    "pose_meanings_are_clear",
+    "small_ui_readability_acceptable",
+    "no_low_poly_or_unwanted_3d_appearance"
+  ],
+  "allowed_decisions": ["APPROVE", "APPROVE_WITH_PATCH", "REJECT"],
+  "candidate_sheet_hashes": {
+    "Chakchaki": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+    "Gongsickyi": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c"
+  },
+  "promotion_conditions": {
+    "automated_qa": "PASS",
+    "valid_single_approval": 1,
+    "all_required_checks_true": true,
+    "candidate_hash_drift_count": 0,
+    "reject_count": 0,
+    "unresolved_patch_count": 0
+  },
+  "next_gate_allowed_before_promotion": false
+}

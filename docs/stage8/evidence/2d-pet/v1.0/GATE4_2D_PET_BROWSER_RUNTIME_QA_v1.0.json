@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-15T12:48:01.868Z",
+  "gate": 4,
+  "target_url": "http://127.0.0.1:4174/docs/stage8/evidence/2d-pet/v1.0/gate4-review/",
+  "browser": "Microsoft Edge headless via Chrome DevTools Protocol",
+  "status": "PASS",
+  "tests": {
+    "api_contract": {
+      "status": "PASS",
+      "observed": {
+        "stateCount": 8,
+        "states": [
+          "IDLE_LISTEN",
+          "WELCOME",
+          "GUIDE",
+          "THINK",
+          "PRAISE_PROGRESS",
+          "SEARCH",
+          "CELEBRATE",
+          "RETRY"
+        ],
+        "choreography": {
+          "prepareMs": 120,
+          "bridgeMs": 320,
+          "settleMs": 240
+        },
+        "characters": 2,
+        "buttons": 8,
+        "reducedMotion": false
+      }
+    },
+    "forward_sequence": {
+      "status": "PASS",
+      "observations": [
+        {
+          "requested": "IDLE_LISTEN",
+          "states": [
+            "IDLE_LISTEN",
+            "IDLE_LISTEN"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "WELCOME",
+          "states": [
+            "WELCOME",
+            "WELCOME"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "GUIDE",
+          "states": [
+            "GUIDE",
+            "GUIDE"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "THINK",
+          "states": [
+            "THINK",
+            "THINK"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "PRAISE_PROGRESS",
+          "states": [
+            "PRAISE_PROGRESS",
+            "PRAISE_PROGRESS"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "SEARCH",
+          "states": [
+            "SEARCH",
+            "SEARCH"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "CELEBRATE",
+          "states": [
+            "CELEBRATE",
+            "CELEBRATE"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "RETRY",
+          "states": [
+            "RETRY",
+            "RETRY"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        }
+      ]
+    },
+    "reverse_sequence": {
+      "status": "PASS",
+      "observations": [
+        {
+          "requested": "RETRY",
+          "states": [
+            "RETRY",
+            "RETRY"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "CELEBRATE",
+          "states": [
+            "CELEBRATE",
+            "CELEBRATE"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "SEARCH",
+          "states": [
+            "SEARCH",
+            "SEARCH"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "PRAISE_PROGRESS",
+          "states": [
+            "PRAISE_PROGRESS",
+            "PRAISE_PROGRESS"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "THINK",
+          "states": [
+            "THINK",
+            "THINK"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "GUIDE",
+          "states": [
+            "GUIDE",
+            "GUIDE"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "WELCOME",
+          "states": [
+            "WELCOME",
+            "WELCOME"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        },
+        {
+          "requested": "IDLE_LISTEN",
+          "states": [
+            "IDLE_LISTEN",
+            "IDLE_LISTEN"
+          ],
+          "phases": [
+            "steady",
+            "steady"
+          ],
+          "outgoingLayers": 0,
+          "activeMotionClasses": 0,
+          "imageCount": 2
+        }
+      ]
+    },
+    "rapid_latest_wins": {
+      "status": "PASS",
+      "observed": {
+        "expected": "RETRY",
+        "states": [
+          "RETRY",
+          "RETRY"
+        ],
+        "phases": [
+          "steady",
+          "steady"
+        ],
+        "outgoingLayers": 0,
+        "activeMotionClasses": 0,
+        "imageCount": 2
+      }
+    },
+    "layout_stability": {
+      "status": "PASS",
+      "cumulative_layout_shift": 0,
+      "maximum": 0.01
+    },
+    "viewport_and_pointer": {
+      "status": "PASS",
+      "viewports": [
+        {
+          "name": "mobile",
+          "width": 360,
+          "height": 800,
+          "deviceScaleFactor": 1,
+          "mobile": true,
+          "status": "PASS",
+          "observed": {
+            "innerWidth": 360,
+            "innerHeight": 800,
+            "horizontalOverflow": false,
+            "characters": [
+              {
+                "character": "Chakchaki",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 21.92,
+                  "right": 23.05,
+                  "bottom": 94.08,
+                  "left": 12.95
+                }
+              },
+              {
+                "character": "Gongsickyi",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 21.87,
+                  "right": 23.46,
+                  "bottom": 93.7,
+                  "left": 12.11
+                }
+              }
+            ],
+            "retryButtonReceivesPointer": true
+          }
+        },
+        {
+          "name": "tablet",
+          "width": 768,
+          "height": 1024,
+          "deviceScaleFactor": 1,
+          "mobile": true,
+          "status": "PASS",
+          "observed": {
+            "innerWidth": 768,
+            "innerHeight": 1024,
+            "horizontalOverflow": false,
+            "characters": [
+              {
+                "character": "Chakchaki",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 43.16,
+                  "right": 15.3,
+                  "bottom": 117.13,
+                  "left": 24.99
+                }
+              },
+              {
+                "character": "Gongsickyi",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 44.67,
+                  "right": 19.86,
+                  "bottom": 118.05,
+                  "left": 22.85
+                }
+              }
+            ],
+            "retryButtonReceivesPointer": true
+          }
+        },
+        {
+          "name": "desktop",
+          "width": 1440,
+          "height": 1000,
+          "deviceScaleFactor": 1,
+          "mobile": false,
+          "status": "PASS",
+          "observed": {
+            "innerWidth": 1440,
+            "innerHeight": 1000,
+            "horizontalOverflow": false,
+            "characters": [
+              {
+                "character": "Chakchaki",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 18.86,
+                  "right": 85.77,
+                  "bottom": 90.95,
+                  "left": 80.04
+                }
+              },
+              {
+                "character": "Gongsickyi",
+                "cardInsideViewport": true,
+                "imageInsideCard": true,
+                "imageLoaded": true,
+                "clearance": {
+                  "top": 18.85,
+                  "right": 82.07,
+                  "bottom": 91.93,
+                  "left": 84.71
+                }
+              }
+            ],
+            "retryButtonReceivesPointer": true
+          }
+        }
+      ]
+    },
+    "reduced_motion_runtime": {
+      "status": "PASS",
+      "observed": {
+        "mediaMatches": true,
+        "states": [
+          "CELEBRATE",
+          "CELEBRATE"
+        ],
+        "phases": [
+          "steady",
+          "steady"
+        ],
+        "outgoingLayers": 0,
+        "activeMotionClasses": 0,
+        "animationNames": [
+          "none",
+          "none"
+        ]
+      }
+    }
+  },
+  "failures": [],
+  "browser_launch": {
+    "mode": "SELF_LAUNCHED_HEADLESS",
+    "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+  }
+}

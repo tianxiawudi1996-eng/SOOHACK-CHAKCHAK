@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "database": "PostgreSQL",
+  "migration": "infra/database/migrations/0004_diagnostic_curriculum.sql",
+  "rollback": "infra/database/migrations/0004_diagnostic_curriculum_rollback.sql",
+  "seed": "infra/database/seeds/0003_diagnostic_curriculum.sql",
+  "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "diagnostic_item_count": 3,
+  "formula_concept_count": 3,
+  "handoff": {
+    "scope": "LOCAL_SYNTHETIC_ONLY",
+    "ttl_seconds": 180,
+    "single_use": true,
+    "database_stores": "SHA-256 digest only",
+    "browser_token_storage": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 17,
+  "database": "PostgreSQL",
+  "assessment_kinds": ["CALCULATION", "WORD_PROBLEM", "UNIT_REASONING", "REPRESENTATION_REASONING"],
+  "representative_grades": 12,
+  "representative_formulas": 12,
+  "items_per_formula": 3,
+  "item_count": 36,
+  "score_name": "application_mastery_score",
+  "mastery_threshold": 0.8,
+  "minimum_distinct_evidence": 3,
+  "recall_score_merged": false,
+  "answer_schema_exposed_to_client": false,
+  "migration": "infra/database/migrations/0008_formula_application_mastery.sql",
+  "rollback": "infra/database/migrations/0008_formula_application_mastery_rollback.sql",
+  "catalog": "infra/database/catalog/formula-application-cases.ko.json",
+  "seed": "infra/database/seeds/0006_formula_application_checks.sql"
+}

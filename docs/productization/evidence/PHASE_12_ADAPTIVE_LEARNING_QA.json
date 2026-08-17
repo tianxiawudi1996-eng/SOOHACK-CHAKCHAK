@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 12,
+  "status": "VERIFIED",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "executed_at": "2026-08-06T23:01:06+09:00",
+  "algorithm": {
+    "version": "adaptive-v1",
+    "routes": "3/3",
+    "thresholds": [0.5, 0.8],
+    "unit_tests": "27/27 PASS"
+  },
+  "postgresql": {
+    "version": "16",
+    "schema": "mathchakchak",
+    "total_tables": 28,
+    "extension_tables": ["adaptive_learning_decision", "student_topic_mastery"],
+    "decisions_observed": 4,
+    "distinct_routes_observed": 3,
+    "mastery_rows_observed": 1,
+    "scheduled_review_rows_observed": 1,
+    "rollback_reapply": "PASS"
+  },
+  "integration": {
+    "adaptive_routes": "PASS",
+    "idempotent_completion_replay": "PASS",
+    "student_ownership_denial": "PASS",
+    "formula_completion_mastery_upsert": "PASS",
+    "route_starting_hint_applied": "PASS",
+    "route_review_schedule_applied": "PASS",
+    "raw_response_copied_to_decision": false
+  },
+  "browser_regression": {
+    "landing_to_formula_screen": "PASS",
+    "formula_stage_1_api_start": "PASS",
+    "locale": "ko"
+  },
+  "external_deployment_performed": false
+}

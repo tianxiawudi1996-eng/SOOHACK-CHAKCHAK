@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 18,
+  "tested_at": "2026-08-07T08:54:35+09:00",
+  "status": "PASS",
+  "scope": "LOCAL_ISOLATED_FULL_STACK",
+  "curriculum_basis": "교육부 고시 제2022-33호 별책 8 수학과 교육과정",
+  "coverage": {
+    "grades": "12/12",
+    "formulas": "72/72",
+    "previously_covered_formulas": "12/12",
+    "expanded_formulas": "60/60",
+    "application_items": "216/216",
+    "items_per_formula": "3/3",
+    "locales": "8/8",
+    "translations": "1728/1728",
+    "assessment_kinds": "4/4",
+    "unit_required_items": 31
+  },
+  "security": {
+    "answer_schema_exposed": false,
+    "accepted_values_exposed": false,
+    "misconception_rules_exposed": false,
+    "browser_persistence_used": false
+  },
+  "tests": {
+    "unit": "42/42 PASS",
+    "static_phase18": "PASS",
+    "full_productization_regression": "PHASE_0_TO_18_PASS",
+    "integration_journeys": "10/10 PASS",
+    "postgres_counts": "PASS",
+    "expanded_formula_api_locales": "8/8 PASS",
+    "legacy_formula_regression": "PASS",
+    "rollback_reapply_reseed": "PASS",
+    "browser_zh_cn_non_unit": "PASS",
+    "browser_zh_cn_unit_required": "PASS"
+  },
+  "browser_evidence": {
+    "non_unit_prompt": "应用公式求空格或结果：7 = 3 + □",
+    "non_unit_field_hidden": true,
+    "unit_prompt": "请写出包含单位的答案：12 cm − 9 cm",
+    "unit_label": "单位",
+    "unit_field_required": true,
+    "answer_schema_visible": false
+  },
+  "database_runtime": {
+    "engine": "PostgreSQL 16",
+    "database_container_id": "b55eaa29df32",
+    "api_container_id": "b6475528b671",
+    "web_container_id": "a874907661e1",
+    "rollback_targets": ["formula_application_item_translation", "formula_application_item.unit_required"],
+    "learning_attempts_preserved": true
+  },
+  "defects_fixed": [
+    "정적 감사기가 결정적 UUID SQL 표현의 5회 반복을 항목 수로 오인하던 카운터를 수정",
+    "고학년 수학식 내부의 영어 설명어를 국제 수학 기호와 식으로 치환"
+  ],
+  "external_deployment_performed": false
+}

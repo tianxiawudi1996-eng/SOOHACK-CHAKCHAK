@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "environment": "staging",
+  "status": "DEPLOYED_LOCAL_FULL_STACK",
+  "release": "0.1.0",
+  "artifact": "artifacts/staging/v0.1.0/site",
+  "scope": {
+    "frontend_preview": true,
+    "api_runtime": true,
+    "database_runtime": true,
+    "local_container_runtime": true,
+    "external_deployment": false,
+    "api_loopback_port": 4181,
+    "database_external_port": false
+  },
+  "required_configuration": [
+    "STAGING_BASE_URL",
+    "STAGING_API_BASE_URL",
+    "STAGING_DATABASE_URL_REFERENCE",
+    "STAGING_SESSION_SECRET_REFERENCE",
+    "STAGING_OBJECT_STORAGE_REFERENCE"
+  ],
+  "security": {
+    "literal_secrets_allowed": false,
+    "tls_required_for_external_promotion": true,
+    "production_data_allowed": false,
+    "test_accounts_only": true,
+    "logs_redacted": true,
+    "response_headers": [
+      "Content-Security-Policy",
+      "X-Content-Type-Options",
+      "X-Frame-Options",
+      "Referrer-Policy",
+      "Permissions-Policy",
+      "Cross-Origin-Opener-Policy",
+      "Cross-Origin-Resource-Policy",
+      "X-Permitted-Cross-Domain-Policies"
+    ]
+  },
+  "feature_flags": {
+    "gate5_ai_pet_behavior": true,
+    "production_traffic": false
+  },
+  "external_configuration_optional_for_local_integration": true,
+  "promotion_gates": [
+    "artifact_hashes_match",
+    "eight_locale_smoke_pass",
+    "database_migration_pass",
+    "health_check_pass",
+    "rollback_rehearsal_pass",
+    "external_target_authorized"
+  ]
+}

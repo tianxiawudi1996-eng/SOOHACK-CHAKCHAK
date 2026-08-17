@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0.0",
+  "status":"AUTO_QA_PASS_LOCAL_FULFILMENT_CONTROLS",
+  "scope":"LOCAL_SYNTHETIC_DRY_RUN_ONLY",
+  "database":{"tables":"5/5","forward_rollback_reapply":"PASS","post_reapply_plan_impact_hold_approvals":"1/1/1/2"},
+  "tests":{"unit":"74/74 PASS","fulfilment_controls":"1/1 PASS","postgresql_regression":"19/19 PASS"},
+  "authorization":{"student_plan_access":"403 PASS","operation_roles":"3/3","distinct_approvers":"2/2"},
+  "controls":{"execution_mode":"DRY_RUN_ONLY","active_legal_hold":"409 BLOCKED","dual_approval_status":"DUAL_APPROVED","impact_hash":"SHA-256"},
+  "safety":{"source_data_mutations":0,"destructive_executor_enabled":false,"completion_transition":"409 BLOCKED","direct_identifiers_in_impact":0,"legal_compliance_certified":false},
+  "external":{"managed_identity_ready":false,"legal_retention_store_ready":false,"production_execution":"BLOCKED_EXTERNAL_IDENTITY_POLICY"}
+}

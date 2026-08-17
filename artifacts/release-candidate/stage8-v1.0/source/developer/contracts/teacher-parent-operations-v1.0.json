@@ -1,0 +1,10 @@
+{
+  "schema_version":"1.0.0",
+  "requirement_id":"D80-05",
+  "roles":{"TEACHER":{"read":true,"assign":true,"intervene":true},"PARENT":{"read":true,"assign":false,"intervene":false}},
+  "access_gates":["ACTIVE_USER","ACTIVE_STUDENT_LINK","ACTIVE_REPORT_CONSENT_FOR_PARENT"],
+  "assignment_statuses":["ASSIGNED","IN_PROGRESS","COMPLETED","CANCELLED"],
+  "intervention_priorities":["NORMAL","WATCH","URGENT"],
+  "privacy":{"raw_answers":false,"problem_text":false,"direct_identity":false,"free_text_notes":false},
+  "truth_boundary":{"local_synthetic":true,"institution_connected":false,"field_validated":false,"production_ready":false}
+}

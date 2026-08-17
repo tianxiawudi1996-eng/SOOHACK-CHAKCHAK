@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 57,
+  "generated_at": "2026-08-10T15:29:14.068Z",
+  "status": "AUTO_QA_PASS_LOCAL_CONTROLLED_PRODUCTION_ROLLOUT_RESULTS_BLOCKED_EXTERNAL",
+  "current_result_intake": {
+    "status": "BLOCKED_EXTERNAL",
+    "recommendation": "HOLD",
+    "source_status": "BLOCKED_EXTERNAL",
+    "source_accepted": false,
+    "records_received": 0,
+    "records_required": 8,
+    "passed_records": 0,
+    "failed_records": 0,
+    "complete": false,
+    "kill_switch_rearmed": false,
+    "feature_flag_restored_off": false,
+    "rollback_complete": false,
+    "review_status": "NOT_REQUESTED",
+    "blockers": [
+      "PHASE56_ROLLOUT_HANDOFF_NOT_READY",
+      "ROLLOUT_RESULTS_PENDING"
+    ],
+    "validation_failures": [],
+    "student_traffic_allowed": false,
+    "public_traffic_allowed": false,
+    "production_promotion_allowed": false
+  },
+  "summary": {
+    "scenarios": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "current-results-blocked",
+      "passed": true,
+      "observed": {
+        "status": "BLOCKED_EXTERNAL",
+        "blockers": [
+          "PHASE56_ROLLOUT_HANDOFF_NOT_READY",
+          "ROLLOUT_RESULTS_PENDING"
+        ]
+      }
+    },
+    {
+      "id": "ready-source-awaits-results",
+      "passed": true,
+      "observed": {
+        "status": "AWAITING_ROLLOUT_RESULTS"
+      }
+    },
+    {
+      "id": "partial-results-held",
+      "passed": true,
+      "observed": {
+        "status": "ROLLOUT_RESULTS_INCOMPLETE"
+      }
+    },
+    {
+      "id": "safe-results-ready-for-review",
+      "passed": true,
+      "observed": {
+        "status": "READY_FOR_CONTROLLED_ROLLOUT_REVIEW"
+      }
+    },
+    {
+      "id": "single-review-limited-handoff-only",
+      "passed": true,
+      "observed": {
+        "status": "CONTROLLED_ROLLOUT_ACCEPTED_FOR_LIMITED_PRODUCTION_HANDOFF"
+      }
+    },
+    {
+      "id": "hard-failure-requires-rollback",
+      "passed": true,
+      "observed": {
+        "pending": true,
+        "status": "CONTROLLED_ROLLOUT_REJECTED_AUTOMATICALLY"
+      }
+    },
+    {
+      "id": "integrity-limits-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "DUPLICATE_LOCALE_RESULT",
+          "SCENARIO_REFERENCE_INVALID:SYNTHETIC-2",
+          "INPUT_TOKEN_BUDGET_EXCEEDED",
+          "ROLLOUT_DURATION_EXCEEDED"
+        ]
+      }
+    },
+    {
+      "id": "raw-secret-hash-and-false-claim-rejected",
+      "passed": true,
+      "observed": {
+        "failures": [
+          "SOURCE_HASH_MISMATCH",
+          "NO_ROLLOUT_CONTRADICTION",
+          "FORBIDDEN_CONTENT_KEY:response_text",
+          "SECRET_MATERIAL_DETECTED"
+        ]
+      }
+    }
+  ],
+  "contract_sha256": "3b3a05b8a4e883796d5b20b890a262c475767a6a6628e3ac135bdac22bbd4ab8",
+  "source_rollout_register_sha256": "0b1adcc1a00986cb67c6ac144a306570d5648e6d70147e11544c4f776c1319ec",
+  "result_register_sha256": "8505e8f9bd76d9f230792b6568c475f9bd06673f01f43cfc398d871a451fc310",
+  "external_actions": {
+    "api_key_accessed": false,
+    "rollout_observed": false,
+    "dispatch_observed": false,
+    "provider_live_tested": false,
+    "feature_flag_changed": false,
+    "student_traffic": false,
+    "public_traffic": false,
+    "production_promotion": false
+  },
+  "next_authorized_action": "WAIT_FOR_READY_PHASE56_HANDOFF_AND_EIGHT_REFERENCE_ONLY_RESULTS"
+}

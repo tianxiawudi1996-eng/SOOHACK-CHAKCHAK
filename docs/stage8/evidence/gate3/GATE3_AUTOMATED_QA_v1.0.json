@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T09:07:50+09:00",
+  "gate": 3,
+  "status": "BLOCKED_PREREQUISITE",
+  "automated_status": "NOT_RUN",
+  "rig_pass_count": 0,
+  "rigs": [],
+  "manual_approval_required": 1,
+  "manual_approval_count": 0,
+  "failures": [],
+  "blockers": [
+    "GATE2_NOT_VERIFIED",
+    "REJECTED_DERIVED_RIG_CANDIDATES_QUARANTINED"
+  ],
+  "gate2_status": "NOT_VERIFIED",
+  "active_rejected_glbs": [],
+  "ready_for_promotion": false,
+  "gate3_status_change_applied": false,
+  "next_gate_allowed": false
+}

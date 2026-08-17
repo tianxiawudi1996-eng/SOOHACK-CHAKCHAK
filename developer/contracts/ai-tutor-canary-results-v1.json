@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 52,
+  "status": "LOCAL_RESULT_INTAKE_AND_ADJUDICATION_POLICY_ONLY",
+  "source_requirement": {
+    "phase": 51,
+    "status": "READY_FOR_CANARY_HANDOFF",
+    "source_hash_binding_required": true
+  },
+  "required_results": {
+    "count": 8,
+    "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+    "one_result_per_locale": true,
+    "raw_request_content_allowed": false,
+    "raw_response_content_allowed": false,
+    "student_data_allowed": false
+  },
+  "hard_gates": [
+    "STRICT_SCHEMA",
+    "SAFETY_POLICY",
+    "ANSWER_LEAK",
+    "PII",
+    "ROLE_SEPARATION",
+    "LOCALE",
+    "MODEL_PROMPT_PIN",
+    "TOKEN_AND_TIME_BUDGET",
+    "KILL_SWITCH_REARM"
+  ],
+  "decision_policy": {
+    "all_eight_pass": "READY_FOR_HUMAN_CANARY_REVIEW",
+    "any_hard_gate_failure": "REJECT_AND_ROLLBACK",
+    "incomplete_results": "HOLD",
+    "single_product_owner_review": true,
+    "automatic_production_promotion": false,
+    "execution_authorized_by_this_contract": false
+  }
+}

@@ -1,0 +1,11 @@
+BEGIN;
+DROP TABLE IF EXISTS mathchakchak.student_learning_intervention;
+DROP TABLE IF EXISTS mathchakchak.academy_learning_assignment_item;
+DROP TABLE IF EXISTS mathchakchak.academy_learning_assignment;
+DROP TABLE IF EXISTS mathchakchak.teacher_student_link;
+DELETE FROM mathchakchak.consent_record WHERE evidence_reference='LOCAL-SYNTHETIC-PARENT-CONSENT-P70';
+DELETE FROM mathchakchak.parent_student_link WHERE parent_user_id='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb';
+DELETE FROM mathchakchak.app_user WHERE id IN ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb');
+ALTER TABLE mathchakchak.app_user DROP CONSTRAINT app_user_role_check;
+ALTER TABLE mathchakchak.app_user ADD CONSTRAINT app_user_role_check CHECK (role IN ('STUDENT','PARENT','ADMIN','SERVICE'));
+COMMIT;

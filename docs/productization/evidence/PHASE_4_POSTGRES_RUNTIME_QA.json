@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-06T00:09:52+09:00",
+  "status": "PASS",
+  "postgres_version": "16",
+  "image": "postgres:16-alpine",
+  "environment": "isolated_temporary_container",
+  "migration": {
+    "path": "infra/database/migrations/0001_initial.sql",
+    "sha256": "b25d03be6b2f4abec7489111d80bbf233b0f5ce548a08a797800b2ada3994816",
+    "transaction": "PASS",
+    "tables_created": 18
+  },
+  "smoke_test": {
+    "path": "infra/database/tests/0001_smoke.sql",
+    "sha256": "19b8ac2deff2892470e75acccc28007568a11e3b37aa2a889f33435fd596b3dd",
+    "table_count": "PASS",
+    "supported_locale_constraint": "PASS",
+    "idempotency_unique_constraint": "PASS",
+    "audit_sensitive_metadata_constraint": "PASS",
+    "test_transaction_rolled_back": true
+  },
+  "rollback": {
+    "path": "infra/database/migrations/0001_rollback.sql",
+    "sha256": "717e15d4fa669451d01eac8bec7dad79f0c86988f2bbb93d7b02ef0bfcf0c19a",
+    "status": "PASS",
+    "rollback_schema_count": 0
+  },
+  "tables_created": 18,
+  "rollback_schema_count": 0,
+  "temporary_container_removed": true,
+  "unrelated_containers_modified": false
+}

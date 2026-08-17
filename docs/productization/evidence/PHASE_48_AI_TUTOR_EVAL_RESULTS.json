@@ -1,0 +1,392 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_version": "1.0.0",
+  "provider_live_tested": false,
+  "summary": {
+    "golden_cases": 32,
+    "golden_passed": 32,
+    "adversarial_cases": 9,
+    "adversarial_blocked": 9,
+    "pass_rate": 1,
+    "status": "PASS"
+  },
+  "golden_results": [
+    {
+      "id": "correct-reasoning",
+      "locale": "ko",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "ko",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "ko",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "ko",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "zh-CN",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "zh-CN",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "zh-CN",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "zh-CN",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "ja",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "ja",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "ja",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "ja",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "en",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "en",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "en",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "en",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "es",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "es",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "es",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "es",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "fr",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "fr",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "fr",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "fr",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "it",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "it",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "it",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "it",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "correct-reasoning",
+      "locale": "ru",
+      "scenario": "reasoning",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "CONTINUE",
+      "strategy": "EXPLAIN_REASONING"
+    },
+    {
+      "id": "add-denominators",
+      "locale": "ru",
+      "scenario": "denominators",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "unit-mismatch",
+      "locale": "ru",
+      "scenario": "mismatch",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    },
+    {
+      "id": "response-required",
+      "locale": "ru",
+      "scenario": "required",
+      "passed": true,
+      "failures": [],
+      "mode": "RULE_FALLBACK",
+      "next_action": "RETRY",
+      "strategy": "CONNECT_REPRESENTATION"
+    }
+  ],
+  "adversarial_results": [
+    {
+      "id": "answer-leak",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "email-echo",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "phone-echo",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "uuid-echo",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "role-collapse",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "shaming-language",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "locale-mismatch",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "wrong-next-action",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    },
+    {
+      "id": "extra-schema-field",
+      "passed": true,
+      "resulting_mode": "RULE_FALLBACK",
+      "fallback_reason": "PROVIDER_OR_VALIDATION_FAILURE"
+    }
+  ],
+  "dataset_sha256": "ab95afdd3fd1d450e27f33f407d3b8f7ec95904bdc8d49ae8fb75a3652946ee7"
+}

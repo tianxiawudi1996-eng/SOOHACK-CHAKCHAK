@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 25,
+  "tested_at": "2026-08-07T19:28:42+09:00",
+  "status": "AUTO_QA_PASS_LOCAL_ANALYTICS",
+  "scope": "LOCAL_SYNTHETIC_POSTGRESQL_AGGREGATES",
+  "requirements": ["P25-KPI-001", "P25-KPI-002", "P25-KPI-003", "P25-PRIV-001", "P25-PRIV-002"],
+  "metrics": {
+    "primary": "3/3",
+    "drivers": "2/2",
+    "primary_names": ["learning_completion_rate", "application_mastery_rate", "durable_recall_rate"],
+    "driver_names": ["independent_response_rate", "collaboration_pass_rate"],
+    "target_status": "PROVISIONAL_NO_FIELD_BASELINE"
+  },
+  "sources": {
+    "status": "5/5 AUTHORITATIVE_POSTGRESQL",
+    "tables": ["formula_learning_session", "student_formula_application_progress", "formula_recall_attempt", "formula_learning_response", "collaboration_phase_evidence"],
+    "new_raw_event_storage": false,
+    "new_tracking_cookie": false
+  },
+  "local_snapshot": {
+    "primary": {"learning_completion_rate": 0.6667, "application_mastery_rate": 1, "durable_recall_rate": 0.8},
+    "drivers": {"independent_response_rate": 0.8491, "collaboration_pass_rate": 0.9358},
+    "sample": {"formula_sessions_started": 27, "formula_sessions_completed": 18, "formulas_assessed": 2, "formulas_mastered": 2, "recall_attempts": 50, "recall_correct": 40, "formula_responses": 106, "hinted_responses": 16, "collaboration_phases": 265, "collaboration_passes": 248},
+    "data_sufficient": false,
+    "interpretation": "LOCAL_SYNTHETIC_ONLY_NOT_A_PRODUCT_BASELINE"
+  },
+  "privacy": {
+    "aggregation_only": true,
+    "student_ownership_enforced": true,
+    "direct_identifier_findings": 0,
+    "raw_answer_findings": 0,
+    "problem_text_findings": 0,
+    "event_property_allowlist": "PASS"
+  },
+  "tests": {
+    "unit": "62/62 PASS",
+    "zero_denominator": "NULL PASS",
+    "ownership_negative": "403 PASS",
+    "privacy_negative": "PASS"
+  },
+  "integration": {
+    "learning_quality": "1/1 PASS",
+    "postgresql_regression": "16/16 PASS",
+    "full_productization": "PHASE_0_TO_25 PASS"
+  },
+  "runtime": {
+    "api_container_id": "fd2e1259b14a387ec4efee69d1424c6d01fa1046a17e29066d047b9f0b267f2d",
+    "api_image_digest": "sha256:09f8409a3e2d18a7f15a4b3b6abad6d54c7f4d373a83283bc2762118552373ee",
+    "web_container_id": "70d70fcf14bfdab3723685eccabe8b540333e9ec5252f5a597c9d6c874407228",
+    "web_image_digest": "sha256:b786379ff9e376bc0d132ec5548c1e3f5175805070ca92265e82199b86cd8761",
+    "database_container_id": "bd1dc0dd50f59165471ba557f01e85ef639968d9cb61fbec7d61bbdedc3f7685",
+    "health": "3/3 healthy"
+  },
+  "field_target_validation": {
+    "status": "BLOCKED_REAL_TRAFFIC_AND_CONSENT",
+    "performed": false,
+    "minimum_before_review": {"students": 50, "completed_sessions": 200, "observation_weeks": 4},
+    "pending": ["production traffic authorization", "analytics consent and deletion policy", "minimum cohort rule", "grade-level distribution review"]
+  }
+}

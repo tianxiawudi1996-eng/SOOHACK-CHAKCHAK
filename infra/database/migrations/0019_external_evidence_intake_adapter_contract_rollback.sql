@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TRIGGER IF EXISTS privacy_external_evidence_intake_port_immutable ON mathchakchak.privacy_external_evidence_intake_port;
+DROP TRIGGER IF EXISTS privacy_external_evidence_intake_adapter_contract_immutable ON mathchakchak.privacy_external_evidence_intake_adapter_contract;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_evidence_intake_port;
+DROP TABLE IF EXISTS mathchakchak.privacy_external_evidence_intake_adapter_contract;
+DROP FUNCTION IF EXISTS mathchakchak.reject_external_evidence_intake_adapter_mutation();
+
+COMMIT;

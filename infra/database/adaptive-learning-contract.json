@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "database": "PostgreSQL",
+  "namespace": "mathchakchak",
+  "migration": "infra/database/migrations/0003_adaptive_learning.sql",
+  "rollback": "infra/database/migrations/0003_adaptive_learning_rollback.sql",
+  "algorithm_version": "adaptive-v1",
+  "routes": {
+    "REMEDIATE": {"accuracy_min": 0, "accuracy_max_exclusive": 0.5, "starting_hint_level": 2, "target_difficulty": 1},
+    "CORE": {"accuracy_min": 0.5, "accuracy_max_exclusive": 0.8, "starting_hint_level": 1, "target_difficulty": 3},
+    "EXTEND": {"accuracy_min": 0.8, "accuracy_max_inclusive": 1, "starting_hint_level": 0, "target_difficulty": 5}
+  },
+  "tables": ["adaptive_learning_decision", "student_topic_mastery"],
+  "privacy": {
+    "raw_answer_in_decision": false,
+    "stored_evidence": ["answered", "correct"],
+    "student_scope_required": true
+  },
+  "invariants": [
+    "one_decision_per_diagnostic_session",
+    "route_is_server_calculated",
+    "route_settings_are_copied_to_formula_session",
+    "first_incorrect_response_uses_route_starting_hint",
+    "formula_completion_schedules_route_review_interval",
+    "raw_answer_is_not_copied_to_decision_evidence",
+    "latest_mastery_is_persisted_after_formula_completion"
+  ]
+}

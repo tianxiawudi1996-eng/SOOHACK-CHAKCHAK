@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-05T13:31:00+09:00",
+  "strategy": "SHADED_2D_PET",
+  "status": "APPROVED",
+  "layout": {
+    "columns": 4,
+    "rows": 2,
+    "poses_per_character": 8,
+    "background": "VERY_LIGHT_COOL_GRAY",
+    "transparent_pose_export": "DEFERRED_UNTIL_SHEET_APPROVAL"
+  },
+  "canonical_sources": {
+    "Chakchaki": {
+      "path": "ssot/stage7/v1.0/Chakchaki_Approved_Reference_v1.0.png",
+      "sha256": "3263c6ea4e518a834340a855af4ca36d35ee90ac3d59c89f393c40c2cc7ea7fd"
+    },
+    "Gongsickyi": {
+      "path": "ssot/stage7/v1.0/Gongsickyi_Approved_Reference_v1.0.png",
+      "sha256": "3d2fe052a9d755a28624a134d9d9e298de70669a14d47eda8a5b48353f3e39ec"
+    }
+  },
+  "sheets": [
+    {
+      "character": "Chakchaki",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "review_copy": "docs/stage8/evidence/2d-pet/v1.0/review/Chakchaki_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "c9d4e683ffc7f34d13e23e9ba6fff7fbf7fcaccbfe0242cc56c64cac70e353fb",
+      "width": 1536,
+      "height": 1024,
+      "expected_pose_count": 8,
+      "generation_tool": "OpenAI image generation",
+      "source_reference": "Chakchaki"
+    },
+    {
+      "character": "Gongsickyi",
+      "path": "outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/sheets/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "review_copy": "docs/stage8/evidence/2d-pet/v1.0/review/Gongsickyi_Shaded2D_PoseSheet_Candidate_v1.0.png",
+      "sha256": "408ddf278a97c2d974ca65f863c87db17b898bd647dbbce06fbe52fbf81c4a6c",
+      "width": 1536,
+      "height": 1024,
+      "expected_pose_count": 8,
+      "generation_tool": "OpenAI image generation",
+      "source_reference": "Gongsickyi"
+    }
+  ],
+  "metadata_policy": {
+    "presentation_metadata_removed": true,
+    "removed_png_chunks": ["caBX"],
+    "pixel_data_changed": false
+  },
+  "pose_order": [
+    {"pose_id": "P01", "state": "IDLE_LISTEN", "index": 1},
+    {"pose_id": "P02", "state": "WELCOME", "index": 2},
+    {"pose_id": "P03", "state": "GUIDE", "index": 3},
+    {"pose_id": "P04", "state": "THINK", "index": 4},
+    {"pose_id": "P05", "state": "PRAISE_PROGRESS", "index": 5},
+    {"pose_id": "P06", "state": "SEARCH", "index": 6},
+    {"pose_id": "P07", "state": "CELEBRATE", "index": 7},
+    {"pose_id": "P08", "state": "RETRY", "index": 8}
+  ],
+  "manual_approval_required": 1,
+  "manual_approval_count": 1,
+  "next_gate_allowed": true
+}

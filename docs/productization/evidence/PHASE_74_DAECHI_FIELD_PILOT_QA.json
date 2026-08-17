@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 74,
+  "requirement_id": "D80-09",
+  "status": "LOCAL_FIELD_PILOT_PLATFORM_PASS_ACTUAL_ACADEMY_EVIDENCE_BLOCKED_EXTERNAL",
+  "verified_at": "2026-08-12T17:13:01+09:00",
+  "scope": "LOCAL_PROTOCOL_POSTGRESQL_ADMIN_READINESS_ONLY",
+  "coverage": {
+    "required_academy_range": "2..3",
+    "required_metrics": "6/6",
+    "database_tables": "7/7",
+    "actual_academies": 0,
+    "actual_agreements": 0,
+    "actual_students": 0,
+    "actual_observed_weeks": 0,
+    "actual_independent_results": 0,
+    "actual_product_approvals": 0
+  },
+  "database": {
+    "engine": "PostgreSQL 16",
+    "migration": "0039_daechi_field_pilot.sql",
+    "forward": "PASS",
+    "rollback": "PASS",
+    "reapply": "PASS",
+    "smoke": "PASS",
+    "append_only": true,
+    "public_privileges_revoked": true
+  },
+  "verification": {
+    "prompt_contract": "8/8 PASS",
+    "phase_unit": "7/7 PASS",
+    "full_unit": "329/329 PASS",
+    "target_integration": "2/2 PASS",
+    "file_isolated_integration": "59/59 PASS",
+    "security": "PASS; 368 files; 0 known vulnerabilities",
+    "operations_runtime": "20/20 PASS; database ready",
+    "staging": "43/43 PASS; 8 locales; rollback and headers PASS",
+    "phase0": "PASS"
+  },
+  "truth_boundary": {
+    "actual_field_pilot_started": false,
+    "actual_academy_evidence_available": false,
+    "student_data_used": false,
+    "daechi_fit_proven": false,
+    "market_score_80_confirmed": false,
+    "external_deployment_performed": false
+  }
+}

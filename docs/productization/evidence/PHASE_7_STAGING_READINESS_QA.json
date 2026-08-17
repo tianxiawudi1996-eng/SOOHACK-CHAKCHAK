@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-15T22:02:43+09:00",
+  "status": "PASS_LOCAL_STAGING",
+  "release": "0.1.0",
+  "artifact": {
+    "path": "artifacts/staging/v0.1.0/site",
+    "manifest": "artifacts/staging/v0.1.0/manifest.json",
+    "manifest_sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d",
+    "file_count": 78,
+    "hashes": "PASS",
+    "locales": "8/8",
+    "approved_character_assets": "2/2",
+    "approved_pose_assets": "32/32"
+  },
+  "local_http_smoke": {
+    "base_url": "http://127.0.0.1:4180/",
+    "status": "PASS",
+    "artifact_responses_200": "78/78",
+    "locale_routes_200": "8/8"
+  },
+  "local_deployment": {
+    "performed": true,
+    "type": "DOCKER_LOCAL_ISOLATED",
+    "container_name": "mathchakchak-staging-v010",
+    "container_id": "ad4a8b22ca2344a09173d21e13fec87fa4147adb3879ca5d1766c72206e71c61",
+    "image": "mathchakchak-api-staging-web:latest",
+    "image_digest": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+    "health": "healthy",
+    "url": "http://127.0.0.1:4180/?locale=ko",
+    "production_data_used": false,
+    "production_traffic_used": false
+  },
+  "security_headers": {
+    "status": "PASS",
+    "content_security_policy": true,
+    "x_content_type_options": "nosniff",
+    "x_frame_options": "DENY",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "permissions_policy": true,
+    "cross_origin_opener_policy": "same-origin"
+  },
+  "rollback_rehearsal": {
+    "status": "PASS",
+    "target_state": "LOCAL_STACK_REMOVED_PORTS_CLOSED_SAME_IMAGES_REDEPLOYED",
+    "container_removed": true,
+    "port_closed": true,
+    "same_image_redeployed": true,
+    "post_redeploy_health": "healthy",
+    "same_images_redeployed": true
+  },
+  "external_deployment": {
+    "performed": false,
+    "target_reference": null,
+    "url": null,
+    "deployment_id": null,
+    "rollback_rehearsal": "NOT_APPLICABLE_TO_LOCAL_VERIFICATION"
+  },
+  "optional_external_promotion_inputs": [
+    "STAGING_BASE_URL",
+    "STAGING_API_BASE_URL",
+    "STAGING_DATABASE_URL_REFERENCE",
+    "STAGING_SESSION_SECRET_REFERENCE",
+    "STAGING_OBJECT_STORAGE_REFERENCE",
+    "deployment_authorization"
+  ]
+}

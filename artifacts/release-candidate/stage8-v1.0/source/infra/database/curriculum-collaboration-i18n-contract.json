@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 20,
+  "database": "PostgreSQL",
+  "locales": ["ko", "zh-CN", "ja", "en", "es", "fr", "it", "ru"],
+  "grades": 12,
+  "grade_translation_rows": 96,
+  "reference_translation_rows": 8,
+  "collaboration_role_rows": 8,
+  "collaboration_phase_rows": 40,
+  "translated_verification_status": "TRANSLATION_REVIEW_REQUIRED",
+  "migration": "infra/database/migrations/0011_curriculum_collaboration_i18n.sql",
+  "rollback": "infra/database/migrations/0011_curriculum_collaboration_i18n_rollback.sql",
+  "seed": "infra/database/seeds/0009_curriculum_collaboration_i18n.sql",
+  "locale_content": "scripts/productization/curriculum-runtime-locales.mjs"
+}

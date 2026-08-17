@@ -1,0 +1,12 @@
+BEGIN;
+DROP TRIGGER IF EXISTS content_problem_revision_immutable ON mathchakchak.content_problem_revision;
+DROP FUNCTION IF EXISTS mathchakchak.protect_reviewed_content_revision();
+DROP TRIGGER IF EXISTS content_problem_publish_gate ON mathchakchak.content_problem;
+DROP FUNCTION IF EXISTS mathchakchak.assert_content_problem_publishable();
+DROP TABLE IF EXISTS mathchakchak.content_quality_finding;
+DROP TABLE IF EXISTS mathchakchak.content_problem_review;
+DROP TABLE IF EXISTS mathchakchak.content_problem_revision;
+DROP TABLE IF EXISTS mathchakchak.content_problem;
+DROP TABLE IF EXISTS mathchakchak.content_import_batch;
+DROP TABLE IF EXISTS mathchakchak.content_license;
+COMMIT;

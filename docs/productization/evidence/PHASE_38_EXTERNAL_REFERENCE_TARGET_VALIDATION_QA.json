@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 38,
+  "status": "AUTO_QA_PASS_LOCAL_TARGET_VALIDATION_POLICY_BLOCKED_EXTERNAL",
+  "scope": "LOCAL_SYNTHETIC_REFERENCE_TARGET_VALIDATION_POLICY_ONLY",
+  "contract": {
+    "contract_tables": "2/2 DEFINED",
+    "control_rules": "6/6 DEFINED",
+    "normalization_steps": "8/8 DEFINED",
+    "rejection_rules": "14/14 DEFINED",
+    "ownership_proof_types": "6/6 DEFINED",
+    "forbidden_address_classes": "8/8 DEFINED",
+    "targets": "0 EXTERNAL_TARGET_MISSING",
+    "ownership_proofs": "0 EXTERNAL_PROOF_MISSING",
+    "dns_snapshots": "0 EXTERNAL_PROOF_MISSING"
+  },
+  "tests": {
+    "unit": "117/117 PASS",
+    "phase_integration": "1/1 PASS",
+    "postgresql_regression": "29/29 PASS",
+    "append_only_inverse": "2/2 BLOCKED",
+    "migration": "FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety": {
+    "target_value_write_enabled": false,
+    "target_normalization_execution_enabled": false,
+    "ownership_proof_submission_enabled": false,
+    "dns_resolution_enabled": false,
+    "redirect_follow_enabled": false,
+    "allowlist_write_enabled": false,
+    "external_reference_fetch_enabled": false,
+    "network_connection_authorized": false,
+    "execution_authorized": false,
+    "source_data_mutations": 0
+  },
+  "manual_or_external_status": "BLOCKED_EXTERNAL_TARGET_OWNERSHIP_DNS_AND_PORT_POLICY"
+}

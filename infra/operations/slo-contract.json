@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "service": "MathChakChak",
+  "measurement_window": "rolling_30_days_after_external_launch",
+  "slos": {
+    "availability_percent": 99.9,
+    "api_p95_ms": 2000,
+    "database_backup_rpo_hours": 24,
+    "service_restore_rto_hours": 4,
+    "translation_fallback_percent_max": 1.0,
+    "overdue_review_lag_minutes_max": 5
+  },
+  "local_rehearsal_thresholds": {
+    "health_success_percent": 100,
+    "api_p95_ms": 500,
+    "server_error_count": 0,
+    "database_ready": true
+  },
+  "signals": {
+    "liveness": "/healthz",
+    "readiness": "/readyz",
+    "prometheus_metrics": "/metrics",
+    "structured_log_event": "http_request"
+  }
+}

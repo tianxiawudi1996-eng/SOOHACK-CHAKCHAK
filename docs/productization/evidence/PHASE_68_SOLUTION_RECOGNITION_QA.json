@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "phase": 68,
+  "tested_at": "2026-08-12T08:50:12+09:00",
+  "status": "PASS_LOCAL_PLATFORM_OCR_BENCHMARK_BLOCKED_EXTERNAL",
+  "database": {
+    "engine": "PostgreSQL 16",
+    "tables": "3/3",
+    "migration_forward": "3/3",
+    "migration_rollback": "0/0",
+    "migration_reapply": "3/3",
+    "teacher_review_trigger": "PASS",
+    "raw_asset_persisted": false,
+    "raw_candidate_persisted": false,
+    "automatic_scoring_allowed": false
+  },
+  "tests": {
+    "phase_unit": "7/7",
+    "full_unit": "294/294",
+    "phase_integration": "4/4",
+    "bulk_integration_initial": "39/43",
+    "bulk_failures_independently_rechecked": "4/4",
+    "effective_integration_coverage": "43/43",
+    "bulk_harness_note": "Three two-second-expiry external-chain tests failed under shared load and one web test exhausted the Node process zone; all four passed as isolated processes without code changes.",
+    "staging_artifacts": "39/39",
+    "security": "PASS",
+    "secret_files_scanned": 328,
+    "known_vulnerabilities": 0,
+    "operations_runtime": "20/20",
+    "database_ready": "PASS"
+  },
+  "truth_boundary": {
+    "manual_text_path_available": true,
+    "student_confirmation_required": true,
+    "image_provider_spoof_blocked": true,
+    "image_sources_fall_back_to_manual": true,
+    "ocr_provider_configured": false,
+    "accuracy_benchmark_run": false,
+    "d80_03_complete": false,
+    "market_score_80_confirmed": false,
+    "external_deployment_performed": false
+  }
+}

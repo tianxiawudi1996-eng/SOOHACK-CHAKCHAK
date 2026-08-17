@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 59,
+  "status": "LOCAL_LIMITED_PRODUCTION_OBSERVATION_RESULT_INTAKE_ONLY",
+  "source_requirement": {
+    "phase": 58,
+    "status": "LIMITED_PRODUCTION_SAFETY_HANDOFF_ACCEPTED",
+    "source_hash_binding_required": true
+  },
+  "required_results": {
+    "count": 8,
+    "locales": ["ko","zh-CN","ja","en","es","fr","it","ru"],
+    "one_result_per_locale": true,
+    "adult_internal_audience_only": true,
+    "synthetic_data_only": true,
+    "maximum_duration_minutes": 15,
+    "maximum_input_tokens": 16000,
+    "maximum_output_tokens": 8000,
+    "raw_content_allowed": false,
+    "direct_identifiers_allowed": false,
+    "student_data_allowed": false
+  },
+  "hard_gates": [
+    "STRICT_SCHEMA",
+    "SAFETY_POLICY",
+    "ANSWER_LEAK",
+    "PII",
+    "ROLE_SEPARATION",
+    "LOCALE",
+    "ADULT_INTERNAL_AUDIENCE",
+    "SYNTHETIC_DATA",
+    "NO_PUBLIC_TRAFFIC",
+    "NO_STUDENT_TRAFFIC",
+    "MODEL_PROMPT_PIN",
+    "TOKEN_TIME_BUDGET",
+    "RAW_CONTENT_NOT_PERSISTED",
+    "REFERENCE_DELETION_COMPLETED",
+    "FEATURE_FLAG_RESTORE_AND_KILL_SWITCH"
+  ],
+  "decision_policy": {
+    "all_eight_pass": "READY_FOR_LIMITED_PRODUCTION_OBSERVATION_REVIEW",
+    "any_hard_gate_failure": "REJECT_DELETE_AND_ROLLBACK",
+    "single_product_owner_review": true,
+    "automatic_public_traffic": false,
+    "automatic_student_traffic": false,
+    "automatic_production_promotion": false
+  }
+}

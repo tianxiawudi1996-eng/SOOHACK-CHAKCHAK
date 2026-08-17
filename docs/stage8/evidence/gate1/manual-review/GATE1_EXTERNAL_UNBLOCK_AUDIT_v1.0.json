@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-04T08:56:28.269413+00:00",
+  "gate": 1,
+  "status": "READY_FOR_ASSIGNMENT",
+  "nomination_response_sha256": "59e0460e35ba5c0b1a3ade57baf1f2b5c6c9ec72583ac1792a5d2588ee002764",
+  "valid_nomination_count": 5,
+  "nomination_required": 5,
+  "authorization_reference_present": true,
+  "missing_roles": [],
+  "missing_fields": [],
+  "failures": [],
+  "blockers": [],
+  "assignment_audit_status": "DISPATCH_CONFIRMED",
+  "approval_intake_status": "BLOCKED_EXTERNAL",
+  "assignment_applied": false,
+  "dispatch_performed": false,
+  "approvals_created": 0,
+  "ready_for_assignment": true,
+  "next_gate_allowed": false,
+  "next_action": "A human Coordinator may transfer validated nominations into the assignment register."
+}

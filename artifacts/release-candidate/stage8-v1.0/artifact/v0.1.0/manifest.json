@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "release": "0.1.0",
+  "environment": "staging",
+  "artifact_scope": "FRONTEND_PREVIEW",
+  "supported_locales": [
+    "ko",
+    "zh-CN",
+    "ja",
+    "en",
+    "es",
+    "fr",
+    "it",
+    "ru"
+  ],
+  "approved_character_assets": 2,
+  "approved_pose_assets": 32,
+  "files": [
+    {
+      "path": "site/academy/app.js",
+      "bytes": 8639,
+      "sha256": "e1eabed1183f95a6bf5a9e7ec859f31b14afbcb3bdfb852172013897be98fb45"
+    },
+    {
+      "path": "site/academy/index.html",
+      "bytes": 3241,
+      "sha256": "50861ee87dde2816747da063a9bb4474522865f681288341023a7ddbf2a02f18"
+    },
+    {
+      "path": "site/academy/messages.mjs",
+      "bytes": 11316,
+      "sha256": "ee3cd251146585f312dfb4d903030518db11e2fa5dea1a61368c155d11aae42b"
+    },
+    {
+      "path": "site/academy/styles.css",
+      "bytes": 6016,
+      "sha256": "ca6c1ef1c9107768c1b33293140847a2c38dd84ca96cefec30ed4e9d48b812c7"
+    },
+    {
+      "path": "site/accessibility/interaction.css",
+      "bytes": 683,
+      "sha256": "fe2123d62b5a5f402b9b3612259f08aab43bdaff650d07920e591d3540a0a943"
+    },
+    {
+      "path": "site/accessibility/interaction.mjs",
+      "bytes": 336,
+      "sha256": "07d46ce3e7c089f2931052c4b37685d1667637750a5b750e4eee2be3f438c98c"
+    },
+    {
+      "path": "site/assets/app.js",
+      "bytes": 2676,
+      "sha256": "4579216e87de365560ffad4ca08fc91cb5c1e7850b2893d49c1453676432108f"
+    },
+    {
+      "path": "site/assets/characters/chakchaki-guide.webp",
+      "bytes": 91110,
+      "sha256": "cb201e01a5e8809b3b1d64c74683e892031e85334aecd7a5e0a54606b2907f3b"
+    },
+    {
+      "path": "site/assets/characters/gongsickyi-praise.webp",
+      "bytes": 79820,
+      "sha256": "e68bc9dc587832ab28b16b88d42ba52521fd7a7fa5378d5a802a3792573f1ae1"
+    },
+    {
+      "path": "site/assets/product-shell.css",
+      "bytes": 2023,
+      "sha256": "8acb5dbadf86103cd8baa417bf45eb22d8fe1e80f61c213d64b624fb42fe586f"
+    },
+    {
+      "path": "site/assets/stage8/2d-pet-motion-v1.0.css",
+      "bytes": 8692,
+      "sha256": "34982125538f3b01bd848360116caf8c433a3bbc60a57db498b77aee7a7f5f80"
+    },
+    {
+      "path": "site/assets/stage8/2d-pet-motion-v1.0.js",
+      "bytes": 10783,
+      "sha256": "4053dfa21683bd3034b3ea7afbcda6ab39b33155302a8e90c84c718a8827a6f4"
+    },
+    {
+      "path": "site/assets/stage8/ai-behavior-v1.0.css",
+      "bytes": 3086,
+      "sha256": "cc8060acd51ece95147e944d9fdcedef28aad84cd07f4447a858950b1f2d4f5e"
+    },
+    {
+      "path": "site/assets/stage8/ai-behavior-v1.0.js",
+      "bytes": 17490,
+      "sha256": "f2a0a590b0940955fcf9b3ed5fb8d2795234bc5d54fdbe0f1223eef748623b07"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p01_idle-listen_v1.0.png",
+      "bytes": 124208,
+      "sha256": "5471eac97246560320d4c942f2937a28c5ddc77216f4eac477608eb0eef15e30"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p02_welcome_v1.0.png",
+      "bytes": 134055,
+      "sha256": "01e2283bcb729113c035982b40680b3b211e3c3a14b9785252e8cf879965725f"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p03_guide_v1.0.png",
+      "bytes": 135536,
+      "sha256": "d65406b4a1b9b81e65593762c3a789e5619a478976e39a7170554eb635498e6b"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p04_think_v1.0.png",
+      "bytes": 123399,
+      "sha256": "33263d42b9a041fe5054dafc3adb9e6410b8bc15637c3be51e43a0f7e1b30029"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p05_praise-progress_v1.0.png",
+      "bytes": 131906,
+      "sha256": "2c2ad6fbce787e95ddefc8d943b4ad339389979c329a41177ed239fc090076c6"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p06_search_v1.0.png",
+      "bytes": 130060,
+      "sha256": "e2eb25b84f022e1a6f11ba6287ca283f4a19696740de38a979925b0bc8c255e8"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p07_celebrate_v1.0.png",
+      "bytes": 129575,
+      "sha256": "c5463f0644b0e0430bc7be93c04010aa557b252fd56dcac42c92c16acfdf0f35"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Chakchaki/chakchaki_p08_retry_v1.0.png",
+      "bytes": 126736,
+      "sha256": "818857a4ea636498a8510bb2337a1245af460ee3863b9d7497876b3ac5edf940"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p01_idle-listen_v1.0.png",
+      "bytes": 120223,
+      "sha256": "4601d8d089960a0b58ac04a822adbe50f6c87ee821730c269b59b0c9357e5e2a"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p02_welcome_v1.0.png",
+      "bytes": 125830,
+      "sha256": "689c01bffb055fca3be3da78756cd91e144f539e1a3fae5671cab4141f326d4b"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p03_guide_v1.0.png",
+      "bytes": 120944,
+      "sha256": "e1b790e050ac3f53240ddac27d9c309f909349d14ec6bd76f270caf08afa5b81"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p04_think_v1.0.png",
+      "bytes": 116431,
+      "sha256": "5560031279193a2171e6c0bfc2a946f2810af1306b77cf3c0fea73797dc1efa1"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.png",
+      "bytes": 115817,
+      "sha256": "f2471b4aaba928600633a06bdc1c4be548d9dde9e129835250b84ce5f539021e"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p06_search_v1.0.png",
+      "bytes": 119085,
+      "sha256": "0a3e2f6548e3ce5f9584db36ce5c0259a24c2e85fa2140d2156c1feddec225ec"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p07_celebrate_v1.0.png",
+      "bytes": 121842,
+      "sha256": "74516a3af207f53ac15a1c7b8767659d95aa2e914f7235b349e68becfd7e8b8b"
+    },
+    {
+      "path": "site/assets/stage8/poses/png/Gongsickyi/gongsickyi_p08_retry_v1.0.png",
+      "bytes": 113265,
+      "sha256": "7daccfcc8644430c45b28979359b12ee8f9f477ea0467510b79ca6575c113237"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p01_idle-listen_v1.0.webp",
+      "bytes": 83594,
+      "sha256": "0d22413c6162389317c43e602d84e8358e0514bd954cea04c3eabb953a33f28f"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp",
+      "bytes": 90898,
+      "sha256": "1e9b967e5b40785641949b6f1671dd9efe180357e474eda77e8cde83cd035c0f"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p03_guide_v1.0.webp",
+      "bytes": 91110,
+      "sha256": "cb201e01a5e8809b3b1d64c74683e892031e85334aecd7a5e0a54606b2907f3b"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p04_think_v1.0.webp",
+      "bytes": 82508,
+      "sha256": "f4f4ad3fddaf70f5e4a7d396199cd567900a2eb868ce61de718ab7a493854d64"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p05_praise-progress_v1.0.webp",
+      "bytes": 88764,
+      "sha256": "5c94efb4a8779d1dc00745fc150a0547563cb118ec66898f1e947b9f99753293"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p06_search_v1.0.webp",
+      "bytes": 86664,
+      "sha256": "0f8789edca2bc95aa7f1afcf4230c72be5f83df89f149f190aa3782bcd631c55"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p07_celebrate_v1.0.webp",
+      "bytes": 86432,
+      "sha256": "a6f3bbda47c84b7dbefbf49fb306d89790cbe727309d022437ce82b1542b64a8"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Chakchaki/chakchaki_p08_retry_v1.0.webp",
+      "bytes": 85782,
+      "sha256": "300ed8d96126d88f0452ff6685ded944a514e7cc18ba2c260c9e6f27fc75f962"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p01_idle-listen_v1.0.webp",
+      "bytes": 82452,
+      "sha256": "51bcf316dbf879872bfca8e8405d3b5474b09ec38dfcb21beeca5a3f8764ebd1"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp",
+      "bytes": 86064,
+      "sha256": "1ec2920b6a51eb4c2785b23d2fad6a769c02b2e5ceb86712f7ab527e2df7fbb3"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p03_guide_v1.0.webp",
+      "bytes": 82920,
+      "sha256": "b172b8cc3fd2a3df22af2809d137e16167b527d04ac2e8ff29f5d3e9fd2176f9"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p04_think_v1.0.webp",
+      "bytes": 78520,
+      "sha256": "7401714e6a8c3391f0ffca52b27bdd7de7ee47a3dc591a1c54468d5f2b511056"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p05_praise-progress_v1.0.webp",
+      "bytes": 79820,
+      "sha256": "e68bc9dc587832ab28b16b88d42ba52521fd7a7fa5378d5a802a3792573f1ae1"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p06_search_v1.0.webp",
+      "bytes": 80202,
+      "sha256": "84c989c8c04c5f7611254d0a30e8da5c4a92dcc8addefe1c705d7143ecf9e76a"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p07_celebrate_v1.0.webp",
+      "bytes": 83996,
+      "sha256": "784f2a2c5df5e19573fd9f6aa175a284b44f15cfd6d7a00577a8602ee65133a4"
+    },
+    {
+      "path": "site/assets/stage8/poses/webp/Gongsickyi/gongsickyi_p08_retry_v1.0.webp",
+      "bytes": 77704,
+      "sha256": "7f52a83955fd10015a4f63650d4606ddf2784e822d163559db52163727d795f3"
+    },
+    {
+      "path": "site/assets/styles.css",
+      "bytes": 15757,
+      "sha256": "841ec5482da35c3992a35060d2eec6c35264e43d310fa01e7ffcf21236c7b3c0"
+    },
+    {
+      "path": "site/assets/tokens.css",
+      "bytes": 1068,
+      "sha256": "a8d8a24fc9f79634ecf9aa8ceaef581309395a63b3787008aea929ffe22e65d8"
+    },
+    {
+      "path": "site/curriculum/app.js",
+      "bytes": 34633,
+      "sha256": "7058201a7895d7ca2d2709db252729d1ce07838c4fd35c3d08a2f2fe89804309"
+    },
+    {
+      "path": "site/curriculum/index.html",
+      "bytes": 4936,
+      "sha256": "293fc151009718dc523ccc9da26c55cb300abaa21f1b8a7113e9750214769978"
+    },
+    {
+      "path": "site/curriculum/messages.mjs",
+      "bytes": 11485,
+      "sha256": "2443c66a2091ce0bd9455f0e95ae9a3c8ea1a6d7dbcfb04e583536ae4bf1b743"
+    },
+    {
+      "path": "site/curriculum/model.mjs",
+      "bytes": 677,
+      "sha256": "440180003523cb47cac5d22027c71c496fc5b6b4461ea400ece7b6fde83ed065"
+    },
+    {
+      "path": "site/curriculum/styles.css",
+      "bytes": 6760,
+      "sha256": "c93f4cb6ff9be9b47a35670356dfea7abff8cbea0233407599ab2b99d25c708d"
+    },
+    {
+      "path": "site/diagnostic/app.js",
+      "bytes": 6368,
+      "sha256": "3b7c6677e4322af8e85f11e7b2d7e26ed3ba8406f8ea3c9ef333222805d84f8f"
+    },
+    {
+      "path": "site/diagnostic/index.html",
+      "bytes": 3147,
+      "sha256": "d1d19b1d1d00b0b9c989d7843ed29edda03c03be2024102aa6b657bb68ce006a"
+    },
+    {
+      "path": "site/diagnostic/messages.mjs",
+      "bytes": 7268,
+      "sha256": "3c7e6779dabad5f99d89e84547cea96a90f2f06cfe51ecc3870f0c4d965944d2"
+    },
+    {
+      "path": "site/diagnostic/model.mjs",
+      "bytes": 611,
+      "sha256": "c29429dab332ea2600b2661621eb8b498965c4a2d8e9400f1849208f6b65f0e5"
+    },
+    {
+      "path": "site/diagnostic/styles.css",
+      "bytes": 2672,
+      "sha256": "b04979bd18569d61f4f4017e504c25fa5fc9c77ab283832847be5b22334a18e7"
+    },
+    {
+      "path": "site/i18n/accessibility.mjs",
+      "bytes": 13395,
+      "sha256": "0ca699a59dcb1bc16a5a8d66a2ec50ec56a2308132271a080dc596770bd33e4f"
+    },
+    {
+      "path": "site/i18n/preferred-locale.mjs",
+      "bytes": 407,
+      "sha256": "f229b91664abe395fedd50fef41a42ff7b3adefa1e0b2fd61fa0fcff39882c60"
+    },
+    {
+      "path": "site/index.html",
+      "bytes": 9984,
+      "sha256": "a84920ed430ecd701eeb695d546bf2908bf2a166cdb5ec1f9d5bdd22129b6c79"
+    },
+    {
+      "path": "site/locales/en.json",
+      "bytes": 2467,
+      "sha256": "489509e90dd653612c9441880938ff0729a7a18c5174cde17bd7af9a53c65af8"
+    },
+    {
+      "path": "site/locales/es.json",
+      "bytes": 2603,
+      "sha256": "d96f46a440e0c4b060573d4c99d0066e3cb98ba170c9f67b19054d6c70307716"
+    },
+    {
+      "path": "site/locales/fr.json",
+      "bytes": 2724,
+      "sha256": "1c8ef5028b374d5ccbb17f3024349d8ed447af4b2107fe42fe6851d7bbee00df"
+    },
+    {
+      "path": "site/locales/it.json",
+      "bytes": 2567,
+      "sha256": "6a91dd907bea132dfff1587f3ca6a0e60eabeea90ecfcc70150d2a54477412a1"
+    },
+    {
+      "path": "site/locales/ja.json",
+      "bytes": 2632,
+      "sha256": "c7cd01380c927f78bd7a03448715aaf4733c41d30f54e18bc17b357842ed7a8a"
+    },
+    {
+      "path": "site/locales/ko.json",
+      "bytes": 2569,
+      "sha256": "617469bebbb3580b30b049181c83625e00d2484f3964708f7be062270e1463a3"
+    },
+    {
+      "path": "site/locales/ru.json",
+      "bytes": 3819,
+      "sha256": "8a9896a08085949ba28ae73b0fef04915f706f0f727021e5121babaf5e0eaa7d"
+    },
+    {
+      "path": "site/locales/zh-CN.json",
+      "bytes": 2244,
+      "sha256": "df936580cb71d5abb29df78d7c99b170928a4b543fe9fb26542e143e3c1d8edb"
+    },
+    {
+      "path": "site/math-learning/app.js",
+      "bytes": 13032,
+      "sha256": "357e5714372d21c50ba4128f7b2e5d39ce3353760472d0e7d5537002ff1c4bf6"
+    },
+    {
+      "path": "site/math-learning/index.html",
+      "bytes": 5965,
+      "sha256": "80ac09ad1cee3b34bf8b782ef346d409f482768ccf21689e4d82884e3f73b2f9"
+    },
+    {
+      "path": "site/math-learning/messages.mjs",
+      "bytes": 14249,
+      "sha256": "6841be2089f3605bfda6595c55d939deb2ee69ef66328dde223dfac2a8b41d55"
+    },
+    {
+      "path": "site/math-learning/model.mjs",
+      "bytes": 1240,
+      "sha256": "a98d584faacbad721d793f66389c5568c40e027fe741df01a546f5bc153ca57e"
+    },
+    {
+      "path": "site/math-learning/styles.css",
+      "bytes": 10347,
+      "sha256": "092fca7073da1d91f152c2fdd56ccae87e307e0e905d0d3472a28865a635d04f"
+    },
+    {
+      "path": "site/operations/app.js",
+      "bytes": 6470,
+      "sha256": "497cd81aca6c01c2910ca722127148ba01e1a501a31df7c6767cbef15888e6a9"
+    },
+    {
+      "path": "site/operations/index.html",
+      "bytes": 2615,
+      "sha256": "7711aa16193a66bd82a95cf8e78c925565c75064436769705604ffaaed976dc2"
+    },
+    {
+      "path": "site/operations/messages.mjs",
+      "bytes": 7017,
+      "sha256": "dc44d68ed712de9ec1eeba5b28b472b02dc9433a9c009b87986aa71177185714"
+    },
+    {
+      "path": "site/operations/styles.css",
+      "bytes": 3446,
+      "sha256": "e1db9fb2810c4962146f336e004b2bb0896bb8f6cd2e06198ec78bbc6756d7ab"
+    }
+  ],
+  "file_count": 78,
+  "external_deployment": {
+    "performed": false,
+    "url": null,
+    "deployment_id": null
+  },
+  "feature_flags": {
+    "gate5_ai_pet_behavior": true,
+    "production_traffic": false
+  }
+}

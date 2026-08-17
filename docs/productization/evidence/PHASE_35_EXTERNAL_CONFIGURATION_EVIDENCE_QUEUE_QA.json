@@ -1,0 +1,35 @@
+{
+  "schema_version":"1.0.0",
+  "phase":35,
+  "status":"AUTO_QA_PASS_LOCAL_CONFIGURATION_EVIDENCE_QUEUE_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_CONFIGURATION_EVIDENCE_QUEUE_CONTRACT_ONLY",
+  "contract":{
+    "queue_stages":"7/7 DEFINED",
+    "slots":"6/6 AWAITING_EXTERNAL_SUBMISSION_CHANNEL",
+    "allowed_evidence_types":"12/12 DEFINED",
+    "reference_policies":"6/6 MISSING_EXTERNAL",
+    "review_ttl_policies":"6/6 MISSING_EXTERNAL",
+    "validation_status":"6/6 NOT_SUBMITTED",
+    "automatic_promotion":"6/6 FALSE"
+  },
+  "tests":{
+    "unit":"105/105 PASS",
+    "phase_integration":"1/1 PASS",
+    "postgresql_regression":"26/26 PASS",
+    "append_only_inverse":"2/2 BLOCKED",
+    "migration":"FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety":{
+    "configuration_evidence_submission_enabled":false,
+    "external_reference_fetch_enabled":false,
+    "queue_transition_enabled":false,
+    "approval_decision_write_enabled":false,
+    "raw_payload_storage_allowed":false,
+    "credential_material_storage_allowed":false,
+    "secret_material_storage_allowed":false,
+    "connection_authorized":false,
+    "execution_authorized":false,
+    "source_data_mutations":0
+  },
+  "manual_or_external_status":"BLOCKED_EXTERNAL_SUBMISSION_REFERENCE_AND_REVIEW_POLICY"
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>수학착착 학습 운영 콘솔</title>
+  <link rel="stylesheet" href="../assets/tokens.css"><link rel="stylesheet" href="../assets/product-shell.css"><link rel="stylesheet" href="styles.css?v=70">
+</head>
+<body class="product-page operations-page">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="ops-header"><a class="brand" href="../index.html"><span class="brand-mark">착</span><span><strong>수학착착</strong><small>MATH CHAKCHAK</small></span></a><nav><a id="academyLink" href="../academy/index.html"></a><select id="localeSelect" aria-label="언어 선택"><option value="ko">한국어</option><option value="zh-CN">中文</option><option value="ja">日本語</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="it">Italiano</option><option value="ru">Русский</option></select></nav></header>
+  <main id="main" tabindex="-1">
+    <section class="ops-hero"><div><p class="eyebrow" id="eyebrow"></p><h1 id="title"></h1><p id="subtitle"></p><span id="truth" class="truth-label"></span></div><div class="role-switch" aria-label="Viewer role"><a id="teacherRole" href="?role=teacher"></a><a id="parentRole" href="?role=parent"></a></div></section>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <section id="console" hidden>
+      <section class="summary-grid"><article><span id="gradeLabel"></span><strong id="gradeValue"></strong></article><article><span id="scoreLabel"></span><strong id="scoreValue"></strong></article><article><span id="trackLabel"></span><strong id="trackValue"></strong></article><article><span id="evidenceLabel"></span><strong id="evidenceValue"></strong></article></section>
+      <section class="plan-panel"><div><p class="eyebrow" id="planEyebrow"></p><h2 id="planTitle"></h2><p id="planMeta"></p></div><div id="teacherActions" class="teacher-actions"><button id="assignButton" type="button"></button><button id="interveneButton" type="button"></button></div></section>
+      <div class="work-grid"><section class="list-panel"><h2 id="assignmentsTitle"></h2><div id="assignmentList" class="item-list"></div></section><section class="list-panel"><h2 id="interventionsTitle"></h2><div id="interventionList" class="item-list"></div></section></div>
+      <p id="privacy" class="privacy-note"></p>
+    </section>
+  </main>
+  <script type="module" src="app.js?v=70"></script>
+</body>
+</html>

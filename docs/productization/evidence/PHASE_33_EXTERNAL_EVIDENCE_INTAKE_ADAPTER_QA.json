@@ -1,0 +1,34 @@
+{
+  "schema_version":"1.0.0",
+  "phase":33,
+  "status":"AUTO_QA_PASS_LOCAL_INTAKE_ADAPTER_CONTRACT_BLOCKED_EXTERNAL",
+  "scope":"LOCAL_SYNTHETIC_INTAKE_ADAPTER_CONTRACT_ONLY",
+  "contract":{
+    "pipeline_stages":"6/6 DEFINED",
+    "ports":"6/6 MISSING_EXTERNAL",
+    "mtls_required":"6/6 TRUE",
+    "signature_policy":"6/6 MISSING_EXTERNAL",
+    "trusted_issuer_lists":"6/6 MISSING_EXTERNAL",
+    "replay_windows":"6/6 MISSING_EXTERNAL",
+    "quarantine_routes":"6/6 MISSING_EXTERNAL",
+    "retry_policies":"6/6 MISSING_EXTERNAL"
+  },
+  "tests":{
+    "unit":"97/97 PASS",
+    "phase_integration":"1/1 PASS",
+    "postgresql_regression":"24/24 PASS",
+    "append_only_inverse":"2/2 BLOCKED",
+    "migration":"FORWARD_ROLLBACK_REAPPLY PASS"
+  },
+  "safety":{
+    "network_connection_enabled":false,
+    "evidence_intake_enabled":false,
+    "quarantine_release_enabled":false,
+    "retry_execution_enabled":false,
+    "raw_payload_storage_allowed":false,
+    "kill_switch_engaged":true,
+    "execution_authorized":false,
+    "source_data_mutations":0
+  },
+  "manual_or_external_status":"BLOCKED_EXTERNAL_TRANSPORT_TRUST_AND_RECOVERY_CONFIGURATION"
+}

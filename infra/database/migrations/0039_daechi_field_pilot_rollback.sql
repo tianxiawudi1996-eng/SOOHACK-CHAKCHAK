@@ -1,0 +1,16 @@
+BEGIN;
+DROP TRIGGER IF EXISTS daechi_field_pilot_protocol_lock_guard ON mathchakchak.daechi_field_pilot_protocol;
+DROP TRIGGER IF EXISTS daechi_field_pilot_observation_append_only ON mathchakchak.daechi_field_pilot_observation;
+DROP TRIGGER IF EXISTS daechi_field_pilot_issue_append_only ON mathchakchak.daechi_field_pilot_issue;
+DROP TRIGGER IF EXISTS daechi_field_pilot_result_append_only ON mathchakchak.daechi_field_pilot_result;
+DROP TRIGGER IF EXISTS daechi_field_pilot_product_review_append_only ON mathchakchak.daechi_field_pilot_product_review;
+DROP FUNCTION IF EXISTS mathchakchak.prevent_locked_daechi_field_protocol_mutation();
+DROP FUNCTION IF EXISTS mathchakchak.prevent_daechi_field_evidence_history_mutation();
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_product_review;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_result;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_issue;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_observation;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_academy;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_metric;
+DROP TABLE IF EXISTS mathchakchak.daechi_field_pilot_protocol;
+COMMIT;

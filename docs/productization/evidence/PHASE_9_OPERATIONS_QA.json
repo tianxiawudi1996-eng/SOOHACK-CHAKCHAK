@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "tested_at": "2026-08-06T15:30:47+09:00",
+  "status": "PASS_LOCAL_OPERATIONS",
+  "environment": {
+    "scope": "LOCAL_ISOLATED_FULL_STACK",
+    "api_container_id": "375ab1dba20e9aa3c4a202112b814f42d58bfb5f473b7b88d177e85c3426e0fd",
+    "api_image_digest": "sha256:380b42b862cbeb81dc64f8723c19360ea06489693ef18fea9c706fc014196c08",
+    "database_container_id": "af6a6578e666beaae1b8cc74465cdd309ecc65a059145f2a6f6bc1bfc44464f0",
+    "database_image_digest": "sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416",
+    "database_external_port_exposed": false,
+    "production_data_used": false
+  },
+  "authentication": {
+    "status": "PASS",
+    "scheme": "mcs1-hmac-sha256-short-session",
+    "minimum_secret_bytes": 32,
+    "issuer_audience_expiry_validated": true,
+    "constant_time_signature_compare": true,
+    "raw_identity_headers_rejected": true,
+    "tampered_token_rejected": true,
+    "expired_token_rejected": true,
+    "secret_written_to_repository": false
+  },
+  "runtime_observability": {
+    "status": "PASS",
+    "liveness": "PASS",
+    "readiness_samples": "20/20 PASS",
+    "local_p95_ms": 6.97,
+    "local_p95_threshold_ms": 500,
+    "server_errors": 0,
+    "database_ready": true,
+    "metrics": ["request_total", "server_error_total", "request_duration_histogram", "process_uptime"],
+    "structured_log_sensitive_value_scan": "PASS"
+  },
+  "backup_restore": {
+    "status": "PASS",
+    "format": "PostgreSQL custom",
+    "backup_bytes": 53726,
+    "backup_sha256": "ad33c0c5c37e16be78c77b5d1666a4bebb80e5aada2265605a48f71efb7ef282",
+    "backup_ms": 1533.89,
+    "restore_ms": 518.75,
+    "schema_tables": "18/18",
+    "source_counts": "1|1|3|9",
+    "recovered_counts": "1|1|3|9",
+    "recovery_database_external_port_exposed": false,
+    "temporary_recovery_container_removed": true,
+    "temporary_backup_removed": true
+  },
+  "resilience": {
+    "api_restart": "PASS",
+    "post_restart_health": "healthy",
+    "post_restart_signed_core_journey": "PASS",
+    "database_persistence_across_api_restart": "PASS"
+  },
+  "maintenance": {
+    "dependency_vulnerabilities": 0,
+    "retention_due_counts": {
+      "expired_idempotency_records": 0,
+      "audit_events_older_than_12_months": 0,
+      "diagnostic_records_older_than_24_months": 0,
+      "learning_records_older_than_24_months": 0
+    },
+    "slo_contract": "PASS",
+    "alert_rules": "5/5",
+    "maintenance_cycles": "7/7"
+  },
+  "external_operations": {
+    "performed": false,
+    "status": "BLOCKED_EXTERNAL_CONFIGURATION",
+    "missing": [
+      "external deployment target and authorization",
+      "managed identity provider or authenticated session gateway",
+      "managed secret manager references",
+      "managed backup target and encryption key reference",
+      "monitoring notification destinations and on-call routing"
+    ]
+  },
+  "phase9_complete": false,
+  "local_operations_complete": true
+}
