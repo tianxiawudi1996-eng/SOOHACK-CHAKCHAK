@@ -23,6 +23,8 @@
 - `npm run cloudflare:free:dry-run`: PASS
 - Staging build: `78`개 파일
 - Cloudflare assets: `96`개
+- GitHub Productization CI: `32101170839 PASS`
+- 검증 소스 SHA: `41b2aeb835fbc7bca60c8197df670053005ea336`
 - 배포 수행: `false`
 
 ## 실패와 수정
