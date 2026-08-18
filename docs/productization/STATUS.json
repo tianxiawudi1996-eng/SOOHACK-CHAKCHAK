@@ -1262,7 +1262,7 @@
     "gate8_next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
   },
   "blockers": [
-    "Stage 8 Gate 7 and local Gate 8 are VERIFIED; immutable source commit a9e6421 is pushed and GitHub Actions Productization CI run 32090081642 passed quality plus isolated API/PostgreSQL integration. The public frontend remains reachable and a Workers Free plus Hyperdrive Free embedded-API package now passes local tests and Wrangler dry-run, but the current Cloudflare control-plane credential failed revalidation and the formal external PostgreSQL target intake is empty. Gate 8 preflight is HOLD; the next authorized input is EXTERNAL_DEPLOYMENT_TARGET_REFERENCE, followed by provider authentication refresh, Hyperdrive configuration, external PostgreSQL migration, and public E2E evidence.",
+    "Stage 8 Gate 7 and local Gate 8 are VERIFIED; source commit 41b2aeb passed GitHub Productization CI run 32101170839 including the Workers Free embedded-API package and isolated API/PostgreSQL integration. Cloudflare OAuth account and empty Hyperdrive inventory reads pass when the stale user-level CLOUDFLARE_API_TOKEN is excluded, but the formal external PostgreSQL target intake is empty. Gate 8 preflight is HOLD; the next authorized input is EXTERNAL_DEPLOYMENT_TARGET_REFERENCE, followed by Hyperdrive configuration, external PostgreSQL migration, Workers Free CPU-budget measurement, and public E2E evidence.",
     "D80-10 commercial operations readiness remains externally blocked until legal and child-consent policy, content-rights, payment and refund, SLA and support, incident response, monitoring notification, backup and restore, migration rollback, deployment health-check, and security access-review evidence are supplied and a product-owner release review is recorded; local platform PASS does not authorize commercial release or market claims",
     "D80-09 Daechi field validation remains externally blocked until two to three authorized academies provide agreement, privacy and participant-consent evidence, complete aggregate observations for six preregistered metrics, resolve all high and critical issues, and supply independently verified results plus product-owner review; no academy names, contacts, participants, outcomes, or purchase intent may be invented",
     "D80-08 AI tutor actual-model evidence remains externally blocked until approved model, prompt and evaluation-dataset pins, authorized provider execution, eight-locale aggregate results, human calibration, independent approval, and deletion or incident evidence are supplied; local rule and synthetic evaluation PASS must not be marketed as live-model quality",
@@ -1297,5 +1297,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-18T05:01:19.258Z"
+  "last_updated": "2026-08-18T05:04:00.000Z"
 }

@@ -35,6 +35,7 @@ Cloudflare 리소스 실패는 아니었다.
 
 ## 차단 조건과 다음 Phase
 
-Cloudflare 인증 갱신, 관리형 PostgreSQL 개발 대상, Hyperdrive 구성, Worker Secret,
+Cloudflare OAuth 인증과 Hyperdrive 목록 조회는 PASS다. 관리형 PostgreSQL 개발 대상,
+Hyperdrive 구성, Worker Secret,
 migration 실증이 없다. 따라서 Phase 8 외부 통합 검증으로 승격하지 않는다. 다음 READY는
 Secret 원문이 아닌 네 내부 참조의 확정이다.

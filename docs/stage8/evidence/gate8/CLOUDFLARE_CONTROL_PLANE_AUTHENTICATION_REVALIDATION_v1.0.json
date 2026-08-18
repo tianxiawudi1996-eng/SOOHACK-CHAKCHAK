@@ -5,15 +5,18 @@
   "gate": 8,
   "environment": "development",
   "provider": "Cloudflare",
-  "checked_at": "2026-08-18T14:02:24+09:00",
-  "status": "BLOCKED_EXTERNAL",
-  "provider_account_authenticated": false,
-  "control_plane_account_list_readable": false,
+  "checked_at": "2026-08-18T14:04:00+09:00",
+  "status": "PASS",
+  "provider_account_authenticated": true,
+  "control_plane_account_list_readable": true,
+  "hyperdrive_list_readable": true,
+  "hyperdrive_configs_found": 0,
   "checks": {
-    "wrangler_whoami": "FAIL_INVALID_ACCESS_TOKEN_9109"
+    "wrangler_whoami_without_stale_environment_token": "PASS",
+    "wrangler_hyperdrive_list": "PASS_EMPTY"
   },
   "external_mutation_performed": false,
-  "next_input": "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
+  "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
   "credential_boundary": {
     "credential_value_read": false,
     "credential_value_stored": false,

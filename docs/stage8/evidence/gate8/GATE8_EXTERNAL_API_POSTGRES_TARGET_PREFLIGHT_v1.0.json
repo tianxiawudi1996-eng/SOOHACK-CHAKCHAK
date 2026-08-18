@@ -4,7 +4,7 @@
   "stage": 8,
   "gate": 8,
   "workstream_id": "D80-10",
-  "collected_at": "2026-08-18T05:02:50.383Z",
+  "collected_at": "2026-08-18T05:04:14.335Z",
   "decision": "HOLD",
   "status": "FREE_TIER_CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
   "candidate_architecture": {
@@ -46,8 +46,8 @@
     "migration_range_complete": true
   },
   "provider_preflight": {
-    "authentication_fresh": false,
-    "latest_authentication_status": "BLOCKED_EXTERNAL",
+    "authentication_fresh": true,
+    "latest_authentication_status": "PASS",
     "workers_free_runtime_selected": true,
     "workers_free_cpu_budget_measured": false,
     "hyperdrive_free_configuration_verified": false,
@@ -55,7 +55,6 @@
   },
   "blockers": [
     "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
-    "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
     "CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED",
     "MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED",
     "CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED"

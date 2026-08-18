@@ -36,11 +36,14 @@ connection_reference=MCC-NEON-PG-DEV-2026-001
 ## 남은 차단
 
 1. `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`
-2. `CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH`
-3. `CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED`
-4. `MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED`
-5. `CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED`
+2. `CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED`
+3. `MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED`
+4. `CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED`
 
 네 참조와 새 Cloudflare 인증 증거가 준비된 뒤에만 실제 리소스 생성 단계로 이동한다.
 무료 Workers의 요청당 CPU 제한 안에서 핵심 API가 동작하는지도 외부 개발 환경에서
 실측해야 하며, 초과 시 기능 축소 또는 유료 전환을 별도 승인한다.
+
+Cloudflare OAuth 인증과 빈 Hyperdrive 목록 조회는 통과했다. 사용자 범위에 남은 오래된
+`CLOUDFLARE_API_TOKEN` 환경변수는 OAuth보다 우선되어 오류 9109를 만들므로, 현재 실행은
+그 환경변수를 자식 프로세스에서 제거한 뒤 수행했다. 토큰 값은 읽거나 저장하지 않았다.
