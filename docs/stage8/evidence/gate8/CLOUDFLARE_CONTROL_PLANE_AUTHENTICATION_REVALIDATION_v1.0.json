@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare",
+  "checked_at": "2026-08-18T10:10:25+09:00",
+  "status": "BLOCKED_EXTERNAL",
+  "provider_account_authenticated": false,
+  "containers_list_readable": false,
+  "checks": {
+    "wrangler_whoami": "FAIL_INVALID_ACCESS_TOKEN_9109",
+    "wrangler_containers_list": "FAIL_AUTHENTICATION_ERROR"
+  },
+  "external_mutation_performed": false,
+  "next_input": "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
+  "credential_boundary": {
+    "credential_value_read": false,
+    "credential_value_stored": false,
+    "account_email_stored": false,
+    "account_id_stored": false,
+    "secret_logged": false
+  }
+}

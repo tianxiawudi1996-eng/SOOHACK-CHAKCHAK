@@ -64,8 +64,8 @@
     },
     {
       "path": "site/assets/product-shell.css",
-      "bytes": 2023,
-      "sha256": "8acb5dbadf86103cd8baa417bf45eb22d8fe1e80f61c213d64b624fb42fe586f"
+      "bytes": 3009,
+      "sha256": "aa86eb15f03c11efdc37457963f500aadd545b67c66a568c9e2f997774b2d136"
     },
     {
       "path": "site/assets/stage8/2d-pet-motion-v1.0.css",
@@ -249,8 +249,8 @@
     },
     {
       "path": "site/assets/styles.css",
-      "bytes": 15757,
-      "sha256": "841ec5482da35c3992a35060d2eec6c35264e43d310fa01e7ffcf21236c7b3c0"
+      "bytes": 15682,
+      "sha256": "caa4b609908b18829db62c21e48d0655b813fc948fe48440628412d99c97381f"
     },
     {
       "path": "site/assets/tokens.css",
@@ -279,8 +279,8 @@
     },
     {
       "path": "site/curriculum/styles.css",
-      "bytes": 6760,
-      "sha256": "c93f4cb6ff9be9b47a35670356dfea7abff8cbea0233407599ab2b99d25c708d"
+      "bytes": 7024,
+      "sha256": "3e1ad5db97a2dbaa3d1775cc02de662d29b161481faccb1196cf2ecc322e7435"
     },
     {
       "path": "site/diagnostic/app.js",
@@ -304,8 +304,8 @@
     },
     {
       "path": "site/diagnostic/styles.css",
-      "bytes": 2672,
-      "sha256": "b04979bd18569d61f4f4017e504c25fa5fc9c77ab283832847be5b22334a18e7"
+      "bytes": 2742,
+      "sha256": "e3ebe8a1296dc41adb2c7714830ceee177b5ddd98095d835ec76ce77459cf89a"
     },
     {
       "path": "site/i18n/accessibility.mjs",
@@ -384,8 +384,8 @@
     },
     {
       "path": "site/math-learning/styles.css",
-      "bytes": 10347,
-      "sha256": "092fca7073da1d91f152c2fdd56ccae87e307e0e905d0d3472a28865a635d04f"
+      "bytes": 10348,
+      "sha256": "74e590a60ad1c682e9b286ee540f314af08be1972f2586fcaf659f03dd7292d2"
     },
     {
       "path": "site/operations/app.js",

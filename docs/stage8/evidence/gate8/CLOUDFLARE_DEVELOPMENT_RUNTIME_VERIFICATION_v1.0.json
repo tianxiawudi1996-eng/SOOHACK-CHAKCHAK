@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "checked_at": "2026-08-17T14:11:01.519Z",
+  "status": "PASS_EXTERNAL_FRONTEND_PREVIEW",
+  "source_reference": "USER_CONFIRMED_EXTERNAL_DEVELOPMENT_URL",
+  "endpoint": {
+    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
+    "hostname_sha256": "d6536176ac107bfafcbc0c29b90da0544e8a915a69f75308aec18b9786d89679"
+  },
+  "http_checks": {
+    "root": 200,
+    "curriculum_e4_ko": 200,
+    "readyz": 200,
+    "api_not_connected": 503
+  },
+  "security_headers": {
+    "status": "PASS",
+    "x_frame_options_deny": true,
+    "x_content_type_options_nosniff": true,
+    "csp_frame_ancestors_none": true
+  },
+  "runtime_truth": {
+    "frontend_publicly_reachable": true,
+    "api_bridge_deployed": true,
+    "api_bridge_status": "NOT_CONFIGURED",
+    "api_connected": false,
+    "postgresql_connected": false,
+    "production_release": false
+  },
+  "failures": [],
+  "credential_boundary": {
+    "credential_value_accessed": false,
+    "credential_value_stored": false
+  }
+}

@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-15T13:51:43.212Z",
-  "head_commit": "27af9f0",
-  "branch": "codex/stage8-harness-continuation",
+  "updated_at": "2026-08-17T14:11:38.180Z",
+  "head_commit": "a0ed655",
+  "branch": "codex/gate8-external-deployment",
   "working_tree_clean": false,
   "release_candidate_fixed": true,
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
@@ -215,6 +215,12 @@
       "docs/stage8/evidence/gate8/GATE8_LOCAL_DEPLOYMENT_QA_v1.0.json",
       "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
       "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
+      "docs/stage8/evidence/gate8/GATE8_EXTERNAL_API_POSTGRES_TARGET_PREFLIGHT_v1.0.json",
+      "docs/stage8/evidence/gate8/GITHUB_DEVELOPMENT_ENVIRONMENT_PROTECTION_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_CHECK_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_REVALIDATION_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json",
       "docs/stage8/evidence/gate8/GATE8_DEPLOYMENT_AUDIT_v1.0.json",
       "docs/stage8/audits/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT.md",
       "docs/stage8/audits/GATE8_DEPLOYMENT_AUDIT.md",
@@ -222,18 +228,17 @@
     ],
     "blockers": [
       "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
-      "EXTERNAL_DEPLOYMENT_AUTHORIZATION_REFERENCE",
-      "EXTERNAL_DEPLOYMENT_ADAPTER",
-      "EXTERNAL_HTTPS_BASE_URL",
-      "ORIGIN_REPOSITORY_WRITE_PERMISSION",
-      "PROTECTED_DEPLOYMENT_ENVIRONMENT"
+      "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
+      "IMMUTABLE_DEPLOYMENT_SOURCE_COMMIT_REQUIRED",
+      "EXTERNAL_API_AND_POSTGRESQL_NOT_DEPLOYED"
     ],
     "entry_allowed": true
   },
   "warnings": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read",
     "working tree remains dirty; an isolated content-addressed release candidate is fixed without resetting user changes",
-    "external deployment and product release remain unauthorized",
-    "GitHub preflight: authenticated account visionlab-coder has pull=true and push=false for tianxiawudi1996-eng/SOOHACK-CHAKCHAK; Pages is disabled and deployment environments=0"
+    "Cloudflare development frontend and API bridge are deployed, but API_ORIGIN and PostgreSQL remain unconfigured",
+    "Cloudflare OAuth was previously verified, but the current process credential now fails with provider code 9109 and must be refreshed before Containers capability verification",
+    "production deployment and product release remain unauthorized"
   ]
 }

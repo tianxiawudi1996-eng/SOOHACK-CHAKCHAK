@@ -3,9 +3,9 @@
   "project": "MathChakChak",
   "stage": 8,
   "gate": 8,
-  "audited_at": "2026-08-16T00:38:30.841Z",
+  "audited_at": "2026-08-18T01:55:21.447Z",
   "audit_status": "PASS",
-  "status": "BLOCKED_EXTERNAL",
+  "status": "BLOCKED_EXTERNAL_FULL_PRODUCT",
   "local_deployment_status": "VERIFIED",
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
   "evidence": [
@@ -23,11 +23,23 @@
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
-      "sha256": "375b666f00adbb25fb942950eb9b906aff6daa87a4181f06faaf88977eb2de6e"
+      "sha256": "e2001301071661c3211da75924959c9958798469bed3e5a6b0fc68f4378c097e"
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
-      "sha256": "6845dcbbe8286e814f534fd5e97f0ff7cbe343482b171b4aee6dcffe181b1c03"
+      "sha256": "64cac666f269ef4ac0bbdf583071afe576063b6930f624f985cc145a978817bd"
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_ATTEMPT_v1.0.json",
+      "sha256": "6601c89489d56bde421c5954ab4771b3648bad3f0d3271187b9b346c5bd664a6"
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
+      "sha256": "2842878b037a9de86d62ecea3d4f2a5f276fc919bd961ffe0dbc9fc47b9f5475"
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json",
+      "sha256": "72109a3223de05b7e51118337e6291147b49b550a5ac5cb23a63646e3c7adde4"
     }
   ],
   "local_results": {
@@ -40,16 +52,35 @@
     "same_images_redeployed": true
   },
   "external_results": {
+    "deployment_scope": "FRONTEND_PREVIEW_WITH_API_BRIDGE_NOT_CONFIGURED",
+    "frontend_preview_deployment_performed": true,
+    "frontend_publicly_reachable": true,
+    "active_worker_version_reference": "cloudflare-worker-version:ea067773-d8ae-4617-b9d2-9b9747619774",
+    "api_bridge_deployed": true,
+    "api_bridge_status": "NOT_CONFIGURED",
+    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
+    "full_product_deployment_performed": false,
     "deployment_performed": false,
+    "api_connected": false,
+    "postgresql_connected": false,
     "canary_performed": false,
     "production_release_authorized": false,
     "preflight_decision": "HOLD",
     "blockers": [
-      "EXTERNAL_HTTPS_BASE_URL",
-      "EXTERNAL_DOCKER_CONTEXT",
-      "PROTECTED_DEPLOYMENT_ENVIRONMENT"
+      "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+      "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH"
     ],
-    "next_input": "EXTERNAL_HTTPS_BASE_URL"
+    "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
+  },
+  "current_source": {
+    "worker_sha256": "4155b0357d0998470697e1183da17a5355a18ad4ac6c08ff96ca4ae12ace0ac3",
+    "active_deployment_named_handlers": [
+      "createWorker",
+      "inspectApiOrigin"
+    ],
+    "provider_source_hash_match_proven": false,
+    "source_commit_binding_proven": false,
+    "deployment_pending": false
   },
   "stage8_complete": false,
   "failures": []

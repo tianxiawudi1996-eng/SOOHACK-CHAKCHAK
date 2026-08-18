@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "workstream_id": "D80-10",
+  "collected_at": "2026-08-18T01:54:47.215Z",
+  "decision": "HOLD",
+  "status": "CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
+  "candidate_architecture": {
+    "api_runtime": "CLOUDFLARE_CONTAINERS",
+    "database": "EXTERNAL_MANAGED_POSTGRESQL",
+    "database_connection": "DIRECT_TLS_FROM_CONTAINER",
+    "frontend_bridge": "CLOUDFLARE_WORKER_API_ORIGIN",
+    "environment_code": "DEVELOPMENT",
+    "rationale": "PRESERVE_EXISTING_NODE_HTTP_AND_PG_RUNTIME_WITH_MINIMAL_REWRITE",
+    "provider_code_allowlist": [
+      "CLOUDFLARE_CONTAINERS_NEON_POSTGRESQL",
+      "CLOUDFLARE_CONTAINERS_SUPABASE_POSTGRESQL",
+      "CLOUDFLARE_CONTAINERS_AWS_RDS_POSTGRESQL"
+    ]
+  },
+  "input_validation": {
+    "complete": false,
+    "checks": {
+      "target_reference": false,
+      "provider_code": false,
+      "environment_code": false,
+      "connection_reference": false
+    },
+    "missing_fields": [
+      "target_reference",
+      "provider_code",
+      "environment_code",
+      "connection_reference"
+    ],
+    "values_stored": false
+  },
+  "local_compatibility": {
+    "node_api_container_present": true,
+    "container_port": 8080,
+    "node_runtime": "24-alpine",
+    "postgresql_driver": "pg@^8.16.3",
+    "forward_migrations_present": 40,
+    "expected_forward_migrations": 40,
+    "migration_range_complete": true
+  },
+  "provider_preflight": {
+    "authentication_fresh": false,
+    "latest_authentication_status": "BLOCKED_EXTERNAL",
+    "workers_paid_plan_verified": false,
+    "containers_capability_verified": false,
+    "managed_postgresql_connection_verified": false
+  },
+  "blockers": [
+    "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
+    "CLOUDFLARE_WORKERS_PAID_PLAN_CAPABILITY_NOT_VERIFIED",
+    "MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED"
+  ],
+  "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+  "required_fields": [
+    "target_reference",
+    "provider_code",
+    "environment_code",
+    "connection_reference"
+  ],
+  "external_actions": {
+    "account_plan_changed": false,
+    "container_created": false,
+    "database_created": false,
+    "secret_created_or_read": false,
+    "deployment_performed": false
+  },
+  "credential_boundary": {
+    "raw_target_stored": false,
+    "raw_connection_string_stored": false,
+    "credential_value_accessed": false,
+    "credential_value_stored": false
+  }
+}

@@ -28,30 +28,28 @@ if (status.current_phase !== 75 || status.phases?.['75']?.status !== 'LOCAL_COMM
 if (status.workflow_state !== 'IN_PROGRESS' || status.local_completion_scope !== 'PHASE_75_LOCAL_PLATFORM_PASS' || status.release_state !== 'BLOCKED_EXTERNAL') failures.push('PRODUCT_STATUS_SCOPE_INVALID');
 const roadmapIds = [...roadmap.matchAll(/^\| (\d+) \| `/gm)].map((match) => Number(match[1]));
 if (roadmapIds.length !== 76 || roadmapIds.some((id, index) => id !== index)) failures.push('ROADMAP_PHASE_0_75_INCOMPLETE');
-if (roadmap.includes('Phase 66 생성 금지') || daechiChain.includes('| 66 | D80-01, D80-04, D80-08 | 전문 학습 트랙·근거 게이트·보호 API·화면 기반 | IN_PROGRESS |')) failures.push('PHASE66_STALE_TERMINAL_RULE');
+if (roadmap.includes('Phase 66 생성 금지') || daechiChain.includes('| 66 | D80-01, D80-04, D80-08 | 전문 학습 전략·근거 게이트·보호 API·화면 기반 | IN_PROGRESS |')) failures.push('PHASE66_STALE_TERMINAL_RULE');
 
 const gate6Status = harness.gate6?.status;
 const gate7Status = harness.gate7?.status;
 const gate8Status = harness.gate8?.status;
-const validStage8States =
-  harness.gate5?.status === 'VERIFIED' &&
-  (
-    (gate6Status === 'IN_PROGRESS' && gate7Status === 'NOT_STARTED' && gate8Status === 'NOT_STARTED') ||
-    (gate6Status === 'VERIFIED' && gate7Status === 'IN_PROGRESS' && gate8Status === 'NOT_STARTED') ||
-    (gate6Status === 'VERIFIED' && gate7Status === 'VERIFIED' && ['IN_PROGRESS', 'BLOCKED', 'VERIFIED'].includes(gate8Status))
-  );
+const validStage8States = harness.gate5?.status === 'VERIFIED' && (
+  (gate6Status === 'IN_PROGRESS' && gate7Status === 'NOT_STARTED' && gate8Status === 'NOT_STARTED')
+  || (gate6Status === 'VERIFIED' && gate7Status === 'IN_PROGRESS' && gate8Status === 'NOT_STARTED')
+  || (gate6Status === 'VERIFIED' && gate7Status === 'VERIFIED' && ['IN_PROGRESS', 'BLOCKED', 'VERIFIED'].includes(gate8Status))
+);
 if (!validStage8States) failures.push('HARNESS_GATE_STATE_INVALID');
 if (gate6Status === 'IN_PROGRESS' && (JSON.stringify(harness.gate6?.blockers) !== JSON.stringify(legacyGate6Blockers) || harness.gate7?.entry_allowed !== false)) failures.push('HARNESS_GATE6_IN_PROGRESS_BOUNDARY_INVALID');
 if (gate6Status === 'VERIFIED' && (harness.gate6?.blockers?.length !== 0 || harness.gate7?.entry_allowed !== true || harness.release_candidate_fixed !== true)) failures.push('HARNESS_GATE6_VERIFIED_BOUNDARY_INVALID');
 if (gate7Status !== 'VERIFIED' && harness.gate8?.entry_allowed !== false) failures.push('HARNESS_GATE8_PREMATURE_ENTRY');
 if (gate7Status === 'VERIFIED' && harness.gate8?.entry_allowed !== true) failures.push('HARNESS_GATE8_ENTRY_INVALID');
 if (
-  status.stage8_dependency?.gate5_status !== harness.gate5?.status ||
-  status.stage8_dependency?.gate5_approval !== '1/1' ||
-  status.stage8_dependency?.gate6_status !== gate6Status ||
-  JSON.stringify(status.stage8_dependency?.gate6_blockers) !== JSON.stringify(harness.gate6?.blockers) ||
-  status.stage8_dependency?.gate7_status !== gate7Status ||
-  status.stage8_dependency?.gate8_status !== gate8Status
+  status.stage8_dependency?.gate5_status !== harness.gate5?.status
+  || status.stage8_dependency?.gate5_approval !== '1/1'
+  || status.stage8_dependency?.gate6_status !== gate6Status
+  || JSON.stringify(status.stage8_dependency?.gate6_blockers) !== JSON.stringify(harness.gate6?.blockers)
+  || status.stage8_dependency?.gate7_status !== gate7Status
+  || status.stage8_dependency?.gate8_status !== gate8Status
 ) failures.push('PRODUCT_STAGE8_DEPENDENCY_DRIFT');
 
 const nextInput = register.next_authorized_input;

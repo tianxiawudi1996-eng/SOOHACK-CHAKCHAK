@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "tested_at": "2026-08-15T22:02:43+09:00",
+  "tested_at": "2026-08-17T23:06:28+09:00",
   "status": "PASS_LOCAL_STAGING",
   "release": "0.1.0",
   "artifact": {
     "path": "artifacts/staging/v0.1.0/site",
     "manifest": "artifacts/staging/v0.1.0/manifest.json",
-    "manifest_sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d",
+    "manifest_sha256": "4a6f6b98e7b72e42e6c3af017609401c61a1299bbe991d191fe132578b328be4",
     "file_count": 78,
     "hashes": "PASS",
     "locales": "8/8",

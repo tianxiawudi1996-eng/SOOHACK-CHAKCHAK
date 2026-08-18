@@ -8,7 +8,7 @@
     "lint": {
       "status": "PASS",
       "checker": "NODE_SYNTAX_JSON_PARSE_SOURCE_INTEGRITY",
-      "checked_at": "2026-08-15T13:04:15.146Z",
+      "checked_at": "2026-08-18T01:53:47.662Z",
       "source_roots": [
         "agent",
         "assets/stage8",
@@ -19,8 +19,8 @@
         "scripts/quality",
         "tests"
       ],
-      "text_file_count": 410,
-      "script_file_count": 354,
+      "text_file_count": 422,
+      "script_file_count": 366,
       "json_file_count": 39,
       "integration_marker_count": 5,
       "failures": []
@@ -29,16 +29,16 @@
       "status": "PASS",
       "checker": "JAVASCRIPT_RUNTIME_DATA_CONTRACT_TYPECHECK",
       "claim_boundary": "This validates JavaScript runtime and data contracts; it does not claim a TypeScript compiler run.",
-      "checked_at": "2026-08-15T13:04:15.513Z",
+      "checked_at": "2026-08-18T01:53:48.045Z",
       "assertion_count": 467,
       "input_hashes": {
         "package": {
           "path": "package.json",
-          "sha256": "39da18a5e9aa9a3d6768d3a12baa2cfff72c68502b33748a525baa2fa09a3d46"
+          "sha256": "df8239bad2712adac6154c00c61e9b20ccd79ec5e7d8b0f33b04ce1eaf1a6e95"
         },
         "staging": {
           "path": "artifacts/staging/v0.1.0/manifest.json",
-          "sha256": "01c0a69b64a5c175224fe8000c27f3385bec27d7578ac1849031c19afc361c9d"
+          "sha256": "4a6f6b98e7b72e42e6c3af017609401c61a1299bbe991d191fe132578b328be4"
         },
         "responsive": {
           "path": "docs/stage8/evidence/gate6/GATE6_RESPONSIVE_RUNTIME_QA_v1.0.json",
@@ -56,6 +56,6 @@
       "failures": []
     }
   },
-  "generated_at": "2026-08-15T13:04:15.513Z",
+  "generated_at": "2026-08-18T01:53:48.046Z",
   "status": "PASS"
 }

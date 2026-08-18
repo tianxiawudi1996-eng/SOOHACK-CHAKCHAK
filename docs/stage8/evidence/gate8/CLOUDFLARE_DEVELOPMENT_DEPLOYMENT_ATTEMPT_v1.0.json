@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare Workers Static Assets",
+  "worker_name": "dev",
+  "attempted_at": "2026-08-17T22:37:20+09:00",
+  "status": "PASS_EXTERNAL_FRONTEND_PREVIEW",
+  "deployment_scope": "FRONTEND_PREVIEW_ONLY",
+  "configuration": {
+    "wrangler_version": "4.123.0",
+    "wrangler_config_sha256": "1e3d4c9e169fb4a7b4bbdc1b5293aa4f220158b385df860815cfb801f8ef513a",
+    "worker_sha256": "3f411f8e0365d83e3153bff0fc3d00fc50a663a91c0c08c408d2f976b1d0512f",
+    "staging_manifest_sha256": "4a6f6b98e7b72e42e6c3af017609401c61a1299bbe991d191fe132578b328be4",
+    "workers_dev": true,
+    "custom_domain_configured": false,
+    "production_traffic": false
+  },
+  "verification": {
+    "oauth_authenticated": true,
+    "oauth_reauthentication_completed": true,
+    "authenticated_account_changed": false,
+    "lint": "PASS",
+    "runtime_type_contract": "PASS",
+    "worker_unit_tests": "3/3 PASS",
+    "product_unit_tests": "340/340 PASS",
+    "wrangler_dry_run": "PASS",
+    "dry_run_assets_read": 96,
+    "asset_upload_started": true,
+    "asset_files_uploaded": 76,
+    "asset_files_reused": 2,
+    "deployment_attempts": 10,
+    "worker_deployment_attempts": 9,
+    "pages_fallback_attempts": 1,
+    "worker_bundle_uploaded": true,
+    "cloudflare_deployment_record_present": true,
+    "workers_dev_route_published": true,
+    "worker_version_reference": "cloudflare-worker-version:d5626da1-82e1-4492-b9f0-9cfda454c9d6",
+    "pages_project_created": false,
+    "pages_public_url": null,
+    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
+    "preferred_custom_domain": "https://dev.mathchakchak.com",
+    "preferred_custom_domain_status": "BLOCKED_DOMAIN_NOT_REGISTERED",
+    "preferred_domain_public_dns": "NXDOMAIN",
+    "preferred_domain_rdap_status": 404,
+    "https_smoke_test": "PASS",
+    "ui_alignment_verification": {
+      "status": "PASS",
+      "desktop_1440": "PASS",
+      "mobile_390": "PASS",
+      "korean_word_wrapping": "PASS",
+      "heading_balance": "PASS",
+      "logical_start_alignment": "PASS",
+      "button_center_alignment": "PASS",
+      "horizontal_overflow": false
+    },
+    "http_checks": {
+      "root": 200,
+      "readyz": 200,
+      "curriculum_e4_ko": 200,
+      "api_not_connected": 503
+    },
+    "security_headers": {
+      "x_frame_options": "DENY",
+      "content_security_policy_frame_ancestors_none": true,
+      "x_content_type_options": "nosniff"
+    }
+  },
+  "runtime_truth_boundary": {
+    "frontend_bundle_ready": true,
+    "frontend_publicly_reachable": true,
+    "api_connected": false,
+    "postgresql_connected": false,
+    "ai_provider_enabled": false,
+    "production_release_authorized": false,
+    "external_frontend_deployment_completed": true,
+    "full_product_external_deployment_completed": false
+  },
+  "blockers": [
+    {
+      "code": "PREFERRED_CUSTOM_DOMAIN_NOT_REGISTERED",
+      "owner": "DOMAIN_AND_BILLING_OWNER",
+      "resolution": "Register mathchakchak.com through an approved paid transaction, activate the Cloudflare zone, then attach dev.mathchakchak.com as a Worker Custom Domain."
+    },
+    {
+      "code": "EXTERNAL_API_AND_POSTGRESQL_NOT_DEPLOYED",
+      "owner": "PLATFORM_AND_DATABASE_OWNER",
+      "resolution": "Choose the Cloudflare-compatible API runtime and provide an approved externally reachable PostgreSQL service reference before full-product deployment."
+    }
+  ],
+  "next_input": "MATHCHAKCHAK_COM_DOMAIN_REGISTRATION_AND_CLOUDFLARE_ZONE_ACTIVATION",
+  "credential_boundary": {
+    "credential_value_read": false,
+    "credential_value_stored": false,
+    "repository_secret_written": false
+  }
+}

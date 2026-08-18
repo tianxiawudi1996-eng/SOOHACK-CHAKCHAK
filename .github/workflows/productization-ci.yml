@@ -1,0 +1,90 @@
+name: Productization CI
+
+on:
+  push:
+    branches: [main, "codex/**", "agent/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: productization-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Source and edge package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Lint source contracts
+        run: npm run lint
+      - name: Validate runtime type contracts
+        run: npm run typecheck
+      - name: Run unit tests
+        run: npm run test:unit
+      - name: Build immutable staging frontend
+        run: npm run build:staging
+      - name: Validate staging artifact
+        run: npm run test:productization:staging
+      - name: Validate Cloudflare deployment package
+        run: npm run cloudflare:dry-run
+
+  integration:
+    name: API and PostgreSQL integration
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Generate ephemeral test session secret
+        shell: bash
+        run: |
+          session_secret="$(node -e "process.stdout.write(require('node:crypto').randomBytes(48).toString('base64'))")"
+          echo "::add-mask::$session_secret"
+          echo "MATHCHAKCHAK_STAGE_SESSION_SECRET=$session_secret" >> "$GITHUB_ENV"
+          echo "TEST_SESSION_HMAC_SECRET=$session_secret" >> "$GITHUB_ENV"
+      - name: Validate Compose contract
+        run: docker compose -f infra/deployment/compose.api-staging.yaml config --quiet
+      - name: Start isolated full stack
+        run: docker compose -f infra/deployment/compose.api-staging.yaml up -d --build
+      - name: Wait for API readiness
+        shell: bash
+        run: |
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4181/readyz > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "API readiness timed out" >&2
+          exit 1
+      - name: Run API core journey
+        run: npm run test:integration:api
+      - name: Verify runtime operations
+        run: npm run test:operations:runtime
+      - name: Print container logs on failure
+        if: failure()
+        run: docker compose -f infra/deployment/compose.api-staging.yaml logs --no-color
+      - name: Remove isolated full stack
+        if: always()
+        run: docker compose -f infra/deployment/compose.api-staging.yaml down -v --remove-orphans

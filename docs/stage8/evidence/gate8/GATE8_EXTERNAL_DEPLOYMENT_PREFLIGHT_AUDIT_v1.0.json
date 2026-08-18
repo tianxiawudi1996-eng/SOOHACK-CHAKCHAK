@@ -3,18 +3,17 @@
   "project": "MathChakChak",
   "stage": 8,
   "gate": 8,
-  "audited_at": "2026-08-15T14:20:49.618Z",
+  "audited_at": "2026-08-18T01:55:21.363Z",
   "audit_status": "PASS",
   "execution_status": "HOLD",
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
-  "preflight_sha256": "375b666f00adbb25fb942950eb9b906aff6daa87a4181f06faaf88977eb2de6e",
+  "preflight_sha256": "e2001301071661c3211da75924959c9958798469bed3e5a6b0fc68f4378c097e",
   "prompt_sha256": "f5c3264514aeca8e4407a7abccc77df7575dabffe04525c98754e913203d7a12",
   "external_mutation_performed": false,
   "blockers": [
-    "EXTERNAL_HTTPS_BASE_URL",
-    "EXTERNAL_DOCKER_CONTEXT",
-    "PROTECTED_DEPLOYMENT_ENVIRONMENT"
+    "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH"
   ],
-  "next_input": "EXTERNAL_HTTPS_BASE_URL",
+  "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
   "failures": []
 }
