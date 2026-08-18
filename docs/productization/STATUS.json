@@ -115,7 +115,10 @@
       "ci": {
         "workflow": ".github/workflows/productization-ci.yml",
         "local_contract": "PASS",
-        "github_run": "NOT_RUN",
+        "github_run": "PASS",
+        "github_run_id": 32090081642,
+        "github_run_url": "https://github.com/tianxiawudi1996-eng/SOOHACK-CHAKCHAK/actions/runs/32090081642",
+        "verified_source_commit": "a9e6421e0d5b48bba14ad7b4cf78f9f005f66bbc",
         "deployment_performed": false,
         "jobs": [
           "source_and_edge_package",
@@ -1242,7 +1245,7 @@
     ],
     "gate8_external_preflight": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
     "gate8_external_preflight_decision": "HOLD",
-    "gate8_external_preflight_blockers": 5
+    "gate8_external_preflight_blockers": 2
   },
   "stage8_dependency": {
     "gate5_status": "VERIFIED",
@@ -1258,7 +1261,7 @@
     "gate8_next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
   },
   "blockers": [
-    "Stage 8 Gate 7 and local Gate 8 are VERIFIED; the Cloudflare frontend and fail-closed API bridge remain publicly reachable, but the current Cloudflare control-plane credential failed revalidation and the formal external API plus PostgreSQL target intake is empty. Gate 8 preflight is HOLD; the next authorized input is EXTERNAL_DEPLOYMENT_TARGET_REFERENCE, followed by provider authentication refresh, paid-plan capability verification, immutable source binding, and external API plus PostgreSQL deployment.",
+    "Stage 8 Gate 7 and local Gate 8 are VERIFIED; immutable source commit a9e6421 is pushed and GitHub Actions Productization CI run 32090081642 passed quality plus isolated API/PostgreSQL integration. The Cloudflare frontend and fail-closed API bridge remain publicly reachable, but the current Cloudflare control-plane credential failed revalidation and the formal external API plus PostgreSQL target intake is empty. Gate 8 preflight is HOLD; the next authorized input is EXTERNAL_DEPLOYMENT_TARGET_REFERENCE, followed by provider authentication refresh, paid-plan capability verification, and external API plus PostgreSQL deployment.",
     "D80-10 commercial operations readiness remains externally blocked until legal and child-consent policy, content-rights, payment and refund, SLA and support, incident response, monitoring notification, backup and restore, migration rollback, deployment health-check, and security access-review evidence are supplied and a product-owner release review is recorded; local platform PASS does not authorize commercial release or market claims",
     "D80-09 Daechi field validation remains externally blocked until two to three authorized academies provide agreement, privacy and participant-consent evidence, complete aggregate observations for six preregistered metrics, resolve all high and critical issues, and supply independently verified results plus product-owner review; no academy names, contacts, participants, outcomes, or purchase intent may be invented",
     "D80-08 AI tutor actual-model evidence remains externally blocked until approved model, prompt and evaluation-dataset pins, authorized provider execution, eight-locale aggregate results, human calibration, independent approval, and deletion or incident evidence are supplied; local rule and synthetic evaluation PASS must not be marketed as live-model quality",

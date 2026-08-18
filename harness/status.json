@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "project": "SOOHACK-CHAKCHAK",
   "stage": 8,
-  "updated_at": "2026-08-17T14:11:38.180Z",
-  "head_commit": "a0ed655",
+  "updated_at": "2026-08-18T01:59:12.248Z",
+  "head_commit": "a9e6421",
   "branch": "codex/gate8-external-deployment",
-  "working_tree_clean": false,
+  "working_tree_clean": true,
   "release_candidate_fixed": true,
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
   "allowed_statuses": [
@@ -217,6 +217,7 @@
       "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
       "docs/stage8/evidence/gate8/GATE8_EXTERNAL_API_POSTGRES_TARGET_PREFLIGHT_v1.0.json",
       "docs/stage8/evidence/gate8/GITHUB_DEVELOPMENT_ENVIRONMENT_PROTECTION_v1.0.json",
+      "docs/stage8/evidence/gate8/GITHUB_PRODUCTIZATION_CI_RUN_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_CHECK_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_REVALIDATION_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
@@ -229,14 +230,13 @@
     "blockers": [
       "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
       "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
-      "IMMUTABLE_DEPLOYMENT_SOURCE_COMMIT_REQUIRED",
       "EXTERNAL_API_AND_POSTGRESQL_NOT_DEPLOYED"
     ],
     "entry_allowed": true
   },
   "warnings": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read",
-    "working tree remains dirty; an isolated content-addressed release candidate is fixed without resetting user changes",
+    "immutable source commit a9e6421 is pushed and GitHub Actions Productization CI run 32090081642 passed both quality and API/PostgreSQL integration jobs",
     "Cloudflare development frontend and API bridge are deployed, but API_ORIGIN and PostgreSQL remain unconfigured",
     "Cloudflare OAuth was previously verified, but the current process credential now fails with provider code 9109 and must be refreshed before Containers capability verification",
     "production deployment and product release remain unauthorized"

@@ -56,6 +56,7 @@ npm.cmd test
 - Gate 6: 제품 통합·반응형·정적 품질·불변 RC `VERIFIED`
 - Gate 7: 출시 차단 QA·단위·통합·접근성 검사 `VERIFIED`
 - Gate 8: 로컬 Health·Smoke·Rollback `VERIFIED`
+- 불변 소스 커밋 `a9e6421`과 GitHub Actions quality·API/PostgreSQL 통합: `VERIFIED`
 - Cloudflare 개발 프런트엔드와 fail-closed API 브리지: `DEPLOYED`
 - GitHub `development` 보호 Environment와 `main` 전용 배포 정책: `VERIFIED`
 - Node API·외부 PostgreSQL·운영 릴리스: `BLOCKED_EXTERNAL`
