@@ -34,8 +34,15 @@ test('productization CI verifies source, Cloudflare package, and Docker API/Post
   assert.doesNotMatch(workflow, /CLOUDFLARE_API_TOKEN|OPENAI_API_KEY\s*:/);
 
   const status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
-  assert.equal(status.phases['9'].ci.workflow, '.github/workflows/productization-ci.yml');
-  assert.equal(status.phases['9'].ci.local_contract, 'PASS');
-  assert.equal(status.phases['9'].ci.github_run, 'NOT_RUN');
-  assert.equal(status.phases['9'].ci.deployment_performed, false);
+  const ci = status.phases['9'].ci;
+  assert.equal(ci.workflow, '.github/workflows/productization-ci.yml');
+  assert.equal(ci.local_contract, 'PASS');
+  assert.ok(['NOT_RUN', 'PASS'].includes(ci.github_run));
+  if (ci.github_run === 'PASS') {
+    assert.equal(Number.isInteger(ci.github_run_id), true);
+    assert.equal(ci.github_run_id > 0, true);
+    assert.equal(ci.github_run_url, `https://github.com/tianxiawudi1996-eng/SOOHACK-CHAKCHAK/actions/runs/${ci.github_run_id}`);
+    assert.match(ci.verified_source_commit, /^[a-f0-9]{40}$/);
+  }
+  assert.equal(ci.deployment_performed, false);
 });
