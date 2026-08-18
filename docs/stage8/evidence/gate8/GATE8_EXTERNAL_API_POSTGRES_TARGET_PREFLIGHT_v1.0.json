@@ -4,7 +4,7 @@
   "stage": 8,
   "gate": 8,
   "workstream_id": "D80-10",
-  "collected_at": "2026-08-18T04:58:02.416Z",
+  "collected_at": "2026-08-18T05:02:50.383Z",
   "decision": "HOLD",
   "status": "FREE_TIER_CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
   "candidate_architecture": {

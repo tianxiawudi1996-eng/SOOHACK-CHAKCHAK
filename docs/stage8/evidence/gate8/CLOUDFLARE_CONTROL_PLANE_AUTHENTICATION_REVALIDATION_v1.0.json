@@ -5,13 +5,12 @@
   "gate": 8,
   "environment": "development",
   "provider": "Cloudflare",
-  "checked_at": "2026-08-18T10:10:25+09:00",
+  "checked_at": "2026-08-18T14:02:24+09:00",
   "status": "BLOCKED_EXTERNAL",
   "provider_account_authenticated": false,
-  "containers_list_readable": false,
+  "control_plane_account_list_readable": false,
   "checks": {
-    "wrangler_whoami": "FAIL_INVALID_ACCESS_TOKEN_9109",
-    "wrangler_containers_list": "FAIL_AUTHENTICATION_ERROR"
+    "wrangler_whoami": "FAIL_INVALID_ACCESS_TOKEN_9109"
   },
   "external_mutation_performed": false,
   "next_input": "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
