@@ -40,6 +40,8 @@ jobs:
         run: npm run test:productization:staging
       - name: Validate Cloudflare deployment package
         run: npm run cloudflare:dry-run
+      - name: Validate Cloudflare Free embedded API package
+        run: npm run cloudflare:free:dry-run
 
   integration:
     name: API and PostgreSQL integration

@@ -4,20 +4,20 @@
   "stage": 8,
   "gate": 8,
   "workstream_id": "D80-10",
-  "collected_at": "2026-08-18T01:54:47.215Z",
+  "collected_at": "2026-08-18T04:58:02.416Z",
   "decision": "HOLD",
-  "status": "CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
+  "status": "FREE_TIER_CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
   "candidate_architecture": {
-    "api_runtime": "CLOUDFLARE_CONTAINERS",
+    "api_runtime": "CLOUDFLARE_WORKERS_FREE",
     "database": "EXTERNAL_MANAGED_POSTGRESQL",
-    "database_connection": "DIRECT_TLS_FROM_CONTAINER",
-    "frontend_bridge": "CLOUDFLARE_WORKER_API_ORIGIN",
+    "database_connection": "CLOUDFLARE_HYPERDRIVE_FREE",
+    "frontend_bridge": "SAME_WORKER_EMBEDDED_API",
     "environment_code": "DEVELOPMENT",
-    "rationale": "PRESERVE_EXISTING_NODE_HTTP_AND_PG_RUNTIME_WITH_MINIMAL_REWRITE",
+    "rationale": "REUSE_EXISTING_NODE_HTTP_SERVER_WITH_CLOUDFLARE_NODE_COMPATIBILITY_AND_HYPERDRIVE",
     "provider_code_allowlist": [
-      "CLOUDFLARE_CONTAINERS_NEON_POSTGRESQL",
-      "CLOUDFLARE_CONTAINERS_SUPABASE_POSTGRESQL",
-      "CLOUDFLARE_CONTAINERS_AWS_RDS_POSTGRESQL"
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL",
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_SUPABASE_POSTGRESQL",
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_AWS_RDS_POSTGRESQL"
     ]
   },
   "input_validation": {
@@ -37,9 +37,9 @@
     "values_stored": false
   },
   "local_compatibility": {
-    "node_api_container_present": true,
-    "container_port": 8080,
-    "node_runtime": "24-alpine",
+    "existing_node_api_reused": true,
+    "node_http_adapter": "cloudflare:node/httpServerHandler",
+    "node_compatibility_flag": "nodejs_compat",
     "postgresql_driver": "pg@^8.16.3",
     "forward_migrations_present": 40,
     "expected_forward_migrations": 40,
@@ -48,15 +48,17 @@
   "provider_preflight": {
     "authentication_fresh": false,
     "latest_authentication_status": "BLOCKED_EXTERNAL",
-    "workers_paid_plan_verified": false,
-    "containers_capability_verified": false,
+    "workers_free_runtime_selected": true,
+    "workers_free_cpu_budget_measured": false,
+    "hyperdrive_free_configuration_verified": false,
     "managed_postgresql_connection_verified": false
   },
   "blockers": [
     "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
     "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
-    "CLOUDFLARE_WORKERS_PAID_PLAN_CAPABILITY_NOT_VERIFIED",
-    "MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED"
+    "CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED",
+    "MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED",
+    "CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED"
   ],
   "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
   "required_fields": [
@@ -67,7 +69,8 @@
   ],
   "external_actions": {
     "account_plan_changed": false,
-    "container_created": false,
+    "worker_created": false,
+    "hyperdrive_configuration_created": false,
     "database_created": false,
     "secret_created_or_read": false,
     "deployment_performed": false

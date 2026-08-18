@@ -63,14 +63,28 @@ function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), {status, headers: JSON_HEADERS});
 }
 
-function secureApiResponse(upstream) {
+function secureApiResponse(upstream, edge = 'api-bridge') {
   const response = new Response(upstream.body, upstream);
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     response.headers.set(name, value);
   }
   response.headers.set('cache-control', 'no-store');
-  response.headers.set('x-mathchakchak-edge', 'api-bridge');
+  response.headers.set('x-mathchakchak-edge', edge);
   return response;
+}
+
+async function runEmbeddedApi(request, env, ctx, apiHandler) {
+  try {
+    const response = await apiHandler.fetch(request, env, ctx);
+    return secureApiResponse(response, 'embedded-worker-api');
+  } catch {
+    return json({
+      error: {
+        code: 'API_EMBEDDED_RUNTIME_UNAVAILABLE',
+        message: 'The embedded Cloudflare development API did not respond.'
+      }
+    }, 502);
+  }
 }
 
 async function proxyApiRequest(request, env, url, fetchImpl) {
@@ -137,18 +151,44 @@ async function inspectBackendReadiness(env, frontendUrl, fetchImpl) {
   }
 }
 
-export function createWorker({fetchImpl = globalThis.fetch} = {}) {
+async function inspectEmbeddedReadiness(request, env, ctx, apiHandler) {
+  try {
+    const url = new URL(request.url);
+    url.pathname = '/readyz';
+    url.search = '';
+    const response = await apiHandler.fetch(new Request(url, {
+      method: 'GET',
+      headers: {accept: 'application/json'}
+    }), env, ctx);
+    const payload = await response.json();
+    const databaseReady = response.status === 200 && payload?.data?.database?.ready === true;
+    return {
+      bridge: databaseReady ? 'EMBEDDED_CONNECTED' : 'EMBEDDED_NOT_READY',
+      apiReady: response.status === 200,
+      databaseReady
+    };
+  } catch {
+    return {bridge: 'EMBEDDED_UNAVAILABLE', apiReady: false, databaseReady: false};
+  }
+}
+
+export function createWorker({fetchImpl = globalThis.fetch, apiHandler = null} = {}) {
   return {
-    async fetch(request, env) {
+    async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (url.pathname === '/healthz' || url.pathname === '/readyz') {
-      const configured = inspectApiOrigin(env.API_ORIGIN, url.origin);
+      const configured = apiHandler
+        ? {valid: true, reason: null}
+        : inspectApiOrigin(env.API_ORIGIN, url.origin);
       const readiness = url.pathname === '/readyz'
-        ? await inspectBackendReadiness(env, url, fetchImpl)
+        ? apiHandler
+          ? await inspectEmbeddedReadiness(request, env, ctx, apiHandler)
+          : await inspectBackendReadiness(env, url, fetchImpl)
         : {
-          bridge: configured.valid
-            ? 'CONFIGURED_UNVERIFIED'
+          bridge: apiHandler
+            ? 'EMBEDDED_CONFIGURED_UNVERIFIED'
+            : configured.valid ? 'CONFIGURED_UNVERIFIED'
             : configured.reason === 'MISSING' ? 'NOT_CONFIGURED' : 'CONFIGURATION_INVALID',
           apiReady: false,
           databaseReady: false
@@ -167,6 +207,7 @@ export function createWorker({fetchImpl = globalThis.fetch} = {}) {
     }
 
     if (url.pathname.startsWith('/api/')) {
+      if (apiHandler) return runEmbeddedApi(request, env, ctx, apiHandler);
       return proxyApiRequest(request, env, url, fetchImpl);
     }
 

@@ -8,7 +8,7 @@
     "lint": {
       "status": "PASS",
       "checker": "NODE_SYNTAX_JSON_PARSE_SOURCE_INTEGRITY",
-      "checked_at": "2026-08-18T01:53:47.662Z",
+      "checked_at": "2026-08-18T04:58:30.695Z",
       "source_roots": [
         "agent",
         "assets/stage8",
@@ -19,8 +19,8 @@
         "scripts/quality",
         "tests"
       ],
-      "text_file_count": 422,
-      "script_file_count": 366,
+      "text_file_count": 423,
+      "script_file_count": 367,
       "json_file_count": 39,
       "integration_marker_count": 5,
       "failures": []
@@ -29,12 +29,12 @@
       "status": "PASS",
       "checker": "JAVASCRIPT_RUNTIME_DATA_CONTRACT_TYPECHECK",
       "claim_boundary": "This validates JavaScript runtime and data contracts; it does not claim a TypeScript compiler run.",
-      "checked_at": "2026-08-18T01:53:48.045Z",
+      "checked_at": "2026-08-18T04:58:31.058Z",
       "assertion_count": 467,
       "input_hashes": {
         "package": {
           "path": "package.json",
-          "sha256": "df8239bad2712adac6154c00c61e9b20ccd79ec5e7d8b0f33b04ce1eaf1a6e95"
+          "sha256": "1d4f2f353b45db1dce89246286718752ff946fdac93f9d4f6c79e199f853001b"
         },
         "staging": {
           "path": "artifacts/staging/v0.1.0/manifest.json",
@@ -56,6 +56,6 @@
       "failures": []
     }
   },
-  "generated_at": "2026-08-18T01:53:48.046Z",
+  "generated_at": "2026-08-18T04:58:31.059Z",
   "status": "PASS"
 }

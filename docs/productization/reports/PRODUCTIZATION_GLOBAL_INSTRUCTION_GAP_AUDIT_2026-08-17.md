@@ -81,7 +81,7 @@ Harness 한 종류만 실행하던 GitHub Actions에 제품화 CI 계약을 추�
 1. 외부 Node API 개발 런타임과 관리형 PostgreSQL 대상 확정
 2. migration 0001~0040 적용·검증 및 백업/PITR 활성화
 3. Secret Manager에서 세션 키·API origin 주입
-4. Cloudflare `API_ORIGIN` 연결 후 `/readyz`·`/api/v1/locales` 실측
+4. Cloudflare Hyperdrive·Worker Secret 연결 후 `/readyz`·`/api/v1/locales` 실측
 5. 공개 URL에서 진단→공식학습→회상→응용 E2E
 6. 보호된 GitHub Environment와 검증 SHA 기반 배포 승인
 7. 관리형 학생·교사·학부모 인증과 보호자 연결 정책

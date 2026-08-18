@@ -9,10 +9,10 @@ import {
 
 test('external target accepts only metadata references and the development environment', () => {
   const inspected = inspectExternalTargetInput({
-    target_reference: 'MCC-CF-CONTAINERS-DEV-2026-001',
-    provider_code: 'CLOUDFLARE_CONTAINERS_NEON_POSTGRESQL',
+    target_reference: 'MCC-CF-WORKER-FREE-DEV-2026-001',
+    provider_code: 'CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL',
     environment_code: 'DEVELOPMENT',
-    connection_reference: 'MCC-PG-DEV-CONNECTION-2026-001',
+    connection_reference: 'MCC-NEON-PG-DEV-2026-001',
   });
   assert.equal(inspected.complete, true);
   assert.deepEqual(inspected.missing_fields, []);

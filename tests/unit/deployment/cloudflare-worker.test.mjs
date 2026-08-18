@@ -155,3 +155,53 @@ test('Cloudflare worker delegates non-API requests to static assets', async () =
   assert.equal(response.headers.get('x-frame-options'), 'DENY');
   assert.match(response.headers.get('content-security-policy'), /frame-ancestors 'none'/);
 });
+
+test('Cloudflare free worker routes API requests to the embedded runtime without API_ORIGIN', async () => {
+  let received;
+  const embedded = createWorker({
+    apiHandler: {
+      async fetch(request) {
+        received = request;
+        return new Response(JSON.stringify({data: {locales: ['ko', 'en']}}), {
+          status: 200,
+          headers: {'content-type': 'application/json'}
+        });
+      }
+    }
+  });
+  const response = await embedded.fetch(
+    new Request('https://dev.mathchakchak.test/api/v1/locales'),
+    {ASSETS: assets},
+    {waitUntil() {}}
+  );
+
+  assert.equal(received.url, 'https://dev.mathchakchak.test/api/v1/locales');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('x-mathchakchak-edge'), 'embedded-worker-api');
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+});
+
+test('Cloudflare free worker promotes readiness only after embedded PostgreSQL health succeeds', async () => {
+  const embedded = createWorker({
+    apiHandler: {
+      async fetch(request) {
+        assert.equal(new URL(request.url).pathname, '/readyz');
+        return new Response(JSON.stringify({data: {database: {ready: true}}}), {
+          status: 200,
+          headers: {'content-type': 'application/json'}
+        });
+      }
+    }
+  });
+  const response = await embedded.fetch(
+    new Request('https://dev.mathchakchak.test/readyz'),
+    {ASSETS: assets},
+    {waitUntil() {}}
+  );
+  const body = await response.json();
+
+  assert.equal(body.status, 'DEVELOPMENT_RUNTIME_READY');
+  assert.equal(body.api_bridge, 'EMBEDDED_CONNECTED');
+  assert.equal(body.api, 'READY');
+  assert.equal(body.database, 'READY');
+});

@@ -1,26 +1,46 @@
-# Gate 8 외부 API·PostgreSQL 대상 프리플라이트
+# Gate 8 외부 API·PostgreSQL 대상 사전검토
 
-## 결과
+## 판정
 
-- 판정: `HOLD`
-- 후보: `Cloudflare Containers + Neon PostgreSQL` (개발 권고)
-- 로컬 API 컨테이너: 확인
-- PostgreSQL migration: `40/40`
-- 대상 입력: `0/4`
-- 현재 Cloudflare 인증: `BLOCKED_EXTERNAL`
-- 외부 생성·배포·Secret 접근: 수행하지 않음
+- 상태: `BLOCKED_EXTERNAL`
+- 선택 구조: `Cloudflare Workers Free + Hyperdrive Free + 관리형 PostgreSQL 개발 무료 티어`
+- 권고 provider code: `CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL`
+- 유료 전환 필요: 현재 개발 단계에서는 없음
+- 실제 배포: 수행하지 않음
 
-기존 Node.js HTTP 서버와 `pg` 기반 저장소를 유지할 수 있어 Cloudflare Containers를 최소 변경 후보로 선택했다. Containers는 Workers Paid 플랜에서 제공되며, PostgreSQL은 별도 관리형 대상이 필요하다. Hyperdrive는 데이터베이스 제공자가 아니라 기존 PostgreSQL 연결 계층이므로 이번 대상 확정과 구분한다.
+Cloudflare Workers의 Node.js HTTP 호환을 이용해 기존 API 서버를 재사용하는 어댑터를
+구현했다. Containers Paid 가정은 제거했다. Hyperdrive는 PostgreSQL 제공자가 아니라
+외부 PostgreSQL 연결 계층이므로 데이터베이스 대상과 마이그레이션은 별도 증거가
+필요하다.
 
-## 다음 입력
+## 자동 검증
 
-아래 값은 형식 예시이며 실제 외부 증거로 등록되지 않았다.
+- Cloudflare Free 런타임·라우팅 단위 테스트: PASS
+- 기존 외부 `API_ORIGIN` 브리지 회귀 테스트: PASS
+- Wrangler Free Worker bundle dry-run: PASS
+- 정적 자산: `96`개 읽기 성공
+- 번들 업로드 예상치: `778.71 KiB`, gzip `126.75 KiB`
+- Secret·연결 문자열 저장: 없음
+
+## 필요한 내부 참조
 
 ```text
-target_reference=MCC-CF-CONTAINERS-DEV-2026-001
-provider_code=CLOUDFLARE_CONTAINERS_NEON_POSTGRESQL
+target_reference=MCC-CF-WORKER-FREE-DEV-2026-001
+provider_code=CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL
 environment_code=DEVELOPMENT
 connection_reference=MCC-NEON-PG-DEV-2026-001
 ```
 
-원문 URL, 연결 문자열, 비밀번호와 API 토큰은 입력하지 않는다. 네 참조 검증 후 Cloudflare 인증 갱신과 Workers Paid·Containers 권한을 읽기 전용으로 재확인한다.
+원문 URL, 데이터베이스 비밀번호, API 토큰, Worker Secret은 이 대장에 입력하지 않는다.
+
+## 남은 차단
+
+1. `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`
+2. `CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH`
+3. `CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED`
+4. `MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED`
+5. `CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED`
+
+네 참조와 새 Cloudflare 인증 증거가 준비된 뒤에만 실제 리소스 생성 단계로 이동한다.
+무료 Workers의 요청당 CPU 제한 안에서 핵심 API가 동작하는지도 외부 개발 환경에서
+실측해야 하며, 초과 시 기능 축소 또는 유료 전환을 별도 승인한다.

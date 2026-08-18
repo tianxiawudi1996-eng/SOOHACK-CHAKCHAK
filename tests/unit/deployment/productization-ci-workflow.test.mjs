@@ -20,6 +20,7 @@ test('productization CI verifies source, Cloudflare package, and Docker API/Post
     'npm run typecheck',
     'npm run test:unit',
     'npm run cloudflare:dry-run',
+    'npm run cloudflare:free:dry-run',
     'docker compose -f infra/deployment/compose.api-staging.yaml config --quiet',
     'npm run test:integration:api',
     'npm run test:operations:runtime',

@@ -27,8 +27,9 @@ const providerAuthenticationFresh = isFreshProviderAuthentication(authEvidence);
 const blockers = [];
 if (!inspected.complete) blockers.push('EXTERNAL_DEPLOYMENT_TARGET_REFERENCE');
 if (!providerAuthenticationFresh) blockers.push('CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH');
-blockers.push('CLOUDFLARE_WORKERS_PAID_PLAN_CAPABILITY_NOT_VERIFIED');
+blockers.push('CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED');
 blockers.push('MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED');
+blockers.push('CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED');
 
 const evidence = {
   schema_version: '1.0.0',
@@ -38,14 +39,14 @@ const evidence = {
   workstream_id: 'D80-10',
   collected_at: new Date().toISOString(),
   decision: 'HOLD',
-  status: 'CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING',
+  status: 'FREE_TIER_CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING',
   candidate_architecture: {
-    api_runtime: 'CLOUDFLARE_CONTAINERS',
+    api_runtime: 'CLOUDFLARE_WORKERS_FREE',
     database: 'EXTERNAL_MANAGED_POSTGRESQL',
-    database_connection: 'DIRECT_TLS_FROM_CONTAINER',
-    frontend_bridge: 'CLOUDFLARE_WORKER_API_ORIGIN',
+    database_connection: 'CLOUDFLARE_HYPERDRIVE_FREE',
+    frontend_bridge: 'SAME_WORKER_EMBEDDED_API',
     environment_code: 'DEVELOPMENT',
-    rationale: 'PRESERVE_EXISTING_NODE_HTTP_AND_PG_RUNTIME_WITH_MINIMAL_REWRITE',
+    rationale: 'REUSE_EXISTING_NODE_HTTP_SERVER_WITH_CLOUDFLARE_NODE_COMPATIBILITY_AND_HYPERDRIVE',
     provider_code_allowlist: [...ALLOWED_EXTERNAL_TARGET_PROVIDERS],
   },
   input_validation: {
@@ -55,9 +56,9 @@ const evidence = {
     values_stored: false,
   },
   local_compatibility: {
-    node_api_container_present: true,
-    container_port: 8080,
-    node_runtime: '24-alpine',
+    existing_node_api_reused: true,
+    node_http_adapter: 'cloudflare:node/httpServerHandler',
+    node_compatibility_flag: 'nodejs_compat',
     postgresql_driver: 'pg@^8.16.3',
     forward_migrations_present: migrations.length,
     expected_forward_migrations: 40,
@@ -68,14 +69,17 @@ const evidence = {
   provider_preflight: {
     authentication_fresh: providerAuthenticationFresh,
     latest_authentication_status: authEvidence?.status || 'MISSING',
-    workers_paid_plan_verified: false,
-    containers_capability_verified: false,
+    workers_free_runtime_selected: true,
+    workers_free_cpu_budget_measured: false,
+    hyperdrive_free_configuration_verified: false,
     managed_postgresql_connection_verified: false,
   },
   blockers,
-  next_input: inspected.complete
-    ? 'CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH'
-    : 'EXTERNAL_DEPLOYMENT_TARGET_REFERENCE',
+  next_input: !inspected.complete
+    ? 'EXTERNAL_DEPLOYMENT_TARGET_REFERENCE'
+    : !providerAuthenticationFresh
+      ? 'CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH'
+      : 'CLOUDFLARE_HYPERDRIVE_CONFIGURATION_REFERENCE',
   required_fields: [
     'target_reference',
     'provider_code',
@@ -84,7 +88,8 @@ const evidence = {
   ],
   external_actions: {
     account_plan_changed: false,
-    container_created: false,
+    worker_created: false,
+    hyperdrive_configuration_created: false,
     database_created: false,
     secret_created_or_read: false,
     deployment_performed: false,

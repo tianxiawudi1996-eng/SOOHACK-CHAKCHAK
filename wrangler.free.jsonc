@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "mathchakchak-free-dev",
+  "main": "./infra/cloudflare/free-worker.mjs",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./artifacts/staging/v0.1.0/site",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+    "run_worker_first": true
+  },
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
+  "vars": {
+    "RUNTIME_ENV": "development",
+    "TUTOR_AI_ENABLED": "false",
+    "TUTOR_AI_KILL_SWITCH": "true"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

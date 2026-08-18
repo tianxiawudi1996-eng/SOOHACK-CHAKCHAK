@@ -9,6 +9,8 @@
     "start:api": "node developer/src/api/index.mjs",
     "cloudflare:dev": "npm run build:staging && wrangler dev",
     "cloudflare:dry-run": "npm run build:staging && wrangler deploy --dry-run",
+    "cloudflare:free:dev": "npm run build:staging && wrangler dev --config wrangler.free.jsonc",
+    "cloudflare:free:dry-run": "npm run build:staging && wrangler deploy --dry-run --config wrangler.free.jsonc",
     "cloudflare:deploy:development": "npm run build:staging && wrangler deploy",
     "test:productization:phase0": "node scripts/productization/validate_phase0.mjs",
     "test:productization:requirements": "node scripts/productization/validate_requirements.mjs",
