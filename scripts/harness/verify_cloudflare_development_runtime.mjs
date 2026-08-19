@@ -27,7 +27,7 @@ const checkDefinitions = [
   ['root', '/', 200],
   ['curriculum_e4_ko', '/curriculum/?locale=ko&grade=E4', 200],
   ['readyz', '/readyz', 200],
-  ['api_not_connected', '/api/v1/locales', 503],
+  ['api_locales', '/api/v1/locales', 200],
 ];
 
 const checks = {};
@@ -50,7 +50,7 @@ for (const [name, relativeUrl, expectedStatus] of checkDefinitions) {
         content_security_policy: response.headers.get('content-security-policy'),
       },
     };
-    if (name === 'readyz' || name === 'api_not_connected') {
+    if (name === 'readyz' || name === 'api_locales') {
       responses[name].json = await response.json();
     }
   } catch (error) {
@@ -62,19 +62,19 @@ for (const [name, relativeUrl, expectedStatus] of checkDefinitions) {
 }
 
 const readyz = responses.readyz?.json || {};
-const apiError = responses.api_not_connected?.json?.error || {};
-const securityHeadersPass = ['root', 'curriculum_e4_ko', 'readyz', 'api_not_connected']
+const locales = responses.api_locales?.json?.data?.locales || [];
+const securityHeadersPass = ['root', 'curriculum_e4_ko', 'readyz', 'api_locales']
   .every((name) => responses[name]?.headers?.x_frame_options === 'DENY'
     && responses[name]?.headers?.x_content_type_options === 'nosniff'
     && /frame-ancestors\s+'none'/.test(responses[name]?.headers?.content_security_policy || ''));
 const statusPass = checkDefinitions.every(([name, , expectedStatus]) => checks[name] === expectedStatus);
-const truthPass = readyz.status === 'FRONTEND_PREVIEW_READY'
+const truthPass = readyz.status === 'DEVELOPMENT_RUNTIME_READY'
   && readyz.frontend === 'READY'
-  && readyz.api === 'BLOCKED_EXTERNAL'
-  && readyz.api_bridge === 'NOT_CONFIGURED'
-  && readyz.database === 'BLOCKED_EXTERNAL'
+  && readyz.api === 'READY'
+  && readyz.api_bridge === 'EMBEDDED_CONNECTED'
+  && readyz.database === 'READY'
   && readyz.production_release === false
-  && apiError.code === 'API_NOT_CONNECTED';
+  && ['ko', 'zh-CN', 'ja', 'en', 'es', 'fr', 'it', 'ru'].every((locale) => locales.includes(locale));
 const passed = !networkFailure && statusPass && truthPass && securityHeadersPass;
 
 const evidence = {
@@ -84,8 +84,8 @@ const evidence = {
   gate: 8,
   environment: 'development',
   checked_at: new Date().toISOString(),
-  status: passed ? 'PASS_EXTERNAL_FRONTEND_PREVIEW' : 'FAIL_EXTERNAL_RUNTIME_VERIFICATION',
-  source_reference: 'USER_CONFIRMED_EXTERNAL_DEVELOPMENT_URL',
+  status: passed ? 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME' : 'FAIL_EXTERNAL_RUNTIME_VERIFICATION',
+  source_reference: 'CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_DEPLOYMENT',
   endpoint: {
     public_https_url: baseUrl.toString().replace(/\/$/, ''),
     hostname_sha256: hostnameSha256(baseUrl.hostname),
@@ -99,10 +99,10 @@ const evidence = {
   },
   runtime_truth: {
     frontend_publicly_reachable: statusPass,
-    api_bridge_deployed: readyz.api_bridge === 'NOT_CONFIGURED',
+    api_bridge_deployed: readyz.api_bridge === 'EMBEDDED_CONNECTED',
     api_bridge_status: readyz.api_bridge || null,
-    api_connected: false,
-    postgresql_connected: false,
+    api_connected: readyz.api === 'READY',
+    postgresql_connected: readyz.database === 'READY',
     production_release: false,
   },
   failures: [networkFailure, statusPass ? null : 'HTTP_STATUS_MISMATCH', truthPass ? null : 'RUNTIME_TRUTH_MISMATCH', securityHeadersPass ? null : 'SECURITY_HEADERS_MISMATCH'].filter(Boolean),
@@ -116,6 +116,6 @@ await fs.mkdir(path.dirname(outputPath), { recursive: true });
 await fs.writeFile(outputPath, `${JSON.stringify(evidence, null, 2)}\n`, 'utf8');
 
 console.log(`CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFY_${passed ? 'PASS' : 'FAIL'}`);
-console.log(`root=${checks.root} curriculum=${checks.curriculum_e4_ko} readyz=${checks.readyz} api=${checks.api_not_connected}`);
+console.log(`root=${checks.root} curriculum=${checks.curriculum_e4_ko} readyz=${checks.readyz} api=${checks.api_locales}`);
 console.log(`full_product_ready=${String(evidence.runtime_truth.api_connected && evidence.runtime_truth.postgresql_connected)}`);
 if (!passed) process.exit(1);

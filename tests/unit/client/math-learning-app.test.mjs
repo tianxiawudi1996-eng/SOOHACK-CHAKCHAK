@@ -10,9 +10,18 @@ test('each rendered formula step replaces the previous submit handler', () => {
   assert.doesNotMatch(app, /elements\.form\.addEventListener\('submit'/);
 });
 
-test('browser session token remains memory-only', () => {
-  assert.match(app, /token:null/);
-  assert.doesNotMatch(app, /localStorage|sessionStorage|document\.cookie/);
+test('browser session uses secure cookies and CSRF without persisted bearer tokens', () => {
+  assert.match(app, /credentials:'include'/);
+  assert.match(app, /mcc_csrf/);
+  assert.match(app, /'x-csrf-token'/);
+  assert.doesNotMatch(app, /localStorage|sessionStorage|access_token|authorization:`Bearer|\/api\/v1\/local-demo/);
+});
+
+test('lesson starts from the diagnostic path item and server-selected formula metadata', () => {
+  assert.match(app, /searchParams\.get\('learning_path_item_id'\)/);
+  assert.match(app, /learning_path_item_id:state\.learningPathItemId/);
+  assert.match(app, /formulaSession\.formula\.title/);
+  assert.match(app, /formulaSession\.formula\.notation/);
 });
 
 test('scored response requests a privacy-minimized tutor turn and renders both characters', () => {

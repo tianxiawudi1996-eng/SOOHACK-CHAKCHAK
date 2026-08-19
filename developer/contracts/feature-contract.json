@@ -16,6 +16,7 @@
     {"id":"FEAT-RWD-001","requirement_id":"REQ-P0-012","owner":"client","unit_test":"scripts/productization/validate_screen_design.mjs","dependencies":["FEAT-LAND-001","FEAT-LEARN-001"]},
     {"id":"FEAT-PRIV-001","requirement_id":"REQ-P0-013","owner":"developer","unit_test":"tests/unit/privacy/log-policy.test.mjs","dependencies":["FEAT-AUTH-001"]},
     {"id":"FEAT-RES-001","requirement_id":"REQ-P0-014","owner":"developer","unit_test":"tests/unit/resilience/retry-flow.test.mjs","dependencies":["FEAT-LEARN-001"]},
-    {"id":"FEAT-OBS-001","requirement_id":"REQ-P0-015","owner":"developer","unit_test":"tests/unit/observability/event-schema.test.mjs","dependencies":["FEAT-PRIV-001"]}
+    {"id":"FEAT-OBS-001","requirement_id":"REQ-P0-015","owner":"developer","unit_test":"tests/unit/observability/event-schema.test.mjs","dependencies":["FEAT-PRIV-001"]},
+    {"id":"FEAT-AUTH-002","requirement_id":"REQ-P0-016","owner":"developer","unit_test":"tests/unit/auth/social-login.test.mjs","dependencies":["FEAT-AUTH-001","FEAT-PRIV-001"]}
   ]
 }

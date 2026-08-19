@@ -1,49 +1,38 @@
-# Gate 8 외부 API·PostgreSQL 대상 사전검토
+# Gate 8 외부 API·PostgreSQL 대상 검증 보고서
 
-## 판정
+## 결과
 
-- 상태: `BLOCKED_EXTERNAL`
-- 선택 구조: `Cloudflare Workers Free + Hyperdrive Free + 관리형 PostgreSQL 개발 무료 티어`
-- 권고 provider code: `CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL`
-- 유료 전환 필요: 현재 개발 단계에서는 없음
-- 실제 배포: 수행하지 않음
+- 상태: `PASS_EXTERNAL_API_POSTGRES_TARGET_VERIFIED`
+- 구조: `Cloudflare Workers Free + Hyperdrive + Neon PostgreSQL Free`
+- 환경: `DEVELOPMENT`
+- 배포 주소: `https://mathchakchak-free-dev.mathchakchak-product.workers.dev`
+- 운영 출시: 승인되지 않음
 
-Cloudflare Workers의 Node.js HTTP 호환을 이용해 기존 API 서버를 재사용하는 어댑터를
-구현했다. Containers Paid 가정은 제거했다. Hyperdrive는 PostgreSQL 제공자가 아니라
-외부 PostgreSQL 연결 계층이므로 데이터베이스 대상과 마이그레이션은 별도 증거가
-필요하다.
+## 실제 검증
 
-## 자동 검증
+- Neon Free 프로젝트와 PostgreSQL 16 개발 브랜치 생성
+- 정방향 마이그레이션 `41/41` 적용
+- `mathchakchak` 스키마 테이블 `140`개 확인
+- 최초 `app_user`·최종 `commercial_ops_product_review` 테이블 확인
+- Cloudflare Hyperdrive 구성 목록 재조회 PASS
+- Worker dry-run PASS, 실제 배포 PASS, 시작 시간 `25ms`
+- `/`, `/curriculum/?locale=ko&grade=E4`, `/readyz`, `/api/v1/locales` 모두 HTTPS `200`
+- `/readyz`: API `READY`, DB `READY`, bridge `EMBEDDED_CONNECTED`
+- 미인증 보호 API `401`
+- 보안 헤더 PASS
 
-- Cloudflare Free 런타임·라우팅 단위 테스트: PASS
-- 기존 외부 `API_ORIGIN` 브리지 회귀 테스트: PASS
-- Wrangler Free Worker bundle dry-run: PASS
-- 정적 자산: `96`개 읽기 성공
-- 번들 업로드 예상치: `778.71 KiB`, gzip `126.75 KiB`
-- Secret·연결 문자열 저장: 없음
+## CPU 실측과 남은 위험
 
-## 필요한 내부 참조
+실시간 Worker trace 표본 15건은 모두 outcome `ok`였고 `exceededCpu`는 0건이다. 관찰 CPU 범위는 `0~23ms`였으며, 최초 DB 준비 요청 1건이 Workers Free의 명목상 10ms 기준을 넘었다. 이후 관찰된 준비 요청은 5ms였다.
 
-```text
-target_reference=MCC-CF-WORKER-FREE-DEV-2026-001
-provider_code=CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL
-environment_code=DEVELOPMENT
-connection_reference=MCC-NEON-PG-DEV-2026-001
-```
+따라서 `CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED`는 해소했지만, `CLOUDFLARE_FREE_COLD_START_CPU_OPTIMIZATION_REQUIRED` 위험은 운영 승격 전에 남긴다.
 
-원문 URL, 데이터베이스 비밀번호, API 토큰, Worker Secret은 이 대장에 입력하지 않는다.
+## 보안 경계
 
-## 남은 차단
+- DB 연결 문자열과 Worker Secret은 공급자 구성에만 사용했다.
+- 원문 자격증명은 저장소·문서·로그 증거에 저장하지 않았다.
+- AI 공급자는 비활성, 운영 트래픽과 제품 출시는 미승인 상태다.
 
-1. `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`
-2. `CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED`
-3. `MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED`
-4. `CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED`
+## 다음 입력
 
-네 참조와 새 Cloudflare 인증 증거가 준비된 뒤에만 실제 리소스 생성 단계로 이동한다.
-무료 Workers의 요청당 CPU 제한 안에서 핵심 API가 동작하는지도 외부 개발 환경에서
-실측해야 하며, 초과 시 기능 축소 또는 유료 전환을 별도 승인한다.
-
-Cloudflare OAuth 인증과 빈 Hyperdrive 목록 조회는 통과했다. 사용자 범위에 남은 오래된
-`CLOUDFLARE_API_TOKEN` 환경변수는 OAuth보다 우선되어 오류 9109를 만들므로, 현재 실행은
-그 환경변수를 자식 프로세스에서 제거한 뒤 수행했다. 토큰 값은 읽거나 저장하지 않았다.
+`D80_10_CONTROL_EVIDENCE_REFERENCE`

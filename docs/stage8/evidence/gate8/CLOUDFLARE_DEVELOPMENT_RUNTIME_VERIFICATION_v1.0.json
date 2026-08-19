@@ -4,18 +4,18 @@
   "stage": 8,
   "gate": 8,
   "environment": "development",
-  "checked_at": "2026-08-17T14:11:01.519Z",
-  "status": "PASS_EXTERNAL_FRONTEND_PREVIEW",
-  "source_reference": "USER_CONFIRMED_EXTERNAL_DEVELOPMENT_URL",
+  "checked_at": "2026-08-18T06:50:27.394Z",
+  "status": "PASS_EXTERNAL_DEVELOPMENT_RUNTIME",
+  "source_reference": "CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_DEPLOYMENT",
   "endpoint": {
-    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
-    "hostname_sha256": "d6536176ac107bfafcbc0c29b90da0544e8a915a69f75308aec18b9786d89679"
+    "public_https_url": "https://mathchakchak-free-dev.mathchakchak-product.workers.dev",
+    "hostname_sha256": "57f0381ce6cb4191bcba4a985a1425b41faeaf8d3ffa168238e8c1af69200fc4"
   },
   "http_checks": {
     "root": 200,
     "curriculum_e4_ko": 200,
     "readyz": 200,
-    "api_not_connected": 503
+    "api_locales": 200
   },
   "security_headers": {
     "status": "PASS",
@@ -26,9 +26,9 @@
   "runtime_truth": {
     "frontend_publicly_reachable": true,
     "api_bridge_deployed": true,
-    "api_bridge_status": "NOT_CONFIGURED",
-    "api_connected": false,
-    "postgresql_connected": false,
+    "api_bridge_status": "EMBEDDED_CONNECTED",
+    "api_connected": true,
+    "postgresql_connected": true,
     "production_release": false
   },
   "failures": [],

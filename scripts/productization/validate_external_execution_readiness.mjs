@@ -13,7 +13,7 @@ const expectedStatuses=new Set(['NOT_REQUESTED','READY_FOR_EXTERNAL_SUBMISSION',
 const forbidden=/raw_document|raw_payload|payment_token|backup_payload|personal_contact|student_identity|academy_identity|secret|token/i;
 const ids=register.workstreams.map(item=>item.id);
 const roles=register.workstreams.map(item=>item.owner_role);
-if(!['EXTERNAL_EXECUTION_PREPARED_WAITING_FOR_AUTHORIZED_INPUT','D80_10_READY_FOR_EXTERNAL_SUBMISSION_PENDING_ROUTE_CONNECTION','D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET'].includes(register.status)) failures.push('STATUS_INVALID');
+if(!['EXTERNAL_EXECUTION_PREPARED_WAITING_FOR_AUTHORIZED_INPUT','D80_10_READY_FOR_EXTERNAL_SUBMISSION_PENDING_ROUTE_CONNECTION','D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET','D80_10_DEVELOPMENT_DEPLOYED_PENDING_CONTROL_EVIDENCE'].includes(register.status)) failures.push('STATUS_INVALID');
 if(JSON.stringify(ids)!==JSON.stringify(expectedIds)) failures.push('WORKSTREAM_SET_INVALID');
 if(new Set(ids).size!==ids.length) failures.push('DUPLICATE_WORKSTREAM');
 if(new Set(roles).size!==roles.length) failures.push('DUPLICATE_OWNER_ROLE');
@@ -26,7 +26,8 @@ if(register.submission_policy?.allowed_initial_status!=='NOT_REQUESTED'||registe
 const routeReference=register.input_confirmations?.approved_submission_route_reference;
 if(!routeReference||routeReference.reference!=='OPS-EVIDENCE-ROUTE-2026-001'||routeReference.status!=='READ_ONLY_CONNECTION_VERIFIED_SUBMISSION_DISABLED'||routeReference.external_submission_enabled!==false) failures.push('ROUTE_REFERENCE_INVALID');
 if(register.route_validation?.status!=='VERIFIED_READ_ONLY_ROUTE_CONNECTION'||register.route_validation?.actual_connection_evidence!==1||register.route_validation?.connection_verified!==true||register.route_validation?.evidence_references?.length!==1) failures.push('ROUTE_CONNECTION_VALIDATION_INVALID');
-if(register.next_authorized_input?.type!=='EXTERNAL_DEPLOYMENT_TARGET_REFERENCE'||register.next_authorized_input?.workstream_id!=='D80-10'||JSON.stringify(register.next_authorized_input?.required_fields)!==JSON.stringify(['target_reference','provider_code','environment_code','connection_reference'])||register.next_authorized_input?.required_environment_code!=='DEVELOPMENT'||register.next_authorized_input?.accepted_evidence_count!==0) failures.push('NEXT_INPUT_CONTRACT_INVALID');
+if(register.next_authorized_input?.type!=='D80_10_CONTROL_EVIDENCE_REFERENCE'||register.next_authorized_input?.workstream_id!=='D80-10'||JSON.stringify(register.next_authorized_input?.required_fields)!==JSON.stringify(['internal_reference','evidence_sha256','status','verified_at'])||register.next_authorized_input?.accepted_evidence_count!==0) failures.push('NEXT_INPUT_CONTRACT_INVALID');
+if(register.deployment_target_validation?.status!=='VERIFIED_EXTERNAL_DEVELOPMENT_RUNTIME'||register.deployment_target_validation?.external_preflight_decision!=='ALLOW_WITH_CONDITIONS'||register.deployment_target_validation?.production_release_authorized!==false) failures.push('DEPLOYMENT_TARGET_VALIDATION_INVALID');
 if(projectStatus.current_phase!==75||projectStatus.phases?.['75']?.status!=='LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED') failures.push('SOURCE_PHASE_STATUS_DRIFT');
 const contractBytes=await fs.readFile(path.resolve(root,'developer/contracts/commercial-operations-readiness-v1.0.json'));
 const contractSha256=crypto.createHash('sha256').update(contractBytes).digest('hex');

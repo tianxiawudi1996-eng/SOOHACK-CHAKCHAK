@@ -4,6 +4,7 @@ import {parseAllowedOrigins} from '../../developer/src/api/security.mjs';
 import {createTutorKernel} from '../../developer/src/agent/tutor-kernel.mjs';
 import {createTutorOperations, resolveTutorOperationsPolicy} from '../../developer/src/agent/tutor-operations.mjs';
 import {createTutorService} from '../../developer/src/agent/tutor-service.mjs';
+import {createSocialAuthService,socialAuthConfigFromEnvironment} from '../../developer/src/auth/social-auth-service.mjs';
 
 const JSON_HEADERS = Object.freeze({
   'content-type': 'application/json; charset=utf-8',
@@ -59,13 +60,18 @@ export function createCloudflareApiRuntime({env, request}) {
       timeoutMs: tutorOperations.policy.requestTimeoutMs
     })
   });
+  const socialAuth=createSocialAuthService({
+    repository,
+    config:socialAuthConfigFromEnvironment(env,new URL(request.url).origin)
+  });
   const server = createMathChakChakServer({
     repository,
     auth: {
       sessionSecret: env.SESSION_HMAC_SECRET,
       allowTrustedHeaders: false,
       allowedOrigins: allowedOriginsFor(request, env),
-      localDemoEnabled: false
+      localDemoEnabled: false,
+      socialAuth
     },
     tutorService,
     tutorOperations

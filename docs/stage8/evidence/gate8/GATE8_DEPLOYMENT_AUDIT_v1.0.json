@@ -3,9 +3,9 @@
   "project": "MathChakChak",
   "stage": 8,
   "gate": 8,
-  "audited_at": "2026-08-18T02:00:48.176Z",
+  "audited_at": "2026-08-18T06:58:40.573Z",
   "audit_status": "PASS",
-  "status": "BLOCKED_EXTERNAL_FULL_PRODUCT",
+  "status": "BLOCKED_EXTERNAL_PRODUCTION_RELEASE",
   "local_deployment_status": "VERIFIED",
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
   "evidence": [
@@ -23,15 +23,15 @@
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
-      "sha256": "b9737bd167c3fbeb668e8d46abf19ef4ab58dd6216c33fa8b400f646fd7aadf8"
+      "sha256": "8befd14de8e8430c32fa4a985444de64ce06a523ffa7fd85e6beb978fbdc1a93"
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
-      "sha256": "2b7ea1a1144cbdebbe0df6d514bbd7638dd9c2fe853abd0c5dd96d9e9fad81a3"
+      "sha256": "ceb86d15e5232370dfbb5b4d40ddb33044683fa27d1b546968e31ab3aa9ba3fe"
     },
     {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_ATTEMPT_v1.0.json",
-      "sha256": "6601c89489d56bde421c5954ab4771b3648bad3f0d3271187b9b346c5bd664a6"
+      "sha256": "58ad8974ad13a1a23e716d8b80e31d080001b5e713a4ebf6d344fe1832fdc295"
     },
     {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
@@ -39,7 +39,11 @@
     },
     {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json",
-      "sha256": "72109a3223de05b7e51118337e6291147b49b550a5ac5cb23a63646e3c7adde4"
+      "sha256": "cd611c0bc28346083aca1e763ac0620e8ec3c5350231848266ffa6b34aa78c4f"
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_FULL_STACK_DEVELOPMENT_EVIDENCE_v1.0.json",
+      "sha256": "a77e4352b8ac0d141c59193bf73d6abacd9b90d4b0f64628cd0f1b74f2e2651b"
     }
   ],
   "local_results": {
@@ -52,32 +56,30 @@
     "same_images_redeployed": true
   },
   "external_results": {
-    "deployment_scope": "FRONTEND_PREVIEW_WITH_API_BRIDGE_NOT_CONFIGURED",
-    "frontend_preview_deployment_performed": true,
+    "deployment_scope": "FULL_STACK_DEVELOPMENT",
+    "frontend_preview_deployment_performed": false,
     "frontend_publicly_reachable": true,
-    "active_worker_version_reference": "cloudflare-worker-version:ea067773-d8ae-4617-b9d2-9b9747619774",
+    "active_worker_version_reference": "cloudflare-worker-version:c61d0fbb-60eb-4a41-8143-89146b342889",
     "api_bridge_deployed": true,
-    "api_bridge_status": "NOT_CONFIGURED",
-    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
-    "full_product_deployment_performed": false,
-    "deployment_performed": false,
-    "api_connected": false,
-    "postgresql_connected": false,
+    "api_bridge_status": "EMBEDDED_CONNECTED",
+    "public_https_url": "https://mathchakchak-free-dev.mathchakchak-product.workers.dev",
+    "full_product_development_deployment_performed": true,
+    "deployment_performed": true,
+    "api_connected": true,
+    "postgresql_connected": true,
     "canary_performed": false,
     "production_release_authorized": false,
-    "preflight_decision": "HOLD",
+    "preflight_decision": "ALLOW_WITH_CONDITIONS",
     "blockers": [
-      "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
-      "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH"
+      "CLOUDFLARE_FREE_COLD_START_CPU_OPTIMIZATION_REQUIRED",
+      "DEPLOYED_VERSION_SOURCE_COMMIT_BINDING_NOT_PROVEN",
+      "PRODUCTION_RELEASE_NOT_AUTHORIZED"
     ],
-    "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
+    "next_input": "D80_10_CONTROL_EVIDENCE_REFERENCE"
   },
   "current_source": {
-    "worker_sha256": "4155b0357d0998470697e1183da17a5355a18ad4ac6c08ff96ca4ae12ace0ac3",
-    "active_deployment_named_handlers": [
-      "createWorker",
-      "inspectApiOrigin"
-    ],
+    "worker_sha256": "1b0d1c6e60c605a08843c4894925f4a0e96d17ab282833c905561a651677554c",
+    "active_deployment_named_handlers": null,
     "provider_source_hash_match_proven": false,
     "source_commit_binding_proven": false,
     "deployment_pending": false

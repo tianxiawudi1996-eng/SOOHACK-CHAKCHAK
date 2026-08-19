@@ -56,6 +56,9 @@ test('formula lesson runs five stages and persists misconception and mastery in 
     method:'POST',key:key('formula-start'),body:{}
   });
   assert.equal(formula.response.status, 201);
+  assert.equal(typeof formula.payload.data.formula.title, 'string');
+  assert.equal(formula.payload.data.formula.notation, 'a/b + c/d = (a*d + b*c) / (b*d)');
+  assert.equal(typeof formula.payload.data.formula.memory_cue, 'string');
   assert.equal(formula.payload.data.current_step.stage, 'UNDERSTAND');
   const formulaSessionId = formula.payload.data.id;
 

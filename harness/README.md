@@ -8,7 +8,7 @@
 - Gate 5: `VERIFIED`, 제품 책임자 승인 1/1
 - Gate 6: 제품화 Phase 5~8 매핑·반응형 4/4·정적 품질·불변 RC `VERIFIED`
 - Gate 7: 명령 14/14·단위 336/336·통합 61/61·브라우저 접근성 6/6 `VERIFIED`
-- Gate 8: 로컬 배포·Health·Smoke·Rollback `VERIFIED`, 불변 소스 `a9e6421`과 GitHub Actions quality·API/PostgreSQL 통합 `VERIFIED`, Cloudflare 프런트엔드와 fail-closed API 브리지 `DEPLOYED`; 외부 대상 입력·공급자 인증 갱신·외부 API/PostgreSQL 미구성으로 `BLOCKED`
+- Gate 8: 로컬 배포·Health·Smoke·Rollback `VERIFIED`, Cloudflare Workers Free 전체 스택·Hyperdrive·Neon PostgreSQL 개발 배포 `VERIFIED`; 콜드스타트 CPU 최적화와 운영 출시 승인 미완료로 `BLOCKED`
 - 외부 배포·제품 출시: 승인되지 않음
 
 고정 RC SHA-256: `3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd`

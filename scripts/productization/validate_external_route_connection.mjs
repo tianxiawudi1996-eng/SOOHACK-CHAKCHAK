@@ -22,10 +22,11 @@ if(evidenceReference){
   if(actualHash!==evidenceReference.evidence_sha256||evidenceReference.review_role_code!=='SECURITY_AND_PRODUCT_REVIEW_BOARD'||evidenceReference.status!=='VERIFIED_READ_ONLY_CONNECTION') failures.push('CONNECTION_EVIDENCE_REFERENCE_INVALID');
 }
 if(register.submission_policy?.external_submission_route!=='READ_ONLY_CONNECTION_VERIFIED_SUBMISSION_DISABLED') failures.push('SUBMISSION_POLICY_ROUTE_STATUS_INVALID');
-if(nextInput?.type!=='EXTERNAL_DEPLOYMENT_TARGET_REFERENCE'||nextInput?.workstream_id!=='D80-10'||JSON.stringify(nextInput?.required_fields)!==JSON.stringify(['target_reference','provider_code','environment_code','connection_reference'])||nextInput?.required_environment_code!=='DEVELOPMENT'||nextInput?.accepted_evidence_count!==0) failures.push('NEXT_INPUT_CONTRACT_INVALID');
-if(evidence.next_required_input?.type!==nextInput?.type||JSON.stringify(evidence.next_required_input?.fields)!==JSON.stringify(nextInput?.required_fields)||evidence.next_required_input?.required_environment_code!=='DEVELOPMENT') failures.push('NEXT_INPUT_EVIDENCE_DRIFT');
+if(nextInput?.type!=='D80_10_CONTROL_EVIDENCE_REFERENCE'||nextInput?.workstream_id!=='D80-10'||JSON.stringify(nextInput?.required_fields)!==JSON.stringify(['internal_reference','evidence_sha256','status','verified_at'])||nextInput?.accepted_evidence_count!==0) failures.push('NEXT_INPUT_CONTRACT_INVALID');
+if(evidence.next_required_input?.type!=='EXTERNAL_DEPLOYMENT_TARGET_REFERENCE'||JSON.stringify(evidence.next_required_input?.fields)!==JSON.stringify(['target_reference','provider_code','environment_code','connection_reference'])||evidence.next_required_input?.required_environment_code!=='DEVELOPMENT') failures.push('NEXT_INPUT_EVIDENCE_DRIFT');
+if(register.deployment_target_validation?.status!=='VERIFIED_EXTERNAL_DEVELOPMENT_RUNTIME'||register.deployment_target_validation?.production_release_authorized!==false) failures.push('DEPLOYMENT_TARGET_VALIDATION_INVALID');
 for(const key of ['dispatch_performed','evidence_submission_enabled','verification_enabled','production_release_authorized']) if(evidence[key]!==false||register[key]!==false) failures.push(`UNSAFE_FLAG:${key}`);
-if(status.external_execution_preparation?.status!=='D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET') failures.push('STATUS_MEMORY_INVALID');
+if(status.external_execution_preparation?.status!=='D80_10_DEVELOPMENT_DEPLOYED_PENDING_CONTROL_EVIDENCE') failures.push('STATUS_MEMORY_INVALID');
 console.log(`EXTERNAL_ROUTE_CONNECTION_STATIC_${failures.length?'FAIL':'PASS'}`);
 console.log(`route_reference=${route?.reference||'MISSING'}`);
 console.log(`connection_verified=${evidence.connection_verified} dispatch=${evidence.dispatch_performed} submission=${evidence.evidence_submission_enabled}`);

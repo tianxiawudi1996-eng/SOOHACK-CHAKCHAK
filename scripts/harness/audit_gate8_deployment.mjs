@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { EXPECTED_FORWARD_MIGRATIONS } from './lib/gate8_external_target_contract.mjs';
 
 const root = process.cwd();
 const readJson = async (relativePath) => JSON.parse(await fs.readFile(path.join(root, relativePath), 'utf8'));
@@ -13,6 +14,7 @@ const externalPreflightAuditPath = 'docs/stage8/evidence/gate8/GATE8_EXTERNAL_DE
 const cloudflareDeploymentPath = 'docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_ATTEMPT_v1.0.json';
 const cloudflareRevalidationPath = 'docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json';
 const cloudflareRuntimePath = 'docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json';
+const cloudflareFullStackPath = 'docs/stage8/evidence/gate8/CLOUDFLARE_FULL_STACK_DEVELOPMENT_EVIDENCE_v1.0.json';
 const cloudflareWorkerPath = 'infra/cloudflare/worker.mjs';
 const outputPath = 'docs/stage8/evidence/gate8/GATE8_DEPLOYMENT_AUDIT_v1.0.json';
 const reportPath = 'docs/stage8/audits/GATE8_DEPLOYMENT_AUDIT.md';
@@ -25,6 +27,7 @@ const externalPreflightAudit = await readJson(externalPreflightAuditPath);
 const cloudflareDeployment = await readJson(cloudflareDeploymentPath);
 const cloudflareRevalidation = await readJson(cloudflareRevalidationPath);
 const cloudflareRuntime = await readJson(cloudflareRuntimePath);
+const cloudflareFullStack = await readJson(cloudflareFullStackPath);
 const harness = await readJson('harness/status.json');
 const failures = [];
 const currentWorkerSha256 = await sha256(cloudflareWorkerPath);
@@ -42,24 +45,28 @@ if (externalPreflight.release_candidate_sha256 !== release.rc_sha256 || external
 if (externalPreflightAudit.audit_status !== 'PASS' || externalPreflightAudit.execution_status !== externalPreflight.decision) failures.push('EXTERNAL_PREFLIGHT_AUDIT_INVALID');
 if (externalPreflight.decision === 'HOLD' && (!externalPreflight.blockers?.length || !externalPreflight.next_input)) failures.push('EXTERNAL_HOLD_CONTRACT_INVALID');
 if (externalPreflight.external_actions?.deployment_performed !== false || externalPreflight.external_actions?.canary_performed !== false || externalPreflight.external_actions?.production_release_performed !== false) failures.push('PREFLIGHT_ACTION_BOUNDARY_INVALID');
-if (cloudflareDeployment.status !== 'PASS_EXTERNAL_FRONTEND_PREVIEW'
-  || cloudflareDeployment.runtime_truth_boundary?.external_frontend_deployment_completed !== true
-  || cloudflareDeployment.runtime_truth_boundary?.full_product_external_deployment_completed !== false) {
+if (cloudflareDeployment.status !== 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME'
+  || cloudflareDeployment.runtime_truth_boundary?.external_development_deployment_completed !== true
+  || cloudflareDeployment.runtime_truth_boundary?.full_product_external_development_completed !== true
+  || cloudflareDeployment.runtime_truth_boundary?.production_release_authorized !== false) {
   failures.push('CLOUDFLARE_DEPLOYMENT_SCOPE_INVALID');
 }
-if (cloudflareRevalidation.status !== 'PASS_EXTERNAL_FRONTEND_PREVIEW'
-  || cloudflareRevalidation.active_deployment?.active_traffic_percent !== 100
-  || cloudflareRevalidation.active_deployment?.worker_version_reference !== 'cloudflare-worker-version:ea067773-d8ae-4617-b9d2-9b9747619774'
-  || cloudflareRevalidation.runtime_truth?.api_bridge_deployed !== true
-  || cloudflareRevalidation.runtime_truth?.api_bridge_status !== 'NOT_CONFIGURED') {
-  failures.push('CLOUDFLARE_ACTIVE_DEPLOYMENT_REVALIDATION_INVALID');
+if (cloudflareFullStack.status !== 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME'
+  || cloudflareFullStack.cloudflare?.worker_deployed !== true
+  || cloudflareFullStack.cloudflare?.hyperdrive_configuration_verified !== true
+  || cloudflareFullStack.database?.managed_postgresql_connection_verified !== true
+  || cloudflareFullStack.database?.forward_migrations_applied !== EXPECTED_FORWARD_MIGRATIONS
+  || cloudflareFullStack.database?.schema_table_count !== 140
+  || cloudflareFullStack.cpu_budget?.measured !== true
+  || cloudflareFullStack.cpu_budget?.outcome_exceeded_cpu !== 0) {
+  failures.push('CLOUDFLARE_FULL_STACK_EVIDENCE_INVALID');
 }
-if (cloudflareRuntime.status !== 'PASS_EXTERNAL_FRONTEND_PREVIEW'
+if (cloudflareRuntime.status !== 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME'
   || cloudflareRuntime.http_checks?.root !== 200
   || cloudflareRuntime.http_checks?.readyz !== 200
-  || cloudflareRuntime.http_checks?.api_not_connected !== 503
-  || cloudflareRuntime.runtime_truth?.api_connected !== false
-  || cloudflareRuntime.runtime_truth?.postgresql_connected !== false
+  || cloudflareRuntime.http_checks?.api_locales !== 200
+  || cloudflareRuntime.runtime_truth?.api_connected !== true
+  || cloudflareRuntime.runtime_truth?.postgresql_connected !== true
   || cloudflareRuntime.runtime_truth?.production_release !== false) {
   failures.push('CLOUDFLARE_RUNTIME_TRUTH_INVALID');
 }
@@ -71,7 +78,7 @@ const audit = {
   gate: 8,
   audited_at: new Date().toISOString(),
   audit_status: failures.length === 0 ? 'PASS' : 'FAIL',
-  status: failures.length === 0 ? 'BLOCKED_EXTERNAL_FULL_PRODUCT' : 'FAIL',
+  status: failures.length === 0 ? 'BLOCKED_EXTERNAL_PRODUCTION_RELEASE' : 'FAIL',
   local_deployment_status: failures.length === 0 ? 'VERIFIED' : 'FAIL',
   release_candidate_sha256: release.rc_sha256,
   evidence: [
@@ -83,6 +90,7 @@ const audit = {
     { path: cloudflareDeploymentPath, sha256: await sha256(cloudflareDeploymentPath) },
     { path: cloudflareRevalidationPath, sha256: await sha256(cloudflareRevalidationPath) },
     { path: cloudflareRuntimePath, sha256: await sha256(cloudflareRuntimePath) },
+    { path: cloudflareFullStackPath, sha256: await sha256(cloudflareFullStackPath) },
   ],
   local_results: {
     artifact_files: '78/78 PASS',
@@ -94,28 +102,28 @@ const audit = {
     same_images_redeployed: true,
   },
   external_results: {
-    deployment_scope: 'FRONTEND_PREVIEW_WITH_API_BRIDGE_NOT_CONFIGURED',
-    frontend_preview_deployment_performed: true,
+    deployment_scope: 'FULL_STACK_DEVELOPMENT',
+    frontend_preview_deployment_performed: false,
     frontend_publicly_reachable: true,
-    active_worker_version_reference: cloudflareRevalidation.active_deployment.worker_version_reference,
+    active_worker_version_reference: cloudflareFullStack.cloudflare.worker_version_reference,
     api_bridge_deployed: true,
     api_bridge_status: cloudflareRuntime.runtime_truth.api_bridge_status,
     public_https_url: cloudflareRuntime.endpoint.public_https_url,
-    full_product_deployment_performed: false,
-    deployment_performed: false,
-    api_connected: false,
-    postgresql_connected: false,
+    full_product_development_deployment_performed: true,
+    deployment_performed: true,
+    api_connected: true,
+    postgresql_connected: true,
     canary_performed: false,
     production_release_authorized: false,
     preflight_decision: externalPreflight.decision,
-    blockers: externalPreflight.blockers,
-    next_input: externalPreflight.next_input,
+    blockers: harness.gate8.blockers,
+    next_input: 'D80_10_CONTROL_EVIDENCE_REFERENCE',
   },
   current_source: {
     worker_sha256: currentWorkerSha256,
-    active_deployment_named_handlers: cloudflareRevalidation.active_deployment.named_handler_evidence,
-    provider_source_hash_match_proven: cloudflareRevalidation.local_source.provider_source_hash_match_proven,
-    source_commit_binding_proven: cloudflareRevalidation.local_source.source_commit_binding_proven,
+    active_deployment_named_handlers: null,
+    provider_source_hash_match_proven: false,
+    source_commit_binding_proven: false,
     deployment_pending: false,
   },
   stage8_complete: false,
@@ -144,7 +152,7 @@ const report = `# Stage 8 Gate 8 배포 감사
 - 루트: \`${cloudflareRuntime.http_checks.root}\`
 - 교육과정: \`${cloudflareRuntime.http_checks.curriculum_e4_ko}\`
 - readiness: \`${cloudflareRuntime.http_checks.readyz}\`
-- API 미연결 응답: \`${cloudflareRuntime.http_checks.api_not_connected}\` (예상된 안전 차단)
+- API locales: \`${cloudflareRuntime.http_checks.api_locales}\`
 
 ## 현재 경계
 
@@ -163,7 +171,7 @@ ${audit.external_results.blockers.map((item) => `- \`${item}\``).join('\n')}
 await fs.writeFile(path.join(root, reportPath), report, 'utf8');
 
 console.log(`GATE8_DEPLOYMENT_AUDIT_${audit.audit_status}`);
-console.log(`local=${audit.local_deployment_status} frontend_preview=${audit.external_results.frontend_preview_deployment_performed} full_product=${audit.external_results.full_product_deployment_performed}`);
+console.log(`local=${audit.local_deployment_status} development_full_stack=${audit.external_results.full_product_development_deployment_performed} production_release=${audit.external_results.production_release_authorized}`);
 if (failures.length > 0) {
   for (const failure of failures) console.error(failure);
   process.exit(1);

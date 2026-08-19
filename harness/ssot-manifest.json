@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T14:23:53.437183+00:00",
+  "generated_at": "2026-08-18T06:58:56.315784+00:00",
   "target_root": "ssot/stage7/v1.0",
   "required_files": [
     {
@@ -992,8 +992,8 @@
     },
     {
       "path": ".github/workflows/productization-ci.yml",
-      "sha256": "7b5422a537949b3e119f734bcf4fe6b0f8344ce92354398cd624c1c54b91a3d6",
-      "size_bytes": 2940
+      "sha256": "3ea25ef2fecab0adbb460b2a83bce7adb7777854d06d04d7bdb073e5232fb694",
+      "size_bytes": 3045
     },
     {
       "path": ".github/workflows/stage8-harness.yml",
@@ -1002,8 +1002,38 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "9f48ce9c00690fced8e8580aad4f0c75d73d8353a4335e25423f26a7bee9a46d",
-      "size_bytes": 344
+      "sha256": "deb3d297634d181cf8b76a663625e3870858df565c416a63414edacb4bc836b1",
+      "size_bytes": 359
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/cloudflare-skills-repo-cache.json",
+      "sha256": "6be58b3ae774a9183038f4d8276eea1ff097026d779eccf8f464bfaf73da3ffe",
+      "size_bytes": 340
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/logs/wrangler-2026-08-18_01-05-03_635.log",
+      "sha256": "da8efe18c8cd6bc2c969413dc1718da339ed8fbc3dc7e09e6c2c957898a37fc9",
+      "size_bytes": 3946
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/logs/wrangler-2026-08-18_01-05-05_430.log",
+      "sha256": "c15c61eeb282bdcf79ef105ec967c9e79f2d8ef26ea5e1fcd84a7724bc69cea4",
+      "size_bytes": 3582
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/logs/wrangler-2026-08-18_01-05-16_217.log",
+      "sha256": "2ee6393ecabc5c59489c53a6776ee5103565a3d2791c7622158bb51bd94608f4",
+      "size_bytes": 6229
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/logs/wrangler-2026-08-18_01-05-18_288.log",
+      "sha256": "92ddf1b92547e515806eba0eccc4c510b64c614148ae1dcc8f14b710991c3b62",
+      "size_bytes": 4127
+    },
+    {
+      "path": ".tmp-wrangler/.wrangler/metrics.json",
+      "sha256": "534fc429495d29e3c3e5cafa8ed5d47a351e91a9f15f94575ff78ec48ba77425",
+      "size_bytes": 132
     },
     {
       "path": "agent/README.md",
@@ -5851,6 +5881,11 @@
       "size_bytes": 2019
     },
     {
+      "path": "docs/developer/productization/EXTERNAL_API_POSTGRES_TARGET_DECISION_v1.0.md",
+      "sha256": "3c7402546f21941d18c3869073f7813f87dda0f448a92892748a2e102af12b91",
+      "size_bytes": 2751
+    },
+    {
       "path": "docs/developer/productization/EXTERNAL_CONFIGURATION_EVIDENCE_QUEUE_CONTRACT_v1.0.md",
       "sha256": "9fde4e3f5f8f6e183a0f88be9a20bfd2c4407824d150e57a3481a395c7da7f68",
       "size_bytes": 1980
@@ -6092,8 +6127,8 @@
     },
     {
       "path": "docs/productization/evidence/EXTERNAL_EXECUTION_READINESS_REGISTER_v1.0.json",
-      "sha256": "91870790002e236d58065091f54201355abb08c8399a6a61136bdc27b4aa299d",
-      "size_bytes": 9388
+      "sha256": "d740be3655b1724e8dac20085933bca2517cb1976ce90e498470e29e19db55fa",
+      "size_bytes": 9971
     },
     {
       "path": "docs/productization/evidence/EXTERNAL_ROUTE_CONNECTION_VALIDATION_v1.0.json",
@@ -7221,6 +7256,11 @@
       "size_bytes": 2975
     },
     {
+      "path": "docs/productization/reports/PHASE_7_CLOUDFLARE_FREE_RUNTIME_INCREMENT_REPORT.md",
+      "sha256": "fca9af398d783c2e3c8abe59532fad5e5288a519f4622116aa93a76520dab4ef",
+      "size_bytes": 1711
+    },
+    {
       "path": "docs/productization/reports/PHASE_7_PUBLIC_RUNTIME_API_BRIDGE_INCREMENT_REPORT.md",
       "sha256": "c3d12f8e423d2248054609e8444322f4489fe300db12d1e22af4092fc70aa2e2",
       "size_bytes": 2456
@@ -7247,8 +7287,8 @@
     },
     {
       "path": "docs/productization/reports/PRODUCTIZATION_GLOBAL_INSTRUCTION_GAP_AUDIT_2026-08-17.md",
-      "sha256": "5bae1ced1a7ee0eda387060ba89284e1fb8fab305e600c63ebab65b8e4e4e683",
-      "size_bytes": 7253
+      "sha256": "481220717f5b5d07c9f54d821bef1ec40f2cfd741ceb9dd70e566b2b457dc87f",
+      "size_bytes": 7266
     },
     {
       "path": "docs/productization/REQUIREMENT_TRACEABILITY_v1.0.md",
@@ -7307,8 +7347,8 @@
     },
     {
       "path": "docs/productization/STATUS.json",
-      "sha256": "2cf10c33400a2cda77ddaf08464eb6afe2c039226fc1e0c56563b8414c4d5433",
-      "size_bytes": 84224
+      "sha256": "2aa31263d87c1f6623f86ed6883f676520607f2dd48a95bda82afd63557052a3",
+      "size_bytes": 84664
     },
     {
       "path": "docs/ssot/stage7/v1.0/Character_Module_Rig_Spec_v1.0.xlsx",
@@ -7382,8 +7422,8 @@
     },
     {
       "path": "docs/stage8/00_MASTER_PLAN.md",
-      "sha256": "5bc59494f2fa98b41e11a16bb31422b8c7e17eedf093ed41ff6e89857383853e",
-      "size_bytes": 4590
+      "sha256": "3c0105d95f7008fa021b2397e3f0194e72bfbafcfc5ef326ad6a8559c7288e49",
+      "size_bytes": 4689
     },
     {
       "path": "docs/stage8/audits/2D_PET_SINGLE_APPROVER_AUDIT.md",
@@ -7402,8 +7442,8 @@
     },
     {
       "path": "docs/stage8/audits/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REPORT.md",
-      "sha256": "60d867e799fa4dd329ee027b2d3896e17e662134e3ddb5e73448038a4b7cdd0b",
-      "size_bytes": 2805
+      "sha256": "67c5e751ba332f31a4d89230a253330d9fb24a89e60f9c8bf9645c06086736ed",
+      "size_bytes": 2804
     },
     {
       "path": "docs/stage8/audits/FINAL_EXECUTION_REPORT.md",
@@ -7482,13 +7522,18 @@
     },
     {
       "path": "docs/stage8/audits/GATE8_DEPLOYMENT_AUDIT.md",
-      "sha256": "92bfead2ad97c02c7928679e49480d16309b2b97fb630b41fef16f9a935f49dc",
-      "size_bytes": 1216
+      "sha256": "8608821426dcc86f18208977935dfdc76f763d46589aabe3742d25e0e5c898ca",
+      "size_bytes": 1316
+    },
+    {
+      "path": "docs/stage8/audits/GATE8_EXTERNAL_API_POSTGRES_TARGET_PREFLIGHT.md",
+      "sha256": "2b733b9fa96a64ee49a2ac0fe3685600a8149d9cc79421b1bfedad9377b012ec",
+      "size_bytes": 1721
     },
     {
       "path": "docs/stage8/audits/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT.md",
-      "sha256": "65ce76293a1db45240dbd5d95958fffee3111d4a73d9c5770cc17810457f754e",
-      "size_bytes": 831
+      "sha256": "6d537cf92ca9f4741a238c7c2f6f5c41afe8fc357446eb340208969955b25471",
+      "size_bytes": 784
     },
     {
       "path": "docs/stage8/audits/NEXT_PART_METAPROMPT_REPORT.md",
@@ -7497,8 +7542,8 @@
     },
     {
       "path": "docs/stage8/audits/REMAINING_WORK_REPORT_v1.0.md",
-      "sha256": "2888036ffed58382316bda5ee8460a0350fa479434c930392820426c62a86455",
-      "size_bytes": 6727
+      "sha256": "d6b17db4d2d15a4bc4fa2d85e62ec7cd2e802c184559f905dcd3038c380b4dce",
+      "size_bytes": 6759
     },
     {
       "path": "docs/stage8/audits/STAGE1_TO_STAGE7_TRACEABILITY_AUDIT.md",
@@ -8082,7 +8127,7 @@
     },
     {
       "path": "docs/stage8/evidence/gate6/GATE6_STATIC_QUALITY_v1.0.json",
-      "sha256": "d82c3cd3f3b3718e32fcd4538cd26fad4520e52db25dd2fdebab93b6a20c66c1",
+      "sha256": "1f138c1b2e1d5e6614fce91ab96b57cfcff7b1616a8f60248a03ab32f8876f66",
       "size_bytes": 2074
     },
     {
@@ -8131,9 +8176,14 @@
       "size_bytes": 1362
     },
     {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_REVALIDATION_v1.0.json",
+      "sha256": "db6b19f8b7a9004c9c1d27af8cb383e40f0bcef768abda52dac5bdf67378278a",
+      "size_bytes": 794
+    },
+    {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_ATTEMPT_v1.0.json",
-      "sha256": "6601c89489d56bde421c5954ab4771b3648bad3f0d3271187b9b346c5bd664a6",
-      "size_bytes": 3737
+      "sha256": "58ad8974ad13a1a23e716d8b80e31d080001b5e713a4ebf6d344fe1832fdc295",
+      "size_bytes": 3542
     },
     {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
@@ -8142,28 +8192,48 @@
     },
     {
       "path": "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json",
-      "sha256": "72109a3223de05b7e51118337e6291147b49b550a5ac5cb23a63646e3c7adde4",
-      "size_bytes": 1107
+      "sha256": "cd611c0bc28346083aca1e763ac0620e8ec3c5350231848266ffa6b34aa78c4f",
+      "size_bytes": 1130
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/CLOUDFLARE_FULL_STACK_DEVELOPMENT_EVIDENCE_v1.0.json",
+      "sha256": "a77e4352b8ac0d141c59193bf73d6abacd9b90d4b0f64628cd0f1b74f2e2651b",
+      "size_bytes": 3313
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_DEPLOYMENT_AUDIT_v1.0.json",
-      "sha256": "6afca845f5500daaf7c6586d7284ff73cc2d8aab4c56c88c2d85028ca1a4e3de",
-      "size_bytes": 3371
+      "sha256": "e3e4812a4135c594c6faed9367211edb0605e54417cd3a20638cbfbf66a8aa14",
+      "size_bytes": 3666
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_API_POSTGRES_TARGET_PREFLIGHT_v1.0.json",
+      "sha256": "c1580b4c545ea6d9320e400cba82d53a34a1ece01998d7fd732dfa52feb2173b",
+      "size_bytes": 2425
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_AUDIT_v1.0.json",
-      "sha256": "42d48db1d4228256551faa69fc456ca27ab5c9349a7650a184cc4f50c85a6a0b",
-      "size_bytes": 633
+      "sha256": "ceb86d15e5232370dfbb5b4d40ddb33044683fa27d1b546968e31ab3aa9ba3fe",
+      "size_bytes": 578
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
-      "sha256": "009d045c735a5b166570cfa5f943ca8c85224a787c4eaeea56b655cc382d2a8c",
-      "size_bytes": 2566
+      "sha256": "8befd14de8e8430c32fa4a985444de64ce06a523ffa7fd85e6beb978fbdc1a93",
+      "size_bytes": 2653
     },
     {
       "path": "docs/stage8/evidence/gate8/GATE8_LOCAL_DEPLOYMENT_QA_v1.0.json",
       "sha256": "074512e4f439cd70efec7be68b75b67eab6e68d3f2cb71f023ac4eece26df3c4",
       "size_bytes": 17701
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/GITHUB_DEVELOPMENT_ENVIRONMENT_PROTECTION_v1.0.json",
+      "sha256": "8e8f8fe174dc20303b68e929e1bd68090ce5f61c74b71c653334608d50c01541",
+      "size_bytes": 1030
+    },
+    {
+      "path": "docs/stage8/evidence/gate8/GITHUB_PRODUCTIZATION_CI_RUN_v1.0.json",
+      "sha256": "32f5f5fa393b2711cda4e5b41985e2ac979a4ea2d894941099ea18c27cb0b8b8",
+      "size_bytes": 1634
     },
     {
       "path": "docs/stage8/evidence/rejected/procedural-low-fidelity/gate2-previews/Chakchaki_Canonical_vs_LOD0.png",
@@ -8402,13 +8472,13 @@
     },
     {
       "path": "harness/README.md",
-      "sha256": "d0b080d17fc6e1c9ed59939dc1f202918deed56e157bf7b1cdae3453c40905d1",
-      "size_bytes": 1833
+      "sha256": "131082b0bb7ae31247d6be54cd467fa3df3b88df295c0338d5261b19ddcce86d",
+      "size_bytes": 1807
     },
     {
       "path": "harness/status.json",
-      "sha256": "20fb06899ca3da4bf23e72d88dc296ba7e856ed9ba8c47af7fb00a1550f09695",
-      "size_bytes": 12990
+      "sha256": "cbf6491407b558131845529033121bab857f13f24951eb79fa9068a18dd4699a",
+      "size_bytes": 13679
     },
     {
       "path": "infra/architecture/infra-contract.json",
@@ -8416,14 +8486,24 @@
       "size_bytes": 1387
     },
     {
+      "path": "infra/cloudflare/api-runtime.mjs",
+      "sha256": "ef9ead8b63c8c15a3d467fafbe56d3f4869224a6785e59d4c09d35c4c6671008",
+      "size_bytes": 3998
+    },
+    {
       "path": "infra/cloudflare/DEVELOPMENT_DEPLOYMENT_RUNBOOK.md",
       "sha256": "b81dbbd8b060248a255c366988b8e8bf73f8fe9164bf9b3609cceb197ab99bb9",
       "size_bytes": 3671
     },
     {
+      "path": "infra/cloudflare/free-worker.mjs",
+      "sha256": "54e717650dd6f0d7e2c3b196a19a4b8c2d0ee30ca9107d74952a2693880187b7",
+      "size_bytes": 304
+    },
+    {
       "path": "infra/cloudflare/worker.mjs",
-      "sha256": "4155b0357d0998470697e1183da17a5355a18ad4ac6c08ff96ca4ae12ace0ac3",
-      "size_bytes": 6434
+      "sha256": "1b0d1c6e60c605a08843c4894925f4a0e96d17ab282833c905561a651677554c",
+      "size_bytes": 7873
     },
     {
       "path": "infra/database/adaptive-learning-contract.json",
@@ -9527,13 +9607,13 @@
     },
     {
       "path": "package.json",
-      "sha256": "7bcc754818962f8c5d1b5845639032707d68ad327bf2c94bf73d4d818a8ee33f",
-      "size_bytes": 22676
+      "sha256": "1d4f2f353b45db1dce89246286718752ff946fdac93f9d4f6c79e199f853001b",
+      "size_bytes": 22994
     },
     {
       "path": "README.md",
-      "sha256": "01ef789886d0d0b70e6c5adc29104ab75d72d8fad58003cfc513a4054628b1c4",
-      "size_bytes": 3069
+      "sha256": "1ddd02a07e570e2da8c05e399c420cad37def9a3445fc3e15393933377de94ee",
+      "size_bytes": 3248
     },
     {
       "path": "scripts/blender/build_stage8_high_fidelity_characters.py",
@@ -9642,8 +9722,8 @@
     },
     {
       "path": "scripts/harness/audit_gate8_deployment.mjs",
-      "sha256": "d1697aa8394c9ec31ce031998ecabfac5c60ec87f32499fd23868b8ff1f211fa",
-      "size_bytes": 10725
+      "sha256": "499ce0412d890d4251ffcd65844f9c6d27d283ff478601000acece3c81d1d934",
+      "size_bytes": 10953
     },
     {
       "path": "scripts/harness/audit_gate8_external_preflight.mjs",
@@ -9677,8 +9757,13 @@
     },
     {
       "path": "scripts/harness/collect_gate8_external_preflight.mjs",
-      "sha256": "e625ecc0e66bd337530c40cf3e01dcc291ead99472a0e76db609a4ce596e5c84",
-      "size_bytes": 10401
+      "sha256": "77fcfab167b425d8766ec79a488f3dbe7def9a1bffbb61432ab7f2c2390563bc",
+      "size_bytes": 11110
+    },
+    {
+      "path": "scripts/harness/collect_gate8_external_target_preflight.mjs",
+      "sha256": "784b9591ca750c29aeb6d846cafa5396709e324ed31e57c333f4326c7a061f4d",
+      "size_bytes": 5739
     },
     {
       "path": "scripts/harness/extract_2d_pet_poses.py",
@@ -9692,8 +9777,13 @@
     },
     {
       "path": "scripts/harness/lib/gate8_external_preflight_contract.mjs",
-      "sha256": "855a3156bca331067548627e3992d2ffb2f486d2cafbe921cf654c205c3d1dc0",
-      "size_bytes": 2776
+      "sha256": "9f6ad3e30a559ab9e31f79526c413c71189f85bf1879190662b57b732eeb89d8",
+      "size_bytes": 3059
+    },
+    {
+      "path": "scripts/harness/lib/gate8_external_target_contract.mjs",
+      "sha256": "b9fc2c5e1002623d2d94df5ede11e2d840a9626839ae3b0c25b50236f5d97d61",
+      "size_bytes": 3646
     },
     {
       "path": "scripts/harness/prepare_gate1_manual_review.py",
@@ -9722,8 +9812,8 @@
     },
     {
       "path": "scripts/harness/verify_cloudflare_development_runtime.mjs",
-      "sha256": "5eb17459a3d3a93de4e97524d3c68a73fc6c33c46a9d06be0ae6104c66849574",
-      "size_bytes": 4636
+      "sha256": "92c976442ed75589d00fd5ee1023d7a40c4124522cf68b739ebf05581b4f6690",
+      "size_bytes": 4708
     },
     {
       "path": "scripts/productization/accessibility_contrast.mjs",
@@ -10077,8 +10167,8 @@
     },
     {
       "path": "scripts/productization/validate_external_execution_readiness.mjs",
-      "sha256": "13f37538efa1af8176b11e1f1c3769665b58140473d20e4fe71a030f1e286468",
-      "size_bytes": 4969
+      "sha256": "15f640fb0adc033988ddd66d20681c7919eb70ec76f0efb235b9cb111080da89",
+      "size_bytes": 5250
     },
     {
       "path": "scripts/productization/validate_external_reference_proof_handoff_phase39.mjs",
@@ -10122,8 +10212,8 @@
     },
     {
       "path": "scripts/productization/validate_external_route_connection.mjs",
-      "sha256": "92005776e3e70c6dd44bdf69b1e95a13ef814795201245d16fdfad0fb550e3ed",
-      "size_bytes": 3828
+      "sha256": "e4761d5ac5b33f02ffd4902d3374104294efcf53e58c5faf61ec495b78fe19d8",
+      "size_bytes": 4060
     },
     {
       "path": "scripts/productization/validate_feature_implementation.mjs",
@@ -10262,8 +10352,8 @@
     },
     {
       "path": "scripts/productization/validate_status_alignment.mjs",
-      "sha256": "30f9ca876dd9431c1236e6b0c7e57e35cdca508f38f3df132e329f027a47d7e4",
-      "size_bytes": 6728
+      "sha256": "8aec101ad525624466510b20dc8d392549b00b9d478215dd6e5481fbd3d4337c",
+      "size_bytes": 6793
     },
     {
       "path": "scripts/productization/validate_teacher_parent_operations_phase70.mjs",
@@ -10796,19 +10886,29 @@
       "size_bytes": 2842
     },
     {
+      "path": "tests/unit/deployment/cloudflare-free-api-runtime.test.mjs",
+      "sha256": "6a129561032b59c20bb433fa36d38c53b07a791b8fcb301efd441f6af0e3e115",
+      "size_bytes": 2356
+    },
+    {
       "path": "tests/unit/deployment/cloudflare-worker.test.mjs",
-      "sha256": "a0ff8e94fcc6768448ef8da3ed1c5acd82007b8acfc47c8870f0223f3ba86d82",
-      "size_bytes": 6419
+      "sha256": "0e9f637bec9a23515d00db33aa3eff05565b7fd12fcaaa82bb25eeff20e1f031",
+      "size_bytes": 8095
     },
     {
       "path": "tests/unit/deployment/gate8-cloudflare-preflight.test.mjs",
-      "sha256": "dac28ffc4b02309191f72f9681117594a59caf9d27119654ddd004013b45d584",
-      "size_bytes": 1729
+      "sha256": "6edca88b81ef1139cb2480b3c8c2bc7ed3b4fa0f3e44fd807938c19195f6ca83",
+      "size_bytes": 2340
+    },
+    {
+      "path": "tests/unit/deployment/gate8-external-target-preflight.test.mjs",
+      "sha256": "9b2002ae91fb94d4e4d609f65984793d40824bf7ced58fb1522dc53151e83946",
+      "size_bytes": 3732
     },
     {
       "path": "tests/unit/deployment/productization-ci-workflow.test.mjs",
-      "sha256": "715513a3fccab5de8866e3d3297bacd89e0b61abf37191f44529d70218ed55ca",
-      "size_bytes": 1740
+      "sha256": "96fb8bc5dcce267137b9303316b92fc5baa016329401f5f6f25169157d7aab2c",
+      "size_bytes": 2091
     },
     {
       "path": "tests/unit/diagnosis/diagnosis-service.test.mjs",
@@ -11029,6 +11129,11 @@
       "path": "tests/unit/review/review-scheduler.test.mjs",
       "sha256": "3497a9476721efb691d2ad9fd73e12e596d27a3a31a26f9084432d320c4ac407",
       "size_bytes": 536
+    },
+    {
+      "path": "wrangler.free.jsonc",
+      "sha256": "c67ae7edad78204d6839598c5fe269cdf7cca3d02efe655eac5691b5aa0a9660",
+      "size_bytes": 784
     },
     {
       "path": "wrangler.jsonc",

@@ -6,7 +6,7 @@ const TOKEN_VERSION = 'mcs1';
 const EXPECTED_ISSUER = 'mathchakchak-session-gateway';
 const EXPECTED_AUDIENCE = 'mathchakchak-api';
 const MAX_TOKEN_BYTES = 4096;
-const SESSION_ROLES=new Set(['STUDENT','PARENT','TEACHER','ADMIN']);
+const SESSION_ROLES=new Set(['STUDENT','PARENT','ACADEMY_OWNER','TEACHER','ADMIN']);
 
 function unauthenticated() {
   return new ApiError(401, 'UNAUTHENTICATED', 'error.unauthenticated');

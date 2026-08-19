@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "workstream_id": "D80-10",
+  "checked_at": "2026-08-18T06:50:27.394Z",
+  "status": "PASS_EXTERNAL_DEVELOPMENT_RUNTIME",
+  "environment_code": "DEVELOPMENT",
+  "target": {
+    "target_reference": "MCC-CF-WORKER-FREE-DEV-2026-001",
+    "provider_code": "CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL",
+    "environment_code": "DEVELOPMENT",
+    "connection_reference": "MCC-NEON-PG-DEV-2026-001"
+  },
+  "cloudflare": {
+    "worker_name": "mathchakchak-free-dev",
+    "worker_version_reference": "cloudflare-worker-version:c61d0fbb-60eb-4a41-8143-89146b342889",
+    "public_https_url": "https://mathchakchak-free-dev.mathchakchak-product.workers.dev",
+    "hyperdrive_configuration_reference": "cloudflare-hyperdrive:5e646aac11184fb38fd282d3a92d4988",
+    "hyperdrive_configuration_verified": true,
+    "worker_deployed": true,
+    "worker_startup_time_ms": 25,
+    "wrangler_config_sha256": "c67ae7edad78204d6839598c5fe269cdf7cca3d02efe655eac5691b5aa0a9660",
+    "bundle_upload_kib_reported": 778.71,
+    "bundle_gzip_kib_reported": 126.75
+  },
+  "database": {
+    "provider": "NEON_POSTGRESQL_FREE",
+    "project_reference": "neon-project:patient-pine-12441918",
+    "branch_reference": "neon-branch:br-cold-band-azh6uu36",
+    "postgresql_major_version": 16,
+    "region": "aws-ap-southeast-1",
+    "managed_postgresql_connection_verified": true,
+    "forward_migrations_applied": 40,
+    "migration_bundle_sha256": "8b26480ea28b3738eb497c286d08fb4ff298b21ed1fc7cd1a360457e3034aeae",
+    "schema_table_count": 140,
+    "first_table_present": true,
+    "final_table_present": true
+  },
+  "http_checks": {
+    "root": 200,
+    "curriculum_e4_ko": 200,
+    "readyz": 200,
+    "api_locales": 200,
+    "protected_curriculum_without_session": 401,
+    "protected_admin_without_session": 401
+  },
+  "runtime_truth": {
+    "frontend_publicly_reachable": true,
+    "api_bridge": "EMBEDDED_CONNECTED",
+    "api_connected": true,
+    "postgresql_connected": true,
+    "ai_provider_enabled": false,
+    "production_release": false
+  },
+  "source_control_boundary": {
+    "local_head_commit": "1ccf83c48dde6201e866190117a75837f443da95",
+    "deployed_version_source_commit_binding_proven": false,
+    "production_promotion_allowed": false
+  },
+  "cpu_budget": {
+    "measured": true,
+    "sample_count": 15,
+    "outcome_ok": 15,
+    "outcome_exceeded_cpu": 0,
+    "observed_cpu_min_ms": 0,
+    "observed_cpu_max_ms": 23,
+    "workers_free_nominal_limit_ms": 10,
+    "warm_database_readiness_observed_ms": 5,
+    "risk": "COLD_START_CPU_ABOVE_NOMINAL_LIMIT_OBSERVED",
+    "interpretation": "All sampled requests completed with outcome ok, but one cold database-readiness request exceeded the nominal Free CPU limit. Warm requests remained below the limit in the observed sample."
+  },
+  "external_actions": {
+    "neon_project_created": true,
+    "database_migrations_applied": true,
+    "hyperdrive_configuration_created": true,
+    "worker_secret_created": true,
+    "worker_deployment_performed": true,
+    "production_release_performed": false
+  },
+  "credential_boundary": {
+    "credential_value_accessed": true,
+    "credential_value_stored": false,
+    "raw_connection_string_stored": false,
+    "raw_secret_stored": false
+  }
+}

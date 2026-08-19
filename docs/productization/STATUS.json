@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "current_phase": 75,
+  "current_phase": 76,
   "workflow_state": "IN_PROGRESS",
-  "local_completion_scope": "PHASE_75_LOCAL_PLATFORM_PASS",
+  "local_completion_scope": "PHASE_76_LOCAL_SOCIAL_LOGIN_PASS_EXTERNAL_PROVIDER_HOLD",
   "release_state": "BLOCKED_EXTERNAL",
   "canonical_status_sources": {
     "productization": "docs/productization/STATUS.json",
@@ -1226,27 +1226,42 @@
         "npm.cmd run test:productization:phase0",
         "git diff --check"
       ]
+    },
+    "76": {
+      "name": "social_login_lifecycle",
+      "status": "LOCAL_SOCIAL_LOGIN_LIFECYCLE_PASS_EXTERNAL_PROVIDER_HOLD",
+      "scope": "LOCAL_OAUTH_CONTRACT_POSTGRESQL_UI_ONLY",
+      "progress": "requirements_AUTH_01_09_9/9_providers_3/3_roles_4/4_auth_tables_5/5_locales_8/8_target_unit_26/26_full_unit_375/375_postgresql_forward_smoke_rollback_reapply_PASS_browser_1440_390_PASS_external_provider_apps_0/3_external_provider_logins_0/3_external_deployment_false",
+      "tests": [
+        "npm.cmd run test:productization:social-login",
+        "npm.cmd run test:unit",
+        "PostgreSQL 16 migration forward+smoke+rollback+reapply+final smoke",
+        "npm.cmd run build:staging",
+        "browser auth desktop 1440x900 and mobile 390x844",
+        "git diff --check"
+      ]
     }
   },
   "external_execution_preparation": {
-    "status": "D80_10_ROUTE_CONNECTED_PENDING_DEPLOYMENT_TARGET",
+    "status": "D80_10_DEVELOPMENT_DEPLOYED_PENDING_CONTROL_EVIDENCE",
     "route_validation_status": "VERIFIED_READ_ONLY_ROUTE_CONNECTION",
     "register": "docs/productization/evidence/EXTERNAL_EXECUTION_READINESS_REGISTER_v1.0.json",
     "workstreams": "9/9",
-    "actual_external_evidence": 1,
+    "actual_external_evidence": 5,
     "dispatch_performed": false,
     "verification_enabled": false,
     "production_release_authorized": false,
-    "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "runtime_verification_enabled": true,
+    "next_input": "D80_10_CONTROL_EVIDENCE_REFERENCE",
     "next_input_fields": [
-      "target_reference",
-      "provider_code",
-      "environment_code",
-      "connection_reference"
+      "internal_reference",
+      "evidence_sha256",
+      "status",
+      "verified_at"
     ],
     "gate8_external_preflight": "docs/stage8/evidence/gate8/GATE8_EXTERNAL_DEPLOYMENT_PREFLIGHT_v1.0.json",
-    "gate8_external_preflight_decision": "HOLD",
-    "gate8_external_preflight_blockers": 2
+    "gate8_external_preflight_decision": "ALLOW_WITH_CONDITIONS",
+    "gate8_external_preflight_blockers": 0
   },
   "stage8_dependency": {
     "gate5_status": "VERIFIED",
@@ -1258,11 +1273,12 @@
     "gate6_release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
     "gate7_status": "VERIFIED",
     "gate8_status": "BLOCKED",
-    "gate8_preflight_decision": "HOLD",
-    "gate8_next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE"
+    "gate8_preflight_decision": "ALLOW_WITH_CONDITIONS",
+    "gate8_next_input": "D80_10_CONTROL_EVIDENCE_REFERENCE"
   },
   "blockers": [
-    "Stage 8 Gate 7 and local Gate 8 are VERIFIED; source commit 41b2aeb passed GitHub Productization CI run 32101170839 including the Workers Free embedded-API package and isolated API/PostgreSQL integration. Cloudflare OAuth account and empty Hyperdrive inventory reads pass when the stale user-level CLOUDFLARE_API_TOKEN is excluded, but the formal external PostgreSQL target intake is empty. Gate 8 preflight is HOLD; the next authorized input is EXTERNAL_DEPLOYMENT_TARGET_REFERENCE, followed by Hyperdrive configuration, external PostgreSQL migration, Workers Free CPU-budget measurement, and public E2E evidence.",
+    "Social login remains externally blocked until Google, Naver, and Kakao development OAuth apps register the exact callback URLs, Cloudflare Secret bindings are verified without exposing values, Neon PostgreSQL migration 0041 is applied, and real success, cancellation, tamper, expiry, relogin, and logout journeys pass; guardian consent, academy role verification, MFA, recovery, and withdrawal remain separate fail-closed lifecycle gates.",
+    "Stage 8 external development deployment is live on Cloudflare Workers Free with Hyperdrive and Neon PostgreSQL. Target intake, 40 migrations, 140 schema tables, public HTTPS, API and database readiness all pass, and Gate 8 preflight is ALLOW_WITH_CONDITIONS. Production remains blocked while the observed 23 ms cold-start CPU spike is optimized, the deployed version is bound to a reviewed source commit, and D80-10 control evidence plus product-owner release approval remain external.",
     "D80-10 commercial operations readiness remains externally blocked until legal and child-consent policy, content-rights, payment and refund, SLA and support, incident response, monitoring notification, backup and restore, migration rollback, deployment health-check, and security access-review evidence are supplied and a product-owner release review is recorded; local platform PASS does not authorize commercial release or market claims",
     "D80-09 Daechi field validation remains externally blocked until two to three authorized academies provide agreement, privacy and participant-consent evidence, complete aggregate observations for six preregistered metrics, resolve all high and critical issues, and supply independently verified results plus product-owner review; no academy names, contacts, participants, outcomes, or purchase intent may be invented",
     "D80-08 AI tutor actual-model evidence remains externally blocked until approved model, prompt and evaluation-dataset pins, authorized provider execution, eight-locale aggregate results, human calibration, independent approval, and deletion or incident evidence are supplied; local rule and synthetic evaluation PASS must not be marketed as live-model quality",
@@ -1297,5 +1313,5 @@
     "External deployment target and authorization are not configured",
     "Managed identity provider, secret manager, backup target, and monitoring notification routes are not configured"
   ],
-  "last_updated": "2026-08-18T05:04:00.000Z"
+  "last_updated": "2026-08-18T16:35:45+09:00"
 }

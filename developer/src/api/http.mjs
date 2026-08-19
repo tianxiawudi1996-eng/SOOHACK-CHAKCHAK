@@ -52,11 +52,16 @@ export async function readJson(request) {
   }
 }
 
-export function requestContext(request, auth) {
-  const context = authenticatedRequestContext(request, auth);
+export async function requestContext(request, auth) {
+  let context;
+  const hasBearer = typeof request.headers.authorization === 'string';
+  const hasTrustedHeaders = auth.allowTrustedHeaders && request.headers['x-user-id'] !== undefined;
+  if (hasBearer || hasTrustedHeaders) context = authenticatedRequestContext(request, auth);
+  else if (auth.socialAuth) context = await auth.socialAuth.actor(request);
+  else context = authenticatedRequestContext(request, auth);
   if (
     !UUID_PATTERN.test(context.userId) ||
-    !['STUDENT','PARENT','TEACHER','ADMIN'].includes(context.role) ||
+    !['STUDENT','PARENT','ACADEMY_OWNER','TEACHER','ADMIN'].includes(context.role) ||
     (context.role==='STUDENT'&&!UUID_PATTERN.test(context.studentId)) ||
     (context.role!=='STUDENT'&&context.studentId!==undefined)
   ) {
@@ -83,26 +88,39 @@ export function requestHash(value) {
   return crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
 }
 
-export function sendJson(response, status, payload, {requestId, locale = 'en'} = {}) {
+export function sendJson(response, status, payload, {requestId, locale = 'en', headers = {}} = {}) {
   const body = JSON.stringify(payload);
   response.writeHead(status, {
     ...API_SECURITY_HEADERS,
     'Content-Type': 'application/json; charset=utf-8',
     'Content-Length': Buffer.byteLength(body),
     'Content-Language': locale,
-    'X-Request-Id': requestId
+    'X-Request-Id': requestId,
+    ...headers
   });
   response.end(body);
 }
 
-export function sendText(response, status, body, {requestId, contentType = 'text/plain; charset=utf-8'} = {}) {
+export function sendText(response, status, body, {requestId, contentType = 'text/plain; charset=utf-8', headers = {}} = {}) {
   response.writeHead(status, {
     ...API_SECURITY_HEADERS,
     'Content-Type': contentType,
     'Content-Length': Buffer.byteLength(body),
-    'X-Request-Id': requestId
+    'X-Request-Id': requestId,
+    ...headers
   });
   response.end(body);
+}
+
+export function sendRedirect(response,status,location,{requestId,headers={}}={}) {
+  response.writeHead(status,{
+    ...API_SECURITY_HEADERS,
+    'Content-Length':'0',
+    'Location':location,
+    'X-Request-Id':requestId,
+    ...headers
+  });
+  response.end();
 }
 
 export function success(data, {requestId, locale = 'en', status = 200, extraMeta = {}} = {}) {

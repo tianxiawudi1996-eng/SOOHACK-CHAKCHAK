@@ -24,3 +24,8 @@ test('teacher may assign only through linked scope while parent cannot write',()
   assert.equal(authorize({role:'TEACHER',permission:'academy:assign:linked',studentId:'s2',linkedStudentIds:['s1']}).reason,'ACTIVE_LINK_REQUIRED');
   assert.equal(authorize({role:'PARENT',permission:'academy:assign:linked',studentId:'s1',linkedStudentIds:['s1']}).reason,'PERMISSION_DENIED');
 });
+
+test('academy owner receives organization management without bypassing linked student scope',()=>{
+  assert.equal(authorize({role:'ACADEMY_OWNER',permission:'academy:manage:organization'}).allowed,true);
+  assert.equal(authorize({role:'ACADEMY_OWNER',permission:'progress:read:linked',studentId:'s2',linkedStudentIds:['s1']}).reason,'ACTIVE_LINK_REQUIRED');
+});

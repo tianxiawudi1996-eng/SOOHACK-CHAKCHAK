@@ -50,6 +50,7 @@ services:
       - ../database/migrations/0038_ai_tutor_external_evidence.sql:/docker-entrypoint-initdb.d/042-ai-tutor-external-evidence.sql:ro
       - ../database/migrations/0039_daechi_field_pilot.sql:/docker-entrypoint-initdb.d/044-daechi-field-pilot.sql:ro
       - ../database/migrations/0040_commercial_operations_readiness.sql:/docker-entrypoint-initdb.d/046-commercial-operations-readiness.sql:ro
+      - ../database/migrations/0041_social_login_lifecycle.sql:/docker-entrypoint-initdb.d/048-social-login-lifecycle.sql:ro
       - ../database/seeds/0001_staging_seed.sql:/docker-entrypoint-initdb.d/012-seed.sql:ro
       - ../database/seeds/0002_fraction_formula_lesson.sql:/docker-entrypoint-initdb.d/013-formula-lesson-seed.sql:ro
       - ../database/seeds/0003_diagnostic_curriculum.sql:/docker-entrypoint-initdb.d/014-diagnostic-curriculum-seed.sql:ro
@@ -81,11 +82,18 @@ services:
     environment:
       DATABASE_URL: postgresql://mathchakchak@database:5432/mathchakchak
       RUNTIME_ENV: staging-local-isolated
+      PUBLIC_BASE_URL: "http://127.0.0.1:4180"
       PORT: "8080"
       SESSION_HMAC_SECRET: ${MATHCHAKCHAK_STAGE_SESSION_SECRET:?MATHCHAKCHAK_STAGE_SESSION_SECRET is required}
       ALLOW_TRUSTED_TEST_HEADERS: "false"
       ALLOWED_BROWSER_ORIGINS: "http://127.0.0.1:4180,http://localhost:4180"
       ENABLE_LOCAL_DEMO_SESSION: "true"
+      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
+      NAVER_OAUTH_CLIENT_ID: ${NAVER_OAUTH_CLIENT_ID:-}
+      NAVER_OAUTH_CLIENT_SECRET: ${NAVER_OAUTH_CLIENT_SECRET:-}
+      KAKAO_OAUTH_CLIENT_ID: ${KAKAO_OAUTH_CLIENT_ID:-}
+      KAKAO_OAUTH_CLIENT_SECRET: ${KAKAO_OAUTH_CLIENT_SECRET:-}
       FULFILMENT_PACKAGE_VALIDITY_SECONDS: "2"
       TUTOR_AI_ENABLED: ${TUTOR_AI_ENABLED:-false}
       TUTOR_AI_KILL_SWITCH: ${TUTOR_AI_KILL_SWITCH:-true}

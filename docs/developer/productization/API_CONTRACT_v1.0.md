@@ -27,6 +27,12 @@
 | Method | Path | 역할 | 기능 | 핵심 테스트 |
 |---|---|---|---|---|
 | GET | `/locales` | 공개 | 지원 로케일·버전 | locale contract |
+| GET | `/auth/providers` | 공개 | 공급자별 설정 여부 | no secret exposure |
+| GET | `/auth/oauth/{google\|naver\|kakao}/start` | 공개 | 역할 고정·OAuth 시작 | state+nonce+PKCE/provider rule |
+| GET | `/auth/oauth/{google\|naver\|kakao}/callback` | 공개 | 공급자 응답 검증·세션 발급 | signature+claims+transaction consumption |
+| GET | `/auth/session` | 인증 | 최소 계정·온보딩 상태 | opaque cookie session |
+| POST | `/auth/onboarding` | 인증 | 역할별 온보딩·세션 회전 | CSRF+guardian/academy gate |
+| POST | `/auth/logout` | 인증 | 현재 세션 폐기 | CSRF+atomic audit |
 | PATCH | `/me/preferences/locale` | 인증 | 사용자 언어 저장 | auth+validation |
 | POST | `/diagnostics` | 학생/학부모 | 진단 생성 | idempotency |
 | POST | `/diagnostics/{id}/responses` | 학생 | 진단 응답 저장 | ownership |

@@ -7,18 +7,18 @@
 - RC SHA-256: `3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd`
 - 로컬 격리 배포: `VERIFIED`
 - 외부 프런트엔드 프리뷰: `DEPLOYED`
-- API 브리지: `NOT_CONFIGURED`
+- API 브리지: `EMBEDDED_CONNECTED`
 - 전체 제품 외부 배포: `BLOCKED`
 - 불변 소스 커밋 결속 증거: `false`
 - Stage 8 전체 완료: `false`
 
 ## 외부 개발 주소
 
-- URL: `https://dev.mathchakchak-product.workers.dev`
+- URL: `https://mathchakchak-free-dev.mathchakchak-product.workers.dev`
 - 루트: `200`
 - 교육과정: `200`
 - readiness: `200`
-- API 미연결 응답: `503` (예상된 안전 차단)
+- API locales: `200`
 
 ## 현재 경계
 
@@ -28,9 +28,10 @@ API 브리지의 named-handler와 활성 버전 100% 배포는 공급자에서 �
 
 ## 차단 항목
 
-- `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`
-- `CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH`
+- `CLOUDFLARE_FREE_COLD_START_CPU_OPTIMIZATION_REQUIRED`
+- `DEPLOYED_VERSION_SOURCE_COMMIT_BINDING_NOT_PROVEN`
+- `PRODUCTION_RELEASE_NOT_AUTHORIZED`
 
 ## 다음 입력
 
-`EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`
+`D80_10_CONTROL_EVIDENCE_REFERENCE`

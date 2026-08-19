@@ -1,4 +1,4 @@
-# 수학착착 제품화 Phase 0~75 로드맵
+# 수학착착 제품화 Phase 0~76 로드맵
 
 최종 동기화: 2026-08-15T20:00:18+09:00
 기계 판정 단일 정본: `docs/productization/STATUS.json`
@@ -83,6 +83,7 @@
 | 73 | `ai_tutor_external_model_evidence_platform` | `LOCAL_AI_TUTOR_EVIDENCE_PLATFORM_PASS_ACTUAL_MODEL_EVIDENCE_BLOCKED_EXTERNAL` |
 | 74 | `daechi_field_pilot_readiness_platform` | `LOCAL_FIELD_PILOT_PLATFORM_PASS_ACTUAL_ACADEMY_EVIDENCE_BLOCKED_EXTERNAL` |
 | 75 | `commercial_operations_readiness_platform` | `LOCAL_COMMERCIAL_OPERATIONS_PLATFORM_PASS_EXTERNAL_RELEASE_BLOCKED` |
+| 76 | `social_login_lifecycle` | `LOCAL_SOCIAL_LOGIN_LIFECYCLE_PASS_EXTERNAL_PROVIDER_HOLD` |
 
 ## 현재 해석
 
@@ -93,6 +94,7 @@
 - Phase 46~64: UI 차별화와 AI 튜터 운영 계약의 로컬 증거가 있다. 실제 모델·사람 교정·운영 실행은 차단되어 있다.
 - Phase 65: 원래 로컬 체인의 종료점이었다. 이후 2026-08-11 사용자의 명시적 고도화 지시로 Phase 66~75를 별도 D80 체인으로 재개했다.
 - Phase 66~75: 제품 기반과 외부 증거 수용 플랫폼은 로컬 PASS지만 라이선스 콘텐츠·OCR 벤치마크·전문가·학생·학원·법률·복구 훈련·출시 승인은 실제 증거 0건이다.
+- Phase 76: Google·Naver·Kakao 소셜 로그인과 4개 역할의 로컬 생애주기 기반은 PASS다. 실제 공급자 앱·Secret·Neon 0041·실계정 E2E는 외부 차단 상태다.
 
 ## Stage 8 연계 상태
 

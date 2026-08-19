@@ -6,7 +6,7 @@ const capability = JSON.parse(fs.readFileSync('developer/contracts/feature-imple
 
 test('feature capability contract separates local evidence from production readiness', () => {
   assert.equal(capability.schema_version, '1.1.0');
-  assert.equal(capability.features.length, 15);
+  assert.equal(capability.features.length, 16);
   assert.equal(capability.summary.production_ready, 0);
   assert.ok(capability.features.every((feature) => feature.production_ready === false));
   assert.ok(capability.features.every((feature) => feature.status !== 'IMPLEMENTED'));
@@ -20,4 +20,5 @@ test('rule engines and disconnected automation remain explicitly labelled', () =
   assert.equal(byId['FEAT-REVIEW-001'].status, 'CODED_NOT_AUTOMATED');
   assert.equal(byId['FEAT-REPORT-001'].status, 'CODED_NO_END_USER_UI');
   assert.equal(byId['FEAT-PET-001'].status, 'APPROVED_NOT_RUNTIME_WIRED');
+  assert.equal(byId['FEAT-AUTH-002'].status, 'RUNTIME_WIRED_LOCAL_PARTIAL');
 });

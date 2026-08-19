@@ -3,14 +3,14 @@
   "project": "MathChakChak",
   "stage": 8,
   "gate": 8,
-  "collected_at": "2026-08-18T01:59:35.570Z",
+  "collected_at": "2026-08-19T04:59:34.833Z",
   "decision": "HOLD",
   "status": "HOLD_EXTERNAL_DEPLOYMENT_GATES",
   "release_candidate_sha256": "3ff96ece71a86e8e61c5fdd22d0073ae365620f7bfb0500f86a03bd178a544dd",
   "source_control": {
     "origin_repository": "tianxiawudi1996-eng/SOOHACK-CHAKCHAK",
     "branch": "codex/gate8-external-deployment",
-    "head_commit": "a9e6421e0d5b48bba14ad7b4cf78f9f005f66bbc",
+    "head_commit": "1ccf83c48dde6201e866190117a75837f443da95",
     "authenticated_account_reference": "github:tianxiawudi1996-eng",
     "repository_visibility": "public",
     "default_branch": "main",
@@ -34,17 +34,17 @@
     "authorization_reference_configured": true,
     "deployment_adapter_configured": true,
     "https_base_url_configured": true,
-    "https_hostname_sha256": "d6536176ac107bfafcbc0c29b90da0544e8a915a69f75308aec18b9786d89679",
+    "https_hostname_sha256": "57f0381ce6cb4191bcba4a985a1425b41faeaf8d3ffa168238e8c1af69200fc4",
     "external_docker_context_configured": false,
     "cloudflare_runtime_evidence_verified": true,
-    "cloudflare_control_plane_status": "BLOCKED_EXTERNAL",
-    "external_api_postgres_target_intake_ready": false
+    "cloudflare_control_plane_status": "PASS",
+    "external_api_postgres_target_intake_ready": true
   },
   "gates": {
     "release_candidate_fixed": true,
     "local_gate8_verified": true,
     "route_connection_verified": true,
-    "external_api_postgres_target_intake_ready": false,
+    "external_api_postgres_target_intake_ready": true,
     "target_reference_configured": true,
     "authorization_reference_configured": true,
     "deployment_adapter_configured": true,
@@ -58,10 +58,9 @@
     "provider_audit_metadata_readable": true
   },
   "blockers": [
-    "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
     "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH"
   ],
-  "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+  "next_input": "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
   "external_actions": {
     "repository_write_performed": false,
     "deployment_environment_created": false,

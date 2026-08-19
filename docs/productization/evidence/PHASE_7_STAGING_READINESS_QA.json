@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
   "project": "MathChakChak",
-  "tested_at": "2026-08-17T23:06:28+09:00",
+  "tested_at": "2026-08-19T13:54:51+09:00",
   "status": "PASS_LOCAL_STAGING",
   "release": "0.1.0",
   "artifact": {
     "path": "artifacts/staging/v0.1.0/site",
     "manifest": "artifacts/staging/v0.1.0/manifest.json",
-    "manifest_sha256": "4a6f6b98e7b72e42e6c3af017609401c61a1299bbe991d191fe132578b328be4",
-    "file_count": 78,
+    "manifest_sha256": "c814208a56f1659d3d7b333b052d273356a504793cd523a780cf38c20b24981a",
+    "file_count": 83,
     "hashes": "PASS",
     "locales": "8/8",
     "approved_character_assets": "2/2",
@@ -17,16 +17,16 @@
   "local_http_smoke": {
     "base_url": "http://127.0.0.1:4180/",
     "status": "PASS",
-    "artifact_responses_200": "78/78",
+    "artifact_responses_200": "83/83",
     "locale_routes_200": "8/8"
   },
   "local_deployment": {
     "performed": true,
     "type": "DOCKER_LOCAL_ISOLATED",
     "container_name": "mathchakchak-staging-v010",
-    "container_id": "ad4a8b22ca2344a09173d21e13fec87fa4147adb3879ca5d1766c72206e71c61",
+    "container_id": "0670afa5263c",
     "image": "mathchakchak-api-staging-web:latest",
-    "image_digest": "sha256:6fedfbf9cf0b1612e0a681dae7759b8e020b4bf0fbf885466c95e9917efff3c8",
+    "image_digest": "sha256:6d055fc9acb86031d929e19713a10e67818b0a055a816803248514cac1b4d54b",
     "health": "healthy",
     "url": "http://127.0.0.1:4180/?locale=ko",
     "production_data_used": false,

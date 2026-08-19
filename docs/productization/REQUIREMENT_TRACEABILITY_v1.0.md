@@ -4,7 +4,7 @@
 |---|---|---|---|---|
 | REQ-P0-001 | FEAT-I18N-001 로케일 해석기 | client | tests/unit/i18n/locale-resolver.test.ts | 설계 완료 |
 | REQ-P0-002 | FEAT-LAND-001 다국어 랜딩 | client | tests/e2e/landing-locales.spec.ts | 설계 완료 |
-| REQ-P0-003 | FEAT-AUTH-001 역할·권한 | client/developer | tests/unit/auth/role-policy.test.ts | 설계 완료 |
+| REQ-P0-003 | FEAT-AUTH-001 역할·권한 | client/developer | tests/unit/auth/role-policy.test.mjs | 로컬 검증 완료, 외부 역할 검증 대기 |
 | REQ-P0-004 | FEAT-DIAG-001 학습 진단 | developer/client | tests/unit/diagnosis/diagnosis-service.test.ts | 설계 완료 |
 | REQ-P0-005 | FEAT-LEARN-001 5단계 학습 루프 | developer/client/agent | tests/unit/learning/session-machine.test.ts | 설계 완료 |
 | REQ-P0-006 | FEAT-HINT-001 단계형 힌트 | agent/developer | tests/unit/agent/hint-policy.test.ts | 설계 완료 |
@@ -17,5 +17,6 @@
 | REQ-P0-013 | FEAT-PRIV-001 안전·개인정보 | developer/agent | tests/unit/privacy/log-policy.test.ts | 설계 완료 |
 | REQ-P0-014 | FEAT-RES-001 오류 복구 | client/developer | tests/integration/resilience/retry-flow.test.ts | 설계 완료 |
 | REQ-P0-015 | FEAT-OBS-001 관측 가능성 | developer | tests/unit/observability/event-schema.test.ts | 설계 완료 |
+| REQ-P0-016 | FEAT-AUTH-002 소셜 로그인 생애주기 | client/developer/PostgreSQL | tests/unit/auth/social-login.test.mjs, tests/unit/auth/social-auth-service.test.mjs, tests/unit/client/social-login-app.test.mjs | 로컬 검증 완료, 외부 공급자 HOLD |
 
-Phase 4~6에서 실제 테스트 파일을 구현하고, Phase 8에서 로케일별 핵심 흐름 E2E 결과를 연결한다.
+Phase 4~6에서 실제 테스트 파일을 구현하고, Phase 8에서 로케일별 핵심 흐름 E2E 결과를 연결한다. Phase 76은 소셜 로그인 로컬 계약을 추가했으며 외부 공급자 실계정 E2E는 별도 증거가 필요하다.

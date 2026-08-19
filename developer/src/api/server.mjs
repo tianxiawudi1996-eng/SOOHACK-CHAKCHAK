@@ -12,6 +12,7 @@ import {
   requestHash,
   requireIdempotencyKey,
   sendJson,
+  sendRedirect,
   sendText,
   success
 } from './http.mjs';
@@ -40,6 +41,14 @@ function route(method, pathname) {
   if (method === 'GET' && pathname === '/readyz') return {name: 'health'};
   if (method === 'GET' && pathname === '/metrics') return {name: 'metrics'};
   if (method === 'GET' && pathname === '/api/v1/locales') return {name: 'locales'};
+  if (method === 'GET' && pathname === '/api/v1/auth/providers') return {name:'socialAuthProviders'};
+  if (method === 'GET' && pathname === '/api/v1/auth/session') return {name:'socialAuthSession'};
+  let authMatch=pathname.match(/^\/api\/v1\/auth\/oauth\/(google|naver|kakao)\/start$/);
+  if(method==='GET'&&authMatch)return {name:'socialAuthStart',provider:authMatch[1].toUpperCase()};
+  authMatch=pathname.match(/^\/api\/v1\/auth\/oauth\/(google|naver|kakao)\/callback$/);
+  if(method==='GET'&&authMatch)return {name:'socialAuthCallback',provider:authMatch[1].toUpperCase()};
+  if(method==='POST'&&pathname==='/api/v1/auth/onboarding')return {name:'socialAuthOnboarding'};
+  if(method==='POST'&&pathname==='/api/v1/auth/logout')return {name:'socialAuthLogout'};
   if (method === 'GET' && pathname === '/api/v1/admin/content-corpus/readiness') return {name:'getContentCorpusReadiness'};
   if (method === 'GET' && pathname === '/api/v1/admin/academy-curriculum/readiness') return {name:'getAcademyCurriculumReadiness'};
   if (method === 'GET' && pathname === '/api/v1/admin/learning-effect-pilot/readiness') return {name:'getLearningEffectPilotReadiness'};
@@ -223,6 +232,42 @@ async function execute(repository, request, match, requestId, {auth, metrics, tu
     return success({locales: SUPPORTED_LOCALES, fallback: 'en'}, {requestId});
   }
   if (match.name === 'metrics') return {status: 200, text:`${metrics.render()}${tutorOperations?.renderMetrics?.()||''}`};
+  if(match.name==='socialAuthProviders'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    return success({providers:auth.socialAuth.providers(),readiness:auth.socialAuth.readiness()},{requestId});
+  }
+  if(match.name==='socialAuthStart'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    const url=new URL(request.url,'http://localhost');
+    const result=await auth.socialAuth.begin({
+      provider:match.provider,role:url.searchParams.get('role'),
+      returnTo:url.searchParams.get('return_to')||'/',locale:url.searchParams.get('locale')||'en'
+    });
+    return {status:302,redirect:result.location,headers:{'Set-Cookie':result.cookies}};
+  }
+  if(match.name==='socialAuthCallback'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    const url=new URL(request.url,'http://localhost');
+    const result=await auth.socialAuth.complete({
+      provider:match.provider,code:url.searchParams.get('code'),state:url.searchParams.get('state'),
+      error:url.searchParams.get('error'),cookieHeader:request.headers.cookie
+    });
+    return {status:303,redirect:result.location,headers:{'Set-Cookie':result.cookies}};
+  }
+  if(match.name==='socialAuthSession'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    return success(await auth.socialAuth.session(request),{requestId});
+  }
+  if(match.name==='socialAuthOnboarding'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    const result=await auth.socialAuth.onboard(request,await readJson(request));
+    return {...success(result.account,{requestId}),headers:{'Set-Cookie':result.cookies}};
+  }
+  if(match.name==='socialAuthLogout'){
+    if(!auth.socialAuth)throw new ApiError(503,'SOCIAL_AUTH_NOT_CONFIGURED','error.provider_unavailable');
+    const result=await auth.socialAuth.logout(request);
+    return {...success({authenticated:false},{requestId}),headers:{'Set-Cookie':result.cookies}};
+  }
   if (match.name === 'localDemoSession') {
     if (!auth.localDemoEnabled) throw notFound();
     const conceptId = '77777777-7777-4777-8777-777777777777';
@@ -270,7 +315,7 @@ async function execute(repository, request, match, requestId, {auth, metrics, tu
     }, {requestId, locale:'en'});
   }
 
-  const actor = requestContext(request, auth);
+  const actor = await requestContext(request, auth);
   if (match.name === 'getDiagnosticItems') {
     const url = new URL(request.url, 'http://localhost');
     const locale = normalizeRequestedLocale(url.searchParams.get('locale') || 'en');
@@ -826,8 +871,9 @@ export function createMathChakChakServer({repository, auth, tutorService=null, t
       if (!matched) throw notFound();
       const result = await execute(repository, request, matched, requestId, {auth, metrics, tutorService, tutorOperations});
       status = result.status;
-      if (result.text !== undefined) sendText(response, result.status, result.text, {requestId, contentType: 'text/plain; version=0.0.4; charset=utf-8'});
-      else sendJson(response, result.status, result.payload, {requestId, locale: result.payload.meta?.locale});
+       if (result.redirect !== undefined) sendRedirect(response,result.status,result.redirect,{requestId,headers:result.headers});
+       else if (result.text !== undefined) sendText(response, result.status, result.text, {requestId, contentType: 'text/plain; version=0.0.4; charset=utf-8',headers:result.headers});
+       else sendJson(response, result.status, result.payload, {requestId, locale: result.payload.meta?.locale,headers:result.headers});
     } catch (error) {
       if (error?.code === '22P02') error = badRequest('INVALID_IDENTIFIER', 'error.invalid_identifier');
       if (error?.code === '23503') error = badRequest('INVALID_REFERENCE', 'error.invalid_reference');

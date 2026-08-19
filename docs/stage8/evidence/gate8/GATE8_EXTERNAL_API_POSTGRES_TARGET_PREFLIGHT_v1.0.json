@@ -4,9 +4,9 @@
   "stage": 8,
   "gate": 8,
   "workstream_id": "D80-10",
-  "collected_at": "2026-08-18T05:04:14.335Z",
+  "collected_at": "2026-08-19T05:03:05.611Z",
   "decision": "HOLD",
-  "status": "FREE_TIER_CANDIDATE_ARCHITECTURE_SELECTED_EXTERNAL_TARGET_INPUT_PENDING",
+  "status": "HOLD_EXTERNAL_API_POSTGRES_RUNTIME_GATES",
   "candidate_architecture": {
     "api_runtime": "CLOUDFLARE_WORKERS_FREE",
     "database": "EXTERNAL_MANAGED_POSTGRESQL",
@@ -21,19 +21,14 @@
     ]
   },
   "input_validation": {
-    "complete": false,
+    "complete": true,
     "checks": {
-      "target_reference": false,
-      "provider_code": false,
-      "environment_code": false,
-      "connection_reference": false
+      "target_reference": true,
+      "provider_code": true,
+      "environment_code": true,
+      "connection_reference": true
     },
-    "missing_fields": [
-      "target_reference",
-      "provider_code",
-      "environment_code",
-      "connection_reference"
-    ],
+    "missing_fields": [],
     "values_stored": false
   },
   "local_compatibility": {
@@ -41,25 +36,25 @@
     "node_http_adapter": "cloudflare:node/httpServerHandler",
     "node_compatibility_flag": "nodejs_compat",
     "postgresql_driver": "pg@^8.16.3",
-    "forward_migrations_present": 40,
-    "expected_forward_migrations": 40,
+    "forward_migrations_present": 41,
+    "expected_forward_migrations": 41,
     "migration_range_complete": true
   },
   "provider_preflight": {
     "authentication_fresh": true,
     "latest_authentication_status": "PASS",
     "workers_free_runtime_selected": true,
-    "workers_free_cpu_budget_measured": false,
-    "hyperdrive_free_configuration_verified": false,
-    "managed_postgresql_connection_verified": false
+    "workers_free_cpu_budget_measured": true,
+    "workers_free_cpu_budget_risk": "COLD_START_CPU_ABOVE_NOMINAL_LIMIT_OBSERVED",
+    "hyperdrive_free_configuration_verified": true,
+    "managed_postgresql_connection_verified": true,
+    "migrations_current": false,
+    "runtime_evidence_verified": false
   },
   "blockers": [
-    "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
-    "CLOUDFLARE_HYPERDRIVE_CONFIGURATION_NOT_VERIFIED",
-    "MANAGED_POSTGRESQL_TARGET_NOT_CONNECTED",
-    "CLOUDFLARE_WORKERS_FREE_CPU_BUDGET_NOT_MEASURED"
+    "EXTERNAL_DATABASE_MIGRATION_0041_NOT_APPLIED"
   ],
-  "next_input": "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+  "next_input": "EXTERNAL_DATABASE_MIGRATION_0041_NOT_APPLIED",
   "required_fields": [
     "target_reference",
     "provider_code",

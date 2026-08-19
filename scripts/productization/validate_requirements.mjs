@@ -30,7 +30,7 @@ if (JSON.stringify(contract.resolution_order) !== JSON.stringify(['url','authent
 if (contract.ip_geolocation_required !== false || contract.missing_key_policy !== 'FALLBACK_AND_DIAGNOSTIC_EVENT') failures.push('LOCALE_PRIVACY_OR_FAILURE_POLICY_INVALID');
 for (const localeCode of locales) if (!localeDoc.includes(`\`${localeCode}\``)) failures.push(`LOCALE_DOC_MISSING:${localeCode}`);
 
-for (let number = 1; number <= 15; number += 1) {
+for (let number = 1; number <= 16; number += 1) {
   const id = `REQ-P0-${String(number).padStart(3, '0')}`;
   if (!product.includes(id)) failures.push(`P0_REQUIREMENT_MISSING:${id}`);
   if (!trace.includes(id)) failures.push(`TRACEABILITY_MISSING:${id}`);
@@ -53,8 +53,8 @@ if (failures.length) {
   process.exit(1);
 }
 console.log('PRODUCTIZATION_REQUIREMENTS_PASS');
-console.log('p0_requirements=15/15');
+console.log('p0_requirements=16/16');
 console.log('nonfunctional_requirements=8/8');
 console.log('locales=8/8');
 console.log('brand_sections=8/8');
-console.log('traceability=15/15');
+console.log('traceability=16/16');

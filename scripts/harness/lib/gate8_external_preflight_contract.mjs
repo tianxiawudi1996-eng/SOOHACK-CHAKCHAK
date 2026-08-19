@@ -55,17 +55,25 @@ export function verifyCloudflareRuntimeEvidence(evidence, expectedHostnameSha256
     return false;
   }
 
-  return evidence.schema_version === '1.0.0'
-    && evidence.status === 'PASS_EXTERNAL_FRONTEND_PREVIEW'
+  const common = evidence.schema_version === '1.0.0'
     && evidenceHostnameSha256 === expectedHostnameSha256
     && evidence.http_checks?.root === 200
     && evidence.http_checks?.curriculum_e4_ko === 200
     && evidence.http_checks?.readyz === 200
-    && evidence.http_checks?.api_not_connected === 503
     && evidence.runtime_truth?.frontend_publicly_reachable === true
-    && evidence.runtime_truth?.api_connected === false
-    && evidence.runtime_truth?.postgresql_connected === false
     && evidence.runtime_truth?.production_release === false;
+  if (!common) return false;
+
+  if (evidence.status === 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME') {
+    return evidence.http_checks?.api_locales === 200
+      && evidence.runtime_truth?.api_connected === true
+      && evidence.runtime_truth?.postgresql_connected === true;
+  }
+
+  return evidence.status === 'PASS_EXTERNAL_FRONTEND_PREVIEW'
+    && evidence.http_checks?.api_not_connected === 503
+    && evidence.runtime_truth?.api_connected === false
+    && evidence.runtime_truth?.postgresql_connected === false;
 }
 
 export function runtimeContextConfigured(adapter, configured) {

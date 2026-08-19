@@ -5,6 +5,7 @@ import {createOpenAIResponsesProvider} from '../agent/openai-responses-provider.
 import {createTutorKernel} from '../agent/tutor-kernel.mjs';
 import {createTutorService} from '../agent/tutor-service.mjs';
 import {createTutorOperations,resolveTutorOperationsPolicy} from '../agent/tutor-operations.mjs';
+import {createSocialAuthService,socialAuthConfigFromEnvironment} from '../auth/social-auth-service.mjs';
 
 const port = Number.parseInt(process.env.PORT || '8080', 10);
 const host = process.env.HOST || '0.0.0.0';
@@ -24,6 +25,10 @@ if (!auth.allowTrustedHeaders && (!auth.sessionSecret || Buffer.byteLength(auth.
 const repository = new MathChakChakRepository({
   connectionString: process.env.DATABASE_URL,
   fulfilmentPackageValiditySeconds:process.env.FULFILMENT_PACKAGE_VALIDITY_SECONDS
+});
+auth.socialAuth=createSocialAuthService({
+  repository,
+  config:socialAuthConfigFromEnvironment(process.env,process.env.PUBLIC_BASE_URL||`http://${host}:${port}`)
 });
 const tutorOperations=createTutorOperations({policy:resolveTutorOperationsPolicy(process.env)});
 const tutorProvider=process.env.TUTOR_AI_ENABLED==='true'&&tutorOperations.isProviderConfigurationApproved()

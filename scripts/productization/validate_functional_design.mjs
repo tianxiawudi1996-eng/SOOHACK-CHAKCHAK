@@ -23,9 +23,9 @@ const trace = await readFile(resolve(root, files.trace), 'utf8');
 const features = contract.features || [];
 const featureIds = features.map((item) => item.id);
 const requirementIds = features.map((item) => item.requirement_id);
-if (contract.status !== 'DESIGNED' || features.length !== 15) failures.push('FEATURE_COUNT_OR_STATUS_INVALID');
-if (new Set(featureIds).size !== 15 || new Set(requirementIds).size !== 15) failures.push('FEATURE_OR_REQUIREMENT_DUPLICATE');
-for (let number = 1; number <= 15; number += 1) {
+if (contract.status !== 'DESIGNED' || features.length !== 16) failures.push('FEATURE_COUNT_OR_STATUS_INVALID');
+if (new Set(featureIds).size !== 16 || new Set(requirementIds).size !== 16) failures.push('FEATURE_OR_REQUIREMENT_DUPLICATE');
+for (let number = 1; number <= 16; number += 1) {
   const requirement = `REQ-P0-${String(number).padStart(3, '0')}`;
   if (!requirementIds.includes(requirement)) failures.push(`REQUIREMENT_NOT_MAPPED:${requirement}`);
 }
@@ -41,7 +41,7 @@ for (const marker of ['Idempotency-Key','Content-Language','VALIDATION_ERROR']) 
 
 if (failures.length) { console.error('FUNCTIONAL_DESIGN_FAIL'); failures.forEach((failure) => console.error(failure)); process.exit(1); }
 console.log('FUNCTIONAL_DESIGN_PASS');
-console.log('features=15/15');
-console.log('requirement_mappings=15/15');
+console.log('features=16/16');
+console.log('requirement_mappings=16/16');
 console.log('behavior_events=15/15');
 console.log('api_contract=PASS');

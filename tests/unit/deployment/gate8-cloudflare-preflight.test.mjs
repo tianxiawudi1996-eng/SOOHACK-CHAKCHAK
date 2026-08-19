@@ -39,6 +39,22 @@ test('Cloudflare runtime evidence must match the configured public hostname', ()
   assert.equal(verifyCloudflareRuntimeEvidence(runtimeEvidence, other.hostname_sha256), false);
 });
 
+test('Cloudflare full-stack runtime evidence is accepted when API and PostgreSQL are ready', () => {
+  const fullStackEvidence = {
+    schema_version: '1.0.0',
+    status: 'PASS_EXTERNAL_DEVELOPMENT_RUNTIME',
+    endpoint: {public_https_url: publicUrl},
+    http_checks: {root: 200, curriculum_e4_ko: 200, readyz: 200, api_locales: 200},
+    runtime_truth: {
+      frontend_publicly_reachable: true,
+      api_connected: true,
+      postgresql_connected: true,
+      production_release: false,
+    },
+  };
+  assert.equal(verifyCloudflareRuntimeEvidence(fullStackEvidence, inspected.hostname_sha256), true);
+});
+
 test('Cloudflare uses runtime evidence instead of a Docker context', () => {
   assert.equal(runtimeContextConfigured('cloudflare_workers', {
     deployment_adapter: true,

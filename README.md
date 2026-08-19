@@ -48,8 +48,8 @@ npm.cmd test
 
 ## 현재 상태
 
-- 제품화 로드맵: Phase 0~75 로컬 검증 증거 보유
-- Phase 75 로컬 플랫폼 PASS
+- 제품화 로드맵: Phase 0~76 로컬 검증 증거 보유
+- Phase 76 소셜 로그인 생애주기 로컬 PASS, 외부 공급자 연동 HOLD
 - 외부 출시 `BLOCKED_EXTERNAL`
 - Stage 8 Gate 0~7: `VERIFIED`
 - Gate 5: AI Behavior 자동 QA와 제품 책임자 승인 `VERIFIED`

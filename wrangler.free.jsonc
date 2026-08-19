@@ -16,11 +16,12 @@
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
-      "id": "00000000000000000000000000000000"
+      "id": "5e646aac11184fb38fd282d3a92d4988"
     }
   ],
   "vars": {
     "RUNTIME_ENV": "development",
+    "PUBLIC_BASE_URL": "https://mathchakchak-free-dev.mathchakchak-product.workers.dev",
     "TUTOR_AI_ENABLED": "false",
     "TUTOR_AI_KILL_SWITCH": "true"
   },

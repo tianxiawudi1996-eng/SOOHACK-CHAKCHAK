@@ -220,6 +220,8 @@
       "docs/stage8/evidence/gate8/GITHUB_PRODUCTIZATION_CI_RUN_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_CHECK_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_CONTROL_PLANE_AUTHENTICATION_REVALIDATION_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_FULL_STACK_DEVELOPMENT_EVIDENCE_v1.0.json",
+      "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_ATTEMPT_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_DEPLOYMENT_REVALIDATION_v1.0.json",
       "docs/stage8/evidence/gate8/CLOUDFLARE_DEVELOPMENT_RUNTIME_VERIFICATION_v1.0.json",
       "docs/stage8/evidence/gate8/GATE8_DEPLOYMENT_AUDIT_v1.0.json",
@@ -228,17 +230,17 @@
       "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json"
     ],
     "blockers": [
-      "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
-      "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
-      "EXTERNAL_API_AND_POSTGRESQL_NOT_DEPLOYED"
+      "CLOUDFLARE_FREE_COLD_START_CPU_OPTIMIZATION_REQUIRED",
+      "DEPLOYED_VERSION_SOURCE_COMMIT_BINDING_NOT_PROVEN",
+      "PRODUCTION_RELEASE_NOT_AUTHORIZED"
     ],
     "entry_allowed": true
   },
   "warnings": [
     "docs/ssot/stage7/v1.0/github-recovery-codes.txt is ignored and untracked; its content was not read",
     "immutable source commit a9e6421 is pushed and GitHub Actions Productization CI run 32090081642 passed both quality and API/PostgreSQL integration jobs",
-    "Cloudflare development frontend and API bridge are deployed, but API_ORIGIN and PostgreSQL remain unconfigured",
-    "Cloudflare OAuth was previously verified, but the current process credential now fails with provider code 9109 and must be refreshed before Containers capability verification",
+    "Cloudflare Workers Free development runtime, Hyperdrive, and Neon PostgreSQL are externally connected; 40 migrations and 140 schema tables were verified",
+    "15 sampled Worker requests completed with outcome ok, but one cold database-readiness request used 23 ms CPU against the nominal 10 ms Free limit and requires optimization before promotion",
     "production deployment and product release remain unauthorized"
   ]
 }
