@@ -64,8 +64,8 @@
     },
     {
       "path": "site/assets/product-shell.css",
-      "bytes": 2023,
-      "sha256": "8acb5dbadf86103cd8baa417bf45eb22d8fe1e80f61c213d64b624fb42fe586f"
+      "bytes": 3009,
+      "sha256": "aa86eb15f03c11efdc37457963f500aadd545b67c66a568c9e2f997774b2d136"
     },
     {
       "path": "site/assets/stage8/2d-pet-motion-v1.0.css",
@@ -249,13 +249,38 @@
     },
     {
       "path": "site/assets/styles.css",
-      "bytes": 15757,
-      "sha256": "841ec5482da35c3992a35060d2eec6c35264e43d310fa01e7ffcf21236c7b3c0"
+      "bytes": 15682,
+      "sha256": "caa4b609908b18829db62c21e48d0655b813fc948fe48440628412d99c97381f"
     },
     {
       "path": "site/assets/tokens.css",
       "bytes": 1068,
       "sha256": "a8d8a24fc9f79634ecf9aa8ceaef581309395a63b3787008aea929ffe22e65d8"
+    },
+    {
+      "path": "site/auth/a11y.css",
+      "bytes": 248,
+      "sha256": "03d131ea51243b8126a21b9d40f28baba658d39d52d28122623eae14d0e0418d"
+    },
+    {
+      "path": "site/auth/app.js",
+      "bytes": 5692,
+      "sha256": "133682e839c88ea011755ac761593e179efbf859e2452960f2c07548d7a17c32"
+    },
+    {
+      "path": "site/auth/index.html",
+      "bytes": 6889,
+      "sha256": "29ef83ab7ca561b222ffa343e85395f21356380c1d04db9d31a32b9b06f3eeea"
+    },
+    {
+      "path": "site/auth/messages.mjs",
+      "bytes": 7184,
+      "sha256": "15d9a321ea0fcebd69bd048cc935d6bea95d9e65f752dab4287591687c3f5afc"
+    },
+    {
+      "path": "site/auth/styles.css",
+      "bytes": 5362,
+      "sha256": "c120ff3b5fd87a06d5f20d32fc58089cfe30fb0ee9d538201810d77ca57c0c04"
     },
     {
       "path": "site/curriculum/app.js",
@@ -279,13 +304,13 @@
     },
     {
       "path": "site/curriculum/styles.css",
-      "bytes": 6760,
-      "sha256": "c93f4cb6ff9be9b47a35670356dfea7abff8cbea0233407599ab2b99d25c708d"
+      "bytes": 7024,
+      "sha256": "3e1ad5db97a2dbaa3d1775cc02de662d29b161481faccb1196cf2ecc322e7435"
     },
     {
       "path": "site/diagnostic/app.js",
-      "bytes": 6368,
-      "sha256": "3b7c6677e4322af8e85f11e7b2d7e26ed3ba8406f8ea3c9ef333222805d84f8f"
+      "bytes": 7028,
+      "sha256": "027253e840210d8b5cc721d8efb46382672ef0a45874eef3f0813ad589effe42"
     },
     {
       "path": "site/diagnostic/index.html",
@@ -304,8 +329,8 @@
     },
     {
       "path": "site/diagnostic/styles.css",
-      "bytes": 2672,
-      "sha256": "b04979bd18569d61f4f4017e504c25fa5fc9c77ab283832847be5b22334a18e7"
+      "bytes": 2742,
+      "sha256": "e3ebe8a1296dc41adb2c7714830ceee177b5ddd98095d835ec76ce77459cf89a"
     },
     {
       "path": "site/i18n/accessibility.mjs",
@@ -319,53 +344,53 @@
     },
     {
       "path": "site/index.html",
-      "bytes": 9984,
-      "sha256": "a84920ed430ecd701eeb695d546bf2908bf2a166cdb5ec1f9d5bdd22129b6c79"
+      "bytes": 10099,
+      "sha256": "047d3e79245d0b452959f9d0c6166ab1d31742c8590fd7ade9e027c02a3524f7"
     },
     {
       "path": "site/locales/en.json",
-      "bytes": 2467,
-      "sha256": "489509e90dd653612c9441880938ff0729a7a18c5174cde17bd7af9a53c65af8"
+      "bytes": 2493,
+      "sha256": "117aa9eb874fe1d8e464cb55301327d36cce5fe1921adc6455c3c94508421209"
     },
     {
       "path": "site/locales/es.json",
-      "bytes": 2603,
-      "sha256": "d96f46a440e0c4b060573d4c99d0066e3cb98ba170c9f67b19054d6c70307716"
+      "bytes": 2637,
+      "sha256": "7b8d1422278a5633c6f80f9fe608999a190bc0fe50f5d6f895be310996938ed9"
     },
     {
       "path": "site/locales/fr.json",
-      "bytes": 2724,
-      "sha256": "1c8ef5028b374d5ccbb17f3024349d8ed447af4b2107fe42fe6851d7bbee00df"
+      "bytes": 2755,
+      "sha256": "54fc2e388e1042d20e07745fc88b9973dfe11e09a7eed8ed3b88d85d14f4945c"
     },
     {
       "path": "site/locales/it.json",
-      "bytes": 2567,
-      "sha256": "6a91dd907bea132dfff1587f3ca6a0e60eabeea90ecfcc70150d2a54477412a1"
+      "bytes": 2592,
+      "sha256": "b15c081da230a098628224c202533d2a84b2a099a6cd8d3f7fd734a3d26f2b96"
     },
     {
       "path": "site/locales/ja.json",
-      "bytes": 2632,
-      "sha256": "c7cd01380c927f78bd7a03448715aaf4733c41d30f54e18bc17b357842ed7a8a"
+      "bytes": 2663,
+      "sha256": "b3c7979b8bf655d4f0469d6cb6628aca7eea5affdf561338cce0339d29f706fd"
     },
     {
       "path": "site/locales/ko.json",
-      "bytes": 2569,
-      "sha256": "617469bebbb3580b30b049181c83625e00d2484f3964708f7be062270e1463a3"
+      "bytes": 2597,
+      "sha256": "6c57ccf6fd0bb6e71470592d98137325bedf9a2262757e1a0135fad7560c2c05"
     },
     {
       "path": "site/locales/ru.json",
-      "bytes": 3819,
-      "sha256": "8a9896a08085949ba28ae73b0fef04915f706f0f727021e5121babaf5e0eaa7d"
+      "bytes": 3848,
+      "sha256": "71aba87cc0966d468a36cef8e6aabb58e4711dad62a0c52fc48db9537bf14f33"
     },
     {
       "path": "site/locales/zh-CN.json",
-      "bytes": 2244,
-      "sha256": "df936580cb71d5abb29df78d7c99b170928a4b543fe9fb26542e143e3c1d8edb"
+      "bytes": 2269,
+      "sha256": "466231d49a8247826210ecb2d3683901ef9339a4851755fcf2c76de039bb3362"
     },
     {
       "path": "site/math-learning/app.js",
-      "bytes": 13032,
-      "sha256": "357e5714372d21c50ba4128f7b2e5d39ce3353760472d0e7d5537002ff1c4bf6"
+      "bytes": 13547,
+      "sha256": "4ee199a5fa8c422775bbe11645e85d281bf204a2ea97309f1d785c19a4fae591"
     },
     {
       "path": "site/math-learning/index.html",
@@ -374,8 +399,8 @@
     },
     {
       "path": "site/math-learning/messages.mjs",
-      "bytes": 14249,
-      "sha256": "6841be2089f3605bfda6595c55d939deb2ee69ef66328dde223dfac2a8b41d55"
+      "bytes": 15160,
+      "sha256": "b1522d559f363bf66395c310e7f6723843f54b272af6dd915e6f115dc9381653"
     },
     {
       "path": "site/math-learning/model.mjs",
@@ -384,8 +409,8 @@
     },
     {
       "path": "site/math-learning/styles.css",
-      "bytes": 10347,
-      "sha256": "092fca7073da1d91f152c2fdd56ccae87e307e0e905d0d3472a28865a635d04f"
+      "bytes": 10348,
+      "sha256": "74e590a60ad1c682e9b286ee540f314af08be1972f2586fcaf659f03dd7292d2"
     },
     {
       "path": "site/operations/app.js",
@@ -408,7 +433,7 @@
       "sha256": "e1db9fb2810c4962146f336e004b2bb0896bb8f6cd2e06198ec78bbc6756d7ab"
     }
   ],
-  "file_count": 78,
+  "file_count": 83,
   "external_deployment": {
     "performed": false,
     "url": null,

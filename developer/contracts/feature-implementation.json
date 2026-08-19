@@ -3,12 +3,12 @@
   "phase": 46,
   "status": "TRUTHFUL_CAPABILITY_BASELINE",
   "summary": {
-    "total": 15,
+    "total": 16,
     "production_ready": 0,
     "end_user_verified_local": 3,
     "human_review_required": 2,
     "rule_engine_only": 0,
-    "code_only_or_partial": 6,
+    "code_only_or_partial": 7,
     "local_runtime_support": 3,
     "approved_not_runtime_wired": 1
   },
@@ -28,7 +28,7 @@
   "features": [
     {"id":"FEAT-I18N-001","status":"AUTO_VERIFIED_HUMAN_REVIEW_REQUIRED","source":"developer/src/i18n/locale-resolver.mjs","production_ready":false,"gap":"Seven non-Korean locales require human linguistic approval."},
     {"id":"FEAT-LAND-001","status":"UI_AVAILABLE_LOCAL","source":"client/mock/index.html","production_ready":false,"gap":"Sample metrics are not backed by a production learner account."},
-    {"id":"FEAT-AUTH-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/auth/role-policy.mjs","production_ready":false,"gap":"Managed identity and the parent runtime role are not connected."},
+    {"id":"FEAT-AUTH-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/auth/role-policy.mjs","production_ready":false,"gap":"Four product roles are enforced locally; guardian and academy identity verification remain external."},
     {"id":"FEAT-DIAG-001","status":"E2E_VERIFIED_LOCAL","source":"developer/src/diagnosis/diagnosis-service.mjs","production_ready":false,"gap":"The current diagnostic is a three-item deterministic local flow."},
     {"id":"FEAT-LEARN-001","status":"E2E_VERIFIED_LOCAL","source":"developer/src/learning/formula-learning.mjs","production_ready":false,"gap":"Deep lesson coverage is limited to the initial vertical slice."},
     {"id":"FEAT-HINT-001","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/agent/tutor-kernel.mjs","production_ready":false,"gap":"Safe local fallback is verified; an approved external model key and live provider verification remain unavailable."},
@@ -40,6 +40,7 @@
     {"id":"FEAT-RWD-001","status":"RUNTIME_VERIFIED_LOCAL","source":"client/design/product-shell.css","production_ready":false,"gap":"Field-device coverage and ongoing visual regression are not yet configured."},
     {"id":"FEAT-PRIV-001","status":"CODED_LOCAL_CONTROLS","source":"developer/src/privacy/log-policy.mjs","production_ready":false,"gap":"External identity, evidence, fulfilment, and legal approvals remain blocked."},
     {"id":"FEAT-RES-001","status":"RUNTIME_VERIFIED_LOCAL","source":"developer/src/resilience/idempotency.mjs","production_ready":false,"gap":"Distributed production retry and queue behavior is not connected."},
-    {"id":"FEAT-OBS-001","status":"RUNTIME_WIRED_LOCAL_ONLY","source":"developer/src/observability/event-schema.mjs","production_ready":false,"gap":"Metrics are local and no production alert delivery route is configured."}
+    {"id":"FEAT-OBS-001","status":"RUNTIME_WIRED_LOCAL_ONLY","source":"developer/src/observability/event-schema.mjs","production_ready":false,"gap":"Metrics are local and no production alert delivery route is configured."},
+    {"id":"FEAT-AUTH-002","status":"RUNTIME_WIRED_LOCAL_PARTIAL","source":"developer/src/auth/social-login.mjs","production_ready":false,"gap":"Google, Naver, and Kakao apps, Secret bindings, Neon migration 0041, real-account E2E, guardian consent, and academy verification are not externally verified."}
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "status": "PASS",
+  "verified_at": "2026-08-17T23:25:17.4819442+09:00",
+  "repository": "tianxiawudi1996-eng/SOOHACK-CHAKCHAK",
+  "environment": "development",
+  "protection": {
+    "required_reviewers": [
+      "github:tianxiawudi1996-eng"
+    ],
+    "prevent_self_review": false,
+    "wait_timer_minutes": 0,
+    "deployment_branch_policy": {
+      "protected_branches": false,
+      "custom_branch_policies": true,
+      "allowed_branches": [
+        "main"
+      ]
+    }
+  },
+  "verification": {
+    "environment_api_read": true,
+    "required_reviewer_verified": true,
+    "main_only_policy_verified": true,
+    "gate8_external_preflight_decision": "ALLOW_WITH_CONDITIONS",
+    "gate8_external_preflight_blockers": 0
+  },
+  "external_actions": {
+    "environment_created": true,
+    "branch_policy_created": true,
+    "deployment_performed": false,
+    "secret_created_or_read": false,
+    "production_environment_changed": false
+  }
+}

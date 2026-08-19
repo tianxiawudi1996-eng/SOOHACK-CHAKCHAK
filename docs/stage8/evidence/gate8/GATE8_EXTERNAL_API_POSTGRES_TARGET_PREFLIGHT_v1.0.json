@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "workstream_id": "D80-10",
+  "collected_at": "2026-08-19T05:03:05.611Z",
+  "decision": "HOLD",
+  "status": "HOLD_EXTERNAL_API_POSTGRES_RUNTIME_GATES",
+  "candidate_architecture": {
+    "api_runtime": "CLOUDFLARE_WORKERS_FREE",
+    "database": "EXTERNAL_MANAGED_POSTGRESQL",
+    "database_connection": "CLOUDFLARE_HYPERDRIVE_FREE",
+    "frontend_bridge": "SAME_WORKER_EMBEDDED_API",
+    "environment_code": "DEVELOPMENT",
+    "rationale": "REUSE_EXISTING_NODE_HTTP_SERVER_WITH_CLOUDFLARE_NODE_COMPATIBILITY_AND_HYPERDRIVE",
+    "provider_code_allowlist": [
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_NEON_POSTGRESQL",
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_SUPABASE_POSTGRESQL",
+      "CLOUDFLARE_WORKERS_HYPERDRIVE_AWS_RDS_POSTGRESQL"
+    ]
+  },
+  "input_validation": {
+    "complete": true,
+    "checks": {
+      "target_reference": true,
+      "provider_code": true,
+      "environment_code": true,
+      "connection_reference": true
+    },
+    "missing_fields": [],
+    "values_stored": false
+  },
+  "local_compatibility": {
+    "existing_node_api_reused": true,
+    "node_http_adapter": "cloudflare:node/httpServerHandler",
+    "node_compatibility_flag": "nodejs_compat",
+    "postgresql_driver": "pg@^8.16.3",
+    "forward_migrations_present": 41,
+    "expected_forward_migrations": 41,
+    "migration_range_complete": true
+  },
+  "provider_preflight": {
+    "authentication_fresh": true,
+    "latest_authentication_status": "PASS",
+    "workers_free_runtime_selected": true,
+    "workers_free_cpu_budget_measured": true,
+    "workers_free_cpu_budget_risk": "COLD_START_CPU_ABOVE_NOMINAL_LIMIT_OBSERVED",
+    "hyperdrive_free_configuration_verified": true,
+    "managed_postgresql_connection_verified": true,
+    "migrations_current": false,
+    "runtime_evidence_verified": false
+  },
+  "blockers": [
+    "EXTERNAL_DATABASE_MIGRATION_0041_NOT_APPLIED"
+  ],
+  "next_input": "EXTERNAL_DATABASE_MIGRATION_0041_NOT_APPLIED",
+  "required_fields": [
+    "target_reference",
+    "provider_code",
+    "environment_code",
+    "connection_reference"
+  ],
+  "external_actions": {
+    "account_plan_changed": false,
+    "worker_created": false,
+    "hyperdrive_configuration_created": false,
+    "database_created": false,
+    "secret_created_or_read": false,
+    "deployment_performed": false
+  },
+  "credential_boundary": {
+    "raw_target_stored": false,
+    "raw_connection_string_stored": false,
+    "credential_value_accessed": false,
+    "credential_value_stored": false
+  }
+}

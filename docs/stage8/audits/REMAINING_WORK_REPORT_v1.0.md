@@ -31,7 +31,7 @@
 | Gate 5 AI Behavior | `VERIFIED` | 상태 15/15·이벤트 15/15·말풍선 13/13, 브라우저 QA PASS, 수동 승인 1/1 |
 | Gate 6 Product Integration | `VERIFIED` | 반응형 4/4, 정적 품질 PASS, 내용 주소 RC 고정 |
 | Gate 7 QA | `VERIFIED` | 명령 14/14, 단위 336/336, 통합 61/61, 접근성 6/6, P0 0 |
-| Gate 8 Deployment | `BLOCKED` | 로컬 배포·Health·Smoke·Rollback PASS, 외부 대상·권한 미설정 |
+| Gate 8 Deployment | `BLOCKED` | 외부 개발 전체 스택 PASS, 콜드스타트 CPU 최적화·운영 출시 승인 미완료 |
 
 ### 최종 완료 기준
 
@@ -83,13 +83,13 @@
 - 현재 인증 계정 `github:visionlab-coder`는 원격 저장소 `tianxiawudi1996-eng/SOOHACK-CHAKCHAK`에 `pull=true`, `push=false`다.
 - GitHub Pages는 비활성이고 보호된 배포 Environment는 0개이며 외부 Development·Staging·Canary·Production 대상과 권한 참조도 없다.
 - GitHub 읽기 전용 경로 연결을 실제 호출로 검증하고 증거 SHA-256 `1257d15a6d16296058edad07b64e62157c017fffc0722bb7035d217fd52fafec`을 대장에 승격했다.
-- 외부 변경 없이 정확히 `HOLD`로 중단했으며 사전점검의 첫 다음 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`다.
+- 승인된 개발 범위에서 Cloudflare Workers Free·Hyperdrive·Neon PostgreSQL 외부 배포를 완료했고 사전점검은 `ALLOW_WITH_CONDITIONS`다.
 
 ### 우선순위 3: 제품화 외부 증거
 
 - Phase 75는 로컬 플랫폼 PASS이며 외부 출시는 `BLOCKED_EXTERNAL`이다.
 - 외부 실행 대장의 경로 연결 증거는 `1/1 VERIFIED_READ_ONLY_ROUTE_CONNECTION`이다.
-- 다음 허용 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`다.
+- 다음 허용 입력은 `D80_10_CONTROL_EVIDENCE_REFERENCE`다.
 - 필수 필드는 `target_reference`, `provider_code`, `environment_code`, `connection_reference` 네 개이며 첫 환경은 `DEVELOPMENT`다.
 - dispatch·submission·verification·release는 모두 false다.
 
@@ -128,4 +128,4 @@ Gate 0~7 VERIFIED
 
 ## 현재 결론
 
-Gate 0~7은 `VERIFIED`다. Gate 8은 로컬 배포·Health·Smoke·Rollback과 GitHub 읽기 전용 경로 연결 증거까지 검증됐다. 다만 실제 배포 대상·권한·쓰기 권한·보호 Environment가 없으므로 전체 Stage 8은 아직 `BLOCKED`다. 다음 READY 입력은 `EXTERNAL_DEPLOYMENT_TARGET_REFERENCE`이며, 이를 검증한 뒤 승인 참조를 수용한다.
+Gate 0~7은 `VERIFIED`다. Gate 8은 Cloudflare Workers Free·Hyperdrive·Neon PostgreSQL 개발 배포, 40개 마이그레이션, 140개 스키마 테이블, 공개 HTTPS·API·DB 준비 상태까지 검증됐다. 전체 Stage 8은 콜드스타트 CPU 최적화와 운영 출시 승인 미완료로 아직 `BLOCKED`다. 다음 READY 입력은 `D80_10_CONTROL_EVIDENCE_REFERENCE`다.

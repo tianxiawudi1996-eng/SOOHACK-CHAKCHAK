@@ -17,7 +17,7 @@ try {
   if (!lockedButEmpty) throw error;
 }
 const site = path.join(artifactRoot, 'site');
-for (const directory of ['accessibility', 'assets', 'assets/characters', 'assets/stage8', 'assets/stage8/poses/webp', 'assets/stage8/poses/png', 'i18n', 'locales', 'diagnostic', 'math-learning', 'curriculum', 'academy', 'operations']) fs.mkdirSync(path.join(site, directory), {recursive:true});
+for (const directory of ['accessibility', 'assets', 'assets/characters', 'assets/stage8', 'assets/stage8/poses/webp', 'assets/stage8/poses/png', 'i18n', 'locales', 'auth', 'diagnostic', 'math-learning', 'curriculum', 'academy', 'operations']) fs.mkdirSync(path.join(site, directory), {recursive:true});
 
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 let html = read('client/mock/index.html')
@@ -30,6 +30,7 @@ let html = read('client/mock/index.html')
   .replace('../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp', 'assets/stage8/poses/webp/Chakchaki/chakchaki_p02_welcome_v1.0.webp')
   .replace('../../outputs/019fcaf2-285c-7dc3-897a-3c9a2903aac4/2d-pet/v1.0/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp', 'assets/stage8/poses/webp/Gongsickyi/gongsickyi_p02_welcome_v1.0.webp')
   .replaceAll('../diagnostic/index.html', 'diagnostic/index.html')
+  .replaceAll('../auth/index.html', 'auth/index.html')
   .replaceAll('../curriculum/index.html', 'curriculum/index.html')
   .replaceAll('../academy/index.html', 'academy/index.html');
 const app = read('client/mock/app.js').replace('../i18n/messages/', '../locales/');
@@ -39,6 +40,14 @@ fs.copyFileSync(path.join(root, 'client/design/tokens.css'), path.join(site, 'as
 fs.copyFileSync(path.join(root, 'client/design/product-shell.css'), path.join(site, 'assets/product-shell.css'));
 fs.copyFileSync(path.join(root, 'client/mock/styles.css'), path.join(site, 'assets/styles.css'));
 fs.copyFileSync(path.join(root, 'client/accessibility/interaction.css'), path.join(site, 'accessibility/interaction.css'));
+
+const authHtml = read('client/auth/index.html')
+  .replace('../design/tokens.css', '../assets/tokens.css')
+  .replace('../design/product-shell.css', '../assets/product-shell.css')
+  .replace('../accessibility/interaction.css', '../accessibility/interaction.css')
+  .replaceAll('../mock/index.html', '../index.html');
+fs.writeFileSync(path.join(site, 'auth', 'index.html'), authHtml, 'utf8');
+for (const file of ['app.js','messages.mjs','styles.css','a11y.css']) fs.copyFileSync(path.join(root, 'client/auth', file), path.join(site, 'auth', file));
 
 const lessonHtml = read('client/math-learning/index.html')
   .replace('../design/tokens.css', '../assets/tokens.css')

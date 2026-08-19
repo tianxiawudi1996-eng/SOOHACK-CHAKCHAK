@@ -18,7 +18,7 @@ Stage 1~7에서 승인된 수학착착 SSOT를 보존하면서, 착착이·공�
 6. Gate 5: AI Behavior 상태·이벤트·말풍선 연결 — `VERIFIED` (자동 QA PASS, 제품 책임자 승인 1/1)
 7. Gate 6: Product Integration — `VERIFIED` (반응형·정적 품질·내용 주소 RC)
 8. Gate 7: QA — `VERIFIED` (명령 14/14, 단위 336/336, 통합 61/61, P0 0)
-9. Gate 8: Deployment — `BLOCKED` (로컬 배포·Health·Smoke·Rollback PASS, 외부 대상·권한 미설정)
+9. Gate 8: Deployment — `BLOCKED` (외부 개발 전체 스택 PASS, 콜드스타트 CPU 최적화·운영 출시 승인 미완료)
 
 ## Gate 6 제품화 증거 매핑
 
@@ -60,5 +60,5 @@ Gate 6 종료 증거 3/3과 RC SHA-256 `3ff96ece71a86e8e61c5fdd22d0073ae365620f7
 - Gate 5는 제품 책임자 1인 수동 승인 1/1과 승격 감사를 거쳐 `VERIFIED`다.
 - Gate 6는 제품화 Phase 5~8 증거, 실제 Chromium 4개 뷰포트, lint·런타임 타입 계약, 불변 RC로 `VERIFIED`다.
 - Gate 7은 출시 차단 QA 14/14, 단위 336/336, PostgreSQL 통합 61/61, 접근성 6/6, P0 0으로 `VERIFIED`다.
-- Gate 8은 로컬 Docker Artifact 78/78·로케일 8/8·Health·Smoke·보안 헤더·rollback이 PASS했으나 외부 배포 대상·권한이 없어 `BLOCKED`다.
+- Gate 8은 Cloudflare Workers Free·Hyperdrive·Neon PostgreSQL 개발 배포와 공개 Health·API·DB 검증이 PASS했다. 다만 콜드스타트 CPU 23ms 관찰 위험과 운영 출시 승인 미완료 때문에 전체 Gate는 `BLOCKED`다.
 - 민감한 `github-recovery-codes.txt`는 읽거나 추적하지 않는다.

@@ -27,8 +27,8 @@ test('signed admin token omits student scope and rejects mixed admin claims',()=
   assert.throws(()=>verifySessionToken(mixed,secret,{now:1100}),/UNAUTHENTICATED/);
 });
 
-test('signed teacher and parent tokens are role scoped without student claims',()=>{
-  for(const role of ['TEACHER','PARENT']){
+test('signed academy owner, teacher and parent tokens are role scoped without student claims',()=>{
+  for(const role of ['ACADEMY_OWNER','TEACHER','PARENT']){
     const roleClaims={userId:'33333333-3333-4333-8333-333333333333',role,issuedAt:1000,expiresAt:1300};
     const token=createSessionToken(roleClaims,secret);
     assert.deepEqual(verifySessionToken(token,secret,{now:1100}),{userId:roleClaims.userId,role});

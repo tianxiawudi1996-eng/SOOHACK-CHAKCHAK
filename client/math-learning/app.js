@@ -6,7 +6,7 @@ import {installSkipLinkFocus} from '../accessibility/interaction.mjs?v=0.1.0-pha
 
 const supported = ['ko','zh-CN','ja','en','es','fr','it','ru'];
 const fallback = 'en';
-const state = {locale:fallback,messages:UI_MESSAGES.en,token:null,lesson:null,learningSessionId:null,formulaSession:null,selectedChoice:null,handoffCode:null};
+const state = {locale:fallback,messages:UI_MESSAGES.en,learningPathItemId:null,learningSessionId:null,formulaSession:null,selectedChoice:null};
 const byId = (id) => document.getElementById(id);
 const elements = {
   locale:byId('localeSelect'),intro:byId('introPanel'),lesson:byId('lessonPanel'),complete:byId('completePanel'),
@@ -31,6 +31,9 @@ function resolveLocale() {
 }
 
 function message(key) { return state.messages[key] ?? UI_MESSAGES.en[key] ?? key; }
+function cookie(name) { return document.cookie.split(';').map((item)=>item.trim()).find((item)=>item.startsWith(`${name}=`))?.slice(name.length+1)||''; }
+function redirectToAuth() { const returnTo=`/math-learning/?locale=${encodeURIComponent(state.locale)}&learning_path_item_id=${encodeURIComponent(state.learningPathItemId||'')}`;location.assign(`/auth/?locale=${encodeURIComponent(state.locale)}&return_to=${encodeURIComponent(returnTo)}`); }
+async function requireStudentSession() { const response=await fetch('/api/v1/auth/session',{credentials:'include'});if(!response.ok){redirectToAuth();return false;}const payload=await response.json();const session=payload.data;const active=session?.account_status==='ACTIVE'&&session.auth_level==='FULL';const student=session?.role==='STUDENT';if(!session?.authenticated||!active||!student){redirectToAuth();return false;}return true; }
 
 function applyMessages() {
   document.documentElement.lang = state.locale;
@@ -56,13 +59,14 @@ function renderStageList(currentStage) {
   }));
 }
 
-async function request(path,{method='GET',body,authenticated=true}={}) {
+async function request(path,{method='GET',body}={}) {
+  const unsafe=['POST','PUT','PATCH','DELETE'].includes(method);
   const response = await fetch(path,{
     method,
+    credentials:'include',
     headers:{
-      ...(authenticated && state.token ? {authorization:`Bearer ${state.token}`} : {}),
       ...(body === undefined ? {} : {'content-type':'application/json'}),
-      ...(method === 'POST' && authenticated ? {'idempotency-key':createIdempotencyKey('ui')} : {})
+      ...(unsafe ? {'x-csrf-token':decodeURIComponent(cookie('mcc_csrf')),'idempotency-key':createIdempotencyKey('ui')} : {})
     },
     body:body === undefined ? undefined : JSON.stringify(body)
   });
@@ -70,6 +74,7 @@ async function request(path,{method='GET',body,authenticated=true}={}) {
   if (!response.ok) {
     const error = new Error(payload.error?.code || 'REQUEST_FAILED');
     error.code = payload.error?.code;
+    if(response.status===401||error.code==='ACCOUNT_ONBOARDING_REQUIRED')redirectToAuth();
     throw error;
   }
   return payload.data;
@@ -193,31 +198,26 @@ async function completeLesson() {
 async function startLesson() {
   elements.start.disabled=true;elements.start.textContent=message('loading');
   try {
-    const bootstrap=state.handoffCode
-      ? await request(`/api/v1/local-demo/handoffs/${state.handoffCode}/consume`,{method:'POST',authenticated:false})
-      : await request('/api/v1/local-demo/session',{method:'POST',body:{},authenticated:false});
-    state.handoffCode=null;
-    state.token=bootstrap.access_token;
-    state.lesson=await request(`/api/v1/concepts/${bootstrap.concept_id}/lesson?locale=${encodeURIComponent(state.locale)}`);
-    const learning=await request('/api/v1/learning-sessions',{method:'POST',body:{learning_path_item_id:bootstrap.learning_path_item_id,locale:state.locale}});
+    if(!state.learningPathItemId)throw new Error('LEARNING_PATH_ITEM_REQUIRED');
+    const learning=await request('/api/v1/learning-sessions',{method:'POST',body:{learning_path_item_id:state.learningPathItemId,locale:state.locale}});
     state.learningSessionId=learning.id;
-    state.formulaSession=await request(`/api/v1/learning-sessions/${learning.id}/formula-lessons`,{method:'POST',body:{lesson_definition_id:state.lesson.lesson.id}});
-    elements.formulaTitle.textContent=state.lesson.formula.title;
-    elements.notation.textContent=state.lesson.formula.notation;
-    elements.memoryCue.textContent=state.lesson.formula.memory_cue;
+    state.formulaSession=await request(`/api/v1/learning-sessions/${learning.id}/formula-lessons`,{method:'POST',body:{}});
+    elements.formulaTitle.textContent=state.formulaSession.formula.title;
+    elements.notation.textContent=state.formulaSession.formula.notation;
+    elements.memoryCue.textContent=state.formulaSession.formula.memory_cue;
     elements.intro.hidden=true;elements.lesson.hidden=false;elements.locale.disabled=true;
     renderStep();
   } catch (error) {
     elements.start.disabled=false;elements.start.textContent=message('start');
-    const detail=error.code==='NOT_FOUND' ? ' (local demo disabled)' : '';
-    const note=document.querySelector('.local-note');note.textContent=`${message('error')}${detail}`;
+    const note=document.querySelector('.local-note');note.textContent=message('error');
   }
 }
 
-const fragment=new URLSearchParams(location.hash.slice(1));
-state.handoffCode=/^[0-9a-f]{64}$/.test(fragment.get('handoff') || '') ? fragment.get('handoff') : null;
-if (state.handoffCode) history.replaceState(null,'',`${location.pathname}${location.search}`);
+const requestedPathItem=new URL(location.href).searchParams.get('learning_path_item_id');
+state.learningPathItemId=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestedPathItem||'')?requestedPathItem:null;
 installSkipLinkFocus();state.locale=resolveLocale();state.messages=UI_MESSAGES[state.locale] || UI_MESSAGES.en;applyMessages();
-elements.start.addEventListener('click',startLesson);
-elements.continue.addEventListener('click',loadFormulaSession);
-elements.locale.addEventListener('change',()=>{writePreferredLocale(elements.locale.value);const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
+if(await requireStudentSession()){
+  elements.start.addEventListener('click',startLesson);
+  elements.continue.addEventListener('click',loadFormulaSession);
+  elements.locale.addEventListener('change',()=>{writePreferredLocale(elements.locale.value);const url=new URL(location.href);url.searchParams.set('locale',elements.locale.value);location.href=url;});
+}

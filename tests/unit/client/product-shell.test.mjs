@@ -21,6 +21,18 @@ test('four product surfaces share the same product shell and 44px target contrac
   assert.match(css, /min-width:\s*var\(--tap-target\)/);
 });
 
+test('product shell keeps multilingual copy aligned and prevents Korean orphan wrapping', () => {
+  const css = fs.readFileSync('client/design/product-shell.css', 'utf8');
+  assert.match(css, /text-align:\s*start/);
+  assert.match(css, /text-wrap:\s*balance/);
+  assert.match(css, /text-wrap:\s*pretty/);
+  assert.match(css, /:lang\(ko\)/);
+  assert.match(css, /word-break:\s*keep-all/);
+  assert.match(css, /overflow-wrap:\s*break-word/);
+  assert.match(css, /:where\(button, \.button, \[role="button"\]\)/);
+  assert.match(css, /text-align:\s*center/);
+});
+
 test('landing discloses sample metrics and explains the dual tutor system', () => {
   const html = fs.readFileSync('client/mock/index.html', 'utf8');
   assert.match(html, /data-i18n="preview\.sample"/);

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 76,
+  "requirement_ids": ["AUTH-01", "AUTH-02", "AUTH-03", "AUTH-04", "AUTH-05", "AUTH-06", "AUTH-07", "AUTH-08", "AUTH-09"],
+  "status": "LOCAL_SOCIAL_LOGIN_LIFECYCLE_PASS_EXTERNAL_PROVIDER_HOLD",
+  "verified_at": "2026-08-19T13:56:58+09:00",
+  "scope": "LOCAL_COOKIE_SESSION_OAUTH_CONTRACT_POSTGRESQL_DIAGNOSTIC_TO_LESSON_UI",
+  "coverage": {
+    "providers": "3/3",
+    "roles": "4/4",
+    "auth_tables": "5/5",
+    "locales": "8/8",
+    "provider_apps_configured": "0/3",
+    "external_provider_logins": "0/3"
+  },
+  "verification": {
+    "target_unit": "28/28 PASS",
+    "full_unit": "379/379 PASS",
+    "postgresql_16": "forward PASS; smoke PASS; rollback PASS; reapply PASS; final smoke PASS",
+    "local_http": "auth 200; providers 200; anonymous session 200; diagnostic redirects to auth with safe return_to",
+    "local_browser_session_flow": "anonymous diagnostic -> auth PASS; cookie credentials and CSRF enforced; local-demo bearer bypass absent; console errors 0",
+    "formula_learning_integration": "diagnostic learning_path_item_id handoff; owned lesson selection; localized formula metadata PASS",
+    "external_http_observation": "development auth page 404; auth providers API 404; new version not deployed",
+    "browser_desktop": "1440x900 PASS; horizontal overflow 0; console errors 0",
+    "browser_mobile": "390x844 PASS; single-column roles; min target 44px; horizontal overflow 0",
+    "build_staging": "PASS; files 83",
+    "git_diff_check": "PASS"
+  },
+  "truth_boundary": {
+    "external_provider_login_verified": false,
+    "external_oauth_apps_configured": false,
+    "external_secrets_bound": false,
+    "external_database_migration_applied": false,
+    "guardian_consent_flow_verified": false,
+    "academy_role_verification_verified": false,
+    "external_deployment_performed": false,
+    "production_release_authorized": false
+  },
+  "next_input": "SOCIAL_OAUTH_PROVIDER_APP_CONFIGURATION_EVIDENCE"
+}

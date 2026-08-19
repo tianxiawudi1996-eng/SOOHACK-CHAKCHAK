@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare Workers",
+  "checked_at": "2026-08-17T23:08:14+09:00",
+  "status": "PASS",
+  "provider_account_authenticated": true,
+  "deployment_metadata_readable": true,
+  "authentication_method": "OAUTH_REFERENCE_ONLY",
+  "checks": {
+    "wrangler_whoami": "PASS",
+    "wrangler_deployments_list": "PASS",
+    "wrangler_version_view": "PASS",
+    "active_worker_version_reference": "cloudflare-worker-version:ea067773-d8ae-4617-b9d2-9b9747619774",
+    "active_traffic_percent": 100
+  },
+  "resolved_failure": {
+    "previous_status": "BLOCKED_EXTERNAL",
+    "previous_codes": [
+      "INVALID_ACCESS_TOKEN_9109",
+      "AUTHENTICATION_10000",
+      "TOO_MANY_AUTHENTICATION_FAILURES_10502"
+    ],
+    "resolution": "INVALID_PROCESS_TOKEN_REMOVED_AND_OAUTH_LOGIN_VERIFIED"
+  },
+  "impact": {
+    "public_runtime_reachability_affected": false,
+    "new_deployment_blocked_by_provider_authentication": false,
+    "rollback_control_blocked_by_provider_authentication": false
+  },
+  "next_input": "PROTECTED_DEPLOYMENT_ENVIRONMENT",
+  "credential_boundary": {
+    "credential_value_read": false,
+    "credential_value_stored": false,
+    "account_email_stored": false,
+    "account_id_stored": false,
+    "secret_logged": false
+  }
+}

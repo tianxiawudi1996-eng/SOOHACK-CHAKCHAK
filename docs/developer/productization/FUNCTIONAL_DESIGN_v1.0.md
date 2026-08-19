@@ -39,9 +39,19 @@ flowchart LR
 
 ### FEAT-AUTH-001 역할·권한
 
-- 역할: `STUDENT`, `PARENT`, `OPERATOR`
-- 학생은 자신의 학습 데이터, 학부모는 연결·동의된 학생의 요약, 운영자는 최소 범위의 지원 데이터만 조회한다.
-- 보호자 연결·해제와 데이터 삭제는 감사 이벤트를 남긴다.
+- 제품 역할: `STUDENT`, `PARENT`, `ACADEMY_OWNER`, `TEACHER`
+- 학생은 자신의 학습 데이터, 학부모는 연결·동의된 학생의 요약, 교사는 학원에서 배정된 학생, 원장은 검증된 기관·교직원 관리 범위만 접근한다.
+- 학생 연결·해제, 보호자 동의, 학원 재직·배정과 데이터 삭제는 서버 권한 검사와 감사 이벤트를 거친다.
+- 원장·교사는 자기 선언만으로 활성화되지 않고 `PENDING_ACADEMY_VERIFICATION`에서 멈춘다.
+
+### FEAT-AUTH-002 소셜 로그인 생애주기
+
+- 공급자: `GOOGLE`, `NAVER`, `KAKAO`
+- 상태: `ANONYMOUS → OAUTH_PENDING → PENDING_ONBOARDING → ACTIVE | PENDING_GUARDIAN | PENDING_ACADEMY_VERIFICATION`
+- Google·Kakao는 OIDC ID Token의 서명·issuer·audience·만료·nonce와 PKCE S256을 검증한다. Naver는 state와 공식 사용자 식별 응답을 검증한다.
+- 공급자 토큰·이메일·전화번호는 저장하지 않고 공급자 subject, 세션, CSRF, state, nonce는 해시만 저장한다.
+- 세션은 12시간 idle, 30일 absolute 만료, HTTPS `__Host-`·`Secure`·`HttpOnly`·`SameSite=Lax`, unsafe method CSRF 검증을 적용한다.
+- 로그아웃은 현재 세션 폐기와 append-only 감사 이벤트를 단일 PostgreSQL 트랜잭션으로 처리한다.
 
 ### FEAT-DIAG-001 무료 학습 진단
 

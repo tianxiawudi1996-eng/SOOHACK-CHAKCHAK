@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare",
+  "checked_at": "2026-08-19T14:02:49+09:00",
+  "status": "PASS",
+  "provider_account_authenticated": true,
+  "control_plane_account_list_readable": true,
+  "hyperdrive_list_readable": true,
+  "hyperdrive_configs_found": 1,
+  "checks": {
+    "wrangler_whoami_without_stale_environment_token": "PASS",
+    "wrangler_hyperdrive_list": "PASS_ONE_DEVELOPMENT_CONFIG"
+  },
+  "external_mutation_performed": false,
+  "next_input": "EXTERNAL_DATABASE_MIGRATION_0041_NOT_APPLIED",
+  "credential_boundary": {
+    "credential_value_read": false,
+    "credential_value_stored": false,
+    "account_email_stored": false,
+    "account_id_stored": false,
+    "secret_logged": false
+  }
+}

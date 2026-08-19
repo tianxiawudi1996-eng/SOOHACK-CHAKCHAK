@@ -47,7 +47,7 @@
       "gate6_concern": "immutable_local_staging_artifact_health_and_rollback",
       "status": "PASS_LOCAL_STAGING",
       "evidence_path": "docs/productization/evidence/PHASE_7_STAGING_READINESS_QA.json",
-      "evidence_sha256": "aefcca1e730ea18278875528357c9b8336409d3e5809f9d8fedb13b816b11f07",
+      "evidence_sha256": "7e89384ee419da1f51aa5f7acc6bf344b56124451047db851f42ef03f262e3ab",
       "observed": [
         "artifact_hashes_pass",
         "locales_8_of_8",
@@ -97,8 +97,8 @@
       "id": "GATE6_LINT_AND_RUNTIME_TYPE_CONTRACT",
       "status": "PASS",
       "evidence_path": "docs/stage8/evidence/gate6/GATE6_STATIC_QUALITY_v1.0.json",
-      "evidence_sha256": "29dd491fb8286f5bdf6a4ab92952c8950b1e3be72c4b0f0b9b3a3a74917966e5",
-      "observed": "source text 406, JavaScript syntax 350, JSON 39, runtime contract assertions 467; no TypeScript compiler claim"
+      "evidence_sha256": "d82c3cd3f3b3718e32fcd4538cd26fad4520e52db25dd2fdebab93b6a20c66c1",
+      "observed": "source text 419, JavaScript syntax 363, JSON 39, runtime contract assertions 467; no TypeScript compiler claim"
     },
     {
       "id": "GATE6_CONTENT_ADDRESSED_RELEASE_CANDIDATE",

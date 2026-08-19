@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>수학착착 계정</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/product-shell.css">
+  <link rel="stylesheet" href="../accessibility/interaction.css">
+  <link rel="stylesheet" href="styles.css?v=0.1.0-auth1">
+  <link rel="stylesheet" href="a11y.css?v=0.1.0-auth1">
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#main" data-i18n="common.skip">본문으로 건너뛰기</a>
+  <header class="auth-header">
+    <a class="auth-brand" href="../index.html">
+      <span class="auth-brand__mark" aria-hidden="true">착</span>
+      <span><strong>수학착착</strong><small>MATH CHAKCHAK</small></span>
+    </a>
+    <label class="locale-control">
+      <span class="sr-only" data-i18n="locale.label">언어</span>
+      <select id="localeSelect" aria-label="Language">
+        <option value="ko">한국어</option><option value="zh-CN">简体中文</option>
+        <option value="ja">日本語</option><option value="en">English</option>
+        <option value="es">Español</option><option value="fr">Français</option>
+        <option value="it">Italiano</option><option value="ru">Русский</option>
+      </select>
+    </label>
+  </header>
+
+  <main id="main" class="auth-shell" tabindex="-1">
+    <section class="auth-intro">
+      <p class="eyebrow" data-i18n="auth.eyebrow">한 번의 로그인으로 시작</p>
+      <h1 data-i18n="auth.title">나는 누구로 수학착착을 사용할까요?</h1>
+      <p data-i18n="auth.body">역할을 먼저 선택하면 필요한 화면과 권한만 안전하게 연결합니다.</p>
+      <ul class="trust-list">
+        <li data-i18n="auth.trust1">공급자 비밀번호와 토큰은 수학착착에 저장하지 않아요.</li>
+        <li data-i18n="auth.trust2">학생 정보는 보호자 또는 학원 검증 전까지 잠겨 있어요.</li>
+        <li data-i18n="auth.trust3">언제든 수학착착 세션을 로그아웃할 수 있어요.</li>
+      </ul>
+    </section>
+
+    <section class="auth-card" id="loginPanel" aria-labelledby="roleTitle">
+      <div class="step-heading"><span>1</span><div><h2 id="roleTitle" data-i18n="role.title">역할 선택</h2><p data-i18n="role.body">가입 후에는 검증 없이 역할을 바꿀 수 없습니다.</p></div></div>
+      <fieldset class="role-grid">
+        <legend class="sr-only" data-i18n="role.title">역할 선택</legend>
+        <label class="role-option"><input type="radio" name="role" value="STUDENT"><span><b data-i18n="role.student">학생</b><small data-i18n="role.studentHint">내 학년의 진단과 맞춤 학습</small></span></label>
+        <label class="role-option"><input type="radio" name="role" value="PARENT"><span><b data-i18n="role.parent">학부모</b><small data-i18n="role.parentHint">연결된 자녀의 성장 확인</small></span></label>
+        <label class="role-option"><input type="radio" name="role" value="ACADEMY_OWNER"><span><b data-i18n="role.owner">학원 원장</b><small data-i18n="role.ownerHint">학원과 교사 운영</small></span></label>
+        <label class="role-option"><input type="radio" name="role" value="TEACHER"><span><b data-i18n="role.teacher">학원 교사</b><small data-i18n="role.teacherHint">배정 학생 학습 관리</small></span></label>
+      </fieldset>
+
+      <div class="step-heading provider-heading"><span>2</span><div><h2 data-i18n="provider.title">간편 로그인</h2><p data-i18n="provider.body">새 계정이면 선택한 역할로 가입 절차가 이어집니다.</p></div></div>
+      <div class="provider-grid">
+        <button class="provider provider-google" type="button" data-provider="GOOGLE" disabled><span aria-hidden="true">G</span><b data-i18n="provider.google">Google로 계속</b></button>
+        <button class="provider provider-naver" type="button" data-provider="NAVER" disabled><span aria-hidden="true">N</span><b data-i18n="provider.naver">네이버로 계속</b></button>
+        <button class="provider provider-kakao" type="button" data-provider="KAKAO" disabled><span aria-hidden="true">K</span><b data-i18n="provider.kakao">카카오로 계속</b></button>
+      </div>
+      <p class="provider-note" id="providerNote" role="status" aria-live="polite" data-i18n="provider.chooseRole">먼저 역할을 선택해 주세요.</p>
+    </section>
+
+    <section class="auth-card session-card" id="sessionPanel" hidden aria-labelledby="sessionTitle">
+      <div class="step-heading"><span aria-hidden="true">✓</span><div><h2 id="sessionTitle" data-i18n="session.title">로그인됨</h2><p id="sessionSummary"></p></div></div>
+      <form id="onboardingForm" hidden>
+        <div id="studentFields" hidden>
+          <label><span data-i18n="onboarding.grade">학년</span><select name="grade_code"><option value="E1">초1</option><option value="E2">초2</option><option value="E3">초3</option><option value="E4">초4</option><option value="E5">초5</option><option value="E6">초6</option><option value="M1">중1</option><option value="M2">중2</option><option value="M3">중3</option><option value="H1">고1</option><option value="H2">고2</option><option value="H3">고3</option></select></label>
+          <label><span data-i18n="onboarding.age">연령 확인</span><select name="age_assurance"><option value="UNDER_14_GUARDIAN_REQUIRED" data-i18n="onboarding.under14">만 14세 미만 — 보호자 동의 연결</option><option value="AGE_14_PLUS_ATTESTED" data-i18n="onboarding.over14">만 14세 이상</option></select></label>
+        </div>
+        <div id="academyFields" hidden>
+          <label><span data-i18n="onboarding.academyReference">학원 인증 참조번호</span><input name="academy_reference" autocomplete="off" maxlength="191" placeholder="ACADEMY-VERIFY-REFERENCE"></label>
+          <p class="field-note" data-i18n="onboarding.academyHint">원장·교사는 학원 확인 전까지 학생 데이터에 접근할 수 없습니다.</p>
+        </div>
+        <label class="terms"><input type="checkbox" name="terms" required><span data-i18n="onboarding.terms">이용약관과 개인정보 처리 안내를 확인하고 동의합니다.</span></label>
+        <button class="primary-action" type="submit" data-i18n="onboarding.submit">가입 정보 저장</button>
+      </form>
+      <div class="session-actions"><a class="primary-action" id="continueLink" href="../index.html" data-i18n="session.continue">수학착착 시작</a><button class="text-action" id="logoutButton" type="button" data-i18n="session.logout">로그아웃</button></div>
+    </section>
+  </main>
+  <div class="auth-notice" id="notice" role="alert" aria-live="assertive" hidden></div>
+  <script type="module" src="app.js?v=0.1.0-auth1"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare Workers Static Assets",
+  "worker_name": "dev",
+  "revalidated_at": "2026-08-17T23:08:14+09:00",
+  "status": "PASS_EXTERNAL_FRONTEND_PREVIEW",
+  "deployment_scope": "FRONTEND_PREVIEW_WITH_API_BRIDGE_NOT_CONFIGURED",
+  "active_deployment": {
+    "deployment_reference": "cloudflare-deployment:c24b9aac-6764-4e5a-bad9-1be97416c653",
+    "worker_version_reference": "cloudflare-worker-version:ea067773-d8ae-4617-b9d2-9b9747619774",
+    "worker_version_number": 2,
+    "active_traffic_percent": 100,
+    "script_etag_reference": "cloudflare-script-etag:40f23a9262dc4eb8c8fba232b6847632d55c7e3ab635ecb7b8c36dab2cda0b3c",
+    "named_handler_evidence": [
+      "createWorker",
+      "inspectApiOrigin"
+    ],
+    "bindings": [
+      "ASSETS"
+    ],
+    "api_origin_binding_configured": false
+  },
+  "local_source": {
+    "worker_sha256": "4155b0357d0998470697e1183da17a5355a18ad4ac6c08ff96ca4ae12ace0ac3",
+    "wrangler_config_sha256": "1e3d4c9e169fb4a7b4bbdc1b5293aa4f220158b385df860815cfb801f8ef513a",
+    "staging_manifest_sha256": "4a6f6b98e7b72e42e6c3af017609401c61a1299bbe991d191fe132578b328be4",
+    "provider_source_hash_match_proven": false,
+    "source_commit_binding_proven": false
+  },
+  "runtime_truth": {
+    "public_https_url": "https://dev.mathchakchak-product.workers.dev",
+    "frontend_publicly_reachable": true,
+    "api_bridge_deployed": true,
+    "api_bridge_status": "NOT_CONFIGURED",
+    "api_connected": false,
+    "postgresql_connected": false,
+    "production_release_authorized": false,
+    "full_product_external_deployment_completed": false
+  },
+  "credential_boundary": {
+    "credential_value_read": false,
+    "credential_value_stored": false,
+    "account_email_stored": false,
+    "account_id_stored": false
+  }
+}

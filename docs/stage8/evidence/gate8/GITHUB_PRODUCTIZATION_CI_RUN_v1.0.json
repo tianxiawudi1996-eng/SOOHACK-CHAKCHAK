@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "status": "PASS",
+  "verified_at": "2026-08-18T10:59:12.2483589+09:00",
+  "source_control": {
+    "repository": "tianxiawudi1996-eng/SOOHACK-CHAKCHAK",
+    "branch": "codex/gate8-external-deployment",
+    "commit": "a9e6421e0d5b48bba14ad7b4cf78f9f005f66bbc",
+    "push_verified": true
+  },
+  "github_actions": {
+    "workflow": "Productization CI",
+    "run_id": 32090081642,
+    "run_url": "https://github.com/tianxiawudi1996-eng/SOOHACK-CHAKCHAK/actions/runs/32090081642",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "Source and edge package",
+        "conclusion": "success",
+        "duration_seconds": 30
+      },
+      {
+        "name": "API and PostgreSQL integration",
+        "conclusion": "success",
+        "duration_seconds": 33
+      }
+    ]
+  },
+  "verified_controls": {
+    "locked_dependency_install": true,
+    "lint": true,
+    "runtime_type_contract": true,
+    "unit_tests": true,
+    "staging_build": true,
+    "staging_artifact_validation": true,
+    "cloudflare_dry_run": true,
+    "compose_contract": true,
+    "isolated_api_postgresql_stack": true,
+    "api_core_journey": true,
+    "runtime_operations": true,
+    "cleanup": true
+  },
+  "boundaries": {
+    "deployment_job_executed": false,
+    "development_environment_consumed": false,
+    "secret_value_stored": false,
+    "production_release_performed": false
+  },
+  "warnings": [
+    "GitHub reported that actions/checkout@v4 and actions/setup-node@v4 use a deprecated Node.js 20 action runtime that is currently forced to Node.js 24"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "stage": 8,
+  "gate": 8,
+  "environment": "development",
+  "provider": "Cloudflare Workers + Hyperdrive + Neon PostgreSQL",
+  "worker_name": "mathchakchak-free-dev",
+  "attempted_at": "2026-08-18T15:50:27+09:00",
+  "status": "PASS_EXTERNAL_DEVELOPMENT_RUNTIME",
+  "deployment_scope": "FULL_STACK_DEVELOPMENT",
+  "configuration": {
+    "wrangler_version": "4.123.0",
+    "wrangler_config_sha256": "c67ae7edad78204d6839598c5fe269cdf7cca3d02efe655eac5691b5aa0a9660",
+    "workers_dev": true,
+    "custom_domain_configured": false,
+    "production_traffic": false,
+    "hyperdrive_binding_configured": true,
+    "session_secret_configured": true,
+    "ai_provider_enabled": false
+  },
+  "verification": {
+    "oauth_authenticated": true,
+    "oauth_reauthentication_completed": true,
+    "wrangler_dry_run": "PASS",
+    "dry_run_assets_read": 96,
+    "asset_files_uploaded": 76,
+    "asset_files_reused": 2,
+    "worker_bundle_uploaded": true,
+    "cloudflare_deployment_record_present": true,
+    "workers_dev_route_published": true,
+    "worker_version_reference": "cloudflare-worker-version:c61d0fbb-60eb-4a41-8143-89146b342889",
+    "worker_startup_time_ms": 25,
+    "public_https_url": "https://mathchakchak-free-dev.mathchakchak-product.workers.dev",
+    "preferred_custom_domain": "https://dev.mathchakchak.com",
+    "preferred_custom_domain_status": "BLOCKED_DOMAIN_NOT_REGISTERED",
+    "https_smoke_test": "PASS",
+    "runtime_verification": "PASS_EXTERNAL_DEVELOPMENT_RUNTIME",
+    "http_checks": {
+      "root": 200,
+      "readyz": 200,
+      "curriculum_e4_ko": 200,
+      "api_locales": 200,
+      "protected_api_without_session": 401
+    },
+    "database_checks": {
+      "hyperdrive_configuration_verified": true,
+      "managed_postgresql_connection_verified": true,
+      "forward_migrations": "40/40",
+      "schema_table_count": 140,
+      "first_and_final_sentinel_tables": "PASS"
+    },
+    "cpu_observation": {
+      "status": "MEASURED_WITH_COLD_START_RISK",
+      "sample_count": 15,
+      "outcome_ok": 15,
+      "outcome_exceeded_cpu": 0,
+      "observed_range_ms": "0-23",
+      "workers_free_nominal_limit_ms": 10
+    }
+  },
+  "runtime_truth_boundary": {
+    "frontend_bundle_ready": true,
+    "frontend_publicly_reachable": true,
+    "api_connected": true,
+    "postgresql_connected": true,
+    "ai_provider_enabled": false,
+    "production_release_authorized": false,
+    "external_development_deployment_completed": true,
+    "full_product_external_development_completed": true
+  },
+  "resolved_blockers": [
+    "EXTERNAL_DEPLOYMENT_TARGET_REFERENCE",
+    "CLOUDFLARE_PROVIDER_AUTHENTICATION_REFRESH",
+    "EXTERNAL_API_AND_POSTGRESQL_NOT_DEPLOYED"
+  ],
+  "remaining_risks": [
+    {
+      "code": "CLOUDFLARE_FREE_COLD_START_CPU_OPTIMIZATION_REQUIRED",
+      "owner": "PLATFORM_OWNER",
+      "resolution": "Reduce cold-start CPU and repeat a larger trace sample before production promotion."
+    },
+    {
+      "code": "PREFERRED_CUSTOM_DOMAIN_NOT_REGISTERED",
+      "owner": "DOMAIN_AND_BILLING_OWNER",
+      "resolution": "Keep the workers.dev development URL or complete a separately approved domain purchase and zone activation."
+    }
+  ],
+  "next_input": "DEVELOPMENT_ACCEPTANCE_AND_COLD_START_OPTIMIZATION",
+  "credential_boundary": {
+    "credential_value_accessed": true,
+    "credential_value_stored": false,
+    "raw_connection_string_stored": false,
+    "repository_secret_written": false,
+    "provider_managed_secret_created": true
+  }
+}

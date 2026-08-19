@@ -146,6 +146,226 @@ export class MathChakChakRepository {
     return {database: result.rows[0].database, ready: result.rows[0].ready === 1};
   }
 
+  async createOAuthLoginTransaction({id,provider,role,stateHash,nonceHash,pkceMethod,returnTo,locale,expiresAt}) {
+    await this.withTransaction(async (client) => {
+      await client.query(
+        `INSERT INTO mathchakchak.oauth_login_transaction
+          (id,provider,requested_role,state_hash,nonce_hash,pkce_method,return_to,locale,expires_at)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+        [id,provider,role,stateHash,nonceHash,pkceMethod,returnTo,locale,expiresAt]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.auth_event(id,event_type,provider,outcome,metadata)
+         VALUES($1,'OAUTH_STARTED',$2,'PENDING',$3::jsonb)`,
+        [crypto.randomUUID(),provider,JSON.stringify({requested_role:role,locale})]
+      );
+    });
+    return {id,provider,status:'PENDING'};
+  }
+
+  async getOAuthLoginTransaction({id,provider,stateHash}) {
+    const result = await this.pool.query(
+      `SELECT id,provider,requested_role,state_hash,nonce_hash,pkce_method,return_to,locale,status,expires_at
+         FROM mathchakchak.oauth_login_transaction
+        WHERE id=$1 AND provider=$2 AND state_hash=$3 AND status='PENDING' AND expires_at>now()`,
+      [id,provider,stateHash]
+    );
+    if (!result.rowCount) throw conflict('OAUTH_TRANSACTION_NOT_AVAILABLE');
+    return result.rows[0];
+  }
+
+  async completeSocialLogin({transactionId,provider,stateHash,subjectHash,requestedRole,session}) {
+    return this.withTransaction(async (client) => {
+      const transaction = await client.query(
+        `SELECT id,requested_role,status,expires_at
+           FROM mathchakchak.oauth_login_transaction
+          WHERE id=$1 AND provider=$2 AND state_hash=$3 FOR UPDATE`,
+        [transactionId,provider,stateHash]
+      );
+      const tx = transaction.rows[0];
+      if (!tx || tx.status !== 'PENDING' || new Date(tx.expires_at).getTime() <= Date.now()) throw conflict('OAUTH_TRANSACTION_NOT_AVAILABLE');
+      if (tx.requested_role !== requestedRole) throw conflict('OAUTH_ROLE_MISMATCH');
+
+      const identity = await client.query(
+        `SELECT i.user_id,u.role,u.status
+           FROM mathchakchak.social_identity i
+           JOIN mathchakchak.app_user u ON u.id=i.user_id
+          WHERE i.provider=$1 AND i.subject_hash=$2 AND i.disabled_at IS NULL
+          FOR UPDATE OF i,u`,
+        [provider,subjectHash]
+      );
+      let userId;
+      let accountStatus;
+      let created = false;
+      if (identity.rowCount) {
+        const row = identity.rows[0];
+        if (row.role !== requestedRole) throw conflict('SOCIAL_ACCOUNT_ROLE_MISMATCH');
+        if (['LOCKED','SUSPENDED','WITHDRAWN','DELETED'].includes(row.status)) throw conflict('ACCOUNT_NOT_AVAILABLE');
+        userId = row.user_id;
+        accountStatus = row.status;
+        await client.query(
+          `UPDATE mathchakchak.social_identity SET last_login_at=now()
+            WHERE provider=$1 AND subject_hash=$2`,[provider,subjectHash]
+        );
+      } else {
+        userId = crypto.randomUUID();
+        accountStatus = 'PENDING_ONBOARDING';
+        created = true;
+        await client.query(
+          `INSERT INTO mathchakchak.app_user(id,auth_subject,role,status)
+           VALUES($1,$2,$3,$4)`,
+          [userId,`oauth:${provider.toLowerCase()}:${subjectHash}`,requestedRole,accountStatus]
+        );
+        await client.query(
+          `INSERT INTO mathchakchak.social_identity(id,user_id,provider,subject_hash)
+           VALUES($1,$2,$3,$4)`,[crypto.randomUUID(),userId,provider,subjectHash]
+        );
+        await client.query(
+          `INSERT INTO mathchakchak.auth_role_onboarding(id,user_id,selected_role,status)
+           VALUES($1,$2,$3,'PENDING')`,[crypto.randomUUID(),userId,requestedRole]
+        );
+      }
+
+      const authLevel = accountStatus === 'ACTIVE' ? 'FULL' : 'ONBOARDING';
+      await client.query(
+        `INSERT INTO mathchakchak.auth_session
+          (id,user_id,provider,session_token_hash,csrf_token_hash,auth_level,idle_expires_at,absolute_expires_at)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+        [session.id,userId,provider,session.sessionTokenHash,session.csrfTokenHash,authLevel,session.idleExpiresAt,session.absoluteExpiresAt]
+      );
+      await client.query(
+        `UPDATE mathchakchak.oauth_login_transaction
+            SET status='CONSUMED',consumed_at=now()
+          WHERE id=$1`,[transactionId]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.auth_event(id,user_id,session_id,event_type,provider,outcome,metadata)
+         VALUES($1,$2,$3,$4,$5,'SUCCESS',$6::jsonb)`,
+        [crypto.randomUUID(),userId,session.id,created?'SOCIAL_ACCOUNT_CREATED':'SOCIAL_LOGIN_SUCCEEDED',provider,
+          JSON.stringify({role:requestedRole,account_status:accountStatus})]
+      );
+      return {user_id:userId,role:requestedRole,account_status:accountStatus,auth_level:authLevel,new_account:created};
+    });
+  }
+
+  async resolveAuthSession({sessionTokenHash,idleSeconds=43200}) {
+    return this.withTransaction(async (client) => {
+      const result = await client.query(
+        `SELECT s.id AS session_id,s.user_id,s.provider,s.csrf_token_hash,s.status AS session_status,
+                s.auth_level,s.idle_expires_at,s.absolute_expires_at,u.role,u.status AS account_status,
+                p.id AS student_id,o.status AS onboarding_status
+           FROM mathchakchak.auth_session s
+           JOIN mathchakchak.app_user u ON u.id=s.user_id
+           LEFT JOIN mathchakchak.student_profile p ON p.user_id=u.id
+           LEFT JOIN mathchakchak.auth_role_onboarding o ON o.user_id=u.id
+          WHERE s.session_token_hash=$1
+          FOR UPDATE OF s`,[sessionTokenHash]
+      );
+      if (!result.rowCount) return null;
+      const row = result.rows[0];
+      const now = Date.now();
+      if (row.session_status !== 'ACTIVE' || new Date(row.idle_expires_at).getTime() <= now || new Date(row.absolute_expires_at).getTime() <= now || ['LOCKED','SUSPENDED','WITHDRAWN','DELETED'].includes(row.account_status)) {
+        if (row.session_status === 'ACTIVE') {
+          await client.query(`UPDATE mathchakchak.auth_session SET status='EXPIRED' WHERE id=$1`,[row.session_id]);
+        }
+        return null;
+      }
+      await client.query(
+        `UPDATE mathchakchak.auth_session
+            SET last_seen_at=now(),idle_expires_at=LEAST(absolute_expires_at,now()+($2::text || ' seconds')::interval)
+          WHERE id=$1`,[row.session_id,idleSeconds]
+      );
+      return row;
+    });
+  }
+
+  async completeAuthOnboarding({sessionId,userId,role,termsVersion,gradeCode,ageAssurance,academyReference,replacementSession}) {
+    return this.withTransaction(async (client) => {
+      const current = await client.query(
+        `SELECT s.id,s.provider,s.status AS session_status,u.role,u.status AS account_status,o.id AS onboarding_id,o.status AS onboarding_status
+           FROM mathchakchak.auth_session s
+           JOIN mathchakchak.app_user u ON u.id=s.user_id
+           JOIN mathchakchak.auth_role_onboarding o ON o.user_id=u.id
+          WHERE s.id=$1 AND s.user_id=$2 FOR UPDATE OF s,u,o`,[sessionId,userId]
+      );
+      if (!current.rowCount || current.rows[0].session_status !== 'ACTIVE') throw conflict('AUTH_SESSION_NOT_AVAILABLE');
+      const row = current.rows[0];
+      if (row.role !== role || row.onboarding_status !== 'PENDING') throw conflict('ONBOARDING_NOT_AVAILABLE');
+
+      let accountStatus;
+      let onboardingStatus;
+      let authLevel;
+      let studentId = null;
+      if (role === 'PARENT') {
+        accountStatus='ACTIVE'; onboardingStatus='COMPLETED'; authLevel='FULL';
+      } else if (role === 'STUDENT') {
+        const gradeBand = gradeCode.startsWith('E')
+          ? (Number(gradeCode[1])<=2?'ELEMENTARY_1_2':Number(gradeCode[1])<=4?'ELEMENTARY_3_4':'ELEMENTARY_5_6')
+          : gradeCode.startsWith('M')?'MIDDLE_1_3':'HIGH_1_3';
+        studentId=crypto.randomUUID();
+        await client.query(
+          `INSERT INTO mathchakchak.student_profile(id,user_id,grade_band,grade_code,curriculum_region)
+           VALUES($1,$2,$3,$4,'KR')`,[studentId,userId,gradeBand,gradeCode]
+        );
+        const active = ageAssurance === 'AGE_14_PLUS_ATTESTED';
+        accountStatus=active?'ACTIVE':'PENDING_GUARDIAN';
+        onboardingStatus=active?'COMPLETED':'PENDING_GUARDIAN';
+        authLevel=active?'FULL':'ONBOARDING';
+      } else {
+        accountStatus='PENDING_ACADEMY_VERIFICATION';
+        onboardingStatus='PENDING_ACADEMY_VERIFICATION';
+        authLevel='ONBOARDING';
+      }
+
+      await client.query(`UPDATE mathchakchak.app_user SET status=$2,updated_at=now() WHERE id=$1`,[userId,accountStatus]);
+      await client.query(
+        `UPDATE mathchakchak.auth_role_onboarding
+            SET status=$2,terms_version=$3,age_assurance=$4,grade_code=$5,academy_reference=$6,
+                submitted_at=now(),verified_at=CASE WHEN $2='COMPLETED' THEN now() ELSE NULL END,updated_at=now()
+          WHERE id=$1`,
+        [row.onboarding_id,onboardingStatus,termsVersion,ageAssurance??null,gradeCode??null,academyReference??null]
+      );
+      await client.query(
+        `UPDATE mathchakchak.auth_session
+            SET status='REVOKED',revoked_at=now(),revoke_reason='ONBOARDING_ROTATION'
+          WHERE id=$1`,[sessionId]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.auth_session
+          (id,user_id,provider,session_token_hash,csrf_token_hash,auth_level,idle_expires_at,absolute_expires_at)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+        [replacementSession.id,userId,row.provider,replacementSession.sessionTokenHash,replacementSession.csrfTokenHash,
+          authLevel,replacementSession.idleExpiresAt,replacementSession.absoluteExpiresAt]
+      );
+      await client.query(
+        `INSERT INTO mathchakchak.auth_event(id,user_id,session_id,event_type,provider,outcome,metadata)
+         VALUES($1,$2,$3,$4,$5,$6,$7::jsonb)`,
+        [crypto.randomUUID(),userId,replacementSession.id,
+          accountStatus==='ACTIVE'?'ACCOUNT_ACTIVATED':'ROLE_VERIFICATION_REQUIRED',row.provider,
+          accountStatus==='ACTIVE'?'SUCCESS':'PENDING',JSON.stringify({role,account_status:accountStatus})]
+      );
+      return {user_id:userId,role,account_status:accountStatus,auth_level:authLevel,onboarding_status:onboardingStatus,student_id:studentId};
+    });
+  }
+
+  async revokeAuthSession({sessionId,userId,reason='USER_LOGOUT'}) {
+    return this.withTransaction(async (client) => {
+      const result = await client.query(
+        `UPDATE mathchakchak.auth_session
+            SET status='REVOKED',revoked_at=now(),revoke_reason=$3
+          WHERE id=$1 AND user_id=$2 AND status='ACTIVE'
+        RETURNING provider`,[sessionId,userId,reason]
+      );
+      if (!result.rowCount) throw conflict('AUTH_SESSION_NOT_AVAILABLE');
+      await client.query(
+        `INSERT INTO mathchakchak.auth_event(id,user_id,session_id,event_type,provider,outcome,reason_code)
+         VALUES($1,$2,$3,'SESSION_REVOKED',$4,'SUCCESS',$5)`,
+        [crypto.randomUUID(),userId,sessionId,result.rows[0].provider,reason]
+      );
+      return {revoked:true};
+    });
+  }
+
   async createLocalDemoContext({conceptId}) {
     return this.withTransaction(async (client) => {
       const studentId = '22222222-2222-4222-8222-222222222222';
@@ -1216,6 +1436,15 @@ export class MathChakChakRepository {
     );
     if (!session.rowCount) throw notFound();
     const row = session.rows[0];
+    const formula = await client.query(
+      `SELECT fd.semantic_key,fd.notation,fl.title,fl.memory_cue
+         FROM mathchakchak.lesson_definition ld
+         JOIN mathchakchak.formula_definition fd ON fd.concept_id=ld.concept_id AND fd.active=true
+         JOIN mathchakchak.formula_localization fl ON fl.formula_id=fd.id AND fl.locale=$2
+        WHERE ld.id=$1`,
+      [row.lesson_definition_id,row.locale]
+    );
+    if(!formula.rowCount)throw notFound();
     let currentStep = null;
     if (row.status === 'IN_PROGRESS' && row.current_step_no <= 5) {
       const step = await client.query(
@@ -1234,7 +1463,7 @@ export class MathChakChakRepository {
          FROM mathchakchak.formula_learning_response WHERE formula_learning_session_id = $1`,
       [formulaSessionId]
     );
-    return {...mapFormulaSession(row),current_step:currentStep,response_summary:summary.rows[0]};
+    return {...mapFormulaSession(row),formula:formula.rows[0],current_step:currentStep,response_summary:summary.rows[0]};
   }
 
   async startFormulaLesson({actor, learningSessionId, lessonDefinitionId, key, hash}) {

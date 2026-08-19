@@ -23,10 +23,10 @@ const allowedStatuses = new Set([
   'APPROVED_NOT_RUNTIME_WIRED'
 ]);
 
-if (contract.features.length !== 15 || implementation.features.length !== 15) fail('feature count mismatch');
+if (contract.features.length !== 16 || implementation.features.length !== 16) fail('feature count mismatch');
 const contractIds = new Set(contract.features.map((feature) => feature.id));
 if (implementation.features.some((feature) => !contractIds.has(feature.id))) fail('unknown implementation feature');
-if (new Set(implementation.features.map((feature) => feature.id)).size !== 15) fail('duplicate implementation feature');
+if (new Set(implementation.features.map((feature) => feature.id)).size !== 16) fail('duplicate implementation feature');
 if (implementation.schema_version !== '1.1.0' || implementation.status !== 'TRUTHFUL_CAPABILITY_BASELINE') fail('truthful capability schema missing');
 
 for (const feature of implementation.features) {

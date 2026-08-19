@@ -15,6 +15,7 @@ STATUS = ROOT / "harness" / "status.json"
 MANIFEST = ROOT / "harness" / "ssot-manifest.json"
 ALLOWED = {"NOT_STARTED", "IN_PROGRESS", "BLOCKED", "NOT_VERIFIED", "VERIFIED"}
 SENSITIVE_NAME_RE = re.compile(r"(?:recovery[-_ ]?codes|id_rsa|private[-_ ]?key)", re.I)
+EXCLUDED_TREE_NAMES = {".git", "node_modules"}
 REQUIRED_STAGE7 = [
     "MathChakChak_Stage7_SSOT_v1.0.xlsx",
     "MathChakChak_Stage7_SSOT_v1.0.md",
@@ -376,7 +377,7 @@ def main() -> int:
         }
     sensitive_warnings: list[str] = []
     for path in ROOT.rglob("*"):
-        if not path.is_file() or ".git" in path.parts or not SENSITIVE_NAME_RE.search(path.name):
+        if not path.is_file() or EXCLUDED_TREE_NAMES.intersection(path.parts) or not SENSITIVE_NAME_RE.search(path.name):
             continue
         relative = path.relative_to(ROOT).as_posix()
         if relative in tracked or relative.startswith("ssot/stage7/v1.0/"):
@@ -393,12 +394,12 @@ def main() -> int:
                 fail(f"prompt missing required section {required!r}: {prompt.relative_to(ROOT)}")
 
     for path in ROOT.rglob("*.json"):
-        if ".git" not in path.parts:
+        if not EXCLUDED_TREE_NAMES.intersection(path.parts):
             load_json(path)
 
     broken_links: list[str] = []
     for path in ROOT.rglob("*.md"):
-        if ".git" in path.parts:
+        if EXCLUDED_TREE_NAMES.intersection(path.parts):
             continue
         broken_links.extend(f"{path.relative_to(ROOT)} -> {target}" for target in markdown_broken_links(path))
     if broken_links:
