@@ -46,6 +46,22 @@ npm.cmd run gate8:external:preflight
 npm.cmd test
 ```
 
+## 현재 개발 우선순위
+
+2026-09-09부터 신규 `Phase 76+` 확장은 동결하고 실제 학습 제품의 Product Core를 우선합니다.
+
+1. RESET-001 정본 편입
+2. ALG-EQ-001 완성
+3. 동급 품질 Lesson 10개
+4. 내부 학생 사용성 테스트
+5. 오답·힌트·재시도 Telemetry
+6. Mastery/오개념 Engine
+7. 문제은행 100→500→2,000
+8. 교육과정 확장
+9. AI Tutor 고도화
+10. 운영·배포 확대
+
+실행 정본: `docs/product-core/00_EXECUTION_PLAN.md`, 기계 상태: `docs/product-core/STATUS.json`
 ## 현재 릴리스 상태
 
 - 제품화 로드맵: Phase 0~75 로컬 검증 증거 보유
