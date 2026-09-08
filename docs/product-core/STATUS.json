@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "project": "MathChakChak",
+  "track": "PRODUCT_CORE",
+  "updated_at": "2026-09-09",
+  "phase_76_plus_frozen": true,
+  "overall_status": "IN_PROGRESS",
+  "current_milestone": "M1_RESET001_CANONICAL_INTAKE",
+  "canonical_local_root": "D:\\project\\SOOHACK CHACKCHACK",
+  "milestones": {
+    "M1": {"name":"RESET001_CANONICAL_INTAKE","status":"BLOCKED","blocker":"LOCAL_SOURCE_NOT_ACCESSIBLE_FROM_CHAT"},
+    "M2": {"name":"ALG_EQ_001_PRODUCT_COMPLETION","status":"NOT_STARTED"},
+    "M3": {"name":"TEN_LESSON_BATCH","status":"NOT_STARTED"},
+    "M4": {"name":"INTERNAL_CHILD_USABILITY_PILOT","status":"NOT_STARTED"},
+    "M5": {"name":"WRONG_HINT_RETRY_TELEMETRY","status":"NOT_STARTED"},
+    "M6": {"name":"MASTERY_MISCONCEPTION_ENGINE","status":"NOT_STARTED"},
+    "M7": {"name":"QUESTION_BANK_SCALE_100_500_2000","status":"NOT_STARTED"},
+    "M8": {"name":"CURRICULUM_EXPANSION","status":"NOT_STARTED"},
+    "M9": {"name":"AI_TUTOR_UPGRADE","status":"NOT_STARTED"},
+    "M10":{"name":"OPERATIONS_DEPLOYMENT_EXPANSION","status":"NOT_STARTED"}
+  },
+  "m1": {
+    "source": "C:\\Users\\ddedi\\Documents\\Math Memory Tutor\\reference\\alg-eq-001",
+    "target": "D:\\project\\SOOHACK CHACKCHACK\\reference\\alg-eq-001",
+    "required_entry_file": "index.html",
+    "copy_policy": "EXACT_SOURCE_BYTES_NO_RECONSTRUCTION",
+    "sha256_required": true,
+    "localhost_visual_qa_required": true,
+    "git_commit_required": true
+  },
+  "product_claims_authorized": false,
+  "production_release_authorized": false
+}
